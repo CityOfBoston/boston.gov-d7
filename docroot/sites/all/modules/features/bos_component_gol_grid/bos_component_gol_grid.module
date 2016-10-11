@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Boston Group of Links - Grid Component feature.
+ */
+
+include_once 'bos_component_gol_grid.features.inc';

@@ -1,0 +1,395 @@
+<?php
+/**
+ * @file
+ * Module code for Boston Fixtures.
+ */
+
+/**
+ * @defgroup data_fixtures Data fixtures
+ * @{
+ * Documentation on site's data fixtures for creating test content.
+ *
+ * It is necessary to provide test data for the various content types and
+ * paragraphs defined throughout the site so that developers can continually
+ * verify that the work they've done is not changing things unexpectedly.
+ */
+
+/**
+ * Implements hook_migrate_api().
+ */
+function bos_fixtures_migrate_api() {
+  return array(
+    'api' => 2,
+    'groups' => array(
+      'development' => array(
+        'title' => t('Basic Fixtures'),
+        'default_format' => 'filtered_html',
+      ),
+    ),
+    'migrations' => array(
+      'UserFixtures' => array(
+        'class_name' => 'UserFixtureMigration',
+        'group_name' => 'development',
+        'data_file' => 'users.xml',
+        'item_xpath' => '/users/user',
+      ),
+      'TopicFixtures' => array(
+        'class_name' => 'TopicFixtureMigration',
+        'group_name' => 'development',
+        'data_file' => 'topic_pages.xml',
+        'item_xpath' => '/topic_pages/topic_page',
+        'dependencies' => array(
+          'UserFixtures',
+        ),
+        'field_migrations' => array(
+          'uid' => array(
+            'UserFixtures',
+          ),
+        ),
+      ),
+      'LandingFixtures' => array(
+        'class_name' => 'LandingFixtureMigration',
+        'group_name' => 'development',
+        'data_file' => 'landing_pages.xml',
+        'item_xpath' => '/landing_pages/landing_page',
+        'dependencies' => array(
+          'UserFixtures',
+          'GridProgramComponentFixtures',
+          'GridPlaceComponentFixtures',
+          'TextComponentFixtures',
+          'TextOneColFixtures',
+        ),
+        'field_migrations' => array(
+          'uid' => array(
+            'UserFixtures',
+          ),
+          'field_components' => array(
+            'GridProgramComponentFixtures',
+            'GridPlaceComponentFixtures',
+            'TextComponentFixtures',
+          ),
+        ),
+      ),
+      'PostFixtures' => array(
+        'class_name' => 'PostFixtureMigration',
+        'group_name' => 'development',
+        'data_file' => 'post_pages.xml',
+        'item_xpath' => '/posts/post',
+        'dependencies' => array(
+          'UserFixtures',
+        ),
+        'field_migrations' => array(
+          'uid' => array(
+            'UserFixtures',
+          ),
+        ),
+      ),
+      'ArticleFixtures' => array(
+        'class_name' => 'ArticleFixtureMigration',
+        'group_name' => 'development',
+        'data_file' => 'articles.xml',
+        'item_xpath' => '/articles/article',
+        'dependencies' => array(
+          'UserFixtures',
+        ),
+        'field_migrations' => array(
+          'uid' => array(
+            'UserFixtures',
+          ),
+        ),
+      ),
+      'DepartmentProfileFixtures' => array(
+        'class_name' => 'DepartmentProfileFixtureMigration',
+        'group_name' => 'development',
+        'data_file' => 'department_profiles.xml',
+        'item_xpath' => '/department_profiles/department_profile',
+        'dependencies' => array(
+          'UserFixtures',
+        ),
+      ),
+      'EventFixtures' => array(
+        'class_name' => 'EventFixtureMigration',
+        'group_name' => 'development',
+        'data_file' => 'events.xml',
+        'item_xpath' => '/events/event',
+        'dependencies' => array(
+          'UserFixtures',
+        ),
+        'field_migrations' => array(
+          'uid' => array(
+            'UserFixtures',
+          ),
+        ),
+      ),
+      'ListingPageFixtures' => array(
+        'class_name' => 'ListingPageFixtureMigration',
+        'group_name' => 'development',
+        'data_file' => 'listing_pages.xml',
+        'item_xpath' => '/listing_pages/listing_page',
+        'dependencies' => array(
+          'UserFixtures',
+          'FeaturedItemComponentFixtures',
+          'HeaderTextComponentFixtures',
+          'ListComponentFixtures',
+        ),
+        'field_migrations' => array(
+          'uid' => array(
+            'UserFixtures',
+          ),
+          'field_header_component' => array(
+            'FeaturedItemComponentFixtures',
+            'HeaderTextComponentFixtures',
+          ),
+          'field_components' => array(
+            'ListComponentFixtures',
+          ),
+        ),
+      ),
+      'FeaturedItemComponentFixtures' => array(
+        'class_name' => 'FeaturedItemComponentFixtureMigration',
+        'group_name' => 'development',
+        'data_file' => 'featured_item_components.xml',
+        'item_xpath' => '/featured_items/featured_item',
+        'dependencies' => array(
+          'EventFixtures',
+        ),
+        'field_migrations' => array(
+          'field_featured_item' => array(
+            'EventFixtures',
+          ),
+        ),
+      ),
+      'HeaderTextComponentFixtures' => array(
+        'class_name' => 'HeaderTextComponentFixtureMigration',
+        'group_name' => 'development',
+        'data_file' => 'header_text_components.xml',
+        'item_xpath' => '/header_text_components/header_text_component',
+        'dependencies' => array(
+          'ContactFixtures',
+        ),
+        'field_migrations' => array(
+          'field_contact' => array(
+            'ContactFixtures',
+          ),
+        ),
+      ),
+      'PersonProfileFixtures' => array(
+        'class_name' => 'PersonProfileFixtureMigration',
+        'group_name' => 'development',
+        'data_file' => 'person_profile_pages.xml',
+        'item_xpath' => '/person_profile_pages/person_profile_page',
+        'dependencies' => array(
+          'UserFixtures',
+        ),
+        'field_migrations' => array(
+          'uid' => array(
+            'UserFixtures',
+          ),
+        ),
+      ),
+      'TransactionFixtures' => array(
+        'class_name' => 'TransactionFixtureMigration',
+        'group_name' => 'development',
+        'data_file' => 'transactions.xml',
+        'item_xpath' => '/transactions/transaction',
+        'dependencies' => array(
+          'UserFixtures',
+        ),
+        'field_migrations' => array(
+          'uid' => array(
+            'UserFixtures',
+          ),
+          'field_link' => array(
+            'InternalLinkFixtures',
+            'ExternalLinkFixtures',
+            'DocumentFixtures',
+          ),
+        ),
+      ),
+      'ContactFixtures' => array(
+        'class_name' => 'ContactFixtureMigration',
+        'group_name' => 'development',
+        'data_file' => 'contacts.xml',
+        'item_xpath' => '/contacts/contact',
+        'dependencies' => array(
+          'DepartmentProfileFixtures',
+        ),
+        'field_migrations' => array(
+          'field_department_profile' => array(
+            'DepartmentProfileFixtures',
+          ),
+        ),
+      ),
+      'PlaceTypeFixtures' => array(
+        'class_name' => 'PlaceTypeFixtureMigration',
+        'group_name' => 'development',
+        'data_file' => 'place_types.xml',
+        'item_xpath' => '/place_types/place_type',
+      ),
+      'PlaceProfileFixtures' => array(
+        'class_name' => 'PlaceProfileFixtureMigration',
+        'group_name' => 'development',
+        'data_file' => 'places.xml',
+        'item_xpath' => '/places/place',
+        'dependencies' => array(
+          'UserFixtures',
+          'ContactFixtures',
+          'PlaceTypeFixtures',
+        ),
+        'field_migrations' => array(
+          'uid' => array(
+            'UserFixtures',
+          ),
+          'field_place_type' => array(
+            'PlaceTypeFixtures',
+          ),
+          'field_contact' => array(
+            'ContactFixtures',
+          ),
+        ),
+      ),
+      'ProgramTypeFixtures' => array(
+        'class_name' => 'ProgramTypeFixtureMigration',
+        'group_name' => 'development',
+        'data_file' => 'program_types.xml',
+        'item_xpath' => '/program_types/program_type',
+      ),
+      'ProgramInitiativeFixtures' => array(
+        'class_name' => 'ProgramInitiativeFixtureMigration',
+        'group_name' => 'development',
+        'data_file' => 'programs.xml',
+        'item_xpath' => '/programs/program',
+        'dependencies' => array(
+          'UserFixtures',
+          'ContactFixtures',
+          'ProgramTypeFixtures',
+          'SidebarItemComponentFixtures',
+          'SidebarItemIconComponentFixtures',
+        ),
+        'field_migrations' => array(
+          'uid' => array(
+            'UserFixtures',
+          ),
+          'field_contacts' => array(
+            'ContactFixtures',
+          ),
+          'field_sidebar_components' => array(
+            'SidebarItemComponentFixtures',
+            'SidebarItemIconComponentFixtures',
+          ),
+          'field_program_type' => array(
+            'ProgramTypeFixtures',
+          ),
+        ),
+      ),
+      'SidebarItemComponentFixtures' => array(
+        'class_name' => 'SidebarItemComponentFixtureMigration',
+        'group_name' => 'development',
+        'data_file' => 'sidebar_item_components.xml',
+        'item_xpath' => '/sidebar_items/sidebar_item',
+      ),
+      'SidebarItemIconComponentFixtures' => array(
+        'class_name' => 'SidebarItemIconComponentFixtureMigration',
+        'group_name' => 'development',
+        'data_file' => 'sidebar_item_icon_components.xml',
+        'item_xpath' => '/sidebar_items/sidebar_item',
+      ),
+      'DocumentFixtures' => array(
+        'class_name' => 'DocumentFixtureMigration',
+        'group_name' => 'development',
+        'data_file' => 'documents.xml',
+        'item_xpath' => '/documents/document',
+      ),
+      'ExternalLinkFixtures' => array(
+        'class_name' => 'ExternalLinkFixtureMigration',
+        'group_name' => 'development',
+        'data_file' => 'external_links.xml',
+        'item_xpath' => '/external_links/external_link',
+      ),
+      'InternalLinkFixtures' => array(
+        'class_name' => 'InternalLinkFixtureMigration',
+        'group_name' => 'development',
+        'data_file' => 'internal_links.xml',
+        'item_xpath' => '/internal_links/internal_link',
+        'dependencies' => array(
+          'LandingFixtures',
+        ),
+        'field_migrations' => array(
+          'field_internal_link' => array(
+            'LandingFixtures',
+          ),
+        ),
+      ),
+      'ListComponentFixtures' => array(
+        'class_name' => 'ListComponentFixtureMigration',
+        'group_name' => 'development',
+        'data_file' => 'list_components.xml',
+        'item_xpath' => '/list_components/list_component',
+      ),
+      'GridProgramComponentFixtures' => array(
+        'class_name' => 'GridProgramComponentFixtureMigration',
+        'group_name' => 'development',
+        'data_file' => 'grid_programs.xml',
+        'item_xpath' => '/grid_programs/grid_program',
+        'dependencies' => array(
+          'ContactFixtures',
+          'ProgramInitiativeFixtures',
+        ),
+        'field_migrations' => array(
+          'field_contact' => array(
+            'ContactFixtures',
+          ),
+          'field_program_initiatives' => array(
+            'ProgramInitiativeFixtures',
+          ),
+        ),
+      ),
+      'GridPlaceComponentFixtures' => array(
+        'class_name' => 'GridPlaceComponentFixtureMigration',
+        'group_name' => 'development',
+        'data_file' => 'grid_places.xml',
+        'item_xpath' => '/grid_places/grid_place',
+        'dependencies' => array(
+          'ContactFixtures',
+          'PlaceProfileFixtures',
+        ),
+        'field_migrations' => array(
+          'field_contact' => array(
+            'ContactFixtures',
+          ),
+          'field_place' => array(
+            'PlaceProfileFixtures',
+          ),
+        ),
+      ),
+      'TextComponentFixtures' => array(
+        'class_name' => 'TextComponentFixtureMigration',
+        'group_name' => 'development',
+        'data_file' => 'text_components.xml',
+        'item_xpath' => '/text_components/text_component',
+        'dependencies' => array(
+          'ContactFixtures',
+          'TextOneColFixtures',
+        ),
+        'field_migrations' => array(
+          'field_contact' => array(
+            'ContactFixtures',
+          ),
+          'field_text_blocks' => array(
+            'TextOneColFixtures',
+          ),
+        ),
+      ),
+      'TextOneColFixtures' => array(
+        'class_name' => 'TextOneColFixtureMigration',
+        'group_name' => 'development',
+        'data_file' => 'text_one_col.xml',
+        'item_xpath' => '/txt_one_cols/txt_one_col',
+      ),
+    ),
+  );
+}
+
+/**
+ * @} End of "defgroup data_fixtures".
+ */

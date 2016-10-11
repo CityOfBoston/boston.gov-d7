@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<featured_items>
+  <featured_item>
+    <id>fi0001</id>
+    <reference>e0001</reference>
+  </featured_item>
+  <featured_item>
+    <id>fi0002</id>
+    <reference>e0001</reference>
+  </featured_item>
+</featured_items>

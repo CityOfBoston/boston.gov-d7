@@ -1,0 +1,179 @@
+// Tabs
+//
+// Markup:
+// {{> "tabs"}}
+// {{> "tabs--secondary"}}
+//
+// Style guide: components.navigation.tabs
+
+// Tabs (primary)
+//
+// Markup: tabs.hbs
+//
+// Style guide: components.navigation.tabs.primary
+
+.tabs,
+%tabs {
+  @extend %clearfix;
+  @include margin(1 0);
+  padding: 0 2px;
+  list-style: none;
+  white-space: nowrap;
+
+  @media print {
+    display: none;
+  }
+
+  &__tab {
+    margin: 0 3px;
+    background-color: color(section-bg-dark);
+    display: inline-block;
+    text-align: center;
+
+    @include rtl() {
+      float: right;
+    }
+
+    &.is-active {
+      background-color: color(text-light);
+    }
+
+    &:focus,
+    &:hover {
+      cursor: pointer;
+      .tabs__tab-link {
+        color: color(link-secondary);
+      }
+    }
+
+    &.is-active {
+      &:focus,
+      &:hover {
+        .tabs__tab-link {
+          color: color(text-dark);
+        }
+      }
+    }
+  }
+
+  &__tab-link {
+    padding: 0 1em;
+
+    &:active {
+      @extend %tabs__tab-link--is-active;
+    }
+
+    &.is-active,
+    &--is-active {
+      color: color(text-dark);
+    }
+  }
+}
+.tab-content{
+  display: none;
+}
+
+.tab-content.is-active {
+  display: inherit;
+}
+
+.tabs__tab.admin-menu-tab {
+  width: auto;
+}
+
+
+// Overrides for how to tabs
+.content-section-tabs {
+  text-align: center;
+
+  .tabs__tab {
+    @include sans-upper-dark(color(text-bg));
+    @include type-layout(xs, 40px);
+    position: relative;
+    height: 40px;
+    display: block;
+    margin-bottom: 5px;
+
+    @include respond-to(xl) {
+      @include type-layout(s, 70px);
+      height: 70px;
+      width: 280px;
+      display: inline-block;
+      margin-bottom: 0;
+    }
+
+    &.is-active {
+      background-color: color(text-bg);
+      border: 3px solid color(border);
+      @include respond-to(xl) {
+        border: none;
+      }
+    }
+
+    .tabs__tab-link {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
+  }
+}
+
+// Secondary tabs
+//
+// Markup: tabs--secondary.hbs
+//
+// Style guide: components.navigation.tabs.secondary
+
+.tabs--secondary,
+%tabs--secondary {
+  @extend %tabs;
+  font-size: .9em;
+  background-image: none;
+
+  .tabs + &,
+  %tabs + & {
+    @include background-image(linear-gradient(bottom, color(tabs-border) 1px, transparent 1px));
+    // Collapse bottom margin of .tabs.
+    @include margin-top(-1);
+  }
+
+  &__tab {
+    @include margin(.5 3px);
+    float: left;
+
+    @include rtl() {
+      float: right;
+    }
+  }
+
+  &__tab-link {
+    @extend %tabs__tab-link-common;
+    @include border-radius(.75em);
+    @include transition(background-color .3s);
+    @include single-text-shadow(color(tab-text-shadow), 1px, 1px, 0);
+    color: color(tab-secondary);
+    background-color: lighten(color(tab-bg), 8%);
+    padding: 0 .5em;
+
+    &:focus,
+    &:hover {
+      color: darken(color(tab-secondary), 20%);
+      background-color: color(tab-bg);
+      border-color: darken(color(tab-bg), 26.5%);
+    }
+
+    &:active {
+      @extend %tabs--secondary__tab-link--is-active;
+    }
+
+    &.is-active,
+    &--is-active {
+      @include single-text-shadow(darken(color(tab-secondary), 20%), 1px, 1px, 0);
+      color: lighten(color(tab-bg), 15%);
+      background-color: color(tab-secondary);
+      border-color: darken(color(tab-secondary), 40%);
+    }
+  }
+}

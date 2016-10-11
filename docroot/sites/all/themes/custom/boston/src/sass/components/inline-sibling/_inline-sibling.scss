@@ -1,0 +1,49 @@
+// Inline sibling
+//
+// An element that needs to appear inline with the content that follows.
+//
+// Markup: inline-sibling.hbs
+//
+// Style guide: components.inline-sibling
+
+.inline-sibling,
+%inline-sibling {
+  display: inline;
+  margin-right: 10px;
+
+  @include rtl() {
+    margin-right: 0;
+    margin-left: 10px;
+  }
+
+  // All of the children of the element need to be inline as well.
+  &__child,
+  * {
+    display: inline;
+  }
+
+  // The next element (and its first-child element, if the markup is nested)
+  // needs to be inline.
+  &__adjacent,
+  + *,
+  + * > *:first-child {
+    display: inline;
+  }
+}
+
+//
+// Drupal selectors.
+//
+
+// The inline field label used by the Fences module.
+span.field-label {
+  @extend %inline-sibling;
+}
+
+.field__label-inline {
+  @extend %inline-sibling;
+}
+
+.field__items-inline {
+  @extend %inline-sibling__adjacent;
+}

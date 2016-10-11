@@ -1,0 +1,124 @@
+<project name="deploy" default="deploy:repo">
+
+  <target name="deploy:artifact" description="Builds separate artifact and pushes to git.remotes defined project.yml." depends="deploy:artifact:clean">
+
+    <!-- deploy.branch and deploy.commitMsg must be passed as params at runtime. -->
+    <if>
+      <or>
+        <not><isset property="deploy.branch"/></not>
+        <not><isset property="deploy.commitMsg"/></not>
+      </or>
+      <then>
+        <fail>You must pass deploy.branch and deploy.commitMsg as runtime parameters.</fail>
+        <echo message="Command should match syntax:"/>
+        <echo message="./task.sh deploy:artifact -Ddeploy.branch=7.x-build -Ddeploy.commitMsg='BLT-123: The commit message.'"/>
+      </then>
+    </if>
+
+    <!-- Delete the existing deploy directory and re-initialize as an empty git repository. -->
+    <phingcall target="deploy:artifact:prepare-dir"/>
+
+    <!-- Add remotes and fetch upstream refs. Checkout local branch tracking
+         tracking upstream branch, if it exists. Otherwise create new branch
+         locally. -->
+    <phingcall target="deploy:artifact:add-remotes"/>
+
+    <!-- Build artifact and commit locally. -->
+    <phingcall target="deploy:artifact:build"/>
+    <phingcall target="deploy:artifact:commit"/>
+
+    <!-- Push up changes to remotes. -->
+    <if>
+      <isset property="deploy.dry-run"/>
+      <then>
+        <echo message="DRY RUN: Creating build artifact, will not be deployed."/>
+      </then>
+      <else>
+        <phingcall target="deploy:artifact:push-all"/>
+      </else>
+    </if>
+  </target>
+
+  <target name="deploy:artifact:add-remote" description="Adds a git remote and checks out deploy branch from upstream.">
+    <!-- Generate and md5 sum of the remote URL to use as remote name. -->
+    <exec command="echo ${deploy.remote} | openssl md5 | cut -d' ' -f 2" outputProperty="remoteName"/>
+    <exec command="git remote add ${remoteName} ${deploy.remote}" dir="${deploy.dir}" logoutput="true" passthru="true"/>
+    <exec command="git fetch ${remoteName}" dir="${deploy.dir}" logoutput="true" passthru="true"/>
+
+    <!-- Create the new branch. -->
+    <exec command="git checkout -b ${deploy.branch}" dir="${deploy.dir}" logoutput="true" passthru="true"/>
+    <!-- Pull the latest updates (if available). -->
+    <exec command="git merge ${remoteName}/${deploy.branch}" dir="${deploy.dir}" logoutput="true" passthru="true"/>
+  </target>
+
+  <target name="deploy:artifact:add-remotes" description="Add remotes and fetch upstream refs.">
+    <foreach list="${git.remotes}" param="deploy.remote" target="deploy:artifact:add-remote"/>
+  </target>
+
+  <target name="deploy:artifact:build" description="Generates a deploy-ready build in deploy.dir." depends="deploy:artifact:make, deploy:artifact:copy, deploy:artifact:sanitize">
+  </target>
+
+  <!-- Clean the deploy directory. -->
+  <target name="deploy:artifact:clean" description="Cleans the deploy directory.">
+    <delete dir="${deploy.dir}/docroot" failonerror="false" quiet="true" />
+    <delete dir="${deploy.dir}/hooks" failonerror="false" quiet="true" />
+  </target>
+
+  <target name="deploy:artifact:commit">
+    <exec command="git add -A" dir="${deploy.dir}" logoutput="true" passthru="true"/>
+    <exec command="git add docroot/sites/all/themes/custom/boston_public/dist --force" dir="${deploy.dir}" logoutput="true" passthru="true"/>
+    <exec command="git add docroot/sites/all/themes/custom/boston_hub/dist --force" dir="${deploy.dir}" logoutput="true" passthru="true"/>
+    <exec command="git commit -m '${deploy.commitMsg}' --quiet" dir="${deploy.dir}" logoutput="true" passthru="true"/>
+  </target>
+
+  <target name="deploy:artifact:copy" description="Copy required files from docroot/sites to deploy/docroot/sites.">
+    <!-- @todo Replace with -include-from=<file> with file defining patterns rather than specific files. -->
+    <exec command="rsync -rlDW --inplace --delete --exclude-from=${deploy.excludes-file} --files-from=${deploy.includes-file} ${repo.root}/ ${deploy.dir}/" logoutput="true"/>
+  </target>
+
+  <target name="deploy:artifact:make" description="Downloads core and contrib to deploy folder." depends="deploy:artifact:clean">
+    <drush command="make" assume="yes">
+      <param>"${repo.root}/${project.make_file}"</param>
+      <param>"${deploy.dir}/docroot"</param>
+      <option name="concurrency">10</option>
+      <option name="no-gitinfofile"/>
+      <option name="no-patch-txt"/>
+    </drush>
+
+    <phingcall target="frontend:build">
+      <property name="project.themes" value="boston,boston_public,boston_hub"/>
+    </phingcall>
+  </target>
+
+  <target name="deploy:artifact:prepare-dir" description="Delete the existing deploy directory and re-initialize as an empty git repository.">
+    <delete dir="${deploy.dir}" failonerror="false" quiet="true" />
+    <exec command="git init ${deploy.dir}" logoutput="true"/>
+  </target>
+
+  <target name="deploy:artifact:push-all">
+    <foreach list="${git.remotes}" param="deploy.remote" target="deploy:artifact:push-remote"/>
+  </target>
+
+  <target name="deploy:artifact:push-remote" description="Pushes to a git remote.">
+    <exec command="echo ${deploy.remote} | openssl md5 | cut -d' ' -f 2" outputProperty="remoteName"/>
+    <exec command="git push ${remoteName} ${deploy.branch}" dir="${deploy.dir}" logoutput="true" outputProperty="deploy.push.output" checkreturn="true"/>
+    <exec command="export DEPLOY_UPTODATE=$(echo '${deploy.push.output}' | grep --quiet 'Everything up-to-date')"/>
+  </target>
+
+  <target name="deploy:artifact:sanitize" description="Removes sensitive files from the deploy docroot.">
+    <delete>
+      <fileset dir="${deploy.dir}/docroot">
+        <include name="CHANGELOG.txt"/>
+        <include name="COPYRIGHT.txt"/>
+        <include name="INSTALL.txt"/>
+        <include name="INSTALL.*.txt"/>
+        <include name="LICENSE.txt"/>
+        <include name="MAINTAINERS.txt"/>
+        <include name="PATCHES.txt"/>
+        <include name="README.txt"/>
+        <include name="UPGRADE.txt"/>
+      </fileset>
+    </delete>
+  </target>
+
+</project>

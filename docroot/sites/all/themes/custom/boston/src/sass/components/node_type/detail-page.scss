@@ -1,0 +1,35 @@
+.node-type-department-profile,
+.node-type-article,
+.node-type-post,
+.node-type-event {
+
+  // Makes admin items accessible in case there is hero image
+  ul.tabs,
+  .block-workbench {
+    position: relative;
+    z-index: 100;
+  }
+
+  // Heading 1 Styles
+
+  h1.page-title {
+    @extend %visually-hidden;
+
+  }
+
+  // Heading 1 .title state with-hero
+
+  .with-hero h1.title {
+    margin-top: 0;
+  }
+
+  .sidebar-header {
+    @include type-layout(l);
+    font-style: italic;
+    color: color(text-dark);
+    border-bottom: 3px solid;
+    margin-bottom: 20px;
+  }
+
+
+}

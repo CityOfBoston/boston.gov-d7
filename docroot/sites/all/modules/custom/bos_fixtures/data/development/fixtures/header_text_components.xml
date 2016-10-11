@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<header_text_components>
+  <header_text_component>
+    <id>ht0001</id>
+    <contact>con0001</contact>
+    <text>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pellentesque bibendum orci et feugiat. Duis eu hendrerit neque. Suspendisse iaculis tellus nec nunc pulvinar, ac sodales elit malesuada. Aenean at facilisis sem, in semper lectus. Etiam sapien ligula, pellentesque non.
+    </text>
+  </header_text_component>
+  <header_text_component>
+    <id>ht0002</id>
+    <contact>con0001</contact>
+    <text>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pellentesque bibendum orci et feugiat. Duis eu hendrerit neque. Suspendisse iaculis tellus nec nunc pulvinar, ac sodales elit malesuada. Aenean at facilisis sem, in semper lectus. Etiam sapien ligula, pellentesque non.
+    </text>
+  </header_text_component>
+</header_text_components>

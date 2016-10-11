@@ -1,0 +1,126 @@
+<project name="setup" default="setup:build:all">
+
+  <target name="setup" description="Install dependencies, builds docroot, installs Drupal."
+          depends="setup:build:all, setup:git-hooks, setup:behat, setup:drupal:install">
+
+    <echo>For a full list of available Phing targets, run:</echo>
+    <echo>./task.sh -l</echo>
+  </target>
+
+  <target name="setup:behat" description="Generates tests/behat/local.yml file for executing Behat tests locally.">
+    <if>
+      <not>
+        <available file="${repo.root}/tests/behat/local.yml"/>
+      </not>
+      <then>
+        <copy file="${repo.root}/tests/behat/example.local.yml" tofile="${repo.root}/tests/behat/local.yml" overwrite="false">
+          <filterchain>
+            <expandproperties />
+          </filterchain>
+        </copy>
+      </then>
+      <else>
+        <echo message="local.yml already exists, ignoring."></echo>
+      </else>
+    </if>
+  </target>
+
+  <!-- This is run when a project is cloned to a new environment. -->
+  <target name="setup:build:all" description="Generates all required files for a full build. E.g., removes docroot, builds via `drush make`, restores symlinks, etc."
+          depends="setup:behat, setup:build:make, frontend:build">
+  </target>
+
+  <!-- Drush make the build using a recursive strategy -->
+  <target name="setup:build:make" description="Downloads core and contrib based on project's make.yml.">
+    <!--Rebuild core. -->
+    <exec dir="${repo.root}" command="./scripts/make/non-destructive-make-core.sh" logoutput="true" passthru="true"/>
+
+    <!-- Rebuild contrib -->
+    <drush command="make" assume="yes">
+      <option name="concurrency">8</option>
+      <param>"${repo.root}/${project.make_file}"</param>
+      <param>"${docroot}"</param>
+      <option name="no-core"/>
+      <option name="no-gitinfofile"/>
+      <option name="contrib-destination">sites/all</option>
+    </drush>
+  </target>
+
+  <target name="setup:drupal:install" description="Installs a specific Drupal site.">
+    <!-- Temporarily move setting.php so it is not simply overwritten during install -->
+    <chmod mode="0755" file="${docroot}/sites/${multisite.name}"/>
+    <copy file="${docroot}/sites/${multisite.name}/settings.php" tofile="${docroot}/sites/${multisite.name}/settings.php.bak"/>
+
+    <drush command="sql-drop" assume="yes" verbose="TRUE">
+      <!--<option name="db-url">"mysql://${db.username}:${db.password}@${db.host}:${db.port}/${db.database}"</option>-->
+      <option name="uri">"${multisite.name}"</option>
+    </drush>
+    <drush command="site-install" assume="yes" verbose="TRUE">
+      <!--<option name="db-url">"mysql://${db.username}:${db.password}@${db.host}:${db.port}/${db.database}"</option>-->
+      <option name="site-name">"${project.human_name}"</option>
+      <option name="site-mail">"${drupal.account.mail}"</option>
+      <option name="account-name">"${drupal.account.name}"</option>
+      <option name="account-pass">"${drupal.account.password}"</option>
+      <option name="account-mail">"${drupal.account.mail}"</option>
+      <option name="uri">"${multisite.name}"</option>
+      <param>"${project.profile.name}"</param>
+      <param>"install_configure_form.update_status_module='array(FALSE,FALSE)'"</param>
+    </drush>
+
+    <phingcall target="setup:drupal:permissions"/>
+
+    <!-- Restore original settings.php, wiped out by Drupal installation. -->
+    <chmod mode="0755" file="${docroot}/sites/${multisite.name}"/>
+    <copy file="${docroot}/sites/${multisite.name}/settings.php.bak" tofile="${docroot}/sites/${multisite.name}/settings.php"/>
+  </target>
+
+  <target name="setup:drupal:permissions" description="Reset permissions after installation or sync.">
+    <drush command="acquia-reset-permissions" assume="yes">
+      <option name="uri">${multisite.name}</option>
+    </drush>
+  </target>
+
+  <target name="setup:drupal:settings" description="Create a local.settings.php with local db creds from local.yml.">
+    <if>
+      <not>
+        <available file="${docroot}/sites/${multisite.name}/settings/local.settings.php" />
+      </not>
+      <then>
+        <copy file="${docroot}/sites/${multisite.name}/settings/default.local.settings.php" tofile="${docroot}/sites/${multisite.name}/settings/local.settings.php" overwrite="false" verbose="true">
+          <filterchain>
+            <expandproperties />
+          </filterchain>
+        </copy>
+      </then>
+      <else>
+        <echo message="local.settings.php already exists, ignoring." />
+      </else>
+    </if>
+  </target>
+
+  <target name="setup:git-hooks" description="Installs git hooks to local .git/hooks directory from version controlled scripts/git-hooks directory.">
+
+    <!-- Symlink into .git directory. -->
+    <delete dir="${repo.root}/.git/hooks" quiet="true" failonerror="false"/>
+    <exec dir="${repo.root}/.git" command="ln -snv ../scripts/git-hooks hooks" logoutput="true"/>
+
+    <!-- Grant execution permissions. -->
+    <chmod mode="0755">
+      <fileset dir="${repo.root}/scripts/git-hooks">
+        <exclude name="**/*.sample" />
+        <exclude name="**/README.md" />
+      </fileset>
+    </chmod>
+  </target>
+
+  <target name="setup:bolt:update" description="Pulls in upstream changes to project template from Bolt respository.">
+    <echo>You may be prompted to trust GitHub's SSL certification and to enter your GitHub password.</echo>
+    <echo>If you have two factor authentication enabled for GitHub, you must use an access token in lieu of a password.</echo>
+    <echo>GitHub access tokens can be generated here: https://github.com/settings/tokens</echo>
+
+    <input message="Press any key to continue" propertyName="continue" />
+
+    <exec dir="${repo.root}" command="./scripts/bolt/update-scaffold" logoutput="true" passthru="true"/>
+  </target>
+
+</project>

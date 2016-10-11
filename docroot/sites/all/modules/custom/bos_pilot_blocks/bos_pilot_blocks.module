@@ -1,0 +1,50 @@
+<?php
+/**
+ * @file
+ * Contains code for Boston Pilot Blocks module.
+ */
+
+/**
+ * Implements hook_block_info().
+ */
+function bos_pilot_blocks_block_info() {
+  $blocks = array();
+  $blocks['feedback'] = array(
+    'info' => t('Feedback'),
+  );
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function bos_pilot_blocks_block_view() {
+  $block['subject'] = t('TELL US WHAT YOU THINK');
+  $block['content'] = <<<FEEDBACK_TEXT
+<span class="element-invisible modal-id">feedback</span>
+<p>Our site is live, but not completed. We'll always be adding to and improving on it and need your ideas and to make Boston.gov easier to understand and more delightful to use.</p>
+<div id="feedback_form_container" class="modal-cta modal-form">
+<form id="feedback_form" accept-charset="UTF-8" action="https://formkeep.com/f/4f5c7ea2dbf0" method="POST">
+<input type="hidden" name="utf8" value="✓">
+<input type="hidden" id="feedback_url" name="feedback_url" value="">
+<input type="hidden" id="feedback_browser" name="feedback_browser" value="">
+
+<div class="form-item">
+  <label for="feedback_name">First Name</label>
+  <input type="text" name="feedback_name" id="feedback_name" required />
+</div>
+<div class="form-item">
+  <label for="feedback_email">Email address</label>
+  <input type="email" name="feedback_email" id="feedback_email" placeholder="email@address.com" required />
+</div>
+<div class="form-item">
+  <label for="feedback">How can we improve this?</label>
+  <textarea name="feedback_text" id="feedback_text" rows="10" minlength="50" maxlength="1000" ></textarea>
+</div>
+
+<button id="feedback_submit" type="submit">Submit</button>
+</form>
+</div>
+FEEDBACK_TEXT;
+  return $block;
+}

@@ -1,0 +1,10 @@
+name = Hub Context Search Blocks
+description = Hub Context Search Blocks
+core = 7.x
+package = Hub
+dependencies[] = context
+dependencies[] = ctools
+dependencies[] = facetapi
+features[context][] = hub_search_blocks
+features[ctools][] = context:context:3
+features[features_api][] = api:2

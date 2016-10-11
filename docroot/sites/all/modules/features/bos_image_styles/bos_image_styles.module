@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Boston Topic Header Image Style feature.
+ */
+
+include_once 'bos_image_styles.features.inc';

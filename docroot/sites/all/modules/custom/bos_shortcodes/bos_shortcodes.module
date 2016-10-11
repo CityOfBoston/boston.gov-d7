@@ -1,0 +1,211 @@
+<?php
+
+/**
+ * @file
+ * Defines Shortcodes to allow forms to be embedded through tokens.
+ */
+
+/**
+ * Implements hook_shortcode_info().
+ *
+ * See comments below for explanation.
+ */
+function bos_shortcodes_shortcode_info() {
+
+  $shortcodes['form'] = array(
+    'title' => t('Form'),
+    'description' => t('Inserts a custom form.'),
+    'process callback' => 'bos_shortcodes_shortcode_form',
+    'tips callback' => 'bos_shortcodes_shortcode_form_tip',
+    'attributes callback' => 'bos_shortcodes_shortcode_form_attributes',
+  );
+  $shortcodes['poll'] = array(
+    'title' => t('Poll'),
+    'description' => t('Inserts a poll.'),
+    'process callback' => 'bos_shortcodes_shortcode_poll',
+    'tips callback' => 'bos_shortcodes_shortcode_poll_tip',
+    'attributes callback' => 'bos_shortcodes_shortcode_poll_attributes',
+  );
+  return $shortcodes;
+}
+
+/**
+ * Implements hook_theme().
+ *
+ * Defines theme functions for shortcodes.
+ */
+function bos_shortcodes_theme() {
+  return array(
+    'shortcode_form' => array(
+      'variables' => array('form' => array()),
+      'template' => 'theme/shortcode-form',
+    ),
+    'shortcode_poll' => array(
+      'variables' => array(
+        'content' => '',
+      ),
+      'template' => 'theme/shortcode-poll',
+    ),
+  );
+}
+
+/**
+ * Implements bos_shortcodes_shortcode_form().
+ *
+ * Callback function for form shortcode.
+ *
+ * Calling
+ * [poll id=X /]
+ *
+ * @param array $attrs
+ *   Attributes from the shortcode.
+ * @param string $text
+ *   Text provided by the shortcode.
+ *
+ * @return string
+ *   Returns rendered form.
+ */
+function bos_shortcodes_shortcode_form(array $attrs, $text) {
+  $attrs = shortcode_attrs(array(
+    'id' => '',
+  ),
+    $attrs
+  );
+
+  if ($attrs['id'] == '') {
+    return implode(',', $attrs);
+  }
+
+  $form = drupal_get_form($attrs['id']);
+  return theme('shortcode_form', array('form' => $form));
+}
+
+/**
+ * Implements bos_shortcodes_shortcode_poll().
+ *
+ * Callback function for poll shortcode.
+ *
+ * Calling
+ * [form id=X /]
+ *
+ * @param array $attrs
+ *   Attributes from the shortcode.
+ * @param string $text
+ *   Text provided by the shortcode.
+ *
+ * @return string
+ *   Returns rendered form.
+ */
+function bos_shortcodes_shortcode_poll(array $attrs, $text) {
+
+  $attrs = shortcode_attrs(array(
+    'id' => '',
+  ),
+    $attrs
+  );
+
+  if ($attrs['id'] == '') {
+    return implode(',', $attrs);
+  }
+  $poll = node_load($attrs['id']);
+  // If the id wasn't a valid node id, or the content type is not a poll, just
+  // return an empty string to replace the shortcode.
+  if ($poll === FALSE || $poll->type !== 'advpoll') {
+    return '';
+  }
+  $content = NULL;
+  $output = '';
+  if ($poll) {
+    $poll_content = node_view($poll, "poll_stub");
+    $output = theme('shortcode_poll', array('content' => $poll_content));
+  }
+  return $output;
+}
+
+/**
+ * Attributes form element for form shortcode.
+ *
+ * Used by shortcode_wysiwyg module to add form elements for attributes.
+ */
+function bos_shortcodes_shortcode_form_attributes($form, &$form_state) {
+  $form['id'] = array(
+    '#title' => t('Form ID'),
+    '#type' => 'textfield',
+    '#states' => array(
+      'visible' => array(
+        ':input[name="shortcode"]' => array('value' => 'form'),
+      ),
+    ),
+  );
+
+  return $form;
+}
+
+
+/**
+ * Attributes form element for poll shortcode.
+ *
+ * Used by shortcode_wysiwyg module to add poll elements for attributes.
+ */
+function bos_shortcodes_shortcode_poll_attributes($poll, &$poll_state) {
+  $poll['id'] = array(
+    '#title' => t('Poll NID'),
+    '#type' => 'textfield',
+    '#states' => array(
+      'visible' => array(
+        ':input[name="shortcode"]' => array('value' => 'poll'),
+      ),
+    ),
+  );
+
+  return $poll;
+}
+
+/**
+ * Implements bos_shortcodes_shortcode_form_tip().
+ *
+ * This function outputs some tips to the user beneath the WYSIWYG editor so
+ * they know what the shortcode does and how to use it.
+ */
+function bos_shortcodes_shortcode_form_tip($format, $long) {
+  $output = array();
+  $output[] = '<p><strong>' . t('[form id="form-id" /]') . '</strong> ';
+  if ($long) {
+    $output[] = t('Outputs a custom form.') . '</p>';
+  }
+  else {
+    $output[] = t('Outputs a custom form.') . '</p>';
+  }
+
+  return implode(' ', $output);
+}
+
+/**
+ * Implements bos_shortcodes_shortcode_poll_tip().
+ *
+ * This function outputs some tips to the user beneath the WYSIWYG editor so
+ * they know what the shortcode does and how to use it.
+ */
+function bos_shortcodes_shortcode_poll_tip($format, $long) {
+  $output = array();
+  $output[] = '<p><strong>' . t('[poll id="nid" /]') . '</strong> ';
+  if ($long) {
+    $output[] = t('Outputs a poll.') . '</p>';
+  }
+  else {
+    $output[] = t('Outputs a poll.') . '</p>';
+  }
+
+  return implode(' ', $output);
+}
+
+/**
+ * Implements hook_filter_info_alter().
+ *
+ * Set the shortcode cache element to FALSE so that we do not cache shortcodes.
+ */
+function bos_shortcodes_filter_info_alter(&$info) {
+  if (array_key_exists('shortcode', $info)) {
+    $info['shortcode']['cache'] = FALSE;
+  }
+}

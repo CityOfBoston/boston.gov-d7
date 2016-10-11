@@ -1,0 +1,208 @@
+.cs {
+  &--chart {
+    position: relative;
+    height: 400px;
+  }
+
+  &__block--chart {
+    padding: 65px 35px;
+  }
+
+  &--chart:after {
+    content: " ";
+    position: absolute;
+    width: 4px;
+    left: 13px;
+    margin-left: -2px;
+    top: 0;
+    bottom: 0;
+    background-color: #fff;
+    z-index: 0;
+  }
+
+  &--chart, &--chartPoint, &--chartAmount {
+    list-style: none;
+    background-image: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  &--chartPoint {
+    position: absolute;
+    top: 50%;
+    left: 13px;
+    transform: translateX(-50%) translateY(-50%);
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    height: 26px;
+    width: 26px;
+    border-radius: 100%;
+    background-color: rgb(255,255,255);
+    color: #46695D;
+    font-size: 80%;
+
+    span {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-50%);
+    }
+
+    &:nth-of-type(1) {
+      top: 0;
+    }
+
+    &:nth-of-type(3) {
+      top: 100%;
+    }
+  }
+
+  &--chartPoint p {
+    margin: 0;
+    position: absolute;
+    font-family: 'Lora', Georgia, serif;
+    color: #fff;
+    font-size: 14px;
+    line-height: 18px;
+    font-style: italic;
+    width: 180px;
+    left: 36px;
+    text-align: left;
+    margin-top: -5px;
+    top: 50%;
+    transform: translateY(-40%);
+  }
+
+  &--less, &--greater {
+    transform: rotate(-90deg);
+    margin-right: -2px;
+    font-size: 130%;
+  }
+
+  &--less {
+    color: red;
+  }
+
+  &--chartAmount {
+    background-color: #ffffff;
+    position: absolute;
+    left: 37px;
+    right: 10px;
+    text-align: center;
+    padding: 10px;
+    top: 50%; /* This positions the block in the chart. Should not be less than 20% or more than 80% */
+    transform: translateY(-50%);
+    max-width: 180px;
+
+    &:after {
+      position: absolute;
+      content: ' ';
+      left: -8px;
+      width: 0;
+      height: 0;
+      border-top: 10px solid transparent;
+      border-bottom: 10px solid transparent;
+      border-right:10px solid #ffffff;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    &--label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      color: #091F2F;
+      text-transform: uppercase;
+      display: block;
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+
+    &--value {
+      font-size: 24px;
+      color: #46695D;
+      text-transform: uppercase;
+      line-height: 1;
+      margin: 0;
+      display: block;
+    }
+  }
+}
+
+@include respond-to(m) {
+  .cs {
+    &--chart {
+      flex-direction: row;
+      height: auto;
+
+      &:after {
+        height: 4px;
+        top: 50%;
+        margin-top: -2px;
+        left: 0;
+        right: 0;
+        width: auto;
+        margin-left: 0;
+      }
+    }
+
+    &__block--chart {
+      padding: 175px 135px 150px;
+    }
+
+    &--chartPoint  {
+      height: 60px;
+      width: 60px;
+      font-size: 120%;
+
+      p {
+        top: 80px;
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+      }
+
+      &:nth-of-type(1) {
+        left: 0;
+      }
+
+      &:nth-of-type(2) {
+        left: 50%;
+      }
+
+      &:nth-of-type(3) {
+        left: 100%;
+      }
+    }
+
+    &--chartAmount {
+      bottom: 60px;
+      padding: 10px;
+      top: auto;
+      left: 20%;
+      right: auto;
+      transform: translateX(-50%);
+
+      &:after {
+        position: absolute;
+        content: ' ';
+        left: 50%;
+        width: 0;
+        height: 0;
+        border-top: 42px solid #ffffff;
+        border-left: 20px solid transparent;
+        border-bottom: 20px solid transparent;
+        border-right: 20px solid transparent;
+        top: 100%;
+        transform: translateX(-50%);
+      }
+    }
+
+    &--less, &--greater {
+      transform: none;
+      font-size: 180%;
+    }
+  }
+}

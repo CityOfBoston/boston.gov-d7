@@ -1,0 +1,9 @@
+name = Boston View Department Listing
+description = Boston View Department Listing
+core = 7.x
+package = Boston
+dependencies[] = entity
+dependencies[] = views
+features[ctools][] = views:views_default:3.0
+features[features_api][] = api:2
+features[views_view][] = bos_department_listing

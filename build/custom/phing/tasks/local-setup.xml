@@ -1,0 +1,21 @@
+<project name="local" default="local:refresh">
+
+  <target name="local:refresh" description="Refreshes local environment from upstream testing database." depends="local:sync, local:update"/>
+
+  <target name="local:sync" description="Synchronize remote environment with local environment."
+          depends="setup:drupal:settings">
+    <exec dir="${docroot}" command="${drush.cmd} sql-drop -y" logoutput="true"/>
+    <exec dir="${docroot}" command="${drush.cmd} sql-sync ${project.cloud_alias}.test @self --create-db --structure-tables-key=lightweight -y" logoutput="true"/>
+    <exec dir="${docroot}" command="${drush.cmd} cc all" logoutput="true"/>
+    <exec dir="${docroot}" command="${drush.cmd} cc drush" logoutput="true"/>
+  </target>
+
+  <target name="local:update" description="Update current database to reflect the state of the Drupal file system.">
+    <exec dir="${docroot}" command="${drush.cmd} cc drush" logoutput="true"/>
+    <exec dir="${docroot}" command="${drush.cmd} fra -y" logoutput="true"/>
+    <exec dir="${docroot}" command="${drush.cmd} updb -y" logoutput="true"/>
+    <exec dir="${docroot}" command="${drush.cmd} fra -y" logoutput="true"/>
+    <exec dir="${docroot}" command="${drush.cmd} acquia-reset-permissions -y" logoutput="true"/>
+  </target>
+
+</project>

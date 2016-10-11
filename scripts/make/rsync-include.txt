@@ -1,0 +1,4 @@
+# These files will be included, even if their parent directory was excluded
+# in rsync-exclude.txt
+default.settings.php
+example.sites.php

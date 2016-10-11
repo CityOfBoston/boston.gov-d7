@@ -1,0 +1,45 @@
+<project name="vm" default="build">
+  <property name="vm.version" value="1.9.4" override="true" />
+  <property name="vm.dir" value="${repo.root}/box" override="true" />
+  <property name="vm.vbox.version" value="4.3" override="true" />
+  <property name="vm.vagrant.version" value="1.7" override="true" />
+
+  <target name="vm:add" description="Downloads, configures, and bootstraps virtual machine."
+          depends="vm:download, vm:configure, vm:bootstrap">
+  </target>
+
+  <target name="vm:download" description="Downloads the virtual machine to /box.">
+    <exec command="curl -O -L https://github.com/geerlingguy/drupal-vm/archive/${vm.version}.tar.gz" dir="${repo.root}" />
+    <untar file="${repo.root}/${vm.version}.tar.gz" todir="${repo.root}" />
+    <move file="${repo.root}/drupal-vm-${vm.version}" tofile="${vm.dir}" />
+    <delete file="${repo.root}/${vm.version}.tar.gz" />
+  </target>
+
+  <target name="vm:configure" description="Configures yaml for virtual machine.">
+    <copy file="${vm.dir}/example.config.yml"
+          tofile="${vm.dir}/config.yml">
+
+      <!-- Expand placeholder properties in config.yml. -->
+      <filterchain>
+        <expandproperties />
+      </filterchain>
+    </copy>
+  </target>
+
+  <!-- For this to work properly, vm:download and vm:configure must be run
+       at some point prior. These are not formal dependencies because they need
+       be run only once per environment. -->
+  <target name="vm:bootstrap" description="Installs dependencies and bootstraps the virtual machine.">
+    <!-- Assert correct versions version. -->
+    <exec dir="${vm.dir}" command="! VBoxManage -v | grep '${vm.vbox.version}'" logoutput="true" passthru="true"/>
+    <exec dir="${vm.dir}" command="! vagrant -v | grep '${vm.vagrant.version}'" logoutput="true" passthru="true"/>
+    <exec dir="${vm.dir}" command="! ansible --version | grep '${vm.version}'" logoutput="true" passthru="true"/>
+
+    <!-- Install dependencies. -->
+    <exec dir="${vm.dir}" command="sudo ansible-galaxy install --force --role-file=${vm.dir}/provisioning/requirements.txt" logoutput="true" passthru="true"/>
+    <exec dir="${vm.dir}" command="vagrant plugin install vagrant-hostsupdater" logoutput="true" passthru="true"/>
+
+    <!-- Boot. -->
+    <exec dir="${vm.dir}" command="vagrant up" logoutput="true" passthru="true"/>
+  </target>
+</project>

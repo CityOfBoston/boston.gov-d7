@@ -1,0 +1,15 @@
+name = Boston Vocabulary Icons
+description = Taxonomy for classifying icons.
+core = 7.x
+package = Boston
+dependencies[] = ctools
+dependencies[] = features
+dependencies[] = strongarm
+dependencies[] = taxonomy
+features[ctools][] = strongarm:strongarm:1
+features[features_api][] = api:2
+features[taxonomy][] = icons
+features[variable][] = rh_taxonomy_term_action_icons
+features[variable][] = rh_taxonomy_term_override_icons
+features[variable][] = rh_taxonomy_term_redirect_icons
+features[variable][] = rh_taxonomy_term_redirect_response_icons

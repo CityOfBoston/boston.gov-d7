@@ -1,0 +1,153 @@
+// Table drag
+//
+// Drag and drop rows inside a form.
+//
+// If your custom theme isn't used for Drupal's admin pages, you can safely
+// delete this component to save file weight in the generated CSS.
+//
+// Markup: table-drag.hbs
+//
+// Style guide: forms.table-drag
+
+.table-drag,
+%table-drag {
+  &__wrapper {
+    cursor: move;
+  }
+
+  &__item {
+    background-color: color(table-drag);
+  }
+
+  &__item-previous {
+    background-color: darken(color(table-drag), 5%);
+  }
+
+  &__handle {
+    cursor: move;
+    float: left;
+    height: 1.7em;
+    margin-left: -1em;
+    overflow: hidden;
+    text-decoration: none;
+
+    @include rtl() {
+      float: right;
+      margin-right: -1em;
+      margin-left: 0;
+    }
+
+    &:focus,
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  &__handle-icon {
+    background: image-url('table-drag__handle-icon.png') no-repeat 6px 9px;
+    height: 13px;
+    margin: -.4em .5em;
+    padding: .42em .5em;
+    width: 13px;
+  }
+
+  &__handle-icon--is-hover {
+    background-position: 6px -11px;
+  }
+
+  &__toggle-weight-wrapper {
+    text-align: right;
+
+    @include rtl() {
+      text-align: left;
+    }
+  }
+
+  &__toggle-weight {
+    font-size: .9em;
+  }
+
+  &__indentation {
+    float: left;
+    height: 1.7em;
+    margin: -.4em .2em -.4em -.4em;
+    padding: .42em 0 .42em .6em;
+    width: 20px;
+
+    @include rtl() {
+      float: right;
+      margin: -.4em -.4em -.4em .2em;
+      padding: .42em .6em .42em 0;
+    }
+  }
+
+  &__tree-child {
+    background: image-url('table-drag__tree-child.png') no-repeat 11px center;
+
+    @include rtl() {
+      background-position: -65px center;
+    }
+  }
+
+  &__tree-child-last {
+    @extend %table-drag__tree-child;
+    background-image: image-url('table-drag__tree-child-last.png');
+  }
+
+  &__tree-child-horizontal {
+    @extend %table-drag__tree-child;
+    background-position: -11px center;
+  }
+}
+
+//
+// Drupal selectors.
+//
+
+body.drag {
+  @extend %table-drag__wrapper;
+}
+
+tr.drag {
+  @extend %table-drag__item;
+}
+
+tr.drag-previous {
+  @extend %table-drag__item-previous;
+}
+
+.tabledrag-handle {
+  @extend %table-drag__handle;
+
+  .handle {
+    @extend %table-drag__handle-icon;
+  }
+}
+
+.tabledrag-handle-hover .handle {
+  @extend %table-drag__handle-icon--is-hover;
+}
+
+.tabledrag-toggle-weight-wrapper {
+  @extend %table-drag__toggle-weight-wrapper;
+}
+
+.tabledrag-toggle-weight {
+  @extend %table-drag__toggle-weight;
+}
+
+.indentation {
+  @extend %table-drag__indentation;
+}
+
+.tree-child {
+  @extend %table-drag__tree-child;
+}
+
+.tree-child-last {
+  @extend %table-drag__tree-child-last;
+}
+
+.tree-child-horizontal {
+  @extend %table-drag__tree-child-horizontal;
+}

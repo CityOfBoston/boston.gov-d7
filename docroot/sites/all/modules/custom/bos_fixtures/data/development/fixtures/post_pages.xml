@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<posts>
+  <post>
+    <id>post0001</id>
+    <author>-</author>
+    <title>Post Page Fixture</title>
+    <body>BODY Lorem ipsum dolor.</body>
+    <intro_text>INTRO Lorem ipsum dolor.</intro_text>
+    <intro_image>banner.png</intro_image>
+    <workbench_state>published</workbench_state>
+  </post>
+  <post>
+    <id>post0002</id>
+    <author>-</author>
+    <title>Post Page Fixture</title>
+    <body>BODY Lorem ipsum dolor.</body>
+    <intro_text>INTRO Lorem ipsum dolor.</intro_text>
+    <intro_image>banner.png</intro_image>
+    <workbench_state>published</workbench_state>
+  </post>
+  <post>
+    <id>post0003</id>
+    <author>-</author>
+    <title>Post Page Fixture</title>
+    <body>BODY Lorem ipsum dolor.</body>
+    <intro_text>INTRO Lorem ipsum dolor.</intro_text>
+    <intro_image>banner.png</intro_image>
+    <workbench_state>published</workbench_state>
+  </post>
+  <post>
+    <id>post0004</id>
+    <author>-</author>
+    <title>Post Page Fixture</title>
+    <body>BODY Lorem ipsum dolor.</body>
+    <intro_text>INTRO Lorem ipsum dolor.</intro_text>
+    <intro_image>banner.png</intro_image>
+    <workbench_state>published</workbench_state>
+  </post>
+  <post>
+    <id>post0005</id>
+    <author>-</author>
+    <title>Post Page Fixture</title>
+    <body>BODY Lorem ipsum dolor.</body>
+    <intro_text>INTRO Lorem ipsum dolor.</intro_text>
+    <intro_image>banner.png</intro_image>
+    <workbench_state>published</workbench_state>
+  </post>
+</posts>

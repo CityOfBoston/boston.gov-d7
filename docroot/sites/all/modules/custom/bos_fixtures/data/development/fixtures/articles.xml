@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<articles>
+  <article>
+    <id>art0001</id>
+    <author>-</author>
+    <title>Article Page Fixture 0001</title>
+    <body>BODY Lorem ipsum dolor.</body>
+    <intro_text>INTRO Lorem ipsum dolor.</intro_text>
+    <workbench_state>published</workbench_state>
+  </article>
+</articles>

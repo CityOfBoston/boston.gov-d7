@@ -1,0 +1,15 @@
+name = Boston Menu Settings
+description = Boston Menu Settings
+core = 7.x
+package = Boston
+dependencies[] = ctools
+dependencies[] = special_menu_items
+dependencies[] = strongarm
+decription = Controls generic settings for menus.
+features[ctools][] = strongarm:strongarm:1
+features[features_api][] = api:2
+features[variable][] = admin_menu_components
+features[variable][] = admin_menu_tweak_tabs
+features[variable][] = special_menu_items_nolink_tag
+features[variable][] = special_menu_items_separator_tag
+features[variable][] = special_menu_items_separator_value

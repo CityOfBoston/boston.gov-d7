@@ -1,0 +1,177 @@
+<?php
+/**
+ * @file
+ * Code for the Hub Tools and Apps API feature.
+ */
+
+include_once 'hub_tools_and_apps_api.features.inc';
+
+/**
+ * Implements hook_services_resources().
+ */
+function hub_tools_and_apps_api_services_resources() {
+  return array(
+    'user-tools-access-records' => array(
+      'operations' => array(
+        'create' => array(
+          'callback' => '_hub_tools_and_apps_api_update_user',
+          'access callback' => '_hub_tools_api_access',
+          'help' => 'Update user access records for applications',
+          'args' => array(
+            array(
+              'name' => 'data',
+              'optional' => FALSE,
+              'source' => 'data',
+              'description' => 'The user data to update with tools and apps',
+              'type' => 'string',
+            ),
+          ),
+        ),
+      ),
+    ),
+  );
+}
+
+/**
+ * Access callback for apps API endpoint.
+ *
+ * Anyone can access this so long as they have the API key.
+ */
+function _hub_tools_api_access() {
+  return TRUE;
+}
+
+/**
+ * Implements hook_shunt().
+ */
+function hub_tools_and_apps_api_shunt() {
+  return array(
+    'tools_api_shunt' => t('Use this shunt to disable the tools and apps API.'),
+  );
+}
+
+/**
+ * React to a shunt being enabled.
+ *
+ * Perform one-time actions in the event that a shunt gets enabled.
+ *
+ * @param string $shunt
+ *   The machine name of shunt that was just enabled.
+ */
+function hub_tools_and_apps_api_shunt_enable($shunt) {
+
+  // React to ANY shunt being enabled.
+  drupal_set_message(t('You just enabled "%name"!', array('%name' => $shunt)));
+}
+
+/**
+ * React to a shunt being disabled.
+ *
+ * Perform one-time actions in the event that a shunt gets disabled.
+ *
+ * @param string $shunt
+ *   The machine name of shunt that was just disabled.
+ */
+function hub_tools_and_apps_api_shunt_disable($shunt) {
+
+  // React to ANY shunt being disabled.
+  drupal_set_message(t('You just disabled "%name"!', array('%name' => $shunt)));
+}
+
+/**
+ * Callback for tools and apps API endpoint.
+ *
+ * This is the callback function to handle post requests to
+ * the API.  It will take all of the API input, and put it into
+ * a Drupal Queue in 100-update chunks, to be processed at a later time.
+ */
+function _hub_tools_and_apps_api_update_user($args) {
+  // Check that the shunt is enabled or not.
+  $tools_api_shunt_is_enabled = (module_exists('shunt') && shunt_is_enabled('tools_api_shunt')) ? TRUE : FALSE;
+  if (!$tools_api_shunt_is_enabled) {
+    $users_per_q = 0;
+    $users_to_update = array();
+    $total_users_added = 0;
+
+    $queue = DrupalQueue::get('hub_tools_and_apps_queue');
+    // Walk through the args, adding updates.
+    foreach ($args as $arg) {
+      // Check that the user exists.
+      // Add the arg data to the Queue candidates.
+      $users_per_q += 1;
+      $total_users_added++;
+      $users_to_update[] = $arg;
+      $replacements = array(
+        '@eid' => $arg['empl_id'],
+        '@ids' => implode(',', $arg['applications']),
+      );
+      $message = 'Adding app data for employee @eid => @ids.';
+      watchdog('hub_tools_and_apps_api', $message, $replacements, WATCHDOG_NOTICE);
+
+      // Every 100, add it to the queue.
+      $batch_size = variable_get('hub_tools_api_batch_size', 100);
+      if ($users_per_q >= $batch_size) {
+        $queue->createItem($users_to_update);
+        $users_per_q = 0;
+        $users_to_update = array();
+      }
+    }
+    // Get any leftover records.
+    if (!empty($users_to_update)) {
+      $queue->createItem($users_to_update);
+    }
+    return array(
+      'users_queued' => $total_users_added,
+    );
+  }
+  else {
+    watchdog('hub_content_type_application', 'Shunt is enabled, so no processing of API messages is allowed.');
+    return services_error('API temporarily disabled', 500);
+  }
+}
+
+/**
+ * Update users from Queue.
+ *
+ * This function will be called via cron to process the
+ * hub_tools_and_apps_queue Drupal Queue with user access
+ * update requests for tools and apps.
+ */
+function _hub_tools_and_apps_api_update_users_from_queue() {
+  // Check that the shunt is enabled or not.
+  $tools_api_shunt_is_enabled = (module_exists('shunt') && shunt_is_enabled('tools_api_shunt')) ? TRUE : FALSE;
+
+  if (!$tools_api_shunt_is_enabled) {
+    drush_print('Updating a batch of users.');
+    $queue = DrupalQueue::get('hub_tools_and_apps_queue');
+    $queue_item = $queue->claimItem();
+    if (!empty($queue_item->data)) {
+      foreach ($queue_item->data as $item) {
+        if (empty($item['empl_id'])) {
+          // If an empty empl_id was submitted for some reason just skip it,
+          // otherwise we'll get a PDOException generated below.
+          continue;
+        }
+        drush_print("Updating user " . $item['empl_id'], 2);
+        $user = user_load_by_name($item['empl_id']);
+        if ($user !== FALSE) {
+          $applications_string = implode(',', $item['applications']);
+          $field_info = field_info_field('field_application_id_list');
+          $langcode = $field_info['translatable'] ? $user->language : LANGUAGE_NONE;
+          $user->field_application_id_list[$langcode][0]['value'] = $applications_string;
+          user_save($user);
+        }
+        else {
+          watchdog('hub_tools_and_apps_api', 'User with employee ID \'@eid\' does not exist. Skipping application settings.', array('@eid' => $item['empl_id']), WATCHDOG_WARNING);
+        }
+      }
+      $queue->deleteItem($queue_item);
+    }
+    else {
+      drush_print("Nothing in the queue to update.");
+    }
+  }
+  else {
+    watchdog('hub_tools_and_apps_api', 'Shunt is enabled, so no processing of user updates from the queue is allowed.');
+  }
+}

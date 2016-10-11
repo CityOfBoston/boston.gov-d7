@@ -1,0 +1,39 @@
+<project name="migrate" default="migrate:import:development">
+
+  <target name="migrate:import:development" description="Imports development data."
+      depends="migrate:enable, migrate:register">
+    <drush command="mi">
+      <option name="uri">${multisite.name}</option>
+      <option name="group">development</option>
+    </drush>
+  </target>
+
+  <target name="migrate:update:development">
+    <drush command="mi">
+      <option name="uri">${multisite.name}</option>
+      <option name="group">development</option>
+      <option name="update"/>
+    </drush>
+  </target>
+
+  <target name="migrate:rollback:development">
+    <drush command="mr">
+      <option name="uri">${multisite.name}</option>
+      <option name="group">development</option>
+    </drush>
+  </target>
+
+  <target name="migrate:register" description="Register or re-register all migrations.">
+    <drush command="mreg">
+      <option name="uri">${multisite.name}</option>
+    </drush>
+  </target>
+
+  <target name="migrate:enable">
+    <drush command="en" assume="yes">
+      <option name="uri">${multisite.name}</option>
+      <param>bos_fixtures</param>
+    </drush>
+  </target>
+
+</project>

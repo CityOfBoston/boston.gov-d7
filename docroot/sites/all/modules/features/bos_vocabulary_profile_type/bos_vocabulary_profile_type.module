@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Bos Vocabulary Profile Type feature.
+ */
+
+include_once 'bos_vocabulary_profile_type.features.inc';

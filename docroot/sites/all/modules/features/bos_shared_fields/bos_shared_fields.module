@@ -1,0 +1,77 @@
+<?php
+/**
+ * @file
+ * Code for the Boston Shared Fields feature.
+ */
+
+include_once 'bos_shared_fields.features.inc';
+/**
+ * @file
+ * Code for the Boston Shared Fields feature.
+ */
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function bos_shared_fields_form_node_form_alter(&$form, &$form_state, $form_id) {
+  // If the form contains field_address, set default information on it.
+  _set_default_address_field_values($form);
+  // Remove Master view options from List components.
+  if (isset($form['field_components'])) {
+    $form['field_components'] = walk_recursive_remove($form['field_components'], '_remove_master_view_listings_from_view_fields');
+  }
+}
+
+/**
+ * Set Boston, MA as the default city and state on field_address.
+ *
+ * Walk the form recursively in order to account for nested paragraph forms.
+ *
+ * @param array $form
+ *   Drupal form to modify field_address default values for.
+ */
+function _set_default_address_field_values(&$form) {
+  // If we're looking at field_address on the current level, set defaults
+  // if applicable.
+  if (array_key_exists('field_address', $form) && is_array($form['field_address'])) {
+    if (!empty($form['field_address'])) {
+      // Set Boston as the default city.
+      if (empty($form['field_address'][LANGUAGE_NONE][0]['#address']['locality'])) {
+        $form['field_address'][LANGUAGE_NONE][0]['#address']['locality'] = "Boston";
+      }
+      // Set Massachusetts as the default state.
+      if (empty($form['field_address'][LANGUAGE_NONE][0]['#address']['administrative_area'])) {
+        $form['field_address'][LANGUAGE_NONE][0]['#address']['administrative_area'] = "MA";
+      }
+    }
+  }
+  // Continue to walk the forms array.
+  foreach ($form as $key => &$value) {
+    if ($key === 'field_address' || !is_array($value)) {
+      continue;
+    }
+    if (is_array($value)) {
+      _set_default_address_field_values($value);
+    }
+  }
+}
+
+/**
+ * Remove master view displays from view form fields.
+ *
+ * Callback to determine if key/value pair should be removed.
+ *
+ * @param mixed $list_option
+ *   Value being checked to determine if it is a master display label.
+ * @param mixed $key
+ *   Value being checked to determine if it is a master display key.
+ *
+ * @return bool
+ *   TRUE if this is a master display listing option, FALSE otherwise.
+ */
+function _remove_master_view_listings_from_view_fields($list_option, $key) {
+  if (strpos($key, '|default') !== FALSE && strpos($list_option, 'Master') !== FALSE) {
+    return TRUE;
+  }
+  return FALSE;
+}

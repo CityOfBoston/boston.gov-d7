@@ -1,0 +1,25 @@
+<?php
+/**
+ * @file
+ * Install tasks for Boston Component List module.
+ */
+
+/**
+ * Reset field_list varg values.
+ */
+function bos_component_list_update_7000() {
+  // Views to blank out their arguments.
+  $views = array(
+    'places|listing',
+    'program_initiatives|listing',
+  );
+  /** @var UpdateQuery $query */
+  $query = db_update('field_revision_field_list');
+  $query->fields(array('field_list_vargs' => ''))
+        ->condition('field_list_vname', array($views), 'NOT IN')
+        ->execute();
+  $query = db_update('field_data_field_list');
+  $query->fields(array('field_list_vargs' => ''))
+        ->condition('field_list_vname', array($views), 'NOT IN')
+        ->execute();
+}

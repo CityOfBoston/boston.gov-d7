@@ -1,0 +1,102 @@
+.detail-list-item, {
+  @include type-layout(s, 27px);
+  font-family: $montserrat;
+  text-transform: uppercase;
+  color: color(text-dark);
+
+  &.borderless {
+    border-bottom: none;
+    padding: 0;
+  }
+
+  .field-label {
+    float: left;
+  }
+
+  .detail-content {
+    margin-left: 125px;
+  }
+
+  address.inline-detail {
+    margin-top: 0;
+  }
+
+  .event-repeat,
+  .field-label {
+    @include type-layout(m, 27px);
+    font-family: $lora;
+    text-transform: capitalize;
+    color: color(text);
+    font-style: italic;
+  }
+
+
+  &.icon-common {
+    padding-left: 50px;
+  }
+
+  &.downloads-details {
+    padding-bottom: 20px;
+  }
+
+
+
+  // State: In calendar listing page drawer
+  // Aligns left-aligns all field content to each other.
+  .event-details.drawer .field-label {
+    width: 125px;
+  }
+
+}
+
+.link-wrapper {
+  margin-bottom: 10px;
+}
+
+// State: Download field in sidebar only
+.sidebar .downloads .downloads-items {
+  margin-left: 100px;
+}
+
+// Styles for "publisehd-by" detail item
+.published-by-date {
+  font-style: italic;
+  margin-bottom: 20px;
+  @include border-sm;
+}
+
+.published-by-detail {
+
+  .department-icon.left {
+    width: 75px;
+    display: inline;
+    float: left;
+    margin-top: 10px;
+
+    img {
+      width: 50px;
+      height: auto;
+    }
+  }
+
+  .contact-info.right {
+    color: color(text-dark);
+    margin-left: 75px;
+
+    p {
+      margin-top: 0px;
+      margin-bottom: 0;
+    }
+
+    .published-by {
+      font-style: italic;
+    }
+
+    .department-title {
+      font-family: $montserrat;
+      text-transform: uppercase;
+      line-height: 26px;
+      line-height: 1.44rem;
+    }
+  }
+}

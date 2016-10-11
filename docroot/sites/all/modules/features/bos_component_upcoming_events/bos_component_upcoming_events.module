@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Boston Component Upcoming Events feature.
+ */
+
+include_once 'bos_component_upcoming_events.features.inc';

@@ -1,0 +1,88 @@
+.paragraphs-item-drawers {
+  @extend .fullwidth;
+  background-color: color(section-bg);
+  padding: 50px 0;
+
+  .content {
+    @extend .container;
+  }
+}
+
+.dr {
+  margin-bottom: 7px;
+
+  &__header {
+    background-color: color(white);
+    padding: $default-gutter;
+    display: flex;
+    align-items: center;
+
+    &:hover {
+      cursor: pointer;
+      background-color: color(optimistic-blue);
+
+      .st0 {
+        fill: color(white);
+      }
+
+      .dr__title, .dr__subtitle {
+        color: color(white);
+      }
+    }
+
+    svg {
+      width: 18px;
+      min-width: 18px;
+      height: 12px;
+      margin-left: auto;
+    }
+
+    .st0 {
+      fill: color(optimistic-blue);
+    }
+
+    &--active, &--active:hover {
+      background-color: color(charles-blue);
+
+      .dr__title {
+        color: color(white);
+      }
+
+      .dr__subtitle {
+        color: color(optimistic-blue);
+      }
+
+      svg {
+        transform: rotate(-180deg);
+      }
+
+      .st0 {
+        fill: color(white);
+      }
+    }
+  }
+
+  &__buffer {
+    padding-right: $default-gutter / 2;
+  }
+
+  &__title {
+    color: color(optimistic-blue);
+    font-style: italic;
+    line-height: 1;
+    margin-bottom: 3px;
+  }
+
+  &__subtitle {
+    @include type-layout(xxs, 0.5);
+    font-family: $montserrat;
+    text-transform: uppercase;
+    color: color(blue-extra-dark);
+    letter-spacing: 1px;
+  }
+
+  &__content {
+    background-color: color(white);
+    padding: $default-gutter;
+  }
+}

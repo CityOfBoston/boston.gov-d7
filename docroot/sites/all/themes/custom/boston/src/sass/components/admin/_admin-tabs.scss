@@ -1,0 +1,28 @@
+// Repositions admin tabs on topic and landing page so it isn't hidden under hero.
+
+.node-type-landing-page.logged-in .main ul.tabs {
+  position: absolute;
+  top: 335px;
+
+  @include respond-to(m) {  
+    top: 500px;
+  }
+
+  @include respond-to(xl) { 
+    top: 675px;
+  }
+}
+
+.node-type-topic-page.logged-in .main ul.tabs {
+  position: absolute;
+  z-index: 1;
+  top: 240px;
+
+  @include respond-to(s) {
+    top: 370px;
+  }
+
+  @include respond-to(m) {
+    top: 435px;
+  }
+}

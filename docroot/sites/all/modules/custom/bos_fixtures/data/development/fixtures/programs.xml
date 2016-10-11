@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<programs>
+  <program>
+    <id>program0001</id>
+    <author>-</author>
+    <publish_date>2016-02-19</publish_date>
+    <updated_date>2016-02-19</updated_date>
+    <program_type>progtype0001</program_type>
+    <title>Program Initiative 0001</title>
+    <intro_image>banner.png</intro_image>
+    <body>
+Maecenas nec odio et ante tincidunt tempus. Nullam cursus lacinia erat. Phasellus gravida semper nisi.
+
+Phasellus dolor. Nunc nonummy metus. Nunc nec neque.
+
+Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Suspendisse eu ligula. Praesent ac massa at ligula laoreet iaculis.
+
+Nulla sit amet est. Etiam ut purus mattis mauris sodales aliquam. Praesent ut ligula non mi varius sagittis.
+    </body>
+    <intro_text>
+      Donec venenatis vulputate lorem. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Nullam nulla eros, ultricies sit amet, nonummy id, imperdiet feugiat, pede. Nunc egestas, augue at pellentesque laoreet, felis eros vehicula leo, at malesuada velit leo quis pede. Pellentesque egestas, neque sit amet convallis pulvinar, justo nulla eleifend augue, ac auctor orci leo non est.
+    </intro_text>
+    <logo>medium.png</logo>
+    <contacts>con0001</contacts>
+    <sidebar_items>si0001,sii0001</sidebar_items>
+    <workbench_state>published</workbench_state>
+  </program>
+  <program>
+    <id>program0002</id>
+    <author>-</author>
+    <publish_date>2016-02-19</publish_date>
+    <updated_date>2016-02-19</updated_date>
+    <program_type>progtype0001</program_type>
+    <title>Program Initiative 0002</title>
+    <intro_image>banner.png</intro_image>
+    <body>
+      Maecenas nec odio et ante tincidunt tempus. Nullam cursus lacinia erat. Phasellus gravida semper nisi.
+
+      Phasellus dolor. Nunc nonummy metus. Nunc nec neque.
+
+      Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Suspendisse eu ligula. Praesent ac massa at ligula laoreet iaculis.
+
+      Nulla sit amet est. Etiam ut purus mattis mauris sodales aliquam. Praesent ut ligula non mi varius sagittis.
+    </body>
+    <intro_text>
+      Donec venenatis vulputate lorem. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Nullam nulla eros, ultricies sit amet, nonummy id, imperdiet feugiat, pede. Nunc egestas, augue at pellentesque laoreet, felis eros vehicula leo, at malesuada velit leo quis pede. Pellentesque egestas, neque sit amet convallis pulvinar, justo nulla eleifend augue, ac auctor orci leo non est.
+    </intro_text>
+    <logo>medium.png</logo>
+    <contacts>con0001</contacts>
+    <sidebar_items>si0001,sii0001</sidebar_items>
+    <workbench_state>published</workbench_state>
+  </program>
+  <program>
+    <id>program0003</id>
+    <author>-</author>
+    <publish_date>2016-02-19</publish_date>
+    <updated_date>2016-02-19</updated_date>
+    <program_type>progtype0001</program_type>
+    <title>Program Initiative 0003</title>
+    <intro_image>banner.png</intro_image>
+    <body>
+      Maecenas nec odio et ante tincidunt tempus. Nullam cursus lacinia erat. Phasellus gravida semper nisi.
+
+      Phasellus dolor. Nunc nonummy metus. Nunc nec neque.
+
+      Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Suspendisse eu ligula. Praesent ac massa at ligula laoreet iaculis.
+
+      Nulla sit amet est. Etiam ut purus mattis mauris sodales aliquam. Praesent ut ligula non mi varius sagittis.
+    </body>
+    <intro_text>
+      Donec
+    </intro_text>
+    <logo>medium.png</logo>
+    <contacts>con0001</contacts>
+    <sidebar_items>si0001,sii0001</sidebar_items>
+    <workbench_state>published</workbench_state>
+  </program>
+  <program>
+    <id>program0004</id>
+    <author>-</author>
+    <publish_date>2016-02-19</publish_date>
+    <updated_date>2016-02-19</updated_date>
+    <program_type>progtype0001</program_type>
+    <title>Program Initiative 0004</title>
+    <intro_image>banner.png</intro_image>
+    <body>
+      Maecenas nec odio et ante tincidunt tempus. Nullam cursus lacinia erat. Phasellus gravida semper nisi.
+
+      Phasellus dolor. Nunc nonummy metus. Nunc nec neque.
+
+      Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Suspendisse eu ligula. Praesent ac massa at ligula laoreet iaculis.
+
+      Nulla sit amet est. Etiam ut purus mattis mauris sodales aliquam. Praesent ut ligula non mi varius sagittis.
+    </body>
+    <intro_text>
+      Donec venenatis vulputate lorem. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Nullam nulla eros, ultricies sit amet, nonummy id, imperdiet feugiat, pede. Nunc egestas, augue at pellentesque laoreet, felis eros vehicula leo, at malesuada velit leo quis pede. Pellentesque egestas, neque sit amet convallis pulvinar, justo nulla eleifend augue, ac auctor orci leo non est.
+    </intro_text>
+    <logo>medium.png</logo>
+    <contacts>con0001</contacts>
+    <sidebar_items>si0001,sii0001</sidebar_items>
+    <workbench_state>published</workbench_state>
+  </program>
+</programs>

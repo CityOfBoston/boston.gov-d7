@@ -1,0 +1,20 @@
+// Build the stylesheet needed for the color section of the KSS style guide.
+@import 'chroma/functions';
+@import 'chroma';
+@import 'chroma/kss';
+
+@import '../init/colors'; // local
+@import '../init/variables'; // local
+@import '../../../../boston/src/sass/init/mixins';
+
+@import 'breakpoint';
+@import 'compass';
+@import 'typey';
+@import 'susy';
+
+@import '../../../../boston/src/sass/init/clearfix';
+@import '../../../../boston/src/sass/init/rtl';
+@import '../../../../boston/src/sass/init/image-url';
+@import '../../../../boston/src/sass/init/visually-hidden';
+
+@include chroma-kss-styles();

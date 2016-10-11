@@ -1,0 +1,11 @@
+name = Boston Vocabulary Program Type
+description = Boston Vocabulary Program Type
+core = 7.x
+package = Boston
+dependencies[] = ctools
+dependencies[] = features
+dependencies[] = strongarm
+dependencies[] = taxonomy
+features[ctools][] = strongarm:strongarm:1
+features[features_api][] = api:2
+features[taxonomy][] = program_type

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sidebar_items>
+  <sidebar_item>
+    <id>si0001</id>
+    <title>Side Item 0001</title>
+    <text><![CDATA[<p>Let&#39;s try this:</p><ul><li>One</li><li>Two</li><li>Three</li></ul>]]></text>
+  </sidebar_item>
+</sidebar_items>

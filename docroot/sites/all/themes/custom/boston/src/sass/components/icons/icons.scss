@@ -1,0 +1,100 @@
+.icon-common,
+%icon-common {
+  background-repeat: no-repeat;
+}
+.icon-position-center-left {
+  background-position: center left;
+}
+.icon-position-top-left {
+  background-position: top left;
+}
+// Position when in detail-list-item only
+.detail-list-item.icon-position-top-left {
+  background-position: left 35px;
+  &.borderless {
+    background-position: left 5px;
+  }
+}
+// Add any and all icons for sidebars here.
+.icon-email {
+  @extend %icon-common;
+  background-image: url("../img/icon-email.svg");
+  background-size: 35px 23px;
+  width: 35px;
+  height: 23px;
+}
+.icon-location {
+  @extend %icon-common;
+  background-image: url("../img/icon-location.svg");
+  background-size: 29px 37px;
+  width: 29px;
+  height: 37px;
+}
+.icon-phone {
+  @extend %icon-common;
+  background-image: url("../img/icon-phone.svg");
+  background-size: 25px 37px;
+  width: 25px;
+  height: 37px;
+}
+.icon-time {
+  @extend %icon-common;
+  background-image: url("../img/icon-time.svg");
+  background-size: 35px 35px;
+  width: 35px;
+  height: 35px;
+}
+.icon-payment {
+  @extend %icon-common;
+  background-image: url("../img/icon-payment.svg");
+  background-size: 35px 35px;
+  width: 35px;
+  height: 35px;
+}
+.icon-download {
+  @extend %icon-common;
+  background-image: url("../img/icon-download.svg");
+  background-size: 35px 35px;
+  width: 35px;
+  height: 35px;
+}
+.icon-alert {
+  @extend %icon-common;
+  background-image: url("../img/icon-alert.svg");
+  background-size: 35px 35px;
+  width: 35px;
+  height: 35px;
+}
+
+.icon-social {
+  display: block;
+  height: 56px;
+  width : 56px;
+  text-indent: -9999px;
+  float: left;
+  background-position: left center;
+  background-size: 56px;
+  margin-right: 4px;
+}
+// Social media icons
+.icon-facebook {
+  background-image: url("../img/social-media/icon-facebook.svg");
+}
+.icon-instagram {
+  background-image: url("../img/social-media/icon-instagram.svg");
+}
+.icon-tumblr {
+  background-image: url("../img/social-media/icon-tumblr.svg");
+}
+.icon-twitter {
+  background-image: url("../img/social-media/icon-twitter.svg");
+}
+.icon-youtube {
+  background-image: url("../img/social-media/icon-youtube.svg");
+}
+.icon-flickr {
+  background-image: url("../img/social-media/icon-flickr.svg");
+}
+.icon-linkedin {
+  background-image: url("../img/social-media/icon-linkedin.svg");
+}

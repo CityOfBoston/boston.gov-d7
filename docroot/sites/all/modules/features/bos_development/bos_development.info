@@ -1,0 +1,13 @@
+name = Boston Development
+description = Enable for aiding in development of the Boston website
+core = 7.x
+package = Boston Development
+dependencies[] = context
+dependencies[] = ctools
+dependencies[] = masquerade
+dependencies[] = strongarm
+features[context][] = developer_blocks
+features[ctools][] = context:context:3
+features[ctools][] = strongarm:strongarm:1
+features[features_api][] = api:2
+features[variable][] = views_ui_show_sql_query

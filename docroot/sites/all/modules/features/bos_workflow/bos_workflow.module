@@ -1,0 +1,59 @@
+<?php
+/**
+ * @file
+ * Code for the Boston Workflow feature.
+ */
+
+include_once 'bos_workflow.features.inc';
+
+/**
+ * Implements hook_views_default_views_alter().
+ */
+function bos_workflow_views_default_views_alter(&$views) {
+  // Some views must have it's type filter configured so
+  // that it's only ever filtering on content types available to the current
+  // site, and must also not include content types that are being handled in
+  // other views.
+  $type_filter_exception_by_view = array(
+    'boston_recent_content' => array(
+      'displays' => array(
+        'default',
+      ),
+      'exceptions' => array(
+        'post',
+        'event',
+        'department_profile',
+      ),
+    ),
+  );
+  foreach ($type_filter_exception_by_view as $view_name => $info) {
+    if (isset($views[$view_name])) {
+      if (function_exists('bos_core_filter_type_by_all_except')) {
+        $views[$view_name]
+          = bos_core_filter_type_by_all_except($views[$view_name], $info['displays'], $info['exceptions']);
+      }
+    }
+  }
+
+  // To avoid features conflicts between the sites, handle enable/disable
+  // of the views in this hook.
+  // To disable a view on a certain site, this is the structure to
+  // set $views_to_disable_per_site.
+  // @codingStandardsIgnoreStart
+  // $views_to_disable_per_site = array(
+  //   'hub' => array(
+  //     'boston_events',
+  //   ),
+  // );
+  // @codingStandardsIgnoreEnd
+  $views_to_disable_per_site = array();
+  foreach ($views_to_disable_per_site as $site => $disable_views) {
+    foreach ($disable_views as $view_name) {
+      if (isset($views[$view_name])) {
+        if (function_exists('bos_core_disable_view')) {
+          bos_core_disable_view($site, $views[$view_name]);
+        }
+      }
+    }
+  }
+}

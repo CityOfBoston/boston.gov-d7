@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Boston Component Custom Hours Text feature.
+ */
+
+include_once 'bos_component_custom_hours_text.features.inc';

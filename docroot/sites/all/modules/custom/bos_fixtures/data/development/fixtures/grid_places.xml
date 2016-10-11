@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grid_places>
+  <grid_place>
+    <id>gridplace0001</id>
+    <title>Demonstration Place Grid</title>
+    <short_title>Place Grid</short_title>
+    <contact>con0001</contact>
+    <places>place0001,place0002,place0003,place0004</places>
+  </grid_place>
+</grid_places>

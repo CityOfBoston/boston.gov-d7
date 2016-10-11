@@ -1,0 +1,367 @@
+<?php
+/**
+ * @file
+ * Install file for updates that should affect both boston and the hub sites.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function bos_core_install() {
+  bos_core_update_7001();
+  bos_core_update_7002();
+  bos_core_update_7003();
+  bos_core_update_7004();
+}
+
+/**
+ * Delete field_feature_an_item from the news and announcements component.
+ *
+ * Work for: Sprint 11
+ */
+function bos_core_update_7001() {
+  $delete_fields = array(
+    'field_feature_an_item',
+  );
+  foreach ($delete_fields as $field) {
+    if (field_info_field($field)) {
+      field_delete_field($field);
+    }
+  }
+
+  field_purge_batch(10);
+}
+
+/**
+ * First part of Sprint 12. Add any new work to the next hook update.
+ *
+ * Disabling google analytics and using google_tag.
+ */
+function bos_core_update_7002() {
+  $disabled_modules = array(
+    'google_analytics',
+  );
+  $enabled_modules = array(
+    'google_tag',
+  );
+  module_disable($disabled_modules);
+  module_enable($enabled_modules);
+}
+
+/**
+ * Work for: Sprint 12.
+ *
+ * Enable the workbench scheduler module.
+ * Enable Group Of Links - Mini Grid component.
+ */
+function bos_core_update_7003() {
+  $disabled_modules = array();
+  $enabled_modules = array(
+    'bos_vocabulary_type_of_content',
+    'chosen',
+    'bos_settings_chosen',
+    'bos_component_video',
+    'bos_component_gol_mini_grid',
+    'workbench_scheduler',
+    'bos_scheduling',
+    'bos_content_type_script_page',
+  );
+  module_disable($disabled_modules);
+  module_enable($enabled_modules);
+}
+
+/**
+ * Work for Sprint 13.
+ *
+ * Enable the SimpleSamlPHP module.
+ */
+function bos_core_update_7004() {
+  $delete_fields = array(
+    'field_call_to_action',
+  );
+  $disabled_modules = array();
+  $enabled_modules = array(
+    'simplesamlphp_auth',
+  );
+  module_disable($disabled_modules);
+  module_enable($enabled_modules);
+  foreach ($delete_fields as $field) {
+    if (field_info_field($field)) {
+      field_delete_field($field);
+    }
+  }
+  field_purge_batch(10);
+}
+
+/**
+ * Work for Sprint 13.
+ *
+ * Add 404/403 pages.
+ */
+function bos_core_update_7005() {
+  // Make sure the custom tokens module is enabled.
+  $enabled_modules = array(
+    'token_custom',
+  );
+  module_enable($enabled_modules);
+  // Create a page each for the 404 and 403 pages.
+  $titles = array(
+    '404' => '404 Not Found',
+    '403' => '403 Forbidden',
+  );
+  foreach ($titles as $key => $title) {
+    $node = new stdClass();
+    $node->title = $title;
+    $node->type = 'article';
+    node_object_prepare($node);
+    $node->language = LANGUAGE_NONE;
+    $node->uid = 1;
+    $node->status = 1;
+    $node->promote = 0;
+    $node->comment = 0;
+    $node = node_submit($node);
+    node_save($node);
+
+    workbench_moderation_moderate($node, 'published');
+    $path = 'node/' . $node->nid;
+    variable_set("site_{$key}", $path);
+  }
+  // Custom tokens needed for the text on 404/403 pages.
+  $custom_tokens = array(
+    '404' => array(
+      'machine_name' => '404-page-text',
+      'name' => '404 Page Text',
+      'description' => 'The text to display on the 404 page.',
+      'type' => 'boston',
+      'content' => '<p>Looks like this page went overboard. We&#39;ll check the harbor, but perhaps one of these options is more your cup of tea: <a href="http://www.cityofboston.gov/311/">Request City services</a>, <a href="http://www.cityofboston.gov/assessing/paysearch.asp">View property tax</a>, <a href="http://www.cityofboston.gov/parking/payment.asp">Pay a parking ticket</a>, or <a href="http://www.cityofboston.gov/ohr/careercenter/">Apply for a job</a>.</p>',
+      'format' => 'filtered_html',
+    ),
+    '403' => array(
+      'machine_name' => '403-page-text',
+      'name' => '403 Page Text',
+      'description' => 'The text to display on the 403 page.',
+      'type' => 'boston',
+      'content' => '<p><em>Go run tell that...at midnight.</em></p>',
+      'format' => 'filtered_html',
+    ),
+  );
+  foreach ($custom_tokens as $token) {
+    drupal_write_record('token_custom', $token);
+  }
+}
+
+/**
+ * Work for: Sprint 14.
+ *
+ * Sprint 14 updates.
+ */
+function bos_core_update_7006() {
+  $deleted_field_instances = array(
+    'paragraphs_item' => array(
+      'group_of_links_grid' => array(
+        'field_call_to_action',
+      ),
+    ),
+  );
+  $disabled_modules = array();
+  $enabled_modules = array(
+    'bos_content_type_event',
+    'bos_content_type_how_to',
+    'bos_component_city_score_dashboard',
+    'bos_component_quote',
+    'bos_component_grid_of_quotes',
+  );
+  module_disable($disabled_modules);
+  module_enable($enabled_modules);
+
+  // Remove field instances.
+  foreach ($deleted_field_instances as $entity_type => $bundles) {
+    foreach ($bundles as $bundle_id => $bundle_fields) {
+      foreach ($bundle_fields as $field) {
+        $instance = field_info_instance($entity_type, $field, $bundle_id);
+        field_delete_instance($instance);
+      }
+    }
+  }
+}
+
+/**
+ * Work for: Sprint 15.
+ *
+ * Sprint 15 updates.
+ */
+function bos_core_update_7007() {
+  $disabled_modules = array();
+  $enabled_modules = array(
+    'bos_menu_accessibility_menu',
+    'bos_menu_translation_menu',
+  );
+  module_disable($disabled_modules);
+  module_enable($enabled_modules);
+}
+
+/**
+ * Work for Sprint 16.
+ */
+function bos_core_update_7008() {
+  _bos_core_set_default_saml_roles();
+  $disabled_modules = array();
+  $enabled_modules = array(
+    'bos_subcomponents_recollect',
+    'bos_subcomponents_seamless_doc',
+  );
+
+  $delete_fields = array(
+    'field_seamless_docs_id',
+  );
+
+  module_disable($disabled_modules);
+  module_enable($enabled_modules);
+
+  foreach ($delete_fields as $field) {
+    if (field_info_field($field)) {
+      field_delete_field($field);
+    }
+  }
+  field_purge_batch(10);
+}
+
+/**
+ * Work for Sprint 17.
+ */
+function bos_core_update_7009() {
+  $enabled_modules = array(
+    'globalredirect',
+    'fast_404',
+    'bos_component_upcoming_events',
+    'bos_view_upcoming_events',
+    'date_views',
+  );
+  module_enable($enabled_modules);
+  // The site_frontpage variable needs to be a system path in order to function
+  // correctly with the Global Redirect module. Note that homepage is the alias
+  // used for the public site and hub.
+  $homepage_node_path = drupal_get_normal_path('homepage');
+  variable_set('site_frontpage', $homepage_node_path);
+}
+
+/**
+ * Work for Sprint 17.  Part two, enable more modules.
+ */
+function bos_core_update_7010() {
+  $enabled_modules = array(
+    'bos_component_upcoming_events',
+    'bos_view_upcoming_events',
+    'date_views',
+  );
+  module_enable($enabled_modules);
+
+  $delete_fields = array(
+    'field_iframe_height',
+  );
+
+  foreach ($delete_fields as $field) {
+    if (field_info_field($field)) {
+      field_delete_field($field);
+    }
+  }
+  field_purge_batch(10);
+}
+
+/**
+ * Work for Sprint 18.
+ */
+function bos_core_update_7011() {
+  $enabled_modules = array(
+    'redirect',
+  );
+  module_enable($enabled_modules);
+}
+
+
+/**
+ * Work for Sprint 19.
+ */
+function bos_core_update_7012() {
+  $role = user_role_load_by_name('Emergency Alert Author');
+  $role->name = 'Status Alert Editor';
+  user_role_save($role);
+}
+
+/**
+ * Continued Sprint 19 work.
+ */
+function bos_core_update_7013() {
+  $enabled_modules = array(
+    'imce',
+    'bos_settings_imce',
+  );
+  module_enable($enabled_modules);
+}
+
+/**
+ * Hook for 08/19/2016.
+ */
+function bos_core_update_7014() {
+  $enabled_modules = array(
+    'views_json',
+    'views_xml',
+    'bos_view_upcoming_events_feed',
+    'date_ical',
+    'cors',
+  );
+  module_enable($enabled_modules);
+}
+
+/**
+ * Hook for 08/31/2016.
+ */
+function bos_core_update_7015() {
+  $enabled_modules = array(
+    'admin_views',
+    'views_bulk_operations',
+  );
+  module_enable($enabled_modules);
+}
+
+/**
+ * Hook for 09/07/2016.
+ */
+function bos_core_update_7016() {
+  variable_set("events_path", "/events");
+}
+
+/**
+ * Hook for 09/22/2016.
+ */
+function bos_core_update_7017() {
+  // Custom tokens needed for the text on 404/403 pages.
+  $custom_tokens = array(
+    'social_image_default' => array(
+      'machine_name' => 'social-image-default',
+      'name' => 'Social Image Default',
+      'description' => 'A default image for Boston.gov social tagging',
+      'type' => 'boston',
+      'content' => 'https://www.boston.gov/sites/all/themes/custom/boston/src/img/b-logo-large.png',
+      'format' => 'plain_text',
+    ),
+  );
+  foreach ($custom_tokens as $token) {
+    drupal_write_record('token_custom', $token);
+  }
+
+  $enabled_modules = array(
+    'bos_meta_tags',
+  );
+  module_enable($enabled_modules);
+}
+
+/**
+ * Hook for 09/24/2016.
+ */
+function bos_core_update_7018() {
+  $enabled_modules = array(
+    'bos_component_script_embed',
+  );
+  module_enable($enabled_modules);
+}

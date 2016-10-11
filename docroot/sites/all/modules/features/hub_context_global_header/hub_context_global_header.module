@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Hub Context Global Header feature.
+ */
+
+include_once 'hub_context_global_header.features.inc';

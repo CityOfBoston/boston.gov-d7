@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<person_profile_pages>
+  <person_profile_page>
+    <id>perspage0001</id>
+    <author>-</author>
+    <title>Person Profile Fixture</title>
+    <last_name>lastName</last_name>
+    <address>123 Main St</address>
+    <city>Boston</city>
+    <state>MA</state>
+    <zip>02118</zip>
+    <workbench_state>published</workbench_state>
+  </person_profile_page>
+</person_profile_pages>

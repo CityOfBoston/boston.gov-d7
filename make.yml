@@ -1,0 +1,319 @@
+api: 2
+core: 7.x
+
+defaults:
+  projects:
+    subdir: contrib
+
+projects:
+  drupal:
+    type: core
+    patch:
+      # Scale and crop image effect needs anchor option.
+      # https://www.drupal.org/node/1252606#comment-8305805
+      - https://www.drupal.org/files/issues/D7-scale-and-crop-1252606-37.patch
+
+      # Node access grants should be statically cached.
+      # https://www.drupal.org/node/2199001#comment-8495029
+      - https://www.drupal.org/files/issues/node_access_grants-static-cache-11.patch
+
+      # Invalid image style URLs should return 404, not 403.
+      # https://www.drupal.org/node/2211429#comment-10033677
+      - https://www.drupal.org/files/issues/drupal-image-style-not-found-2211429-4.patch
+
+  acquia_connector:
+    version: 2.16
+  acquia_purge:
+    version: 1.3
+  acquia_search_multi_subs:
+    version: 1.4
+  adminimal_theme:
+    type: theme
+    version: 1.23
+    patch:
+      # Resolves module_filter doesn't exist error.
+      - https://www.drupal.org/files/issues/adminimal_theme-2763581-4.patch
+  adminimal_admin_menu:
+    version: 1.7
+  advanced_text_formatter:
+    version: 1.4
+  autologout:
+    version: 4.4
+  addressfield:
+    version: 1.2
+  admin_menu:
+    version: 3.0-rc5
+  admin_views:
+    version: 1.6
+  advpoll:
+    version: 3.0-alpha1
+  apachesolr:
+    version: 1.8
+    patch:
+      # Error: "multiple values encountered for non multiValued field" for multi-value entity reference fields
+      # https://www.drupal.org/node/2786477#comment-11526747
+      - https://www.drupal.org/files/issues/index-multi-value-entity-reference-error-2786477-2.patch
+  apachesolr_attachments:
+    version: 1.4
+    patch:
+      # Adds ability to index unattached documents through search. This will handle
+      # files attached to Paragraphs and Field Collections.
+      - https://www.drupal.org/files/issues/apachesolr-attachments-index-unattached-files-1908484-12.patch
+  apachesolr_field_collection:
+    version: 1.0-alpha2
+  apachesolr_paragraphs:
+    version: 1
+  apachesolr_user:
+    version: 1.x-dev
+  api_tokens:
+    version: 1.4
+  background_image_formatter:
+    version: 1.3
+  better_exposed_filters :
+      version : 3.2
+  breakpoints:
+    version: 1.3
+  chosen:
+    version: 2.0-beta5
+  content_access:
+    version: 1.2-beta2
+  context:
+    version: 3.6
+  cors:
+    version: 1.3
+  crumbs :
+    version : 2.3
+  ctools:
+    version: 1.9
+  date:
+    version: 2.9
+    patch:
+      # Needed to allow repeat date field to properly modify the widget at any
+      # nesting level. NOTE: Does not allow for inline editing.
+      - https://www.drupal.org/files/issues/date-repeat-field-nested-2065747.patch
+  date_ical:
+    version: 3.9
+  diff:
+    version: 3.2
+  draggableviews:
+    version: 2.1
+  entitycache:
+    version: 1.2
+  email_confirm:
+    version: 1.2
+  entity:
+    version: 1.6
+  entityreference:
+    version: 1.1
+  entityreference_autocreate:
+    version: 1.1
+  expire:
+    version: 2.0-rc4
+  fast_404:
+    version: 1.5
+    patch:
+      # Add the patch to allow the use of whitelists for fast_404_path_check()
+      - https://www.drupal.org/files/issues/fast_404-allow_whitelisting_in_path_check-2748687-6.patch
+  facetapi:
+    version: 1.5
+  features:
+    version: 2.9
+  features_extra:
+    version: 1.0
+  fences:
+    version: 1.2
+  field_collection:
+    version: 1.0-beta9
+  field_group:
+    version: 1.5
+  file_entity:
+    version: 2.0-beta2
+  honeypot:
+    version: 1.21
+  genpass:
+    version: 1.0
+  globalredirect:
+    version: 1.5
+  image_url_formatter:
+    version: 1.4
+  jquery_update:
+    version: 3.0-alpha3
+  link:
+    version: 1.4
+    # Issue https://www.drupal.org/node/2299657
+    # Allow .cob TLD to be a valid domain.
+    patch :
+    - https://www.drupal.org/files/issues/validate_url-2299657-22.patch
+  linkit:
+    version: 3.x-dev
+    patch:
+    - https://www.drupal.org/files/issues/linkit_button_doesn_t-2550845-23.patch
+  libraries:
+    version: 2.2
+  imce:
+    version: 1.10
+    patch:
+    # Issue https://www.drupal.org/node/2357871.
+    # Allow IMCE to use the admin theme so that it uses correct jQuery settings.
+    - https://www.drupal.org/files/issues/imce-n2357871-12.patch
+    # Specify a validator so Drupal does not use default.
+    - https://www.drupal.org/files/issues/imce.extension.validator-1018344-3.patch
+  insert:
+    version: 1.3
+  login_security:
+    version: 1.9
+  masquerade:
+    version: 1.0-rc7
+  media:
+    version: 2.0-beta1
+    patch:
+      # Issue link https://www.drupal.org/node/2534724
+      # Stops the media browser from spawning two modals when clicking Browse.
+      - https://www.drupal.org/files/issues/media-browser_opens_twice-2534724-53.patch
+  memcache:
+    version: 1.5
+  menu_target:
+    version: 1.4
+  migrate:
+    version: 2.8
+  migrate_extras:
+    version: 2.5
+  menu_block:
+    version: 2.7
+  office_hours:
+    version: 1.4
+  paranoia:
+    version: 1.5
+  password_policy:
+    version: 1.12
+    patch:
+    # Issue link https://www.drupal.org/node/985758
+    # Implement Features hooks to import configurations
+    - https://www.drupal.org/files/issues/password_policy-985758-49_0.patch
+  pathauto:
+    version: 1.3
+  picture:
+    version: 2.13
+  realname:
+    version: 1.2
+  redirect:
+    version: 1.0-rc3
+  services:
+    version: 3.14
+  services_api_key_auth:
+    version: 1.1
+    patch:
+    # Add patch to allow api key in HTTP header
+    - https://www.drupal.org/files/issues/parameter_types-2715419-1.patch
+  seckit:
+    version: 1.9
+  security_review:
+    version: 1.2
+  shunt:
+    version: 1.3
+  stage_file_proxy:
+    version: 1.7
+  strongarm:
+    version: 2.0
+  title:
+    version: 1.0-alpha7
+  transliteration:
+    version: 3.2
+  panels:
+    version: 3.6
+  paragraphs:
+    version: 1.0-rc4
+    patch:
+    # Issue Link https://www.drupal.org/node/2603424
+    # Resolves issue with nested paragraphs & Workbench.
+    - https://www.drupal.org/files/issues/paragraphs-nested_paragraphs_workbench_moderation-2603424-02.patch
+  phone:
+    version: 1.0-beta1
+  phpexcel:
+    version: 3.11
+  profile2:
+    version: 1.3
+  profile2_apachesolr:
+    version: 1.6
+  shortcode:
+    version: 2.22
+  rabbit_hole:
+    version: 2.23
+  special_menu_items:
+    version: 2.0
+  simplesamlphp_auth:
+    version: 3.x-dev
+  token:
+    version: 1.6
+  token_custom:
+    version: 2.0-beta3
+  token_filter:
+    version: 1.1
+  views:
+    version: 3.14
+  views_datasource:
+    version: 1.0-alpha2
+  views_load_more:
+    version: 1.5
+  views_bulk_operations:
+    version: 3.3
+  viewfield:
+    version: 2.0
+  votingapi:
+    version: 2.12
+  workbench:
+    version: 1.2
+  workbench_moderation:
+    version: 1.4
+    patch:
+      # This allows authenticated users to view drafts
+      - https://www.drupal.org/files/workbench_moderation-view-drafts-permission-fix-1461950-8.patch
+      # Without this patch, Behat tests will fail when using fixtures in
+      # combination with Workbench Moderation.
+      - https://www.drupal.org/files/issues/node-deleted-before-shutdown-function-2645622-1.patch
+      # Fixes the issue with the "Generate automatic URL alias" being unchecked
+      # after workbench moderation content is published.
+      - https://www.drupal.org/files/issues/workbench_moderation-pathauto_alias_issue-2308095-20.patch
+  #Dev version of WYSIWYG is required for 4.x CKEditor to work.
+  workbench_scheduler:
+    version: 2.0-beta2
+  wysiwyg:
+    version: 2.x-dev
+  wysiwyg_filter:
+    version: 1.6-rc2
+    patch:
+      # Allows a hook to alter the blacklist implemented by wysiwyg filter so
+      # we can allow trusted user roles to embed iframes.
+      - https://www.drupal.org/files/wysiwyg_filter_alter_blacklist-1783966-4.patch
+  google_tag:
+    version : 1.0
+  ape:
+    version : 1.1
+  metatag:
+    version : 1.7
+  xautoload:
+    version: 5.7
+  # Currently unused modules.
+  #  username_enumeration_prevention:
+  #    version: 1.1
+  #    patch: https://www.drupal.org/files/issues/username-2483015-2.patch
+
+libraries:
+  chosen:
+    download:
+      type: "file"
+      url: "https://github.com/harvesthq/chosen/releases/download/v1.5.1/chosen_v1.5.1.zip"
+    directory_name: "chosen"
+    type: "library"
+  ckeditor:
+    download:
+      type: "file"
+      url: "../../../libraries/ckeditor-4.5.8.tar.gz"
+    directory_name: "ckeditor"
+    type: "library"
+  phpexcel:
+    download:
+      type: "git"
+      url: "https://github.com/PHPOffice/PHPExcel.git"
+    directory_name: "PHPExcel"
+    type: "library"

@@ -1,0 +1,472 @@
+// MAIN LAYOUT ELEMENTS
+
+// Placeholder for .row wrapper element. May not need it - avoiding divitis.
+//.row {}
+
+
+// Full Screen Width
+// Repositions elements within the main container to be the full width of the screen.
+// Grabbed the existing style we use on the heros and full width components so we don't have to re-factor.
+.fullwidth {
+  left: 50%;
+  position: relative;
+  transform: translate(-50%,0);
+  width: 100vw;
+}
+
+$default-gutter: 1.5em;
+
+@mixin full-width ($background: color(section-bg)) {
+  left: 50%;
+  position: relative;
+  transform: translate(-50%,0);
+  width: 100vw;
+  background-color: ($background);
+}
+
+// 1 column
+// Fill the full width of the parent element.
+@mixin one-col($gutter: $default-gutter) {
+  width: 100%;
+  margin-bottom: $gutter;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+// 2 column
+// Fill 50% of the width of the parent element.
+@mixin two-col($gutter: $default-gutter) {
+  width: calc(50% - (#{$gutter} / 1.925));
+  float: left;
+  margin-left: 0;
+  margin-right: 0;
+  padding: 0;
+  margin-bottom: $gutter;
+  &:nth-of-type(odd) {
+    margin-right: $gutter;
+  }
+  &:nth-of-type(even) {
+    margin-left: 0;
+  }
+}
+
+// 3 column
+// Fill 33.334% of the width of the parent element.
+@mixin three-col($gutter: $default-gutter) {
+  width: calc(33.3% - (#{$gutter} * 2.0045 / 3));
+  float: left;
+  margin-bottom: $gutter;
+  &:nth-child(3n+1),
+  &:nth-child(3n+2) {
+    padding-right: 0;
+    margin-right: $gutter;
+    margin-left: 0;
+  }
+  &:nth-child(3n+3) {
+    padding-left: 0;
+    margin-right: 0;
+    margin-left: 0;
+  }
+}
+
+// 4 column
+// Fill 25% of the width of the parent element.
+@mixin four-col($gutter: $default-gutter) {
+  width: calc(25% - (#{$gutter} * 3 / 4));
+  float: left;
+  margin-top: 0;
+  margin-bottom: $gutter;
+  &:nth-child(4n+1),
+  &:nth-child(4n+2),
+  &:nth-child(4n+3) {
+    margin-right: $gutter;
+    margin-left: 0;
+  }
+  &:nth-child(4n+4) {
+    margin-right: 0;
+    margin-left: 0;
+  }
+}
+
+// 5 column
+// Fill 20% of the width of the parent element.
+@mixin five-col($gutter: $default-gutter) {
+  width: calc(20% - (#{$gutter} * 4 / 5));
+  float: left;
+  margin-top: 0;
+  margin-bottom: $gutter;
+  &:nth-child(5n+1),
+  &:nth-child(5n+2),
+  &:nth-child(5n+3),
+  &:nth-child(5n+4) {
+    margin-right: $gutter;
+    margin-left: 0;
+  }
+  &:nth-child(5n+5) {
+    margin-right: 0;
+    margin-left: 0;
+  }
+}
+
+
+// 50% Width Columns
+// Fills 50% of the container
+
+.desktop-50 {
+  @include respond-to(m) {
+    width: 50%;
+    float: left;
+    &:nth-child(odd) {
+      padding-right: 1.5%;
+    }
+    &:nth-child(even) {
+      padding-left: 1.5%;
+    }
+  }
+  @include respond-to(xl) {
+    &:nth-child(odd) {
+      padding-right: 0;
+    }
+    &:nth-child(even) {
+      padding-left: 0;
+    }
+  }
+}
+
+.tablet-50 {
+  @include respond-to(m) {
+    width: 50%;
+    float: left;
+    &:nth-child(odd) {
+      padding-right: 1.5%;
+    }
+    &:nth-child(even) {
+      padding-left: 1.5%;
+    }
+  }
+  @include respond-to(xl) {
+    &:nth-child(odd) {
+      padding-right: 0;
+    }
+    &:nth-child(even) {
+      padding-left: 0;
+    }
+  }
+}
+
+// Full Width Column
+// Fills the full width of the container
+.mobile-100 {
+  @include one-col;
+}
+.tablet-100 {
+  @include respond-to(m) {
+    @include one-col;
+  }
+}
+.desktop-100 {
+  @include respond-to(xl) {
+    @include one-col;
+    margin-bottom: 0;
+  }
+}
+
+// 66% Width Columns
+// Fills 66% of the container
+
+.tablet-66 { // may not need this
+  @include respond-to(m) { // may not need to include
+    width: 63%;
+    float: left;
+    &-left {
+      @extend .tablet-66;
+      margin-right: 3%;
+    }
+    &-right {
+      @extend .tablet-66;
+      margin-left: 3%;
+    }
+  }
+}
+
+.desktop-66 {
+  @include respond-to(xl) {
+    width: 63%;
+    &-left {
+      @extend .desktop-66;
+      float: left;
+      margin-right: 3%;
+    }
+    &-right {
+      @extend .desktop-66;
+      float: right;
+      margin-left: 3%;
+    }
+  }
+}
+
+// 33% Width Columns
+// Fills 33% of the container
+
+.tablet-33 { // may not need this
+  @include respond-to(m) {
+    width: 30%;
+    float: left;
+    &-left {
+      @extend .tablet-33;
+      margin-right: 3%;
+      float: left;
+    }
+    &-right {
+      @extend .tablet-33;
+      margin-left: 3%;
+      float: right;
+    }
+  }
+}
+
+.tablet-25 {
+  @include respond-to(m) {
+    width: calc(25% - #{$default-gutter});
+    float: left;
+    &-left {
+      @extend .tablet-25;
+      margin-right: $default-gutter;
+      float: left;
+    }
+    &-right {
+      @extend .tablet-25;
+      margin-left: $default-gutter;
+      float: right;
+    }
+  }
+}
+
+.tablet-75 {
+  @include respond-to(m) {
+    width: calc(75% - #{$default-gutter});
+    float: left;
+    &-left {
+      @extend .tablet-75;
+      margin-right: $default-gutter;
+      float: left;
+    }
+    &-right {
+      @extend .tablet-75;
+      margin-left: $default-gutter;
+      float: right;
+    }
+  }
+}
+
+.desktop-33 {
+  @include respond-to(xl) {
+    width: 30%;
+    float: left;
+    &-left {
+      @extend .desktop-33;
+      margin-right: 3%;
+      float: left;
+    }
+    &-right {
+      @extend .desktop-33;
+      margin-left: 3%;
+      float: right;
+    }
+  }
+}
+
+.desktop-25 {
+  @include respond-to(xl) {
+    width: calc(25% - #{$default-gutter});
+    float: left;
+    &-left {
+      @extend .desktop-25;
+      margin-right: $default-gutter;
+      float: left;
+    }
+    &-right {
+      @extend .desktop-25;
+      margin-left: $default-gutter;
+      float: right;
+    }
+  }
+}
+
+.desktop-75 {
+  @include respond-to(xl) {
+    width: calc(75% - #{$default-gutter});
+    float: left;
+    &-left {
+      @extend .desktop-75;
+      margin-right: $default-gutter;
+      float: left;
+    }
+    &-right {
+      @extend .desktop-75;
+      margin-left: $default-gutter;
+      float: right;
+    }
+  }
+}
+
+
+// INNER LAYOUT ELEMENTS
+// These elements are contained within the main layout elements and break to the next row.
+
+// Mobile layouts
+.mobile-1-col {
+  @include one-col;
+}
+.mobile-2-col {
+  @include two-col;
+}
+.mobile-3-col {
+  @include three-col;
+}
+.mobile-4-col {
+  @include four-col;
+}
+
+// Tablet layouts
+.tablet-1-col {
+  @include respond-to(m) {
+    @include one-col;
+  }
+}
+.tablet-2-col {
+  @include respond-to(m) {
+    @include two-col;
+  }
+}
+.tablet-3-col {
+  @include respond-to(m) {
+    @include three-col;
+  }
+}
+.tablet-4-col {
+  @include respond-to(m) {
+    @include four-col;
+  }
+}
+.tablet-5-col {
+  @include respond-to(m) {
+    @include five-col;
+  }
+}
+
+// Desktop Layouts
+.desktop-1-col {
+  @include respond-to(xl) {
+    @include one-col;
+  }
+}
+.desktop-2-col {
+  @include respond-to(xl) {
+    @include two-col;
+  }
+}
+.desktop-3-col {
+  @include respond-to(xl) {
+    @include three-col;
+  }
+}
+.desktop-4-col {
+  @include respond-to(xl) {
+    @include four-col;
+  }
+}
+.desktop-5-col {
+  @include respond-to(xl) {
+    @include five-col;
+  }
+}
+
+.xxl-desktop-1-col {
+  @include respond-to(xxl) {
+    @include one-col;
+  }
+}
+.xxl-desktop-2-col {
+  @include respond-to(xxl) {
+    @include two-col;
+  }
+}
+.xxl-desktop-3-col {
+  @include respond-to(xxl) {
+    @include three-col;
+  }
+}
+.xxl-desktop-4-col {
+  @include respond-to(xxl) {
+    @include four-col;
+  }
+}
+.xxl-desktop-5-col {
+  @include respond-to(xxl) {
+    @include five-col;
+  }
+}
+
+/**
+ * desktop-40 and desktop-60 are placed here because they must override
+ * mobile-1-col, done to solve SPY-726: News Listing Text Overflow.
+ * 7/7/2016
+ */
+.desktop-40 {
+  @include respond-to(xl) {
+    width: calc(40% - #{$default-gutter});
+    float: left;
+    &-left {
+      @extend .desktop-40;
+      margin-right: $default-gutter;
+      float: left;
+    }
+    &-right {
+      @extend .desktop-40;
+      margin-left: $default-gutter;
+      float: right;
+    }
+  }
+}
+
+.desktop-60 {
+  @include respond-to(xl) {
+    width: calc(60% - #{$default-gutter});
+    float: left;
+    &-left {
+      @extend .desktop-60;
+      margin-right: $default-gutter;
+      float: left;
+    }
+    &-right {
+      @extend .desktop-60;
+      margin-left: $default-gutter;
+      float: right;
+    }
+  }
+}
+
+// Red-headed step-children are the fixed width elements such as the polls.
+// Maybe they could be .desktop-fixed-col with a mechanism to declare the width.
+// If there is enough consistency between them pixel width could be in the class name: .desktop-50px-col
+
+// HTML EXAMPLE
+// This would be a component similar to the
+// <div class=".container">
+//   <div class="mobile-100 tablet-25-left"> // Desktop would inherit tablet style
+//     // Content goes here
+//   </div>
+//   <div class="mobile-100 tablet-75-right"> // Desktop would inherit tablet style
+//     <div class="mobile-1-col tablet-2-col desktop-3-col">/*content*/</div>
+//     <div class="mobile-1-col tablet-2-col desktop-3-col">/*content*/</div>
+//     <div class="mobile-1-col tablet-2-col desktop-3-col">/*content*/</div>
+//     <div class="mobile-1-col tablet-2-col desktop-3-col">/*content*/</div>
+//     <div class="mobile-1-col tablet-2-col desktop-3-col">/*content*/</div>
+//   </div>
+// </div>
+
+// ** Note that if an element is the same width percentage at all screen sizes,
+// you would only need to add the class for the mobile size.
+// If it's clearer, we can always declare all 3 but it would be better to call fewer styles.
+// E.g. <div class="mobile-100 tablet-100 desktop-100"> vs. <div class="mobile-100">

@@ -1,0 +1,15 @@
+name = Boston Component Featured Guides
+description = Component for Featured Guides
+core = 7.x
+package = Boston
+dependencies[] = bos_shared_fields
+dependencies[] = entityreference
+dependencies[] = features
+dependencies[] = field_group
+dependencies[] = options
+dependencies[] = paragraphs
+features[ctools][] = field_group:field_group:1
+features[features_api][] = api:2
+features[field_group][] = group_featured_topics_list|paragraphs_item|featured_topics|form
+features[field_instance][] = paragraphs_item-featured_topics-field_topics
+features[paragraphs][] = featured_topics

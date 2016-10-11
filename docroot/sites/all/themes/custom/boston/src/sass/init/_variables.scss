@@ -1,0 +1,121 @@
+//
+// Browser support
+//
+// Based on caniuse.com's browser usage stats, Compass will support any browser
+// that is used by at least 1 user in 10,000. These variables are used to
+// specify which browsers are supported by Compass. "Unsupported" browsers will
+// still see the generated CSS, of course, but will not get special treatment
+// for its bugs or CSS3 vendor prefixes.
+//
+
+// The browser usage threshold for features that cannot degrade gracefully.
+// A value of 100 means 100% of users would have to use the browser before it is
+// supported. A value of .01 (the default) means 1 user in 10,000.
+//$critical-usage-threshold: .01 !default;
+
+// Set this to true to generate comments that will explain why a prefix was
+// included or omitted.
+//$debug-browser-support: false;
+
+// Optional map of minimum browser versions to support. If a specific browser
+// has usage stats below the $critical-usage-threshold, you can still require
+// support for it using this variable. For example, to require support for IE 6
+// and later, set $browser-minimum-versions['ie'] to '6'.
+//$browser-minimum-versions: (
+//  'chrome':  null,
+//  'firefox': null,
+//  'ie':      null,
+//  'safari':  null,
+//  'opera':   null
+//) !default;
+
+//
+// Border-box support for IE 6/7
+//
+// IE6-7 don't support box-sizing: border-box. We can fix this in 1 of 3 ways:
+// - Drop support for IE 6/7. :-) Set $critical-usage-threshold to a value high
+//   enough to drop IE7 users.
+// - Install the box-sizing polyfill and set the variable below to
+//   the absolute path URL to the boxsizing.htc file.
+//   @see https://github.com/Schepp/box-sizing-polyfill
+//   $box-sizing-polyfill-path: '/path/to/boxsizing.htc';
+// - Use the same CSS unit for grid and gutter width in resonsive-sidebars.scss
+//   (use px for both or use % for both) and set:
+//   $box-sizing: content-box;
+//
+
+
+//
+// Font faces, stacks and sizes.
+//
+
+// The font size set on the root html element.
+$base-font-size:    18px;
+
+// The base line height determines the basic unit of vertical rhythm.
+$base-line-height:  39px;
+
+$font-size: (
+  xxl:              75px,
+  xl:               45px,
+  l:                30px,
+  m:                $base-font-size,
+  s:                16px,
+  xs:               14px,
+  xxs:              12px
+);
+
+// The length unit in which to output font size and margin values.
+// Supported values: px, em, rem.
+$base-unit:         'rem';
+$rem-fallback:      true;
+
+
+// The following font family declarations use widely available fonts.
+// A user's web browser will look at the comma-separated list and will
+// attempt to use each font in turn until it finds one that is available
+// on the user's computer. The final "generic" font (sans-serif, serif or
+// monospace) hints at what type of font to use if the web browser doesn't
+// find any of the fonts in the list.
+
+// Serif font stacks.
+$times-new-roman: 'Times New Roman', Times, Georgia, 'DejaVu Serif', serif;
+$times:           Times, 'Times New Roman', Georgia, 'DejaVu Serif', serif;
+$georgia:         Georgia, 'Times New Roman', 'DejaVu Serif', serif;
+
+// Sans-serif font stacks.
+$verdana:         Verdana, Tahoma, 'DejaVu Sans', sans-serif;
+$tahoma:          Tahoma, Verdana, 'DejaVu Sans', sans-serif;
+$helvetica:       Helvetica, Arial, 'Nimbus Sans L', sans-serif;
+$arial:           Arial, Helvetica, 'Nimbus Sans L', sans-serif;
+$impact:          Impact, 'Arial Narrow', Helvetica, sans-serif;
+
+// Monospace font stacks.
+// For an explanation of why "sans-serif" is at the end of this list, see
+// http://meyerweb.com/eric/thoughts/2010/02/12/fixed-monospace-sizing/
+$menlo:           Menlo, 'DejaVu Sans Mono', 'Ubuntu Mono', Courier, 'Courier New', monospace, sans-serif;
+
+// Now create some variables using the font stacks we want on this site.
+$font-body:       $verdana;
+$font-monospace:  $menlo;
+$font-watermark:  $impact;
+
+$breakpoints: (
+  s:    (480px, 'no-query' true),
+  m:    (768px, 'no-query' true),
+  l:    (840px, 'no-query' true),
+  xl:	  (980px, 'no-query' true),
+  xxl:  (1280px, 'no-query' true),
+  xxxl: (2000px, 'no-query' true),
+);
+
+
+//
+// Misc
+//
+
+// The amount lists, blockquotes and comments are indented.
+$indent-amount: 2 * $base-font-size;
+
+// The height of the navigation container.
+$nav-height: 2 * $base-line-height;

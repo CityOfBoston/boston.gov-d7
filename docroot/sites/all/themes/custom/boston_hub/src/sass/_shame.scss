@@ -1,0 +1,8 @@
+// Fixes layout incompatibility between IE11 and other browsers.
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {  
+  .paragraphs-item-user-action .content-wrapper {
+    width: 100vw;
+    position: relative;
+    z-index: 1;
+  }
+}

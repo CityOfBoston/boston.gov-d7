@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Boston Content Type Program Initiative Profile feature.
+ */
+
+include_once 'bos_content_type_program_initiative_profile.features.inc';

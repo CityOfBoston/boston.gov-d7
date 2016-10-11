@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the bos_settings_linkit_editor feature.
+ */
+
+include_once 'bos_settings_linkit_editor.features.inc';

@@ -1,0 +1,25 @@
+; Drupal's .info files allow themers to easily specify some of the static
+; properties of your theme. Properties such as its name, stylesheets,
+; javascripts, and block regions.
+;
+; Drupal 7 stores a cache of the data in this .info files. If you modify any
+; lines in this file, you MUST refresh Drupal 7's cache by simply visiting the
+; Appearance page at admin/appearance.
+
+
+
+; The name, description and screenshot used for this theme on the Appearance
+; page at admin/appearance.
+
+screenshot  = screenshot.png
+name        = Boston Admin
+description = A sub-theme for admin.
+base theme  = adminimal
+
+
+; This theme is compatible with Drupal 7 core.
+
+core        = 7.x
+
+stylesheets[all][] = css/tabs.css
+stylesheets[all][] = css/forms.css

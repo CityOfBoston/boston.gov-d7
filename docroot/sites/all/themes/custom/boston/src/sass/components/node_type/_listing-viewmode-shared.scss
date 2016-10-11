@@ -1,0 +1,50 @@
+.listing-wrapper {
+  background-color: color(text-bg);
+  position: relative;
+  overflow: hidden;
+  margin-top: $default-gutter;
+  margin-bottom: $default-gutter;
+
+  .item-link {
+    @include linked-component(1);
+  }
+
+  .listing-image-wrapper {
+    width: 100%;
+    height: 125px;
+    overflow: hidden;
+
+    @include respond-to(m) {
+      height: 175px;
+    }
+
+    img {
+      @include vertical-align-middle;
+      width:100%
+    }
+  }
+
+  .listing-content-wrapper {
+    margin: 30px;
+
+    @include respond-to(m) {
+    height: 250px;
+    }
+  }
+
+  h3 {
+    @include type-layout(25px, 35px);
+    @include margin(0 0 0 0);
+  }
+
+  .listing-detail {
+    @include sans-upper-dark;
+    @include type-layout(xs, 20px);
+    @include margin(7px 0 15px 0);
+  }
+
+  .listing-intro-text {
+    @include margin(10px 0 0 0);
+  }
+
+}

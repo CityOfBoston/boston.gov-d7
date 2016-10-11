@@ -1,0 +1,129 @@
+// Form Hub Overrides
+//
+// These are the override base styles applied to HTML form elements on the hub.
+
+// Select list
+//
+// Styling for repacement code from easydropdowns plugin
+
+.page{
+
+  .dropdown.open:after {
+    background: color(freedom-trail-red);
+  }
+
+  .dropdown.open .carat:after {
+    border-top-color: color(freedom-trail-red);
+  }
+
+  .featured {
+    padding-right: 62px;
+  }
+
+  .featured .dropdown {
+    min-width: calc(80vw - 65px);
+    height: 65px;
+
+    @include respond-to(xl) {
+      min-width: 700px;
+    }
+
+    &:after {
+      width: 62px;
+      margin-right: -68px;
+      border-top: 3px solid #091f2f;
+      border-right: 3px solid #091f2f;
+      border-bottom: 3px solid #091f2f;
+      border-left: none;
+      margin-top: -3px;
+      margin-bottom: -3px;
+    }
+
+    .carat {
+      right: 21px;
+      border: 10px solid transparent;
+      border-top: 10px solid color(white);
+      margin-right: -65px;
+    }
+
+    .carat:after {
+      margin-top: -13px;
+      right: -10px;
+      border: 10px solid transparent;
+      border-top: 10px solid color(select-bg-carat);
+    }
+
+    &.open .carat:after {
+      border-top-color: color(freedom-trail-red);
+    }
+
+    .selected, div ul li {
+      @include serif-italic-text(color(hub-deep-acqua));
+      @include type-layout(18px, 30px);
+      @include respond-to(s) {
+        @include type-layout(24px, 30px);
+      }
+      text-transform: none;
+      border-bottom: none;
+    }
+
+    div ul {
+      width: calc(100% - .25px);
+    }
+
+    div ul li {
+      padding: 12px 25px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+
+      &:hover, &:active {
+        color: color(text-bg);
+      }
+    }
+
+    div ul li.active {
+      @extend .visually-hidden;
+    }
+
+    .selected {
+      margin-right: 65px;
+      height: 59px;
+      position: absolute;
+      top: 0;
+      padding-top: 14px;
+      width: 100%;
+
+      a {
+        color: color(hub-deep-acqua);
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding: 14px 25px 10px;
+        transition: all 150ms ease-in-out;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        &:hover {
+        color: color(link-secondary);
+        }
+
+      }
+    }
+    &.open .selected a:hover {
+      color: color(text-bg);
+      background: color(select-bg-hover);
+    }
+
+    div {
+      top: 102%;
+      border-top: 0;
+      background-color: color(white);
+    }
+
+
+  }
+}

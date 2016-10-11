@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the bos_component_city_score_dashboard feature.
+ */
+
+include_once 'bos_component_city_score_dashboard.features.inc';

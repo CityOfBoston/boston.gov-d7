@@ -1,0 +1,12 @@
+name = Hub Context Global Header
+description = Hub Context Global Header
+core = 7.x
+package = Hub
+dependencies[] = context
+dependencies[] = ctools
+dependencies[] = hub_blocks
+dependencies[] = menu_block
+features[context][] = hub_context_global_header
+features[ctools][] = context:context:3
+features[features_api][] = api:2
+project path = sites/all/modules/features/

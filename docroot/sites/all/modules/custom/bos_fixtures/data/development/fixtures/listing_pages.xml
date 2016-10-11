@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listing_pages>
+  <listing_page>
+    <id>lp0001</id>
+    <author>-</author>
+    <title>Listing Page 0001</title>
+    <intro_image>banner.png</intro_image>
+    <header_component>fi0001</header_component>
+    <workbench_state>published</workbench_state>
+  </listing_page>
+  <listing_page>
+    <id>lp0002</id>
+    <author>-</author>
+    <title>Listing Page 0002</title>
+    <intro_image>banner.png</intro_image>
+    <header_component>ht0001</header_component>
+    <workbench_state>published</workbench_state>
+  </listing_page>
+  <listing_page>
+    <id>lp0003</id>
+    <author>-</author>
+    <title>Listing Page 0003</title>
+    <intro_image>banner.png</intro_image>
+    <workbench_state>published</workbench_state>
+  </listing_page>
+  <listing_page>
+    <id>lp0004</id>
+    <author>-</author>
+    <title>Listing Page 0004</title>
+    <header_component>fi0002</header_component>
+    <workbench_state>published</workbench_state>
+  </listing_page>
+  <listing_page>
+    <id>lp0005</id>
+    <author>-</author>
+    <title>Listing Page 0005</title>
+    <header_component>ht0002</header_component>
+    <workbench_state>published</workbench_state>
+  </listing_page>
+  <listing_page>
+    <id>lp0006</id>
+    <author>-</author>
+    <title>Listing Page 0006</title>
+    <workbench_state>published</workbench_state>
+  </listing_page>
+  <listing_page>
+    <id>lp0007</id>
+    <author>-</author>
+    <title>Transaction Landing Page</title>
+    <components>list0001</components>
+    <workbench_state>published</workbench_state>
+  </listing_page>
+</listing_pages>

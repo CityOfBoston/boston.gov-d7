@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<landing_pages>
+  <landing_page>
+    <id>lanpage0001</id>
+    <author>-</author>
+    <title>Landing Page Fixture 0001</title>
+    <workbench_state>published</workbench_state>
+  </landing_page>
+  <landing_page>
+    <id>lanpage0002</id>
+    <author>-</author>
+    <title>Component Demo Page</title>
+    <workbench_state>published</workbench_state>
+    <components>gridprog0001,gridplace0001,txt0001</components>
+  </landing_page>
+</landing_pages>

@@ -1,0 +1,14 @@
+name = Boston Component Status Override
+core = 7.x
+package = Boston
+version = 7.x-1.2
+dependencies[] = bos_shared_fields
+dependencies[] = entityreference
+dependencies[] = features
+dependencies[] = paragraphs
+features[features_api][] = api:2
+features[field_base][] = field_override_message
+features[field_base][] = field_status_item
+features[field_instance][] = paragraphs_item-status_override-field_override_message
+features[field_instance][] = paragraphs_item-status_override-field_status_item
+features[paragraphs][] = status_override

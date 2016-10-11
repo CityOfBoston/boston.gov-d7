@@ -1,0 +1,120 @@
+table.responsive-table {
+  @include respond-to(m) {
+    width: 100%;
+    margin:0;
+    padding:0;
+  }
+}
+
+table.responsive-table thead {
+  display: none;
+  text-transform: uppercase;
+  @include respond-to(m) {
+    display: table-header-group;
+  }
+}
+
+table.responsive-table th {
+  display: none;
+  background-color: color(charles-blue);
+  @include sans-upper-dark(color(white));
+  @include respond-to(m) {
+    display: table-cell;
+  }
+}
+
+table.responsive-table tr {
+  display: block;
+  @include respond-to(m) {
+    display: table-row;
+  }
+}
+
+table.responsive-table tr:after {
+  content: "";
+  display: table;
+  clear: both;
+  margin-bottom: 15px;
+  @include respond-to(m) {
+    display: none;
+    margin-bottom: 0;
+  }
+}
+
+table.responsive-table tr:before {
+  display: block;
+  @include respond-to(m) {
+    display: none;
+  }
+}
+
+table.responsive-table td {
+  display: block;
+  float: left;
+  clear: left;
+  width: 100%;
+  text-align: right;
+  padding: 10px;
+  @include respond-to(m) {
+    width: inherit;
+    clear: none;
+    float: none;
+    display: table-cell;
+    text-align: center;
+  }
+}
+
+table.responsive-table td:before {
+  content: attr(data-label);
+  float: left;
+  text-transform: uppercase;
+  font-weight: bold;
+  @include respond-to(m) {
+    display: none;
+  }
+}
+
+table.responsive-table,
+table.responsive-table * {
+  border-color: color(blue-extra-dark);
+}
+
+table.responsive-table {
+  border: none;
+  @include respond-to(m) {
+    border-width: 1px;
+    border-style: solid;
+  }
+}
+
+table.responsive-table tr {
+  border-width: 1px;
+}
+
+table.responsive-table td {
+  border: 1px solid color(blue-extra-dark);
+  &:not(:last-child) {
+    border-bottom: none;
+  }
+  @include respond-to(m) {
+    border-right-width: 1px;
+    border-right-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    &:last-child {
+      border-right: none;
+    }
+  }
+}
+
+table.responsive-table th {
+  border: 1px solid color(blue-extra-dark);
+}
+
+table.responsive-table--horizontal th:not(:last-child) {
+  border-right-color: color(white);
+}
+
+table.responsive-table--vertical tr:not(:last-child) th {
+  border-bottom-color: color(white);
+}

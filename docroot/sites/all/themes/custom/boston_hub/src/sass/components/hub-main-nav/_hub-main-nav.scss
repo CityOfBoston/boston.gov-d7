@@ -1,0 +1,26 @@
+// Main Navigation :: Hub
+//
+// Specific side drawer navigation styles for the Hub.
+//
+// Markup: hub-main-nav.hbs
+//
+// Style guide: components.navigation.main-nav-hub
+
+.main-navigation {
+
+  .main-navigation-title {
+    @extend h4;
+    background: none;
+    margin: 0;
+    padding: 0 0 1.5em;
+    text-align: center;
+    color: color(text-bg);
+  }
+
+}
+
+.logged-in .main-navigation {
+  .login-link {
+    display: none;
+  }
+}

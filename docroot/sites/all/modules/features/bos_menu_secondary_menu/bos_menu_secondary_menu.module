@@ -1,0 +1,32 @@
+<?php
+/**
+ * @file
+ * Code for the bos_menu_secondary_menu feature.
+ */
+
+include_once 'bos_menu_secondary_menu.features.inc';
+
+/**
+ * Implements hook_menu_link_alter().
+ */
+function bos_menu_secondary_menu_menu_link_alter(&$item) {
+  $valid_menus = ['menu-secondary-menu', 'main-menu'];
+  // If there is a link with 311 in the title, and therefore adhering to the 311
+  // brand, place the three-one-one class on the link's class attribute.
+  if (in_array($item['menu_name'], $valid_menus)) {
+    if (strpos($item['link_title'], '311') !== FALSE) {
+      if (isset($item['options']['attributes']['class'])) {
+        if (strpos($item['options']['attributes']['class'], 'three-one-one') === FALSE) {
+          $item['options']['attributes']['class'] .= ' three-one-one';
+        }
+      }
+      else {
+        $item['options']['attributes']['class'] = 'three-one-one';
+      }
+    }
+  }
+  if ($item['menu_name'] === 'menu-secondary-menu' && $item['link_title'] === 'Feedback') {
+    $item['options']['attributes']['class'] = 'feedback-link modal-link';
+    $item['options']['attributes']['data-modal'] = 'feedback';
+  }
+}

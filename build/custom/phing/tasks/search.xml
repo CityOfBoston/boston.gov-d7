@@ -1,0 +1,60 @@
+<project name="search" default="search:solr_build">
+
+  <target name="search:acquia" description="Enable modules to connect to Acquia SOLR Search platform">
+      <exec dir="${docroot}" command="${drush.cmd} dis hub_settings_apache_solr_local_dev -y" logoutput="true"/>
+      <exec dir="${docroot}" command="${drush.cmd} en acquia_agent acquia_search apachesolr acquia_search_multi_subs apachesolr_search search -y" logoutput="true"/>
+    <exec dir="${docroot}" command="${drush.cmd} cron --verbose --yes" logoutput="true"/>
+  </target>
+
+  <target name="search:solr:build" description="Download and build Apache SOLR Search platform to work with Spyglass">
+      <if>
+      <available file='${repo.root}/solr' type='dir' property="solr_here"/>
+          <then>
+              <delete dir="${repo.root}/solr" quiet="true" failonerror="false"/>
+          </then>
+      </if>
+      <echo>Creating solr folder ${repo.root}/solr</echo>
+      <exec command="mkdir ${repo.root}/solr" logoutput="true"/>
+
+      <echo>Downloading Apache Solr 3.5.0 to ${solr.root}.tgz</echo>
+      <exec output="${solr.root}.tgz" command="curl https://archive.apache.org/dist/lucene/solr/3.5.0/apache-solr-3.5.0.tgz" logoutput="true"/>
+
+      <echo>Expanding Solr in ${solr.root}</echo>
+      <exec command="tar -xvf ${solr.root}.tgz -C ${repo.root}/solr/" logoutput="true"/>
+
+      <delete file="${solr.root}.tgz"/>
+
+      <phingcall target="search:solr:schema"/>
+
+      <exec dir="${docroot}" command="${drush.cmd} dis acquia_search acquia_search_multi_subs acquia_agent -y" logoutput="true"/>
+      <exec dir="${docroot}" command="${drush.cmd} solr-set-env-url http://localhost:8983/solr/collection1" logoutput="true"/>
+      <exec dir="${docroot}" command="${drush.cmd} en hub_settings_apache_solr_local_dev -y" logoutput="true"/>
+      <exec dir="${docroot}" command="${drush.cmd} fr hub_settings_apache_solr_local_dev -y" logoutput="true"/>
+      
+      <phingcall target="search:solr:index"/>
+  </target>
+
+  <target name="search:solr:schema" description="Move drupal schema files to the proper solr directory">
+    <echo>Moving schema files from Drupal to Solr </echo>
+    <exec command="cp -r ${solr.root}/example/  ${solr.root}/spyglass"/>
+
+    <exec command="mv ${solr.root}/spyglass/solr/conf/protwords.txt ${solr.root}/spyglass/solr/conf/protwords.txt.BAK"/>
+    <exec command="mv ${solr.root}/spyglass/solr/conf/schema.xml ${solr.root}/spyglass/solr/conf/schema.xml.BAK"/>
+    <exec command="mv ${solr.root}/spyglass/solr/conf/solrconfig.xml ${solr.root}/spyglass/solr/conf/solrconfig.xml.BAK"/>
+
+    <exec command="cp ${docroot}/sites/all/modules/contrib/apachesolr/solr-conf/solr-3.x/schema.xml ${solr.root}/spyglass/solr/conf/schema.xml"/>
+    <exec command="cp ${docroot}/sites/all/modules/contrib/apachesolr/solr-conf/solr-3.x/solrconfig.xml ${solr.root}/spyglass/solr/conf/solrconfig.xml"/>
+    <exec command="cp ${docroot}/sites/all/modules/contrib/apachesolr/solr-conf/solr-3.x/protwords.txt ${solr.root}/spyglass/solr/conf/protwords.txt"/>
+  </target>
+
+  <target name="search:solr:start" description="Start the solr server">
+    <exec dir="${solr.root}/spyglass" command="java -jar start.jar" logoutput="true"/>
+  </target>
+
+  <target name="search:solr:index" description="Index all content for local solr">
+    <exec dir="${docroot}" command="${drush.cmd} solr-delete-index" logoutput="true"/>
+    <exec dir="${docroot}" command="${drush.cmd} solr-mark-all" logoutput="true"/>
+    <exec dir="${docroot}" command="${drush.cmd} solr-index" logoutput="true"/>
+    <exec dir="${docroot}" command="${drush.cmd} cron" logoutput="true"/>
+  </target>
+</project>

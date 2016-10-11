@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Hub Context Search Blocks feature.
+ */
+
+include_once 'hub_context_search_blocks.features.inc';

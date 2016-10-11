@@ -1,0 +1,32 @@
+.node-person-profile {
+  @include respond-to(xl) {
+    margin-top: 65px;
+  }
+
+  .person-profile-photo {
+    padding-top: 0;
+
+    img {
+      border-radius: 100%;
+    }
+  }
+
+  .person-profile-bio.squiggle-border-top {
+    margin-top: 20px;
+    padding-top: 20px;
+  }
+
+  .person-profile-display-name {
+    margin: 0;
+  }
+
+  .person-profile-position-title {
+    @include type-layout(m);
+    font-style: italic;
+    color: color(text-dark);
+
+    @include respond-to(xl) {
+      @include type-layout(l);
+    }
+  }
+}

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<contacts>
+  <contact>
+    <id>con0001</id>
+    <name>Department Profile Contact 01</name>
+    <description>
+      This is the sample description text for Department Profile Contact 01.
+    </description>
+    <department_profile>dp0001</department_profile>
+  </contact>
+</contacts>

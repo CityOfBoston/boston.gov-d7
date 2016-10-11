@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the bos_vocabulary_holidays feature.
+ */
+
+include_once 'bos_vocabulary_holidays.features.inc';

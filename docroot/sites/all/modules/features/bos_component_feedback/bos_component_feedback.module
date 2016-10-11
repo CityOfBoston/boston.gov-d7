@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Boston Component Feedback feature.
+ */
+
+include_once 'bos_component_feedback.features.inc';

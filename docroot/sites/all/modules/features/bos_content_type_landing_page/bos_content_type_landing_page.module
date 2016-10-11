@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Bos Content Type Landing Page feature.
+ */
+
+include_once 'bos_content_type_landing_page.features.inc';

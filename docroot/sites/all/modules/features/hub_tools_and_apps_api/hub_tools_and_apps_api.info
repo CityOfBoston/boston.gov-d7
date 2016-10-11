@@ -1,0 +1,11 @@
+name = Hub Tools and Apps API
+description = Hub Tools and Apps API
+core = 7.x
+package = Hub
+dependencies[] = ctools
+dependencies[] = rest_server
+dependencies[] = services
+dependencies[] = services_api_key_auth
+features[ctools][] = services:services:3
+features[features_api][] = api:2
+features[services_endpoint][] = tools_apps

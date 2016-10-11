@@ -1,0 +1,37 @@
+.node-type-listing-page {
+
+  // Removes top margin of component for paragraph-item-list on listing pages only
+  // (in case listings are eventually used as components on other node-types)
+  .paragraphs-item-list.component-section {
+    padding-top: 0;
+  }
+
+  // Hides unused elements on listing pages only
+  // (in case listings are eventually used as components on other node-types)
+  .paragraphs-item-list  .field-name-field-component-title,
+  .paragraphs-item-list .component-contact,
+  .paragraphs-item-list  .section-header {
+    display: none;
+  }
+
+  // Removes padding added for topic page spacing
+  .view-bos-department-listing {
+    padding-top: 0;
+  }
+
+  .listing-group-title {
+    margin-bottom: 0;
+    border-bottom: solid 8px;
+    padding-bottom: .5rem;
+    margin-top: 5rem;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  .description {
+    font-style: italic;
+  }
+
+}

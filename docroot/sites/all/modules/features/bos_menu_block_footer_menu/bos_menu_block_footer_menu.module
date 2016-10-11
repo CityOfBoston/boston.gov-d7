@@ -1,0 +1,29 @@
+<?php
+/**
+ * @file
+ * Code for the Boston Menu Block Footer Menu feature.
+ */
+
+include_once 'bos_menu_block_footer_menu.features.inc';
+
+/**
+ * Implements hook_COMPONENT_alter().
+ *
+ * Make the footer menu not show has overridden in features.
+ */
+function bos_menu_block_footer_menu_default_fe_block_settings_alter(&$blocks) {
+  global $theme;
+  if (isset($blocks['menu_block-2'])) {
+    $block = &$blocks['menu_block-2'];
+    // Check for one of the two main sub themes. If found, alter their data to
+    // reflect the current theme. Needed since this is reused across hub and
+    // public sites.
+    if (isset($block['themes']['boston_hub']) || isset($block['themes']['boston_public'])) {
+      $block_theme = isset($block['themes']['boston_public']) ? 'boston_public' : 'boston_hub';
+      $save_block = $block['themes'][$block_theme];
+      unset($block['themes'][$block_theme]);
+      $block['themes'][$theme] = $save_block;
+      $block['themes'][$theme]['theme'] = $theme;
+    }
+  }
+}

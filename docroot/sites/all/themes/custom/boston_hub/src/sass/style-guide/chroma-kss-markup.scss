@@ -1,0 +1,11 @@
+// Build the markup needed for the color section of the KSS style guide.
+
+// Include chroma's optional kss module.
+@import 'chroma/kss';
+// Include the colors defined for your project.
+@import '../init/colors';
+
+// sass-lint:disable Comment
+/*
+#{chroma-kss-markup()}
+*/

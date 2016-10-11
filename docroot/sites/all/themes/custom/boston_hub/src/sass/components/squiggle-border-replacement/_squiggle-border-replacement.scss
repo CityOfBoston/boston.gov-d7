@@ -1,0 +1,13 @@
+// Replaces the Squiggle border from the base Boston theme 
+// with a 3px dotted border.
+
+.squiggle-border-bottom {
+  border-bottom: 3px dotted color(border-dotted);
+  margin-bottom: 25px;
+  padding-bottom: 25px;
+}
+
+.squiggle-border-top {
+  border-top: 3px dotted color(border-dotted);
+  padding-top: 25px;
+}

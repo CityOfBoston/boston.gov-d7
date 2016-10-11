@@ -1,0 +1,28 @@
+// Admin Toolbar
+//
+// Adds more specific styles for admin menu to override base styles that affect it.
+// No Examples available.
+//
+// Style guide: components.admin-toolbar
+
+
+.admin-menu {
+
+  header {
+    top: 20px;
+  }
+
+  .topic-nav.sticky {
+    margin-top: 20px;
+  }
+
+  .hide-shadow-layer {
+    margin-top: 20px;
+  }
+
+  img.admin-menu-icon {
+    height: 16px;
+    width: 16px;
+  }
+
+}

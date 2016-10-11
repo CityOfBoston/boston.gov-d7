@@ -1,0 +1,35 @@
+<?php
+/**
+ * @file
+ * Code for the bos_content_type_status_item feature.
+ */
+
+include_once 'bos_content_type_status_item.features.inc';
+
+/**
+ * Implements hook_menu().
+ */
+function bos_content_type_status_item_menu() {
+  // Add a page for previewing the next 7 days worth of homepage status items.
+  return [
+    'homepage-status/preview' => [
+      'title' => 'Upcoming Homepage Status',
+      'page callback' => '_homepage_status_callback',
+      'access arguments' => array('access workbench'),
+    ],
+  ];
+}
+
+/**
+ * Minimal preview of upcoming days and their statuses.
+ */
+function _homepage_status_callback() {
+  $days = range(1, 7);
+  $output = '';
+  foreach ($days as $day) {
+    $timestamp = strtotime("+$day day");
+    $iso = date('Y-m-d', $timestamp);
+    $output .= views_embed_view('status_displays', 'homepage_status', $iso);
+  }
+  return $output;
+}

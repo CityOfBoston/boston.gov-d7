@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<txt_one_cols>
+  <txt_one_col>
+    <id>txtonecol0001</id>
+    <middle_column><![CDATA[<table class="responsive-table responsive-table--horizontal"><thead><tr><th scope="col">header 1</th><th scope="col">header 2</th><th scope="col">header 3</th></tr></thead><tbody><tr><td data-label="header 1">header 1 value</td><td data-label="header 2">header 2 value</td><td data-label="header 3">header 3 value</td></tr><tr><td data-label="header 1">header 1 value</td><td data-label="header 2">header 2 value</td><td data-label="header 3">header 3 value</td></tr></tbody></table><p>&nbsp;</p>]]></middle_column>
+  </txt_one_col>
+  <txt_one_col>
+    <id>txtonecol0002</id>
+    <middle_column><![CDATA[<table class="responsive-table responsive-table--vertical"><tbody><tr><th scope="row">header 1</th><td data-label="header 1">header 1 value</td><td data-label="header 1">header 1 value</td><td data-label="header 1">header 1 value</td></tr><tr><th scope="row">header 2</th><td data-label="header 2">header 2 value</td><td data-label="header 2">header 2 value</td><td data-label="header 2">header 2 value</td></tr><tr><th scope="row">header 3</th><td data-label="header 3">header 3 value</td><td data-label="header 3">header 3 value</td><td data-label="header 3">header 3 value</td></tr></tbody></table><p>&nbsp;</p>]]></middle_column>
+  </txt_one_col>
+</txt_one_cols>

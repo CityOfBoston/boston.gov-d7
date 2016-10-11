@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grid_programs>
+  <grid_program>
+    <id>gridprog0001</id>
+    <title>Demonstration Program Grid</title>
+    <short_title>Program Grid</short_title>
+    <contact>con0001</contact>
+    <programs>program0001,program0002,program0003,program0004</programs>
+  </grid_program>
+</grid_programs>

@@ -1,0 +1,200 @@
+// Text Header Styles
+
+// We need to audit use of intro-text so that we can insure it works
+// everywhere.
+.intro-text {
+  padding: 0 0 0.25em;
+}
+
+.paragraphs-item-header-text {
+  // padding-top: 35px;
+  padding-top: 0;
+
+  h1 {
+    margin-top: .75rem;
+    margin-bottom: 0;
+  }
+
+  .intro-text {
+    font-style: italic;
+    color: color(text-dark);
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .component-contact {  // Overrides some existing styles. Will need to be refactored.
+    position:relative;
+    max-width: 100%;
+    text-align: left;
+  }
+
+  .squiggle-border-bottom {
+    background: none;
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
+}
+
+// Featured Item Styles
+
+.paragraphs-item-featured-item {
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-bottom: 50px;
+  border: 20px solid color(grey-extra-light);
+
+  h1.title.featured-title {
+    margin: 0 0 39px;
+  }
+
+}
+
+.featured-item-details {
+  padding: 0 3% 3%;
+  @include respond-to(xl) {
+    margin-bottom: 0;
+  }
+
+  &--relative {
+    position: relative;
+  }
+}
+
+.node-type-listing-page .post-featured-item-wrapper {
+  border: 20px solid color(border);
+  overflow:hidden;
+  position: relative;
+}
+
+.event-featured-item-wrapper {
+  background: color(white);
+  margin-bottom: 30px;
+}
+
+.event-featured-item-wrapper,
+.post-featured-item-wrapper {
+
+  .featured-item-date {
+    width: 84px;
+    background-color: color(link);
+    background-image: url('../img/ribbon-bottom-white.svg');
+    background-repeat: no-repeat;
+    background-position: center bottom -1px;
+    text-align: center;
+    color: color(text-bg);
+    padding: 25px 10px 30px 10px;
+    margin-top: 0;
+    float: left;
+    font-family: $montserrat;
+    font-weight: 700;
+    text-transform: uppercase;
+    @include type-layout(24px, 26px);
+
+    @include respond-to(m) {
+      margin-top: -39px;
+    }
+
+    @include respond-to(xl) {
+      margin-top: 0;
+    }
+
+  }
+
+  h3.featured-event-title {
+    margin-left: 0;
+    clear: both;
+    padding-top: 20px;
+
+    @include respond-to(m) {
+      padding-top: 0px;
+      margin-left: 100px;
+      clear: none;
+    }
+  }
+
+  .featured-description {
+    font-style: italic;
+    padding-top: 20px;
+  }
+
+  .featured-item-thumb {
+    display: none;
+
+    @include respond-to(xl) {
+      display: block;
+      margin-bottom: 0;
+    }
+  }
+
+  .featured-post-thumb.featured-item-thumb {
+    display: block;
+
+    .featured-thumb-wrapper {
+      height: 350px;
+
+      @include respond-to(m) {
+        height: 100%;
+      }
+    }
+
+  }
+
+  .featured-thumb-wrapper {
+    overflow: hidden;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    max-width: calc(100vw - 24px);
+
+    .featured-banner {
+      @include type-layout(xxs);
+
+      background-color: color(text-red);
+      color: color(text-bg);
+      font-family: $montserrat;
+      text-transform: uppercase;
+      text-align: center;
+      transform: rotate(45deg);
+      display: inline-block;
+      padding: 0 50px;
+      line-height: 2.5em;
+      position: absolute;
+      top: 25px;
+      right: -49px;
+      z-index: 2;
+    }
+
+    img {
+      min-width: 100%;
+      max-width: none;
+      height: auto;
+      width: auto;
+      min-height: 100%;
+      position: relative;
+      transform: translate(-50%, -50%);
+      top: 50%;
+      left: 50%;
+      z-index: 1;
+    }
+
+  }
+
+}
+
+.post-featured-item-wrapper:hover {
+  background-color: color(link);
+
+  .feature-header h3,
+  .intro-text {
+    color: color(text-bg);
+  }
+}
+
+.event-featured-item-wrapper {
+  .featured-thumb-wrapper {
+    margin-top: 0;
+    margin-right: -2px;
+  }
+}

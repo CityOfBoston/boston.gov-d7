@@ -1,0 +1,106 @@
+<table class="form-table__sticky-header" style="position: fixed; visibility: visible;">
+<thead>
+  <tr>
+    <th>Permission</th>
+    <th class="form-table__narrow-column">anonymous user</th>
+    <th class="form-table__narrow-column">authenticated user</th>
+    <th class="form-table__narrow-column">administrator</th>
+  </tr>
+</thead>
+</table>
+
+<table class="form-table {{modifier_class}}">
+<thead>
+  <tr>
+    <th>Permission</th>
+    <th class="form-table__narrow-column">anonymous user</th>
+    <th class="form-table__narrow-column">authenticated user</th>
+    <th class="form-table__narrow-column">administrator</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class="module" colspan="4">Block</td>
+  </tr>
+  <tr>
+    <td class="permission">
+      <div class="form-item form-type-item">
+        Administer blocks
+      </div>
+    </td>
+    <td class="form-table__narrow-column">
+      <div class="form-item form-type-checkbox">
+        <label class="element-invisible" for="edit-1-administer-blocks">anonymous user: Administer blocks </label>
+        <input class="form-checkbox" id="edit-1-administer-blocks" name="1[administer blocks]" value="administer blocks" type="checkbox">
+      </div>
+    </td>
+    <td class="form-table__narrow-column">
+      <div class="form-item form-type-checkbox form-item-2-administer-blocks">
+        <label class="element-invisible" for="edit-2-administer-blocks">authenticated user: Administer blocks </label>
+        <input class="rid-2 form-checkbox" id="edit-2-administer-blocks" name="2[administer blocks]" value="administer blocks" type="checkbox">
+      </div>
+    </td>
+    <td class="form-table__narrow-column">
+      <div class="form-item form-type-checkbox form-item-3-administer-blocks">
+        <label class="element-invisible" for="edit-3-administer-blocks">administrator: Administer blocks </label>
+        <input class="rid-3 form-checkbox real-checkbox" id="edit-3-administer-blocks" name="3[administer blocks]" value="administer blocks" checked="checked" type="checkbox"><input style="display: none;" title="This permission is inherited from the authenticated user role." class="dummy-checkbox" disabled="disabled" checked="checked" type="checkbox">
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td class="module" colspan="4">Devel</td>
+  </tr>
+  <tr>
+    <td class="permission">
+      <div id="edit-access-devel-information" class="form-item form-type-item">
+        Access developer information
+        <div class="description">View developer output like variable printouts, query log, etc. <em class="permission-warning">Warning: Give to trusted roles only; this permission has security implications.</em></div>
+      </div>
+    </td>
+    <td class="form-table__narrow-column">
+      <div class="form-item form-type-checkbox form-item-1-access-devel-information">
+        <label class="element-invisible" for="edit-1-access-devel-information">anonymous user: Access developer information </label>
+        <input class="rid-1 form-checkbox" id="edit-1-access-devel-information" name="1[access devel information]" value="access devel information" type="checkbox">
+      </div>
+    </td>
+    <td class="form-table__narrow-column">
+      <div class="form-item form-type-checkbox form-item-2-access-devel-information">
+        <label class="element-invisible" for="edit-2-access-devel-information">authenticated user: Access developer information </label>
+        <input class="rid-2 form-checkbox" id="edit-2-access-devel-information" name="2[access devel information]" value="access devel information" type="checkbox">
+      </div>
+    </td>
+    <td class="form-table__narrow-column">
+      <div class="form-item form-type-checkbox form-item-3-access-devel-information">
+        <label class="element-invisible" for="edit-3-access-devel-information">administrator: Access developer information </label>
+        <input class="rid-3 form-checkbox real-checkbox" id="edit-3-access-devel-information" name="3[access devel information]" value="access devel information" checked="checked" type="checkbox"><input style="display: none;" title="This permission is inherited from the authenticated user role." class="dummy-checkbox" disabled="disabled" checked="checked" type="checkbox">
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td class="permission">
+      <div id="edit-execute-php-code" class="form-item form-type-item">
+        Execute PHP code
+        <div class="description">Run arbitrary PHP from a block. <em class="permission-warning">Warning: Give to trusted roles only; this permission has security implications.</em></div>
+      </div>
+    </td>
+    <td class="form-table__narrow-column">
+      <div class="form-item form-type-checkbox form-item-1-execute-php-code">
+        <label class="element-invisible" for="edit-1-execute-php-code">anonymous user: Execute PHP code </label>
+        <input class="rid-1 form-checkbox" id="edit-1-execute-php-code" name="1[execute php code]" value="execute php code" type="checkbox">
+      </div>
+    </td>
+    <td class="form-table__narrow-column">
+      <div class="form-item form-type-checkbox form-item-2-execute-php-code">
+        <label class="element-invisible" for="edit-2-execute-php-code">authenticated user: Execute PHP code </label>
+        <input class="rid-2 form-checkbox" id="edit-2-execute-php-code" name="2[execute php code]" value="execute php code" type="checkbox">
+      </div>
+    </td>
+    <td class="form-table__narrow-column">
+      <div class="form-item form-type-checkbox form-item-3-execute-php-code">
+        <label class="element-invisible" for="edit-3-execute-php-code">administrator: Execute PHP code </label>
+        <input class="rid-3 form-checkbox real-checkbox" id="edit-3-execute-php-code" name="3[execute php code]" value="execute php code" checked="checked" type="checkbox"><input style="display: none;" title="This permission is inherited from the authenticated user role." class="dummy-checkbox" disabled="disabled" checked="checked" type="checkbox">
+      </div>
+    </td>
+  </tr>
+</tbody>
+</table>

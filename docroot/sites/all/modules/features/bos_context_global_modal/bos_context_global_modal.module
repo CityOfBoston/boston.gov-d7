@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Boston Global Hidden Modal Region feature.
+ */
+
+include_once 'bos_context_global_modal.features.inc';

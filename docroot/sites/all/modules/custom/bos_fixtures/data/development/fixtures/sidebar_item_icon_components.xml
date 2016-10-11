@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sidebar_items>
+  <sidebar_item>
+    <id>sii0001</id>
+    <title>Side Item w/ Icon 0001</title>
+    <text><![CDATA[<p>Let&#39;s try this:</p><ul><li>Icon 1</li><li>Icon 2</li><li>Icon 3</li></ul>]]></text>
+    <icon>icon-time</icon>
+  </sidebar_item>
+</sidebar_items>

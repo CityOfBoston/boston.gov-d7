@@ -1,0 +1,80 @@
+// Search Slide Down
+//
+// Styles for slide down that contains search mechanisms.
+
+#block-bos-blocks-search {
+  position: unset;
+}
+
+.slide-down-element {
+  display: none;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 3.6em;
+  z-index: -1;
+
+  .content {
+    background-color: color(bos-search-bg);
+    text-align: center;
+    color: color('text-dark');
+    padding: 85px 0 35px;
+  }
+
+  .search-close-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: color(close-button);
+    transition: background-color 0.3s ease;
+    background-image: url(../img/close-modal-icon.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+    width: 57px;
+    height: 57px;
+    padding: 0;
+
+    &:hover {
+      background-color: color(close-button-hover);
+    }
+  }
+
+  .slide-down-body {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+}
+
+.search-trigger {
+  position: absolute;
+  top: 1em;
+  right: 2.7em;
+  padding: 0;
+  background-color: transparent;
+
+  &:hover, &:active, &:focus {
+    background-color: transparent;
+  }
+
+  @include respond-to(l) {
+    right: 4em;
+  }
+}
+
+.drawer-trigger-search {
+  display: block;
+  text-indent: -999em;
+  background: url("../img/magnifying-glass-icon.svg") center center no-repeat transparent;
+  height: 31px;
+  width: 31px;
+  background-size: 20px;
+  margin: 0;
+  cursor: pointer;
+  overflow: hidden;
+
+  @include respond-to(l) {
+    background-size: 30px;
+  }
+}

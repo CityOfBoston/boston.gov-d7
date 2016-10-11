@@ -1,0 +1,38 @@
+behat:
+  config: ${repo.root}/tests/behat/local.yml
+  profile: local
+  # If true, `drush runserver` will be used for executing tests.
+  run-server: false
+  # This is used for ad-hoc creation of a server via `drush runserver`.
+  server-url: http://127.0.0.1:8080
+  # If true, PhantomJS GhostDriver will be launched with Behat.
+  launch-phantom: true
+  # An array of paths with behat tests that should be executed.
+  tags: ''
+
+composer:
+  bin: ${repo.root}/vendor/bin
+
+deploy:
+  dir: ${repo.root}/deploy
+  includes-file: ${core.phing.dir}/../files/deploy-includes.txt
+  excludes-file: ${core.phing.dir}/../files/deploy-excludes.txt
+
+docroot.relative: ${repo.root.relative}/docroot
+docroot: ${repo.root}/docroot
+
+# Drupal Account Credentials. These are used for installing Drupal.
+drupal:
+  account:
+    name: admin
+    password: admin
+    mail: no-reply@acquia.com
+
+drush:
+  bin: ${composer.bin}/drush
+  cmd: ${drush.bin} -r ${docroot} -l ${multisite.name}
+  root: ${docroot}
+
+reports:
+  localDir: ${repo.root}/reports
+  remoteDir: reports

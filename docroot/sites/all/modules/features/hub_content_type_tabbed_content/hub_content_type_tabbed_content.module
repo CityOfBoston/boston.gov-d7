@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the hub_content_type_tabbed_content feature.
+ */
+
+include_once 'hub_content_type_tabbed_content.features.inc';

@@ -1,0 +1,11 @@
+<?php
+/**
+ * @file
+ * Code for the Boston Event Type Vocabulary feature.
+ */
+
+include_once 'bos_vocabulary_event_type.features.inc';
+/**
+ * @file
+ * Code for the Boston Event type_vocabulary feature.
+ */

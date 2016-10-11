@@ -1,0 +1,12 @@
+name = Boston Vocabulary News Tags
+description = Boston Vocabulary News Tags
+core = 7.x
+package = Boston
+dependencies[] = ctools
+dependencies[] = features
+dependencies[] = strongarm
+dependencies[] = taxonomy
+features[ctools][] = strongarm:strongarm:1
+features[features_api][] = api:2
+features[taxonomy][] = news_tags
+features[variable][] = pathauto_taxonomy_term_news_tags_pattern

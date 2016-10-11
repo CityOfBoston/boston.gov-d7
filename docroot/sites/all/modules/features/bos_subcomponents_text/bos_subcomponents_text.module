@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Boston Text Subcomponents feature.
+ */
+
+include_once 'bos_subcomponents_text.features.inc';

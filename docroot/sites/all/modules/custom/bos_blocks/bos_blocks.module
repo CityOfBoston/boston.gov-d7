@@ -1,0 +1,44 @@
+<?php
+/**
+ * @file
+ * Contains code for Boston Blocks module.
+ */
+
+/**
+ * Implements hook_block_info().
+ */
+function bos_blocks_block_info() {
+  $blocks = array();
+  $blocks['search'] = array(
+    'info' => t('Boston.gov Search'),
+  );
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function bos_blocks_block_view($delta) {
+  $block_content = '';
+  $block['subject'] = '';
+  switch ($delta) {
+
+    case 'search':
+      $block_content = <<<SEARCH_TEXT
+<button class="drawer-close-button search-close-button" title="Close Search"></button>
+<div class="slide-down-body">
+  <span class="element-invisible slide-down-id">search</span>
+  <form accept-charset="UTF-8" action="//search.usa.gov/search" id="search_form" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /></div>
+    <input id="affiliate" name="affiliate" type="hidden" value="cob" />
+    <label for="query" class="hidden">Search</label>
+    <input autocomplete="off" class="usagov-search-autocomplete" placeholder="Search..." id="query" name="query" type="text" />
+    <button class="usagov-search-submit" type="submit" title="Search"></button>
+  </form>
+</div><!-- end .slide-down-body -->
+SEARCH_TEXT;
+      break;
+
+  }
+  $block['content'] = $block_content;
+  return $block;
+}

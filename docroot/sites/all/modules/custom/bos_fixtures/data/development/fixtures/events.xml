@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<events>
+  <event>
+    <id>e0001</id>
+    <author>-</author>
+    <title>Event Page Fixture</title>
+    <description>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pellentesque bibendum orci et feugiat. Duis eu hendrerit neque. Suspendisse iaculis tellus nec nunc pulvinar, ac sodales elit malesuada. Aenean at facilisis sem, in semper lectus. Etiam sapien ligula, pellentesque non.
+    </description>
+    <event_contact>Contact Person</event_contact>
+    <address>123 Main St</address>
+    <city>Boston</city>
+    <state>MA</state>
+    <zip>02118</zip>
+    <workbench_state>published</workbench_state>
+    <dates>
+      <from>2016-03-20 13:45:00</from>
+    </dates>
+    <details>
+      <title>Example Details</title>
+      <url>http://www.example.com</url>
+    </details>
+    <image>event-thumbnail.png</image>
+  </event>
+  <event>
+    <id>e0002</id>
+    <author>-</author>
+    <title>Event Beta Fixture</title>
+    <description>
+      Lorem ipsum dolor sit amet.
+    </description>
+    <event_contact>Contact Person</event_contact>
+    <address>123 Main St</address>
+    <city>Boston</city>
+    <state>MA</state>
+    <zip>02118</zip>
+    <workbench_state>published</workbench_state>
+    <dates>
+      <from>2016-03-20 14:45:00</from>
+    </dates>
+  </event>
+  <event>
+    <id>e0003</id>
+    <author>-</author>
+    <title>Event Charlie Fixture</title>
+    <description>
+      Lorem ipsum dolor sit amet.
+    </description>
+    <event_contact>Contact Person</event_contact>
+    <address>123 Main St</address>
+    <city>Boston</city>
+    <state>MA</state>
+    <zip>02118</zip>
+    <workbench_state>published</workbench_state>
+    <dates>
+      <from>2016-01-18 13:45:00</from>
+    </dates>
+  </event>
+  <event>
+    <id>e0004</id>
+    <author>-</author>
+    <title>Event Delta Fixture</title>
+    <description>
+      Lorem ipsum dolor sit amet.
+    </description>
+    <event_contact>Contact Person</event_contact>
+    <address>123 Main St</address>
+    <phone>555-555-5555</phone>
+    <cost>FREE</cost>
+    <city>Boston</city>
+    <state>MA</state>
+    <zip>02118</zip>
+    <workbench_state>published</workbench_state>
+    <dates>
+      <from>2016-02-05 13:45:00</from>
+      <to>2016-02-05 14:45:00</to>
+      <repeat>RRULE:FREQ=WEEKLY;INTERVAL=1;BYDAY=FR;COUNT=30;WKST=SU</repeat>
+    </dates>
+    <details>
+      <url>http://www.example.com</url>
+    </details>
+  </event>
+  <event>
+    <id>e0005</id>
+    <author>-</author>
+    <title>Event Page Fixture</title>
+    <description>
+      Lorem ipsum dolor sit amet.
+    </description>
+    <event_contact>Contact Person</event_contact>
+    <address>123 Main St</address>
+    <city>Boston</city>
+    <state>MA</state>
+    <zip>02118</zip>
+    <workbench_state>published</workbench_state>
+    <dates>
+      <from>2016-01-18 13:45:00</from>
+    </dates>
+  </event>
+</events>

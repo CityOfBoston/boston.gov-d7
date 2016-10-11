@@ -1,0 +1,54 @@
+<project name="validate" default="validate:all">
+
+  <!-- Run code sniffer against all custom code. -->
+  <target name="validate:phpcs" description="Runs PHP Code Sniffer against only custom modules.">
+    <property name="phpcs.ruleset" value="${repo.root}/vendor/drupal/coder/coder_sniffer/Drupal/ruleset.xml"/>
+
+    <!-- Sniff custom modules for drupal coding standards compliance. -->
+    <phpcodesniffer
+        standard="${phpcs.ruleset}"
+        showSniffs="false"
+        showWarnings="true"
+        haltonerror="true"
+        haltonwarning="true">
+      <fileset refid="files.php.custom.modules"/>
+      <formatter type="full" usefile="false"/>
+    </phpcodesniffer>
+
+    <!-- Sniff module files in features -->
+    <phpcodesniffer
+        standard="${phpcs.ruleset}"
+        showSniffs="false"
+        showWarnings="true"
+        haltonerror="true"
+        haltonwarning="true">
+      <fileset refid="files.php.features.modules"/>
+      <formatter type="full" usefile="false"/>
+    </phpcodesniffer>
+
+    <!-- Sniff JS and CSS in custom themes. -->
+    <!--
+    <phpcodesniffer
+        standard="${phpcs.ruleset}"
+        showSniffs="false"
+        showWarnings="true"
+        haltonerror="true"
+        haltonwarning="true"
+        verbosity="1">
+      <fileset refid="files.frontend.custom.themes"/>
+      <formatter type="full" usefile="false"/>
+    </phpcodesniffer>
+    -->
+
+    <!-- Sniff tests for PSR2 coding standards compliance. -->
+    <phpcodesniffer
+        standard="${phpcs.ruleset}"
+        showSniffs="false"
+        showWarnings="true"
+        haltonerror="true"
+        haltonwarning="true">
+      <fileset refid="files.php.tests"/>
+      <formatter type="full" usefile="false"/>
+    </phpcodesniffer>
+  </target>
+</project>

@@ -1,0 +1,14 @@
+name = Boston Component Featured Item
+description = Provides the feature item component.
+core = 7.x
+package = Boston
+dependencies[] = bos_shared_fields
+dependencies[] = entityreference
+dependencies[] = features
+dependencies[] = field_group
+dependencies[] = paragraphs
+features[ctools][] = field_group:field_group:1
+features[features_api][] = api:2
+features[field_group][] = group_basic_information|paragraphs_item|featured_item|form
+features[field_instance][] = paragraphs_item-featured_item-field_featured_item
+features[paragraphs][] = featured_item

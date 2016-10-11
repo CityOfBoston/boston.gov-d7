@@ -1,0 +1,85 @@
+imports:
+  - behat.yml
+
+local:
+  suites:
+    default:
+      paths:
+        - %paths.base%/features/public
+      contexts:
+        - Boston\Contexts\FeatureContext:
+            parameters:
+              environment:
+                # absolute path to local directory to store screenshots - do not include trailing slash
+                screenshot_dir: '/Users/username/Desktop/test'
+        - Boston\Contexts\MinkContext
+        - Boston\Contexts\ComponentContext
+        - Boston\Contexts\RoleContext
+        - Boston\Contexts\WorkflowContext
+        - Boston\Contexts\MenuContext
+        - Boston\Contexts\FieldContext
+        - Drupal\DrupalExtension\Context\DrupalContext
+        - Drupal\DrupalExtension\Context\MessageContext
+        - Drupal\DrupalExtension\Context\DrushContext
+  extensions:
+    Behat\MinkExtension:
+      javascript_session: selenium2
+      # configure the base url for your site
+      base_url: http://127.0.0.1:8888
+      # set default command for "Show last response" step.
+      show_cmd: "open %s"
+      # ADDITIONAL OPTIONS FOR WEB DRIVERS
+      # use the following 3 lines to user phantomjs
+      # browser_name: phantomjs
+      # selenium2:
+      #   wd_host: "http://localhost:8643/wd/hub"
+      #   browser: chrome
+      #
+      # use the following two lines for chromedriver
+      # selenium2:
+      #   browser: chrome
+      #
+      # use the following three lines to configure zombie.js.
+      # zombie:
+      #   node_modules_path: /usr/lib/node_modules/
+      #   auto_server: false
+      #
+      # use the following lines to disable SSL authentication for goutte.
+      # goutte:
+      #   guzzle_parameters:
+      #   verify: false
+      selenium2:
+        wd_host: http://127.0.0.1:4444/wd/hub
+        browser: chrome
+    Drupal\DrupalExtension:
+      drupal:
+        # This must be an absolute path.
+        drupal_root: ${docroot}
+      drush:
+        alias: '@self'
+
+hub:
+  suites:
+    default:
+      paths:
+        - %paths.base%/features/intranet
+  extensions:
+    Behat\MinkExtension:
+      javascript_session: selenium2
+      # configure the base url for your site
+      base_url: http://127.0.0.1:8889
+      # set default command for "Show last response" step.
+      show_cmd: "open %s"
+      # use the following lines to disable SSL authentication for goutte.
+      # goutte:
+      #   guzzle_parameters:
+      #   verify: false
+      selenium2:
+        wd_host: http://127.0.0.1:4444/wd/hub
+        browser: chrome
+    Drupal\DrupalExtension:
+      drupal:
+        # This must be an absolute path.
+        drupal_root: ${docroot}
+      drush:
+        alias: '@self'

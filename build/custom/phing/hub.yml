@@ -1,0 +1,24 @@
+multisite:
+  name: hub
+
+project:
+  profile:
+    name: hub_profile
+  cloud_alias: @thehub
+  themes:
+      - boston
+      - boston_hub
+  # Set this to 'initialize' to start a fresh install.
+  # Otherwise set it to 'sync' to sync from the stg environment.
+  build_db_from: sync
+
+behat:
+  # @see http://docs.behat.org/en/v2.5/guides/6.cli.html#gherkin-filters
+  tags: ~@bostongov
+  profile: hub
+  # This is used for ad-hoc creation of a server via `drush rs`.
+  # This needs to match a site entry in docroot/sites/sites.php.
+  server-url: http://127.0.0.1:8889
+
+solr:
+  root: ${repo.root}/solr/apache-solr-3.5.0

@@ -1,0 +1,49 @@
+// Hub Footer :: Hub
+//
+// Classes for Hub footer.
+//
+// Markup: hub-footer.hbs
+//
+// Style guide: components.footer
+
+.footer,
+%footer {
+
+  .container {
+    @include respond-to(m) {
+      padding-bottom: 10px;
+    }
+    @include respond-to(xl) {
+      padding-bottom: 0;
+    }
+  }
+
+  a {
+    color: color(link-secondary);
+
+    &:hover {
+      color: color(link-light);
+    }
+
+  }
+
+  .menu {
+    margin-bottom: 0;
+  }
+
+  .menu li:last-child {
+    margin-right: 1.25em;
+  }
+
+  .footer-feature {
+    @include sans-upper-dark(color(text-bg));
+    @include type-layout(xs);
+    letter-spacing: 1px;
+    padding: 0;
+    @include respond-to(xl) {
+      padding: 1.3em 1.3em 1.3em 0;
+      float: right;
+    }
+  }
+
+}

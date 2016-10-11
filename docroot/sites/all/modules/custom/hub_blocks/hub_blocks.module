@@ -1,0 +1,33 @@
+<?php
+/**
+ * @file
+ * Contains code for Boston Blocks module.
+ */
+
+/**
+ * Implements hook_block_info().
+ */
+function hub_blocks_block_info() {
+  $blocks = array();
+  $blocks['search'] = array(
+    'info' => t('Hub Search'),
+  );
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function hub_blocks_block_view($delta) {
+  $block['subject'] = '';
+  $block = module_invoke('search', 'block_view', 'search');
+  return $block;
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function hub_blocks_form_search_block_form_alter(&$form, &$form_state) {
+  // HTML5 placeholder attribute.
+  $form['search_block_form']['#attributes']['placeholder'] = t('Search...');
+}

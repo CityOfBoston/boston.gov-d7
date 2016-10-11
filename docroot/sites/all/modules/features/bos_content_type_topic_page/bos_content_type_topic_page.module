@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Boston Guide Content Type feature.
+ */
+
+include_once 'bos_content_type_topic_page.features.inc';

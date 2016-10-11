@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Boston Picture Breakpoints feature.
+ */
+
+include_once 'bos_picture_breakpoints.features.inc';

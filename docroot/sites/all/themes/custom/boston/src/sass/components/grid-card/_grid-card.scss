@@ -1,0 +1,56 @@
+.grid-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.grid-card__image {
+  position: relative;
+  > img {
+    display: block;
+  }
+}
+
+.grid-card {
+  background-color: color(white);
+
+  &.no-flex {
+    height: 420px;
+    overflow-y: hidden;
+  }
+
+  &:hover {
+    background-color: color(optimistic-blue);
+    * {
+      color: white;
+    }
+  }
+}
+
+.grid-card:hover .grid-card__image {
+  @include image-overlay;
+}
+
+.grid-card__text {
+  padding: 40px;
+}
+
+.grid-card__title {
+  font-style: italic;
+  color: color(link);
+  margin: 0;
+  font-size: 1.2rem;
+  @include respond-to(xl) {
+    font-size: 1.4rem;
+  }
+}
+
+.grid-card__subtitle {
+  @include sans-upper-dark;
+  font-size: 14px;
+  line-height: 1.25rem;
+}
+
+.grid-card__description {
+  margin-top: 20px;
+  color: color(text);
+}

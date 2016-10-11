@@ -1,0 +1,146 @@
+.paragraphs-items-field-components > .paragraphs-item-video {
+  @extend .fullwidth;
+  padding: 0;
+}
+
+.plyr {
+  width: 100%;
+  display: block;
+  background-size: cover;
+  position: relative;
+  padding-bottom: 56.25%;
+  overflow: hidden;
+  text-align: left;
+
+  @include respond-to(l) {
+    padding-bottom: 46%;
+  }
+
+  picture {
+    img {
+      transform: translate(-50%, -50%);
+      height: auto;
+      max-height: none;
+      max-width: none;
+      min-height: 100%;
+      min-width: 150%;
+      width: auto;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+    }
+  }
+
+  &--isPlaying {
+    background-color: color(charles-blue);
+    background-image: none;
+
+    .plyr {
+      &__overlay, &__meta {
+        display: none;
+      }
+    }
+
+    picture {
+      display: none;
+    }
+  }
+
+  &__overlay {
+    background-color: color(optimistic-blue-50);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  &__video {
+    margin: 0 auto;
+  }
+
+  &__meta, &__footer {
+    position: absolute;
+    top: 12%;
+    left: 5%;
+    right: 0;
+    color: color(white);
+  }
+
+  &__title {
+    position: static;
+    color: color(white);
+    text-decoration: none;
+    width: 90%;
+    border: none;
+    padding: 0;
+    margin: 0;
+    @include type-layout(22px, 23px);
+
+    @include respond-to(s) {
+      @include type-layout(35px, 36px);
+    }
+
+    @include respond-to(m) {
+      @include type-layout(xl, 47px);
+    }
+
+    @include respond-to(m) {
+      width: 65%;
+    }
+
+    @include respond-to(l) {
+      width: 55%;
+    }
+
+    @include respond-to(xl) {
+      width: 35%;
+    }
+  }
+
+  &__credit {
+    @include type-layout(18px, 18px);
+    font-family: $lora;
+    font-style: italic;
+    margin-top: 5px;
+  }
+
+  &__button {
+    padding: 0;
+    background-color: transparent;
+    display: block;
+  }
+
+  &__play {
+    width: 15%;
+    padding-bottom: 10%;
+    margin-top: 0.75em;
+    max-width: 100px;
+    max-height: 100px;
+    min-width: 44px;
+    min-height: 44px;
+    position: relative;
+    cursor: pointer;
+
+    @include respond-to(s) {
+      margin-top: 2em;
+    }
+
+    @include respond-to(l) {
+      margin-top: 3em;
+    }
+
+    img {
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  iframe {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+}

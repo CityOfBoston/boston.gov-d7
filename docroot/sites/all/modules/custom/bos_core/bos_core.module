@@ -1,0 +1,381 @@
+<?php
+/**
+ * @file
+ * This holds core configuration shared between all multisites.
+ */
+
+define('BOS_CORE_SVG_ELEMENTS', 'a altGlyph altGlyphDef altGlyphItem animate animateColor animateMotion animateTransform circle clipPath colo cursor defs desc ellipse feBlend feColorMatrix feComponentTransfer feComposite feConvolveMatrix feDiffuseLighting feDisplacementMap feDistantLight feFlood feFuncA feFuncB feFuncG feFuncR feGaussianBlur feImage feMerge feMergeNode feMorphology feOffset fePointLight feSpecularLighting feSpotLight feTile feTurbulence filter font fon fon fon fon fon foreignObject g glyph glyphRef hkern image line linearGradient marker mask metadata missin mpath path pattern polygon polyline radialGradient rect script set stop style svg switch symbol text textPath title tref tspan use view vkern');
+
+/**
+ * Implements hook_views_api().
+ */
+function bos_core_views_api() {
+  return array(
+    'api' => 3.0,
+    'path' => drupal_get_path('module', 'bos_core') . '/includes',
+  );
+}
+
+/**
+ * Implements hook_entity_info_alter().
+ */
+function bos_core_entity_info_alter(&$info) {
+  $view_modes = array(
+    'field_collection_item' => array(
+      'view modes' => array(
+        'group_of_links' => array(
+          'label' => 'Group of Links',
+        ),
+      ),
+    ),
+    'node' => array(
+      'view modes' => array(
+        'article' => array(
+          'label' => t('Article'),
+        ),
+        'calendar_listing' => array(
+          'label' => t('Calendar Listing'),
+        ),
+        'contact' => array(
+          'label' => t('Contact'),
+        ),
+        'department_listing' => array(
+          'label' => t('Department Listing'),
+        ),
+        'featured_item' => array(
+          'label' => t('Featured Item'),
+        ),
+        'featured_topics' => array(
+          'label' => t('Featured Guides'),
+        ),
+        'listing' => array(
+          'label' => t('Listing'),
+        ),
+        'listing_short' => array(
+          'label' => t('Listing Short'),
+        ),
+        'listing_long' => array(
+          'label' => t('Listing Long'),
+        ),
+        'poll_stub' => array(
+          'label' => t('Poll Stub'),
+        ),
+        'popup_icon' => array(
+          'label' => t('Icon w/ Popup'),
+        ),
+        'published_by' => array(
+          'label' => t('Published By'),
+        ),
+
+      ),
+    ),
+    'paragraphs_item' => array(
+      'view modes' => array(
+        'listing' => array(
+          'label' => t('Listing'),
+        ),
+        'ribbon_link' => array(
+          'label' => t('Link with Ribbon'),
+        ),
+        'separated_title' => array(
+          'label' => t('Separated Title'),
+        ),
+        'select_list' => array(
+          'label' => t('Select List'),
+        ),
+      ),
+    ),
+    'taxonomy_term' => array(
+      'view modes' => array(
+        'article' => array(
+          'label' => t('Article'),
+        ),
+        'contact' => array(
+          'label' => t('Contact'),
+        ),
+        'department_listing' => array(
+          'label' => t('Department Listing'),
+        ),
+        'popup_icon' => array(
+          'label' => t('Icon w/ Popup'),
+        ),
+        'published_by' => array(
+          'label' => t('Published By'),
+        ),
+      ),
+    ),
+  );
+  // Set all custom settings values to FALSE. This will force developers and
+  // site builders to enable the view mode per entity type through Field UI.
+  foreach ($view_modes as $entity_type => &$entity_info) {
+    foreach ($entity_info['view modes'] as $view_mode => &$view_mode_info) {
+      $view_mode_info['custom settings'] = FALSE;
+    }
+  }
+  $info = array_replace_recursive($info, $view_modes);
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function bos_core_form_taxonomy_form_term_alter(&$form, &$form_state) {
+  // For taxonomy forms, we'll always want the URL Alias field to come right
+  // before the actions section (contains submit button). We also want these
+  // two elements to be the last two shown on the form.
+  if (isset($form['path'])) {
+    $form['path']['#weight'] = 9998;
+    $form['actions']['#weight'] = 9999;
+  }
+}
+
+/**
+ * Implements hook_module_implements_alter().
+ */
+function bos_core_module_implements_alter(&$implementations, $hook) {
+  // We check to make sure that bos_core always has the final say in altering
+  // the form.
+  if (($hook === 'form_taxonomy_form_term_alter' || $hook === 'form_alter') && isset($implementations['bos_core'])) {
+    $group = $implementations['bos_core'];
+    unset($implementations['bos_core']);
+    $implementations['bos_core'] = $group;
+  }
+}
+
+/**
+ * Recursive search for a key/value pair and removes said pair from the array.
+ *
+ * @param array $array
+ *   Array being recursively searched on.
+ * @param callable $callback
+ *   Function must return boolean value indicating whether to remove the node.
+ *
+ * @return array
+ *   The array with all values removed based on callback.
+ */
+function walk_recursive_remove(array $array, callable $callback) {
+  foreach ($array as $k => $v) {
+    if (is_array($v)) {
+      $array[$k] = walk_recursive_remove($v, $callback);
+    }
+    else {
+      if ($callback($v, $k)) {
+        unset($array[$k]);
+      }
+    }
+  }
+
+  return $array;
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function bos_core_form_node_form_alter(&$form, &$form_state) {
+  if (isset($form['field_components']) || isset($form['field_tabbed_content'])) {
+    // Node forms which hold field_components, for each component in the field
+    // the component title should be appended outside of the component's
+    // fieldset as to provide an at-a-glance glimpse of what the component
+    // actually is.
+    $field_name = isset($form['field_components']) ? 'field_components' : 'field_tabbed_content';
+    foreach ($form[$field_name][LANGUAGE_NONE] as $index => &$component) {
+      if (is_array($component) && isset($component['field_component_title'])) {
+        $component_title = $component['field_component_title'][LANGUAGE_NONE][0]['value']['#default_value'];
+        $component['paragraph_bundle_title']['info']['#markup'] .= '<br><strong>' . $component_title . '</strong>';
+      }
+    }
+  }
+}
+
+/**
+ * Provide a list of component names depending on the active profile.
+ *
+ * @return array
+ *   List of component names.
+ */
+function _bos_core_get_components() {
+  $components = [
+    '3_column_w_image',
+    'drawers',
+    'featured_topics',
+    'fyi',
+    'grid_of_places',
+    'grid_of_topics',
+    'group_of_links_grid',
+    'group_of_links_list',
+    'group_of_links_mini_grid',
+    'hero_image',
+    'iframe',
+    'list',
+    'news_announcements',
+    'upcoming_events',
+    'photo',
+    'text',
+    'transaction_grid',
+    'video',
+    'grid_of_quotes',
+  ];
+  $profile_components['bos_profile'] = [
+    'feedback',
+    'grid_of_programs_initiatives',
+    'grid_of_people',
+    'cabinet',
+    'bos311',
+  ];
+  $profile_components['hub_profile'] = [
+    'user_action',
+  ];
+  if (module_exists('bos_profile')) {
+    $components = array_merge($components, $profile_components['bos_profile']);
+  }
+  elseif (module_exists('hub_profile')) {
+    $components = array_merge($components, $profile_components['hub_profile']);
+  }
+  else {
+    return FALSE;
+  }
+  return $components;
+}
+
+/**
+ * Provide a list of subcomponent names.
+ *
+ * @return array
+ *   List of subcomponent names.
+ */
+function _bos_core_get_subcomponents() {
+  return [
+    'document',
+    'external_link',
+    'internal_link',
+    'text_one_column',
+    'text_three_column',
+    'text_two_column',
+    'gol_list_links',
+    'drawer',
+  ];
+}
+
+/**
+ * Implements hook_field_default_field_instances_alter().
+ *
+ * Field instance settings will vary between the public and intranet sites.
+ * Using this alter hook, maintaining these differences can be done
+ * programatically without creating an overridden mess with Features.
+ */
+function bos_core_field_default_field_instances_alter(&$fields) {
+  // Each site will have a different set of components available to it, so
+  // specify those differences to features here.
+  $global_components = _bos_core_get_components();
+  $global_components = array_combine($global_components, $global_components);
+  foreach ($fields as $component_name => &$info) {
+    if (strpos($component_name, 'field_components') !== FALSE) {
+      $allowed_bundles = &$info['settings']['allowed_bundles'];
+      $allowed_bundles = array_map(function ($ignored) {
+        // Reset allowed bundles, allowing all essentially.
+        return -1;
+      }, $allowed_bundles);
+      // Set only global components to be allowed.
+      $allowed_bundles = array_merge($allowed_bundles, $global_components);
+    }
+  }
+}
+
+/**
+ * Disable a view for the given site.
+ */
+function bos_core_disable_view($site, &$view) {
+  // Check that we are on the right site.
+  if (($site == "hub" && module_exists('hub_profile')) ||
+    ($site == "public" && module_exists('bos_profile'))) {
+    $view->disabled = TRUE;
+  }
+}
+
+/**
+ * Remove content types for a type filter in the given view's displays.
+ */
+function bos_core_filter_type_by_all_except($view, $displays, $exceptions) {
+  // We only want to deal with setting an already set filter.
+  foreach ($displays as $display) {
+    if (isset($view->display[$display]->handler->display->display_options['filters']['type'])) {
+      $types = array_keys(node_type_get_types());
+      $types = array_combine($types, $types);
+
+      // Remove the exceptions from the current available sites.
+      $types = array_filter($types, function ($type) use ($exceptions) {
+        return (in_array($type, $exceptions)) ? FALSE : TRUE;
+      });
+
+      $view->display[$display]->handler->display->display_options['filters']['type']['value'] = $types;
+    }
+    else {
+      watchdog("bos_core", "Trying to configure a non-existant type filter in the {$view->name} view.");
+    }
+  }
+  return $view;
+}
+
+/**
+ * Get the nid of an active emergency.
+ */
+function bos_core_active_emergency() {
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node');
+  $query->entityCondition('bundle', 'emergency_alert');
+  // Only the latest published emergency alert is valid.
+  $query->propertyCondition('status', 1);
+  $query->fieldOrderBy('field_updated_date', 'value', 'DESC');
+  $query->range(0, 1);
+
+  $results = $query->execute();
+
+  if (!empty($results)) {
+    return array_shift(array_keys($results['node']));
+  }
+  return NULL;
+}
+
+/**
+ * Get the first item from a field.
+ */
+function bos_core_field_get_first_item($entity_type, $entity, $field_name) {
+  if ($items = field_get_items($entity_type, $entity, $field_name)) {
+    return reset($items);
+  }
+  return NULL;
+}
+
+/**
+ * Helper function for setting SAML roles that can log in using Drupal default.
+ */
+function _bos_core_set_default_saml_roles() {
+  $allowed_roles = [];
+  // Load site admin.
+  $site_admin = user_role_load_by_name('Site Administrator');
+  // Load status alert editor.
+  $emergency_alert_author = user_role_load_by_name('Status Alert Editor');
+  // Load administrator role.
+  $administrator = user_role_load_by_name('administrator');
+  $allowed_roles[$site_admin->rid] = $site_admin->rid;
+  $allowed_roles[$emergency_alert_author->rid] = $emergency_alert_author->rid;
+  $allowed_roles[$administrator->rid] = $administrator->rid;
+  variable_set('simplesamlphp_auth_allowdefaultloginroles', $allowed_roles);
+}
+
+/**
+ * Implements hook_flush_caches().
+ */
+function bos_core_flush_caches() {
+  // We need to modify the cache-busting token, which is set on every cache
+  // clear but before this hook is invoked, so we can safely modify it here.
+  // This is necessary for loading particular resources when Varnish is enabled,
+  // because otherwise those resources get redirected through SSO even though
+  // the user might already be authenticated.
+  $buster = variable_get('css_js_query_string', FALSE);
+  if ($buster !== FALSE) {
+    variable_set('css_js_query_string', 'k=' . $buster);
+  }
+  // Return an empty array since bos_core provides no cache tables that need to
+  // be cleared.
+  return array();
+}

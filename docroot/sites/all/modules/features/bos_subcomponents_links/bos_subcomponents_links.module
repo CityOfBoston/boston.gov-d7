@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Boston Group of Links - Subcomponents feature.
+ */
+
+include_once 'bos_subcomponents_links.features.inc';

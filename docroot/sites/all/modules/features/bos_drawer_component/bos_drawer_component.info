@@ -1,0 +1,16 @@
+name = bos_drawer_component
+core = 7.x
+package = Features
+dependencies[] = bos_component_text
+dependencies[] = bos_shared_fields
+dependencies[] = features
+dependencies[] = field_group
+dependencies[] = paragraphs
+dependencies[] = text
+features[ctools][] = field_group:field_group:1
+features[features_api][] = api:2
+features[field_group][] = group_drawer_info|paragraphs_item|drawer|form
+features[field_instance][] = paragraphs_item-drawer-field_short_description
+features[field_instance][] = paragraphs_item-drawer-field_text_blocks
+features[field_instance][] = paragraphs_item-drawer-field_title
+features[paragraphs][] = drawer

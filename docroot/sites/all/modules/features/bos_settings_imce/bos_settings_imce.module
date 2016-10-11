@@ -1,0 +1,63 @@
+<?php
+/**
+ * @file
+ * Code for the bos_settings_imce feature.
+ */
+
+include_once 'bos_settings_imce.features.inc';
+
+/**
+ * Implements hook_cron().
+ */
+function bos_settings_imce_cron() {
+  // Ensure that new directories get created automatically in the imce-uploads
+  // directory, as to avoid hitting the soft file limit of 2500 files per
+  // directory. Performance degrades after this limit has been reached.
+  $dir = 'public://imce-uploads';
+  file_prepare_directory($dir, FILE_CREATE_DIRECTORY);
+  $dir = 'public://imce-uploads/' . format_date(time(), 'custom', 'Y-m');
+  file_prepare_directory($dir, FILE_CREATE_DIRECTORY);
+}
+
+/**
+ * Implements hook_COMPONENT_alter().
+ *
+ * Here we want to dynamically update IMCE settings depending on the site
+ * we're currently running (public or Hub).
+ */
+function bos_settings_imce_strongarm_alter(&$variables) {
+  // Roles are different on each site so they need to be set dynamically. We
+  // know that Developer, administrator, and Site Administrator roles get
+  // profile 1 (maintenance profile), everyone else gets 2 (stricter profile).
+  if (array_key_exists('imce_roles_profiles', $variables)) {
+    $roles = user_roles(TRUE);
+    // We don't want to set authenticated user, you need to be more privileged
+    // to use IMCE.
+    if (($key = array_search('authenticated user', $roles)) !== FALSE) {
+      unset($roles[$key]);
+    }
+    $maintenance_profile = array(
+      'weight' => 0,
+      'public_pid' => 1,
+    );
+    $non_admin_profile = array(
+      'weight' => 0,
+      'public_pid' => 2,
+    );
+    $admin_roles = ['administrator', 'Site Administrator', 'Developer'];
+    // Clear existing values, we're going to set them dynamically during the
+    // revert process.
+    $variables['imce_roles_profiles']->value = array();
+    $role_settings = &$variables['imce_roles_profiles']->value;
+    foreach ($roles as $rid => $role) {
+      if (in_array($role, $admin_roles)) {
+        // Maintenance profile to admin roles.
+        $role_settings[$rid] = $maintenance_profile;
+      }
+      else {
+        // Non-maintenance profile to everyone else.
+        $role_settings[$rid] = $non_admin_profile;
+      }
+    }
+  }
+}

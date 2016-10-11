@@ -1,0 +1,31 @@
+<?php
+/**
+ * @file
+ * Code for the Boston View Guides Landing Page feature.
+ */
+
+include_once 'bos_view_topics_landing_page.features.inc';
+
+/**
+ * Implements hook_preprocess_views_exposed_form().
+ */
+function bos_view_topics_landing_page_preprocess_views_exposed_form(&$vars) {
+  if ($vars['form']['#id'] == 'views-exposed-form-topic-landing-page-page-1') {
+    $vars['widget_groups'] = array(
+      'title' => array(),
+      'category' => array(),
+    );
+
+    foreach ($vars['widgets'] as $id => $widget) {
+      switch ($id) {
+        case 'filter-field_topic_category_target_id':
+          $vars['widget_groups']['category'][$id] = $widget;
+          break;
+
+        case 'filter-title':
+          $vars['widget_groups']['title'][$id] = $widget;
+          break;
+      }
+    }
+  }
+}

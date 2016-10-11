@@ -1,0 +1,11 @@
+api: 2
+core: 7.x
+
+projects:
+  zen:
+    type: theme
+    version: ~
+
+  basic:
+    type: theme
+    version: ~

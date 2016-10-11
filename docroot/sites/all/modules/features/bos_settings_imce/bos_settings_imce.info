@@ -1,0 +1,15 @@
+name = Boston Settings IMCE
+core = 7.x
+package = Boston
+dependencies[] = ctools
+dependencies[] = strongarm
+features[ctools][] = strongarm:strongarm:1
+features[features_api][] = api:2
+features[variable][] = imce_profiles
+features[variable][] = imce_roles_profiles
+features[variable][] = imce_settings_absurls
+features[variable][] = imce_settings_admin_theme
+features[variable][] = imce_settings_disable_private
+features[variable][] = imce_settings_replace
+features[variable][] = imce_settings_textarea
+features[variable][] = imce_settings_thumb_method

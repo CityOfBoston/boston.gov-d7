@@ -1,0 +1,51 @@
+<?php
+/**
+ * @file
+ * Code for the Boston Development feature.
+ */
+
+include_once 'bos_development.features.inc';
+
+/**
+ * Implements hook_block_view_alter().
+ *
+ * Make masquerade quick switch available in a modal that is launchable from
+ * the footer nav.
+ */
+function bos_development_block_view_alter(&$data, $block) {
+  if ($block->delta === 'masquerade' && $block->region === 'modal' && !empty($data)) {
+    $data['content']['modal_id'] = array(
+      '#markup' => '<span class="element-invisible modal-id">masquerade</span>',
+    );
+  }
+  if ($block->module === 'menu_block' && $block->info === 'Footer menu block') {
+    $data['content']['#content']['masquerade'] = array(
+      '#theme' => array('menu_link'),
+      '#attributes' => array(
+        'class' => array('modal-link'),
+        'data-modal' => 'masquerade',
+      ),
+      '#title' => 'Masquerade',
+      '#href' => 'masquerade',
+    );
+  }
+}
+
+/**
+ * Implements hook_user_insert().
+ *
+ * Any user added when this module is enabled, make sure it's available for
+ * quick switching in masquerade.
+ */
+function bos_development_user_insert(&$edit, $account, $category) {
+  $fixture_users = array(
+    'content_author',
+    'content_editor',
+    'site_admin',
+  );
+  $available_masquerade_users = variable_get('masquerade_quick_switches');
+  if (in_array($account->name, $fixture_users)) {
+    $available_masquerade_users[] = $account->uid;
+  }
+  variable_set('masquerade_quick_switches', $available_masquerade_users);
+}

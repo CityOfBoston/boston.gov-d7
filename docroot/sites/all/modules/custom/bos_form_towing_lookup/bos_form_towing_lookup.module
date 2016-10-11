@@ -1,0 +1,73 @@
+<?php
+
+/**
+ * @file
+ * Defines the towing lookup form for boston.gov.
+ */
+
+/**
+ * Implements bos_towing_lookup_form().
+ *
+ * @return mixed
+ *   Returns the towing lookup form.
+ */
+function bos_towing_lookup_form($form, &$form_state) {
+
+  $form['wrapper'] = array(
+    '#type' => 'container',
+    '#attributes' => array(
+      'class' => array(
+        'form form--inline',
+      ),
+    ),
+  );
+
+  $form['wrapper'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Your License Plate'),
+    '#attributes' => array(
+      'class' => array(
+        'form__fieldset form__fieldset--inline',
+      ),
+    ),
+  );
+
+  $form['wrapper']['license_plate'] = array(
+    '#type' => 'textfield',
+    '#attributes' => array(
+      'class' => array(
+        'form__input form__input--inline',
+      ),
+      'placeholder' => t('Your Plate Number'),
+    ),
+    '#size' => 10,
+    '#maxlength' => 8,
+    '#required' => TRUE,
+    '#theme_wrappers' => array(),
+  );
+
+  $form['wrapper']['submit_button'] = array(
+    '#type' => 'submit',
+    '#value' => t('Submit'),
+    '#attributes' => array(
+      'class' => array(
+        'form__button',
+        'form__button--inline',
+        'form__button--chevron',
+      ),
+    ),
+  );
+
+  $form['errors'] = array(
+    '#type' => 'container',
+    '#attributes' => array(
+      'class' => array(
+        'license-plate-error',
+        'form-error',
+        'inline-form-error',
+      ),
+    ),
+  );
+
+  return $form;
+}

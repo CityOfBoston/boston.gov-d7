@@ -1,0 +1,30 @@
+// Resizable textarea
+//
+// A textarea that can be resized with a "grippie" widget.
+//
+// Markup: resizable-textarea.hbs
+//
+// Style guide: forms.resizable-textarea
+
+.resizable-textarea,
+%resizable-textarea {
+  width: 100%;
+  vertical-align: bottom;
+
+  &__grippie {
+    background: image-url('grippie.png') no-repeat center 2px color(resizable-grippie);
+    border: 1px solid color(border);
+    border-top-width: 0;
+    cursor: s-resize;
+    height: 9px;
+    overflow: hidden;
+  }
+}
+
+//
+// Drupal selectors.
+//
+
+.resizable-textarea .grippie {
+  @extend %resizable-textarea__grippie;
+}

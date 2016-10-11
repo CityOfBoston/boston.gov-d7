@@ -1,0 +1,129 @@
+<?php
+/**
+ * @file
+ * Code for the Hub Content Type Application feature.
+ */
+
+include_once 'hub_content_type_application.features.inc';
+
+/**
+ * Implements hook_node_access_records().
+ *
+ * Create a node_access grant for an application node based on the
+ * application_id.
+ *
+ * TODO: Uncomment, rebuild permissions when tools feed is ready.
+ */
+// @codingStandardsIgnoreStart
+//function hub_content_type_application_node_access_records($node) {
+//  $grants = array();
+//
+//  // Make sure we have the correct content type.
+//  if ($node->type == 'application') {
+//    // Set the grant for the application.
+//    $gid = reset(field_get_items('node', $node, 'field_application_id'));
+//    if (!empty($gid)) {
+//      $grants[] = array(
+//        'nid' => $node->nid,
+//        'realm' => 'hub_application_tools',
+//        'gid' => $gid,
+//        'grant_view' => $node->status,
+//        'grant_update' => 0,
+//        'grant_delete' => 0,
+//        'priority' => 1,
+//      );
+//    }
+//    // Allow site administrators to always view the node, published or not.
+//    $site_admin_role = user_role_load_by_name('Site Administrator');
+//    $grants[] = array(
+//      'nid' => $node->nid,
+//      'realm' => 'hub_application_tools_admin',
+//      'gid' => $site_admin_role->rid,
+//      'grant_view' => 1,
+//      'grant_update' => 0,
+//      'grant_delete' => 0,
+//      'priority' => 1,
+//    );
+//  }
+//
+//  return $grants;
+//}
+// @codingStandardsIgnoreEnd
+
+/**
+ * Implements hook_node_grants().
+ *
+ * Check that the user has access to view an application.
+ *
+ * TODO: Uncomment, rebuild permissions when tools feed is ready.
+ */
+// @codingStandardsIgnoreStart
+//function hub_content_type_application_node_grants($account, $op) {
+//
+//  $grants = array();
+//
+//  // Set default grants condition.
+//  $grants['hub_application_tools'] = array(0);
+//
+//  // Tackle the 'view' operation.
+//  if ($op == 'view') {
+//    // Make sure the user is logged in.
+//    if ($account->uid != 0) {
+//      $current_user = user_load($account->uid);
+//      // Grant the hub_application_tools_admin to the user's roles.
+//      // If they have Site Administrator role, we already created an access
+//      // record so they'll have access.
+//      $grants['hub_application_tools_admin'] = array_keys($current_user->roles);
+//
+//      // Grant the user view access to anything in their
+//      // applications_access_list.
+//      $user_access_list = reset(field_get_items('user', $current_user, 'field_application_id_list'));
+//      if (!empty($user_access_list)) {
+//        $user_access = explode(',', $user_access_list['value']);
+//        if (!empty($user_access)) {
+//          foreach ($user_access as $access) {
+//            // Check to see if this application actually exists.
+//            $query = db_select('node', 'n');
+//            $query->join('field_data_field_application_id', 'a', 'a.entity_id=n.nid');
+//            $query->condition('n.type', 'application', '=')
+//              ->condition('n.status', '1', '=')
+//              ->condition('a.field_application_id_value', $access, '=')
+//              ->fields('n', array('nid'));
+//            $result = $query->execute()->fetchAll();
+//            $count = count($result);
+//            if ($count == 1) {
+//              $grants['hub_application_tools'][] = $access;
+//            }
+//            else {
+//              // If the application ID does not have a corresponding application node
+//              // log a warning.
+//              $replacements = array('@user_name' => $current_user->name,
+//                '@app_id' => $access);
+//              $message = 'User @user_name tried to access Application with application ID=' .
+//                '@app_id that does not exist in the system.';
+//              watchdog('hub_content_type_application', $message, $replacements, WATCHDOG_WARNING);
+//            }
+//          }
+//        }
+//      }
+//    }
+//  }
+//  return $grants;
+//}
+// @codingStandardsIgnoreEnd
+/**
+ * Implements hook_form_alter().
+ *
+ * Do not allow the user to edit their picture, or the apps access list.
+ */
+function hub_content_type_application_form_user_profile_form_alter(&$form, &$form_state, $form_id) {
+  $current_user = user_uid_optional_load();
+  $is_admin = in_array('Site Administrator', $current_user->roles);
+  if ($current_user->uid != 1) {
+    $form['field_applications_access_list']['#access'] = FALSE;
+    $form['picture']['#access'] = FALSE;
+  }
+  if ($is_admin) {
+    $form['field_applications_access_list']['#access'] = TRUE;
+  }
+}

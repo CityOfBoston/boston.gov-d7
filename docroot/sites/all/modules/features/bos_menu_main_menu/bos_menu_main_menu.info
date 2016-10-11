@@ -1,0 +1,8 @@
+name = Boston Main Menu
+description = Feature module for controlling the main menu.
+core = 7.x
+package = Boston
+dependencies[] = features
+dependencies[] = menu
+features[features_api][] = api:2
+features[menu_custom][] = main-menu

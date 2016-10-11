@@ -1,0 +1,61 @@
+<?php
+/**
+ * @file
+ * Contains code for Boston Incapsula module.
+ */
+
+/**
+ * Implements hook_acquia_purge_purge_success().
+ *
+ * This requires the Incapsula variables be defined in settings.php.
+ *
+ * @warning: this holds up the purge queue lock, so it can't die(); it must
+ * return.
+ */
+function bos_incapsula_acquia_purge_purge_success(array $paths) {
+  $api_id = variable_get('incapsula_api_id');
+  $api_key = variable_get('incapsula_api_key');
+  $site_id = variable_get('incapsula_site_id');
+
+  if (isset($api_id) && isset($api_key) && isset($site_id)) {
+    $endpoint_url = 'https://my.incapsula.com/api/prov/v1/sites/cache/purge';
+    $post_data = array(
+      'site_id' => $site_id,
+      'api_id' => $api_id,
+      'api_key' => $api_key,
+    );
+    $options = array(
+      'method' => 'POST',
+      'timeout' => 15,
+      'headers' => array('Content-Type' => 'application/x-www-form-urlencoded'),
+    );
+
+    foreach ($paths as $path) {
+      $options['data'] = drupal_http_build_query($post_data);
+
+      // Make the call.
+      $response = drupal_http_request($endpoint_url, $options);
+
+      // This does not check the Incapsula response itself, just that the
+      // request was successfully sent.
+      if (empty($response->error)) {
+        $variables = array(
+          '@path' => $path,
+          '@data' => $response->data,
+        );
+        watchdog("bos_incapsula", "Incapsula purge sent. Response: <pre>Purging:@path</pre><pre>@data</pre>", $variables, WATCHDOG_NOTICE);
+      }
+      else {
+        $variables = array(
+          '@code' => $response->code,
+          '@error' => $response->error,
+        );
+        // Run in circles, scream and shout...
+        watchdog("bos_incapsula", "Incapsula purge error: @code<br/>Error: @error", $variables, WATCHDOG_ERROR);
+      }
+    }
+  }
+  else {
+    watchdog("bos_incapsula", "Incapsula has not been configured. See README.md for details on configuration.");
+  }
+}

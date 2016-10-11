@@ -1,0 +1,175 @@
+#!/usr/bin/env bash
+
+# See https://github.com/geraldvillorente/drupal-pre-commit/blob/master/pre-commit
+
+# Build the list of PHP blacklisted functions
+checks[1]="\<var_dump("
+checks[2]="\<die("
+
+# Blacklist Drupal's built-in debugging function
+checks[3]="\<debug("
+
+# Blacklist Devel's debugging functions
+checks[4]="\<dpm("
+checks[5]="\<krumo("
+checks[6]="\<dpr("
+checks[7]="\<dsm("
+checks[8]="\<dd("
+checks[9]="\<ddebug_backtrace("
+checks[10]="\<dpq("
+checks[11]="\<dprint_r("
+checks[12]="\<drupal_debug("
+checks[13]="\<dsm("
+checks[14]="\<dvm("
+checks[15]="\<dvr("
+checks[16]="\<kpr("
+checks[17]="\<kprint_r("
+checks[18]="\<kdevel_print_object("
+checks[19]="\<kdevel_print_object("
+
+# Blacklist code conflicts resulting from Git merge.
+checks[20]="<<<<<<<"
+checks[21]=">>>>>>>"
+
+# Blacklist Javascript debugging functions
+checks[22]="\<console.log("
+checks[23]="\<alert("
+
+# Get the total number of blacklisted functions.
+element_count=${#checks[@]}
+let "element_count += 1"
+
+ROOT_DIR="$(pwd)/"
+
+RETVAL=0
+
+# Exclude Features-generated files because they should not be modified.
+# Exclude contribs modules because they should not be modified.
+# Exclude devel module because they contain debugging functions
+# Exclude libraries because they should not be modified
+# Exclude docroot because Drupal core should not be modified
+filters_exclude[1]='features'
+filters_exclude[2]='contrib'
+filters_exclude[3]='devel'
+filters_exclude[4]='libraries'
+filters_exclude[5]='development'
+filters_exclude[6]='scripts'
+filters_exclude[7]='git'
+filters_exclude[8]='featurized'
+filters_exclude[9]='docroot'
+
+# Include extensions that should be checked.
+filters_include[0]='\.inc'
+filters_include[1]='\.info'
+filters_include[2]='\.install'
+filters_include[3]='\.module'
+filters_include[4]='\.php'
+filters_include[5]='\.profile'
+filters_include[6]='\.test'
+
+# Join filters_include array into a single string for egrep
+sep="|"
+egrep_include=$(printf "${sep}%s" "${filters_include[@]}")
+# Remove the separator from the start of the string
+egrep_include=${egrep_include:${#sep}}
+egrep_include="($egrep_include)"
+
+# Join filters_exclude array into a single string for egrep -v
+sep="|"
+egrep_exclude=$(printf "${sep}%s" "${filters_exclude[@]}")
+# Remove the separator from the start of the string
+egrep_exclude=${egrep_exclude:${#sep}}
+egrep_exclude="($egrep_exclude)"
+
+LIST=$( git diff --name-only --cached --diff-filter=ACM | egrep "$egrep_include" | egrep -v "$egrep_exclude" )
+
+# PHP syntax-error free code
+NO_SYNTAX_ERROR=0
+
+# PHP syntax error code
+SYNTAX_ERROR=255
+
+PHPCS_BIN=vendor/bin/phpcs
+
+# Code Sniffer failed
+PHPCS_FAILED=1
+
+# Code sniffer error
+PHPCS_ERROR=2
+
+# Code Sniffer success code
+PHPCS_PASSED=0
+
+if [ ! -f $PHPCS_BIN ];
+  then
+    echo "PHP Code Sniffer was not found in this project's bin directory. Please run composer install. "
+  else
+    echo "Sniffing staged files via PHP Code Sniffer."
+fi
+
+for file in $LIST
+do
+
+    PHPL_RESULT=$(php -l $file)
+    SYNTAX_CODE=$?
+
+    # Run PHP Codesniffer validation only if there is no syntax error
+    if [ "$SYNTAX_CODE" -eq "$NO_SYNTAX_ERROR" ]; then
+
+      # Default PHP error code
+      PHP_CODE=0
+      PHPCS_STANDARD=vendor/drupal/coder/coder_sniffer/Drupal
+
+      ${PHPCS_BIN} --standard=${PHPCS_STANDARD} $file >&2
+
+      # Default PHPCS error code
+      PHPCS_CODE=$?
+
+      if [ "$PHPCS_CODE" == "$PHPCS_ERROR" ]; then
+        RETVAL=2
+
+      elif [ "$PHPCS_CODE" == "$PHPCS_FAILED" ]; then
+        echo "Failed validation against ${PHPCS_STANDARD} standard"
+        echo "You may be able to automatically fix these errors by running:"
+        echo "${ROOT_DIR}vendor/bin/phpcbf --standard=${PHPCS_STANDARD} ${file}"
+        RETVAL=1
+
+      # Search for debugging function only if PHP Codesniffer validation passed
+      elif [ "$PHPCS_CODE" == "$PHPCS_PASSED" ]; then
+
+        # Define allowed/possible file extensions that might contain debugging functions
+        EXTENSION=$(echo "$file" | egrep "\.install$|\.test$|\.inc$|\.module$|\.php$")
+
+        if [ "$EXTENSION" != "" ]; then
+
+            index=1
+            while [ "$index" -lt "$element_count" ]
+            do
+                # Find the blacklisted functions in the current file.
+                ERRORS=$(grep "${checks[$index]}" $ROOT_DIR$file >&1)
+
+                if [ "$ERRORS" != "" ]; then
+                    echo -e "${checks[$index]} found in file: $file"
+                    RETVAL=1
+                fi
+
+                let "index += 1"
+            done
+        fi
+      fi
+
+    elif [ "$SYNTAX_CODE" == "$SYNTAX_ERROR" ]; then
+      RETVAL=1
+    fi
+
+done
+
+solr_errors=0;
+php .git/hooks/solr_check.php
+solr_errors=$?
+if [ $solr_errors != 0 ]; then
+  echo "The Hub Settings Apache Solr feature had $solr_errors errors, please check the feature."
+  RETVAL=1
+fi
+
+exit $RETVAL

@@ -1,0 +1,10 @@
+name = Hub User Fields
+description = Hub User Fields
+core = 7.x
+package = Hub
+dependencies[] = features
+dependencies[] = number
+dependencies[] = text
+features[features_api][] = api:2
+features[field_base][] = field_application_id_list
+features[field_instance][] = user-user-field_application_id_list

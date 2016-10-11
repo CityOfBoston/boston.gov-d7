@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Boston Component Grid of Guides feature.
+ */
+
+include_once 'bos_component_grid_of_topics.features.inc';

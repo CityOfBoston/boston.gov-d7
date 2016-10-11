@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Hub Settings Apache Solr Local Dev feature.
+ */
+
+include_once 'hub_settings_apache_solr_local_dev.features.inc';

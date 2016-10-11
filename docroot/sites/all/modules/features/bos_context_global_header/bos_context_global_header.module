@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Boston Main Menu Placement feature.
+ */
+
+include_once 'bos_context_global_header.features.inc';

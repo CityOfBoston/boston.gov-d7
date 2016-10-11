@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Boston Component Group of Links - Mini Grid feature.
+ */
+
+include_once 'bos_component_gol_mini_grid.features.inc';

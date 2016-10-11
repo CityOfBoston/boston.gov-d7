@@ -1,0 +1,184 @@
+<?php
+/**
+ * @file
+ * Code for the  Hub Settings Profile2 Main feature.
+ */
+
+include_once 'hub_profile2_main.features.inc';
+include_once 'hub_profile2_main.admin.inc';
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function hub_profile2_main_form_profile2_edit_main_form_alter(&$form, &$form_state) {
+  global $user;
+  $read_only_fields = _hub_profile2_main_get_read_only_fields();
+
+  // Allow an Administrator to edit profiles, so we can at least enter
+  // data for testing until the migration is done.
+  if (!in_array('administrator', array_values($user->roles)) && !in_array('Site Administrator', array_values($user->roles))) {
+    foreach ($read_only_fields as $field_name) {
+      // Remove the field from the form all together.
+      $form['profile_main'][$field_name]['#access'] = FALSE;
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_entity().
+ *
+ * Set up a bunch of variables for the theme.
+ * In particular figure out if the user is viewing their own profile or not.
+ * Also break up all of the address fields so we can display them per the comps.
+ */
+function hub_profile2_main_preprocess_entity(&$variables) {
+  if ($variables['entity_type'] == 'profile2') {
+    // Load the profile data so we can access the fields.
+    $profile_data = profile2_by_uid_load($variables['profile2']->uid, 'main');
+
+    if (!empty($variables['field_display_name'])) {
+      $display_name  = field_get_items('profile2', $profile_data, 'field_display_name');
+      $variables['display_name_text'] = $display_name[0]['safe_value'];
+
+    }
+    if (!empty($variables['field_position_title'])) {
+      $position_title = field_get_items('profile2', $profile_data, 'field_position_title');
+      $variables['job_title_text'] = $position_title[0]['safe_value'];
+    }
+    // Figure out if the user is the owner of this profile.
+    $viewing_own = FALSE;
+    if ($variables['user']->uid == $variables['profile2']->uid || $variables['is_admin']) {
+      // Is the user viewing their own profile?
+      $viewing_own = TRUE;
+      $variables['viewing_own'] = $viewing_own;
+
+      // Get the header information from the config page form.
+      $header['text'] = filter_xss(variable_get('hub_profile_header_text', array('value' => 'No Text supplied'))['value']);
+      $header['payroll_link'] = check_plain(variable_get('hub_profile_header_payroll_link', '/payroll'));
+      $header['leave_link'] = check_plain(variable_get('hub_profile_header_leave_link', '/leave'));
+      $header['benefits_link'] = check_plain(variable_get('hub_profile_header_benefits_link', '/benefits'));
+      $variables['header_data'] = $header;
+
+      // Get the home address fields.
+      if (!empty($variables['field_home_address'])) {
+        $home_address = field_get_items('profile2', $profile_data, 'field_home_address');
+        $variables['home_address'] = _hub_profle2_main_extract_address_fields($home_address);
+      }
+      // Get the mailing address fields.
+      if (!empty($variables['field_mailing_address'])) {
+        $mailing_address = field_get_items('profile2', $profile_data, 'field_mailing_address');
+        $variables['mailing_address'] = _hub_profle2_main_extract_address_fields($mailing_address);
+      }
+    }
+
+    // Get the office address fields.
+    if (!empty($variables['field_office_location'])) {
+      $office_address = field_get_items('profile2', $profile_data, 'field_office_location');
+      $variables['office_address'] = _hub_profle2_main_extract_address_fields($office_address);
+    }
+
+    // Get Twitter and LinkedIn links.
+    if (!empty($variables['field_twitter'])) {
+      $twitter_name = $variables['field_twitter'][0]['safe_value'];
+      $variables['twitter_link'] = l($twitter_name, 'http://twitter.com/' . $twitter_name);
+    }
+
+    if (!empty($variables['field_work_email'])) {
+      $field_work_email = $variables['field_work_email'][0]['safe_value'];
+
+      if ($field_work_email === NULL) {
+        $field_work_email = 'default@boston.gov';
+      }
+
+      $variables['field_work_email'] = strtolower($field_work_email);
+    }
+
+    if (!empty($variables['field_linked_in'])) {
+      $linked_in_url = $variables['field_linked_in'][0]['safe_value'];
+      $protocol_options = array('http://', 'https://', 'www.');
+      $variables['linked_in_link'] = l(str_replace($protocol_options, '', $linked_in_url), $linked_in_url);
+    }
+  }
+}
+
+/**
+ * Implements hook_menu().
+ *
+ * Setup an admin page for configuring the text and links at the top of
+ * the user profile page.
+ */
+function hub_profile2_main_menu() {
+  $items['admin/config/people/hub_profile_data'] = array(
+    'title' => 'Hub User Profile Settings',
+    'description' => 'Add configuration text for the user profile page.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('_hub_profile2_main_admin'),
+    'access arguments' => array('access user profiles'),
+    'type' => MENU_NORMAL_ITEM,
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_crumbs_plugin().
+ */
+function hub_profile2_main_crumbs_plugins($api) {
+  $api->monoPlugin('UserProfileCrumbsPlugin');
+}
+
+/**
+ * Return a list of read-only fields for the main profile.
+ */
+function _hub_profile2_main_get_read_only_fields() {
+  $read_only_fields = array(
+    'field_display_name',
+    'field_first_name',
+    'field_last_name',
+    'field_home_address',
+    'field_personal_email',
+    'field_phone_number',
+    'field_mailing_address',
+    'field_emergency_contact_name',
+    'field_emergency_contact_phone',
+    'field_work_email',
+    'field_work_phone_number',
+    'field_contact',
+    'field_position_title',
+    'field_manager',
+    'field_office_location',
+  );
+  return $read_only_fields;
+}
+
+
+/**
+ * Pull out the bits from an address field so that they can be themed.
+ *
+ * @param array $in_address
+ *   An address field from a $variables array.
+ *
+ * @return array
+ *   An array with the address elements set.
+ */
+function _hub_profle2_main_extract_address_fields($in_address) {
+  $return_address = array();
+
+  if (!empty($in_address[0]['thoroughfare'])) {
+    $return_address['street'] = $in_address[0]['thoroughfare'];
+  }
+  if (!empty($in_address[0]['premise'])) {
+    $return_address['location'] = $in_address[0]['premise'];
+  }
+  if (!empty($in_address[0]['locality'])) {
+    $return_address['city'] = $in_address[0]['locality'];
+  }
+  if (!empty($in_address[0]['administrative_area'])) {
+    $return_address['state'] = $in_address[0]['administrative_area'];
+  }
+  if (!empty($in_address[0]['postal_code'])) {
+    $return_address['zip'] = $in_address[0]['postal_code'];
+  }
+
+  return $return_address;
+}

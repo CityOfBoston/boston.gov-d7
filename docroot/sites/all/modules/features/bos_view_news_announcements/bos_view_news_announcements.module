@@ -1,0 +1,37 @@
+<?php
+/**
+ * @file
+ * Code for the bos_view_news_announcements feature.
+ */
+
+include_once 'bos_view_news_announcements.features.inc';
+
+
+/**
+ * Implements hook_preprocess_views_exposed_form().
+ */
+function bos_view_news_announcements_preprocess_views_exposed_form(&$vars) {
+  if ($vars['form']['#id'] == 'views-exposed-form-bos-news-landing-page') {
+    $vars['widget_groups'] = array(
+      'search by title' => array(),
+      'filter by author' => array(),
+      'filter by date' => array(),
+    );
+
+    foreach ($vars['widgets'] as $id => $widget) {
+      switch ($id) {
+        case 'filter-title':
+          $vars['widget_groups']['search by title'][$id] = $widget;
+          break;
+
+        case 'filter-field_contact_target_id':
+          $vars['widget_groups']['filter by author'][$id] = $widget;
+          break;
+
+        case 'filter-field_published_date_value':
+          $vars['widget_groups']['filter by date'][$id] = $widget;
+          break;
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+name = Boston Global Hidden Modal Region
+description = Control the placement of blocks in the hidden modal region.
+core = 7.x
+package = Boston
+dependencies[] = block
+dependencies[] = bos_pilot_blocks
+dependencies[] = context
+dependencies[] = ctools
+features[context][] = bos_context_global_modal
+features[ctools][] = context:context:3
+features[features_api][] = api:2

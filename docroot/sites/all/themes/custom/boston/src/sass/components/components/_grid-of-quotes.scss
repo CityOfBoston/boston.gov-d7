@@ -1,0 +1,116 @@
+.paragraphs-item-grid-of-quotes {
+  @include full-width(color(section-bg));
+
+  .content {
+    @extend .container;
+  }
+
+  .section-header{
+    margin-bottom: 30px;
+  }
+
+  .quote { //base styles are mobile
+    background: color(white);
+    display: flex;
+    flex-wrap: wrap;
+    border-bottom: 8px solid color(freedom-trail-red);
+    padding: 30px 30px 40px 30px;
+
+    @include respond-to(s) {
+      width: 100%;
+      min-height: 228px;
+      margin-bottom: 13px;
+      margin-left: 0
+    }
+    @include respond-to(m){
+      width: 47.5%;
+      margin-bottom: 13px;
+      margin-left: 4.5%;
+      &:nth-child(odd){
+        margin-left: 0;
+      }
+    }
+    @include respond-to(l){
+      width: 23%;
+      margin-left: 2.5%;
+      min-height: 380px;
+      &:nth-child(odd){
+        margin-left: 2.5%;
+      }
+      &:first-child{
+        margin-left: 0;
+      }
+    }
+  }
+
+  .quote-text {
+    font-family: Lora;
+    font-style: italic;
+    color: black;
+    font-size: 16px;
+    margin-bottom: 30px;
+
+    @include respond-to(l) {
+
+    }
+    @include respond-to(xl) {
+      margin-bottom: 34px;
+      font-size: 18px;
+
+    }
+  }
+
+  .quote-details {
+    align-self: flex-end;
+    width: 100%;
+    margin-top: auto;
+    display: flex;
+    flex-direction: row;
+    @include respond-to(l) {
+      flex-direction: column;
+    }
+  }
+
+  .quote-person-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin: 10px 0px 0px 15px;
+
+    @include respond-to(l) {
+      margin: 0;
+    }
+  }
+
+  .quote-photo {
+
+    img {
+      width: 56px;
+      height: 56px;
+      border-radius: 100%;
+    }
+  }
+
+  .quote-name {
+    font-family: Montserrat;
+    font-size: 14px;
+    color: black;
+    font-weight: bold;
+    line-height: initial;
+  }
+
+  .quote-location {
+    font-family: Lora;
+    font-size: 16px;
+    font-style: italic;
+    color: color(grey-dark);
+    line-height: 26px;
+  }
+
+}
+
+.paragraphs-items-field-grid-of-quotes {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}

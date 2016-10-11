@@ -1,0 +1,17 @@
+name = Boston Component Header Text
+description = Provides the header text component.
+core = 7.x
+package = Boston
+dependencies[] = bos_shared_fields
+dependencies[] = ctools
+dependencies[] = entityreference
+dependencies[] = features
+dependencies[] = field_group
+dependencies[] = paragraphs
+dependencies[] = text
+features[ctools][] = field_group:field_group:1
+features[features_api][] = api:2
+features[field_group][] = group_basic_information|paragraphs_item|header_text|form
+features[field_instance][] = paragraphs_item-header_text-field_contact
+features[field_instance][] = paragraphs_item-header_text-field_intro_text
+features[paragraphs][] = header_text

@@ -1,0 +1,10 @@
+name = Boston Subcomponent Recollect
+core = 7.x
+package = Features
+dependencies[] = bos_shared_fields
+dependencies[] = features
+dependencies[] = paragraphs
+dependencies[] = text
+features[features_api][] = api:2
+features[field_instance][] = paragraphs_item-recollect_widget-field_short_description
+features[paragraphs][] = recollect_widget

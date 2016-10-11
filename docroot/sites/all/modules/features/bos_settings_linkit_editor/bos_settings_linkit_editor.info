@@ -1,0 +1,11 @@
+name = Boston Settings Linkit Editor
+description = This feature implements the bos_settings_linkit_editor profile for WYSIWYG
+core = 7.x
+package = Features
+dependencies[] = ctools
+dependencies[] = features
+dependencies[] = imce
+dependencies[] = linkit
+features[ctools][] = linkit:linkit_profiles:1
+features[features_api][] = api:2
+features[linkit_profiles][] = bos_settings_linkit_editor

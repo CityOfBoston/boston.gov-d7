@@ -1,0 +1,173 @@
+.tb {
+  position: fixed;
+  z-index: 10;
+  background-color: color('charles-blue');
+  left: 0;
+  right: 0;
+  align-items: center;
+  padding: 30px;
+  color: color('white');
+  transition: transform 0.3s;
+  transform: translateY(-100%);
+
+  &__right {
+    margin-left: auto;
+  }
+
+  &__title {
+    font-style: italic;
+    margin-right: 1em;
+    line-height: 1;
+    margin-bottom: 10px;
+  }
+
+  &__block:first-child {
+    margin-bottom: 15px;
+  }
+
+  &__inline {
+    ul, li {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    li {
+      margin-right: 1em;
+    }
+
+    a {
+      font-family: $montserrat;
+      @include type-layout(xs, 22px);
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+  }
+
+  &__dropdown {
+    display: none;
+  }
+
+  &__dingus {
+    position: absolute;
+    z-index: 5;
+    bottom: 0;
+    right: 5px;
+    transform: translateY(100%);
+    transition: background 0.2s;
+    background-color: color('optimistic-blue');
+    width: 36px;
+    text-align: center;
+    padding: 0 0 5px;
+    margin: 0;
+    outline: none;
+
+    &:after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      transform: translateY(100%);
+      transition: border 0.2s;
+      border-left: 18px solid transparent;
+      border-right: 18px solid transparent;
+      border-top: 7px solid color('optimistic-blue');
+      cursor: pointer;
+    }
+
+    &:hover, &:focus {
+      background-color: color('optimistic-blue');
+    }
+
+    svg {
+      width: 20px;
+      height: 20px;
+      vertical-align: bottom;
+      margin-top: 10px;
+    }
+
+    .icon-fill {
+      fill: color('white');
+    }
+
+    &__button {
+      background: none;
+      line-height: 1;
+      margin-top: -2px;
+      margin-bottom: -3px;
+      padding: 0;
+
+      &:hover {
+        background: none;
+      }
+    }
+  }
+
+  &__trigger:checked ~ .tb {
+    transform: translateY(0);
+
+    .tb {
+      &__dingus {
+        background-color: color('charles-blue');
+
+        &:after {
+          border-top-color: color('charles-blue');
+        }
+      }
+    }
+  }
+
+  @include respond-to (m) {
+    &__internal {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+    }
+
+    &__block:first-child {
+      margin-bottom: 0;
+    }
+
+    &__title {
+      margin-bottom: 0;
+    }
+
+    &__block, &__inline ul {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &__dingus {
+      right: 8px;
+      width: 40px;
+
+      svg {
+        width: 20px;
+        height: 20px;
+      }
+
+      &:after {
+        border-left: 20px solid transparent;
+        border-right: 20px solid transparent;
+      }
+    }
+  }
+
+  @include respond-to (l) {
+    &__dingus {
+      right: 10px;
+      width: 44px;
+
+      svg {
+        width: 25px;
+        height: 25px;
+      }
+
+      &:after {
+        border-left: 22px solid transparent;
+        border-right: 22px solid transparent;
+      }
+    }
+  }
+}

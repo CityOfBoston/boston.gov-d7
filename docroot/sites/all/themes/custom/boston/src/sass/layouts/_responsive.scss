@@ -1,0 +1,17 @@
+$susy: (
+  global-box-sizing: border-box,
+  columns: 12,
+  container: 66.667em,
+  gutter: .25,
+  output: isolate,
+);
+
+.container {
+  @include container();
+  padding-left: 10%;
+  padding-right: 10%;
+  @include respond-to(xxl) {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}

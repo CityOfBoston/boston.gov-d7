@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<place_types>
+  <place_type>
+    <id>pt0001</id>
+    <name>Place Type 0001</name>
+    <description>
+      Description of Place Type 0001.
+    </description>
+  </place_type>
+</place_types>

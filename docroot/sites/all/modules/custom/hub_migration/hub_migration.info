@@ -1,0 +1,7 @@
+name = Hub Migration
+core = 7.x
+package = Hub
+description = Migrate Users.
+dependencies[] = migrate
+dependencies[] = migrate_extras
+dependencies[] = xautoload

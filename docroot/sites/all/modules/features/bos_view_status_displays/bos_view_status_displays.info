@@ -1,0 +1,12 @@
+name = Boston View Status Displays
+description = Controls the view containing sites various status displays.
+core = 7.x
+package = Boston
+version = 7.x-1.0
+dependencies[] = bos_content_type_status_item
+dependencies[] = ctools
+dependencies[] = entity
+dependencies[] = views
+features[ctools][] = views:views_default:3.0
+features[features_api][] = api:2
+features[views_view][] = status_displays

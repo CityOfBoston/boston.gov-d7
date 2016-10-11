@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Boston Vocabulary Political Party feature.
+ */
+
+include_once 'bos_vocabulary_political_party.features.inc';

@@ -1,0 +1,62 @@
+// Comment
+//
+// A single comment in a thread of comments.
+//
+// .comment--preview - Preview version of comment.
+// .comment--nested - A nested comment.
+//
+// Markup: comment.hbs
+//
+// Style guide: components.comments
+
+// Wrapper for a single comment.
+.comment,
+%comment {
+
+  // Wrapper for the list of comments and its title.
+  &__section {
+    @include margin(1 0);
+  }
+
+  &__title {
+    margin: 0;
+  }
+
+  // Comment's permalink wrapper.
+  &__permalink {
+    text-transform: uppercase;
+    font-size: 75%;
+  }
+
+  // Preview of the comment before submitting new or updated comment.
+  &--preview {
+    background-color: color(preview-bg);
+  }
+
+  // Nested comments are indented.
+  &--nested {
+    // Drupal core uses a 25px left margin.
+    margin-left: $indent-amount;
+
+    @include rtl() {
+      margin-left: 0;
+      margin-right: $indent-amount;
+    }
+  }
+}
+
+//
+// Drupal selectors.
+//
+
+.comments {
+  @extend %comment__section;
+}
+
+.comment-preview {
+  @extend %comment--preview;
+}
+
+.indented {
+  @extend %comment--nested;
+}

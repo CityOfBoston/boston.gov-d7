@@ -1,0 +1,68 @@
+// Progress bar
+//
+// Shows the progress of a task in a simple bar graph.
+//
+// .progress-bar--inline - An inline progress bar.
+//
+// Markup: progress-bar.hbs
+//
+// Style guide: forms.progress-bar
+
+.progress-bar,
+%progress-bar {
+  font-weight: bold;
+
+  &__bar {
+    @include border-radius(3px);
+    margin: 0 .2em;
+    border: 1px solid color(progress-bar-border);
+    background-color: color(progress-bar-bg);
+  }
+
+  &__fill {
+    height: 1.5em;
+    width: 5px;
+    background: color(progress-bar) image-url('progress-bar.gif') repeat 0 0;
+  }
+
+  &__percentage {
+    float: right;
+
+    @include rtl() {
+      float: left;
+    }
+  }
+
+  &--inline {
+    width: 16em;
+    display: inline-block;
+
+    @include rtl() {
+      float: right;
+    }
+  }
+}
+
+//
+// Drupal selectors.
+//
+
+.progress {
+  @extend %progress-bar;
+
+  .bar {
+    @extend %progress-bar__bar;
+  }
+
+  .filled {
+    @extend %progress-bar__fill;
+  }
+
+  .percentage {
+    @extend %progress-bar__percentage;
+  }
+}
+
+.ajax-progress-bar {
+  @extend %progress-bar--inline;
+}

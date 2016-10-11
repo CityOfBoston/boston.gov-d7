@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Hub Content Access feature.
+ */
+
+include_once 'hub_content_access.features.inc';

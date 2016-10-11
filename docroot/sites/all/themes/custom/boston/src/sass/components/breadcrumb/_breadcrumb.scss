@@ -1,0 +1,38 @@
+.breadcrumb {
+  display: none;
+  color: color(text-red);
+  font-family: $montserrat;
+  text-transform: uppercase;
+  @include type-layout(xxs, 1);
+  @include border-sm;
+  @include respond-to(xl) {
+    display: block;
+  }
+
+  & a {
+    color: color(text-dark);
+  }
+
+  & .crumbs-separator {
+    color: color(text-light);
+    display: inline-block;
+    padding: 0 10px;
+  }
+
+}
+
+.breadcrumb-last-updated {
+  display: none;
+  float: right;
+  margin-top: -41px;
+  font-style: italic;
+  @include type-layout(s, 1);
+  @include respond-to(xl) {
+    display: block;
+  }
+}
+
+// .with-hero state
+.with-hero .breadcrumb-last-updated {
+  margin-top: -87px;
+}

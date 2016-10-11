@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<text_components>
+  <text_component>
+    <id>txt0001</id>
+    <title>Text Component w/ One Column</title>
+    <hide_title>0</hide_title>
+    <short_title>Text w/ One Column</short_title>
+    <contact>con0001</contact>
+    <text_blocks>txtonecol0001,txtonecol0002</text_blocks>
+  </text_component>
+</text_components>

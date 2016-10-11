@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Boston Components Sidebar feature.
+ */
+
+include_once 'bos_components_sidebar.features.inc';

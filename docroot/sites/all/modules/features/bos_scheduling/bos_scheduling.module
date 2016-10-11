@@ -1,0 +1,54 @@
+<?php
+/**
+ * @file
+ * Code for the Boston Scheduling feature.
+ */
+
+include_once 'bos_scheduling.features.inc';
+
+/**
+ * Implements hook_views_default_views_alter().
+ */
+function bos_scheduling_views_default_views_alter(&$views) {
+
+  // Some views must have it's type filter configured so
+  // that it's only ever filtering on content types available to the current
+  // site, and must also not include content types that are being handled in
+  // other views.
+  $type_filter_exception_by_view = array(
+    'boston_scheduling' => array(
+      'displays' => array(
+        'default',
+        'page_1',
+      ),
+      'exceptions' => array(
+        'post',
+        'event',
+      ),
+    ),
+  );
+  foreach ($type_filter_exception_by_view as $view_name => $info) {
+    if (isset($views[$view_name])) {
+      $views[$view_name]
+        = bos_core_filter_type_by_all_except($views[$view_name], $info['displays'], $info['exceptions']);
+    }
+  }
+
+  // To avoid features conflicts between the sites, handle enable/disable
+  // of the views in this hook.
+  $views_to_disable_per_site = array(
+    'hub' => array(
+      'workbench_scheduler',
+    ),
+    'public' => array(
+      'workbench_scheduler',
+    ),
+  );
+  foreach ($views_to_disable_per_site as $site => $disable_views) {
+    foreach ($disable_views as $view_name) {
+      if (isset($views[$view_name])) {
+        bos_core_disable_view($site, $views[$view_name]);
+      }
+    }
+  }
+}

@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Boston Vocabulary Type of Content feature.
+ */
+
+include_once 'bos_vocabulary_type_of_content.features.inc';

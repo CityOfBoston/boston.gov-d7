@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Hub Pathauto feature.
+ */
+
+include_once 'hub_pathauto.features.inc';

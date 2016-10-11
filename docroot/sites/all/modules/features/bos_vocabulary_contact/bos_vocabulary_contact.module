@@ -1,0 +1,101 @@
+<?php
+/**
+ * @file
+ * Code for the Boston Contact Vocabulary feature.
+ */
+
+include_once 'bos_vocabulary_contact.features.inc';
+
+/**
+ * Implements hook_form_alter().
+ *
+ * Need to set help text for Contact taxonomy name and description properties.
+ * Description is also required.
+ */
+function bos_vocabulary_contact_form_taxonomy_form_term_alter(&$form, &$form_state) {
+  $vocab = $form_state['term']->vocabulary_machine_name;
+  if ($vocab === 'contact') {
+    $form['description']['#required'] = TRUE;
+    $form['description']['#description'] = t('A description of this contact. This will display on a department page.');
+    $form['name']['#description'] = t('The name of the contact.');
+  }
+}
+
+/**
+ * Implements hook_token_info().
+ */
+function bos_vocabulary_contact_token_info() {
+  $info = array();
+  // Define a new token type for boston.
+  $info['types']['boston'] = array(
+    'name' => t('Boston'),
+    'description' => t('A token type for Boston.'),
+  );
+  // Define our new token.
+  $info['tokens']['boston']['contact-path'] = array(
+    'name' => t('Contact Path'),
+    'description' => t('A token to replace the contact path for person profile.'),
+  );
+  return $info;
+}
+
+/**
+ * Implements hook_tokens().
+ */
+function bos_vocabulary_contact_tokens($type, $tokens, array $data = array(), array $options = array()) {
+  $replacements = array();
+
+  if ($type == 'boston') {
+    // Loop through the available tokens.
+    foreach ($tokens as $name => $original) {
+      // Find our custom tokens by name.
+      switch ($name) {
+        case 'contact-path':
+          $dept_prefix = "";
+          $term_name = "";
+          // Work out the value of our token.
+          if (!empty($data['node'])) {
+            $node = $data['node'];
+            $department_node = $node;
+            // Find the contact and get the last part of it's alias.
+            $contact_field = field_get_items('node', $department_node, 'field_contact');
+            if ($contact_field) {
+              $tid = $contact_field[0]['target_id'];
+              $term_path = drupal_get_path_alias('taxonomy/term/' . $tid);
+              $path_array = explode('/', $term_path);
+              $term_name = end($path_array);
+              $term = taxonomy_term_load($tid);
+              // If the field_department_profile is set then this is not a
+              // department, so set $node to the department_profile node
+              // so we can get the department_type.
+              $term_dept_profile = field_get_items('taxonomy_term', $term, 'field_department_profile');
+              if ($term_dept_profile) {
+                $department_node = node_load($term_dept_profile[0]['target_id']);
+              }
+            }
+            // Figure out which type of department we have
+            // and get it's replacement.
+            $dept_type = field_get_items('node', $department_node, 'field_department_type');
+            if ($dept_type) {
+              switch ($dept_type[0]['value']) {
+                case 'cabinet':
+                  $dept_prefix = 'government/cabinets/';
+                  break;
+
+                case 'department':
+                default:
+                  $dept_prefix = 'departments/';
+                  break;
+
+              }
+            }
+          }
+          // Give our token it's final value!
+          $replacements[$original] = $dept_prefix . $term_name;
+          break;
+      }
+    }
+  }
+
+  return $replacements;
+}

@@ -1,0 +1,12 @@
+# These files and their children will be ignored unless otherwise specified in
+# rsync-include-always.txt or rsync-include-if-does-not-exist.txt
+.gitignore
+.htaccess
+default.htaccess
+bos_404.html
+hub_404.html
+robots.txt
+simplesaml
+sites
+profiles
+favicon.ico

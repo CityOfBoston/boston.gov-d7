@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Boston Menu Block Variables feature.
+ */
+
+include_once 'bos_menu_block_variables.features.inc';

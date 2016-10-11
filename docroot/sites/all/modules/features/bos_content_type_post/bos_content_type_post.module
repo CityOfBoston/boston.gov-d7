@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Boston content type post feature.
+ */
+
+include_once 'bos_content_type_post.features.inc';

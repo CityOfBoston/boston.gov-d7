@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the bos_component_grid_of_quotes feature.
+ */
+
+include_once 'bos_component_grid_of_quotes.features.inc';

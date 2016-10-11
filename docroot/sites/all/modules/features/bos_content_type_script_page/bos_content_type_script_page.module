@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the bos_content_type_script_page feature.
+ */
+
+include_once 'bos_content_type_script_page.features.inc';

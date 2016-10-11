@@ -1,0 +1,72 @@
+<?php
+
+/**
+ * @file
+ * Defines the towing lookup form for boston.gov.
+ */
+
+/**
+ * Implements bos_neighborhood_lookup_form().
+ *
+ * @return mixed
+ *   Returns the neighborhood lookup form.
+ */
+function bos_neighborhood_lookup_form($form, &$form_state) {
+  $form['wrapper'] = array(
+    '#type' => 'container',
+    '#attributes' => array(
+      'class' => array(
+        'form form--inline',
+      ),
+    ),
+  );
+
+  $form['wrapper'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Find your neighborhood'),
+    '#attributes' => array(
+      'class' => array(
+        'form__fieldset form__fieldset--inline',
+      ),
+    ),
+  );
+
+  $form['wrapper']['street_address'] = array(
+    '#type' => 'textfield',
+    '#attributes' => array(
+      'class' => array(
+        'form__input form__input--inline',
+      ),
+      'placeholder' => t('Search your address'),
+    ),
+    '#size' => 30,
+    '#maxlength' => 140,
+    '#required' => TRUE,
+    '#theme_wrappers' => array(),
+  );
+
+  $form['wrapper']['submit_button'] = array(
+    '#type' => 'submit',
+    '#value' => t('Submit'),
+    '#attributes' => array(
+      'class' => array(
+        'form__button',
+        'form__button--inline',
+        'form__button--chevron',
+      ),
+    ),
+  );
+
+  $form['errors'] = array(
+    '#type' => 'container',
+    '#attributes' => array(
+      'class' => array(
+        'address-error',
+        'form-error',
+        'inline-form-error',
+      ),
+    ),
+  );
+
+  return $form;
+}

@@ -1,0 +1,47 @@
+<?php
+/**
+ * @file
+ * Code for the bos_view_places feature.
+ */
+
+include_once 'bos_view_places.features.inc';
+
+/**
+ * Implements hook_list_view_options().
+ */
+function bos_view_places_list_view_options() {
+  return array(
+    'places|listing' => '_places_listing_contextual_options',
+  );
+}
+
+/**
+ * Callback providing contextual options for places|listing display.
+ *
+ * @param array $vargs
+ *   Default values for the contextual filter fields.
+ *
+ * @return array
+ *   Fields providing options to pass as contextual arguments.
+ */
+function _places_listing_contextual_options($vargs) {
+  $vocabulary = taxonomy_vocabulary_machine_name_load('place_type');
+  $terms = entity_load('taxonomy_term', FALSE, array('vid' => $vocabulary->vid));
+  $place_type_options = array(
+    'all' => 'Show All',
+  );
+  foreach ($terms as $tid => $term) {
+    $place_type_options[$tid] = $term->name;
+  }
+  // These select lists should be in the same order as their Contextual Filter
+  // counterparts in the View display configuration.
+  return array(
+    array(
+      '#type' => 'select',
+      '#title' => t('Place Type'),
+      '#options' => $place_type_options,
+      '#default_value' => $vargs[0],
+      '#description' => t('Choose which place type you would like to filter the places list by.'),
+    ),
+  );
+}

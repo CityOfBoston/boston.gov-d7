@@ -1,0 +1,14 @@
+name = Boston 311 Request Vocabulary
+description = feature for the 311 Request taxonomy
+core = 7.x
+package = Boston
+dependencies[] = bos_shared_fields
+dependencies[] = ctools
+dependencies[] = features
+dependencies[] = link
+dependencies[] = strongarm
+dependencies[] = taxonomy
+features[ctools][] = strongarm:strongarm:1
+features[features_api][] = api:2
+features[field_instance][] = taxonomy_term-311_request-field_external_link
+features[taxonomy][] = 311_request

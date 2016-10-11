@@ -1,0 +1,185 @@
+<?php
+/**
+ * @file
+ * Code for the hub_settings_apache_solr feature.
+ */
+
+include_once 'hub_settings_apache_solr.features.inc';
+include_once 'hub_settings_apache_solr.admin.inc';
+
+/**
+ * Implements hook_apache_solr_apachesolr_query_alter().
+ *
+ * This function will add additional fields to the SOLR query.
+ */
+function hub_settings_apache_solr_apachesolr_query_alter(&$query) {
+  // Add the field_updated_date to the query so that apachesolr will return that
+  // field in the results.
+  $query->addParam('fl', 'dm_field_updated_date');
+
+  // Add the following fields for the person directory.
+  $query->addParam('fl', 'sm_field_position_title');
+  $query->addParam('fl', 'sm_field_display_name');
+  $query->addParam('fl', 'sm_field_work_email');
+  $query->addParam('fl', 'ss_user_picture_url');
+  $query->addParam('fl', 'ss_department_name');
+  $query->addParam('fl', 'sm_field_work_phone_number');
+}
+
+/**
+ * Implements hook_apachesolr_query_prepare().
+ */
+function hub_settings_apache_solr_apachesolr_query_prepare(&$query) {
+
+  $path = $query->getPath();
+  if (strpos($path, 'employee-directory') !== 'FALSE') {
+    // Remove the default sorting options.
+    $query->removeAvailableSort('score');
+    $query->removeAvailableSort('sort_label');
+    $query->removeAvailableSort('bundle');
+    $query->removeAvailableSort('sort_name');
+    $query->removeAvailableSort('ds_created');
+    // Set sort to be on the last name field by default.
+    $query->setAvailableSort('ss_field_last_name', array('title' => t('Last Name'), 'default' => 'asc'));
+    if (empty($_GET['solrsort'])) {
+      $sort_field = 'ss_field_last_name';
+      $sort_order = 'asc';
+    }
+    else {
+      $solrsort = explode(" ", $_GET['solrsort']);
+      $sort_field = reset($solrsort);
+      $sort_order = end($solrsort);
+    }
+    $query->setSolrsort($sort_field, $sort_order);
+  }
+}
+
+/**
+ * Implements hook_apachesolr_index_document_build_CONTENT_TYPE().
+ *
+ * Add some extra fields to the solr document.
+ */
+function hub_settings_apache_solr_apachesolr_index_document_build_profile2($document, $entity, $env_id) {
+  // Add the last name field to the solr index, but do it as a
+  // String Single-value (ss_) so that we can sort on it.  Otherwise the fields
+  // are added as String Multi-value (sm_) and apachesolr will not allow us to
+  // sort on that field.
+  $last_name = reset(field_get_items('profile2', $entity, 'field_last_name'));
+  if (!empty($last_name)) {
+    $document->addField('ss_field_last_name', $last_name['value']);
+  }
+
+  // Get the url for the user picture and add that to the document.
+  $pic_field = field_get_items('profile2', $entity, 'field_user_picture');
+  if (!empty($pic_field)) {
+    $pic = reset($pic_field);
+  }
+  if (!empty($pic)) {
+    $pic_url = image_style_url('medium_square', $pic['uri']);
+    $document->addField('ss_user_picture_url', $pic_url);
+  }
+
+  // Get the text string for the department name and add that to the document.
+  $dept = field_get_items('profile2', $entity, 'field_contact');
+  if (!empty($dept)) {
+    $dept_name = $dept[0]['entity']->name;
+    $document->addField('ss_department_name', $dept_name);
+  }
+}
+
+/**
+ * Implements hook_menu().
+ *
+ * Setup an admin page for configuring the text and links at the top of
+ * the user profile page.
+ */
+function hub_settings_apache_solr_menu() {
+  $items['admin/config/search/apachesolr/hub_search_config'] = array(
+    'title' => 'Hub Search Configuration',
+    'description' => 'Add configuration for the Hub search experience.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('_hub_settings_apache_solr_admin'),
+    'access arguments' => array('administer search'),
+    'type' => MENU_NORMAL_ITEM,
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_page_alter().
+ *
+ * Alter the search page placeholder for the search block.
+ */
+function hub_settings_apache_solr_apachesolr_search_page_alter(&$build, $search_page) {
+
+  // If no results set up the placeholder.
+  if (empty($build['search_results']['#results'])) {
+    $build['search_form']['basic']['keys']['#attributes']['placeholder'] = 'Search again';
+    unset($build['search_form']['basic']['keys']['#value']);
+  }
+
+  // If empty search page, set up the placeholder.
+  $current_path = current_path();
+  if ($current_path == $search_page['search_path']) {
+    $build['search_form']['basic']['keys']['#attributes']['placeholder'] = 'Search...';
+  }
+
+  // If on Employee Directory page, set up placeholder and title attribute.
+  if ($search_page['search_path'] == 'employee-directory') {
+    $build['search_form']['basic']['keys']['#attributes']['placeholder'] = 'Search...';
+    $build['search_form']['basic']['keys']['#attributes']['title'] = 'Search by name';
+  }
+
+  // Move the Suggestions (AKA Did you mean?) to be positioned further down the
+  // page.
+  if (isset($build['search_results']['#markup'])) {
+    $build['search_results'] = $build['search_results']['#markup'];
+  }
+  if (isset($build['search_results']['#results']) && isset($build['suggestions'])) {
+    unset($build['suggestions']);
+  }
+  elseif (!isset($build['search_results']['#results']) && isset($build['suggestions'])) {
+    $suggestions = $build['suggestions'];
+    unset($build['suggestions']);
+    $build['search_results']['search_found']['did_you_mean'] = $suggestions;
+    $build['search_results']['search_found']['did_you_mean']['#theme_wrappers'] = array('container');
+  }
+}
+
+/**
+ * Implements hook_form_alter().
+ *
+ * Add the required classes to the Apachesolr search form so that we can style
+ * it.
+ */
+function hub_settings_apache_solr_form_apachesolr_search_custom_page_search_form_alter(&$form, &$form_state, $form_id) {
+  // Adds required structure and classes to apachesolr search form.
+  $form['#attributes']['class'][] = 'bos-search-form';
+  $form['#attributes']['class'][] = 'content';
+  unset($form['basic']['keys']['#title']);
+  $form['basic']['submit_wrapper'] = array(
+    '#type' => 'actions',
+  );
+  $form['basic']['submit_wrapper']['submit'] = $form['basic']['submit'];
+  unset($form['basic']['submit']);
+}
+
+/**
+ * Implements hook_apachesolr_ENTITY_TYPE_exclude().
+ *
+ * Do not allow files that are bigger than 20M to be indexed.
+ */
+function hub_settings_apache_solr_apachesolr_file_exclude($entity_id, $row, $env_id) {
+  $ret = FALSE;
+  $my_file = file_load($entity_id);
+  $file_size_limit = variable_get('hub_solr_file_limit_size', 20);
+  if ($my_file->filesize > $file_size_limit * 1048576) {
+    $replacements = array('@file_name' => $my_file->filename, '@file_size' => $my_file->filesize);
+    $message = 'Indexing a large file to apachesolr cancelled because file is too big. ' .
+      ' filename=@file_name, filesize=@file_size  Record ignored.';
+    watchdog('apachesolr indexing', $message, $replacements, WATCHDOG_WARNING);
+    $ret = TRUE;
+  }
+  return $ret;
+}

@@ -1,0 +1,9 @@
+name = Boston View Media Plugins
+description = Custom media plugins for Boston.
+core = 7.x
+package = Boston
+dependencies[] = media
+dependencies[] = views
+features[ctools][] = views:views_default:3.0
+features[features_api][] = api:2
+features[views_view][] = boston_media_browser_tabs

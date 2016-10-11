@@ -1,0 +1,17 @@
+name = Boston Component Grid of Quotes
+core = 7.x
+package = Boston
+dependencies[] = bos_shared_fields
+dependencies[] = features
+dependencies[] = field_group
+dependencies[] = paragraphs
+dependencies[] = text
+features[ctools][] = field_group:field_group:1
+features[features_api][] = api:2
+features[field_base][] = field_grid_of_quotes
+features[field_group][] = group_basic_information|paragraphs_item|grid_of_quotes|form
+features[field_group][] = group_details|paragraphs_item|grid_of_quotes|form
+features[field_instance][] = paragraphs_item-grid_of_quotes-field_component_title
+features[field_instance][] = paragraphs_item-grid_of_quotes-field_grid_of_quotes
+features[field_instance][] = paragraphs_item-grid_of_quotes-field_short_title
+features[paragraphs][] = grid_of_quotes

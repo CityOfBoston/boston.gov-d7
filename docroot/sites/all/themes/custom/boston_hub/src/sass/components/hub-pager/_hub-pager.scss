@@ -1,0 +1,13 @@
+// Pager
+//
+// Overrides pager text hover color oh hub.
+//
+
+.pager,
+%pager {
+
+  &-current,
+  &-item:hover a {
+    color: color(pager-text-active);
+  }
+}

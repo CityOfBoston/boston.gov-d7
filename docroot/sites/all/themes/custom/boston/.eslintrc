@@ -1,0 +1,59 @@
+{
+  "env": {
+    "browser": true
+  },
+  "globals": {
+    "Drupal": true,
+    "jQuery": true
+  },
+  "rules": {
+    // Errors.
+    "block-scoped-var": 2,
+    "brace-style": [2, "stroustrup", {"allowSingleLine": true}],
+    "comma-style": [2, "last"],
+    "eqeqeq": [2, "smart"],
+    "guard-for-in": 2,
+    "indent": [2, 2, {"SwitchCase": 1}],
+    "key-spacing": [2, {"beforeColon": false, "afterColon": true}],
+    "lines-around-comment": [2, {"beforeBlockComment": true, "afterBlockComment": false}],
+    "no-implied-eval": 2,
+    "no-mixed-spaces-and-tabs": 2,
+    "no-nested-ternary": 2,
+    "no-trailing-spaces": 2,
+    "no-undef": 2,
+    "no-undefined": 2,
+    "no-unused-vars": [2, {"vars": "local", "args": "none"}],
+    "one-var": [2, "never"],
+    "quote-props": [2, "as-needed"],
+    "semi": [2, "always"],
+    "space-after-keywords": [2, "always"],
+    "space-before-blocks": [2, "always"],
+    "space-before-function-paren": [2, {"anonymous": "always", "named": "never"}],
+    "object-curly-spacing": [2, "never"],
+    "array-bracket-spacing": [2, "never"],
+    "computed-property-spacing": [2, "never"],
+    "space-in-parens": [2, "never"],
+    "spaced-comment": [2, "always"],
+    "strict": 2,
+    // Warnings.
+    "max-nested-callbacks": [1, 4],
+    "valid-jsdoc": [1, {
+      "prefer": {
+        "returns": "return",
+        "property": "prop"
+      },
+      "requireReturn": false
+    }],
+    // Disabled.
+    "camelcase": 0,
+    "consistent-return": 0,
+    "dot-notation": 0,
+    "new-cap": 0,
+    "no-alert": 0,
+    "no-new": 0,
+    "no-shadow": 0,
+    "no-underscore-dangle": 0,
+    "no-use-before-define": 0,
+    "quotes": 0
+  }
+}

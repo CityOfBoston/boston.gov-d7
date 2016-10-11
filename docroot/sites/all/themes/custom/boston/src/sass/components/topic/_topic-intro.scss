@@ -1,0 +1,184 @@
+// Topic Page
+//
+// Topic page is made up of components.
+//
+// Style guide: Pages.topic
+
+// Topic Intro
+//
+// Markup: topic-intro.hbs
+//
+// Style guide: Pages.topic.intro
+
+.node-type-topic-page {
+
+  .page-title {
+    @extend %visually-hidden;
+  }
+
+
+  .topic-hero-text-wrapper {
+    margin-top: -270px;
+
+    @include respond-to(s) {
+      margin-top: -400px;
+    }
+
+    @include respond-to(m) {
+      margin-top: -460px;
+    }
+
+    @include respond-to(xl) {
+      margin-top: -245px;
+      margin-bottom: -215px;
+    }
+  }
+
+  .intro-container {
+    margin: 0 auto;
+    position: relative;
+    text-align: center;
+    display: table;
+  }
+
+  .intro-title {
+    height: 270px;
+    display: table-row;
+
+    @include respond-to(s) {
+      height: 400px;
+    }
+    @include respond-to(m) {
+      height: 460px;
+    }
+  }
+
+  .intro-title-wrapper {
+    display: table-cell;
+    vertical-align: middle;
+
+    @include respond-to(xl) {
+      padding-bottom: 93px;
+    }
+
+    h1 {
+      @include type-layout(36px, 40px);
+      color: color(text-bg);
+      max-width: 80%;
+      margin: 0 auto .25em;
+
+      @include respond-to(m) {
+        @include type-layout(xxl, 67px);
+        padding-left: 30px;
+        padding-right: 30px;
+      }
+    }
+
+  }
+
+  .topic-title-prefix,
+  .topic-subhead {
+    color: color(text-bg);
+    font-style: italic;
+    font-size: 20px;
+    line-height:24px;
+    @include respond-to(s) {
+      line-height: inherit;
+    }
+  }
+
+  .topic-title-prefix {
+    span {
+      height: 3px;
+      width: 20px;
+      background-color: #fff;
+      display: inline-block;
+      margin-bottom: 5px;
+      margin-left: 5px;
+      margin-right: 5px;
+    }
+  }
+
+
+  .intro-content {
+    @extend .fullwidth;
+
+    @include respond-to(xl) {
+      top: -210px;
+    }
+
+    // Adds a margin to compensate for removing .topic-nav.sticky from the page flow (which creates a jumping effect)
+    &.nav-fill-margin {
+      @include respond-to(xl) {
+        margin-bottom: 211px;
+      }
+    }
+
+  }
+
+  .follow-button-wrapper {
+    // Temporarily hiding button because poll that it links to is currently out of scope.
+    display: none; 
+    @include respond-to(xl) {
+      position: absolute;
+      width: 100%;
+      top: -1em;
+      z-index: 10;
+    }
+  }
+
+  .topic-intro-text-container {
+    @include respond-to(xl) {
+      background-color: color(topic-intro-bg);
+      width: 739px; // 1px less than child element (.intro-text-top) to hide strange white edge appearing in Firefox only.
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 117px;
+    }
+    .squiggle-border-bottom {
+      background: none;
+    }
+    .supporting-text {
+      font-size: 1rem;
+      line-height: 35px;
+    }
+  }
+
+  .intro-text-top {
+    display: none;
+    @include respond-to(xl) {
+      background-color: color(topic-intro-bg);
+      height: 93px;
+      border-top: 8px solid color(topic-hero-border);
+      border-left: 8px solid color(topic-hero-border);
+      border-right: 8px solid color(topic-hero-border);
+      display: block;
+      left: -1px;
+      position: relative;
+      width: 740px;
+    }
+  }
+
+  .topic-intro-text-content {
+    @extend .supporting-sm;
+    line-height: 1.75em;
+    font-size: $base-font-size * 1.111;
+    padding: 20px 60px 0; // May need to change padding-top to 30 when Follow button is added back.
+    color: color(text-dark);
+
+    @include respond-to(xl) {
+      position: relative;
+      margin-top: -93px;
+      margin-bottom: 0;
+      padding-top: 50px; // May need to remove when Follow button is added back in.
+      padding-bottom: 20px;
+    }  
+  }
+
+  .topic-intro-text-content p {
+    @include respond-to(xl) {
+      margin-bottom: 0; 
+    }
+  }
+
+}

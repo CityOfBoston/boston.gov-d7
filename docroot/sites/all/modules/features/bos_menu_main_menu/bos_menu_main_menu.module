@@ -1,0 +1,42 @@
+<?php
+/**
+ * @file
+ * Drupal needs this blank file.
+ */
+
+/**
+ * Implements hook_menu_block_tree_alter().
+ */
+function bos_menu_main_menu_menu_block_tree_alter(&$tree, $config) {
+  if ($config['menu_name'] === 'main-menu') {
+    // It is necessary to combine the secondary menu tree elements with the
+    // main menu elements so that the secondary menu items can be exposed
+    // in that menu at mobile resolution.
+    $secondary_menu = variable_get('menu_secondary_links_source', 'menu-secondary-menu');
+    $secondary_tree = menu_tree_page_data($secondary_menu);
+    $tree = $secondary_tree + $tree;
+  }
+}
+
+/**
+ * Implements hook_block_view_alter().
+ */
+function bos_menu_main_menu_block_view_alter(&$data, $block) {
+  if (isset($data['content']['#config']['menu_name']) && $data['content']['#config']['menu_name'] === 'main-menu') {
+    // As long as we are working with a menu block render array, then check each
+    // first-level menu item to see if it's a secondary menu item. If it is
+    // attach a class identifying it as such so that it can be targeted.
+    $secondary_menu = variable_get('menu_secondary_links_source', 'menu-secondary-menu');
+    foreach ($data['content']['#content'] as $mlid => &$link_render) {
+      if (!empty($link_render['#original_link']['menu_name']) && $link_render['#original_link']['menu_name'] === $secondary_menu) {
+        $link_render['#attributes']['class'][] = 'secondary-menu-item';
+      }
+      if (!empty($link_render['#title']) && strpos($link_render['#title'], '311') !== FALSE) {
+        $link_render['#attributes']['class'][] = 'three-one-one';
+      }
+      if (!empty($link_render['#title']) && strpos($link_render['#title'], 'Log In') !== FALSE) {
+        $link_render['#attributes']['class'][] = 'login-link';
+      }
+    }
+  }
+}

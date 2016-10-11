@@ -1,0 +1,81 @@
+.paragraphs-item-cabinet {
+
+  .content {
+    @extend .container;
+
+  }
+  .cabinet {
+    @include border-sm($top: 1px, $bottom: 0);
+
+    .node-person-profile {
+      margin-top: 20px;
+    }
+  }
+  .cabinet-center {
+    h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+    @include respond-to(xxl) {
+      float: left;
+      width: calc(60% - #{$default-gutter});
+      padding-right: $default-gutter;
+      vertical-align: top;
+    }
+  }
+
+  .cabinet-contacts {
+    h5 {
+      margin-top: 7px;
+    }
+    @include respond-to(xxl) {
+      float: right;
+      width: 40%;
+      display: inline-block;
+      vertical-align: top;
+    }
+  }
+}
+
+
+
+.node-person-profile.view-mode-listing {
+  @include one-col;
+
+  @include respond-to(m) {
+    @include two-col;
+  }
+  @include respond-to(xl) {
+    @include four-col;
+  }
+  @include respond-to(xxl) {
+    @include five-col;
+  }
+}
+.cabinet .node-person-profile.view-mode-listing {
+  float: none;
+  @extend .clearfix;
+  @include respond-to(xl) {
+    float: left;
+    margin-left: 0;
+    margin-right: $default-gutter;
+  }
+}
+
+.cabinet .cabinet-right-wrapper {
+  float: none;
+  margin-left: 0;
+  margin-top: 29px;
+  width: 100%;
+
+  @include respond-to(m) {
+  }
+  @include respond-to(xl) {
+    float: right;
+    width: calc(75% - #{$default-gutter});
+  }
+  @include respond-to(xxl) {
+    float: right;
+    width: calc(80% - #{$default-gutter});
+  }
+}

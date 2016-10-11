@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the bos_subcomponents_seamless_doc feature.
+ */
+
+include_once 'bos_subcomponents_seamless_doc.features.inc';

@@ -1,0 +1,12 @@
+name = Boston Neighborhoods Vocabulary
+description = Neighborhoods classification mechanism.
+core = 7.x
+package = Boston
+dependencies[] = ctools
+dependencies[] = features
+dependencies[] = strongarm
+dependencies[] = taxonomy
+features[ctools][] = strongarm:strongarm:1
+features[features_api][] = api:2
+features[taxonomy][] = neighborhoods
+features[variable][] = pathauto_taxonomy_term_neighborhoods_pattern

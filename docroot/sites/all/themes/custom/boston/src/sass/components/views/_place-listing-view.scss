@@ -1,0 +1,12 @@
+// SPECIFIC TO PLACE LISTING PAGE
+
+// STRUCTURE
+.view-places {
+
+  @include full-width();
+
+  .view-filters,
+  .view-content {
+    @extend .container;
+  }
+}

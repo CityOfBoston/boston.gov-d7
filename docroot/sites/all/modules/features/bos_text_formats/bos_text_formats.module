@@ -1,0 +1,73 @@
+<?php
+/**
+ * @file
+ * Code for the Boston Text Formats feature.
+ */
+
+include_once 'bos_text_formats.features.inc';
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function bos_text_formats_preprocess_html() {
+  // Add site custom styles to the editor.
+  $path = drupal_get_path('module', 'bos_text_formats');
+  drupal_add_js($path . '/js/styles.js');
+}
+
+/**
+ * Implements hook_wysiwyg_filter_elements_blocklist_alter().
+ *
+ * See https://www.drupal.org/node/1783966 for details.
+ */
+function bos_text_formats_wysiwyg_filter_elements_blacklist_alter(&$blacklist) {
+  // Remove iframe from the blacklist so we can embed media.
+  if (($pos = array_search('iframe', $blacklist)) !== FALSE) {
+    unset($blacklist[$pos]);
+  }
+}
+
+/**
+ * Implements hook_wysiwyg_plugin().
+ */
+function bos_text_formats_wysiwyg_plugin($editor, $version) {
+  $plugins = array();
+  if ($editor == 'ckeditor') {
+    if ($version > 4) {
+      $plugins['citedblockquote'] = array(
+        'path' => drupal_get_path('module', 'bos_text_formats') . '/plugins/citedblockquote',
+        'filename' => 'plugin.js',
+        'load' => TRUE,
+        'buttons' => array(
+          'CitedBlockquote' => t('Blockquote with citation'),
+        ),
+      );
+      $plugins['table'] = array(
+        'path' => drupal_get_path('module', 'bos_text_formats') . '/plugins/responsive_table',
+        'filename' => 'plugin.js',
+        'load' => TRUE,
+        'buttons' => array(
+          'Table' => t('Responsive table'),
+        ),
+      );
+      $plugins['tabletools'] = array(
+        'path' => drupal_get_path('module', 'bos_text_formats') . '/plugins/tabletools',
+        'filename' => 'plugin.js',
+        'load' => TRUE,
+        'extensions' => array(
+          'TableTools' => t('Table tools'),
+        ),
+      );
+    }
+  }
+  return $plugins;
+}
+
+/**
+ * Implements hook_js_alter().
+ */
+function bos_text_formats_js_alter(&$javascript) {
+  if (isset($javascript[drupal_get_path('module', 'insert') . '/insert.js'])) {
+    $javascript[drupal_get_path('module', 'insert') . '/insert.js']['data'] = drupal_get_path('module', 'bos_text_formats') . '/js/insert.js';
+  }
+}

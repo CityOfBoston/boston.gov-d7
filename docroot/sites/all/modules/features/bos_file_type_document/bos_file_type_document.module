@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Boston File Type Document feature.
+ */
+
+include_once 'bos_file_type_document.features.inc';

@@ -1,0 +1,16 @@
+name = Boston Script Embed
+core = 7.x
+package = Features
+dependencies[] = bos_component_iframe
+dependencies[] = bos_shared_fields
+dependencies[] = features
+dependencies[] = field_group
+dependencies[] = list
+dependencies[] = options
+dependencies[] = paragraphs
+dependencies[] = text
+features[ctools][] = field_group:field_group:1
+features[features_api][] = api:2
+features[field_instance][] = paragraphs_item-script_embed-field_source_url
+features[field_instance][] = paragraphs_item-script_embed-field_sticky
+features[paragraphs][] = script_embed

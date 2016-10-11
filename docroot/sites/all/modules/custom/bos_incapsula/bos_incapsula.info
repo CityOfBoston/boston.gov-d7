@@ -1,0 +1,5 @@
+name = Boston Incapsula
+description = Custom incapsula integration for Boston.
+core = 7.x
+package = Boston
+dependencies[] = acquia_purge

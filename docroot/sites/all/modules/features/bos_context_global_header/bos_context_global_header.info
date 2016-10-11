@@ -1,0 +1,10 @@
+name = Boston Global Header
+description = Control the placement of blocks in the header.
+core = 7.x
+package = Boston
+dependencies[] = bos_menu_main_menu
+dependencies[] = context
+dependencies[] = menu_block
+features[context][] = bos_context_global_header
+features[ctools][] = context:context:3
+features[features_api][] = api:2

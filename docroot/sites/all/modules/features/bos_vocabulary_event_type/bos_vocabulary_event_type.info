@@ -1,0 +1,12 @@
+name = Boston Event Type Vocabulary
+description = Event classification mechanism.
+core = 7.x
+package = Boston
+dependencies[] = ctools
+dependencies[] = features
+dependencies[] = strongarm
+dependencies[] = taxonomy
+features[ctools][] = strongarm:strongarm:1
+features[features_api][] = api:2
+features[taxonomy][] = event_type
+features[variable][] = pathauto_taxonomy_term_event_type_pattern

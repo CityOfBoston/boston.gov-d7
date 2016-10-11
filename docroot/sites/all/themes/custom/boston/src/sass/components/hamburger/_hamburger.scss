@@ -1,0 +1,143 @@
+/*!
+ * Hamburgers
+ * @description Tasty CSS-animated hamburgers
+ * @author Jonathan Suh @jonsuh
+ * @site https://jonsuh.com/hamburgers
+ * @link https://github.com/jonsuh/hamburgers
+ */
+
+// Settings
+// ==================================================
+$hamburger-padding-x                       : 0 !default;
+$hamburger-padding-y                       : 0 !default;
+$hamburger-layer-width                     : 27px !default;
+$hamburger-layer-height                    : 4px !default;
+$hamburger-layer-spacing                   : 4px !default;
+$hamburger-layer-color                     : #ffffff !default;
+$hamburger-layer-border-radius             : 0 !default;
+$hamburger-hover-opacity                   : 1 !default;
+$hamburger-hover-transition-duration       : 0.15s !default;
+$hamburger-hover-transition-timing-function: linear !default;
+
+// To use CSS filters as the hover effect instead of opacity,
+// set $hamburger-hover-use-filter as true and
+// change the value of $hamburger-hover-filter accordingly.
+$hamburger-hover-use-filter: false !default;
+$hamburger-hover-filter    : opacity(50%) !default;
+
+.hb {
+  top: -3px;
+  position: relative;
+  padding: $hamburger-padding-y $hamburger-padding-x;
+  display: inline-block;
+  cursor: pointer;
+
+  transition-property: margin, opacity, filter;
+  transition-duration: $hamburger-hover-transition-duration;
+  transition-timing-function: $hamburger-hover-transition-timing-function;
+
+  // Normalize (<button>)
+  font: inherit;
+  color: inherit;
+  text-transform: none;
+  background-color: transparent;
+  border: 0;
+  margin: 0;
+  overflow: visible;
+  outline: none;
+
+  &:hover {
+    @if $hamburger-hover-use-filter == true {
+      filter: $hamburger-hover-filter;
+    }
+    @else {
+      opacity: $hamburger-hover-opacity;
+    }
+  }
+
+  &--active {
+    margin-top: 10px;
+
+    .hb__inner {
+      transform: translate3d(0, ($hamburger-layer-spacing + $hamburger-layer-height) * -1, 0) rotate(-45deg);
+      transition-delay: 0.32s;
+      transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+
+      &::after {
+        top: 0;
+        opacity: 0;
+        transition: top 0.3s cubic-bezier(0.33333, 0, 0.66667, 0.33333),
+                    opacity 0.1s 0.27s linear;
+      }
+
+      &::before {
+        top: 0;
+        transform: rotate(-90deg);
+        transition: top 0.12s 0.18s cubic-bezier(0.33333, 0, 0.66667, 0.33333),
+                    transform 0.15s 0.42s cubic-bezier(0.215, 0.61, 0.355, 1);
+      }
+    }
+
+    .hb__label {
+      display: none;
+    }
+  }
+
+  &__box {
+    width: $hamburger-layer-width;
+    height: $hamburger-layer-height * 3 + $hamburger-layer-spacing * 2;
+    display: inline-block;
+    position: relative;
+  }
+
+  &__inner {
+    display: block;
+    top: auto;
+    bottom: 0;
+    transition-timing-function: cubic-bezier(0.275, 0.00275, 0.3375, 0.095);
+
+    &,
+    &::before,
+    &::after {
+      width: $hamburger-layer-width;
+      height: $hamburger-layer-height;
+      background-color: $hamburger-layer-color;
+      border-radius: $hamburger-layer-border-radius;
+      position: absolute;
+      transition-property: transform;
+      transition-duration: 0.10s;
+      transition-timing-function: ease;
+    }
+
+    &::before,
+    &::after {
+      content: "";
+      display: block;
+    }
+
+    &::before {
+      top: ($hamburger-layer-spacing + $hamburger-layer-height) * -1;
+      transition: top 0.12s 0.3s cubic-bezier(0.33333, 0.66667, 0.66667, 1),
+                  transform 0.15s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    }
+
+    &::after {
+      bottom: ($hamburger-layer-spacing + $hamburger-layer-height) * -1;
+      top: ($hamburger-layer-spacing * 2 + $hamburger-layer-height * 2) * -1;
+      transition: top 0.3s 0.3s cubic-bezier(0.33333, 0.66667, 0.66667, 1),
+                  opacity 0.1s linear;
+    }
+  }
+
+  &__label {
+    position: absolute;
+    font-family: $montserrat;
+    letter-spacing: 0;
+    @include type-layout(10px, 12px);
+    text-transform: uppercase;
+    bottom: -10px;
+    left: -5px;
+    right:  -5px;
+    text-align: center;
+  }
+}

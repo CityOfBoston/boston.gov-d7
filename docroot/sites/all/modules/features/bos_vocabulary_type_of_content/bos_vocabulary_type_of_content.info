@@ -1,0 +1,11 @@
+name = Boston Vocabulary Type of Content
+description = Boston Vocabulary Type of Content
+core = 7.x
+package = Boston
+dependencies[] = ctools
+dependencies[] = features
+dependencies[] = strongarm
+dependencies[] = taxonomy
+features[ctools][] = strongarm:strongarm:1
+features[features_api][] = api:2
+features[taxonomy][] = type_of_content

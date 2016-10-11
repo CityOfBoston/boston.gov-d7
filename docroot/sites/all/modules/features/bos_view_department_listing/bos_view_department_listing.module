@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Boston View Department Listing feature.
+ */
+
+include_once 'bos_view_department_listing.features.inc';

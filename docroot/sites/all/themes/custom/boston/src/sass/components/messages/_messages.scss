@@ -1,0 +1,147 @@
+// Messages
+//
+// System alerts.
+//
+// Warning messages should use the `.messages--warning` class. Error messages
+// should use the `.messages--error` class.
+//
+// The icon shown is not part of the CSS; it is an SVG image in the HTML.
+//
+// Markup: messages.hbs
+//
+// Style guide: components.messages
+
+// Message colors
+//
+// Drupal system status reports use just the message colors and no other
+// styling.
+//
+// .messages--ok-color      - "Ok" status.
+// .messages--warning-color - Warning status.
+// .messages--error-color   - Error status.
+//
+// Markup: messages--color.hbs
+//
+// Style guide: components.messages--color
+
+.messages,
+%messages {
+  @extend %messages--ok-color;
+  @include margin(1 0);
+  position: relative;
+  padding: 10px 10px 10px 44px;
+  border: 1px solid color(status);
+
+  @include rtl() {
+    padding: 10px 44px 10px 10px;
+    background-position: 99% 8px;
+  }
+
+  &__icon {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    height: 24px;
+    width: 24px;
+    margin-top: -12px; // Half of the icon height.
+    line-height: 1;
+
+    @include rtl() {
+      left: auto;
+      right: 0;
+    }
+
+    // SVG icon fill.
+    path {
+      fill: color(status);
+    }
+  }
+
+  &__list {
+    margin: 0;
+  }
+
+  &__item {
+    list-style-image: none;
+  }
+
+  &--ok-color {
+    background-color: color(status-bg);
+    color: color(status);
+  }
+
+  &--warning-color {
+    background-color: color(warning-bg);
+    color: color(warning);
+  }
+
+  &--error-color {
+    background-color: color(error-bg);
+    color: color(error);
+  }
+
+  &--status {
+    @extend %messages;
+  }
+
+  &--warning {
+    @extend %messages;
+    @extend %messages--warning-color;
+    border-color: color(warning-border);
+
+    path {
+      fill: color(warning-border);
+    }
+  }
+
+  &--error {
+    @extend %messages;
+    @extend %messages--error-color;
+    border-color: color(error);
+
+    path {
+      fill: color(error);
+    }
+  }
+
+  &--error__highlighted-text {
+    color: color(status-highlight);
+  }
+}
+
+//
+// Drupal selectors.
+//
+
+.messages {
+  &.warning {
+    @extend %messages--warning;
+  }
+
+  &.error {
+    @extend %messages--error;
+  }
+}
+
+.messages--error .error,
+.messages.error .error {
+  @extend %messages--error__highlighted-text;
+}
+
+// System status report.
+.ok {
+  @extend %messages--ok-color;
+}
+
+.warning {
+  @extend %messages--warning-color;
+}
+
+.error {
+  @extend %messages--error-color;
+}
+
+// Node revisions.
+.revision-current {
+  @extend %messages--ok-color;
+}

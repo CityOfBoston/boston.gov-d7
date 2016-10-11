@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Hub View Applications List feature.
+ */
+
+include_once 'hub_view_applications_list.features.inc';

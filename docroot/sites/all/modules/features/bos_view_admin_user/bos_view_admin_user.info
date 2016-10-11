@@ -1,0 +1,8 @@
+name = bos_view_admin_user
+core = 7.x
+package = Features
+dependencies[] = admin_views
+dependencies[] = ctools
+dependencies[] = views
+features[ctools][] = views:views_default:3.0
+features[features_api][] = api:2

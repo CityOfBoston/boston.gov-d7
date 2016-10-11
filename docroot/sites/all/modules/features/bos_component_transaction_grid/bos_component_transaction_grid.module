@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Boston Component Transaction Grid feature.
+ */
+
+include_once 'bos_component_transaction_grid.features.inc';

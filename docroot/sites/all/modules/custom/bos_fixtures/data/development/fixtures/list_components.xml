@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<list_components>
+  <list_component>
+    <id>list0001</id>
+    <list>transactions|main_transactions</list>
+  </list_component>
+</list_components>

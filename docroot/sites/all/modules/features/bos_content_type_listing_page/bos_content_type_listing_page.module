@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Boston Listing Page Content Type feature.
+ */
+
+include_once 'bos_content_type_listing_page.features.inc';

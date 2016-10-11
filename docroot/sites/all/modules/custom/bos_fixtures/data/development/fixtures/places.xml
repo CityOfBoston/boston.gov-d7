@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<places>
+  <place>
+    <id>place0001</id>
+    <author>-</author>
+    <place_type>pt0001</place_type>
+    <title>Place Profile 0001</title>
+    <intro_image>banner.png</intro_image>
+    <body>
+      Place profile 0001 body paragraph 1.
+    </body>
+    <intro_text>
+      Place profile 0001 intro text.
+    </intro_text>
+    <contact>con0001</contact>
+    <workbench_state>published</workbench_state>
+  </place>
+  <place>
+    <id>place0002</id>
+    <author>-</author>
+    <place_type>pt0001</place_type>
+    <title>Place Profile 0002</title>
+    <intro_image>banner.png</intro_image>
+    <body>
+      Place profile 0001 body paragraph 1.
+    </body>
+    <intro_text>
+      Place profile 0001 intro text.
+    </intro_text>
+    <contact>con0001</contact>
+    <workbench_state>published</workbench_state>
+  </place>
+  <place>
+    <id>place0003</id>
+    <author>-</author>
+    <place_type>pt0001</place_type>
+    <title>Place Profile 0003</title>
+    <intro_image>banner.png</intro_image>
+    <body>
+      Place profile 0001 body paragraph 1.
+    </body>
+    <intro_text>
+      Place profile 0001 intro text.
+    </intro_text>
+    <contact>con0001</contact>
+    <workbench_state>published</workbench_state>
+  </place>
+  <place>
+    <id>place0004</id>
+    <author>-</author>
+    <place_type>pt0001</place_type>
+    <title>Place Profile 0004</title>
+    <intro_image>banner.png</intro_image>
+    <body>
+      Place profile 0001 body paragraph 1.
+    </body>
+    <intro_text>
+      Place profile 0001 intro text.
+    </intro_text>
+    <contact>con0001</contact>
+    <workbench_state>published</workbench_state>
+  </place>
+</places>

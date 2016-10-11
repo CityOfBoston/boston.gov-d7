@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<department_profiles>
+  <department_profile>
+    <id>dp0001</id>
+    <title>Department Profile 01</title>
+    <author>-</author>
+    <body>
+      Lorem ipsum dolor.
+    </body>
+    <icon>thumbnail.png</icon>
+    <phone>555-555-5555</phone>
+    <email>dp0001@example.com</email>
+    <address>123 Main St</address>
+    <city>Boston</city>
+    <state>MA</state>
+    <zip>02118</zip>
+    <workbench_state>published</workbench_state>
+  </department_profile>
+</department_profiles>

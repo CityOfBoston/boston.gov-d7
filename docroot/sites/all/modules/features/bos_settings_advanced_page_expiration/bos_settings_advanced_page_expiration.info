@@ -1,0 +1,10 @@
+name = Boston Settings Advanced Page Expiration
+description = Save setting for the Advanced Page Expiration (APE) module
+core = 7.x
+package = Boston
+dependencies[] = ctools
+dependencies[] = strongarm
+features[ctools][] = strongarm:strongarm:1
+features[features_api][] = api:2
+features[variable][] = cache
+features[variable][] = page_cache_maximum_age

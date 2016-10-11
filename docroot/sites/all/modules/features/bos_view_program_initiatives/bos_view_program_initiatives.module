@@ -1,0 +1,47 @@
+<?php
+/**
+ * @file
+ * Code for the bos_view_program_initiatives feature.
+ */
+
+include_once 'bos_view_program_initiatives.features.inc';
+
+/**
+ * Implements hook_list_view_options().
+ */
+function bos_view_program_initiatives_list_view_options() {
+  return array(
+    'program_initiatives|listing' => '_program_listing_contextual_options',
+  );
+}
+
+/**
+ * Callback providing contextual options for program_initiatives|listing.
+ *
+ * @param array $vargs
+ *   Default values for the contextual filter fields.
+ *
+ * @return array
+ *   Fields providing options to pass as contextual arguments.
+ */
+function _program_listing_contextual_options($vargs) {
+  $vocabulary = taxonomy_vocabulary_machine_name_load('program_type');
+  $terms = entity_load('taxonomy_term', FALSE, array('vid' => $vocabulary->vid));
+  $program_type_options = array(
+    'all' => 'Show All',
+  );
+  foreach ($terms as $tid => $term) {
+    $program_type_options[$tid] = $term->name;
+  }
+  // These select lists should be in the same order as their Contextual Filter
+  // counterparts in the View display configuration.
+  return array(
+    array(
+      '#type' => 'select',
+      '#title' => t('Program Type'),
+      '#options' => $program_type_options,
+      '#default_value' => $vargs[0],
+      '#description' => t('Choose which program type you would like to filter the programs list by.'),
+    ),
+  );
+}

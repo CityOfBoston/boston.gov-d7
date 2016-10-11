@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Boston Date Settings feature.
+ */
+
+include_once 'bos_dates.features.inc';

@@ -1,0 +1,18 @@
+<project name="frontend" default="install">
+  <target name="frontend:build" depends="frontend:install" description="Uses gulp to build front end dependencies for Thunder.">
+    <if>
+      <equals arg1="${project.theme_name}" arg2="thunder" />
+      <then>
+        <exec dir="${docroot}/sites/all/themes/custom/${project.theme_name}" command="npm run build" logoutput="true" checkreturn="true" />
+      </then>
+    </if>
+  </target>
+  <target name="frontend:install" description="Installs front end dependencies for Thunder.">
+    <if>
+      <equals arg1="${project.theme_name}" arg2="thunder" />
+      <then>
+        <exec dir="${docroot}/sites/all/themes/custom/${project.theme_name}" command="npm run install-thunder" logoutput="true" checkreturn="true" />
+      </then>
+    </if>
+  </target>
+</project>

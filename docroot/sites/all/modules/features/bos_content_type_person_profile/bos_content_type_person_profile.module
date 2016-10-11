@@ -1,0 +1,17 @@
+<?php
+/**
+ * @file
+ * Code for the Boston Content Type Person Profile feature.
+ */
+
+include_once 'bos_content_type_person_profile.features.inc';
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * Set Boston and Massachusetts as the default for address field.
+ */
+function bos_content_type_person_profile_form_person_profile_node_form_alter(&$form, &$form_state, $form_id) {
+  // Change the label for the Title field so that it makes sense for the editor.
+  $form['title']['#title'] = "Display Name";
+}

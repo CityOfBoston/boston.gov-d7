@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Boston Vocabulary Features feature.
+ */
+
+include_once 'bos_vocabulary_features.features.inc';

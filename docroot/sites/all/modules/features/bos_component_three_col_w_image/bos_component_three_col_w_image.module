@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Boston Component 3 Column with image feature.
+ */
+
+include_once 'bos_component_three_col_w_image.features.inc';

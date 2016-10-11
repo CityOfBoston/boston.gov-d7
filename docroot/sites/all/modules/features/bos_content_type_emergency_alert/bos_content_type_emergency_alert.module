@@ -1,0 +1,79 @@
+<?php
+/**
+ * @file
+ * Code for the Boston Content Type Emergency Alert feature.
+ */
+
+include_once 'bos_content_type_emergency_alert.features.inc';
+
+/**
+ * Implements hook_menu().
+ */
+function bos_content_type_emergency_alert_menu() {
+  $menu = array();
+
+  $menu['emergency-alert'] = array(
+    'title' => '',
+    'page callback' => 'bos_content_type_emergency_alert_json',
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
+  );
+
+  return $menu;
+}
+
+/**
+ * Callback for the emergency-alert path.
+ */
+function bos_content_type_emergency_alert_json() {
+  $max_age = 604800;
+  $data = array(
+    'emergency' => FALSE,
+    'html' => "",
+  );
+
+  if (bos_core_active_emergency()) {
+    $data['emergency'] = TRUE;
+    $view_output = views_embed_view('status_displays', 'homepage_status');
+    $data['html'] = $view_output;
+  }
+
+  if (drupal_page_is_cacheable()) {
+    drupal_add_http_header('Cache-Control', 'public,max-age=' . $max_age);
+    drupal_add_http_header('Expires', gmdate(DATE_RFC1123, REQUEST_TIME + $max_age));
+  }
+
+  drupal_json_output($data);
+  drupal_exit();
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function bos_content_type_emergency_alert_form_alter(&$form, &$form_state, $form_id) {
+  if ($form_id == "emergency_alert_node_form") {
+    $path = array(
+      'field_status_overrides',
+      'und',
+      '0',
+      'field_override_message',
+      'und',
+      '0',
+    );
+    $current_item = &$form;
+    $isset = TRUE;
+    foreach ($path as $element) {
+      if (isset($current_item[$element])) {
+        $current_item = &$current_item[$element];
+      }
+      else {
+        $isset = FALSE;
+      }
+    }
+
+    if ($isset) {
+      unset($current_item['field_date']);
+    }
+  }
+
+}

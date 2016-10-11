@@ -1,0 +1,193 @@
+
+// IMPORATANT: TEMPORARY CODE
+// This code compensates for the landing page hero
+// needing to be flush with the heading and should
+// be removed once the landing page hero has been
+// integrated with the general hero styles (_hero.scss).
+.node-type-landing-page .page {
+  padding-top: 3.6em;
+}
+// End temporary code
+
+.node-type-landing-page {
+
+  .page-title {
+    @extend %visually-hidden;
+  }
+
+  .landing-hero {
+    height: 300px;
+    padding: 0;
+    position: inherit; // overrides relative positioning on .component-section
+
+    @include respond-to(m) {
+      height: 365px;
+    }
+
+    @include respond-to(xl) {
+      height: 435px;
+    }
+  }
+
+  .landing-hero-intro-text {
+    font-style: italic;
+    color: color(text-bg);
+    margin-bottom: -10px;
+
+    @include respond-to(m) {
+      @include type-layout(l, 80px);
+    }
+
+    @include respond-to(xl) {
+      @include type-layout(38px, 90px);
+    }
+
+    .intro-text {
+      color: color(text-bg);
+    }
+  }
+
+  .landing-hero-content {
+    position: absolute;
+    top:0;
+    left:0;
+    height: 365px;
+    width: 100%;
+    text-align: center;
+    z-index: 4;
+    display: -webkit-flex; /* Safari */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: color(text);
+    padding-bottom: 90px;
+
+    @include respond-to(m) {
+      height: 430px;
+      padding-bottom: 125px;
+    }
+
+    @include respond-to(xl) {
+      height: 500px;
+    }
+
+  }
+
+  .landing-hero-content .container {
+    width: 100%; /* IE11 */
+    margin-top: 100px;
+  }
+
+  .landing-hero h1 {
+    color: color(text-bg);
+    margin: 0 0 20px 0;
+    padding: 0 20px;
+    @include type-layout(36px, 40px);
+
+    @include respond-to(m) {
+      @include type-layout(xxl, 67px);
+    }
+
+    @include respond-to(xl) {
+      @include type-layout(90px, 85px);
+      padding: 0;
+    }
+  }
+
+  .landing-hero-subhead {
+    color: color(text-bg);
+    font-family: $lora;
+    font-style: italic;
+    margin-top: -1em;
+    margin-bottom: 1em;
+
+    @include respond-to(l) {
+      @include type-layout(22px);
+    }
+
+  }
+
+  .landing-hero-cta .component-section {
+    padding: 0;
+    margin-top: 2em;
+  }
+
+  .landing-hero-cta a {
+    @extend .button;
+    background-color: color(text-dark);
+    @include type-layout(xxs, 32px);
+
+    @include respond-to(xl) {
+      @include type-layout(m, 54px)
+    }
+  }
+
+  .landing-hero-logo {
+    width: 90px;
+    height: 90px;
+    background: color(text-dark);
+    margin: 0 auto;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%,0);
+    padding-top: 6px;
+
+    @include respond-to(m) {
+      width: 125px;
+      height: 125px;
+      padding-top: 0;
+    }
+  }
+
+  .landing-hero-logo img {
+    height: 63px;
+    width: auto;
+    padding-top: 15px;
+
+    @include respond-to(m) {
+      padding-top: 29px;
+      height: auto;
+      width: 45px
+    }
+  }
+
+  .landing-hero-image-wrapper {
+    position: absolute;
+    width: 100vw;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    height: 365px;
+
+    @include respond-to(m) {
+      height: 430px;
+    }
+
+    @include respond-to(xl) {
+      height: 500px;
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      width: 100vw;
+      top:0;
+      left:0;
+      background-color: color(image-overlay-50);
+      height: 100%;
+    }
+    img {
+      max-width: none;
+      position: absolute;
+      left: 50%;
+      transform: translate(-50%,0);
+
+      @include respond-to(xxxl) {
+        width: 100%;
+      }
+
+    }
+  }
+
+}

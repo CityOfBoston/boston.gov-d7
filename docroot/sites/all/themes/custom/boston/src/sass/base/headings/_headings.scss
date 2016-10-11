@@ -1,0 +1,95 @@
+// Headings
+//
+// All HTML headings, `<h1>` through `<h6>`, are available. `%h1` through `%h6`
+// classes are also available, for when you want to match the font styling of a
+// heading but still want your text to be displayed inline.
+//
+// Markup: headings-h.hbs
+//
+// Style guide: base.headings
+
+// Address variable `h1` font-size and margin within `section` and `article`
+// contexts in Firefox 4+, Safari, and Chrome.
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $montserrat;
+  color: color(heading);
+  text-transform: uppercase;
+
+  &.header-border-bottom {
+    border-bottom: 5px solid;
+    @include respond-to(xl) {
+      border-bottom: 8px solid;
+      padding-bottom: .75rem;
+    }
+  }
+}
+
+h1, h2 {
+  letter-spacing: -1px;
+}
+
+h4, h5, h6 {
+  letter-spacing: 1px;
+}
+
+h1,
+%h1 {
+  @include type-layout(l, 27px);
+  @include margin-top(.75);
+  @include margin-bottom(.75);
+  font-weight: 700;
+  letter-spacing: -1px;
+  @include respond-to (xl){
+    @include type-layout(xxl, 67px);
+    @include margin-top(1);
+    @include margin-bottom(1);
+  }
+}
+
+h2,
+%h2 {
+  @include type-layout(xl, 47px);
+  @include margin-top(1);
+  @include margin-bottom(1);
+  font-weight: 700;
+  letter-spacing: -1px;
+}
+
+h3,
+%h3 {
+  @include type-layout(l, 47px);
+  @include margin-top(1);
+  @include margin-bottom(1);
+  font-family: $lora;
+  font-weight: 400;
+  font-style: italic;
+  text-transform: none;
+}
+
+h4,
+%h4 {
+  @include type-layout(l, 35px);
+  @include margin-top(1);
+  @include margin-bottom(1);
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+h5,
+%h5 {
+  @include type-layout(s, 22px);
+  @include margin-top(1);
+  @include margin-bottom(.23);
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+
+h6,
+%h6 {
+  @include type-layout(xs, 20px);
+  @include margin-top(1);
+  @include margin-bottom(1);
+  font-weight: 700;
+  letter-spacing: 1px;
+}

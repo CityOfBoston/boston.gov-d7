@@ -1,0 +1,7 @@
+# These files will be included if they do not yet exist. They will not overwrite
+# existing files.
+.htaccess
+robots.txt
+bos_404.html
+hub_404.html
+favicon.ico

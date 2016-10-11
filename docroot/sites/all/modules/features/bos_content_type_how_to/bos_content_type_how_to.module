@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Boston How-to Content Type feature.
+ */
+
+include_once 'bos_content_type_how_to.features.inc';

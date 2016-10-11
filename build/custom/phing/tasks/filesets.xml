@@ -1,0 +1,20 @@
+<!-- overrides and additional custom filesets supplementing core filesets -->
+<project name="filesets" default="build">
+  <!-- exclude custom files that use Views coding standards -->
+  <patternset id="files.views">
+    <exclude name="bos_core/includes/bos_core_plugin_argument_validate_first_page.inc"/>
+  </patternset>
+
+  <fileset dir="${docroot}/sites/all/modules/custom" id="files.php.custom.modules">
+    <patternset refid="files.php"/>
+    <patternset refid="files.views"/>
+  </fileset>
+
+  <fileset dir="${docroot}/sites/all/modules/features" id="files.php.features.modules">
+    <include name="**/*.module"/>
+    <include name="**/*.inc"/>
+    <exclude name="**/*.features.*"/>
+    <exclude name="**/*.feature.*"/>
+  </fileset>
+
+</project>

@@ -1,0 +1,35 @@
+<?php
+/**
+ * @file
+ * Code for the Boston Component Cabinet feature.
+ */
+
+include_once 'bos_component_cabinet.features.inc';
+
+/**
+ * Implements hook_preprocess_entity().
+ */
+function bos_component_cabinet_preprocess_entity(&$variables, $hook) {
+  if ($variables['entity_type'] === 'paragraphs_item' &&
+      $variables['paragraphs_item']->bundle == 'cabinet') {
+    // For Cabinet, convert the list of contacts to be a UL.
+    if (!empty($variables['elements']['field_contacts'])) {
+      $items = array();
+      $title = '';
+      $type = 'ul';
+      $attributes = array(
+        'class' => 'cabinet-contacts-listing secondary-list',
+      );
+      foreach ($variables['elements']['field_contacts']['#items'] as $key => $contact_items) {
+        $items[] = $variables['elements']['field_contacts'][$key]['#markup'];
+      }
+      $cabinet_contacts = theme_item_list(array(
+        'items' => $items,
+        'title' => $title,
+        'type' => $type,
+        'attributes' => $attributes,
+      ));
+      $variables['cabinet_contacts'] = $cabinet_contacts;
+    }
+  }
+}

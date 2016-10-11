@@ -1,0 +1,14 @@
+/*
+  Accessibility helpers
+*/
+
+.a11y {
+  &--hidden {
+    display: block;
+    height: 1px;
+    width: 1px;
+    position: absolute;
+    overflow: hidden;
+    top: -100px;
+  }
+}

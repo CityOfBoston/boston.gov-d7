@@ -1,0 +1,51 @@
+<project name="project" default="build" phingVersion="2.8.2">
+
+  <!-- Override core Phing targets. -->
+  <import file="${project.basedir}/tasks/frontend.xml"/>
+  <import file="${project.basedir}/tasks/local-setup.xml"/>
+  <import file="${project.basedir}/tasks/migrate.xml"/>
+  <import file="${project.basedir}/tasks/search.xml"/>
+  <import file="${project.basedir}/tasks/validate.xml"/>
+
+  <!-- Include bolt core classes and tasks. -->
+  <property name="core.phing.dir.relative" value="${phing.dir}/../../core/phing" />
+  <resolvepath propertyName="core.phing.dir" file="${core.phing.dir.relative}"/>
+  <import file="${core.phing.dir}/build.xml"/>
+
+  <!-- Non-target overrides -->
+  <import file="${project.basedir}/tasks/filesets.xml"/>
+
+  <target name="build:test"
+          description="Builds, tests, and deploys an artifact."
+          depends="setup:build:all, local:sync, local:update, tests:all">
+  </target>
+
+  <target name="build:test:hub"
+          description="Builds, tests, and deploys an artifact for the hub."
+          depends="setup:build:all, local:sync, local:update, tests:all">
+  </target>
+
+  <!-- @todo Re-enable Behat tests by adding tests:behat as a dependency! -->
+  <target name="tests:all" description="Runs all Behat tests and Security Update check."
+          depends="tests:security-updates, tests:behat"/>
+
+  <target name="build:local"
+          description="Build the site locally."
+          depends="setup:build:all">
+      <if>
+          <equals arg1="${project.build_db_from}" arg2="initialize" />
+          <then>
+              <phingcall target="setup:drupal:install"/>
+          </then>
+          <else>
+              <phingcall target="local:sync"/>
+              <phingcall target="local:update"/>
+          </else>
+      </if>
+    <exec dir="${docroot}" command="${drush.cmd} dis acquia_purge acquia_agent --verbose --yes" logoutput="true"/>
+    <exec dir="${docroot}" command="${drush.cmd} en stage_file_proxy migrate_ui field_ui views_ui context_ui bos_development dblog --verbose --yes" logoutput="true"/>
+    <exec dir="${docroot}" command="${drush.cmd} cron --verbose --yes" logoutput="true"/>
+    <exec dir="${docroot}" command="${drush.cmd} mrs --all --verbose --yes" logoutput="true"/>
+    <exec dir="${docroot}" command="${drush.cmd} cc all" logoutput="true"/>
+  </target>
+</project>

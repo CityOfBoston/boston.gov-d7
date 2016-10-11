@@ -1,0 +1,23 @@
+// Highlight mark
+//
+// The "new" or "updated" marker.
+//
+// Markup: highlight-mark.hbs
+//
+// Style guide: components.highlight-mark
+
+.highlight-mark,
+%highlight-mark {
+  color: color(mark-highlight);
+  // Remove background highlighting from <mark> in normalize.
+  background-color: transparent;
+}
+
+//
+// Drupal selectors.
+//
+
+.new,
+.update {
+  @extend %highlight-mark;
+}

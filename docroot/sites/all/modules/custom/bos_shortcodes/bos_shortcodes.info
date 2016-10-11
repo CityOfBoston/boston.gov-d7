@@ -1,0 +1,5 @@
+name = Boston Shortcodes
+core = 7.x
+package = Boston Custom
+description = Defines Shortcodes for the Boston.gov site.
+dependencies[] = shortcode

@@ -1,0 +1,17 @@
+name = Hub Settings Apache Solr Local Dev
+description = Hub Settings Apache Solr Local Dev
+core = 7.x
+package = Hub
+dependencies[] = apachesolr
+dependencies[] = ctools
+dependencies[] = facetapi
+dependencies[] = strongarm
+features[apachesolr_environment][] = solr
+features[ctools][] = apachesolr:apachesolr_environments:1
+features[ctools][] = facetapi:facetapi_defaults:1
+features[ctools][] = strongarm:strongarm:1
+features[facetapi][] = apachesolr@solr:block:sm_field_contact
+features[features_api][] = api:2
+features[variable][] = apachesolr_attachments_extract_using
+features[variable][] = apachesolr_attachments_tika_jar
+features[variable][] = apachesolr_attachments_tika_path

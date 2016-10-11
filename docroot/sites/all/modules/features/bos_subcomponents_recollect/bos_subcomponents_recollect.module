@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the bos_subcomponents_recollect feature.
+ */
+
+include_once 'bos_subcomponents_recollect.features.inc';

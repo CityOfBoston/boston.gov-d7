@@ -1,0 +1,37 @@
+name = Boston.gov
+description = Profile for boston.gov public site.
+version = VERSION
+core = 7.x
+
+dependencies[] = bos_core
+
+; boston.gov feature dependencies
+dependencies[] = bos_blocks
+dependencies[] = bos_pilot_blocks
+dependencies[] = bos_component_election_results
+dependencies[] = bos_component_feedback
+dependencies[] = bos_component_grid_of_people
+dependencies[] = bos_component_grid_of_places
+dependencies[] = bos_component_grid_of_programs_initiatives
+dependencies[] = bos_content_type_advpoll
+dependencies[] = bos_content_type_person_profile
+dependencies[] = bos_content_type_place_profile
+dependencies[] = bos_content_type_program_initiative_profile
+dependencies[] = bos_content_type_transaction
+dependencies[] = bos_context_global_header
+dependencies[] = bos_context_global_modal
+dependencies[] = bos_form_neighborhood_lookup
+dependencies[] = bos_form_towing_lookup
+dependencies[] = bos_pathauto
+dependencies[] = bos_shortcodes
+dependencies[] = bos_view_transactions
+dependencies[] = bos_vocabulary_event_type
+dependencies[] = bos_vocabulary_features
+dependencies[] = bos_vocabulary_place_type
+dependencies[] = bos_vocabulary_political_party
+dependencies[] = bos_vocabulary_profile_type
+dependencies[] = bos_vocabulary_program_type
+dependencies[] = bos_component_status_override
+dependencies[] = bos_content_type_emergency_alert
+dependencies[] = bos_incapsula
+dependencies[] = bos_meta_tags

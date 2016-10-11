@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<program_types>
+  <program_type>
+    <id>progtype0001</id>
+    <name>Program Type 0001</name>
+    <description>
+      Description of Program Type 0001.
+    </description>
+  </program_type>
+</program_types>

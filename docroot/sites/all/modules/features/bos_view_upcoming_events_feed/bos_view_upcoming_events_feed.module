@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the bos_view_upcoming_events_feed feature.
+ */
+
+include_once 'bos_view_upcoming_events_feed.features.inc';

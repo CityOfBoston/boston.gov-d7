@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the bos_drawers_component feature.
+ */
+
+include_once 'bos_drawers_component.features.inc';

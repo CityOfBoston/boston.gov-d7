@@ -1,0 +1,31 @@
+default:
+  suites:
+    default:
+      contexts:
+        - Boston\Contexts\FeatureContext
+        - Boston\Contexts\MinkContext
+        - Boston\Contexts\ComponentContext
+        - Boston\Contexts\RoleContext
+        - Boston\Contexts\WorkflowContext
+        - Boston\Contexts\MenuContext
+        - Boston\Contexts\FieldContext
+        - Drupal\DrupalExtension\Context\DrupalContext
+        - Drupal\DrupalExtension\Context\MessageContext
+        - Drupal\DrupalExtension\Context\DrushContext
+  extensions:
+    Behat\MinkExtension:
+      default_session: goutte
+      javascript_session: selenium2
+      goutte: ~
+      files_path: "%paths.base%/media"
+    Drupal\DrupalExtension:
+      blackbox: ~
+      api_driver: "drupal"
+      region_map:
+        edit_component: "#edit-field-components"
+        edit_component_cta: "#field-components-und-0-field-call-to-action-add-more-wrapper"
+        edit_text_blocks: "#edit-group_text_blocks"
+        edit_component_link: "#field-grid-link-values"
+    jarnaiz\JUnitFormatter\JUnitFormatterExtension:
+        filename: report.xml
+        outputDir: %paths.base%/build/tests

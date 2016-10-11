@@ -1,0 +1,69 @@
+@mixin trans-property($prop, $duration:.25s, $ease:ease-in-out ) {
+  -webkit-transition-property: $prop;
+  -webkit-transition-duration: $duration;
+  -webkit-transition-timing-function: $ease;
+  -moz-transition-property: $prop;
+  -moz-transition-duration: $duration;
+  -moz-transition-timing-function: $ease;
+  transition-property: $prop;
+  transition-duration: $duration;
+  transition-timing-function: $ease;
+}
+
+@mixin sans-upper-dark($color: color(text-dark), $weight: inherit) {
+  text-transform: uppercase;
+  color: $color;
+  font-family: $montserrat;
+  font-weight: $weight;
+}
+
+@mixin serif-italic-text($color: color(text)) {
+  font-style: italic;
+  font-family: $lora;
+  color: $color;
+}
+
+@mixin linked-component($zindex: 1, $indent: -9999px) {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: $zindex;
+  text-indent: $indent;
+  overflow: hidden;
+}
+
+@mixin vertical-align-middle {
+  transform: translateY(-50%);
+  position: absolute;
+  top: 50%;
+}
+
+@mixin align-middle-center {
+  transform: translate(-50%, -50%);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
+@mixin image-overlay {
+  &:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height:100%;
+    top:0;
+    left:0;
+    background-color: color(image-overlay-50);
+  }
+}
+
+@mixin border-sm ($top: 0, $right: 0, $bottom: 1px, $left: 0, $style: dashed, $color: color(border)) {
+  border-top: $top;
+  border-right: $right;
+  border-bottom: $bottom;
+  border-left: $left;
+  border-style: $style;
+  border-color: $color;
+}

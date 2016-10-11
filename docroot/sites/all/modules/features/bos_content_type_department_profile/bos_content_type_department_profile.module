@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Boston Department Profile Content Type feature.
+ */
+
+include_once 'bos_content_type_department_profile.features.inc';

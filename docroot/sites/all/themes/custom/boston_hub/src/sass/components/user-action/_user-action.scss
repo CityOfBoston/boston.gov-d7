@@ -1,0 +1,54 @@
+.paragraphs-item-user-action {
+  @include full-width;
+  position: relative;
+  z-index: 99;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 340px;
+
+  @include respond-to(m) {
+    height: 450px;
+  }
+  
+  @include respond-to(xl) {
+    height: 600px;
+  }
+
+
+  .image-overlay {
+    @include image-overlay;
+    z-index: -1;
+  }
+
+  .content-wrapper {
+    text-align: center;
+    margin: 0 10%;
+
+    @include respond-to(xl) {
+      margin: 0 5%;
+    }
+  }
+
+  .intro-text {
+    @include sans-upper-dark(color(text-bg), 700);
+    @include type-layout(55px, 55px);
+    display: inline-block;
+    margin: 0 30px;
+
+    @include respond-to(xl) {
+      @include type-layout(70px, 70px);
+      margin-left: 0;
+    }
+
+  }
+
+  .paragraphs-items-select-list {
+    display: inline-block;
+    text-align: left;
+  }
+
+}

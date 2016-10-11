@@ -1,0 +1,201 @@
+<?php
+/**
+ * @file
+ * Code for the Boston Component List feature.
+ */
+
+include_once 'bos_component_list.features.inc';
+
+/**
+ * Implements hook_field_attach_view_alter().
+ *
+ * Manage the contextual arguments of custom views supplied to a list field.
+ */
+function bos_component_list_field_attach_view_alter(&$output, $context) {
+  if (isset($output['field_list'])) {
+    $view = $output['field_list'][0]['#view'];
+    // Modify the view object so that it references a featured node item
+    // if one exists. This will get carried throughout the request.
+    $view->featured_node = FALSE;
+    $list_entity = $context['entity'];
+    // List the views that require special contextual treatment.
+    $contextual_views = array();
+    $current_view = $list_entity->field_list['und'][0]['vname'];
+    if (in_array($current_view, $contextual_views)) {
+      // Handle special contextual cases in here. Currently there are none.
+    }
+    $items = field_get_items('paragraphs_item', $list_entity, 'field_featured_post');
+    if (!empty($items)) {
+      $item = array_shift($items);
+      $view->featured_node = $item['target_id'];
+    }
+  }
+}
+
+/**
+ * Implements hook_views_query_alter().
+ */
+function bos_component_list_views_query_alter(&$view, &$query) {
+  // Exclude from the view, items that are being featured.
+  if (isset($view->featured_node) && $view->featured_node !== FALSE) {
+    $and = db_and()->condition('node.nid', $view->featured_node, "<>");
+    $query->add_where(0, $and);
+  }
+}
+
+/**
+ * Implements hook_views_post_render().
+ */
+function bos_component_list_views_post_render(&$view, &$output, &$cache) {
+  // If we're rendering a view through field_list and there was a featured
+  // node accompanying the field, check that our results are empty. If they are
+  // then we need to blank the output to account for the feature item actually
+  // being rendered along with the paragraph (i.e. the view will say there were
+  // no results when there actually is a result, but it was just taken out of
+  // the results too early in the process due to the query alter).
+  if (isset($view->featured_node) && empty($view->result)) {
+    $output = '';
+  }
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function bos_component_list_form_alter(&$form, $form_state, $form_id) {
+  // Rewrite the form action to use the current path alias
+  // when an exposed form with contextual filter is on a listing page.
+  // Otherwise, the url will display node ids and breadcrumbs will be wrong.
+  $list_exposed_forms = array(
+    'views-exposed-form-places-listing',
+    'views-exposed-form-program-initiatives-listing',
+  );
+
+  if (!path_is_admin(current_path()) && isset($form['#id']) && in_array($form['#id'], $list_exposed_forms)) {
+    $path = current_path();
+    $path_alias = drupal_lookup_path('alias', $path);
+    $form['#action'] = $path_alias;
+  }
+}
+
+/**
+ * Implements hook_field_widget_WIDGET_TYPE_form_alter().
+ */
+function bos_component_list_field_widget_viewfield_select_form_alter(&$element, &$form_state, $context) {
+  unset($element['token_help']);
+  $element['vargs']['#type'] = 'hidden';
+  $id = $element['#field_name'] . '-' . $element['#field_parents'][2];
+  $items = array(
+    'items' => $context['items'],
+    'delta' => $element['#field_parents'][2],
+  );
+  $element['vargs_options'] = array(
+    '#type' => 'container',
+    '#prefix' => '<div id="vargs-options-' . $id . '">',
+    '#suffix' => '</div>',
+  );
+  $element['vargs_options'] += _build_contextual_filter_select_elements($element, $context['form'], $form_state, $items);
+  $element['vname']['#ajax'] = array(
+    'callback' => '_views_list_select',
+    'wrapper' => 'vargs-options-' . $id,
+  );
+  // Keep track of fields that are viewfields in the form_state.
+  $form_state['viewfields'][$id] = $element['#field_parents'];
+}
+
+/**
+ * Implements hook_node_submit().
+ */
+function bos_component_list_node_submit($node, $form, &$form_state) {
+  if (isset($form_state['viewfields'])) {
+    // For every viewfield, if there are associated contextual filter select
+    // lists, collect those values and store them in the vargs subfield of
+    // field_list.
+    foreach ($form_state['viewfields'] as $key => &$parents) {
+      $split_key = explode('-', $key);
+      $fieldname = $split_key[0];
+
+      $field = drupal_array_get_nested_value($form_state['values'], $parents);
+      $args = array();
+      $value = &$field[$fieldname][LANGUAGE_NONE][0];
+      $item = &$field['entity']->{$fieldname}[LANGUAGE_NONE][0];
+      if (!empty($field[$fieldname]) && !empty($value['vargs_options'])) {
+        foreach ($value['vargs_options'] as $varg) {
+          $args[] = $varg;
+        }
+        $item['vargs'] = implode(',', $args);
+        drupal_array_set_nested_value($form_state['values'], $parents, $field);
+      }
+    }
+  }
+}
+
+/**
+ * AJAX callback triggered when changing the selected view.
+ *
+ * @param array $form
+ *   The current form render array.
+ * @param array $form_state
+ *   The current state of the form when AJAX was triggered.
+ *
+ * @return array
+ *   Returns renderable contextual filter options form element.
+ */
+function _views_list_select($form, $form_state) {
+  $parents = $form_state['triggering_element']['#parents'];
+  array_pop($parents);
+  $form = drupal_array_get_nested_value($form, $parents);
+  return $form['vargs_options'];
+}
+
+/**
+ * Collect the contextual filter argument elements.
+ *
+ * @param array $field
+ *   The views list field (field_list) attached to the list component.
+ * @param array $form
+ *   The current form render array.
+ * @param array $form_state
+ *   The current form state.
+ *
+ * @return array
+ *   Returns a collection of elements used to provide contextual filter values.
+ *   Returns an empty array if there is no valid display provided.
+ */
+function _build_contextual_filter_select_elements($field, $form, $form_state, $items) {
+  // Collect default values to provide to the contextual filter elements.
+  $varg_default = FALSE;
+  if (isset($form_state['values'])) {
+    $list = drupal_array_get_nested_value($form_state['values'], $field['#field_parents']);
+    if (empty($list)) {
+      $list = drupal_array_get_nested_value($form, $field['#field_parents']);
+      $selected_display = $list[$field['#field_name']][LANGUAGE_NONE][$field['#delta']]['vname']['#default_value'];
+    }
+    else {
+      $selected_display = $list[$field['#field_name']][LANGUAGE_NONE][$field['#delta']]['vname'];
+    }
+  }
+  if (empty($selected_display)) {
+    $selected_display = $items['items'][0]['vname'];
+    $varg_default = $items['items'][0]['vargs'];
+  }
+
+  if ($varg_default !== FALSE) {
+    $varg_default = explode(',', $varg_default);
+  }
+  else {
+    $varg_default = array('all');
+  }
+
+  // Collect list of valid displays providing contextual filter elements.
+  $options = module_invoke_all('list_view_options');
+
+  // Invoke the callback of the display if any match the currently selected
+  // display.
+  if (isset($options[$selected_display])) {
+    return $options[$selected_display]($varg_default);
+  }
+
+  // If no modules provide valid display implementations, return no option
+  // elements.
+  return array();
+}

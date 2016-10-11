@@ -1,0 +1,14 @@
+// Overrides search trigger in hub header when logged in
+
+  .search-trigger {
+    position: inherit;
+  }
+
+  .drawer-trigger-search {
+    background-size: 25px;
+    height: 3.6em;
+    @include respond-to(xl) {
+      background-size: 30px;
+    }
+  }
+// }

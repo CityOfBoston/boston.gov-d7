@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the bos_component_election_results feature.
+ */
+
+include_once 'bos_component_election_results.features.inc';

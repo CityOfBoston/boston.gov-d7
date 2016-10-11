@@ -1,0 +1,178 @@
+$chroma: define-default-color-scheme('branding', "The site's main colors. Can be used to define colors in other color schemes.");
+$chroma: add-colors((
+  black:                  #000, // per branding use blue-extra-dark in place of black
+  grey-extra-dark:        #58585B,
+  grey-dark:              #828282,
+  'grey':                 #d2d2d2,
+  grey-light:             #e0e0e0,
+  grey-extra-light:       #f3f3f3,
+  white:                  #fff,
+
+  yellow:                 #fab419,
+  yellow-dark:            #fcb61a, // 311 branding color
+
+  freedom-trail-red:      #fb4d42,
+  charles-blue:           #091f2f,
+  optimistic-blue:        #288be4,
+  optimistic-blue-25:     rgba(40, 139, 228, .25),
+  optimistic-blue-50:     rgba(10, 154, 255, .5), // The RGB values are deliberately different to brighten overlay.
+  optimistic-blue-75:     rgba(40, 139, 228, .75),
+
+  // supporting blues
+  blue-extra-dark:        #061622, // use this instead of black
+  blue-dark:              #0c2639,
+  blue-medium:            #45789c,
+  blue-light:             #51Acff, // substitute for optimistic-blue when dark background
+  blue-nav-hover:         #175182, // not in the style guide added for main nav hover only
+
+  three-one-one:   'yellow-dark',
+  three-one-one-bg-hover: (three-one-one darken 20%),
+
+));
+
+// Define color names for functional uses.
+$chroma: define-color-scheme('functional', 'Colors used by functional parts of the design.');
+$chroma: add-colors('functional', (
+  // Colors used in the main content area.
+  text:                   'grey-extra-dark',
+  text-bg:                'white',
+  text-dark:              'charles-blue',
+  text-light:             'grey',
+  text-red:               'freedom-trail-red',
+
+  section-bg:             'grey-extra-light',
+  section-bg-dark:        'charles-blue',
+
+  how-to-hero-bg:         'optimistic-blue',
+  related-topic-bg:         'blue-light',
+
+  heading:                'charles-blue',
+
+  link:                   'optimistic-blue',
+  link-secondary:         'freedom-trail-red',
+  link-light:             'blue-light',
+  link-header:            'charles-blue',
+  link-main-nav:          'white',
+  link-email:             'grey-dark',
+
+  border:                 'grey-light',
+  border-dark-bg:         'blue-medium',
+  border-dark:            'charles-blue',
+
+  autocomplete:           'text',
+  autocomplete-bg:        'text-bg',
+  autocomplete-select:    'white',
+  autocomplete-select-bg: 'optimistic-blue',
+
+  body-bg:                'text-bg',
+  button:                 'text-bg',
+  button-disabled:        'grey-dark',
+  button-bg:              'optimistic-blue',
+  button-bg-hover:        'freedom-trail-red',
+  button-bg-disabled:     'grey',
+
+  fieldset-summary:       'grey',
+  form-error:             'freedom-trail-red',
+
+  mark-highlight:         'freedom-trail-red',
+  mark-bg:                'yellow',
+
+  preview-bg:             ('yellow' lighten 43%),
+
+  progress-bar:           'optimistic-blue',
+  progress-bar-bg:        'grey-light',
+  progress-bar-border:    'grey-dark',
+
+  resizable-grippie:      'grey-extra-light',
+
+  row-stripe:             'grey-extra-light',
+  row-disabled:           'grey-light',
+
+  status:                 'optimistic-blue',
+  status-bg:              (status lighten 62%),
+  status-highlight:       text,
+  warning:                text,
+  warning-bg:             ('yellow' lighten 45%),
+  warning-border:         'yellow',
+  error:                  'freedom-trail-red',
+  error-bg:               (error lighten 57%),
+
+  tabs-border:            'border',
+  tabs-bg:                'text-bg',
+  tab:                    'text',
+  tab-text-shadow:        'white',
+  tab-bg:                 ('grey-light' lighten 6.66%),
+  tab-secondary:          'grey-dark',
+
+  table-drag:             ('yellow' lighten 43%),
+  table-select:           ('yellow' lighten 43%),
+
+  watermark:              'grey-extra-light',
+
+  blockquote:             'charles-blue',
+  blockquote-border:      'freedom-trail-red',
+
+  ul-bold:                'charles-blue',
+  ul-bullet:              'charles-blue',
+
+  ol:                     'charles-blue',
+
+  input:                  'charles-blue',
+  input-placeholder:      'grey-dark',
+  input-checked:          'optimistic-blue',
+  input-error:            'freedom-trail-red',
+  input-disabled:         'grey-dark',
+  input-disabled-bg:      'grey-extra-light',
+
+  select-bg-hover:        'optimistic-blue',
+  select-bg:              'white',
+  select-list-item:       'optimistic-blue',
+  select-bg-carat:        'optimistic-blue',
+
+  pager-color:            'charles-blue',
+  pager-disabled-color:   'grey',
+  pager-bg:               'white',
+  pager-disabled-bg:      'grey-extra-light',
+  pager-bg-active:        'optimistic-blue',
+  pager-bg-hover:         'freedom-trail-red',
+  pager-text-active:      'text-bg',
+
+  footer-bg:              'charles-blue',
+
+  header-border:          'grey-light',
+
+  menu-icon-bg:           'freedom-trail-red',
+
+  main-nav-bg:            'charles-blue',
+  main-nav-li-bg:         'optimistic-blue',
+  main-nav-li-bg-hover:   'blue-nav-hover',
+  main-nav-li-bg-active:  'freedom-trail-red',
+  main-nav-title-bg:      'white',
+  main-nav-back-bg:       'blue-dark',
+
+  popover-bg:             'white',
+  popover-carat-border:   'grey',
+
+  lang-menu:              'text-bg',
+  lang-menu-bg:           'optimistic-blue',
+
+  feedback-overlay-bg:    'optimistic-blue-75',
+  feedback-content-bg:    'white',
+
+  close-button:           'freedom-trail-red',
+  close-button-hover:     'optimistic-blue',
+
+  image-overlay-50:       'optimistic-blue-50',
+
+  topic-hero-border:      'charles-blue',
+  topic-intro-bg:         'white',
+  topic-nav-bg-mobile:    'link',
+
+  border-bg:              'white',
+  border-timeline-step:   'freedom-trail-red',
+
+  bos-search-bg:   'grey-extra-light',
+
+));
+
+$chroma-active-scheme: 'functional';

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<users>
+  <user>
+    <id>u0001</id>
+    <name>content_author_fixture</name>
+    <pass>test1P*tttt</pass>
+    <mail>content_author_fixture@example.com</mail>
+    <roles>Content Author</roles>
+  </user>
+  <user>
+    <id>u0002</id>
+    <name>content_editor_fixture</name>
+    <pass>test1P*tttt</pass>
+    <mail>content_editor_fixture@example.com</mail>
+    <roles>Content Editor</roles>
+  </user>
+  <user>
+    <id>u0003</id>
+    <name>site_admin_fixture</name>
+    <pass>test1P*tttt</pass>
+    <mail>site_admin_fixture@example.com</mail>
+    <roles>Site Administrator</roles>
+  </user>
+  <user>
+    <id>u0004</id>
+    <name>press_editor_fixture</name>
+    <pass>test1P*tttt</pass>
+    <mail>press_editor_fixture@example.com</mail>
+    <roles>Press Release Editor</roles>
+  </user>
+  <user>
+    <id>u0005</id>
+    <name>event_editor_fixture</name>
+    <pass>test1P*tttt</pass>
+    <mail>event_editor_fixture@example.com</mail>
+    <roles>Events Editor</roles>
+  </user>
+</users>

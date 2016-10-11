@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Boston Content Type Event feature.
+ */
+
+include_once 'bos_content_type_event.features.inc';

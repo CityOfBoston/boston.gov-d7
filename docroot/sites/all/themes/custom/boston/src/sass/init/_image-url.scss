@@ -1,0 +1,24 @@
+// Image url
+//
+// Function to get image from defined url.
+//
+// Usage:
+// ```
+// .box {
+//   background-image: image-url('box-bg.png');
+// }
+// ```
+//
+// Compatibility: untested
+//
+// $url - the image filename
+//
+// Styleguide sass.mixins.image-url
+$image-url-path: "../img/" !default;
+@function image-url($url) {
+  @return url("#{$image-url-path}#{$url}");
+}
+
+@function inline-image($url) {
+  @return url("#{$image-url-path}#{$url}");
+}

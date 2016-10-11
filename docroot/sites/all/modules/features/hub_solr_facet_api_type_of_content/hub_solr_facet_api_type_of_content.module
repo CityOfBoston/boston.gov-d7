@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Hub Solr facet api type of content feature.
+ */
+
+include_once 'hub_solr_facet_api_type_of_content.features.inc';

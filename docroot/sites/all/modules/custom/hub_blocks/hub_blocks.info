@@ -1,0 +1,4 @@
+name = Hub Blocks
+description = Custom blocks for the Hub site.
+core = 7.x
+package = Hub

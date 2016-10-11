@@ -1,0 +1,136 @@
+<?php
+/**
+ * @file
+ * Code for the Boston Advanced Poll Content Type feature.
+ */
+
+include_once 'bos_content_type_advpoll.features.inc';
+
+/**
+ * Implements hook_menu().
+ */
+function bos_content_type_advpoll_menu() {
+  $items['ajax/poll/%node'] = array(
+    'title' => 'Poll Node Render Page',
+    'page callback' => '_poll_ajax_get_form',
+    'page arguments' => array(2),
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+  return $items;
+}
+
+/**
+ * Implements hook_expire_cache_alter().
+ */
+function bos_content_type_advpoll_expire_cache_alter(&$urls, $object_type, $object, $absolute_urls_passed) {
+  if ($object_type == 'votingapi') {
+    $urls[] = 'ajax/poll/' . $object[0]['entity_id'];
+  }
+}
+
+/**
+ * AJAX callback for returning HTML to be added to poll container.
+ *
+ * @param object $node
+ *   The poll node.
+ */
+function _poll_ajax_get_form($node) {
+  $poll_view = node_view($node, 'teaser');
+  $html = drupal_render($poll_view);
+  $commands = array();
+
+  $selector = 'div.poll-stub[data-poll-id="' . $node->nid . '"]';
+  $commands[] = ajax_command_html($selector, $html);
+
+  print json_encode(array("html" => $html, "selector" => $selector));
+}
+
+/**
+ * Implements hook_node_view_alter().
+ */
+function bos_content_type_advpoll_node_view_alter(&$build) {
+  // Attach the results to the poll, even if the user hasn't voted
+  // on the poll yet.
+  $node = $build['#node'];
+  if ($node->type == 'advpoll') {
+    $data = advpoll_get_data($node);
+    $my_options = array('poll_id' => $node->nid);
+    $my_options['vote_button_text'] = array();
+    if (!empty($node->field_vote_button_text)) {
+      $my_options['vote_button_text'] = $node->field_vote_button_text[LANGUAGE_NONE][0]['value'];
+    }
+    else {
+      $my_options['vote_button_text'] = "This!";
+    }
+    drupal_add_js(array('bos_content_type_advpoll' => array(array('poll_options' => $my_options))), 'setting');
+    if ($data->behavior == 'approval' || $data->behavior == 'pool') {
+      // Print out voting form.
+      $voteform = drupal_get_form('advpoll_choice_form', $node);
+      $results = advpoll_display_results($node->nid, $data);
+      $voteform[] = array('#markup' => $results, '#weight' => -100);
+      // Move the vote form and vote button beneath the results.
+      $keys = array_keys($voteform);
+      $choice_key = FALSE;
+      foreach ($keys as $key) {
+        if (preg_match('/^choice_/', $key, $matches)) {
+          $choice_key = $key;
+        }
+      }
+      $submit = $voteform['submit'];
+      unset($voteform['submit']);
+      if ($choice_key !== FALSE) {
+        $choice = $voteform[$choice_key];
+        unset($voteform[$choice_key]);
+        $voteform[$choice_key] = $choice;
+      }
+      $voteform['submit'] = $submit;
+
+      // Set the render element.
+      $build['advpoll_choice'] = array(
+        0 => $voteform,
+        '#weight' => 1,
+      );
+    }
+  }
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function bos_content_type_advpoll_form_advpoll_choice_form_alter(&$form, &$form_state) {
+  // Use our own callback for handling polling form submissions via ajax. This
+  // will handle the logic for attaching a thankyou message if necessary.
+  $form['submit']['#ajax']['callback'] = '_bos_content_type_advpoll_thankyou_submit';
+}
+
+/**
+ * Ajax form submit handler for polling form.
+ *
+ * Adds the thankyou message after the form has been submitted successfully.
+ *
+ * @param array $form
+ *   The structure of the form being submitted.
+ * @param array $form_state
+ *   The state of the form being submitted.
+ *
+ * @return array
+ *   Renderable array returned to AJAX framework for processing.
+ */
+function _bos_content_type_advpoll_thankyou_submit($form, &$form_state) {
+  // Leverage existing functionality from advanced polls.
+  $render = advpoll_form_submit($form, $form_state);
+  // If there is a message index then that means there was a problem submitting
+  // the form, so we don't want to show the thankyou message.
+  if (!isset($render['message'])) {
+    // If there is no message index, then the user successfully submitted their
+    // vote and should receive the thankyou message.
+    $thanks = field_view_field('node', $form_state['build_info']['args'][0], 'field_thanks', 'teaser');
+    $thanks['#weight'] = 999;
+    $markup = $render['#markup'];
+    unset($render['#markup']);
+    $render[] = array('#markup' => $markup, '#weight' => -999);
+    $render[] = $thanks;
+  }
+  return $render;
+}

@@ -1,0 +1,12 @@
+name = Hub Solr facet api type of content
+description = Hub Solr facet api type of content
+core = 7.x
+package = Hub
+dependencies[] = ctools
+dependencies[] = facetapi
+features[ctools][] = facetapi:facetapi_defaults:1
+features[facetapi][] = apachesolr@acquia_search_server_1::sm_field_type_of_content
+features[facetapi][] = apachesolr@acquia_search_server_1:block:sm_field_type_of_content
+features[facetapi][] = apachesolr@solr::sm_field_type_of_content
+features[facetapi][] = apachesolr@solr:block:sm_field_type_of_content
+features[features_api][] = api:2

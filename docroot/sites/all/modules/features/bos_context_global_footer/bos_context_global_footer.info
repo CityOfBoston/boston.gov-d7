@@ -1,0 +1,13 @@
+name = Boston Global Footer
+description = Control the placement of blocks in the footer.
+core = 7.x
+package = Boston
+dependencies[] = block
+dependencies[] = bos_menu_footer_menu
+dependencies[] = context
+dependencies[] = menu
+dependencies[] = menu_block
+features[context][] = bos_context_global_footer
+features[ctools][] = context:context:3
+features[features_api][] = api:2
+project path = sites/all/modules/features

@@ -1,0 +1,15 @@
+name = Boston Vocabulary Features
+description = Boston Vocabulary Features
+core = 7.x
+package = Boston
+dependencies[] = bos_shared_fields
+dependencies[] = ctools
+dependencies[] = features
+dependencies[] = media
+dependencies[] = strongarm
+dependencies[] = taxonomy
+features[ctools][] = strongarm:strongarm:1
+features[features_api][] = api:2
+features[field_instance][] = taxonomy_term-features-field_icon
+features[taxonomy][] = features
+features[variable][] = field_bundle_settings_taxonomy_term__features

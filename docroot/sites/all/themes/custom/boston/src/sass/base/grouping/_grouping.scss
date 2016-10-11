@@ -1,0 +1,327 @@
+// Grouping content
+//
+// Weight: 1
+//
+// Style guide: base.grouping
+
+// Block quotes
+//
+// The `<blockquote>` element is for quoting blocks of content from another
+// source within your document. Wrap the `<blockquote>` around any <abbr
+// title="HyperText Markup Language">HTML</abbr> as the quote. For straight
+// quotes, we recommend a `<p>`.
+//
+// Optionally, add a `<footer>` to identify the source of the quote, wrapping
+// the name of the source work in `<cite>`.
+//
+// Markup: grouping-blockquote.hbs
+//
+// Style guide: base.grouping.blockquote
+
+blockquote {
+  // Set 1 unit of vertical rhythm on the top and bottom margin.
+  // Also indent the quote on both sides.
+  @include margin(1 $indent-amount);
+  color: color(blockquote);
+  border-left: 3px solid color(blockquote-border);
+  font-style: italic;
+  padding-left: 2em;
+  @include type-layout(m, 38px)
+}
+
+blockquote p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+// Adds hypen to citation and changes to lighter text
+blockquote footer {
+  color: color(text);
+  @include type-layout(xs, 22px);
+  font-family: $montserrat;
+  text-transform: uppercase;
+  font-style: normal;
+
+  &:before {
+    content: "- ";
+  }
+}
+
+address {
+  @extend h5;
+  font-style: normal;
+  line-height: 1.3em;
+  text-indent: 0;
+}
+
+// Figures
+//
+// The `<figure>` element can be used to annotate illustrations, diagrams,
+// photos, code listings, etc.
+//
+// Optionally, a `<figcaption>` element inside the `<figure>` represents the
+// caption of the figure.
+//
+// Markup: grouping-figure.hbs
+//
+// Style guide: base.grouping.figure
+
+figure {
+  // Address margin not present in IE 8/9 and Safari.
+  @include margin(0 0 1);
+}
+
+figcaption {
+  // Add your styles.
+}
+
+// Horizontal rule
+//
+// The `<hr>` element represents a paragraph-level thematic break, e.g. a scene
+// change in a story, or a transition to another topic within a section of a
+// reference book.
+//
+// Markup: grouping-hr.hbs
+//
+// Style guide: base.grouping.hr
+
+hr {
+  @extend %divider;
+  // Address differences between Firefox and other browsers.
+  @include box-sizing(content-box);
+  height: 0;
+}
+
+// Body copy
+//
+// The default `font-size` and `line-height` properties are applied to the
+// `<body>` element and all paragraphs. In addition, `<p>` (paragraphs) receive
+// a top and bottom margin.
+//
+// Markup: grouping-p.hbs
+//
+// Weight: -2
+//
+// Style guide: base.grouping.p
+
+p,
+pre {
+  // Set 1 unit of vertical rhythm on the top and bottom margin.
+  @include margin(.23 0 1);
+}
+
+// Preformatted text
+//
+// The `<pre>` element represents a block of preformatted text, such as
+// fragments of computer code, ASCII art, etc.
+//
+// Markup: grouping-pre.hbs
+//
+// Style guide: base.grouping.pre
+
+%monospace {
+  // Address odd `em`-unit font size rendering in all browsers.
+  // The value of $font-monospace ends with ", serif".
+  font-family: $font-monospace;
+  font-size: 1em;
+}
+
+pre {
+  @extend %monospace;
+  // Contain overflow in all browsers.
+  overflow: auto;
+}
+
+// Lists
+//
+// Weight: -1
+//
+// Style guide: base.grouping.lists
+
+// Unordered list
+//
+// The `<ul>` element is a list of items in which the order does <em>not</em>
+// explicitly matter.
+//
+// Markup: grouping-lists-ul.hbs
+//
+// Style guide: base.grouping.lists.ul
+
+// Ordered list
+//
+// The `<ol>` element is a list of items in which the order <em>does</em>
+// explicitly matter.
+//
+// Markup: grouping-lists-ol.hbs
+//
+// Style guide: base.grouping.lists.ol
+
+// Description list
+//
+// The `<dl>` element is a list of terms with their associated descriptions.
+//
+// Markup: grouping-lists-dl.hbs
+//
+// Weight: 1
+//
+// Style guide: base.grouping.lists.dl
+
+article {
+
+  dl,
+  menu,
+  ol,
+  ul {
+    // Address margins set differently in IE 6/7.
+    @include margin(.23 0 1);
+  }
+
+  // Turn off margins on nested lists.
+  ol,
+  ul {
+    ol,
+    ul {
+      margin: 0;
+    }
+  }
+
+  dt {
+    // Add your styles.
+  }
+
+  dd {
+    margin: 0 0 0 $indent-amount;
+
+    @include rtl {
+      margin: 0 $indent-amount 0 0;
+    }
+  }
+
+  // Address paddings set differently in IE 6/7.
+  menu,
+  ol,
+  ul {
+    padding: 0 0 0 0;
+    list-style-position: inside;
+
+    @include rtl {
+      padding: 0 0 0 0;
+    }
+  }
+
+  ol {
+    counter-reset: section;
+    list-style-type: none;
+    color: color(ol);
+  }
+
+  // Adds counter and offsets text-indent with margin to align
+  ol li {
+    text-indent: -55px;
+    @include margin(0 0 18px 55px);
+ }
+
+  // Replaces list number with styled element
+  ol li:before {
+    border: 3px solid;
+    border-radius: 100%;
+    counter-increment: section;
+    content: counters(section,".") " ";
+    display: inline-block;
+    height: 40px;
+    line-height: 40px;
+    @include margin(.25 .25  0 0);
+    text-align: center;
+    width: 40px;
+    font-family: $montserrat;
+    text-indent: 0;
+  }
+
+  // Replaces bullet with character and offsets text-indent with margin to align
+  ul li {
+    list-style: none;
+    padding-left: 1.25em;
+    background: url("../img/ul-bullet.svg") no-repeat left 14px transparent;
+    background-size: 10px;
+    @include margin(0 0 .75 0);
+  }
+
+  .paragraphs-item-3-column-w-image ul li {
+    background-image: url("../img/ul-bullet-white.svg");
+  }
+
+  ul.secondary-list li {
+    @include sans-upper-dark;
+    @include type-layout(xs, 16px);
+    background-position: 0 3px;
+    @include margin(0 0 8px 0);
+  }
+
+  // Change color of bolded list text
+  ul strong,
+  ul b {
+    color: color(ul-bold);
+    font-weight: 700;
+  }
+
+  .paragraphs-item-3-column-w-image ul strong,
+  .paragraphs-item-3-column-w-image ul b {
+    color: color(text-bg);
+  }
+
+  // Styles for lists of links
+  ul.links-list li {
+    margin-bottom:0;
+  }
+
+  ul.links-list a {
+    font-family: $montserrat;
+    @include type-layout(xs);
+    text-transform: uppercase;
+    line-height: 18px
+  }
+
+  // Adds document icon to PDF links
+  ul.links-list a[href$=".pdf"]:after {
+    content: "";
+    display: inline-block;
+    width: 26px;
+    height: 26px;
+    background-image: url("../img/document-icon.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    margin-left: .5em;
+    margin-bottom: -9px;
+  }
+
+  // Adjusted spacing for uppercase-sm-list
+  .uppercase-sm-list li {
+    padding-top: 10px;
+    margin-bottom: 20px;
+    @include type-layout(xs, 20px);
+  }
+
+  // Adjust spacing for detail item tertiary lists.
+  .detail-item__body--tertiary li {
+    background-position: left 10px;
+  }
+}
+
+.search-suggestions ul,
+ul.facetapi-facetapi-links,
+ul.facetapi-facetapi-checkbox-links {
+  padding-left: 5px;
+}
+
+.search-suggestions ul li,
+ul.facetapi-facetapi-links li,
+ul.facetapi-facetapi-checkbox-links li {
+  list-style: none;
+  padding-left: 1.25em;
+  background: url("../img/ul-bullet.svg") no-repeat left 14px transparent;
+  background-size: 10px;
+}
+
+.search-suggestions ul li {
+  @include margin(0 0 .75 0);
+}

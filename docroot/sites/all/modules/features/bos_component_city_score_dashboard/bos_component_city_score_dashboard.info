@@ -1,0 +1,13 @@
+name = bos_component_city_score_dashboard
+core = 7.x
+package = Features
+dependencies[] = bos_shared_fields
+dependencies[] = features
+dependencies[] = paragraphs
+dependencies[] = text
+features[features_api][] = api:2
+features[field_instance][] = paragraphs_item-city_score_dashboard-field_component_title
+features[field_instance][] = paragraphs_item-city_score_dashboard-field_extra_info
+features[field_instance][] = paragraphs_item-city_score_dashboard-field_short_description
+features[field_instance][] = paragraphs_item-city_score_dashboard-field_short_title
+features[paragraphs][] = city_score_dashboard

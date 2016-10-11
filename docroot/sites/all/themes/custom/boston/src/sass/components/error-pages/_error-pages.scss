@@ -1,0 +1,80 @@
+.err {
+  &--403 {
+    background-image: url("../img/403.svg");
+    background-color: color('text-dark');
+    background-position: bottom;
+    background-size: 102%;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+}
+
+.error-text {
+  h1 {
+    border-bottom: 5px solid;
+    margin-bottom: 0;
+    padding-bottom: 1rem;
+    @include font-size(l);
+    @include respond-to(xl) {
+      padding: 3rem 0 0 0;
+      @include font-size(xl);
+    }
+  }
+}
+
+.denied-text {
+  color: color('text-bg');
+  text-shadow: 0 0 5px color(text-dark);
+  h1 {
+    color: color('text-bg');
+  }
+}
+
+.notfound-text {
+  border-bottom: .3rem solid color('text-dark');
+  color: color('text-dark');
+  background-color: white;
+  p {
+    @include type-layout(xs, 28px);
+    margin-bottom: 0;
+    @include respond-to(m) {
+      font-size: inherit;
+      line-height: inherit;
+    }
+  }
+  .bos-search-form {
+    input.usagov-search-autocomplete {
+      border-bottom: none;
+      width: 84%;
+      padding: 0;
+    }
+    .usagov-search-submit {
+      background: url("../img/magnifying-glass-icon-black.svg");
+      top: 0;
+      right: 0;
+      float: right;
+      @include respond-to(m) {
+        top: 10px;
+      }
+    }
+  }
+  .search-close-button {
+    display: none;
+  }
+  #block-hub-blocks-search {
+    padding: 0;
+    .container-inline {
+      margin: 0;
+    }
+    .form-item {
+      margin: 0;
+    }
+    input {
+      border-bottom: none;
+    }
+  }
+}

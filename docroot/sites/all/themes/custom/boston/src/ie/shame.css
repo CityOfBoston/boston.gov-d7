@@ -1,0 +1,73 @@
+/* Selectors that have display: flex go here */
+.paragraphs-item-featured-topics .content,
+.paragraphs-item-grid-of-quotes .quote,
+.form__fieldset--inline .fieldset-wrapper,
+.component__content--flex,
+.fyi-container,
+.form--inline {
+  -js-display: flex;
+}
+
+.landing-hero-content .container {
+  padding-top: 50px;
+  margin-top: 0;
+}
+
+.dr__header {
+  position: relative;
+}
+
+.dr__header svg {
+  position: absolute;
+  right: 1.5em;
+  top: 50%;
+  margin-top: -6px;
+}
+
+.hb {
+  padding-top: 8px;
+}
+
+.hb--active {
+  padding-top: 0;
+  background: url('/sites/all/themes/custom/boston/dist/img/x-dark.png') no-repeat center;
+}
+
+.hb--active .hb__inner {
+  display: none;
+}
+
+.hb__trigger:checked ~ .page,
+.hb__trigger:checked ~ .page > .header,
+.hb__trigger:checked ~ .page .topic-nav.sticky {
+  left: 285px;
+}
+
+.tb__block,
+.dd__trigger__button,
+.dd__menu {
+  position: static;
+  display: block;
+  padding: 0;
+  margin: 0;
+  border: none;
+}
+
+.tb__block:first-child {
+  margin-bottom: 1em;
+}
+
+.dd__trigger__icon {
+  display: none;
+}
+
+.dd__trigger__button {
+  display: none;
+}
+
+.tb__block li, .dd__menu li, .dd__menu li a {
+  display: inline-block;
+  margin-left: 0;
+  margin-right: 0.75em;
+  padding-left: 0;
+}

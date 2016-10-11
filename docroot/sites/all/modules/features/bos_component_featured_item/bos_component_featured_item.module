@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Boston Component Featured Item feature.
+ */
+
+include_once 'bos_component_featured_item.features.inc';

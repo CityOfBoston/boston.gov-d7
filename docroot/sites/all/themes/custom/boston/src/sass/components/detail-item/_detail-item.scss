@@ -1,0 +1,52 @@
+.detail-item__label {
+  @include sans-upper-dark;
+  @include type-layout(s, 27px);
+}
+
+.detail-item__content {
+  word-wrap: break-word;
+}
+
+.detail-item__body:nth-child(2) {
+  padding-top: 10px;
+}
+
+.detail-item__body > * {
+  /// @todo This needs to be fixed globally. This is fixing default styles.
+  &:first-child {
+    margin-top: 0;
+  }
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.detail-item__body--secondary {
+  @include sans-upper-dark;
+  @include type-layout(s, 23px);
+}
+
+.detail-item__body--tertiary {
+  @include serif-italic-text;
+  @include type-layout(s, 23px);
+}
+
+.detail-item--secondary {
+  .detail-item__left {
+    line-height: 0;
+    > div {
+      @include serif-italic-text;
+      @include type-layout(m, 27px);
+      text-transform: capitalize;
+    }
+  }
+}
+
+.detail-item--listed {
+
+  margin-bottom: 15px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}

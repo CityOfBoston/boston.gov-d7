@@ -1,0 +1,9 @@
+name = Hub View Applications List
+description = Hub View Applications List
+core = 7.x
+package = Hub
+dependencies[] = views
+features[ctools][] = views:views_default:3.0
+features[features_api][] = api:2
+features[views_view][] = hub_list_applications
+features_exclude[dependencies][ctools] = ctools

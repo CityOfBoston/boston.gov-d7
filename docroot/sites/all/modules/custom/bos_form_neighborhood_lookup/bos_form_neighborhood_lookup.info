@@ -1,0 +1,9 @@
+name = Boston Neighborhood Lookup Form
+core = 7.x
+package = Boston Custom
+description = Defines Neighborhood Lookup Form for the Boston.gov pilot site.
+
+; Add the JS functionality for the form to be loaded globally since we cannot
+; call it from a shortcode hook. The benefits of aggregation here outweigh
+; it being loaded on every page.
+scripts[] = js/neighborhood_lookup.js

@@ -1,0 +1,11 @@
+<?php
+/**
+ * @file
+ * Code for the Boston Neighborhoods Vocabulary feature.
+ */
+
+include_once 'bos_vocabulary_neighborhoods.features.inc';
+/**
+ * @file
+ * Code for the Boston Neighborhoods Vocabulary feature.
+ */

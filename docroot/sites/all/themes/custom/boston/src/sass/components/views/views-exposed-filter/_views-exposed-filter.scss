@@ -1,0 +1,304 @@
+// STYLES FOR EXPOSED FILTERS.
+
+// EXPOSED FILTERS STRUCTURE.
+
+// Hides exposed widgets descriptions.
+.views-exposed-widget  {
+  .description {
+      display: none;
+  }
+}
+
+// Exposed widget global styles.
+.view-filters, .filter-wrapper {
+
+  .drawer-wrapper {
+
+    @include respond-to(xl) {
+      width: calc(25% - 66px);
+      float: left;
+      margin-right: 20px;
+    }
+  }
+
+  .drawer-trigger {
+    padding: 0 5px 0 10px;
+    margin-top: 20px;
+
+    &:first-child {
+      @include respond-to(xl) {
+        margin-top: 6px;
+      }
+    }
+
+    .drawer-trigger-chevron {
+      height: 30px;
+      margin-top: 9px;
+    }
+
+    &.active {
+      .drawer-trigger-chevron {
+        transform: rotate(90deg);
+        height: 20px;
+        margin-top: 20px;
+      }
+    }
+
+    &.mobile-only {
+    @extend .button;
+      border: 0;
+      display: block;
+      padding-right: 4px;
+
+      .drawer-trigger-chevron {
+        transform: rotate(0deg) translateY(-50%);
+      }
+
+      &.active {
+        .drawer-trigger-chevron {
+          margin-top: 0;
+          transform: rotate(90deg) translateX(-70%);
+        }
+      }
+
+      @include respond-to(xl) {
+        display: none;
+      }
+    }
+  }
+
+  .drawer {
+    display: none;
+    padding: 20px;
+    min-width: 100%;
+    border: 3px solid;
+    max-width: 100%;
+    z-index: 30;
+    left: 0;
+  }
+
+  label {
+    margin-top: 0;
+  }
+
+  // Additional spacing between date fields.
+  .views-widget-filter-field_event_dates_value2,
+  .form-item-field-published-date-value-max {
+    label {
+      margin-top: 20px;
+    }
+  }
+
+  .views-widget-filter-field_published_date_value .views-widget > div {
+    @extend .desktop-2-col;
+  }
+
+  .views-widget-filter-field_published_date_value,
+  .views-widget-filter-title {
+    .form-item,
+    .date-padding,
+    input {
+      width: 100%;
+    }
+    label {
+      @include respond-to(xl) {
+        margin-top: 0px;
+      }
+    }
+  }
+}
+
+
+// Styles for Exposed filter in sidebar only.
+.view-filters.sidebar {
+  margin-bottom: 75px;
+
+  .drawer-trigger {
+    border: 3px solid color(grey-extra-light);
+
+    .drawer-trigger-chevron {
+      margin-top: 9px;
+    }
+  }
+
+  .drawer-trigger.active .drawer-trigger-chevron {
+      margin-top: 15px;
+  }
+
+  // Makes input field full width
+  .views-exposed-form .container-inline-date .form-item input,
+  .views-exposed-form .container-inline-date .form-item select,
+  .views-exposed-form .container-inline-date .form-item option,
+  .views-exposed-form .container-inline-date div {
+      width: 100%;
+  }
+
+  .drawer {
+    border-top: 0;
+    border-color: color(border-dark);
+  }
+}
+
+// Styles for Exposed filter in topbar only.
+.views-exposed-topbar .view-filters, .filter-wrapper {
+  padding-top: 20px;
+  @include respond-to(xl) {
+    padding-top: 0;
+  }
+
+  .drawer-trigger {
+    @include respond-to(xl) {
+      margin-top: 0;
+    }
+  }
+  .drawer {
+    border-color: color(border-dark);
+
+    @include respond-to(xl) {
+      position: absolute;
+
+      &.mobile-only {
+        padding:20px;
+        position: relative;
+      }
+    }
+  }
+}
+
+
+.drawer-trigger.mobile-only {
+  display: none;
+
+  .drawer-trigger-chevron {
+    height: 20px;
+    margin-top: 0;
+  }
+}
+
+.drawer.mobile-only {
+  display: none;
+  position: relative;
+  border: none;
+  overflow: visible;
+  border: 0;
+  padding: 0;
+
+  @include respond-to(xl) {
+    display: block;
+  }
+}
+
+// Overrides views module css
+.views-exposed-form .views-exposed-widget {
+  float: none;
+  @extend .clearfix;
+}
+.views-exposed-widget.views-submit-button,
+.views-exposed-widget.views-reset-button {
+  float: left;
+  padding-top: 0;
+  input[type="submit"] {
+    margin-top: 20px;
+    height: 58px;
+  }
+}
+.views-exposed-widget.views-reset-button {
+  padding-right: 0;
+  input[type="submit"] {
+    width: 58px;
+    text-indent: -9999px;
+    overflow: hidden;
+  }
+}
+
+.views-exposed-topbar .view-filters .views-exposed-widget.views-submit-button,
+.views-exposed-topbar .view-filters .views-exposed-widget.views-reset-button {
+  @include respond-to(xl) {
+    input[type="submit"] {
+      margin-top: 0;
+    }
+  }
+}
+
+// Manually hiding labels on checkbox fields because it's redundant.
+.views-widget-filter-field_event_type_target_id,
+.views-widget-filter-field_neighborhood_target_id,
+.views-widget-filter-field_contact_target_id,
+.views-widget-filter-field_published_date_value {
+  & > label {
+    @extend .visually-hidden;
+  }
+}
+
+// EXPOSED FILTERS THEME
+
+// Exposed widget global styles.
+.view-filters, .filter-wrapper {
+
+  .drawer-trigger {
+    font-family: $montserrat;
+    text-transform: uppercase;
+    line-height: 40px;
+    @include type-layout(xxs);
+
+    &.active {
+      color: color(text-bg);
+      background-color: color(section-bg-dark);
+      border-color: color(section-bg-dark);
+      .drawer-trigger-chevron {
+        background-image: url(../img/chevron.svg);
+      }
+    }
+
+    &.mobile-only {
+    @extend .button;
+      background-color: color(link);
+
+      .drawer-trigger-chevron {
+        background-image: url(../img/chevron.svg);
+      }
+    }
+
+  }
+
+  .drawer {
+    background-color: white;
+    border-color: color(border);
+  }
+
+}
+
+.view-filters {
+
+  .drawer-trigger {
+    background-color: white;
+    border-color: color(border);
+    color: color(link);
+  }
+
+  &:hover {
+    color: color(link-secondary);
+  }
+}
+
+.drawer-trigger.mobile-only {
+  background-color: transparent;
+}
+
+.drawer.mobile-only {
+  background-color: transparent;
+}
+
+// Overrides views module css
+.views-exposed-widget.views-reset-button {
+  input[type="submit"] {
+    background-color: color(section-bg-dark);
+    background-image: url(../img/icon-refresh.svg);
+    background-repeat: no-repeat;
+    background-position: center 13px;
+    background-size: 24px;
+    &:hover {
+      background-color: color(link-secondary);
+    }
+  }
+}

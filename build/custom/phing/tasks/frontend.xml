@@ -1,0 +1,21 @@
+<project name="frontend" default="frontend:install">
+  <target name="frontend:build" depends="frontend:install">
+    <foreach list="${project.themes}" param="frontend.theme" target="frontend:build:run" />
+  </target>
+  <target name="frontend:build:run">
+    <exec dir="${docroot}" command="npm run build:${frontend.theme}" logoutput="true" checkreturn="true" />
+  </target>
+
+  <target name="frontend:install">
+    <foreach list="${project.themes}" param="frontend.theme" target="frontend:install:run"/>
+  </target>
+  <target name="frontend:install:run">
+    <exec dir="${docroot}" command="npm run install-dependencies" logoutput="true" checkreturn="true" />
+  </target>
+  <target name="frontend:uninstall">
+    <foreach list="${project.themes}" param="frontend.theme" target="frontend:uninstall:run"/>
+  </target>
+  <target name="frontend:uninstall:run">
+    <exec dir="${frontend.theme}" command="npm run uninstall-dependencies" logoutput="true" checkreturn="true" />
+  </target>
+</project>

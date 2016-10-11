@@ -1,0 +1,104 @@
+.paragraphs-item-photo {
+  @extend .fullwidth;
+  padding: 0;
+
+  .photo-wrapper {
+    width: 100%;
+    overflow: hidden;
+    height: 250px;
+    @include respond-to(s) {
+      height: 420px;
+    }
+    @include respond-to(m) {
+      height: 800px;
+      overflow: hidden;
+    }
+  }
+  // This is typically rendered as 66.6% max-width on all component titles, but
+  // the component title display on the photo is unique, so we need to customize
+  // it here.
+  h2.component-title {
+    max-width: 100%;
+  }
+
+  img {
+    height: 250px;
+    width: auto;
+    max-width: none;
+    margin-left: 50%;
+    transform: translate(-50%,0);
+    @include respond-to(s) {
+      height: 420px;
+    }
+    @include respond-to(m) {
+      height: 800px;
+    }
+    @include respond-to(xxxl) {
+      width: 100%;
+      height: auto;
+    }
+  }
+  &.without-details {
+    position: relative;
+    .photo-wrapper {
+      height: 250px;
+      @include respond-to(s) {
+        height: 420px;
+      }
+      @include respond-to(m) {
+        height: 500px;
+        overflow: hidden;
+        img {
+          top: -150px;
+          position: relative;
+        }
+      }
+    }
+  }
+}
+
+.photo-details {
+  @extend .container;
+  padding: 20px 30px;
+
+  @include respond-to(m) {
+    border-top: 8px solid color(text-dark);
+    width: 460px;
+    position: absolute;
+    background-color: color(text-bg);
+    padding: 50px 50px 11px 50px;
+    bottom: 100px;
+  }
+}
+
+.photo-details h2 {
+  @include type-layout(m, 18px);
+  margin: 0;
+  @include respond-to(m) {
+    @include type-layout(xl, 45px);
+    margin-top: 0;
+  }
+}
+
+.photo-caption-wrapper *:last-child {
+  margin-bottom: 20px;
+}
+
+.field-name-field-photo-caption {
+  @include type-layout(m, 32px);
+  color: color(text-dark);
+  font-style: italic;
+  margin: .5em 0;
+}
+
+.photo-credit-wrapper {
+  margin-bottom: 30px;
+}
+
+.field-name-field-photo-credit,
+.photo-details .field-label {
+  @include type-layout(xs, 14px);
+  text-transform: uppercase;
+  font-family: $montserrat;
+  color: color(text-light);
+}

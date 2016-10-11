@@ -1,0 +1,82 @@
+; Drupal's .info files allow themers to easily specify some of the static
+; properties of your theme. Properties such as its name, stylesheets,
+; javascripts, and block regions.
+;
+; Drupal 7 stores a cache of the data in this .info files. If you modify any
+; lines in this file, you MUST refresh Drupal 7's cache by simply visiting the
+; Appearance page at admin/appearance.
+
+
+
+; The name, description and screenshot used for this theme on the Appearance
+; page at admin/appearance.
+
+screenshot  = screenshot.png
+base theme  = boston
+name        = Boston Public
+description = Read the included README.md on how to create a theme with Thunder.
+core        = 7.x
+
+
+; Then we add our own stylesheet.
+stylesheets[all][] = dist/css/styles.css
+
+;scripts[] = dist/js/sample.js
+
+regions[header]         = Header
+regions[navigation]     = Navigation bar
+regions[highlighted]    = Highlighted
+regions[help]           = Help
+regions[content]        = Content
+regions[footer]         = Footer
+regions[modal]          = Hidden Modal
+regions[bottom]         = Page bottom
+
+; The page_top and page_bottom regions are hidden, which means they will not
+; show up on the blocks administration page. But they are required in order for
+; the html.tpl.php to work properly, so do not delete them.
+
+regions[page_top]       = Page top
+regions[page_bottom]    = Page bottom
+
+
+
+; Various page elements output by the theme can be toggled on and off. The
+; "features" control which of these check boxes display on the
+; admin/appearance config page. This is useful for suppressing check boxes
+; for elements not used by your sub-theme. To suppress a check box, omit the
+; entry for it below. See the Drupal 7 Theme Guide for more info:
+; https://drupal.org/node/171205#features
+
+;features[] = logo
+features[] = name
+;features[] = slogan
+;features[] = node_user_picture
+;features[] = comment_user_picture
+features[] = favicon
+features[] = main_menu
+features[] = secondary_menu
+
+
+
+; Set the default values of settings on the theme-settings.php form.
+
+settings[boston_public_breadcrumb]           = yes
+settings[boston_public_breadcrumb_separator] = ' › '
+settings[boston_public_breadcrumb_home]      = 1
+settings[boston_public_breadcrumb_trailing]  = 0
+settings[boston_public_breadcrumb_title]     = 0
+settings[boston_public_skip_link_anchor]     = main-menu
+settings[boston_public_skip_link_text]       = Jump to navigation
+settings[boston_public_meta][]               = html5
+settings[boston_public_meta][]               = meta
+settings[boston_public_rebuild_registry]     = 1
+
+; To make this sub-theme an admin theme with shortcut links next to titles,
+; uncomment the line below.
+
+;settings[shortcut_module_link]    = 1
+
+; To add a Panels layout (which can also be used by Display Suite), uncomment
+; the line below and see the documentation at: https://drupal.org/node/495654
+;plugins[panels][layouts] = panels-layouts

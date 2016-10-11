@@ -1,0 +1,324 @@
+<?php
+/**
+ * @file
+ * Install file for COB Hub.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function hub_profile_install() {
+  require_once __DIR__ . '/../bos_profile/bos_profile.install';
+  bos_profile_install();
+}
+
+/**
+ * Enable modules added in Sprint 10.
+ *
+ * All sprint 10 updates belong in this update hook.
+ */
+function hub_profile_update_7001() {
+  $disabled_modules = array();
+  $enabled_modules = array(
+    'profile2',
+    'profile2_page',
+    'hub_profile2_main',
+    'bos_component_fyi',
+    'bos_component_iframe',
+    'bos_menu_secondary_menu',
+    'bos_settings_theme',
+    'bos_drawers_component',
+    'bos_drawer_component',
+    'hub_content_type_tabbed_content',
+    'bos_settings_menu'
+  );
+  module_disable($disabled_modules);
+  module_enable($enabled_modules);
+
+  // Disable the workbench block.
+  db_update('block')
+    ->fields(array(
+      'status' => 0,
+      'region' => '',
+    ))
+    ->condition('module', 'workbench')
+    ->condition('delta', 'block')
+    ->execute();
+
+}
+/**
+ * Enable modules added in Sprint 11.
+ *
+ * All sprint 11 updates belong in this update hook.
+ */
+function hub_profile_update_7002() {
+  $disabled_modules = array(
+    'bos_blocks',
+    'bos_context_global_header',
+  );
+  $enabled_modules = array(
+    'acquia_agent',
+    'acquia_search',
+    'acquia_search_multi_subs',
+    'apachesolr',
+    'apachesolr_attachments',
+    'apachesolr_field_collection',
+    'apachesolr_search',
+    'apachesolr_paragraphs',
+    'apachesolr_user',
+    'facetapi',
+    'hub_blocks',
+    'hub_context_global_header',
+    'hub_settings_apache_solr',
+    'profile2_apachesolr',
+    'search',
+    'bos_component_user_action',
+    'hub_context_search_blocks',
+    'hub_solr_facet_api_type_of_content',
+  );
+  module_disable($disabled_modules);
+  module_enable($enabled_modules);
+
+  // Set the default NoResults suggestions text for search.
+  variable_set('hub_settings_apache_solr_no_results_suggestions', array(
+    'value'=>hub_settings_apache_solr_no_results_suggestions_text(),
+    'format'=>'filtered_html',
+  )
+  );
+
+}
+
+/**
+* Enable modules added in Sprint 12.
+*
+ * All sprint 12 updates belong in this update hook.
+ */
+function hub_profile_update_7003() {
+  $disabled_modules = array(
+    'hub_context_search_blocks',
+  );
+  $enabled_modules = array();
+  module_disable($disabled_modules);
+  module_enable($enabled_modules);
+}
+
+/**
+ * Enable modules added in Sprint 13.
+ *
+ * Delete the field_manager field from the main user profile bundle.
+ * All sprint 13 updates belong in this update hook.
+ */
+function hub_profile_update_7004() {
+  $delete_fields = array(
+    'field_manager',
+  );
+  foreach ($delete_fields as $field) {
+    if (field_info_field($field)) {
+      field_delete_field($field);
+    }
+  }
+
+  field_purge_batch(10);
+
+  $enabled_modules = array(
+    'entity_token',
+    'hub_pathauto',
+    'xautoload',
+    'hub_migration',
+  );
+  $disabled_modules = array(
+    'bos_pathauto',
+  );
+  module_disable($disabled_modules);
+  module_enable($enabled_modules);
+  $revert_features = array(
+    'hub_pathauto',
+  );
+  features_revert($revert_features);
+  // Update the aliases for all existing users
+  $users = entity_load('user');
+  foreach ($users as $account) {
+    pathauto_entity_path_delete_all('user', $account, "user/{$account->uid}");
+  }
+  $uids = array_keys($users);
+  pathauto_user_update_alias_multiple($uids, 'bulkupdate');
+}
+
+/**
+ * Enable modules added in Sprint 14.
+ *
+ * All sprint 14 updates belong in this update hook.
+ */
+function hub_profile_update_7005() {
+  $disabled_modules = array(
+    'bos_component_grid_of_places',
+  );
+  $enabled_modules = array(
+    'content_access',
+    'hub_content_access',
+  );
+  module_disable($disabled_modules);
+  module_enable($enabled_modules);
+
+  // Delete the grid of places bundle.
+  paragraphs_bundle_delete('grid_of_places');
+
+  // Rebuild permissions, since we enabled content access
+  node_access_rebuild();
+}
+
+/**
+ * Enable modules added in Sprint 15.
+ *
+ * All sprint 15 updates belong in this update hook.
+ */
+function hub_profile_update_7006() {
+  $disabled_modules = array(
+  );
+  $enabled_modules = array(
+    'hub_content_type_application',
+    'hub_view_applications_list',
+    'hub_user_fields',
+  );
+  module_disable($disabled_modules);
+  module_enable($enabled_modules);
+
+  //Set the path alias for 'My Profile'
+  $path = array (
+    'source'=>'user',
+    'alias' => 'my-profile',
+    );
+  path_save ($path);
+  // Add event and script_page to the apachesolr index.
+  $event_info = (object) array('type'=>'event');
+  apachesolr_node_type_insert($event_info);
+  cache_clear_all();
+  $script_page_info = (object) array('type'=>'script_page');
+  apachesolr_node_type_insert($script_page_info);
+  cache_clear_all();
+  variable_set('hub_profile_change_password_url', 'https://oimprd.cityofboston.gov/admin/faces/pages/forgotpwd.jspx?backUrl=https%3A%2F%2Foamprd.cityofboston.gov%2Fssologin%2Flogin.jsp&_afrWindowMode=0&_afrLoop=1310480525291885&_adf.ctrl-state=12cbxb91wb_4');
+}
+
+/**
+ * Enable modules added in Sprint 17.
+ *
+ * All sprint 17 updates belong in this update hook.
+ */
+function hub_profile_update_7007()
+{
+  $disabled_modules = array();
+  $enabled_modules = array(
+    'bos_component_daily_hours',
+    'bos_component_custom_hours_text',
+    'draggableviews',
+    'bos_view_calendar_listing',
+  );
+  module_disable($disabled_modules);
+  module_enable($enabled_modules);
+
+  // Delete the old applications_access_list field as we've replaced
+  // it with a single comma separated field.
+  $delete_fields = array(
+    'field_applications_access_list',
+  );
+  foreach ($delete_fields as $field) {
+    if (field_info_field($field)) {
+      field_delete_field($field);
+    }
+  }
+
+  field_purge_batch(10);
+}
+
+/**
+ * Enable modules added in Sprint 18.
+ *
+ * All sprint 18 updates belong in this update hook.
+ */
+function hub_profile_update_7008()
+{
+  $disabled_modules = array();
+  $enabled_modules = array(
+    'hub_tools_and_apps_api',
+    'services_auth_apikeys',
+    'shunt',
+  );
+  module_disable($disabled_modules);
+  module_enable($enabled_modules);
+  // Set the batch size for the hub tools API
+  variable_set('hub_tools_api_batch_size', 100);
+}
+
+/**
+ * Prerelease hook.
+ *
+ * This hook is for anything happening before Hub release on 08/02/2016.
+ */
+function hub_profile_update_7009()
+{
+  $disabled_modules = array();
+  $enabled_modules = array();
+  module_disable($disabled_modules);
+  module_enable($enabled_modules);
+
+  // Delete cell phone from the directory.
+  $delete_fields = array(
+    'field_cell_phone_number',
+  );
+  foreach ($delete_fields as $field) {
+    if (field_info_field($field)) {
+      field_delete_field($field);
+    }
+  }
+
+  field_purge_batch(10);
+}
+
+/**
+ * Sprint 19 work for hub.
+ */
+function hub_profile_update_7010() {
+  $enabled_modules = array(
+    'shunt',
+  );
+  module_enable($enabled_modules);
+  // Delete cell phone from the directory.
+  $delete_fields = array(
+    'field_applications_access_list',
+  );
+  foreach ($delete_fields as $field) {
+    if (field_info_field($field)) {
+      field_delete_field($field);
+    }
+  }
+
+  field_purge_batch(1000);
+}
+
+/**
+ * Update for 08/25/16
+ */
+function hub_profile_update_7011() {
+  $disabled_modules = array(
+    'insert',
+  );
+
+  module_disable($disabled_modules);
+}
+
+/**
+ * Update for 10/6/16
+ */
+function hub_profile_update_7012() {
+  $delete_fields = array(
+    'field_emergency_contact_name',
+    'field_emergency_contact_phone',
+  );
+  foreach ($delete_fields as $field) {
+    if (field_info_field($field)) {
+      field_delete_field($field);
+    }
+  }
+
+  field_purge_batch(1000);
+}
