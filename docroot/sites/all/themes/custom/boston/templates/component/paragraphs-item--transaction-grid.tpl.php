@@ -25,16 +25,18 @@
  * @see template_process()
  */
 ?>
-<div class="<?php print $classes; ?>"<?php print $attributes; ?>>
-  <div class="content"<?php print $content_attributes; ?>>
-  	<div class="section-header">
+<div class="b b--g">
+  <div class="b-c">
+  	<div class="sh">
 	    <?php print render($content['field_component_title']); ?>
 	    <?php if (isset($content['field_contact'])): ?>
 	      <?php print render($content['field_contact']); ?>
 	    <?php endif; ?>
     </div>
-    <?php if (isset($content['field_transactions'])): ?>
-      <?php print render($content['field_transactions']); ?>
-    <?php endif; ?>
+    <div class="g">
+      <?php if (isset($content['field_transactions'])): ?>
+        <?php print render($content['field_transactions']); ?>
+      <?php endif; ?>
+    </div>
   </div>
 </div>

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Default theme implementation for a single paragraph item.
@@ -24,9 +25,5 @@
  * @see template_preprocess_entity()
  * @see template_process()
  */
-$field_title = $content['field_title'][0]['#markup'];
 ?>
-<a href="<?php print $internal_link_path; ?>" title="Go to <?php print ((!empty($field_title) ? $field_title : $internal_link_title)); ?>" class="<?php print $link_icon["classes"]["container"]; ?>">
-  <span<?php print((isset($link_icon["classes"]["icon"]) ? ' class="' . $link_icon["classes"]["icon"] . '"' : '')); ?>><img src="<?php print $link_icon["image"] ?>" /></span>
-  <span<?php print((isset($link_icon["classes"]["text"]) ? ' class="' . $link_icon["classes"]["text"] . '"' : '')); ?>><?php print ((!empty($field_title) ? $field_title : $internal_link_title)); ?></span>
-</a>
+<?php print render($content); ?>
