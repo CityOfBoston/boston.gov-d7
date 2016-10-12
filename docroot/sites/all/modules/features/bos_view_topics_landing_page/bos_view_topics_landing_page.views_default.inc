@@ -156,26 +156,6 @@ function bos_view_topics_landing_page_views_default_views() {
     36 => 0,
     41 => 0,
   );
-  /* Filter criterion: Content: Topic Category (field_topic_category) */
-  $handler->display->display_options['filters']['field_topic_category_target_id']['id'] = 'field_topic_category_target_id';
-  $handler->display->display_options['filters']['field_topic_category_target_id']['table'] = 'field_data_field_topic_category';
-  $handler->display->display_options['filters']['field_topic_category_target_id']['field'] = 'field_topic_category_target_id';
-  $handler->display->display_options['filters']['field_topic_category_target_id']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_topic_category_target_id']['expose']['operator_id'] = 'field_topic_category_target_id_op';
-  $handler->display->display_options['filters']['field_topic_category_target_id']['expose']['operator'] = 'field_topic_category_target_id_op';
-  $handler->display->display_options['filters']['field_topic_category_target_id']['expose']['identifier'] = 'field_topic_category_target_id';
-  $handler->display->display_options['filters']['field_topic_category_target_id']['expose']['multiple'] = TRUE;
-  $handler->display->display_options['filters']['field_topic_category_target_id']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    11 => 0,
-    16 => 0,
-    21 => 0,
-    26 => 0,
-    31 => 0,
-    36 => 0,
-    41 => 0,
-  );
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page_1');
