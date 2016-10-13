@@ -31,4 +31,4 @@ dependencies[] = profile2
 dependencies[] = profile2_page
 dependencies[] = profile2_apachesolr
 dependencies[] = search
-dependencies[] = services_auth_apikeys
+dependencies[] = services_api_key_auth
