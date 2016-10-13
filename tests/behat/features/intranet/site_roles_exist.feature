@@ -14,3 +14,4 @@ Feature: Site Roles
     | Content Author          |
     | Status Alert Editor     |
     | Manager                 |
+    | Guide Author            |

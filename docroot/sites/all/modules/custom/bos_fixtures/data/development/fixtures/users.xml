@@ -35,4 +35,11 @@
     <mail>event_editor_fixture@example.com</mail>
     <roles>Events Editor</roles>
   </user>
+  <user>
+    <id>u0006</id>
+    <name>guide_author_fixture</name>
+    <pass>test1P*tttt</pass>
+    <mail>guide_author_fixture@example.com</mail>
+    <roles>Guide Author</roles>
+  </user>
 </users>
