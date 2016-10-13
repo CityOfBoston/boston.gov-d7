@@ -240,7 +240,7 @@ function hub_profile_update_7008()
   $disabled_modules = array();
   $enabled_modules = array(
     'hub_tools_and_apps_api',
-    'services_auth_apikeys',
+    'services_api_key_auth',
     'shunt',
   );
   module_disable($disabled_modules);

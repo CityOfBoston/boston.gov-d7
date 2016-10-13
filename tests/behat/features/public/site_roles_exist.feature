@@ -15,3 +15,4 @@ Feature: Site Roles
     | Events Editor           |
     | Press Release Editor    |
     | Status Alert Editor     |
+    | Guide Author            |

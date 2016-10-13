@@ -198,6 +198,13 @@ function acquia_permissions_map() {
       'view revisions',
       'view the administration theme',
     ),
+    // Guide Author role permissions.
+    // Assumes user is at least a content author.
+    'Guide Author' => array(
+      'create topic_page content',
+      'edit any topic_page content',
+      'edit own topic_page content',
+    ),
     // Content Author role permissions.
     'Content Author' => array(
       'access administration menu',
