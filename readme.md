@@ -1,8 +1,5 @@
 # Setting up your local environment
 
-## Build Status
-*  [![Build Status](https://travis-ci.com/CityOfBoston/boston.gov.svg?token=4Mk5JW5r1ifn1vTCrTF7&branch=master)](https://travis-ci.com/CityOfBoston/boston.gov)
-
 ## Prereqs
 * composer 1.1.2 [See documentation here](https://getcomposer.org/doc/00-intro.md#installation-linux-unix-osx)
 * nvm 0.31 - `curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.0/install.sh | bash`
