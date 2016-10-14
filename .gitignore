@@ -34,11 +34,7 @@ docroot/**/*.txt
 /docroot/.htaccess
 
 # Ignore some settings files
-auth.settings.php
-saml.settings.php
-cache.settings.php
 /simplesamlphp
-edit-domain.settings.php
 
 # Ignore build artifacts
 /deploy
