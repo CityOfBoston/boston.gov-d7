@@ -2,4 +2,3 @@ build
 docroot
 hooks
 simplesamlphp
-simplesamlphp-1.14.2
