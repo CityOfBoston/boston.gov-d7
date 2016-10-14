@@ -37,7 +37,7 @@ echo "Applied settings to The Hub"
 echo "--------------------------------"
 rm -Rf $DOCROOT/simplesamlphp
 mv ${DIR}/tmp/settings/simplesamlphp* $GIT_ROOT/simplesamlphp
-echo "Applied settings to The Hub"
+echo "Applied saml settings"
 echo "--------------------------------"
 rm -Rf ${DIR}/tmp
 echo "Removed temporary settings"
