@@ -5,3 +5,7 @@ robots.txt
 bos_404.html
 hub_404.html
 favicon.ico
+auth.settings.php
+cache.settings.php
+edit-domain.settings.php
+saml.settings.php
