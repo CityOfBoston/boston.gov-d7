@@ -25,7 +25,7 @@
  * @see template_process()
  */
 ?>
-<div class="b b--g">
+<div class="b b--g b--fw">
   <div class="b-c">
   	<div class="sh">
 	    <?php print render($content['field_component_title']); ?>

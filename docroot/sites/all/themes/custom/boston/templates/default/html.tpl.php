@@ -16,6 +16,7 @@
   <title><?php print $head_title; ?></title>
 
   <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic|Montserrat:400,700' rel='stylesheet' type='text/css'>
+  <link href='http://localhost:3000/css/main.css' rel='stylesheet' type='text/css'>
 
   <?php if ($default_mobile_metatags): ?>
     <meta name="viewport" content="width=device-width, initial-scale=1">
