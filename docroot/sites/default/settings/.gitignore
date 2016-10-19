@@ -1,0 +1,5 @@
+# Ignore local settings file
+cache.settings.php
+edit-domain.settings.php
+auth.settings.php
+saml.settings.php

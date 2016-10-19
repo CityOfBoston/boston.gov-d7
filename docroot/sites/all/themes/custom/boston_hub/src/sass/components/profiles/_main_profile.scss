@@ -242,7 +242,7 @@
 
   .user-profile-header-block{
     text-align: center;
-    margin: -100px 0 50px;
+    margin: -100px 0 0;
 
     @include respond-to(xl) {
       margin: -120px 0 25px;

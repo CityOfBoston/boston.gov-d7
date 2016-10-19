@@ -1,15 +1,11 @@
-# Note that the example .travis.yml file for child projects lives in /install.
 sudo: false
 language: php
-
 env:
-  - TASK="./task.sh validate:all"
-  - TASK="./task.sh -Dbehat.run-server=true build:test"
-  - TASK="./hub-task.sh -Dbehat.run-server=true build:test:hub"
-
+- TASK="./task.sh validate:all"
+- TASK="./task.sh -Dbehat.run-server=true build:test"
+- TASK="./hub-task.sh -Dbehat.run-server=true build:test:hub"
 php:
-  - 5.6
-
+- 5.6
 addons:
   ssh_known_hosts:
   - svn-14671.prod.hosting.acquia.com
@@ -18,7 +14,6 @@ addons:
   - staging-19375.prod.hosting.acquia.com
   - 54.205.51.146
   - 54.80.38.136
-
 cache:
   bundler: true
   apt: true
@@ -26,46 +21,32 @@ cache:
   - "$HOME/.composer/cache"
   - "$HOME/.drush/cache"
   - "$HOME/.nvm"
-  - "vendor"
-  - "node_modules"
-  - "docroot/sites/all/themes/custom/boston/node_modules"
-  - "docroot/sites/all/themes/custom/boston_hub/node_modules"
-  - "docroot/sites/all/themes/custom/boston_public/node_modules"
-
+  - vendor
+  - node_modules
+  - docroot/sites/all/themes/custom/boston/node_modules
+  - docroot/sites/all/themes/custom/boston_hub/node_modules
+  - docroot/sites/all/themes/custom/boston_public/node_modules
 notifications:
   slack:
-    rooms:
-     - secure: ZonqPylUxiKcGSNy+eufrQnmmq5WuP0OoqDe2uwAPb05OkNacKFZs88Y7vcEU9yiT0ZEczSlHxGEKwtfEs0VNOxJ8PKkAj5TU7ftUDwAWrQxv7riazVIHndg7X/0ozJTOgnqNdKRfz+iP3fSxOjmK/dmtnz7avE9mBMco43MBPvII0f7Z1SOhraPS62ntYg4oyid1WofwNJWa8A7qSyfJjGRmRZXn546kwhM+XW+nYAtDp/EmTEin4SNUbQ0A4GlImyRTx16fdgXNkYK28kLhtRrYZE7STDPHMnt3JKBt+MEA17ykW0T58925VQgS0CdwI66/zojFxR/31n06Fw0owoVdkSYCURIXBsgMinwrBH7UV3R667jJMYehl2ucmqaFjbkUT8yaFI2w6BuBb5dzLXyiOAp1yDIsRl5ykvAg+Syp2NlBuKS0sAXyGTKWR9rY22vNOWec8sOln9JBO0uY4/8+SD890rghK4x4m7Q3e2umBjr+u5MwwFTGlOVGd6l8acMYv78IcLLz2yF0mUHAt8g8IEZpVhbANzHHkBuqkrkCODGwnKdM0q3V6za9TF3Bd/0HhTnzTRf5QvRXM/AXgLzboN+aQhKD/lW5Jj9X1khEij58/PthrM4DUlrGoTOkvTwFNbE5xSHmRpa2VzuRsUwOcncMBPuP3EEv6tYhG4=
-     - secure: iCxNn4O93UDs6n+WxeJnbK0sjtXiWmLCWAbg/L/238ljrj9D7kbctoS2FOx9ph0MGDLVK+CjZKfewblBATBc1kqdldQAFpPt3Cj9CfVEZ6KoN8IjDwvr/u79t00w9ISOiFInPodJhGpv+CyEcZHjKe2OCuoiRL1EQRxROYhUJdSeBOX+lYRB2PsgNqdEK32/vM6i81yjJB+23FkmzL7Q4V7wBW+K945pt0U43WSLdJWgdy0Sbqlg0oK0Mrb2FpuM0pmkuH2DqQaRgQjmAJcsNCmBDqY0S2raaBNHE3wkL+CBskJfeigvDy2G6xhXYL7L0OilxwTtOYnNHOn2nw1frQB1nOoieamosuL1NTuDkYRpW24RdYleZKjCrmKWcuhA202z7BKRp9/3NJepMvelKrSOB5LRVD46Y6yECuy8HV97BOAiAAfoJv4oy6Obbh2xTX7TNtApff8MwhE/deT+XVFql6vOOg1mhK65nJ3DbfUCTCf1mJZPFUn4YHB9zpBkpZv0qfJkkWiMlVv1zjL/msCgoSpbDPZ7NtOO3SUgB8WjkBm9Ot+Oo58NzaG/91A1B/RuhqZc/jMx+UgtYh1erlO+KzXDtPbMkD9hcWFilS0ZazZC11EM2rhy4/F/ATQ9ajdHhDnZLre4mUbuyAnLSBF3Xi07IQ9aMDNHTmPl/fs=
-
+    secure: b2UX5FnE2/C5MDNK47EP0GZIRmfwX+18HES0Q/uSwt6t7+ogKCtIjWCp1sIPd7jqRak0VmLoM0OHy6MBjz6x+1MQMNUqPEiO1f2APgBJ48c6rzeWQKTVfrKsUvPYIA+gxQ7jq7Gn0zPYQ5/+KXkxac+NrVoH85sI0xIL2BhFgQu1W4OlLLFKT11U7zJtCi3bcYhF7/eyCcrs3+IBGGp9sldjWvaVLDqUnFjz3c5AXwxlbJ6UTq7GIdIEe5Xw/UOJS9weedhoYH2XSNzFpmqqkAGcvkFpgCeYxf12iiqkmoAq5A0CxWVXqA3vG+imabuQonpbQsGdvtFP71EV9o9DxwATwxaGhBpX+Sw4zN7v25IC6n7rcvcK2F9dtY0CAb8BpWbEbWMDXXmVvFEVAvgARQ/b+L7YOJbNbbJwJQqZkllJp0lAFluyMDwpP2Ncr177S5hR/4Z6rlj1aLK1nhbmi/tK/kSNe+bcashm7/S2KG076hN0b5TB87hsbkvHsnVJDMKXSHwKrrdJiXDAkwZbl2sBp/bbfMTXyEqrINUG4WA70WXP3lR/QJy2pldVEYIU5rRwSzZ0BJ9raF7iiXFgTn3+Yhl0U/UgcDCEKoRvutM/suCy1mQBYP+Gv1uyFNFco37doQbPeyAXNb1vjfJQtyzy8I31gIN/sK590YxLBCA=
 before_install:
-  - composer selfupdate
-  - phpenv config-rm xdebug.ini
-  - echo 'variables_order = "EGPCS"' >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
-  - git config --global user.name "Travis-CI"
-  - git config --global user.email "noreply@travis-ci.org"
-  - mysql -e 'CREATE DATABASE drupal;'
-  - mysql -e 'CREATE DATABASE hub;'
-
+- composer selfupdate
+- phpenv config-rm xdebug.ini
+- echo 'variables_order = "EGPCS"' >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
+- git config --global user.name "Travis-CI"
+- git config --global user.email "noreply@travis-ci.org"
+- mysql -e 'CREATE DATABASE drupal;'
+- mysql -e 'CREATE DATABASE hub;'
 install:
-  # install proper version of node
-  - nvm install 5.6.0
-  - nvm use 5.6.0
-  # Load composer dependencies.
-  - composer install --prefer-source
-  - export PATH=$PATH:$TRAVIS_BUILD_DIR/bin
-
+- nvm install 5.6.0
+- nvm use 5.6.0
+- composer install --prefer-source
+- export PATH=$PATH:$TRAVIS_BUILD_DIR/bin
 before_script:
-  # Clear drush release history cache, to pick up new releases.
-  - rm -f ~/.drush/cache/download/*---updates.drupal.org-release-history-*
-  - scripts/make/apply-settings.sh
-
+- rm -f ~/.drush/cache/download/*---updates.drupal.org-release-history-*
+- scripts/make/apply-settings.sh
 script:
-  # Validate all code.
-  - $TASK
-
+- "$TASK"
 after_success:
-   # Watch for successful builds job on `develop` branch; deploy to `develop-build`.
-   - scripts/deploy/travis-deploy.sh develop develop-build
-   # Watch for successful builds job on `master` branch; deploy to `master-build`.
-   - scripts/deploy/travis-deploy.sh master master-build
+- scripts/deploy/travis-deploy.sh develop develop-build
+- scripts/deploy/travis-deploy.sh master master-build
