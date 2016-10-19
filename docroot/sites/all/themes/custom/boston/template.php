@@ -115,6 +115,10 @@ function boston_preprocess_breadcrumb(array &$variables, $hook) {
  *   this function to have consistent variables.
  */
 function boston_preprocess_html(array &$variables, $hook) {
+  // A variable to define the asset url
+  $variables['asset_url'] = variable_get('asset_url', 'https://patterns.boston.gov');
+  $variables['asset_name'] = $GLOBALS['theme'] == 'boston_hub' ? 'hub' : 'public';
+
   // Add variables and paths needed for HTML5 and responsive support.
   $variables['base_path'] = base_path();
   $variables['path_to_boston'] = drupal_get_path('theme', $GLOBALS['theme']);
