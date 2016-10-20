@@ -11,8 +11,6 @@
 
 <input type="checkbox" id="hb__trigger" class="hb__trigger" aria-hidden="true" />
 
-<?php print theme('accessibility_toolbar'); ?>
-
 <div class="main-navigation">
   <div class="main-navigation-wrapper">
     <div class="main-navigation-title"></div>

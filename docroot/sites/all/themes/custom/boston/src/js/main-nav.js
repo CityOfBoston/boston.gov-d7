@@ -38,17 +38,6 @@
     $('.dd').attr('aria-expanded', isChecked);
   }).attr('checked', false);
 
-  $('.tb__trigger').on('change', function () {
-    var el = $(this)
-    var isChecked = el.is(':checked');
-
-    el.attr('aria-expanded', !isChecked);
-
-    if (!isChecked && $('.dd__input').is(':checked')) {
-      $('.dd__input').attr('checked', false);
-    }
-  }).attr('checked', false);
-
   // Resets menu on page load
   $('.main-navigation').menuReset();
 

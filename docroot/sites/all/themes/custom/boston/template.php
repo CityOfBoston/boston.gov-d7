@@ -45,13 +45,6 @@ function boston_theme() {
       ),
       'template' => 'templates/snippets/grid-card',
     ),
-    'accessibility_toolbar' => array(
-      'variables' => array(
-        'accessibilityMenu' => NULL,
-        'translationMenu' => NULL,
-      ),
-      'template' => 'templates/snippets/accessibility_toolbar',
-    ),
     'user_login' => array(
       'render element' => 'form',
       'template' => 'templates/snippets/user_login',
