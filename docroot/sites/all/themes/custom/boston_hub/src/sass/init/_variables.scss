@@ -41,6 +41,7 @@ $font-watermark:  $lora;
 // Breakpoints
 
 $breakpoints: (
+  xs:   (374px, 'no-query' true),
   s:    (480px, 'no-query' true),
   m:    (768px, 'no-query' true),
   l:    (840px, 'no-query' true),
