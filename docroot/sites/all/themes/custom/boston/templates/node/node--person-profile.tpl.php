@@ -9,7 +9,7 @@
  */
 ?>
 <article class="<?php print $classes; ?> clearfix node-<?php print $node->nid; ?>"<?php print $attributes; ?>>
-  <div class="person-profile-info-wrapper desktop-100">
+  <div class="person-profile-info-wrapper desktop-100 clearfix">
     <div class="column mobile-100 desktop-66-right">
       <h1 class="person-profile-display-name">
         <?php print $title; ?>

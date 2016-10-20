@@ -1,45 +1,12 @@
-# Setting up your local environment
+<img src="https://cloud.githubusercontent.com/assets/9234/19400090/8c20c53c-9222-11e6-937c-02bce55e5301.png" alt="City of Boston" width="150" />
 
-## Prereqs
-* composer 1.1.2 [See documentation here](https://getcomposer.org/doc/00-intro.md#installation-linux-unix-osx)
-* nvm 0.31 - `curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.0/install.sh | bash`
-* node 5.4.0 - `source ~/.bashrc; nvm install 5.4.0; nvm use 5.4.0`
+The source code for [Boston.gov](https://boston.gov), the official site of the City of Boston. Boston.gov is built on Drupal and serves as the digital front door for the City of Boston.
 
-## Initial repo setup
-* Fork the repository to your local github account.
-* Clone your local forked repository to your local machine
-* Remove the following file:
-  * `composer.lock`
+## Public domain
 
-* Modify the following files:
-  * docroot/sites/default/settings/local.settings.php
-    * set `port` to `33067`
-    * set `base_url` to `https://spyglass.dd:8443` 
-  * docroot/sites/hub/settings/local.settings.php
-    * set `port` to `33067`
-    * set `base_url` to `https://hub.dd:8443`
+This project is in the worldwide [public domain](LICENSE.md). As stated in [CONTRIBUTING](CONTRIBUTING.md):
 
-* Copy and modify these files:
+> This project is in the public domain within the United States, and copyright and related rights in the work worldwide are waived through the [CC0 1.0 Universal public domain dedication](https://creativecommons.org/publicdomain/zero/1.0/).
+>
+> All contributions to this project will be released under the CC0 dedication. By submitting a pull request, you are agreeing to comply with this waiver of copyright interest.
 
-  * `copy docroot/sites/example.local.site.php docroot/sites/local.site.php`
-    * **local.sites.php**: Uncomment both `$sites` lines; remove `loc.` from each config line.
-
-  * `copy tests/behat/example.local.yml tests/behat/local.yml`
-    * **local.yml**: Update default: base_url: https://spyglass.dd:8443 ; Update hub: base_url: https://hub.dd:8443
-
-* In the root of repository:
-```
-composer update
-composer install
-./task.sh setup:git-hooks
-./task.sh frontend:install
-./task.sh frontend:build
-./task.sh setup:build:make
-```
-
-## Finish initial setup
-* In the root of repository: `./task.sh build:local`
-
-## Finish Hub setup
-* Run install from root of repository
-  * `./hub-task.sh build:local`
