@@ -28,7 +28,7 @@ function bos_menu_secondary_menu_menu_link_alter(&$item) {
   }
 
   if ($item['menu_name'] === 'menu-secondary-menu' && $item['link_title'] === 'Feedback') {
-    $item['options']['attributes']['class'] = 'feedback-link modal-link';
+    $item['options']['attributes']['class'] = 'notranslate feedback-link modal-link';
     $item['options']['attributes']['data-modal'] = 'feedback';
   }
 
