@@ -11,8 +11,6 @@
 
 <input type="checkbox" id="hb__trigger" class="hb__trigger" aria-hidden="true" />
 
-<?php print theme('accessibility_toolbar'); ?>
-
 <div class="main-navigation">
   <div class="main-navigation-wrapper">
     <div class="main-navigation-title"></div>
@@ -44,6 +42,19 @@
         <div class="shadow-layer"></div>
       </a>
 
+      <div class="tr">
+        <a href="#" class="tr-link">Translate</a>
+        <ul class="tr-dd">
+          <li><a href="#" class="notranslate tr-dd-link" data-ln="zh-CHS">中文 (繁體)</a></li>
+          <li><a href="#" class="notranslate tr-dd-link" data-ln="zh-CHT">中文 (简体)</a></li>
+          <li><a href="#" class="notranslate tr-dd-link" data-ln="ht">Kreyòl Ayisyen</a></li>
+          <li><a href="#" class="notranslate tr-dd-link" data-ln="pt">Portugese</a></li>
+          <li><a href="#" class="notranslate tr-dd-link" data-ln="es">Español</a></li>
+          <li><a href="#" class="notranslate tr-dd-link" data-ln="vi">Tiếng Việt</a></li>
+          <li><a href="#" class="notranslate tr-dd-link tr-dd-link--hidden" data-ln="en">English</a></li>
+        </ul>
+      </div>
+
       <?php print theme('links__system_secondary_menu', array(
         'links' => $secondary_menu,
         'attributes' => array(
@@ -52,7 +63,6 @@
       )); ?>
 
       <?php print render($page['header']); ?>
-
     </div>
 
   </header>

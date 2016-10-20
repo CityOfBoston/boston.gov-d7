@@ -42,32 +42,3 @@
 .hb__trigger:checked ~ .page .topic-nav.sticky {
   left: 285px;
 }
-
-.tb__block,
-.dd__trigger__button,
-.dd__menu {
-  position: static;
-  display: block;
-  padding: 0;
-  margin: 0;
-  border: none;
-}
-
-.tb__block:first-child {
-  margin-bottom: 1em;
-}
-
-.dd__trigger__icon {
-  display: none;
-}
-
-.dd__trigger__button {
-  display: none;
-}
-
-.tb__block li, .dd__menu li, .dd__menu li a {
-  display: inline-block;
-  margin-left: 0;
-  margin-right: 0.75em;
-  padding-left: 0;
-}

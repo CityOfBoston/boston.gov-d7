@@ -11,8 +11,6 @@
 
 <input type="checkbox" id="hb__trigger" class="hb__trigger" aria-hidden="true" />
 
-<?php print theme('accessibility_toolbar'); ?>
-
 <div class="main-navigation">
   <div class="main-navigation-wrapper">
     <a href="#skip-link" class="visually-hidden--focusable" id="main-menu" tabindex="-1">Back to top</a>

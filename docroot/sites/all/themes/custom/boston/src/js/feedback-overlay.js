@@ -9,7 +9,7 @@
       var modalOverlay          = '.modal-overlay';
 
       // When trigger link is clicked, display corresponding modal block.
-      $(modalTrigger).on('click', function (e) {
+      $('.modal-link').on('click', function (e) {
         e.preventDefault();
         var modal_id = $(this).data('modal');
 

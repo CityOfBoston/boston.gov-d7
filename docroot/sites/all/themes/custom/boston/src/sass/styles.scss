@@ -75,7 +75,6 @@
 
 @import 'components/bos311/bos311';
 @import 'components/accessibility/helpers';
-@import 'components/accessibility/toolbar';
 @import 'components/admin/admin-tabs';
 @import 'components/admin/admin-toolbar';
 @import 'components/autocomplete/autocomplete';
@@ -164,6 +163,7 @@
 @import 'components/topic/topic-nav';
 @import 'components/topic/topic-title';
 @import 'components/towing-lookup-form/towing-lookup-form';
+@import 'components/translate/translate';
 @import 'components/views/views-exposed-filter/views-exposed-filter';
 @import 'components/views/news-listing-view';
 @import 'components/views/place-listing-view';
