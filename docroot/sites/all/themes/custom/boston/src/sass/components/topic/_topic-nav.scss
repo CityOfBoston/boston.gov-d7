@@ -172,6 +172,14 @@
   }
 }
 
+.topic-nav.topic-nav__left.sticky li {
+  @include respond-to(xl) {
+    &:hover {
+      background-color: transparent;
+    }
+  }
+}
+
 .topic-nav.sticky li {
   @include respond-to(xl) {
 
