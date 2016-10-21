@@ -12,7 +12,7 @@
       }
 
       function onError(error) {
-        alert('There was an error translating this page. If it continues, please contact digital@boston.gov');
+        console.log('Error: ' + error);
       }
 
       function onComplete() {
