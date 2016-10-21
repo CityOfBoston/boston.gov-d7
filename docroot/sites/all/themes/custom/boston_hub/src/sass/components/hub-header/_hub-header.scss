@@ -34,12 +34,20 @@
 
   .user_info {
     height: 65px;
-    padding: 16px 8px;
+    padding: 16px 0;
     @include respond-to(m) {
-      padding: 16px 12px;
+      padding: 16px 0;
     }
     @include respond-to(xl) {
-      padding: 12px 16px;
+      padding: 12px 0;
+    }
+
+    .dd {
+      position: relative;
+
+      &__menu {
+        right: 0;
+      }
     }
   }
 
@@ -81,13 +89,7 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    margin-right: 50px;
-    @include respond-to(m) {
-      margin-right: 70px;
-    }
-    @include respond-to(xl) {
-      margin-right: 75px;
-    }
+    margin-right: 1em;
   }
 
   .menu-user {
