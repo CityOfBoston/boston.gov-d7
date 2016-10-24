@@ -29,8 +29,7 @@
 <?php
   $icon_name = $content['field_social_icon']['#items'][0]['value'];
 ?>
-<a href="<?php print $content['field_external_link'][0]['#element']['url'];?> "
-   class="<?php print $icon_name;?> icon-common icon-social sidebar-social-icon"
-   target="_blank">
+<a href="<?php print $content['field_external_link'][0]['#element']['url'];?>"
+   class="<?php print $icon_name;?> icon-common icon-social sidebar-social-icon">
   <?php print $icon_name;?>
 </a>
