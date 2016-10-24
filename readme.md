@@ -24,3 +24,10 @@ This project is in the worldwide [public domain](LICENSE.md). As stated in [LICE
 > This project is in the public domain within the United States, and copyright and related rights in the work worldwide are waived through the [CC0 1.0 Universal public domain dedication](https://creativecommons.org/publicdomain/zero/1.0/).
 >
 > All contributions to this project will be released under the CC0 dedication. By submitting a pull request, you are agreeing to comply with this waiver of copyright interest.
+
+## Labels on Issues
+
+Labels’ filtering on issues helps us stay organized. Below we have provided more meaning to some of the less obviously named labels.
+
+* Both sites: Alongside Boston.gov, we at the City connect our employees [many of which are also Boston residents] with simple and easy-to-access information via an internal website called ‘The Hub’. The Hub is built from the same source code as Boston.gov, which allows us to leverage our development resources. The ‘both sites’ label means that the development work will apply to both Boston.gov and the Hub.
+* Hub only: At times, there are website features needed only by the Hub. The ‘Hub only’ label pinpoints these issues.
