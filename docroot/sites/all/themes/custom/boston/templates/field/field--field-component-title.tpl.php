@@ -45,4 +45,6 @@
  */
 ?>
 
-<h2 class="sh-title"><?php print render($items); ?></h2>
+<h2 class="<?php print $classes; ?> component-title">
+	<?php print render($items); ?>
+</h2>

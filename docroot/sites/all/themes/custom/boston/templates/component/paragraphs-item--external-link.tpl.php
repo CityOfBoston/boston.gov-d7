@@ -24,9 +24,7 @@
  * @see template_preprocess_entity()
  * @see template_process()
  */
- $field_title = $content['field_title'][0]['#markup'];
 ?>
-<a href="<?php print $external_link_path; ?>" title="Go to <?php print ((!empty($field_title) ? $field_title : $external_link_title)); ?>"  class="<?php print $link_icon["classes"]["container"]; ?>" target="_blank">
-  <span<?php print((isset($link_icon["classes"]["icon"]) ? ' class="' . $link_icon["classes"]["icon"] . '"' : '')); ?>><img src="<?php print $link_icon["image"] ?>" /></span>
-  <span<?php print((isset($link_icon["classes"]["text"]) ? ' class="' . $link_icon["classes"]["text"] . '"' : '')); ?>><?php print ((!empty($field_title) ? $field_title : $external_link_title)); ?></span>
-</a>
+<div class="link-wrapper"<?php print $content_attributes; ?>>
+  <?php print render($content); ?>
+</div>
