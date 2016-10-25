@@ -108,10 +108,6 @@ function boston_preprocess_breadcrumb(array &$variables, $hook) {
  *   this function to have consistent variables.
  */
 function boston_preprocess_html(array &$variables, $hook) {
-  // A variable to define the asset url
-  $variables['asset_url'] = variable_get('asset_url', 'https://patterns.boston.gov');
-  $variables['asset_name'] = $GLOBALS['theme'] == 'boston_hub' ? 'hub' : 'public';
-
   // Add variables and paths needed for HTML5 and responsive support.
   $variables['base_path'] = base_path();
   $variables['path_to_boston'] = drupal_get_path('theme', $GLOBALS['theme']);
@@ -1271,49 +1267,18 @@ function boston_preprocess_paragraphs_item_video(&$variables) {
   drupal_add_js('https://www.youtube.com/iframe_api');
 }
 
-function boston_preprocess_field_collection_item_field_transactions(&$variables) {
-  // We need to get the icon for these and insert them into the link
-  $link_icon = &drupal_static("link_icon", null);
-
-  // We go through this, because the link could be external or internal
-  if (isset($link_icon)) {
-    drupal_static_reset("link_icon");
-  }
-
-  // Once we have the link, add it to the variable for use
-  $icon = field_get_items('field_collection_item', $variables['field_collection_item'], 'field_icon');
-
-  // Our links also need CSS classes
-  $link_icon = array(
-    "image" => file_create_url($icon[0]["uri"]),
-    "classes" => array(
-      "container" => "lwi g--4",
-      "icon" => "lwi-ic",
-      "text" => "lwi-t",
-    ),
-  );
-}
-
 /**
  * Implements hook_preprocess_paragraphs_item_BUNDLE().
  */
 function boston_preprocess_paragraphs_item_internal_link(&$variables) {
   $internal_link = field_get_items('paragraphs_item', $variables['paragraphs_item'], 'field_internal_link');
-  $link_icon = drupal_static("link_icon", null);
-
   if ($internal_link !== FALSE) {
     $variables['internal_link_path'] = base_path() . $internal_link[0]['entity']->path['alias'];
     $variables['internal_link_title'] = check_plain($internal_link[0]['entity']->title);
-
-    if (isset($link_icon)) {
-      $variables['link_icon'] = $link_icon;
-      drupal_static_reset("link_icon");
-    }
   }
   else {
     $variables['internal_link_path'] = '';
     $variables['internal_link_title'] = '';
-    $variables['internal_link_icon'] = '';
   }
 }
 
@@ -1322,16 +1287,9 @@ function boston_preprocess_paragraphs_item_internal_link(&$variables) {
  */
 function boston_preprocess_paragraphs_item_external_link(&$variables) {
   $external_link = field_get_items('paragraphs_item', $variables['paragraphs_item'], 'field_external_link');
-  $link_icon = drupal_static("link_icon", null);
-
   if ($external_link !== FALSE) {
     $variables['external_link_path'] = $external_link[0]['url'];
     $variables['external_link_title'] = check_plain($external_link[0]['title']);
-
-    if (isset($link_icon)) {
-      $variables['link_icon'] = $link_icon;
-      drupal_static_reset("link_icon");
-    }
   }
   else {
     $variables['external_link_path'] = '';
