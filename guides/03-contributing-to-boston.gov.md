@@ -70,7 +70,7 @@ Our process resembles a [Gitflow Workflow](https://www.atlassian.com/git/workflo
 
 * The `master` branch is always ready for deployment.
 * All development is performed against a `develop` branch.
-* Prior to release, `develop` is deployed to our staging environment and tested. It is tehn merged into `master` and `master` is deployed to production.
+* Prior to release, `develop` is deployed to our staging environment and tested. It is then merged into `master` and `master` is deployed to production.
 
 
 #### Project Setup
