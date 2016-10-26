@@ -105,7 +105,7 @@ Our process resembles a [Gitflow Workflow](https://www.atlassian.com/git/workflo
 * Prior to release, `develop` is deployed to our staging environment and tested. It is then merged into `master` and `master` is deployed to production.
 
 
-#### Project Setup
+#### Project setup
 
 Each contributor should [fork](https://help.github.com/articles/fork-a-repo) the primary Boston.gov repo. All developers should then checkout a local copy of the `develop` branch to begin work.
 
@@ -113,7 +113,7 @@ For any work, pull requests must be created for individual tasks and submitted f
 
 Pull requests should be submitted from the forked repo to the `develop` branch of the primary repo. Make sure to give your pull request a **clear and descriptive title**.
 
-Use this template when creating your pull request:
+#### Pull request template
 
 ```
 ## Changes
