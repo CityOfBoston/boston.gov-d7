@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Public Notice feature.
+ */
+
+include_once 'bos_content_type_public_notice.features.inc';

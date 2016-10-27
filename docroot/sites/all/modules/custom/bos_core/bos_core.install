@@ -376,3 +376,15 @@ function bos_core_update_7019() {
   );
   module_disable($disabled_modules);
 }
+
+/**
+ * Updates for 10/27/2016
+ */
+function bos_core_update_7020() {
+  $enabled_modules = array(
+    'bos_content_type_public_notice',
+    'bos_component_discussion_topic',
+    'bos_vocabulary_public_notice_type',
+  );
+  module_enable($enabled_modules);
+}
