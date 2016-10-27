@@ -2,6 +2,10 @@
 
 The source code for [Boston.gov](https://boston.gov), the official site of the City of Boston. Boston.gov is built on Drupal and serves as the digital front door for the City of Boston.
 
+> _Welcome! We've released the code for Boston.gov in the public domain to engage developers and designers like you. We welcome your contributions to improve the City's digital front door, and are looking forward to sharing what we create together with the public._
+> 
+> — Mayor Martin J. Walsh
+
 There’s a large, civic-minded ecosystem of software developers out there, especially in the Drupal community, and we’re hoping they’re willing to lend a hand and help Boston.gov grow, as well as foster collaboration between multiple organizations to solve common technical hurdles.
 
 ## Contributions
