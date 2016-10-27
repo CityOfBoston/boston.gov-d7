@@ -6,7 +6,7 @@ There’s a large, civic-minded ecosystem of software developers out there, espe
 
 ## Contributions
 
-If you're interested in helping Boston.gov, there are three ways to help. Be sure to checkout our guide to contributing.
+If you're interested in helping Boston.gov, there are three ways to help. Be sure to checkout our [Guide to Contributing](https://github.com/CityOfBoston/boston.gov/blob/develop/guides/03-contributing-to-boston.gov.md).
 
 * [Report issues on Boston.gov](https://github.com/CityOfBoston/boston.gov/blob/develop/guides/03-contributing-to-boston.gov.md#reporting-bugs)
 * [Suggest new features](https://github.com/CityOfBoston/boston.gov/blob/develop/guides/03-contributing-to-boston.gov.md#suggest-new-features)
