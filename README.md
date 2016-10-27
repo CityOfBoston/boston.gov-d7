@@ -31,7 +31,7 @@ All projects, open source or not, need some way to stay organized. Whether repor
 
 #### Labels on Issues
 
-Labels’ filtering on issues helps us stay organized. Below we have provided more meaning to some of the less obviously named labels.
+Filtering on issues with Labels helps us stay organized. Below we have provided more meaning to some of the less obviously named labels.
 
 * Both sites: Alongside Boston.gov, we at the City connect our employees [many of which are also Boston residents] with simple and easy-to-access information via an internal website called ‘The Hub’. The Hub is built from the same source code as Boston.gov, which allows us to leverage our development resources. The ‘both sites’ label means that the development work will apply to both Boston.gov and the Hub.
 * Hub only: At times, there are website features needed only by the Hub. The ‘Hub only’ label pinpoints these issues.
