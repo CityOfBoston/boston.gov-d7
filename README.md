@@ -25,9 +25,23 @@ This project is in the worldwide [public domain](LICENSE.md). As stated in [LICE
 >
 > All contributions to this project will be released under the CC0 dedication. By submitting a pull request, you are agreeing to comply with this waiver of copyright interest.
 
-## Labels on Issues
+## Staying organized
+
+All projects, open source or not, need some way to stay organized. Whether reporting a bug ([check out the template](https://github.com/CityOfBoston/boston.gov/blob/develop/guides/03-contributing-to-boston.gov.md#bug-report-template)), suggesting a feature [another template](https://github.com/CityOfBoston/boston.gov/blob/develop/guides/03-contributing-to-boston.gov.md#feature-template), filing a pull request [yay, templates](https://github.com/CityOfBoston/boston.gov/blob/develop/guides/03-contributing-to-boston.gov.md#pull-request-template), or even just seeing what's next in the queue, here are some ways we keep things clear on the Digital Team:
+
+#### Labels on Issues
 
 Labels’ filtering on issues helps us stay organized. Below we have provided more meaning to some of the less obviously named labels.
 
 * Both sites: Alongside Boston.gov, we at the City connect our employees [many of which are also Boston residents] with simple and easy-to-access information via an internal website called ‘The Hub’. The Hub is built from the same source code as Boston.gov, which allows us to leverage our development resources. The ‘both sites’ label means that the development work will apply to both Boston.gov and the Hub.
 * Hub only: At times, there are website features needed only by the Hub. The ‘Hub only’ label pinpoints these issues.
+
+#### Use the templates
+
+* [Suggest a feature](https://github.com/CityOfBoston/boston.gov/blob/develop/guides/03-contributing-to-boston.gov.md#feature-template)
+* [Report a bug](https://github.com/CityOfBoston/boston.gov/blob/develop/guides/03-contributing-to-boston.gov.md#bug-report-template)
+* [Submit a pull request]((https://github.com/CityOfBoston/boston.gov/blob/develop/guides/03-contributing-to-boston.gov.md#pull-request-template)
+
+#### Think about using Zenhub
+
+* We aren't endorsing [Zenhub](https://www.zenhub.com/), but we use them to manage the issues in our queue. If you want to see what we're getting ready to work on, are actively working on, or are pushing in our next release, layer Zenhub over your Github account. It's like [Trello](https://www.trello.com/) for Github.
