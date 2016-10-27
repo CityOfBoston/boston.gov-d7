@@ -19,3 +19,4 @@ Feature: Content Types
       | Program Initiative Profile |
       | Post                       |
       | Guide                      |
+      | Public Notice              |
