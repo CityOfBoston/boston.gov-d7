@@ -44,4 +44,4 @@ Labels’ filtering on issues helps us stay organized. Below we have provided mo
 
 #### Think about using Zenhub
 
-* We aren't endorsing [Zenhub](https://www.zenhub.com/) as a company, but we use them to manage the issues in our queue. If you want to see what we're getting ready to work on, are actively working on, or are pushing in our next release, layer Zenhub over your Github account. It's like [Trello](https://www.trello.com/) for Github.
+* We aren't endorsing [Zenhub](https://www.zenhub.com/), but we use them to manage the issues in our queue. If you want to see what we're getting ready to work on, are actively working on, or are pushing in our next release, layer Zenhub over your Github account. It's like [Trello](https://www.trello.com/) for Github.
