@@ -25,10 +25,9 @@ function bos_content_type_public_notice_field_group_info() {
     'children' => array(
       0 => 'body',
       1 => 'field_contact',
-      2 => 'field_event_type',
-      3 => 'field_featured',
-      4 => 'field_intro_text',
-      5 => 'title',
+      2 => 'field_featured',
+      3 => 'field_intro_text',
+      4 => 'title',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

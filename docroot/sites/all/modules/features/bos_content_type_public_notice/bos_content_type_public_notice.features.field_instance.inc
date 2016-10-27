@@ -672,53 +672,6 @@ function bos_content_type_public_notice_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-public_notice-field_event_type'.
-  $field_instances['node-public_notice-field_event_type'] = array(
-    'bundle' => 'public_notice',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 7,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'fences_wrapper' => 'no_wrapper',
-    'field_name' => 'field_event_type',
-    'label' => 'Type of notice',
-    'required' => 1,
-    'settings' => array(
-      'behaviors' => array(
-        'taxonomy-index' => array(
-          'status' => TRUE,
-        ),
-      ),
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(
-        'apply_chosen' => '',
-      ),
-      'type' => 'options_select',
-      'weight' => 3,
-    ),
-  );
-
   // Exported field_instance: 'node-public_notice-field_extra_info'.
   $field_instances['node-public_notice-field_extra_info'] = array(
     'bundle' => 'public_notice',
@@ -1248,7 +1201,6 @@ function bos_content_type_public_notice_field_default_field_instances() {
   t('The name of the primary point of contact for this notice');
   t('The neighborhoods that this notice relates to.');
   t('The phone number that should be used to inquire about this notice.');
-  t('Type of notice');
 
   return $field_instances;
 }
