@@ -378,7 +378,7 @@ function bos_core_update_7019() {
 }
 
 /**
- * Updates for 10/27/2016
+ * Updates for 10/27/2016.
  */
 function bos_core_update_7020() {
   $enabled_modules = array(
