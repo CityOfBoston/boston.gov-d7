@@ -111,7 +111,7 @@ Each contributor should [fork](https://help.github.com/articles/fork-a-repo) the
 
 For any work, pull requests must be created for individual tasks and submitted for review. Before submitting a pull request, be sure to [sync the local branch](https://help.github.com/articles/syncing-a-fork) with the upstream primary branch.
 
-Pull requests should be submitted from the forked repo to the `develop` branch of the primary repo. Make sure to give your pull request a **clear and descriptive title**.
+Pull requests should be submitted from the forked repo to the `develop` branch of the primary repo. Make sure to give your pull request a **clear and descriptive title** and use the template below.
 
 #### Pull request template
 
