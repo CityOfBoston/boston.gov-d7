@@ -1,0 +1,12 @@
+name = Discussion Topic Component
+core = 7.x
+package = Features
+dependencies[] = bos_shared_fields
+dependencies[] = features
+dependencies[] = paragraphs
+dependencies[] = text
+features[features_api][] = api:2
+features[field_instance][] = paragraphs_item-discussion_topic-field_description
+features[field_instance][] = paragraphs_item-discussion_topic-field_links
+features[field_instance][] = paragraphs_item-discussion_topic-field_title
+features[paragraphs][] = discussion_topic
