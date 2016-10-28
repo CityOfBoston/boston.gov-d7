@@ -21,7 +21,7 @@
 
 * Copy and modify these files:
 
-  * `copy docroot/sites/example.local.site.php docroot/sites/local.site.php`
+  * `copy docroot/sites/example.local.sites.php docroot/sites/local.sites.php`
     * **local.sites.php**: Uncomment both `$sites` lines; remove `loc.` from each config line.
 
   * `copy tests/behat/example.local.yml tests/behat/local.yml`
