@@ -1,7 +1,7 @@
 // Component styles
 .paragraphs-item-grid-of-topics {
   @include full-width(color(section-bg-dark));
-  
+
   .component-section {
     padding: 50px 0;
     position: relative;
@@ -9,18 +9,5 @@
 
   .content {
     @extend .container;
-  }
-
-  .section-header {
-    border-bottom-color: color(white) !important;
-
-    h2 {
-      color: color(white);
-    }
-
-    .component-contact {
-      color: color(white);
-    }
-
   }
 }

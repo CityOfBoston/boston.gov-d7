@@ -12,7 +12,7 @@
 <section class="contact-departments component-section">
   <div class="contact-departments-container container">
     <div class="sh">
-      <h2 data-short-title="Departments" class="component-title"><?php print $title; ?>:</h2>
+      <h2 data-short-title="Departments" class="sh-title"><?php print $title; ?>:</h2>
     </div>
     <div class="departments-wrapper">
       <?php print render($contacts); ?>
