@@ -46,8 +46,6 @@
         <a href="#" class="tr-link">Translate</a>
         <ul class="tr-dd">
           <li><span class="notranslate tr-dd-link tr-dd-link--message">Loading...</span></li>
-          <li><a href="#" class="notranslate tr-dd-link" data-ln="zh-CHS">中文 (繁體)</a></li>
-          <li><a href="#" class="notranslate tr-dd-link" data-ln="zh-CHT">中文 (简体)</a></li>
           <li><a href="#" class="notranslate tr-dd-link" data-ln="ht">Kreyòl Ayisyen</a></li>
           <li><a href="#" class="notranslate tr-dd-link" data-ln="pt">Portugese</a></li>
           <li><a href="#" class="notranslate tr-dd-link" data-ln="es">Español</a></li>
