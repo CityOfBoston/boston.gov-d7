@@ -44,8 +44,6 @@
  * @ingroup themeable
  */
 ?>
-<div class="<?php print $classes; ?>"<?php print $attributes; ?>>
-  <?php foreach ($items as $delta => $item): ?>
-    <h2 data-short-title="<?php print $short_title; ?>" class="component-title"><?php print render($item); ?></h2>
-  <?php endforeach; ?>
-</div>
+<?php foreach ($items as $delta => $item): ?>
+  <h2 data-short-title="<?php print $short_title; ?>" class="sh-title"><?php print render($item); ?></h2>
+<?php endforeach; ?>

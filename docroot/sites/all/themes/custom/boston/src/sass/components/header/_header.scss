@@ -8,6 +8,15 @@
 %header {
   @extend %clearfix;
 
+  .container {
+    max-width: none;
+    padding: 0 2.5em 0 0;
+
+    @include respond-to(m) {
+      padding-right: 3.5em;
+    }
+  }
+
   // Styles for fixed position header
   -webkit-box-shadow: 0 0 5px 1px rgba(0,0,0,.1);
   box-shadow: 0 1px 2px 1px rgba(0,0,0,.1);
@@ -156,24 +165,20 @@
   }
 
   .header-menu {
-    position: absolute;
-    top: 4px;
-    right: 6.7em;
+    float: right;
     list-style-type: none;
-    margin: 0;
+    margin: 4px 0 0;
     padding: 0;
     display: none;
 
-    @include respond-to(xl) {
+    @include respond-to(l) {
       display: block;
     }
-
   }
 
   .header-menu li {
     list-style-type: none;
     display: inline-block;
-    margin-left: 1.4em;
   }
 
   .header-menu a {
@@ -185,41 +190,11 @@
     display: block;
     min-width: 45px;
     text-align: center;
+    margin-left: 1.4em;
 
     &:hover,
     &.active {
       color: color(link-secondary);
-    }
-  }
-
-  // Secondary styles for .header-menu
-  .translate-inner {
-    left: -1em;
-    top: 4.5em;
-    min-width: 200px;
-    padding: 0;
-  }
-
-  .translate-inner li {
-    display: block;
-    margin: 0;
-    border-bottom: 1px solid color(border);
-    padding: 0;
-
-    &:last-child {
-      border-bottom: none;
-    }
-  }
-
-  .translate-inner a {
-    display: block;
-    padding: 0 1.4em;
-    height: 100%;
-    width: 100%;
-
-    &:hover {
-      color: color(lang-menu);
-      background-color: color(lang-menu-bg);
     }
   }
 }

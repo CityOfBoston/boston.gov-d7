@@ -365,3 +365,26 @@ function bos_core_update_7018() {
   );
   module_enable($enabled_modules);
 }
+
+/**
+ * Hook for 10/20/2016.
+ */
+function bos_core_update_7019() {
+  $disabled_modules = array(
+    'bos_menu_accessibility_menu',
+    'bos_menu_translation_menu',
+  );
+  module_disable($disabled_modules);
+}
+
+/**
+ * Updates for 10/27/2016.
+ */
+function bos_core_update_7020() {
+  $enabled_modules = array(
+    'bos_content_type_public_notice',
+    'bos_component_discussion_topic',
+    'bos_vocabulary_public_notice_type',
+  );
+  module_enable($enabled_modules);
+}

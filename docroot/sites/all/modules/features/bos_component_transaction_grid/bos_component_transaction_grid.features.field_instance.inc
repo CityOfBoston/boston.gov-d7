@@ -230,6 +230,7 @@ function bos_component_transaction_grid_field_default_field_instances() {
       'active' => 1,
       'module' => 'entityreference',
       'settings' => array(
+        'entityreference_autocreate' => 0,
         'match_operator' => 'CONTAINS',
         'path' => '',
         'size' => 60,
@@ -319,7 +320,7 @@ function bos_component_transaction_grid_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'paragraphs_item',
-    'fences_wrapper' => 'div',
+    'fences_wrapper' => 'no_wrapper',
     'field_name' => 'field_transactions',
     'label' => 'Transaction',
     'required' => 0,
