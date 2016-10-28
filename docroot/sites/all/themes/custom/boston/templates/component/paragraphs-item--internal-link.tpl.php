@@ -26,7 +26,19 @@
  */
 $field_title = $content['field_title'][0]['#markup'];
 ?>
-<a href="<?php print $internal_link_path; ?>" title="Go to <?php print ((!empty($field_title) ? $field_title : $internal_link_title)); ?>" class="<?php print $link_icon["classes"]["container"]; ?>">
-  <span<?php print((isset($link_icon["classes"]["icon"]) ? ' class="' . $link_icon["classes"]["icon"] . '"' : '')); ?>><img src="<?php print $link_icon["image"] ?>" /></span>
-  <span<?php print((isset($link_icon["classes"]["text"]) ? ' class="' . $link_icon["classes"]["text"] . '"' : '')); ?>><?php print ((!empty($field_title) ? $field_title : $internal_link_title)); ?></span>
-</a>
+<?php if (isset($link_icon["classes"]["icon"])) { ?>
+  <a href="<?php print $internal_link_path; ?>" title="Go to <?php print ((!empty($field_title) ? $field_title : $internal_link_title)); ?>" class="<?php print $link_icon["classes"]["container"]; ?>">
+    <span<?php print((isset($link_icon["classes"]["icon"]) ? ' class="' . $link_icon["classes"]["icon"] . '"' : '')); ?>><img src="<?php print $link_icon["image"] ?>" class="lwi-i" /></span>
+    <span<?php print((isset($link_icon["classes"]["text"]) ? ' class="' . $link_icon["classes"]["text"] . '"' : '')); ?>><?php print ((!empty($field_title) ? $field_title : $internal_link_title)); ?></span>
+  </a>
+<?php } else { ?>
+  <div class="link-wrapper internal-link">
+    <a href="<?php print $internal_link_path; ?>" title="Go to <?php if (!empty($field_title)): ?><?php print $field_title; ?><?php else: ?><?php print $internal_link_title; ?><?php endif; ?>">
+    <?php if (!empty($field_title)): ?>
+      <?php print $field_title; ?>
+    <?php else: ?>
+      <?php print $internal_link_title; ?>
+    <?php endif; ?>
+    </a>
+  </div>
+<?php } ?>
