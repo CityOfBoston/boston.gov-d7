@@ -6,7 +6,9 @@
   display: none;
 
   @media (min-width: 375px) {
-    display: block;
+    &--visible {
+      display: block;
+    }
   }
 
   &-link, &-dd-link {
@@ -42,12 +44,19 @@
       margin: 0;
     }
 
+    &--loaded {
+      .tr-dd-link {
+        display: block;
+      }
+    }
+
     &-link {
       text-align: left;
       margin-left: 0;
       line-height: 1;
       padding: 1em 1.4em;
       color: #ffffff;
+      display: none;
 
       &:hover {
         color: color(link-header);
@@ -55,6 +64,14 @@
 
       &--hidden {
         display: none;
+      }
+
+      &--message {
+        display: block;
+
+        &:hover {
+          color: #ffffff;
+        }
       }
     }
   }

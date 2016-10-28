@@ -19,8 +19,6 @@
   <?php print $styles; ?>
   <?php print $scripts; ?>
 
-  <script src="https://www.microsoftTranslator.com/ajax/v3/WidgetV3.ashx?siteData=ueOIGRSKkd965FeEGM5JtQ**" type="text/javascript"></script>
-
   <!--[if IE 9]>
   <link href='<?php print $base_path . path_to_theme(); ?>/dist/ie/shame.css' rel='stylesheet' type='text/css'>
   <script src="<?php print $base_path . path_to_theme(); ?>/dist/ie/flexibility.js"></script>
