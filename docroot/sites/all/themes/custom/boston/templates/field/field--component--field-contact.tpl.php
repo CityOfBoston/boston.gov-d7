@@ -44,7 +44,7 @@
  * @ingroup themeable
  */
 ?>
-<div class="<?php print $classes; ?> component-contact"<?php print $attributes; ?>>
+<div class="sh-contact"<?php print $attributes; ?>>
   <?php foreach ($items as $delta => $item): ?>
     Contact: <?php print render($item); ?>
   <?php endforeach; ?>

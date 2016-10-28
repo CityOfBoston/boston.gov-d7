@@ -38,7 +38,7 @@
       <div id="plyr__vid--<?php print $id; ?>" class="plyr__video"></div>
       <div class="plyr__overlay"></div>
       <div class="plyr__meta">
-        <h2 class="section-header plyr__title"><?php print render($content['field_title']) ?></h2>
+        <h2 class="sh plyr__title"><?php print render($content['field_title']) ?></h2>
         <div class="plyr__credit"><?php print render($content['field_photo_credit']) ?></div>
         <div class="plyr__play"><img src="/<?php print drupal_get_path('theme', $GLOBALS['theme']); ?>/dist/img/icon-play.svg" alt="Play <?php print render($content['field_title']) ?>" /></div>
       </div>

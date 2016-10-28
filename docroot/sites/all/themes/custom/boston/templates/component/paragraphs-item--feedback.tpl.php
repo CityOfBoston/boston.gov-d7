@@ -27,7 +27,7 @@
 ?>
 <div class="<?php print $classes; ?>"<?php print $attributes; ?>>
   <div class="content"<?php print $content_attributes; ?>>
-    <div class="section-header-poll">
+    <div class="sh-poll">
       <?php print render($content['field_component_title']); ?>
       <?php if (isset($content['field_question'])): ?>
         <div class="poll-question">

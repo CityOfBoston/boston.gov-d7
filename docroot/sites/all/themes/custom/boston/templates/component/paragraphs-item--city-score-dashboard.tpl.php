@@ -27,7 +27,7 @@
 ?>
 <link href='//cob-cityscore.herokuapp.com/assets/fenway.css' rel='stylesheet' type='text/css' />
 
-<div class="section-header">
+<div class="sh">
   <?php if (isset($content['field_component_title'])): ?>
     <?php print render($content['field_component_title']); ?>
   <?php endif; ?>
