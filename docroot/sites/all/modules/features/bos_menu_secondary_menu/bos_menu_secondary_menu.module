@@ -11,6 +11,7 @@ include_once 'bos_menu_secondary_menu.features.inc';
  */
 function bos_menu_secondary_menu_menu_link_alter(&$item) {
   $valid_menus = ['menu-secondary-menu', 'main-menu'];
+
   // If there is a link with 311 in the title, and therefore adhering to the 311
   // brand, place the three-one-one class on the link's class attribute.
   if (in_array($item['menu_name'], $valid_menus)) {
@@ -25,8 +26,13 @@ function bos_menu_secondary_menu_menu_link_alter(&$item) {
       }
     }
   }
+
   if ($item['menu_name'] === 'menu-secondary-menu' && $item['link_title'] === 'Feedback') {
-    $item['options']['attributes']['class'] = 'feedback-link modal-link';
+    $item['options']['attributes']['class'] = 'notranslate feedback-link modal-link';
     $item['options']['attributes']['data-modal'] = 'feedback';
+  }
+
+  if ($item['menu_name'] === 'menu-secondary-menu' && $item['link_title'] === 'Translate') {
+    $item['options']['attributes']['class'] = 'translate-link';
   }
 }

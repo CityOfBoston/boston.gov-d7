@@ -59,6 +59,12 @@
   position: inherit;
 }
 
+.header-right {
+  #block-hub-blocks-search {
+    margin-left: 1em;
+  }
+}
+
 // Overrides for form on search results page
 .page-search .main-content #block-hub-blocks-search {
   padding-top: 0;

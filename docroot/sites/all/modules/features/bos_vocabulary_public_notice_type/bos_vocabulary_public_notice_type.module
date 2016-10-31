@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the bos_vocabulary_public_notice_type feature.
+ */
+
+include_once 'bos_vocabulary_public_notice_type.features.inc';
