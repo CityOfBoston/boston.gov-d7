@@ -28,7 +28,7 @@
 <div class="<?php print $classes; ?>"<?php print $attributes; ?>>
   <div class="content"<?php print $content_attributes; ?>>
     <?php if (!empty($content['field_hide_title_bar']) && !$content['field_hide_title_bar']['#items'][0]['value']): ?>
-  	  <div class="section-header">
+  	  <div class="sh">
         <?php print render($content['field_component_title']); ?>
         <?php if (isset($content['field_contact'])): ?>
           <?php print render($content['field_contact']); ?>

@@ -1,10 +1,10 @@
+.component-short-title {
+  @extend %visually-hidden;
+}
+
 .paragraphs-items-field-components > .component-section {
   padding: 50px 0;
   position: relative;  // needs to be relative for absolute positioned child anchor tags
-
-  .component-short-title {
-    @extend %visually-hidden;
-  }
 
   .contact-departments-container h2.component-title {
 
@@ -18,48 +18,12 @@
   }
 }
 
-.component-contact {
-  color: color(text-dark);
-  font-style: italic;
-  line-height: 1.4rem;
-
-  @include respond-to(m) {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    margin-top: .75em;
-    max-width: 50%;
-    text-align: right;
-  }
-
-  @include respond-to(xl) {
-    max-width: 36%;
-    font-size: 18px;
-    padding-bottom: 4px;
-  }
-}
-
-  .component-contact a {
-    @extend .inverted;
-  }
-
-.section-header {
-  position: relative;
-  border-bottom: 8px solid color(text-dark);
-  margin-bottom: 1em;
-  padding-bottom: .25em;
-
-  h2.component-title {
-    margin: 0;
-    overflow: hidden;
-    word-break: break-word;
-
-    @include respond-to(m) {
-      max-width: 50%;
-    }
+.component-section {
+  .sh {
+    margin-bottom: 1rem;
 
     @include respond-to(xl) {
-      max-width: 66.66%;
+      margin-bottom: 1.25rem;
     }
   }
 }
@@ -69,23 +33,13 @@
 
 .paragraphs-items-field-components > .component-section.component-no-title,
 .paragraphs-items-field-components > .component-section.paragraphs-item-photo,
-.paragraphs-items-field-components > .component-section.paragraphs-item-fyi {
+.paragraphs-items-field-components > .component-section.paragraphs-item-fyi, {
   padding-top: 0px;
   padding-bottom: 0px;
-  .section-header {
-    border-bottom: none;
-  }
 }
 
 // Removes top padding on grid of people if it is the
 // first component in the component field on node listing page.
 .node-listing-page .paragraphs-items-field-components>.paragraphs-item-grid-of-people:first-child {
   padding-top: 0px;
-}
-
-// Add some padding for tab-components.
-.tab-components .component-section {
-  .section-header {
-    padding: 50px 0;
-  }
 }

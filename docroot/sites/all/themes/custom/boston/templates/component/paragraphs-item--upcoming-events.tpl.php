@@ -27,7 +27,7 @@
 ?>
 <div class="<?php print $classes; ?> fullwidth"<?php print $attributes; ?>>
   <div class="content container"<?php print $content_attributes; ?>>
-  	  <div class="section-header">
+  	  <div class="sh">
         <?php if (isset($content['field_component_title'])): ?>
           <?php print render($content['field_component_title']); ?>
         <?php endif; ?>

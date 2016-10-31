@@ -28,7 +28,7 @@
 <div class="<?php print $classes; ?> fullwidth"<?php print $attributes; ?>>
   <div class="content container"<?php print $content_attributes; ?>>
     <?php if (isset($content['field_component_title']) || isset($content['field_contact'])): ?>
-    <div class="section-header">
+    <div class="sh">
       <?php if (!empty($content['field_component_title'])) : ?>
         <?php print render($content['field_component_title']); ?>
       <?php endif; ?>

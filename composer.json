@@ -1,6 +1,6 @@
 {
   "name": "acquia-pso/spyglass",
-  "license": "proprietary",
+  "license": "CC0-1.0",
   "repositories": [
     {
       "type": "composer",
