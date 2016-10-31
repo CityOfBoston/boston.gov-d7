@@ -1,25 +1,25 @@
 # Contributing to Boston.gov
 
-:+1::tada: Thank-you for being interested in contributing to Boston.gov! :tada::+1:
+:+1::tada: Thank you for being interested in contributing to Boston.gov! :tada::+1:
 
-This is a guideline for contributing to the development of Boston.gov. We're open to improvements in our process, so feel free to send a PR for this document, or create an issue.
+This is a guideline for contributing to the development of Boston.gov. We're open to improvements, so feel free to send a PR for this document, or create an issue.
 
 ## Jump right in
 
  * [Report issues on Boston.gov](#reporting-bugs)
  * [Suggest new features](#suggest-new-features)
- * [Contributing to development](#contributing-to-development)
+ * [Contribute to development](#contribute-to-development)
 
 ### Reporting bugs
 
-If you need to submit a bug report for Boston.gov, please follow these guidelines. Following these guidelines helps us and the community better understand your report, reproduce the bug, and find related issues.
+If you need to submit a bug report for Boston.gov, please follow these guidelines. This will help us and the community better understand your report, reproduce the bug, and find related issues.
 
-#### Prior to submitting a bug
+#### Before you submit a bug
 
  * Verify that you are able to reproduce it repeatedly. Try multiple browsers, devices, etc. Also, try clearing your cache.
  * Perform a quick search of our [existing issues](https://github.com/CityOfBoston/boston.gov/issues) to see if it has been logged previously.
 
-#### Submitting a bug
+#### Submit a bug
 
  * Use a **clear and descriptive** title when creating your issue.
  * Include a bulleted list of steps to reproduce your issue.
@@ -94,15 +94,15 @@ _well_. Add a brief description of what you like and/or dislike about it.]
 
 ```
 
-### Contributing to development
+### Contribute to development
 
-This section will help you get started contributing to the development of Boston.gov. To get started, you'll need to get a development environment up and running.
+To contribute to the development of Boston.gov, you'll need to get a development environment up and running. This section will get you started.
 
-Our process resembles a [Gitflow Workflow](https://www.atlassian.com/git/workflows#!workflow-gitflow) with the follow specifics -
+Our process resembles a [Gitflow Workflow](https://www.atlassian.com/git/workflows#!workflow-gitflow) with the following specifics:
 
 * The `master` branch is always ready for deployment.
 * All development is performed against a `develop` branch.
-* Prior to release, `develop` is deployed to our staging environment and tested. It is then merged into `master` and `master` is deployed to production.
+* Before release, `develop` is deployed to our staging environment and tested. It is then merged into `master` and `master` is deployed to production.
 
 
 #### Project setup
