@@ -27,7 +27,7 @@
 ?>
 <div class="<?php print $classes; ?>"<?php print $attributes; ?>>
   <div class="content" <?php print $content_attributes; ?>>
-    <div class="section-header">
+    <div class="sh">
       <?php print render($content['field_component_title']); ?>
       <?php if (isset($content['field_short_title'])) : ?>
         <?php print render($content['field_short_title']); ?>

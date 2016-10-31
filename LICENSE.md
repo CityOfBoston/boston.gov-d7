@@ -9,10 +9,10 @@ Additionally, we waive copyright and related rights in the work worldwide throug
 - [CKEditor] is licensed under the GPL
 - This project uses various third-party JavaScript tools, which for convenience are versioned in this repository. Any files in the following directories are subject to their own licenses:
 
-  * `docroot\sites\all\themes\custom\boston\src\vendor-js`
-  * `docroot\sites\all\themes\custom\boston_hub\src\vendor-js`
-  * `docroot\sites\all\themes\custom\boston_public\src\vendor-js`
-  * `docroot\sites\all\themes\custom\boston_admin\src\vendor-js`
+  * `docroot/sites/all/themes/custom/boston/src/vendor-js`
+  * `docroot/sites/all/themes/custom/boston_hub/src/vendor-js`
+  * `docroot/sites/all/themes/custom/boston_public/src/vendor-js`
+  * `docroot/sites/all/themes/custom/boston_admin/src/vendor-js`
 
 [Drupal]: https://drupal.org
 [CKEditor]: http://ckeditor.com

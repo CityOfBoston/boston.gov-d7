@@ -9,8 +9,7 @@
   // Hides unused elements on listing pages only
   // (in case listings are eventually used as components on other node-types)
   .paragraphs-item-list  .field-name-field-component-title,
-  .paragraphs-item-list .component-contact,
-  .paragraphs-item-list  .section-header {
+  .paragraphs-item-list .component-contact {
     display: none;
   }
 

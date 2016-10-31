@@ -27,16 +27,18 @@
 ?>
 
 
-<div class="<?php print $classes; ?> component"<?php print $attributes; ?>>
-  <div class="component__header component__header--yellow component__header--no-border">
-    <?php print render($content['field_component_title']); ?>
-    <?php if (isset($content['field_short_title'])) : ?>
-      <?php print render($content['field_short_title']); ?>
-    <?php endif; ?>
-  </div>
-  <div class="component__content">
-    <div class="component__content--flex component__content--flex-wrap"<?php print $content_attributes; ?>>
-      <?php print render($content); ?>
+<div class="b b--fw b--b b--by"<?php print $attributes; ?>>
+  <div class="b-c">
+    <div class="sh sh--y sh--b0">
+      <?php print render($content['field_component_title']); ?>
+      <?php if (isset($content['field_short_title'])) : ?>
+        <?php print render($content['field_short_title']); ?>
+      <?php endif; ?>
+    </div>
+    <div class="component__content">
+      <div class="component__content--flex component__content--flex-wrap"<?php print $content_attributes; ?>>
+        <?php print render($content); ?>
+      </div>
     </div>
   </div>
 </div>

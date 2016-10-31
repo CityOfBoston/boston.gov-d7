@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the bos_component_discussion_topic feature.
+ */
+
+include_once 'bos_component_discussion_topic.features.inc';
