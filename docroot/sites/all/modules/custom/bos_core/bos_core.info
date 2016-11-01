@@ -150,7 +150,6 @@ dependencies[] = bos_subcomponents_seamless_doc
 dependencies[] = bos_subcomponents_links
 dependencies[] = bos_subcomponents_text
 dependencies[] = bos_text_formats
-dependencies[] = bos_view_api_public_notices
 dependencies[] = bos_view_department_listing
 dependencies[] = bos_view_news_announcements
 dependencies[] = bos_view_news_landing
