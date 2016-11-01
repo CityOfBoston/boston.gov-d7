@@ -283,24 +283,44 @@ a.item-link {
   }
 
   .date-flag {
-    background-image: url("../img/ribbon.svg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    text-align: center;
+    color: color(optimistic-blue);
+    position: static;
+    padding: 0;
+    width: auto;
+    margin-left:0;    
     font-family: $montserrat;
     font-weight: 700;
     text-transform: uppercase;
     line-height: 1;
-    color: color(text-dark);
+    position: relative;
+    top: 20px;
+    
+    @include respond-to(m) {
+      position: absolute;
+      top: -1px;
+      margin-left: 10px;
+      width: 65px;
+      padding: 20px 15px 35px;
+      z-index: 1;
+      background-image: url("../img/ribbon.svg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      text-align: center;
+      font-family: $montserrat;
+      font-weight: 700;
+      text-transform: uppercase;
+      line-height: 1;
+      color: color(text-dark);
 
-    &--blue {
-      background-image: url("../img/ribbon-charles.svg");
-      color: color(white);
-    }
+      &--blue {
+        background-image: url("../img/ribbon-charles.svg");
+        color: color(white);
+      }
 
-    &--left {
-      margin-left: 0;
-      top: 0;
+      &--left {
+        margin-left: 0;
+        top: 0;
+      }
     }
   }
 
