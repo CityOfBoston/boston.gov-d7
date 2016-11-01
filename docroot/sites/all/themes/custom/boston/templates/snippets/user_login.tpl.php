@@ -8,7 +8,7 @@
   <?php } else { ?>
     <div style="margin: 50px 0 200px">
       <div class="content"<?php print $content_attributes; ?>>
-        <div class="section-header">
+        <div class="sh">
           <h2 class="component-title">Login</h2>
         </div>
         <div>
