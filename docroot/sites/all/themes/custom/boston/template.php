@@ -633,6 +633,45 @@ function boston_preprocess_node_event(&$variables) {
 /**
  * Implements hook_preprocess_node_BUNDLE().
  */
+function boston_preprocess_node_public_notice(&$variables) {
+  $time_range_view_modes = array(
+    'calendar_listing',
+    'full',
+  );
+
+  if (in_array($variables['view_mode'], $time_range_view_modes) && $variables['type'] === 'public_notice') {
+    // We need to add a variable which contains the time range output to be
+    // displayed. We'd have to override some theming otherwise and it's not
+    // worth the trouble. The field_event_dates field is required so we don't
+    // have to worry about checking for it.
+    $dates = field_get_items('node', $variables['node'], 'field_public_notice_date');
+    if ($dates !== FALSE) {
+      $timezone = $dates[0]['timezone'];
+      // Add '+0000' so that strtotime doesn't try to convert a UTC time, we'll do that in format_date().
+      $start_time = strtotime($dates[0]['value'] . " +0000");
+      $end_time = strtotime($dates[0]['value2'] . " +0000");
+      $time_range = format_date($start_time, 'calendar_time','',$timezone);
+      if ($start_time !== $end_time) {
+        $time_range .= '-' . format_date($end_time, 'calendar_time', '', $timezone);
+      }
+      $variables['time_range'] = $time_range;
+
+      // We also want to show the repeat rule, and it needs to be isolated from
+      // the full render of the date since it will need to be displayed in a
+      // different place than the date.
+      if (!empty($dates[0]['rrule'])) {
+        $variables['repeat_rule'] = boston_date_repeat_rrule_description($dates[0]['rrule']);
+      }
+    }
+    else {
+      $variables['time_range'] = '';
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_node_BUNDLE().
+ */
 function boston_preprocess_node_topic_page(array &$variables) {
   if (isset($variables['field_thumbnail']) && $variables['view_mode'] == 'featured_topics') {
     // The field field_thumbnail on the Featured Guides view mode for Topic
