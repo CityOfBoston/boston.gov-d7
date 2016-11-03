@@ -344,6 +344,14 @@ function bos_view_calendar_listing_views_default_views() {
   $handler->display->display_options['fields']['rendered_entity']['display'] = 'view';
   $handler->display->display_options['fields']['rendered_entity']['view_mode'] = 'calendar_listing';
   $handler->display->display_options['fields']['rendered_entity']['bypass_access'] = 0;
+  /* Field: Content: Live Stream */
+  $handler->display->display_options['fields']['field_live_stream']['id'] = 'field_live_stream';
+  $handler->display->display_options['fields']['field_live_stream']['table'] = 'field_data_field_live_stream';
+  $handler->display->display_options['fields']['field_live_stream']['field'] = 'field_live_stream';
+  $handler->display->display_options['fields']['field_live_stream']['label'] = '';
+  $handler->display->display_options['fields']['field_live_stream']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_live_stream']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_live_stream']['element_default_classes'] = FALSE;
   /* Sort criterion: Content: Event Dates -  start date (field_event_dates) */
   $handler->display->display_options['sorts']['field_event_dates_value']['id'] = 'field_event_dates_value';
   $handler->display->display_options['sorts']['field_event_dates_value']['table'] = 'field_data_field_event_dates';
@@ -456,7 +464,7 @@ function bos_view_calendar_listing_views_default_views() {
     36 => 0,
     41 => 0,
   );
-  /* Filter criterion: Content: Neighborhood (field_multiple_neighborhoods) */
+  /* Filter criterion: Content: Related Neighborhoods (field_multiple_neighborhoods) */
   $handler->display->display_options['filters']['field_multiple_neighborhoods_target_id']['id'] = 'field_multiple_neighborhoods_target_id';
   $handler->display->display_options['filters']['field_multiple_neighborhoods_target_id']['table'] = 'field_data_field_multiple_neighborhoods';
   $handler->display->display_options['filters']['field_multiple_neighborhoods_target_id']['field'] = 'field_multiple_neighborhoods_target_id';
@@ -533,7 +541,7 @@ function bos_view_calendar_listing_views_default_views() {
   $handler->display->display_options['fields']['body']['label'] = '';
   $handler->display->display_options['fields']['body']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['body']['element_default_classes'] = FALSE;
-  /* Field: Field: Address */
+  /* Field: Field: Location */
   $handler->display->display_options['fields']['field_address']['id'] = 'field_address';
   $handler->display->display_options['fields']['field_address']['table'] = 'field_data_field_address';
   $handler->display->display_options['fields']['field_address']['field'] = 'field_address';

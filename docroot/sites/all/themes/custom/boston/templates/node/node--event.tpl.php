@@ -82,6 +82,7 @@
 hide($content['comments']);
 hide($content['links']);
 ?>
+  <?php print render($content['field_live_stream']); ?>
   <article id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?> clearfix desktop-100"<?php print $attributes; ?>>
   <?php if (isset($content['field_updated_date'])): ?>
     <div class="breadcrumb-last-updated">
