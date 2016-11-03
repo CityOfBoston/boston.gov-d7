@@ -1,0 +1,52 @@
+<?php
+/**
+ * @file
+ * Code for the Hub Tools and Apps API feature.
+ */
+
+include_once 'bos_api_public_notice.features.inc';
+
+/**
+ * Access callback for apps API endpoint.
+ *
+ * Anyone can access this so long as they have the API key.
+ */
+function _bos_api_public_notice_access() {
+  return TRUE;
+}
+
+/**
+ * Implements hook_shunt().
+ */
+function bos_api_public_notice_shunt() {
+  return array(
+    'bos_api_public_notice_shunt' => t('Use this shunt to disable the public notice API.'),
+  );
+}
+
+/**
+ * React to a shunt being enabled.
+ *
+ * Perform one-time actions in the event that a shunt gets enabled.
+ *
+ * @param string $shunt
+ *   The machine name of shunt that was just enabled.
+ */
+function bos_api_public_notice_shunt_enable($shunt) {
+  // React to ANY shunt being enabled.
+  drupal_set_message(t('You just enabled "%name"!', array('%name' => $shunt)));
+}
+
+/**
+ * React to a shunt being disabled.
+ *
+ * Perform one-time actions in the event that a shunt gets disabled.
+ *
+ * @param string $shunt
+ *   The machine name of shunt that was just disabled.
+ */
+function bos_api_public_notice_shunt_disable($shunt) {
+
+  // React to ANY shunt being disabled.
+  drupal_set_message(t('You just disabled "%name"!', array('%name' => $shunt)));
+}

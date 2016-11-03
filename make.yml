@@ -205,6 +205,8 @@ projects:
     patch:
     # Add patch to allow api key in HTTP header
     - https://www.drupal.org/files/issues/parameter_types-2715419-1.patch
+  services_views:
+    version: 1.x-dev
   seckit:
     version: 1.9
   security_review:

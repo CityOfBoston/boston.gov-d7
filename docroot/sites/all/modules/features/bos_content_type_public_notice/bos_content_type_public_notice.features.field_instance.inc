@@ -70,7 +70,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
     'description' => 'The location of the meeting / hearing / working session.',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'addressfield',
         'settings' => array(
           'format_handlers' => array(
@@ -130,7 +130,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
     'description' => 'If this notice is cancelled, check this box and give a reason below.',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
@@ -170,7 +170,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'paragraphs',
         'settings' => array(
           'view_mode' => 'full',
@@ -322,7 +322,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
     'description' => 'The Department that is primarily responsible for this notice.',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'entityreference',
         'settings' => array(
           'link' => FALSE,
@@ -377,7 +377,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
     'description' => 'The Departments that this notice applies to.',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'entityreference',
         'settings' => array(
           'link' => FALSE,
@@ -432,7 +432,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'paragraphs',
         'settings' => array(
           'view_mode' => 'full',
@@ -586,7 +586,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
     'description' => 'The email that should be used to request information about this notice.',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
@@ -633,7 +633,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
     'description' => 'The name of the primary point of contact for this notice',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
@@ -680,7 +680,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
     'description' => 'If this notice is cancelled, enter a reason.',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
@@ -727,7 +727,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
@@ -765,7 +765,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
     'description' => 'A sentence describing the purpose of the meeting.',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
@@ -804,6 +804,51 @@ function bos_content_type_public_notice_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance:
+  // 'node-public_notice-field_is_there_public_testimony'.
+  $field_instances['node-public_notice-field_is_there_public_testimony'] = array(
+    'bundle' => 'public_notice',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'Is there public testimony?',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 18,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div_div_div',
+    'field_name' => 'field_is_there_public_testimony',
+    'label' => 'Is there public testimony?',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 17,
+    ),
+  );
+
   // Exported field_instance: 'node-public_notice-field_links'.
   $field_instances['node-public_notice-field_links'] = array(
     'bundle' => 'public_notice',
@@ -812,7 +857,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
     'description' => 'Please attach filed posting here.',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'paragraphs',
         'settings' => array(
           'view_mode' => 'full',
@@ -966,7 +1011,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
     'description' => 'The neighborhoods that this notice relates to.',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'entityreference',
         'settings' => array(
           'link' => FALSE,
@@ -1022,7 +1067,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
     'description' => 'The phone number that should be used to inquire about this notice.',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
@@ -1068,7 +1113,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
     'description' => 'The date and time when the Meeting / Hearing / Working Session is happening. Enter an end time if known.',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'date',
         'settings' => array(
           'format_type' => 'long',
@@ -1127,7 +1172,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
     'description' => 'Enter content that is related to this public notice.',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'entityreference',
         'settings' => array(
           'link' => FALSE,
@@ -1169,6 +1214,64 @@ function bos_content_type_public_notice_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-public_notice-field_time'.
+  $field_instances['node-public_notice-field_time'] = array(
+    'bundle' => 'public_notice',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'date',
+        'settings' => array(
+          'format_type' => 'long',
+          'fromto' => 'both',
+          'multiple_from' => '',
+          'multiple_number' => '',
+          'multiple_to' => '',
+          'show_remaining_days' => FALSE,
+          'show_repeat_rule' => 'show',
+        ),
+        'type' => 'date_default',
+        'weight' => 19,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'no_wrapper',
+    'field_name' => 'field_time',
+    'label' => 'Time public testimony begins',
+    'required' => 0,
+    'settings' => array(
+      'default_value' => 'now',
+      'default_value2' => 'same',
+      'default_value_code' => '',
+      'default_value_code2' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'date',
+      'settings' => array(
+        'increment' => 1,
+        'input_format' => 'g:i:sa',
+        'input_format_custom' => '',
+        'label_position' => 'above',
+        'no_fieldset' => 0,
+        'repeat_collapsed' => 0,
+        'text_parts' => array(),
+        'year_range' => '-3:+3',
+      ),
+      'type' => 'date_popup',
+      'weight' => 18,
+    ),
+  );
+
   // Translatables
   // Included for use with string extractors like potx.
   t('A sentence describing the purpose of the meeting.');
@@ -1187,6 +1290,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
   t('If this notice is cancelled, check this box and give a reason below.');
   t('If this notice is cancelled, enter a reason.');
   t('Intro Text');
+  t('Is there public testimony?');
   t('Location');
   t('Please attach filed posting here.');
   t('Point of Contact');
@@ -1201,6 +1305,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
   t('The name of the primary point of contact for this notice');
   t('The neighborhoods that this notice relates to.');
   t('The phone number that should be used to inquire about this notice.');
+  t('Time public testimony begins');
 
   return $field_instances;
 }

@@ -1,0 +1,11 @@
+name = Bos Public Notice API
+description = Bos Public Notice API
+core = 7.x
+package = Hub
+dependencies[] = ctools
+dependencies[] = rest_server
+dependencies[] = services
+dependencies[] = services_api_key_auth
+dependencies[] = services_views
+features[ctools][] = services:services:3
+features[features_api][] = api:2
