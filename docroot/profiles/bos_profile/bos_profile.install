@@ -487,3 +487,17 @@ function bos_profile_update_7013() {
   );
   module_enable($enabled_modules);
 }
+
+/**
+ * Updates for 10/31/2016.
+ */
+function bos_profile_update_7014() {
+  $enabled_modules = array(
+    'services',
+    'services_views',
+    'services_api_key_auth',
+    'bos_api_public_notice',
+    'bos_view_api_public_notices',
+  );
+  module_enable($enabled_modules);
+}

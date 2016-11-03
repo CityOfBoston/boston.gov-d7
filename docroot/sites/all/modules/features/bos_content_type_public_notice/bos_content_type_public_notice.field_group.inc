@@ -52,7 +52,7 @@ function bos_content_type_public_notice_field_group_info() {
   $field_group->parent_name = 'group_details';
   $field_group->data = array(
     'label' => 'Cancel Public Notice',
-    'weight' => '16',
+    'weight' => '18',
     'children' => array(
       0 => 'field_cancelled',
       1 => 'field_extra_info',
@@ -141,8 +141,9 @@ function bos_content_type_public_notice_field_group_info() {
     'children' => array(
       0 => 'field_address',
       1 => 'field_public_notice_date',
-      2 => 'group_cancelled',
-      3 => 'group_downloads',
+      2 => 'group_public_testimony',
+      3 => 'group_cancelled',
+      4 => 'group_downloads',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -167,7 +168,7 @@ function bos_content_type_public_notice_field_group_info() {
   $field_group->parent_name = 'group_details';
   $field_group->data = array(
     'label' => 'Downloads',
-    'weight' => '17',
+    'weight' => '19',
     'children' => array(
       0 => 'field_links',
     ),
@@ -183,6 +184,35 @@ function bos_content_type_public_notice_field_group_info() {
     ),
   );
   $field_groups['group_downloads|node|public_notice|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_public_testimony|node|public_notice|form';
+  $field_group->group_name = 'group_public_testimony';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'public_notice';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_details';
+  $field_group->data = array(
+    'label' => 'Public Testimony',
+    'weight' => '16',
+    'children' => array(
+      0 => 'field_is_there_public_testimony',
+      1 => 'field_time',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-public-testimony field-group-fieldset',
+        'required_fields' => 1,
+        'id' => '',
+      ),
+    ),
+  );
+  $field_groups['group_public_testimony|node|public_notice|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -249,6 +279,7 @@ function bos_content_type_public_notice_field_group_info() {
   t('Contact Information');
   t('Details');
   t('Downloads');
+  t('Public Testimony');
   t('Related Items');
 
   return $field_groups;
