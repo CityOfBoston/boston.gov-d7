@@ -9,9 +9,11 @@
     padding: 30px 0 10px;
   }
 
-  .contact-info {
+  .sidebar.script-page {
     @include margin-top(1);
+  }
 
+  .contact-info {
     margin-bottom: 30px;
     padding-bottom: 30px;
     border-bottom: 1px dashed color(border);
