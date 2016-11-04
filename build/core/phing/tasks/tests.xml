@@ -122,7 +122,6 @@
     <exec dir="${docroot}"
           command="! ${drush.cmd} -n ups --check-disabled --security-only 2>/dev/null | grep 'SECURITY UPDATE'"
           logoutput="true"
-          checkreturn="true"
           passthru="true"/>
   </target>
 </project>
