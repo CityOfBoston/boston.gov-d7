@@ -97,8 +97,6 @@ projects:
     version: 3.2
   draggableviews:
     version: 2.1
-  drafty:
-    version: 1.0-beta3
   entitycache:
     version: 1.2
   email_confirm:
