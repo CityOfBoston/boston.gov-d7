@@ -218,13 +218,6 @@ function bos_view_landing_public_notice_views_default_views() {
   $handler->display->display_options['sorts']['field_published_date_value']['table'] = 'field_data_field_published_date';
   $handler->display->display_options['sorts']['field_published_date_value']['field'] = 'field_published_date_value';
   $handler->display->display_options['sorts']['field_published_date_value']['order'] = 'DESC';
-  /* Filter criterion: Content: Published */
-  $handler->display->display_options['filters']['status']['id'] = 'status';
-  $handler->display->display_options['filters']['status']['table'] = 'node';
-  $handler->display->display_options['filters']['status']['field'] = 'status';
-  $handler->display->display_options['filters']['status']['value'] = 1;
-  $handler->display->display_options['filters']['status']['group'] = 1;
-  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
   /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
@@ -241,7 +234,7 @@ function bos_view_landing_public_notice_views_default_views() {
   $handler->display->display_options['filters']['title']['group'] = 1;
   $handler->display->display_options['filters']['title']['exposed'] = TRUE;
   $handler->display->display_options['filters']['title']['expose']['operator_id'] = 'title_op';
-  $handler->display->display_options['filters']['title']['expose']['label'] = 'Search for News...';
+  $handler->display->display_options['filters']['title']['expose']['label'] = 'Search for Public Notices...';
   $handler->display->display_options['filters']['title']['expose']['operator'] = 'title_op';
   $handler->display->display_options['filters']['title']['expose']['identifier'] = 'title';
   $handler->display->display_options['filters']['title']['expose']['remember_roles'] = array(
@@ -249,11 +242,13 @@ function bos_view_landing_public_notice_views_default_views() {
     1 => 0,
     11 => 0,
     16 => 0,
-    17 => 0,
-    18 => 0,
-    19 => 0,
-    20 => 0,
     21 => 0,
+    26 => 0,
+    31 => 0,
+    36 => 0,
+    41 => 0,
+    46 => 0,
+    51 => 0,
   );
   /* Filter criterion: Field: Contact (field_contact) */
   $handler->display->display_options['filters']['field_contact_target_id']['id'] = 'field_contact_target_id';
@@ -309,6 +304,12 @@ function bos_view_landing_public_notice_views_default_views() {
   );
   $handler->display->display_options['filters']['field_public_notice_date_value']['form_type'] = 'date_popup';
   $handler->display->display_options['filters']['field_public_notice_date_value']['year_range'] = '-0:+3';
+  /* Filter criterion: Content: Date -  start date (field_public_notice_date) */
+  $handler->display->display_options['filters']['field_public_notice_date_value_1']['id'] = 'field_public_notice_date_value_1';
+  $handler->display->display_options['filters']['field_public_notice_date_value_1']['table'] = 'field_data_field_public_notice_date';
+  $handler->display->display_options['filters']['field_public_notice_date_value_1']['field'] = 'field_public_notice_date_value';
+  $handler->display->display_options['filters']['field_public_notice_date_value_1']['operator'] = '>';
+  $handler->display->display_options['filters']['field_public_notice_date_value_1']['default_date'] = 'now';
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
