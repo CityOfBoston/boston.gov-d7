@@ -48,6 +48,9 @@ function bos_core_entity_info_alter(&$info) {
         'featured_topics' => array(
           'label' => t('Featured Guides'),
         ),
+        'icon_popup' => array(
+          'label' => t('Icon w/ Popup (sans title)'),
+        ),
         'listing' => array(
           'label' => t('Listing'),
         ),

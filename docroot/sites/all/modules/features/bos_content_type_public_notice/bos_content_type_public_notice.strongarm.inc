@@ -66,7 +66,7 @@ function bos_content_type_public_notice_strongarm() {
   $strongarm->value = array(
     'view_modes' => array(
       'teaser' => array(
-        'custom_settings' => TRUE,
+        'custom_settings' => FALSE,
       ),
       'full' => array(
         'custom_settings' => FALSE,
@@ -93,7 +93,7 @@ function bos_content_type_public_notice_strongarm() {
         'custom_settings' => FALSE,
       ),
       'listing' => array(
-        'custom_settings' => FALSE,
+        'custom_settings' => TRUE,
       ),
       'listing_short' => array(
         'custom_settings' => FALSE,
@@ -123,19 +123,19 @@ function bos_content_type_public_notice_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '8',
+          'weight' => '9',
         ),
         'title' => array(
           'weight' => '2',
         ),
         'path' => array(
-          'weight' => '7',
+          'weight' => '8',
         ),
         'rabbit_hole' => array(
-          'weight' => '9',
+          'weight' => '10',
         ),
         'redirect' => array(
-          'weight' => '6',
+          'weight' => '7',
         ),
       ),
       'display' => array(),
