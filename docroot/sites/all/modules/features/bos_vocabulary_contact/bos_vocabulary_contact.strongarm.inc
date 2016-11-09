@@ -40,6 +40,12 @@ function bos_vocabulary_contact_strongarm() {
       'token' => array(
         'custom_settings' => FALSE,
       ),
+      'icon_popup' => array(
+        'custom_settings' => TRUE,
+      ),
+      'ical' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
@@ -79,6 +85,10 @@ function bos_vocabulary_contact_strongarm() {
             'visible' => FALSE,
           ),
           'default' => array(
+            'weight' => '0',
+            'visible' => TRUE,
+          ),
+          'icon_popup' => array(
             'weight' => '0',
             'visible' => TRUE,
           ),

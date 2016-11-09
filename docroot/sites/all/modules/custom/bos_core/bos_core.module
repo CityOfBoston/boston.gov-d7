@@ -96,6 +96,9 @@ function bos_core_entity_info_alter(&$info) {
         'contact' => array(
           'label' => t('Contact'),
         ),
+        'icon_popup' => array(
+          'label' => t('Icon w/ Popup (sans title)'),
+        ),
         'department_listing' => array(
           'label' => t('Department Listing'),
         ),
