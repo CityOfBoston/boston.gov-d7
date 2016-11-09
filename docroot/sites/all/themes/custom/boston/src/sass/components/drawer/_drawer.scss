@@ -33,3 +33,29 @@
   }
 
 }
+
+.view-public-notice-landing-page {
+  .b.views-exposed-topbar {
+    margin-top: -25px;
+  }
+
+  .b-fv {
+    transform: translateY(50%);
+  }
+
+  .views-exposed-topbar .view-filters .drawer.mobile-only {
+    padding: 0;
+  }
+
+  .b:last-child {
+    z-index: -1;
+  }
+}
+
+.b {
+  .view-filters .drawer-trigger:first-child,
+  .views-exposed-widget.views-submit-button input[type="submit"],
+  .views-exposed-widget.views-reset-button input[type="submit"] {
+    margin-top: 0;
+  }
+}
