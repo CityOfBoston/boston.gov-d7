@@ -7,7 +7,7 @@
  * @ingroup views_templates
  */
 ?>
-<div class="b b--fw">
+<div class="b b--fw views-exposed-topbar">
   <div class="b-fv b--g">
     <?php if ($exposed): ?>
       <div class="view-filters">
