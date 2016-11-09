@@ -91,12 +91,29 @@ hide($content['links']);
   <div class="department-info-wrapper desktop-100 clearfix">
     <div class="column mobile-100 desktop-66-left">
       <h1 class="title"><?php print $title; ?></h1>
-      <?php if (isset($content['field_intro_text'])): ?>
-        <?php print render($content['field_intro_text']); ?>
+      <?php if ($is_cancelled): ?>
+        <div class="supporting-text squiggle-border-bottom"><strong>Cancelled<?php if (isset($content['field_extra_info'])): ?>:</strong> <?php print render($content['field_extra_info']) ?><?php else: ?></strong><?php endif; ?></div>
+      <?php else: ?>
+        <?php if (isset($content['field_intro_text'])): ?>
+          <?php print render($content['field_intro_text']); ?>
+        <?php endif; ?>
       <?php endif; ?>
       <?php if (isset($content['body'])): ?>
         <div class="body">
           <?php print render($content['body']); ?>
+        </div>
+      <?php endif; ?>
+      <?php if (isset($content['field_drawer'])): ?>
+        <h2 class="header-border-bottom">Discussion Topics</h2>
+        <?php if (isset($content['field_time'])): ?>
+          <div class="b b--g b--p300">
+            <div class="n-li-a">Public testimony begins at <?php print render($content['field_time']) ?>.</div>
+          </div>
+        <?php endif; ?>
+        <div class="body">
+          <ol>
+            <?php print render($content['field_drawer']); ?>
+          </ol>
         </div>
       <?php endif; ?>
       <?php if (isset($content['field_details_link'])): ?>

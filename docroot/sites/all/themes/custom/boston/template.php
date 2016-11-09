@@ -1464,12 +1464,18 @@ function boston_preprocess_field_field_intro_text(&$variables) {
     'featured_item',
     'user_action',
   );
+
+  // The squiggle should not be present
+  $no_squiggle = array(
+    'hero_image',
+  );
+
   // If view mode and paragraph item is not in the $intro_stripped array
   // add additional classes.
   if (!in_array($view_mode, $intro_stripped) && !in_array($bundle, $intro_stripped)) {
     $variables['classes_array'][] = "supporting-text";
     // Don't add squiggle border to intro-field in hero image component.
-    if ($bundle !== 'hero_image') {
+    if (!in_array($bundle, $no_squiggle)) {
       $variables['classes_array'][] = "squiggle-border-bottom";
     }
   }
