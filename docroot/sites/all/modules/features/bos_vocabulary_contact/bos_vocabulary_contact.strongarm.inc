@@ -90,7 +90,7 @@ function bos_vocabulary_contact_strongarm() {
           ),
           'icon_popup' => array(
             'weight' => '0',
-            'visible' => TRUE,
+            'visible' => FALSE,
           ),
         ),
       ),

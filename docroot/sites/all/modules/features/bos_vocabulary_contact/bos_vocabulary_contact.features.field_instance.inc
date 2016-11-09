@@ -45,9 +45,8 @@ function bos_vocabulary_contact_field_default_field_instances() {
       ),
       'icon_popup' => array(
         'label' => 'above',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'hidden',
         'weight' => 1,
       ),
       'popup_icon' => array(
@@ -136,12 +135,13 @@ function bos_vocabulary_contact_field_default_field_instances() {
         'weight' => 0,
       ),
       'icon_popup' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'entityreference',
         'settings' => array(
-          'link' => FALSE,
+          'links' => 1,
+          'view_mode' => 'icon_popup',
         ),
-        'type' => 'entityreference_label',
+        'type' => 'entityreference_entity_view',
         'weight' => 0,
       ),
       'popup_icon' => array(

@@ -372,7 +372,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
         'module' => 'entityreference',
         'settings' => array(
           'links' => 1,
-          'view_mode' => 'popup_icon',
+          'view_mode' => 'icon_popup',
         ),
         'type' => 'entityreference_entity_view',
         'weight' => 3,
