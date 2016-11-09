@@ -67,3 +67,4 @@ features[variable][] = menu_parent_public_notice
 features[variable][] = node_options_public_notice
 features[variable][] = node_preview_public_notice
 features[variable][] = node_submitted_public_notice
+features[variable][] = pathauto_node_public_notice_pattern
