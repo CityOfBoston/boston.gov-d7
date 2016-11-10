@@ -91,7 +91,7 @@ hide($content['links']);
         <div class="n-li-a">Canceled<?php if (isset($content['field_extra_info'])): ?>: <?php print render($content['field_extra_info']) ?><?php endif; ?></div>
       <?php else: ?>
         <?php if (isset($content['field_time'])): ?>
-          <div class="n-li-a">Public testimony begins at <?php print render($content['field_time']) ?>.</div>
+          <div class="n-li-a">Public testimony begins at <?php print render($content['field_time']) ?></div>
         <?php endif; ?>
       <?php endif; ?>
     <?php endif; ?>
