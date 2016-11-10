@@ -60,6 +60,12 @@ function bos_content_type_department_profile_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'icon_popup' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'listing' => array(
         'label' => 'hidden',
         'module' => 'text',
@@ -186,6 +192,12 @@ function bos_content_type_department_profile_field_default_field_instances() {
         'weight' => 0,
       ),
       'featured_topics' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'icon_popup' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -319,6 +331,12 @@ function bos_content_type_department_profile_field_default_field_instances() {
         'weight' => 0,
       ),
       'featured_topics' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'icon_popup' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -553,6 +571,12 @@ function bos_content_type_department_profile_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'icon_popup' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'listing' => array(
         'label' => 'above',
         'module' => 'list',
@@ -662,6 +686,12 @@ function bos_content_type_department_profile_field_default_field_instances() {
         'weight' => 0,
       ),
       'featured_topics' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'icon_popup' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -786,6 +816,16 @@ function bos_content_type_department_profile_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'icon_popup' => array(
+        'label' => 'hidden',
+        'module' => 'image',
+        'settings' => array(
+          'image_link' => '',
+          'image_style' => '',
+        ),
+        'type' => 'image',
         'weight' => 0,
       ),
       'listing' => array(
@@ -928,6 +968,12 @@ function bos_content_type_department_profile_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'icon_popup' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'listing' => array(
         'label' => 'hidden',
         'module' => 'text',
@@ -1040,6 +1086,12 @@ function bos_content_type_department_profile_field_default_field_instances() {
         'weight' => 0,
       ),
       'featured_topics' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'icon_popup' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -1220,6 +1272,12 @@ function bos_content_type_department_profile_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'icon_popup' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'listing' => array(
         'label' => 'hidden',
         'module' => 'text',
@@ -1324,6 +1382,12 @@ function bos_content_type_department_profile_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'icon_popup' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'popup_icon' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1415,6 +1479,12 @@ function bos_content_type_department_profile_field_default_field_instances() {
         'weight' => 0,
       ),
       'featured_topics' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'icon_popup' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -1567,6 +1637,12 @@ function bos_content_type_department_profile_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'icon_popup' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'popup_icon' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1636,6 +1712,12 @@ function bos_content_type_department_profile_field_default_field_instances() {
         'weight' => 13,
       ),
       'department_listing' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'icon_popup' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',

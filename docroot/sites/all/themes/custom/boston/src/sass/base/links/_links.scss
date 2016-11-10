@@ -141,6 +141,10 @@ a:hover {
   padding-right: 0;
 }
 
+.node-public-notice .external-link a {
+  display: inline-block;
+}
+
 // Except for external links in the transaction grid
 .paragraphs-item-transaction-grid .external-link a {
   background-image: none;

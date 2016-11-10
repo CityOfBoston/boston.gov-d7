@@ -19,7 +19,7 @@ function bos_component_discussion_topic_field_default_field_instances() {
     'description' => 'The details for this discussion topic.',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
@@ -66,7 +66,7 @@ function bos_component_discussion_topic_field_default_field_instances() {
     'description' => 'Resources for this discussion topic',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'paragraphs',
         'settings' => array(
           'view_mode' => 'full',
@@ -220,7 +220,7 @@ function bos_component_discussion_topic_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',

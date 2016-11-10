@@ -12,9 +12,22 @@
   font-style: italic;
   line-height: inherit;
   color: color(text-dark);
+  padding-bottom: 1em;
   @include type-layout(m, 30px);
   @include respond-to(xl) {
     @include type-layout(l, 52px);
+  }
+
+  strong {
+    font-family: $montserrat;
+    font-style: normal;
+    text-transform: uppercase;
+    color: color(text-red);
+
+    @include type-layout(m, 24px);
+    @include respond-to(xl) {
+      @include type-layout(l, 44px);
+    }
   }
 }
 
