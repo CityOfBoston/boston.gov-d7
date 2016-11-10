@@ -88,7 +88,7 @@ hide($content['links']);
     <div class="n-li-t"><a href="<?php print $node_url; ?>" title="<?php print $title; ?>"><?php print $title; ?></a></div>
     <?php if ($show_alert): ?>
       <?php if ($is_cancelled): ?>
-        <div class="n-li-a">Cancelled<?php if (isset($content['field_extra_info'])): ?>: <?php print render($content['field_extra_info']) ?><?php endif; ?></div>
+        <div class="n-li-a">Canceled<?php if (isset($content['field_extra_info'])): ?>: <?php print render($content['field_extra_info']) ?><?php endif; ?></div>
       <?php else: ?>
         <?php if (isset($content['field_time'])): ?>
           <div class="n-li-a">Public testimony begins at <?php print render($content['field_time']) ?>.</div>

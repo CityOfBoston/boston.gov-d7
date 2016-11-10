@@ -92,7 +92,7 @@ hide($content['links']);
     <div class="column mobile-100 desktop-66-left">
       <h1 class="title"><?php print $title; ?></h1>
       <?php if ($is_cancelled): ?>
-        <div class="supporting-text squiggle-border-bottom"><strong>Cancelled<?php if (isset($content['field_extra_info'])): ?>:</strong> <?php print render($content['field_extra_info']) ?><?php else: ?></strong><?php endif; ?></div>
+        <div class="supporting-text squiggle-border-bottom"><strong>Canceled<?php if (isset($content['field_extra_info'])): ?>:</strong> <?php print render($content['field_extra_info']) ?><?php else: ?></strong><?php endif; ?></div>
       <?php else: ?>
         <?php if (isset($content['field_intro_text'])): ?>
           <?php print render($content['field_intro_text']); ?>

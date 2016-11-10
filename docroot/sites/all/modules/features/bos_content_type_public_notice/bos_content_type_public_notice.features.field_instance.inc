@@ -174,7 +174,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
     'entity_type' => 'node',
     'fences_wrapper' => 'no_wrapper',
     'field_name' => 'field_cancelled',
-    'label' => 'Cancelled',
+    'label' => 'Canceled',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -1582,7 +1582,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
   t('A sentence describing the purpose of the meeting.');
   t('Body');
   t('Cancellation Reason');
-  t('Cancelled');
+  t('Canceled');
   t('Components');
   t('Contact Email');
   t('Contact Phone Number');
