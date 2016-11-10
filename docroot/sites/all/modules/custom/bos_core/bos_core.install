@@ -394,6 +394,7 @@ function bos_core_update_7020() {
  */
 function bos_core_update_7021() {
   $enabled_modules = array(
+    'bos_view_public_notice'
   );
   module_enable($enabled_modules);
 }
