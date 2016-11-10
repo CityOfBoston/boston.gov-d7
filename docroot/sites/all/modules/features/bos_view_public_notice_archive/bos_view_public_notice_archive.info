@@ -1,9 +1,0 @@
-name = bos_view_public_notice_archive
-core = 7.x
-package = Features
-dependencies[] = better_exposed_filters
-dependencies[] = bos_view_landing_public_notice
-dependencies[] = ctools
-dependencies[] = views
-features[ctools][] = views:views_default:3.0
-features[features_api][] = api:2
