@@ -168,7 +168,7 @@ function bos_component_list_field_default_field_instances() {
         'news_announcements' => 0,
         'places' => 'places',
         'program_initiatives' => 'program_initiatives',
-        'public_notice_landing' => 'public_notice_landing',
+        'public_notice' => 'public_notice',
         'status_displays' => 'status_displays',
         'topic_landing_page' => 'topic_landing_page',
         'transactions' => 'transactions',
