@@ -305,7 +305,7 @@ function bos_view_public_notice_views_default_views() {
   $handler->display->display_options['path'] = 'views/public-notice';
 
   /* Display: Archive */
-  $handler = $view->new_display('page', 'Archive', 'page_1');
+  $handler = $view->new_display('page', 'Archive', 'archive');
   $handler->display->display_options['path'] = 'views/public-notices/archive';
   $export['public_notice'] = $view;
 

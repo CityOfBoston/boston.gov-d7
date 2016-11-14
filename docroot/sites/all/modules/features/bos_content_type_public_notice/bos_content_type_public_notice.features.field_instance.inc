@@ -1447,12 +1447,12 @@ function bos_content_type_public_notice_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'date',
         'settings' => array(
-          'format_type' => 'long',
+          'format_type' => 'calendar_time',
           'fromto' => 'both',
           'multiple_from' => '',
           'multiple_number' => '',
           'multiple_to' => '',
-          'show_remaining_days' => FALSE,
+          'show_remaining_days' => 0,
           'show_repeat_rule' => 'show',
         ),
         'type' => 'date_default',
@@ -1505,7 +1505,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
         'text_parts' => array(),
         'year_range' => '-3:+3',
       ),
-      'type' => 'date_popup',
+      'type' => 'date_text',
       'weight' => 18,
     ),
   );
@@ -1581,8 +1581,8 @@ function bos_content_type_public_notice_field_default_field_instances() {
   // Included for use with string extractors like potx.
   t('A sentence describing the purpose of the meeting.');
   t('Body');
-  t('Cancellation Reason');
   t('Canceled');
+  t('Cancellation Reason');
   t('Components');
   t('Contact Email');
   t('Contact Phone Number');
