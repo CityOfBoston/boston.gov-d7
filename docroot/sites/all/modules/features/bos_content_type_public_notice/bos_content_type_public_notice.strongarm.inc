@@ -21,7 +21,7 @@ function bos_content_type_public_notice_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_default_mode_public_notice';
-  $strongarm->value = 0;
+  $strongarm->value = 1;
   $export['comment_default_mode_public_notice'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -49,7 +49,7 @@ function bos_content_type_public_notice_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_public_notice';
-  $strongarm->value = '0';
+  $strongarm->value = '1';
   $export['comment_public_notice'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -66,7 +66,7 @@ function bos_content_type_public_notice_strongarm() {
   $strongarm->value = array(
     'view_modes' => array(
       'teaser' => array(
-        'custom_settings' => TRUE,
+        'custom_settings' => FALSE,
       ),
       'full' => array(
         'custom_settings' => FALSE,
@@ -93,7 +93,7 @@ function bos_content_type_public_notice_strongarm() {
         'custom_settings' => FALSE,
       ),
       'listing' => array(
-        'custom_settings' => FALSE,
+        'custom_settings' => TRUE,
       ),
       'listing_short' => array(
         'custom_settings' => FALSE,
@@ -119,23 +119,26 @@ function bos_content_type_public_notice_strongarm() {
       'token' => array(
         'custom_settings' => FALSE,
       ),
+      'icon_popup' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '8',
+          'weight' => '9',
         ),
         'title' => array(
           'weight' => '2',
         ),
         'path' => array(
-          'weight' => '7',
+          'weight' => '8',
         ),
         'rabbit_hole' => array(
-          'weight' => '9',
+          'weight' => '10',
         ),
         'redirect' => array(
-          'weight' => '6',
+          'weight' => '7',
         ),
       ),
       'display' => array(),
@@ -181,8 +184,15 @@ function bos_content_type_public_notice_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_submitted_public_notice';
-  $strongarm->value = 1;
+  $strongarm->value = 0;
   $export['node_submitted_public_notice'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_node_public_notice_pattern';
+  $strongarm->value = '/public-notices/[node:nid]';
+  $export['pathauto_node_public_notice_pattern'] = $strongarm;
 
   return $export;
 }

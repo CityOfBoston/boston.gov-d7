@@ -9,9 +9,11 @@
     $.fn.createNavItem = function () {
       $(this).each(function () {
         var thisTrim = $(this).data('short-title').trim();
+        console.log(thisTrim);
+
         if (thisTrim.length > 0) {
           var tagID = "nav" + thisTrim.split("").reduce(function(a,b){a=((a<<10)-a)+b.charCodeAt(0);return a&a},0);
-          $(this).closest('.component-section').prepend('<a name="' + tagID + '"id="' + tagID + '" class="subnav-anchor"></a>');
+          $('<a name="' + tagID + '"id="' + tagID + '" class="subnav-anchor"></a>').insertBefore(this);
           $(list).append('<li><a class="scroll-link-js" href="#' + tagID + '">' + thisTrim + '</a></li>');
         }
       });

@@ -21,6 +21,7 @@ function _boston_unset_page_title(&$variables) {
     'person_profile',
     'program_initiative_profile',
     'place_profile',
+    'public_notice',
     'event',
     'post',
     'script_page',

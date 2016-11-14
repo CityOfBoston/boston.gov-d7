@@ -388,3 +388,13 @@ function bos_core_update_7020() {
   );
   module_enable($enabled_modules);
 }
+
+/**
+ * Updates for 11/4/2016.
+ */
+function bos_core_update_7021() {
+  $enabled_modules = array(
+    'bos_view_public_notice',
+  );
+  module_enable($enabled_modules);
+}

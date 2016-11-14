@@ -77,6 +77,9 @@ function bos_content_type_department_profile_strongarm() {
       'popup_icon' => array(
         'custom_settings' => TRUE,
       ),
+      'icon_popup' => array(
+        'custom_settings' => TRUE,
+      ),
       'published_by' => array(
         'custom_settings' => TRUE,
       ),
