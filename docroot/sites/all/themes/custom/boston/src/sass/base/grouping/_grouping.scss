@@ -217,7 +217,6 @@ article {
 
   // Adds counter and offsets text-indent with margin to align
   ol li {
-    text-indent: -55px;
     @include margin(0 0 18px 55px);
  }
 
@@ -230,11 +229,13 @@ article {
     display: inline-block;
     height: 40px;
     line-height: 40px;
-    @include margin(.25 .25  0 0);
+    @include margin(.25 0  0 0);
     text-align: center;
     width: 40px;
     font-family: $montserrat;
     text-indent: 0;
+    margin-left: -55px;
+    margin-right: 5px;
   }
 
   // Replaces bullet with character and offsets text-indent with margin to align

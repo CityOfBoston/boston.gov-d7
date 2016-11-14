@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the bos_view_api_public_notices feature.
+ */
+
+include_once 'bos_view_api_public_notices.features.inc';

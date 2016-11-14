@@ -19,7 +19,7 @@ function bos_component_discussion_topic_field_default_field_instances() {
     'description' => 'The details for this discussion topic.',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
@@ -36,21 +36,21 @@ function bos_component_discussion_topic_field_default_field_instances() {
     'fences_wrapper' => 'no_wrapper',
     'field_name' => 'field_description',
     'label' => 'Description',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
         'profile' => '',
       ),
-      'text_processing' => 0,
+      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
       'active' => 1,
       'module' => 'text',
       'settings' => array(
-        'rows' => 5,
+        'rows' => 10,
         'show_token_tree' => 0,
       ),
       'type' => 'text_textarea',
@@ -66,7 +66,7 @@ function bos_component_discussion_topic_field_default_field_instances() {
     'description' => 'Resources for this discussion topic',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'paragraphs',
         'settings' => array(
           'view_mode' => 'full',
@@ -220,7 +220,7 @@ function bos_component_discussion_topic_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',

@@ -138,7 +138,7 @@ a.item-link {
     }
   }
 
-  .department-title {
+    .department-title {
     margin: 0 30px 40px;
     @include respond-to(xl) {
       display:none;
@@ -156,55 +156,6 @@ a.item-link {
       height: 190px;
       width: 56px;
       margin: -20px 0 0 20px;
-    }
-
-    .department-icon {
-      display: none;
-
-      @include respond-to(xl) {
-        display: block;
-        height: 100%;
-
-        a.popup-title {
-          display: block;
-          position: relative;
-          top: 50%;
-          transform: translateY(-50%);
-          width: 50px;
-          height: 60px;
-          margin: 0 auto;
-
-          img {
-            max-width: 50px;
-            max-height: 60px;
-          }
-        }
-
-        a.popup-title:hover {
-          position: relative;
-          .tooltip-tail {
-            display: block;
-            position: absolute;
-            height: 25px;
-            width: 25px;
-            transform: rotate(45deg);
-            top: -35px;
-            left: 50%;
-            margin-left: -12px;
-          }
-        }
-
-        a.popup-title[title]:hover:after {
-          display: block;
-          position: absolute;
-          width: 150px; /* for example */
-          left: 50%;
-          margin-left: -85px; /* width divided by 2 */
-          padding: 4px 8px;
-          bottom: 75px;
-          z-index: 100;
-        }
-      }
     }
   }
 }
@@ -283,24 +234,44 @@ a.item-link {
   }
 
   .date-flag {
-    background-image: url("../img/ribbon.svg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    text-align: center;
+    color: color(optimistic-blue);
+    position: static;
+    padding: 0;
+    width: auto;
+    margin-left:0;
     font-family: $montserrat;
     font-weight: 700;
     text-transform: uppercase;
     line-height: 1;
-    color: color(text-dark);
+    position: relative;
+    top: 20px;
 
-    &--blue {
-      background-image: url("../img/ribbon-charles.svg");
-      color: color(white);
-    }
+    @include respond-to(m) {
+      position: absolute;
+      top: -1px;
+      margin-left: 10px;
+      width: 65px;
+      padding: 20px 15px 35px;
+      z-index: 1;
+      background-image: url("../img/ribbon.svg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      text-align: center;
+      font-family: $montserrat;
+      font-weight: 700;
+      text-transform: uppercase;
+      line-height: 1;
+      color: color(text-dark);
 
-    &--left {
-      margin-left: 0;
-      top: 0;
+      &--blue {
+        background-image: url("../img/ribbon-charles.svg");
+        color: color(white);
+      }
+
+      &--left {
+        margin-left: 0;
+        top: 0;
+      }
     }
   }
 

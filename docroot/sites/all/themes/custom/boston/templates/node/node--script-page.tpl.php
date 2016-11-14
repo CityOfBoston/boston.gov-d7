@@ -24,22 +24,24 @@ hide($content['links']);
       <?php endif; ?>
     </div>
     <div class="column mobile-100 desktop-33-right">
-      <div class="contact-info">
+      <div class="sidebar script-page">
         <?php if (isset($content['field_contact'])): ?>
-          <div>Still have questions? Contact:</div>
-          <?php print render($content['field_contact']); ?>
+          <div class="contact-info">
+            <div>Still have questions? Contact:</div>
+            <?php print render($content['field_contact']); ?>
+          </div>
         <?php endif; ?>
-      </div>
-      <div class="pdf-link">
         <?php if((isset($content['field_link']))): ?>
-          <?php print render($content['field_link']); ?>
+          <div class="pdf-link">
+            <?php print render($content['field_link']); ?>
+          </div>
+        <?php endif; ?>
+        <?php if (isset($content['field_sidebar_components'])): ?>
+          <div class="list-item foo">
+            <?php print render($content['field_sidebar_components']); ?>
+          </div>
         <?php endif; ?>
       </div>
-      <?php if (isset($content['field_sidebar_components'])): ?>
-        <div class="list-item">
-          <?php print render($content['field_sidebar_components']); ?>
-        </div>
-      <?php endif; ?>
     </div>
     <div class="clearfix"></div>
   </div>

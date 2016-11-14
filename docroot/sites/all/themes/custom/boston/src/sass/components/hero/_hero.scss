@@ -65,7 +65,8 @@
 
 // .with-hero state (currently used on article and breadcrumb-wrapper)
 
-.with-hero {
+.with-hero,
+.node-public-notice {
   @include respond-to(xl) {
     z-index: 10;
     position: relative;

@@ -1,7 +1,8 @@
 .node-type-department-profile,
 .node-type-article,
 .node-type-post,
-.node-type-event {
+.node-type-event,
+.node-type-public-notice {
 
   // Makes admin items accessible in case there is hero image
   ul.tabs,
@@ -19,7 +20,8 @@
 
   // Heading 1 .title state with-hero
 
-  .with-hero h1.title {
+  .with-hero h1.title,
+  .node-public-notice h1.title {
     margin-top: 0;
   }
 
