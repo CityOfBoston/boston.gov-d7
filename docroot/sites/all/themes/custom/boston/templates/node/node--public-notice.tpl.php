@@ -103,13 +103,13 @@ hide($content['links']);
           <?php print render($content['body']); ?>
         </div>
       <?php endif; ?>
+      <?php if ($show_alert && isset($content['field_time'])): ?>
+        <div class="b b--g b--p300">
+          <div class="n-li-a">Public testimony begins at <?php print render($content['field_time']) ?></div>
+        </div>
+      <?php endif; ?>
       <?php if (isset($content['field_drawer'])): ?>
         <h2 class="header-border-bottom">Discussion Topics</h2>
-        <?php if ($show_alert && isset($content['field_time'])): ?>
-          <div class="b b--g b--p300 b--mb300">
-            <div class="n-li-a">Public testimony begins at <?php print render($content['field_time']) ?></div>
-          </div>
-        <?php endif; ?>
         <div class="body">
           <ol>
             <?php print render($content['field_drawer']); ?>
