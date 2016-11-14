@@ -11,16 +11,10 @@
 // - https://drupal.org/node/1446420
 // - http://www.adequatelygood.com/2010/3/JavaScript-Module-Pattern-In-Depth
 (function ($, Drupal, window, document) {
-
   'use strict';
-
-  // To understand behaviors, see https://drupal.org/node/756722#behaviors
-  Drupal.behaviors.my_custom_behavior = {
-    attach: function (context, settings) {
-
-      // Place your code here.
-
-    }
-  };
-
+   var livestreams = document.getElementsByClassName('live-stream'),
+     n = livestreams.length;
+   while(n--) {
+     livestreams[n].innerHTML = "Watch it live";
+   }
 })(jQuery, Drupal, this, this.document);

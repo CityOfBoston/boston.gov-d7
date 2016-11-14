@@ -81,19 +81,24 @@
  */
 
  $has_email = isset($content['field_email']) && $content['field_email'][0]['#markup'] != "";
+ $live_stream = $field_live_stream['und'][0][value] == 1;
 ?>
+
 <article id="node-<?php print $node->nid; ?>"
-     class="<?php print $classes; ?> calendar-listing-wrapper">
+     class="<?php print $classes; ?> calendar-listing-wrapper"
+     <?php if ($live_stream): ?>data-livestream="1"<?php endif; ?>>
   <div class="teaser drawer-trigger">
     <div class="drawer-trigger-chevron"></div>
     <?php if (isset($time_range)): ?>
-      <?php if (isset($content['field_live_stream'])): ?>
-        <span class="watch-live">Live</span>
-      <?php endif; ?>
-      Foo-<?php print render($content['field_live_stream']); ?>-Bar
-      <span class="time-range "><?php print $time_range; ?></span>
+      <span class="time-range">
+        <?php if ($live_stream):?><span class="live-stream-flag">Live</span><?php endif; ?>
+        <?php print $time_range; ?>
+      </span>
     <?php endif; ?>
-    <div class="title"><?php print $title; ?></div>
+    <div class="title">
+      <?php if ($live_stream):?><span class="live-stream-flag">Live</span><?php endif; ?>
+      <?php print $title; ?>
+    </div>
   </div>
   <div class="event-details drawer">
     <?php if (isset($content['field_address'])): ?>
@@ -131,8 +136,8 @@
         <a class="button" href="<?php print render($content['field_details_link']); ?>">Event website<span class="a11y--hidden"> for <?php print $title; ?></span></a>
       </div>
     <?php else: ?>
-      <?php if (isset($content['field_live_stream'])): ?>
-        <a class="button live-stream" href="<?php print $node_url; ?>"> title="Watch the live stream for <?php print $title; ?>">Watch it live</a>
+      <?php if ($live_stream): ?>
+        <a class="button live-stream" href="<?php print $node_url; ?>" title="Live stream for <?php print $title; ?>">Event details<span class="a11y--hidden"> for <?php print $title; ?></span></a>
       <?php else: ?>
         <a class="button" href="<?php print $node_url; ?>" title="get more details">Event details<span class="a11y--hidden"> for <?php print $title; ?></span></a>
       <?php endif; ?>

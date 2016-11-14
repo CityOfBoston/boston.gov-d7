@@ -1269,6 +1269,7 @@ function boston_preprocess_paragraphs_item_iframe(&$variables) {
  */
 function boston_preprocess_paragraphs_item_video(&$variables) {
   drupal_add_js('https://www.youtube.com/iframe_api');
+  drupal_add_js(drupal_get_path('theme', $GLOBALS['theme']) . '/dist/js/calendar-live-stream.js');
 }
 
 function boston_preprocess_field_collection_item_field_transactions(&$variables) {

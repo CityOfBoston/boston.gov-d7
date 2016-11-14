@@ -1,3 +1,4 @@
+
 .teaser {
   @include border-sm;
   padding: 20px 0;
@@ -20,6 +21,25 @@
     &:hover {
       color:color(link-secondary);
     }
+    .live-stream-flag {
+      display:none;
+
+      @include respond-to(xl) {
+        @include font-size(xxs);
+        font-family: $montserrat;
+        text-transform: uppercase;
+        color: color(freedom-trail-red);
+        font-weight: bold;
+        display: inline;
+        float: left;
+        background-image: url("../img/icon-play.svg");
+        background-position: 0 5px;
+        background-repeat: no-repeat;
+        background-size: 16px 16px;
+        padding-left: 20px;
+	margin-right: 5px;
+      }
+    }
   }
 
   .time-range {
@@ -29,6 +49,16 @@
 
     @include respond-to(xl) {
       float: right;
+    }
+    .live-stream-flag {
+      @include font-size(xxs);
+      font-family: $montserrat;
+      text-transform: none;
+      color: color(freedom-trail-red);
+      font-weight: bold;
+      @include respond-to(xl) {
+        display:none;
+      }      
     }
   }
 }
