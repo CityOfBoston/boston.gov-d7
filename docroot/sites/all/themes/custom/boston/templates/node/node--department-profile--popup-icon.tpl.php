@@ -80,12 +80,10 @@
  */
 ?>
 
-<div class="department-title">
-  <?php print $title; ?>
-</div>
-<div class="department-icon">
-  <a href="<?php print $node_url; ?>" title="<?php print $title; ?>" class="popup-title">
-    <div class="tooltip-tail"></div>
-    <?php print render($content['field_icon']); ?>
-  </a>
+<div class="di">
+  <div class="di-ic">
+    <a href="<?php print $node_url; ?>" title="<?php print $title; ?>" class="di-tt">
+      <?php print render($content['field_icon']); ?>
+    </a>
+  </div>
 </div>
