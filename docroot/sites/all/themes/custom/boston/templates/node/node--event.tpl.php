@@ -81,12 +81,6 @@
  */
 hide($content['comments']);
 hide($content['links']);
-
-/* Do some date getting because $field_event_dates returns empty when event has passed */
-$date_time = $field_event_dates['und'][0];
-$time_zone = $date_time['timezone'];
-$start_date = strtotime($date_time['value'] . " +0000");
-$event_date = format_date($start_date, 'medium','F j, Y',$time_zone);
 ?>
   <article id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?> clearfix desktop-100"<?php print $attributes; ?>>
   <?php if (isset($content['field_updated_date'])): ?>
@@ -115,13 +109,7 @@ $event_date = format_date($start_date, 'medium','F j, Y',$time_zone);
       <!-- DATE OUTPUT PLACEHOLDER -->
       <div class="event-date-wrapper">
         <div class="event-date sidebar-header">
-	  <?php 
-	  	if (!empty($content['field_event_dates'])) {
-		   print render($content['field_event_dates']);
-		} else {
-		   echo($event_date);
-		}
-	  ?>
+	  <?php print render($event_date_canonical); ?>
 	</div>
       </div>
       <div class="list-item event-time-wrapper">
