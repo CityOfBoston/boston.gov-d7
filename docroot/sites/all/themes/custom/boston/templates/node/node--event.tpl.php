@@ -108,7 +108,9 @@ hide($content['links']);
     <div class="column sidebar mobile-100 desktop-33-right">
       <!-- DATE OUTPUT PLACEHOLDER -->
       <div class="event-date-wrapper">
-        <div class="event-date sidebar-header"><?php print render($content['field_event_dates']); ?></div>
+        <div class="event-date sidebar-header">
+	  <?php print render($event_date_canonical); ?>
+	</div>
       </div>
       <div class="list-item event-time-wrapper">
         <?php
