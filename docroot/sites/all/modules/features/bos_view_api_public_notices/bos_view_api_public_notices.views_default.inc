@@ -51,7 +51,7 @@ function bos_view_api_public_notices_views_default_views() {
   $handler->display->display_options['fields']['created']['table'] = 'node';
   $handler->display->display_options['fields']['created']['field'] = 'created';
   $handler->display->display_options['fields']['created']['label'] = 'posted';
-  $handler->display->display_options['fields']['created']['date_format'] = 'long';
+  $handler->display->display_options['fields']['created']['date_format'] = 'short';
   $handler->display->display_options['fields']['created']['second_date_format'] = 'boston_featured';
   /* Field: Content: Time public testimony begins */
   $handler->display->display_options['fields']['field_time']['id'] = 'field_time';
