@@ -27,7 +27,7 @@
 
  $id = uniqid();
 ?>
-
+<!-- script goes here -->
 <div class="<?php print $classes; ?>">
   <?php if (isset($content['field_short_title'])) : ?>
     <?php print render($content['field_short_title']); ?>
@@ -46,24 +46,94 @@
   </div>
 </div>
 
-<script>
-  var vids = vids || {};
-  vids['<?php print $id; ?>'] = {
-    button: document.getElementById("plyr__<?php print $id; ?>")
-  }
 
+<script>
+function initLiveStreamClock(id, endtime){
+  var clock = document.getElementById(id);
+  var timeinterval = setInterval(function(){
+    var t = getTimeRemaining(endtime);
+    clock.innerHTML = t.days + ' days ' +
+            t.hours + ' hours ' +
+            t.minutes + ' minutes ' +
+            t.seconds + ' seconds';
+      if(t.total <= 0){
+      clearInterval(timeinterval);
+      }
+  },1000);
+ }
+
+function getTimeRemaining(endtime){
+    var t = endtime - Date.parse(new Date());
+    var seconds = Math.floor( (t/1000) % 60 );
+    var minutes = Math.floor( (t/1000/60) % 60 );
+    var hours = Math.floor( (t/(1000*60*60)) % 24 );
+    var days = Math.floor( t/(1000*60*60*24) );
+    return {
+  'total': t,
+      'days': days,
+      'hours': hours,
+      'minutes': minutes,
+      'seconds': seconds
+      };
+}
+
+function liveStreamNotReady(){
+    event_listing = doc.getElementById(event_id);
+    playas = doc.getElementsByClassName('plyr__play');
+    n = playas.length;
+    styleUpdate = "width:100%; max-width:100%; cursor: default;";
+    doc.querySelector("article.live-stream-1 .plyr__play").style.cssText = styleUpdate;
+    while(n--) {
+    playas[n].style.width = '100%';
+      playas[n].innerHTML = 'This live stream event hasn\'t started. Check back in \<span id\=\"\plyr__livestream-countdown\"\>\<\/span\>.'
+  }
+}
+
+var doc = document;
+var vids = vids || {};
+var live_stream_status = live_stream_status || 0;
+vids['<?php print $id; ?>'] = {
+    button: document.getElementById("plyr__<?php print $id; ?>")
+}
+
+
+if (live_stream_status == 1) {
+  var isLiveStreamStart = live_stream_start.getTime();
+  var isNow = new Date().getTime();
+  var goTime;
+  if (isNow < isLiveStreamStart) {goTime = 0;} else {goTime = 1;}
+}
+
+if ( live_stream_status == 1 && goTime == 0 ) {
+    liveStreamNotReady();
+    initLiveStreamClock('plyr__livestream-countdown', isLiveStreamStart);
+} else if ( live_stream_status == 1 && goTime == 1 ) {
   vids['<?php print $id; ?>'].button.addEventListener('click', function() {
-    vids['<?php print $id; ?>'].video = new YT.Player('plyr__vid--<?php print $id; ?>', {
+    vids['<?php print $id; ?>'].video = new YT.Player('plyr__vid--<?php print $id; ?>' , {
       videoId: vids['<?php print $id; ?>'].button.getAttribute('data-video-id'),
       height: "100%",
       width: "100%",
       events: {
-        'onReady': function(event) {
-          event.target.playVideo();
-        }
+          'onReady': function(event) {
+        event.target.playVideo();
+          }
       }
     });
-
     vids['<?php print $id; ?>'].button.classList.toggle("plyr--isPlaying");
   });
+} else {
+  vids['<?php print $id; ?>'].button.addEventListener('click', function() {
+    vids['<?php print $id; ?>'].video = new YT.Player('plyr__vid--<?php print $id; ?>' , {
+      videoId: vids['<?php print $id; ?>'].button.getAttribute('data-video-id'),
+      height: "100%",
+      width: "100%",
+      events: {
+          'onReady': function(event) {
+        event.target.playVideo();
+          }
+      }
+    });
+    vids['<?php print $id; ?>'].button.classList.toggle("plyr--isPlaying");
+  });
+}
 </script>
