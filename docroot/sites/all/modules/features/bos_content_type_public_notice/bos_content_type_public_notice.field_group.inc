@@ -141,9 +141,10 @@ function bos_content_type_public_notice_field_group_info() {
     'children' => array(
       0 => 'field_address',
       1 => 'field_public_notice_date',
-      2 => 'group_cancelled',
-      3 => 'group_downloads',
-      4 => 'group_public_testimony',
+      2 => 'field_live_stream',
+      3 => 'group_cancelled',
+      4 => 'group_downloads',
+      5 => 'group_public_testimony',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
