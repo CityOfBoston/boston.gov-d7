@@ -675,7 +675,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
     'fences_wrapper' => 'no_wrapper',
     'field_name' => 'field_email',
     'label' => 'Contact Email',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'linkit' => array(
         'button_text' => 'Search',
@@ -1159,7 +1159,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 19,
+      'weight' => 20,
     ),
   );
 
@@ -1260,7 +1260,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
     'fences_wrapper' => 'no_wrapper',
     'field_name' => 'field_phone_number',
     'label' => 'Contact Phone Number',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'linkit' => array(
         'button_text' => 'Search',
