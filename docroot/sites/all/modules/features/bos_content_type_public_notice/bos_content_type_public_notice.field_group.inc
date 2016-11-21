@@ -52,7 +52,7 @@ function bos_content_type_public_notice_field_group_info() {
   $field_group->parent_name = 'group_details';
   $field_group->data = array(
     'label' => 'Cancel Public Notice',
-    'weight' => '18',
+    'weight' => '17',
     'children' => array(
       0 => 'field_cancelled',
       1 => 'field_extra_info',
@@ -144,6 +144,7 @@ function bos_content_type_public_notice_field_group_info() {
       2 => 'field_live_stream',
       3 => 'group_cancelled',
       4 => 'group_downloads',
+      5 => 'group_public_testimony',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -168,7 +169,7 @@ function bos_content_type_public_notice_field_group_info() {
   $field_group->parent_name = 'group_details';
   $field_group->data = array(
     'label' => 'Downloads',
-    'weight' => '19',
+    'weight' => '18',
     'children' => array(
       0 => 'field_links',
     ),
