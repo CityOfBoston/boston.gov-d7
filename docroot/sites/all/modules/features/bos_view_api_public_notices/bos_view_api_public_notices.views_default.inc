@@ -34,29 +34,6 @@ function bos_view_api_public_notices_views_default_views() {
   $handler->display->display_options['pager']['options']['quantity'] = '9';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Field: Content: Title */
-  $handler->display->display_options['fields']['title']['id'] = 'title';
-  $handler->display->display_options['fields']['title']['table'] = 'node';
-  $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['label'] = '';
-  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
-  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Field: Content: Date */
-  $handler->display->display_options['fields']['field_public_notice_date']['id'] = 'field_public_notice_date';
-  $handler->display->display_options['fields']['field_public_notice_date']['table'] = 'field_data_field_public_notice_date';
-  $handler->display->display_options['fields']['field_public_notice_date']['field'] = 'field_public_notice_date';
-  $handler->display->display_options['fields']['field_public_notice_date']['label'] = 'event_date';
-  $handler->display->display_options['fields']['field_public_notice_date']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_public_notice_date']['element_default_classes'] = FALSE;
-  $handler->display->display_options['fields']['field_public_notice_date']['settings'] = array(
-    'format_type' => 'long',
-    'fromto' => 'both',
-    'multiple_number' => '',
-    'multiple_from' => '',
-    'multiple_to' => '',
-    'show_remaining_days' => 0,
-    'show_repeat_rule' => 'show',
-  );
   /* Field: Content: Is there public testimony? */
   $handler->display->display_options['fields']['field_is_there_public_testimony']['id'] = 'field_is_there_public_testimony';
   $handler->display->display_options['fields']['field_is_there_public_testimony']['table'] = 'field_data_field_is_there_public_testimony';
@@ -74,7 +51,7 @@ function bos_view_api_public_notices_views_default_views() {
   $handler->display->display_options['fields']['created']['table'] = 'node';
   $handler->display->display_options['fields']['created']['field'] = 'created';
   $handler->display->display_options['fields']['created']['label'] = 'posted';
-  $handler->display->display_options['fields']['created']['date_format'] = 'long';
+  $handler->display->display_options['fields']['created']['date_format'] = 'short';
   $handler->display->display_options['fields']['created']['second_date_format'] = 'boston_featured';
   /* Field: Content: Time public testimony begins */
   $handler->display->display_options['fields']['field_time']['id'] = 'field_time';
@@ -91,36 +68,111 @@ function bos_view_api_public_notices_views_default_views() {
     'show_remaining_days' => 0,
     'show_repeat_rule' => 'show',
   );
-  /* Field: Field: Location */
-  $handler->display->display_options['fields']['field_address']['id'] = 'field_address';
-  $handler->display->display_options['fields']['field_address']['table'] = 'field_data_field_address';
-  $handler->display->display_options['fields']['field_address']['field'] = 'field_address';
-  $handler->display->display_options['fields']['field_address']['label'] = '';
-  $handler->display->display_options['fields']['field_address']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_address']['element_default_classes'] = FALSE;
-  $handler->display->display_options['fields']['field_address']['click_sort_column'] = 'country';
-  $handler->display->display_options['fields']['field_address']['settings'] = array(
-    'use_widget_handlers' => 1,
-    'format_handlers' => array(
-      'address' => 'address',
-    ),
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = 'title';
+  $handler->display->display_options['fields']['title']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['title']['alter']['text'] = '[title]';
+  $handler->display->display_options['fields']['title']['element_type'] = '0';
+  $handler->display->display_options['fields']['title']['element_wrapper_type'] = '0';
+  $handler->display->display_options['fields']['title']['element_default_classes'] = FALSE;
+  /* Field: Field: Location - Full name */
+  $handler->display->display_options['fields']['field_address_name_line']['id'] = 'field_address_name_line';
+  $handler->display->display_options['fields']['field_address_name_line']['table'] = 'field_data_field_address';
+  $handler->display->display_options['fields']['field_address_name_line']['field'] = 'field_address_name_line';
+  $handler->display->display_options['fields']['field_address_name_line']['label'] = 'location_name';
+  $handler->display->display_options['fields']['field_address_name_line']['element_type'] = '0';
+  $handler->display->display_options['fields']['field_address_name_line']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_address_name_line']['element_wrapper_type'] = '0';
+  $handler->display->display_options['fields']['field_address_name_line']['element_default_classes'] = FALSE;
+  /* Field: Field: Location - Premise (i.e. Apartment / Suite number) */
+  $handler->display->display_options['fields']['field_address_premise']['id'] = 'field_address_premise';
+  $handler->display->display_options['fields']['field_address_premise']['table'] = 'field_data_field_address';
+  $handler->display->display_options['fields']['field_address_premise']['field'] = 'field_address_premise';
+  $handler->display->display_options['fields']['field_address_premise']['label'] = 'location_room';
+  $handler->display->display_options['fields']['field_address_premise']['element_type'] = '0';
+  $handler->display->display_options['fields']['field_address_premise']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_address_premise']['element_wrapper_type'] = '0';
+  $handler->display->display_options['fields']['field_address_premise']['element_default_classes'] = FALSE;
+  /* Field: Field: Location - Thoroughfare (i.e. Street address) */
+  $handler->display->display_options['fields']['field_address_thoroughfare']['id'] = 'field_address_thoroughfare';
+  $handler->display->display_options['fields']['field_address_thoroughfare']['table'] = 'field_data_field_address';
+  $handler->display->display_options['fields']['field_address_thoroughfare']['field'] = 'field_address_thoroughfare';
+  $handler->display->display_options['fields']['field_address_thoroughfare']['label'] = 'location_street';
+  $handler->display->display_options['fields']['field_address_thoroughfare']['element_type'] = '0';
+  $handler->display->display_options['fields']['field_address_thoroughfare']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_address_thoroughfare']['element_wrapper_type'] = '0';
+  $handler->display->display_options['fields']['field_address_thoroughfare']['element_default_classes'] = FALSE;
+  /* Field: Content: Canceled */
+  $handler->display->display_options['fields']['field_cancelled']['id'] = 'field_cancelled';
+  $handler->display->display_options['fields']['field_cancelled']['table'] = 'field_data_field_cancelled';
+  $handler->display->display_options['fields']['field_cancelled']['field'] = 'field_cancelled';
+  $handler->display->display_options['fields']['field_cancelled']['label'] = 'canceled';
+  $handler->display->display_options['fields']['field_cancelled']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_cancelled']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_cancelled']['type'] = 'list_key';
+  $handler->display->display_options['fields']['field_cancelled']['settings'] = array(
+    'data_element_key' => '',
+    'skip_safe' => 0,
+    'skip_empty_values' => 0,
+  );
+  /* Field: Content: Date */
+  $handler->display->display_options['fields']['field_public_notice_date']['id'] = 'field_public_notice_date';
+  $handler->display->display_options['fields']['field_public_notice_date']['table'] = 'field_data_field_public_notice_date';
+  $handler->display->display_options['fields']['field_public_notice_date']['field'] = 'field_public_notice_date';
+  $handler->display->display_options['fields']['field_public_notice_date']['label'] = 'notice_date';
+  $handler->display->display_options['fields']['field_public_notice_date']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_public_notice_date']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_public_notice_date']['settings'] = array(
+    'format_type' => 'normal_date',
+    'fromto' => 'value',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+    'show_repeat_rule' => 'show',
+  );
+  /* Field: Content: Date */
+  $handler->display->display_options['fields']['field_public_notice_date_1']['id'] = 'field_public_notice_date_1';
+  $handler->display->display_options['fields']['field_public_notice_date_1']['table'] = 'field_data_field_public_notice_date';
+  $handler->display->display_options['fields']['field_public_notice_date_1']['field'] = 'field_public_notice_date';
+  $handler->display->display_options['fields']['field_public_notice_date_1']['label'] = 'notice_time';
+  $handler->display->display_options['fields']['field_public_notice_date_1']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_public_notice_date_1']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_public_notice_date_1']['settings'] = array(
+    'format_type' => 'calendar_time',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+    'show_repeat_rule' => 'show',
   );
   /* Field: Field: Drawer */
   $handler->display->display_options['fields']['field_drawer']['id'] = 'field_drawer';
   $handler->display->display_options['fields']['field_drawer']['table'] = 'field_data_field_drawer';
   $handler->display->display_options['fields']['field_drawer']['field'] = 'field_drawer';
   $handler->display->display_options['fields']['field_drawer']['label'] = '';
+  $handler->display->display_options['fields']['field_drawer']['alter']['trim_whitespace'] = TRUE;
   $handler->display->display_options['fields']['field_drawer']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_drawer']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['field_drawer']['settings'] = array(
-    'view_mode' => 'token',
+    'view_mode' => 'full',
   );
   $handler->display->display_options['fields']['field_drawer']['delta_offset'] = '0';
-  /* Sort criterion: Content: Post date */
-  $handler->display->display_options['sorts']['created']['id'] = 'created';
-  $handler->display->display_options['sorts']['created']['table'] = 'node';
-  $handler->display->display_options['sorts']['created']['field'] = 'created';
-  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  /* Field: Content: Body */
+  $handler->display->display_options['fields']['body']['id'] = 'body';
+  $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
+  $handler->display->display_options['fields']['body']['field'] = 'body';
+  $handler->display->display_options['fields']['body']['label'] = '';
+  $handler->display->display_options['fields']['body']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['body']['element_default_classes'] = FALSE;
+  /* Sort criterion: Content: Date -  start date (field_public_notice_date) */
+  $handler->display->display_options['sorts']['field_public_notice_date_value']['id'] = 'field_public_notice_date_value';
+  $handler->display->display_options['sorts']['field_public_notice_date_value']['table'] = 'field_data_field_public_notice_date';
+  $handler->display->display_options['sorts']['field_public_notice_date_value']['field'] = 'field_public_notice_date_value';
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
@@ -157,6 +209,12 @@ function bos_view_api_public_notices_views_default_views() {
     46 => 0,
     51 => 0,
   );
+  /* Filter criterion: Content: Date -  start date (field_public_notice_date) */
+  $handler->display->display_options['filters']['field_public_notice_date_value']['id'] = 'field_public_notice_date_value';
+  $handler->display->display_options['filters']['field_public_notice_date_value']['table'] = 'field_data_field_public_notice_date';
+  $handler->display->display_options['filters']['field_public_notice_date_value']['field'] = 'field_public_notice_date_value';
+  $handler->display->display_options['filters']['field_public_notice_date_value']['operator'] = '>=';
+  $handler->display->display_options['filters']['field_public_notice_date_value']['default_date'] = '-3 hours';
 
   /* Display: Services */
   $handler = $view->new_display('services', 'Services', 'services_1');
