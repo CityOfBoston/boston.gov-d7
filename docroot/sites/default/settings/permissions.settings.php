@@ -241,6 +241,13 @@ function acquia_permissions_map() {
       'view revisions',
       'view schedule history',
     ),
+    // Landing Page Author role permissions.
+    // Assumes user is at least a content author.
+    'Landing Author' => array(
+      'create landing_page content',
+      'edit any landing_page content',
+      'edit own landing_page content',
+    ),
     // Guide Author role permissions.
     // Assumes user is at least a content author.
     'Guide Author' => array(
@@ -261,6 +268,7 @@ function acquia_permissions_map() {
       'create how_to content',
       'create person_profile content',
       'create place_profile content',
+      'create public_notice content',
       'create post content',
       'create program_initiative_profile content',
       'edit any article content',
@@ -270,6 +278,7 @@ function acquia_permissions_map() {
       'edit any image files',
       'edit any person_profile content',
       'edit any place_profile content',
+      'edit any public_notice content',
       'edit any post content',
       'edit any program_initiative_profile content',
       'edit meta tags',
@@ -282,6 +291,7 @@ function acquia_permissions_map() {
       'edit own place_profile content',
       'edit own post content',
       'edit own program_initiative_profile content',
+      'edit own public_notice content',
       'moderate content from archive to draft',
       'moderate content from draft to needs_review',
       'moderate content from needs_review to draft',

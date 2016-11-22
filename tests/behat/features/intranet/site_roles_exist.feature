@@ -15,3 +15,4 @@ Feature: Site Roles
     | Status Alert Editor     |
     | Manager                 |
     | Guide Author            |
+    | Landing Author          |
