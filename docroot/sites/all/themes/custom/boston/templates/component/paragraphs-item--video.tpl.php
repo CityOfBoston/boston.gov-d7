@@ -81,11 +81,11 @@ function liveStreamNotReady(){
     event_listing = doc.getElementById(event_id);
     playas = doc.getElementsByClassName('plyr__play');
     n = playas.length;
-    styleUpdate = "width:100%; max-width:100%; cursor: default;";
+    styleUpdate = "width:100%; max-width:100%; cursor: default; font-style: italic;";
     doc.querySelector("article.live-stream-1 .plyr__play").style.cssText = styleUpdate;
     while(n--) {
     playas[n].style.width = '100%';
-      playas[n].innerHTML = 'This live stream event hasn\'t started. Check back in \<span id\=\"\plyr__livestream-countdown\"\>\<\/span\>.'
+      playas[n].innerHTML = 'This live stream event hasn\'t started.\<br\/\>Check back in \<span id\=\"\plyr__livestream-countdown\"\>\<\/span\>.'
   }
 }
 
