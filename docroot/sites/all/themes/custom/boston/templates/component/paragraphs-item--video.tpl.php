@@ -26,8 +26,6 @@
  */
 
  $id = uniqid();
- echo json_encode($content);
-
 ?>
 
 <!-- script goes here -->
