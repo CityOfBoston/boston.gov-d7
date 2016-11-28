@@ -649,6 +649,7 @@ function boston_preprocess_node_event(&$variables) {
 function boston_preprocess_node_public_notice(&$variables) {
   $time_range_view_modes = array(
     'calendar_listing',
+    'listing',
     'full',
   );
 
