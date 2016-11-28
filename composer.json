@@ -19,7 +19,7 @@
     "drush/drush":                  "~7.2",
     "phpunit/phpunit":              "4.6.*",
     "squizlabs/php_codesniffer":    "2.*",
-    "phing/phing":                  "dev-master#0ef30e55bb5871cb38903cc0ee9d76074118a22c",
+    "phing/phing":                  "~2.15",
     "jakoch/phantomjs-installer":   "1.9.8",
     "jarnaiz/behat-junit-formatter": "^1.2"
   },
