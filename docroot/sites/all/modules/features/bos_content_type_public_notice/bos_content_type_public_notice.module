@@ -8,7 +8,6 @@ include_once 'bos_content_type_public_notice.features.inc';
 
 /**
  * Implements hook_form_alter().
- * Renames field labels and adds help text
  */
 function bos_content_type_public_notice_form_alter(&$form, &$form_state, $form_id) {
   switch ($form_id) {
