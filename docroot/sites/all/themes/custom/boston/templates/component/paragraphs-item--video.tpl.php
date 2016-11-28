@@ -27,6 +27,7 @@
 
  $id = uniqid();
 ?>
+
 <!-- script goes here -->
 <div class="<?php print $classes; ?>">
   <?php if (isset($content['field_short_title'])) : ?>
@@ -39,8 +40,13 @@
       <div class="plyr__overlay"></div>
       <div class="plyr__meta">
         <h2 class="sh plyr__title"><?php print render($content['field_title']) ?></h2>
-        <div class="plyr__credit"><?php print render($content['field_photo_credit']) ?></div>
-        <div class="plyr__play"><img src="/<?php print drupal_get_path('theme', $GLOBALS['theme']); ?>/dist/img/icon-play.svg" alt="Play <?php print render($content['field_title']) ?>" /></div>
+        <div class="plyr__credit">
+	  <?php print render($content['field_photo_credit']) ?>
+      	</div>
+        <div class="plyr__play">
+	  <img src="/<?php print drupal_get_path('theme', $GLOBALS['theme']); ?>/dist/img/icon-play.svg" alt="Play <?php print render($content['field_title']) ?>" />
+	  <div class="plyr__livestream-not_ready">This live stream event hasn't started.<br />Check back in <span id="plyr__livestream-countdown"></span></div>	  
+	</div>
       </div>
     </div>
   </div>
@@ -48,6 +54,22 @@
 
 
 <script>
+function initVideo(){
+  vids['<?php print $id; ?>'].button.addEventListener('click', function() {
+    vids['<?php print $id; ?>'].video = new YT.Player('plyr__vid--<?php print $id; ?>' , {
+      videoId: vids['<?php print $id; ?>'].button.getAttribute('data-video-id'),
+      height: "100%",
+      width: "100%",
+      events: {
+          'onReady': function(event) {
+          event.target.playVideo();
+          }
+      }
+    });
+    vids['<?php print $id; ?>'].button.classList.toggle("plyr--isPlaying");
+  });
+}
+
 function initLiveStreamClock(id, endtime){
   var clock = document.getElementById(id);
   var timeinterval = setInterval(function(){
@@ -57,7 +79,11 @@ function initLiveStreamClock(id, endtime){
             t.minutes + ' minutes ' +
             t.seconds + ' seconds';
       if(t.total <= 0){
-      clearInterval(timeinterval);
+        clearInterval(timeinterval);
+	playerElement.style.cssText = "width: 15%; max-width: 100px; cursor: pointer;";
+	imgButton.style.cssText = "display: block; width: auto; height: auto;";
+	liveStreamTxt.style.cssText = "display: none;";
+	initVideo();
       }
   },1000);
  }
@@ -81,59 +107,34 @@ function liveStreamNotReady(){
     event_listing = doc.getElementById(event_id);
     playas = doc.getElementsByClassName('plyr__play');
     n = playas.length;
-    styleUpdate = "width:100%; max-width:100%; cursor: default;";
-    doc.querySelector("article.live-stream-1 .plyr__play").style.cssText = styleUpdate;
+    imgButton.style.cssText = "display: none;"
+    liveStreamTxt.style.cssText = "display: block;";
+    playerElement.style.cssText = "width:100%; max-width:100%; cursor: default; display: block;";
     while(n--) {
-    playas[n].style.width = '100%';
-      playas[n].innerHTML = 'This live stream event hasn\'t started. Check back in \<span id\=\"\plyr__livestream-countdown\"\>\<\/span\>.'
-  }
+      playas[n].style.width = '100%';
+    }
 }
 
 var doc = document;
 var vids = vids || {};
 var live_stream_status = live_stream_status || 0;
-vids['<?php print $id; ?>'] = {
-    button: document.getElementById("plyr__<?php print $id; ?>")
-}
+imgButton = doc.querySelector("article.live-stream-1 .plyr__play img");
+liveStreamTxt = doc.querySelector("article.live-stream-1 .plyr__play div");
+playerElement = doc.querySelector("article.live-stream-1 .plyr__play");
+vids['<?php print $id; ?>'] = { button: document.getElementById("plyr__<?php print $id; ?>") };
 
 
 if (live_stream_status == 1) {
   var isLiveStreamStart = live_stream_start.getTime();
   var isNow = new Date().getTime();
   var goTime;
-  if (isNow < isLiveStreamStart) {goTime = 0;} else {goTime = 1;}
-}
-
-if ( live_stream_status == 1 && goTime == 0 ) {
-    liveStreamNotReady();
-    initLiveStreamClock('plyr__livestream-countdown', isLiveStreamStart);
-} else if ( live_stream_status == 1 && goTime == 1 ) {
-  vids['<?php print $id; ?>'].button.addEventListener('click', function() {
-    vids['<?php print $id; ?>'].video = new YT.Player('plyr__vid--<?php print $id; ?>' , {
-      videoId: vids['<?php print $id; ?>'].button.getAttribute('data-video-id'),
-      height: "100%",
-      width: "100%",
-      events: {
-          'onReady': function(event) {
-        event.target.playVideo();
-          }
-      }
-    });
-    vids['<?php print $id; ?>'].button.classList.toggle("plyr--isPlaying");
-  });
+  if (isNow < isLiveStreamStart) {
+     liveStreamNotReady();
+     initLiveStreamClock('plyr__livestream-countdown', isLiveStreamStart);
+     } else {
+     initVideo();
+  }
 } else {
-  vids['<?php print $id; ?>'].button.addEventListener('click', function() {
-    vids['<?php print $id; ?>'].video = new YT.Player('plyr__vid--<?php print $id; ?>' , {
-      videoId: vids['<?php print $id; ?>'].button.getAttribute('data-video-id'),
-      height: "100%",
-      width: "100%",
-      events: {
-          'onReady': function(event) {
-        event.target.playVideo();
-          }
-      }
-    });
-    vids['<?php print $id; ?>'].button.classList.toggle("plyr--isPlaying");
-  });
+  initVideo();
 }
 </script>
