@@ -101,19 +101,26 @@ function bos_content_type_how_to_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
+    'fences_wrapper' => 'div_div_div',
     'field_name' => 'body',
-    'label' => 'Body',
-    'required' => FALSE,
+    'label' => 'Intro Text',
+    'required' => 0,
     'settings' => array(
-      'display_summary' => TRUE,
+      'display_summary' => 1,
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
       'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
+      'active' => 1,
       'module' => 'text',
       'settings' => array(
         'rows' => 20,
-        'show_token_tree' => FALSE,
+        'show_token_tree' => 0,
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
@@ -2070,7 +2077,6 @@ function bos_content_type_how_to_field_default_field_instances() {
   t('Add how-to tabs through this field.');
   t('Add need-to-know information for this how-to here.');
   t('Add the date this content is effectively published.');
-  t('Body');
   t('Components');
   t('Contact');
   t('Contact Step Details');
@@ -2082,6 +2088,7 @@ function bos_content_type_how_to_field_default_field_instances() {
   t('How-To Steps');
   t('How-To Tabs');
   t('Intro Image');
+  t('Intro Text');
   t('Keep in Mind');
   t('Location');
   t('Need to Know');

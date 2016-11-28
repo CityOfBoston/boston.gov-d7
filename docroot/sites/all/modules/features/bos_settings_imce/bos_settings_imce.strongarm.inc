@@ -102,45 +102,41 @@ function bos_settings_imce_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'imce_roles_profiles';
   $strongarm->value = array(
-    21 => array(
-      'weight' => '0',
-      'public_pid' => '2',
-    ),
     11 => array(
-      'weight' => '0',
-      'public_pid' => '1',
+      'weight' => 0,
+      'public_pid' => 1,
     ),
     16 => array(
-      'weight' => '0',
-      'public_pid' => '2',
+      'weight' => 0,
+      'public_pid' => 1,
     ),
-    31 => array(
-      'weight' => '0',
-      'public_pid' => '2',
+    21 => array(
+      'weight' => 0,
+      'public_pid' => 2,
     ),
     26 => array(
-      'weight' => '0',
-      'public_pid' => '2',
+      'weight' => 0,
+      'public_pid' => 2,
     ),
-    46 => array(
-      'weight' => '0',
-      'public_pid' => '2',
+    31 => array(
+      'weight' => 0,
+      'public_pid' => 2,
     ),
     36 => array(
-      'weight' => '0',
-      'public_pid' => '2',
+      'weight' => 0,
+      'public_pid' => 2,
     ),
     41 => array(
-      'weight' => '0',
-      'public_pid' => '2',
+      'weight' => 0,
+      'public_pid' => 2,
     ),
-    2 => array(
-      'weight' => 11,
-      'public_pid' => 0,
+    46 => array(
+      'weight' => 0,
+      'public_pid' => 1,
     ),
-    1 => array(
-      'weight' => 12,
-      'public_pid' => 0,
+    51 => array(
+      'weight' => 0,
+      'public_pid' => 2,
     ),
   );
   $export['imce_roles_profiles'] = $strongarm;
