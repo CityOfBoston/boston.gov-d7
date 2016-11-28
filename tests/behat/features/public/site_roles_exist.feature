@@ -16,3 +16,4 @@ Feature: Site Roles
     | Press Release Editor    |
     | Status Alert Editor     |
     | Guide Author            |
+    | Landing Author          |

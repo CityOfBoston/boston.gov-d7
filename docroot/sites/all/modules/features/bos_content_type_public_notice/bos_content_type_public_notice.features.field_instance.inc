@@ -126,10 +126,10 @@ function bos_content_type_public_notice_field_default_field_instances() {
         'format_handlers' => array(
           'address' => 'address',
           'address-hide-country' => 'address-hide-country',
-          'organisation' => 'organisation',
           'name-oneline' => 'name-oneline',
           'address-hide-postal-code' => 0,
           'address-hide-street' => 0,
+          'organisation' => 0,
           'name-full' => 0,
           'address-optional' => 0,
         ),
@@ -427,9 +427,10 @@ function bos_content_type_public_notice_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'entityreference',
         'settings' => array(
-          'link' => FALSE,
+          'links' => 0,
+          'view_mode' => 'department_listing',
         ),
-        'type' => 'entityreference_label',
+        'type' => 'entityreference_entity_view',
         'weight' => 12,
       ),
       'listing' => array(
