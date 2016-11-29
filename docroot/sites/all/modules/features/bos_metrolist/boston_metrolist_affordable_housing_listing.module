@@ -13,7 +13,7 @@ include_once 'boston_metrolist_affordable_housing_listing.features.inc';
 function boston_metrolist_affordable_housing_listing_preprocess_views_exposed_form(&$vars) {
   if ($vars['form']['#id'] == 'views-exposed-form-metrolist-unit-contacts-page') {
     $vars['widget_groups'] = array(
-      'search' => array(),
+      'key words' => array(),
       'neighborhood' => array(),
     );
 
@@ -21,7 +21,7 @@ function boston_metrolist_affordable_housing_listing_preprocess_views_exposed_fo
       switch ($id) {
 
         case 'filter-combine':
-          $vars['widget_groups']['search'][$id] = $widget;
+          $vars['widget_groups']['key words'][$id] = $widget;
           break;
 
         case 'filter-tid':
