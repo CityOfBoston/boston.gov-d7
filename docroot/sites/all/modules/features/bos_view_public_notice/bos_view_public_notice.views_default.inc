@@ -165,7 +165,6 @@ function bos_view_public_notice_views_default_views() {
   $handler->display->display_options['sorts']['field_public_notice_date_value']['id'] = 'field_public_notice_date_value';
   $handler->display->display_options['sorts']['field_public_notice_date_value']['table'] = 'field_data_field_public_notice_date';
   $handler->display->display_options['sorts']['field_public_notice_date_value']['field'] = 'field_public_notice_date_value';
-  $handler->display->display_options['sorts']['field_public_notice_date_value']['order'] = 'DESC';
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
@@ -307,6 +306,12 @@ function bos_view_public_notice_views_default_views() {
 
   /* Display: Archive */
   $handler = $view->new_display('page', 'Archive', 'archive');
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Content: Date -  start date (field_public_notice_date) */
+  $handler->display->display_options['sorts']['field_public_notice_date_value']['id'] = 'field_public_notice_date_value';
+  $handler->display->display_options['sorts']['field_public_notice_date_value']['table'] = 'field_data_field_public_notice_date';
+  $handler->display->display_options['sorts']['field_public_notice_date_value']['field'] = 'field_public_notice_date_value';
+  $handler->display->display_options['sorts']['field_public_notice_date_value']['order'] = 'DESC';
   $handler->display->display_options['path'] = 'views/public-notices/archive';
   $export['public_notice'] = $view;
 
