@@ -31,6 +31,7 @@ function acquia_permissions_map() {
       'access content',
       'use workbench_moderation my drafts tab',
       'view files',
+      'view all unpublished content',
       'view the administration theme',
       'view revisions',
       'vote on polls',
