@@ -34,7 +34,7 @@
       </tr>
     </thead>
   <?php endif; ?>
-  <tbody>
+  <tbody class=".b--w">
     <?php foreach ($rows as $row_count => $row): ?>
       <tr <?php if ($row_classes[$row_count]) { print 'class="' . implode(' ', $row_classes[$row_count]) .'"';  } ?>>
         <?php foreach ($row as $field => $content): ?>
