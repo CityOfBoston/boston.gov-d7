@@ -167,9 +167,8 @@ function bos_content_type_public_notice_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'node_options_public_notice';
   $strongarm->value = array(
-    0 => 'promote',
-    1 => 'moderation',
-    2 => 'revision',
+    0 => 'moderation',
+    1 => 'revision',
   );
   $export['node_options_public_notice'] = $strongarm;
 
