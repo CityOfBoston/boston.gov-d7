@@ -684,14 +684,13 @@ function boston_preprocess_node_public_notice(&$variables) {
   $cancelled = field_get_items('node', $variables['node'], 'field_cancelled');
 
   if ($cancelled[0]['value']) {
-    $variables['show_alert'] = true;
     $variables['is_cancelled'] = true;
   }
 
   $has_testimony = field_get_items('node', $variables['node'], 'field_is_there_public_testimony');
 
   if ($has_testimony[0]['value']) {
-    $variables['show_alert'] = true;
+    $variables['has_testimony'] = true;
   }
 }
 
