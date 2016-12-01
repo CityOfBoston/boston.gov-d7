@@ -104,10 +104,10 @@ function bos_content_type_public_notice_field_default_field_bases() {
       'cache_count' => 4,
       'cache_enabled' => 0,
       'granularity' => array(
-        'day' => 'day',
+        'day' => 0,
         'hour' => 'hour',
         'minute' => 'minute',
-        'month' => 'month',
+        'month' => 0,
         'second' => 0,
         'year' => 'year',
       ),
