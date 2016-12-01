@@ -34,12 +34,6 @@ function bos_component_news_announcements_strongarm() {
       'listing' => array(
         'custom_settings' => FALSE,
       ),
-      'ribbon_link' => array(
-        'custom_settings' => FALSE,
-      ),
-      'select_list' => array(
-        'custom_settings' => FALSE,
-      ),
     ),
     'extra_fields' => array(
       'form' => array(),
