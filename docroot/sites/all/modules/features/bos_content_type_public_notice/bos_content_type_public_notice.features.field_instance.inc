@@ -1493,7 +1493,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
   $field_instances['node-public_notice-field_time'] = array(
     'bundle' => 'public_notice',
     'deleted' => 0,
-    'description' => '',
+    'description' => 'The expected time that the public testimony will begin.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -1557,7 +1557,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
         'text_parts' => array(),
         'year_range' => '-3:+3',
       ),
-      'type' => 'date_popup',
+      'type' => 'date_text',
       'weight' => 18,
     ),
   );
@@ -1666,6 +1666,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
   t('The Departments that this notice applies to.');
   t('The date and time when the Meeting / Hearing / Working Session is happening. Enter an end time if known.');
   t('The email that should be used to request information about this notice.');
+  t('The expected time that the public testimony will begin.');
   t('The location of the meeting / hearing / working session.');
   t('The name of the primary point of contact for this notice');
   t('The neighborhoods that this notice relates to.');
