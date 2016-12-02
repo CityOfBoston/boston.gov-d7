@@ -5,3 +5,28 @@
  */
 
 include_once 'bos_content_type_public_notice.features.inc';
+
+/**
+ * Implements hook_form_alter().
+ */
+function bos_content_type_public_notice_form_alter(&$form, &$form_state, $form_id) {
+  switch ($form_id) {
+    case 'public_notice_node_form':
+      // Check that the field is set before looping over values.
+      if (isset($form['field_address'][LANGUAGE_NONE])) {
+        // Loop over each values passing $item by reference.
+        foreach ($form['field_address'][LANGUAGE_NONE] as &$item) {
+          if (is_array($item) && isset($item['street_block'])) {
+            $item['name_block']['name_line']['#title'] = 'Name of location';
+            $item['name_block']['name_line']['#description'] = t('For example: Ianella Chamber, BPDA Conference Room, or Environment Department');
+            $item['street_block']['thoroughfare']['#title'] = 'Address of location';
+            $item['street_block']['thoroughfare']['#description'] = t('For example: 1 City Hall Plaza or 1010 Massachusetts Ave');
+            $item['street_block']['premise']['#title'] = 'Room or floor number';
+            $item['street_block']['premise']['#description'] = t('For example: Fifth floor or Room 709');
+            $item['locality_block']['postal_code']['#description'] = t('City Hall is 02201');
+          }
+        }
+      }
+      break;
+  }
+}

@@ -12,10 +12,10 @@
   * `composer.lock`
 
 * Modify the following files:
-  * docroot/sites/default/settings/local.settings.php
+  * docroot/sites/default/settings/default.local.settings.php
     * set `port` to `33067`
     * set `base_url` to `https://spyglass.dd:8443`
-  * docroot/sites/hub/settings/local.settings.php
+  * docroot/sites/hub/settings/default.local.settings.php
     * set `port` to `33067`
     * set `base_url` to `https://hub.dd:8443`
 
@@ -25,7 +25,7 @@
     * **local.sites.php**: Uncomment both `$sites` lines; remove `loc.` from each config line.
 
   * `copy tests/behat/example.local.yml tests/behat/local.yml`
-    * **local.yml**: Update default: base_url: https://spyglass.dd:8443 ; Update hub: base_url: https://hub.dd:8443
+    * **local.yml**: Update local: extensions: base_url: https://spyglass.dd:8443 ; Update hub: extensions: Behat\MinkExtension: base_url: https://hub.dd:8443
 
 * In the root of repository:
 ```

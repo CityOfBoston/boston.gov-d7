@@ -234,34 +234,22 @@ a.item-link {
   }
 
   .date-flag {
-    color: color(optimistic-blue);
-    position: static;
-    padding: 0;
-    width: auto;
-    margin-left:0;
+    background-image: url("../img/ribbon.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
     font-family: $montserrat;
+    font-weight: 700;
+    position: absolute;
+    top: -1px;
+    margin-left: 10px;
+    width: 65px;
+    padding: 20px 15px 35px;
+    z-index: 1;
     font-weight: 700;
     text-transform: uppercase;
     line-height: 1;
-    position: relative;
-    top: 20px;
-
-    @include respond-to(m) {
-      position: absolute;
-      top: -1px;
-      margin-left: 10px;
-      width: 65px;
-      padding: 20px 15px 35px;
-      z-index: 1;
-      background-image: url("../img/ribbon.svg");
-      background-repeat: no-repeat;
-      background-size: cover;
-      text-align: center;
-      font-family: $montserrat;
-      font-weight: 700;
-      text-transform: uppercase;
-      line-height: 1;
-      color: color(text-dark);
+    color: color(text-dark);
 
       &--blue {
         background-image: url("../img/ribbon-charles.svg");
@@ -272,7 +260,6 @@ a.item-link {
         margin-left: 0;
         top: 0;
       }
-    }
   }
 
   .news-right {
@@ -280,6 +267,15 @@ a.item-link {
   }
 
   .contact-wrapper {
+
+    .field-name-field-contact {
+      @include respond-to(xl) {
+        text-align: center;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    }
 
     .department-icon {
 
@@ -423,6 +419,51 @@ a.item-link {
   .news-left {
     @include respond-to(m) {
       margin-bottom: 1em;
+    }
+  }
+}
+
+
+.featured-item-details {
+  .date-flag {
+    background-image: none;
+    background-repeat: no-repeat;
+    background-size: auto;    
+    width: auto;
+    color: color(optimistic-blue);
+    text-align: left;
+    position: relative;
+    top: 20px;
+    padding: 0;
+
+    
+    @include respond-to(m) {
+      position: absolute;
+      top: -1px;
+      margin-left: 10px;
+      width: 65px;
+      padding: 20px 15px 35px;
+      z-index: 1;
+      background-image: url("../img/ribbon.svg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      text-align: center;
+      font-family: $montserrat;
+      font-weight: 700;
+      text-transform: uppercase;
+      line-height: 1;
+      color: color(text-dark);
+
+      &--blue {
+        background-image: url("../img/ribbon-charles.svg");
+        color: color(white);
+      }
+
+      &--left {
+        margin-left: 0;
+        top: 0;
+      }    
+
     }
   }
 }

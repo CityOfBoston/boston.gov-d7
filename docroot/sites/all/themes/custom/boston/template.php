@@ -600,6 +600,7 @@ function boston_preprocess_node_event(&$variables) {
     'calendar_listing',
     'full',
   );
+  $dates = field_get_items('node', $variables['node'], 'field_event_dates');
   if (in_array($variables['view_mode'], $time_range_view_modes) && $variables['type'] === 'event') {
     // We need to add a variable which contains the time range output to be
     // displayed. We'd have to override some theming otherwise and it's not
@@ -628,6 +629,18 @@ function boston_preprocess_node_event(&$variables) {
       $variables['time_range'] = '';
     }
   }
+  // If the event has passed, field_event_dates is empty. Need to be able
+  // to display date even if the event is over. Thus, this.
+  if (!empty($variables['content']['field_event_dates'])) {
+    $variables['event_date_canonical'] = $variables['content']['field_event_dates'];
+  } else {
+    $date_time = $dates[0]['value'];
+    $time_zone = $dates[0]['timezone'];
+    $start_date = strtotime($date_time . " +0000");
+    $event_date = format_date($start_date, 'medium','F j, Y',$time_zone);
+    $variables['event_date_canonical'] = $event_date;
+  }
+
 }
 
 /**
@@ -671,14 +684,13 @@ function boston_preprocess_node_public_notice(&$variables) {
   $cancelled = field_get_items('node', $variables['node'], 'field_cancelled');
 
   if ($cancelled[0]['value']) {
-    $variables['show_alert'] = true;
     $variables['is_cancelled'] = true;
   }
 
   $has_testimony = field_get_items('node', $variables['node'], 'field_is_there_public_testimony');
 
   if ($has_testimony[0]['value']) {
-    $variables['show_alert'] = true;
+    $variables['has_testimony'] = true;
   }
 }
 
@@ -1321,6 +1333,7 @@ function boston_preprocess_paragraphs_item_iframe(&$variables) {
  */
 function boston_preprocess_paragraphs_item_video(&$variables) {
   drupal_add_js('https://www.youtube.com/iframe_api');
+  drupal_add_js(drupal_get_path('theme', $GLOBALS['theme']) . '/dist/js/calendar-live-stream.js');
 }
 
 function boston_preprocess_field_collection_item_field_transactions(&$variables) {
