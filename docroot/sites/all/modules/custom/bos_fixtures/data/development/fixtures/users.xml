@@ -42,4 +42,11 @@
     <mail>guide_author_fixture@example.com</mail>
     <roles>Guide Author</roles>
   </user>
+  <user>
+    <id>u0006</id>
+    <name>guide_author_fixture</name>
+    <pass>test1P*tttt</pass>
+    <mail>landing_author_fixture@example.com</mail>
+    <roles>Landing Author</roles>
+  </user>
 </users>

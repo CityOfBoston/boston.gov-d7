@@ -103,9 +103,13 @@ hide($content['links']);
           <?php print render($content['body']); ?>
         </div>
       <?php endif; ?>
-      <?php if ($show_alert && isset($content['field_time'])): ?>
+      <?php if ($has_testimony): ?>
         <div class="b b--g b--p300">
-          <div class="n-li-a">Public testimony begins at <?php print render($content['field_time']) ?></div>
+          <?php if (isset($content['field_time'])): ?>
+            <div class="n-li-a">Public testimony begins at <?php print render($content['field_time']) ?></div>
+          <?php else: ?>
+            <div class="n-li-a">The public can offer testimony.</div>
+          <?php endif; ?>
         </div>
       <?php endif; ?>
       <?php if (isset($content['field_drawer'])): ?>
