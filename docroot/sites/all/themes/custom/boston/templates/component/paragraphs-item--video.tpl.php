@@ -26,6 +26,10 @@
  */
 
  $id = uniqid();
+$event_start = $content['field_event_dates']['#object']->field_event_dates['und']['0']['value'];
+$event_start = new DateTime($event_start, new DateTimeZone('UTC'));
+$event_start->setTimeZone(new DateTimeZone('America/New_York'));
+
 ?>
 
 <!-- script goes here -->
@@ -117,15 +121,16 @@ function liveStreamNotReady(){
 
 var doc = document;
 var vids = vids || {};
-var live_stream_status = live_stream_status || 0;
-imgButton = doc.querySelector("article.live-stream-1 .plyr__play img");
-liveStreamTxt = doc.querySelector("article.live-stream-1 .plyr__play div");
-playerElement = doc.querySelector("article.live-stream-1 .plyr__play");
+var live_stream_status = <?php echo($field_live_stream[0]['value']) ?>;
+imgButton = doc.querySelector(".plyr__play img");
+liveStreamTxt = doc.querySelector(".plyr__play div");
+playerElement = doc.querySelector(".plyr__play");
 vids['<?php print $id; ?>'] = { button: document.getElementById("plyr__<?php print $id; ?>") };
 
 
 if (live_stream_status == 1) {
-  var isLiveStreamStart = live_stream_start.getTime();
+  var event_start = new Date('<?php echo($event_start->format('Y-m-d H:i:s T')); ?>');
+  var isLiveStreamStart = event_start.getTime();
   var isNow = new Date().getTime();
   var goTime;
   if (isNow < isLiveStreamStart) {
