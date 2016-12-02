@@ -152,6 +152,75 @@ function bos_metrolist_views_default_views() {
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '10';
   $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'title' => 'title',
+    'field_mpu_street_number' => 'field_mpu_street_number',
+    'field_mpu_street_name' => 'field_mpu_street_name',
+    'field_mpu_zipcode' => 'field_mpu_zipcode',
+    'field_mpu_neighborhood' => 'field_mpu_neighborhood',
+    'field_mpu_property_phone' => 'field_mpu_property_phone',
+    'field_mpu_property_email' => 'field_mpu_property_email',
+    'field_mpu_unit_type' => 'field_mpu_unit_type',
+  );
+  $handler->display->display_options['style_options']['default'] = '-1';
+  $handler->display->display_options['style_options']['info'] = array(
+    'title' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_mpu_street_number' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_mpu_street_name' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_mpu_zipcode' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_mpu_neighborhood' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_mpu_property_phone' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_mpu_property_email' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_mpu_unit_type' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -219,6 +288,7 @@ function bos_metrolist_views_default_views() {
   $handler->display->display_options['fields']['field_mpu_unit_type']['table'] = 'field_data_field_mpu_unit_type';
   $handler->display->display_options['fields']['field_mpu_unit_type']['field'] = 'field_mpu_unit_type';
   $handler->display->display_options['fields']['field_mpu_unit_type']['label'] = '';
+  $handler->display->display_options['fields']['field_mpu_unit_type']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_mpu_unit_type']['element_type'] = '0';
   $handler->display->display_options['fields']['field_mpu_unit_type']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_mpu_unit_type']['element_wrapper_type'] = '0';
