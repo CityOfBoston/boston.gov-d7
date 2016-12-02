@@ -515,7 +515,7 @@ function bos_profile_update_7015() {
     // Custom:
     'bos_salesforce',
     // Feature:
-    'boston_metrolist_affordable_housing_listing',
+    'bos_metrolist',
   );
   module_enable($enabled_modules);
 }

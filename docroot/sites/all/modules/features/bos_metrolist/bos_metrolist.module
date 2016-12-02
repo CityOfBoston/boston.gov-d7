@@ -4,13 +4,12 @@
  * Code for the Boston Metrolist Affordable Housing Listing feature.
  */
 
-include_once 'boston_metrolist_affordable_housing_listing.features.inc';
-
+include_once 'bos_metrolist.features.inc';
 
 /**
  * Implements hook_preprocess_views_exposed_form().
  */
-function boston_metrolist_affordable_housing_listing_preprocess_views_exposed_form(&$vars) {
+function bos_metrolist_preprocess_views_exposed_form(&$vars) {
   if ($vars['form']['#id'] == 'views-exposed-form-metrolist-project-units-page') {
     $vars['widget_groups'] = array(
       'key words' => array(),
