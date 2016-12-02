@@ -1,7 +1,7 @@
 name = Boston Metrolist Affordable Housing Listing
 description = Metrolist project unit content type and view + Salesforce importer and field mapping
 core = 7.x
-package = Features
+package = Boston
 version = 7.x-1.0
 dependencies[] = better_exposed_filters
 dependencies[] = entityreference
