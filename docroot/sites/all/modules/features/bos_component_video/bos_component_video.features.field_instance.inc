@@ -10,6 +10,56 @@
 function bos_component_video_field_default_field_instances() {
   $field_instances = array();
 
+  // Exported field_instance: 'paragraphs_item-video-field_contact'.
+  $field_instances['paragraphs_item-video-field_contact'] = array(
+    'bundle' => 'video',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 6,
+      ),
+      'paragraphs_editor_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'paragraphs_item',
+    'fences_wrapper' => 'no_wrapper',
+    'field_name' => 'field_contact',
+    'label' => 'Department',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference',
+      'settings' => array(
+        'entityreference_autocreate' => array(
+          'active' => 0,
+          'author' => '',
+          'author_current_user' => 1,
+          'status' => -1,
+        ),
+        'match_operator' => 'CONTAINS',
+        'path' => '',
+        'size' => 60,
+      ),
+      'type' => 'entityreference_autocomplete',
+      'weight' => 2,
+    ),
+  );
+
   // Exported field_instance: 'paragraphs_item-video-field_event_dates'.
   $field_instances['paragraphs_item-video-field_event_dates'] = array(
     'bundle' => 'video',
@@ -64,7 +114,7 @@ function bos_component_video_field_default_field_instances() {
         'year_range' => '-3:+3',
       ),
       'type' => 'date_popup',
-      'weight' => 9,
+      'weight' => 6,
     ),
   );
 
@@ -200,14 +250,14 @@ function bos_component_video_field_default_field_instances() {
       ),
     ),
     'deleted' => 0,
-    'description' => 'Check this if the video will be a live stream.',
+    'description' => 'Check if the video will be live streamed',
     'display' => array(
       'default' => array(
         'label' => 'above',
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 6,
+        'weight' => 8,
       ),
       'paragraphs_editor_preview' => array(
         'label' => 'above',
@@ -228,60 +278,10 @@ function bos_component_video_field_default_field_instances() {
       'active' => 1,
       'module' => 'options',
       'settings' => array(
-        'display_label' => 1,
+        'display_label' => 0,
       ),
       'type' => 'options_onoff',
-      'weight' => 8,
-    ),
-  );
-
-  // Exported field_instance: 'paragraphs_item-video-field_photo_credit'.
-  $field_instances['paragraphs_item-video-field_photo_credit'] = array(
-    'bundle' => 'video',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'Give credit to the department or person that created this video. Examples:
-
-By Marty Walsh
-By <a href="/departments/public-works">Public Works</a> (By &lt;a href=&quot;/departments/public-works&quot;&gt;Public Works&lt;/a&gt;)',
-    'display' => array(
-      'default' => array(
-        'label' => 'hidden',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_plain',
-        'weight' => 2,
-      ),
-      'paragraphs_editor_preview' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'paragraphs_item',
-    'fences_wrapper' => 'no_wrapper',
-    'field_name' => 'field_photo_credit',
-    'label' => 'Video Credit',
-    'required' => 0,
-    'settings' => array(
-      'linkit' => array(
-        'button_text' => 'Search',
-        'enable' => 0,
-        'profile' => '',
-      ),
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'show_token_tree' => 0,
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 2,
+      'weight' => 7,
     ),
   );
 
@@ -381,12 +381,9 @@ By <a href="/departments/public-works">Public Works</a> (By &lt;a href=&quot;/de
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Check this if the video will be a live stream.');
+  t('Check if the video will be live streamed');
+  t('Department');
   t('Event Dates');
-  t('Give credit to the department or person that created this video. Examples:
-
-By Marty Walsh
-By <a href="/departments/public-works">Public Works</a> (By &lt;a href=&quot;/departments/public-works&quot;&gt;Public Works&lt;/a&gt;)');
   t('Large scale image to use as the image for the video.');
   t('Live Stream');
   t('Poster Image');
@@ -394,7 +391,6 @@ By <a href="/departments/public-works">Public Works</a> (By &lt;a href=&quot;/de
   t('The ID of the video you want to embed. Currently only supports Youtube. If given the Youtube URL https://www.youtube.com/watch?v=bTqVqk7FSmY, then "bTqVqk7FSmY" would be ID.');
   t('This will display as the subnav on topic pages.');
   t('Title');
-  t('Video Credit');
   t('Video ID');
 
   return $field_instances;

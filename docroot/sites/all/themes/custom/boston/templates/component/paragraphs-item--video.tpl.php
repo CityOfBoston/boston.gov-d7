@@ -44,9 +44,11 @@ $event_start->setTimeZone(new DateTimeZone('America/New_York'));
       <div class="plyr__overlay"></div>
       <div class="plyr__meta">
         <h2 class="sh plyr__title"><?php print render($content['field_title']) ?></h2>
+	<?php if (isset($content['field_contact'])) : ?>
         <div class="plyr__credit">
-	  <?php print render($content['field_photo_credit']) ?>
+	  Credit: <?php print_r($field_contact[0]['entity']->name) ?>
       	</div>
+	<?php endif; ?>
         <div class="plyr__play">
 	  <img src="/<?php print drupal_get_path('theme', $GLOBALS['theme']); ?>/dist/img/icon-play.svg" alt="Play <?php print render($content['field_title']) ?>" />
 	  <div class="plyr__livestream-not_ready">This live stream event hasn't started.<br />Check back in <span id="plyr__livestream-countdown"></span></div>	  
