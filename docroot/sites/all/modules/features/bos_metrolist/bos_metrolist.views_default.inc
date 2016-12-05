@@ -244,7 +244,7 @@ function bos_metrolist_views_default_views() {
   $handler->display->display_options['fields']['field_mpu_street_name']['id'] = 'field_mpu_street_name';
   $handler->display->display_options['fields']['field_mpu_street_name']['table'] = 'field_data_field_mpu_street_name';
   $handler->display->display_options['fields']['field_mpu_street_name']['field'] = 'field_mpu_street_name';
-  $handler->display->display_options['fields']['field_mpu_street_name']['label'] = 'Address';
+  $handler->display->display_options['fields']['field_mpu_street_name']['label'] = 'Property Address';
   $handler->display->display_options['fields']['field_mpu_street_name']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['field_mpu_street_name']['alter']['text'] = '[field_mpu_street_number] [field_mpu_street_name]';
   $handler->display->display_options['fields']['field_mpu_street_name']['element_type'] = '0';
@@ -275,10 +275,12 @@ function bos_metrolist_views_default_views() {
   $handler->display->display_options['fields']['field_mpu_property_phone']['id'] = 'field_mpu_property_phone';
   $handler->display->display_options['fields']['field_mpu_property_phone']['table'] = 'field_data_field_mpu_property_phone';
   $handler->display->display_options['fields']['field_mpu_property_phone']['field'] = 'field_mpu_property_phone';
+  $handler->display->display_options['fields']['field_mpu_property_phone']['label'] = 'Phone';
   /* Field: Content: Property Email */
   $handler->display->display_options['fields']['field_mpu_property_email']['id'] = 'field_mpu_property_email';
   $handler->display->display_options['fields']['field_mpu_property_email']['table'] = 'field_data_field_mpu_property_email';
   $handler->display->display_options['fields']['field_mpu_property_email']['field'] = 'field_mpu_property_email';
+  $handler->display->display_options['fields']['field_mpu_property_email']['label'] = 'Email';
   $handler->display->display_options['fields']['field_mpu_property_email']['element_type'] = '0';
   $handler->display->display_options['fields']['field_mpu_property_email']['element_wrapper_type'] = '0';
   $handler->display->display_options['fields']['field_mpu_property_email']['element_default_classes'] = FALSE;
