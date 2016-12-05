@@ -198,6 +198,8 @@ projects:
     version: 1.2
   redirect:
     version: 1.0-rc3
+  salesforce:
+    version: 3.2
   services:
     version: 3.14
   services_api_key_auth:
