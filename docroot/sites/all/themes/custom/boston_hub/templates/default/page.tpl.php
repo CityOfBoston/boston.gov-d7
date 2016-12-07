@@ -48,6 +48,12 @@
       </a>
 
       <div class="header-right">
+        <?php print theme('links__system_secondary_menu', array(
+          'links' => $secondary_menu,
+          'attributes' => array(
+            'class' => array('header-menu', 'links', 'inline', 'clearfix'),
+          ),
+        )); ?>
         <?php if ($logged_in): ?>
           <div class="user_info">
             <input type="checkbox" id="dd__menu__box" class="dd__input">
@@ -78,13 +84,6 @@
               </div>
             </div>
           </div>
-        <?php else: ?>
-          <?php print theme('links__system_secondary_menu', array(
-            'links' => $secondary_menu,
-            'attributes' => array(
-              'class' => array('header-menu', 'links', 'inline', 'clearfix'),
-            ),
-          )); ?>
         <?php endif; ?>
         <?php print render($page['header']); ?>
       </div>

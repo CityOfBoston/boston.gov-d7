@@ -105,3 +105,25 @@
   }
 
 }
+
+.logged-in .header-right {
+
+  li[class^="menu-"].first {
+    display: none;
+  }
+
+}
+
+.not-logged-in .header-right {
+
+  li[class^="menu-"] {
+    display: none;
+  }
+
+  li[class^="menu-"].first {
+    display: block;
+  }
+
+
+
+}
