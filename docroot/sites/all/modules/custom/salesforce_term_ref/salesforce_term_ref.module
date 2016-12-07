@@ -1,0 +1,120 @@
+<?php
+
+module_load_include('inc', 'salesforce_term_ref', 'includes/salesforce_term_ref.fieldmap_type');
+
+/**
+ * Implementation of hook_salesforce_pull_entity_value_alter()
+ */
+function salesforce_term_ref_salesforce_pull_entity_value_alter(&$value, $field_map, $sf_object) {
+  if (is_term_ref($field_map)) {
+    handle_related_entity($value, $field_map, $sf_object);
+  }
+}
+/**
+ * @param $field_map
+ * @return bool
+ */
+function is_term_ref($field_map) {
+  return $field_map['drupal_field']['fieldmap_type'] == 'term_ref';
+}
+/**
+ * @param $value
+ * @param $field_map
+ * @param $sf_object
+ */
+function handle_related_entity(&$value, $field_map, $sf_object) {
+  $field_info_field = get_drupal_field_info($field_map);
+  $vocabulary = load_vocabulary($field_info_field);
+  if (isset($vocabulary)) {
+    $sf_picklist_str = get_sf_field_value($field_map, $sf_object);
+    if (!empty($sf_picklist_str)) {
+      $sf_picklist_values = explode(SALESFORCE_MAPPING_ARRAY_DELIMITER, $sf_picklist_str);
+      $terms = array();
+      foreach ($sf_picklist_values as $picklist_value) {
+        $term = create_or_load_term($picklist_value, $vocabulary);
+        if (isset($term)) {
+          $terms[] = $term;
+        }
+      }
+      $value = make_array_of_term_ids($terms);
+      if ($field_info_field['cardinality'] == 1) {
+        $value = reset($value);
+      }
+    }
+  }
+}
+/**
+ * @param $field_map
+ * @return bool|mixed|void
+ */
+function get_drupal_field_info($field_map) {
+  $drupal_field = get_drupal_field_name($field_map);
+  return field_info_field($drupal_field);
+}
+/**
+ * @param $field_map
+ * @return string
+ */
+function get_drupal_field_name($field_map) {
+  return $field_map['drupal_field']['fieldmap_value'];
+}
+/**
+ * @param $field_info_field
+ * @return mixed
+ */
+function load_vocabulary($field_info_field) {
+  $vocabulary = null;
+  //$vocabularyName = $field_info_field['settings']['allowed_values'][0]['vocabulary'];
+  $vocabularyName = array_keys($field_info_field['settings']['handler_settings']['target_bundles']);
+  if (isset($vocabularyName)) {
+    $vocabulary = taxonomy_vocabulary_machine_name_load($vocabularyName);
+  }
+  return $vocabulary;
+}
+function get_sf_field_value($field_map, $sf_object) {
+  $sf_field = $field_map['salesforce_field']['name'];
+  $sf_value = $sf_object[$sf_field];
+  return $sf_value;
+}
+/**
+ * @param $picklist_value
+ * @param $vocabulary
+ * @return array|mixed|null
+ */
+function create_or_load_term($picklist_value, $vocabulary) {
+  $term = null;
+  if (!empty($picklist_value)) {
+    $existing_terms = taxonomy_get_term_by_name($picklist_value, $vocabulary->machine_name);
+    if (empty($existing_terms)) {
+      $term = create_new_term($vocabulary, $picklist_value);
+    } else {
+      $term = reset($existing_terms);
+    }
+  }
+  return $term;
+}
+/**
+ * @param $vocabulary
+ * @param $term_name
+ * @return array
+ */
+function create_new_term($vocabulary, $term_name) {
+  $new_term = new stdClass();
+  $new_term->vid = $vocabulary->vid;
+  $new_term->name = $term_name;
+  $new_term->format = 'plain_text';
+  $new_term->description = 'This term came directly from Salesforce.';
+  $result = taxonomy_term_save($new_term);
+  return $new_term;
+}
+/**
+ * @param $terms
+ * @return array
+ */
+function make_array_of_term_ids($terms) {
+  $term_ids = array();
+  foreach ($terms as $new_term) {
+    $term_ids[] = $new_term->tid;
+  }
+  return $term_ids;
+}

@@ -1,0 +1,8 @@
+name = Salesforce Term Reference
+description = Adds salesforce mapping handler to match incoming data to term reference on content type.
+package = Salesforce
+core = 7.x
+files[] = includes/salesforce_term_ref.fieldmap_type.inc
+
+dependencies[] = salesforce
+dependencies[] = salesforce_mapping
