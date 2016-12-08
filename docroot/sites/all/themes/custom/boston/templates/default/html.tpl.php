@@ -40,5 +40,6 @@
   <?php print $page_top; ?>
   <?php print $page; ?>
   <?php print $page_bottom; ?>
+  <script src="<?php print $asset_url ?>/scripts/all.js" async></script>
 </body>
 </html>
