@@ -264,6 +264,9 @@ function bos_metrolist_views_default_views() {
   $handler->display->display_options['fields']['field_mpu_neighborhood']['id'] = 'field_mpu_neighborhood';
   $handler->display->display_options['fields']['field_mpu_neighborhood']['table'] = 'field_data_field_mpu_neighborhood';
   $handler->display->display_options['fields']['field_mpu_neighborhood']['field'] = 'field_mpu_neighborhood';
+  $handler->display->display_options['fields']['field_mpu_neighborhood']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['field_mpu_neighborhood']['alter']['path'] = '/neighborhood/[field_mpu_neighborhood]';
+  $handler->display->display_options['fields']['field_mpu_neighborhood']['alter']['replace_spaces'] = TRUE;
   $handler->display->display_options['fields']['field_mpu_neighborhood']['element_type'] = '0';
   $handler->display->display_options['fields']['field_mpu_neighborhood']['element_wrapper_type'] = '0';
   $handler->display->display_options['fields']['field_mpu_neighborhood']['element_default_classes'] = FALSE;
