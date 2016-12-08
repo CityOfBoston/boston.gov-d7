@@ -508,13 +508,10 @@ function bos_profile_update_7014() {
  */
 function bos_profile_update_7015() {
   $enabled_modules = array(
-    // Contrib:
     'salesforce',
-    'salesforce_mapping',    
+    'salesforce_mapping',
     'salesforce_pull',
-    // Custom:
-    'bos_salesforce',
-    // Feature:
+    'salesforce_term_ref',
     'bos_metrolist',
   );
   module_enable($enabled_modules);
