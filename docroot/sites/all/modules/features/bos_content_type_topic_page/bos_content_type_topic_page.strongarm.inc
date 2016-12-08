@@ -14,7 +14,7 @@ function bos_content_type_topic_page_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'additional_settings__active_tab_topic_page';
-  $strongarm->value = 'edit-workflow';
+  $strongarm->value = 'edit-xmlsitemap';
   $export['additional_settings__active_tab_topic_page'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -208,6 +208,16 @@ function bos_content_type_topic_page_strongarm() {
     0 => 'workbench_scheduler_limit_current_revision',
   );
   $export['workbench_scheduler_topic_page'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'xmlsitemap_settings_node_topic_page';
+  $strongarm->value = array(
+    'status' => '1',
+    'priority' => '0.8',
+  );
+  $export['xmlsitemap_settings_node_topic_page'] = $strongarm;
 
   return $export;
 }
