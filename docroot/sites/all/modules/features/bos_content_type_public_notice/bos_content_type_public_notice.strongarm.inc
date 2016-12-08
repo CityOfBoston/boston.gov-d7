@@ -199,7 +199,7 @@ function bos_content_type_public_notice_strongarm() {
   $strongarm->name = 'xmlsitemap_settings_node_public_notice';
   $strongarm->value = array(
     'status' => '1',
-    'priority' => '0.8',
+    'priority' => '1.0',
   );
   $export['xmlsitemap_settings_node_public_notice'] = $strongarm;
 

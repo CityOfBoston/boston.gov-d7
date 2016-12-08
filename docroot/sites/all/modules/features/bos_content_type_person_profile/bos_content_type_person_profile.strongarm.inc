@@ -196,7 +196,7 @@ function bos_content_type_person_profile_strongarm() {
   $strongarm->name = 'xmlsitemap_settings_node_person_profile';
   $strongarm->value = array(
     'status' => '1',
-    'priority' => '0.5',
+    'priority' => '0.8',
   );
   $export['xmlsitemap_settings_node_person_profile'] = $strongarm;
 

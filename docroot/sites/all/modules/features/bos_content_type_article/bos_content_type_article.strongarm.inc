@@ -196,7 +196,7 @@ function bos_content_type_article_strongarm() {
   $strongarm->name = 'xmlsitemap_settings_node_article';
   $strongarm->value = array(
     'status' => '1',
-    'priority' => '0.8',
+    'priority' => '1.0',
   );
   $export['xmlsitemap_settings_node_article'] = $strongarm;
 

@@ -176,7 +176,7 @@ function bos_content_type_how_to_strongarm() {
   $strongarm->name = 'xmlsitemap_settings_node_how_to';
   $strongarm->value = array(
     'status' => '1',
-    'priority' => '0.5',
+    'priority' => '0.8',
   );
   $export['xmlsitemap_settings_node_how_to'] = $strongarm;
 
