@@ -501,21 +501,3 @@ function bos_profile_update_7014() {
   );
   module_enable($enabled_modules);
 }
-
-/**
- * Updates for Metrolist + Salesforce
- * for 11/30/2016.
- */
-function bos_profile_update_7015() {
-  $enabled_modules = array(
-    // Contrib:
-    'salesforce',
-    'salesforce_mapping',    
-    'salesforce_pull',
-    // Custom:
-    'bos_salesforce',
-    // Feature:
-    'bos_metrolist',
-  );
-  module_enable($enabled_modules);
-}
