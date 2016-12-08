@@ -51,7 +51,6 @@ features[field_instance][] = node-event-field_featured
 features[field_instance][] = node-event-field_intro_image
 features[field_instance][] = node-event-field_intro_text
 features[field_instance][] = node-event-field_links
-features[field_instance][] = node-event-field_live_stream
 features[field_instance][] = node-event-field_multiple_neighborhoods
 features[field_instance][] = node-event-field_people
 features[field_instance][] = node-event-field_phone_number

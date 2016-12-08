@@ -60,6 +60,64 @@ function bos_component_video_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'paragraphs_item-video-field_event_dates'.
+  $field_instances['paragraphs_item-video-field_event_dates'] = array(
+    'bundle' => 'video',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'date',
+        'settings' => array(
+          'format_type' => 'long',
+          'fromto' => 'both',
+          'multiple_from' => '',
+          'multiple_number' => '',
+          'multiple_to' => '',
+          'show_remaining_days' => FALSE,
+          'show_repeat_rule' => 'show',
+        ),
+        'type' => 'date_default',
+        'weight' => 8,
+      ),
+      'paragraphs_editor_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'paragraphs_item',
+    'fences_wrapper' => 'no_wrapper',
+    'field_name' => 'field_event_dates',
+    'label' => 'Event Dates',
+    'required' => 0,
+    'settings' => array(
+      'default_value' => 'now',
+      'default_value2' => 'same',
+      'default_value_code' => '',
+      'default_value_code2' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'date',
+      'settings' => array(
+        'increment' => 15,
+        'input_format' => 'm/d/Y - g:i:sa',
+        'input_format_custom' => '',
+        'label_position' => 'above',
+        'no_fieldset' => 0,
+        'repeat_collapsed' => 1,
+        'text_parts' => array(),
+        'year_range' => '-3:+3',
+      ),
+      'type' => 'date_popup',
+      'weight' => 7,
+    ),
+  );
+
   // Exported field_instance: 'paragraphs_item-video-field_extra_info'.
   $field_instances['paragraphs_item-video-field_extra_info'] = array(
     'bundle' => 'video',
@@ -183,6 +241,50 @@ function bos_component_video_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'paragraphs_item-video-field_live_stream'.
+  $field_instances['paragraphs_item-video-field_live_stream'] = array(
+    'bundle' => 'video',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'Check if the video will be live streamed',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 7,
+      ),
+      'paragraphs_editor_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'paragraphs_item',
+    'fences_wrapper' => 'no_wrapper',
+    'field_name' => 'field_live_stream',
+    'label' => 'Live Stream',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 6,
+    ),
+  );
+
   // Exported field_instance: 'paragraphs_item-video-field_short_title'.
   $field_instances['paragraphs_item-video-field_short_title'] = array(
     'bundle' => 'video',
@@ -279,8 +381,11 @@ function bos_component_video_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Check if the video will be live streamed');
   t('Department');
+  t('Event Dates');
   t('Large scale image to use as the image for the video.');
+  t('Live Stream');
   t('Poster Image');
   t('Short Title');
   t('The ID of the video you want to embed. Currently only supports Youtube. If given the Youtube URL https://www.youtube.com/watch?v=bTqVqk7FSmY, then "bTqVqk7FSmY" would be ID.');
