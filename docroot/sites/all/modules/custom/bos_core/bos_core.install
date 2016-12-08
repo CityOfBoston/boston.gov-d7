@@ -398,3 +398,17 @@ function bos_core_update_7021() {
   );
   module_enable($enabled_modules);
 }
+
+/**
+ * Updates for 12/8/2016.
+ */
+function bos_core_update_7022() {
+  $enabled_modules = array(
+    'xmlsitemap',
+    'xmlsitemap-custom',
+    'xmlsitemap-node',
+    'xmlsitemap-menu',
+    'xmlsitemap-taxonomy',
+  );
+  module_enable($enabled_modules);
+}
