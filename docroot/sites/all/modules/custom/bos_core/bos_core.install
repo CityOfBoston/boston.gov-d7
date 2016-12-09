@@ -405,10 +405,10 @@ function bos_core_update_7021() {
 function bos_core_update_7022() {
   $enabled_modules = array(
     'xmlsitemap',
-    'xmlsitemap-custom',
-    'xmlsitemap-node',
-    'xmlsitemap-menu',
-    'xmlsitemap-taxonomy',
+    'xmlsitemap_custom',
+    'xmlsitemap_node',
+    'xmlsitemap_menu',
+    'xmlsitemap_taxonomy',
   );
   module_enable($enabled_modules);
 }
