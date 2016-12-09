@@ -48,7 +48,6 @@ features[field_instance][] = node-public_notice-field_featured
 features[field_instance][] = node-public_notice-field_intro_text
 features[field_instance][] = node-public_notice-field_is_there_public_testimony
 features[field_instance][] = node-public_notice-field_links
-features[field_instance][] = node-public_notice-field_live_stream
 features[field_instance][] = node-public_notice-field_multiple_neighborhoods
 features[field_instance][] = node-public_notice-field_phone_number
 features[field_instance][] = node-public_notice-field_public_notice_date
