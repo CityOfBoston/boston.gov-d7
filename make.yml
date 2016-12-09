@@ -287,6 +287,8 @@ projects:
       # Allows a hook to alter the blacklist implemented by wysiwyg filter so
       # we can allow trusted user roles to embed iframes.
       - https://www.drupal.org/files/wysiwyg_filter_alter_blacklist-1783966-4.patch
+  xmlsitemap:
+    version: 2.3
   google_tag:
     version : 1.0
   ape:

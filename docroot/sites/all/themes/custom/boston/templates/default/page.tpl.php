@@ -36,10 +36,8 @@
         </h1>
       <?php endif; ?>
 
-      <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="seal" class="header-seal">
-        <span class="seal-image"><?php print file_get_contents(drupal_get_path('theme', $GLOBALS['theme']) . '/dist/img/seal.svg') ?></span>
-        <div class="hide-shadow-layer"></div>
-        <div class="shadow-layer"></div>
+      <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" class="s">
+        <img src="<?php print $asset_url ?>/images/<?php print $asset_name ?>/seal.svg" alt="City of Boston Seal" class="s-i" />
       </a>
 
       <div class="tr">

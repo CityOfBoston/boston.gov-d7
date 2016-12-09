@@ -32,6 +32,13 @@
         }
       });
 
+      document.body.addEventListener('seal:hidden', function () {
+        $('.topic-title').fadeIn(80)
+      });
+
+      document.body.addEventListener('seal:down', function () {
+        $('.topic-title').fadeOut(30)
+      });
     }
   };
 

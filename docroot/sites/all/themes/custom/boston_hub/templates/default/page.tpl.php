@@ -42,12 +42,17 @@
         </h1>
       <?php endif; ?>
 
-      <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="seal" class="header-seal" title="Go Home">
-        <span class="seal-image"><?php print file_get_contents(drupal_get_path('theme', $GLOBALS['theme']) . '/dist/img/seal.svg') ?></span>
-        <div class="shadow-layer"></div>
+      <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" class="s">
+        <img src="<?php print $asset_url ?>/images/<?php print $asset_name ?>/seal.svg" alt="City of Boston Seal" class="s-i" />
       </a>
 
       <div class="header-right">
+        <?php print theme('links__system_secondary_menu', array(
+          'links' => $secondary_menu,
+          'attributes' => array(
+            'class' => array('header-menu', 'links', 'inline', 'clearfix'),
+          ),
+        )); ?>
         <?php if ($logged_in): ?>
           <div class="user_info">
             <input type="checkbox" id="dd__menu__box" class="dd__input">
@@ -78,13 +83,6 @@
               </div>
             </div>
           </div>
-        <?php else: ?>
-          <?php print theme('links__system_secondary_menu', array(
-            'links' => $secondary_menu,
-            'attributes' => array(
-              'class' => array('header-menu', 'links', 'inline', 'clearfix'),
-            ),
-          )); ?>
         <?php endif; ?>
         <?php print render($page['header']); ?>
       </div>

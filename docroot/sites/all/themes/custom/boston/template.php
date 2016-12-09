@@ -320,6 +320,9 @@ function boston_html_head_alter(&$head) {
  * Implements hook_preprocess_page().
  */
 function boston_preprocess_page(array &$variables) {
+  $variables['asset_url'] = variable_get('asset_url', 'https://patterns.boston.gov');
+  $variables['asset_name'] = $GLOBALS['theme'] == 'boston_hub' ? 'hub' : 'public';
+  
   // Find the title of the menu used by the secondary links.
   $secondary_links = variable_get('menu_secondary_links_source', 'menu-secondary-menu');
   if ($secondary_links) {

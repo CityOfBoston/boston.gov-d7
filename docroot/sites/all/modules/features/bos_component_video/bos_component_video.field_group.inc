@@ -25,9 +25,9 @@ function bos_component_video_field_group_info() {
     'children' => array(
       0 => 'field_extra_info',
       1 => 'field_image',
-      2 => 'field_photo_credit',
-      3 => 'field_short_title',
-      4 => 'field_title',
+      2 => 'field_short_title',
+      3 => 'field_title',
+      4 => 'field_contact',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
