@@ -81,24 +81,11 @@
  */
 hide($content['comments']);
 hide($content['links']);
-
-$live_stream_status = $content['field_live_stream']['#items']['0']['value'];
-if (!empty($live_stream_status)) {
-  $live_stream_status = $live_stream_status;
-} else {
-  $live_stream_status = 0;
-}
-
-$live_stream_start = $content['field_event_dates']['#object']->field_event_dates['und']['0']['value'];
-$live_stream_start = new DateTime($live_stream_start, new DateTimeZone('UTC'));
-$live_stream_start->setTimeZone(new DateTimeZone('America/New_York'));
 ?>
   <script>
-    var live_stream_status = <?php echo($live_stream_status); ?>;
-    var live_stream_start = new Date('<?php echo($live_stream_start->format('Y-m-d H:i:s T')); ?>');
     var event_id = "node-<?php print $node->nid; ?>";
   </script>
-  <article id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?> live-stream-<?php echo($live_stream_status); ?> clearfix desktop-100"<?php print $attributes; ?>>
+  <article id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?> clearfix desktop-100"<?php print $attributes; ?>>
   <?php if (isset($content['field_updated_date'])): ?>
     <div class="breadcrumb-last-updated">
       Last updated:<?php print render($content['field_updated_date']); ?>
