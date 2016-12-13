@@ -257,7 +257,6 @@ function boston_preprocess_html(array &$variables, $hook) {
       'every_page' => TRUE,
     ));
   }
-
 }
 
 /**
@@ -322,7 +321,7 @@ function boston_html_head_alter(&$head) {
 function boston_preprocess_page(array &$variables) {
   $variables['asset_url'] = variable_get('asset_url', 'https://patterns.boston.gov');
   $variables['asset_name'] = $GLOBALS['theme'] == 'boston_hub' ? 'hub' : 'public';
-  
+
   // Find the title of the menu used by the secondary links.
   $secondary_links = variable_get('menu_secondary_links_source', 'menu-secondary-menu');
   if ($secondary_links) {
@@ -355,6 +354,7 @@ function boston_preprocess_page(array &$variables) {
   if (isset($variables['node']) && in_array($variables['node']->type, $dont_show_breadcrumbs)) {
     $variables['breadcrumb'] = '';
   }
+
   // Get the HTTP header so we can have custom 404/403 pages.
   $header = drupal_get_http_header("status");
   if ($header == "404 Not Found") {
@@ -362,8 +362,27 @@ function boston_preprocess_page(array &$variables) {
     $block = module_invoke('bos_blocks', 'block_view', 'search');
     $variables['search_block'] = $block;
   }
+
   if ($header == "403 Forbidden") {
     $variables['theme_hook_suggestions'][] = 'page__403';
+  }
+
+  // some content types aren't special
+  $no_type_needed = array(
+    'listing_page',
+    'landing_page',
+  );
+  if (isset($variables['node']) && !in_array($variables['node']->type, $no_type_needed)) {
+    $element = array(
+      '#tag' => 'meta', // The #tag is the html tag -
+      '#attributes' => array( // Set up an array of attributes inside the tag
+        'class' => 'swiftype',
+        'name' => 'type',
+        'data-type' => 'enum',
+        'content' => $variables['node']->type,
+      ),
+    );
+    drupal_add_html_head($element, 'swiftype_type');
   }
 }
 

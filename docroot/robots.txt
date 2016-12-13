@@ -14,6 +14,7 @@
 # http://www.robotstxt.org/robotstxt.html
 
 User-agent: *
+Sitemap: https://www.boston.gov/sitemap.xml
 Crawl-delay: 10
 # Directories
 Disallow: /includes/
