@@ -5,3 +5,18 @@
  */
 
 include_once 'bos_view_blank_layouts.features.inc';
+
+/**
+ * Implements hook_preprocess_views_exposed_form().
+ */
+function bos_view_blank_layouts_preprocess_views_view(&$vars) {
+  if ($vars["view"]->name == 'blank_layouts') {
+    $element = array(
+      '#tag' => 'base', // The #tag is the html tag -
+      '#attributes' => array( // Set up an array of attributes inside the tag
+        'href' => $GLOBALS['base_url'],
+      ),
+    );
+    drupal_add_html_head($element, 'base_tag');
+  }
+}
