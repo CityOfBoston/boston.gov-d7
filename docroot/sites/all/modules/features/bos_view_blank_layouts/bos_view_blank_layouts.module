@@ -12,8 +12,8 @@ include_once 'bos_view_blank_layouts.features.inc';
 function bos_view_blank_layouts_preprocess_views_view(&$vars) {
   if ($vars["view"]->name == 'blank_layouts') {
     $element = array(
-      '#tag' => 'base', // The #tag is the html tag -
-      '#attributes' => array( // Set up an array of attributes inside the tag
+      '#tag' => 'base',
+      '#attributes' => array(
         'href' => $GLOBALS['base_url'],
       ),
     );
