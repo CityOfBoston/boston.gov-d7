@@ -234,6 +234,9 @@ function bos_metrolist_affordable_housing_views_default_views() {
   $handler->display->display_options['fields']['field_mah_neighborhood']['id'] = 'field_mah_neighborhood';
   $handler->display->display_options['fields']['field_mah_neighborhood']['table'] = 'field_data_field_mah_neighborhood';
   $handler->display->display_options['fields']['field_mah_neighborhood']['field'] = 'field_mah_neighborhood';
+  $handler->display->display_options['fields']['field_mah_neighborhood']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['field_mah_neighborhood']['alter']['path'] = 'neighborhood/[field_mah_neighborhood]';
+  $handler->display->display_options['fields']['field_mah_neighborhood']['alter']['replace_spaces'] = TRUE;
   $handler->display->display_options['fields']['field_mah_neighborhood']['element_type'] = '0';
   $handler->display->display_options['fields']['field_mah_neighborhood']['element_wrapper_type'] = '0';
   $handler->display->display_options['fields']['field_mah_neighborhood']['element_default_classes'] = FALSE;
@@ -253,7 +256,6 @@ function bos_metrolist_affordable_housing_views_default_views() {
   $handler->display->display_options['fields']['field_mah_email']['id'] = 'field_mah_email';
   $handler->display->display_options['fields']['field_mah_email']['table'] = 'field_data_field_mah_email';
   $handler->display->display_options['fields']['field_mah_email']['field'] = 'field_mah_email';
-  $handler->display->display_options['fields']['field_mah_email']['label'] = '';
   $handler->display->display_options['fields']['field_mah_email']['element_type'] = '0';
   $handler->display->display_options['fields']['field_mah_email']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_mah_email']['element_wrapper_type'] = '0';
