@@ -511,7 +511,6 @@ function bos_profile_update_7015() {
     'salesforce_mapping',
     'salesforce_pull',
     'salesforce_term_ref',
-    'bos_metrolist',
     'bos_metrolist_affordable_housing',
   );
   module_enable($enabled_modules);
