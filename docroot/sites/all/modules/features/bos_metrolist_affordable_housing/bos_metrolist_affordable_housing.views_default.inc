@@ -334,6 +334,22 @@ function bos_metrolist_affordable_housing_views_default_views() {
   );
   $handler->display->display_options['filters']['tid']['type'] = 'select';
   $handler->display->display_options['filters']['tid']['vocabulary'] = 'neighborhoods';
+  /* Filter criterion: Content: Property Address (field_mah_address) */
+  $handler->display->display_options['filters']['field_mah_address_value']['id'] = 'field_mah_address_value';
+  $handler->display->display_options['filters']['field_mah_address_value']['table'] = 'field_data_field_mah_address';
+  $handler->display->display_options['filters']['field_mah_address_value']['field'] = 'field_mah_address_value';
+  $handler->display->display_options['filters']['field_mah_address_value']['operator'] = '!=';
+  /* Filter criterion: Content: Zipcode (field_mah_zipcode) */
+  $handler->display->display_options['filters']['field_mah_zipcode_value']['id'] = 'field_mah_zipcode_value';
+  $handler->display->display_options['filters']['field_mah_zipcode_value']['table'] = 'field_data_field_mah_zipcode';
+  $handler->display->display_options['filters']['field_mah_zipcode_value']['field'] = 'field_mah_zipcode_value';
+  $handler->display->display_options['filters']['field_mah_zipcode_value']['operator'] = '!=';
+  /* Filter criterion: Content: Neighborhood (field_mah_neighborhood) */
+  $handler->display->display_options['filters']['field_mah_neighborhood_target_id']['id'] = 'field_mah_neighborhood_target_id';
+  $handler->display->display_options['filters']['field_mah_neighborhood_target_id']['table'] = 'field_data_field_mah_neighborhood';
+  $handler->display->display_options['filters']['field_mah_neighborhood_target_id']['field'] = 'field_mah_neighborhood_target_id';
+  $handler->display->display_options['filters']['field_mah_neighborhood_target_id']['operator'] = '!=';
+  $handler->display->display_options['filters']['field_mah_neighborhood_target_id']['value']['value'] = '""';
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
