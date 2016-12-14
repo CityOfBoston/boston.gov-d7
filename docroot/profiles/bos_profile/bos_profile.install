@@ -507,6 +507,16 @@ function bos_profile_update_7014() {
  */
 function bos_profile_update_7015() {
   $enabled_modules = array(
+    'bos_view_blank_layouts',
+  );
+  module_enable($enabled_modules);
+}
+
+/**
+ * Updates for 12/14/2016.
+ */
+function bos_profile_update_7016() {
+  $enabled_modules = array(
     'salesforce',
     'salesforce_mapping',
     'salesforce_pull',
