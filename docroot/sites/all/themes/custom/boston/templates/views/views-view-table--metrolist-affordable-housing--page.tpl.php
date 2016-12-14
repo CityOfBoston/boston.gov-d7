@@ -19,7 +19,7 @@
  * @ingroup views_templates
  */
 ?>
-<table <?php if ($classes) { print 'class="'. $classes . ' responsive-table" '; } ?><?php print $attributes; ?>>
+<table <?php if ($classes) { print 'class="'. $classes . ' responsive-table responsive-table--horizontal" '; } ?><?php print $attributes; ?>>
    <?php if (!empty($title) || !empty($caption)) : ?>
      <caption><?php print $caption . $title; ?></caption>
   <?php endif; ?>
