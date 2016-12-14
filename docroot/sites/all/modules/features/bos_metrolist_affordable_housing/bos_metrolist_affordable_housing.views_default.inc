@@ -184,7 +184,7 @@ function bos_metrolist_affordable_housing_views_default_views() {
       'empty_column' => 0,
     ),
     'field_mah_neighborhood' => array(
-      'sortable' => 0,
+      'sortable' => 1,
       'default_sort_order' => 'asc',
       'align' => '',
       'separator' => '',
