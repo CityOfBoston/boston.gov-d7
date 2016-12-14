@@ -56,3 +56,4 @@ features[variable][] = node_preview_topic_page
 features[variable][] = node_submitted_topic_page
 features[variable][] = workbench_moderation_default_state_topic_page
 features[variable][] = workbench_scheduler_topic_page
+features[variable][] = xmlsitemap_settings_node_topic_page

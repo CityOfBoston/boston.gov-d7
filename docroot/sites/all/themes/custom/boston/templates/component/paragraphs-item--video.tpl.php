@@ -26,6 +26,9 @@
  */
 
  $id = uniqid();
+ $live_stream_start = $content['field_event_dates']['#object']->field_event_dates['und']['0']['value'];
+ $live_stream_start = new DateTime($live_stream_start, new DateTimeZone('UTC'));
+ $live_stream_start->setTimeZone(new DateTimeZone('America/New_York'));
 ?>
 
 <!-- script goes here -->
@@ -40,9 +43,11 @@
       <div class="plyr__overlay"></div>
       <div class="plyr__meta">
         <h2 class="sh plyr__title"><?php print render($content['field_title']) ?></h2>
+	<?php if (isset($content['field_contact'])) : ?>
         <div class="plyr__credit">
-	  <?php print render($content['field_photo_credit']) ?>
+	  Credit: <?php print_r($field_contact[0]['entity']->name) ?>
       	</div>
+	<?php endif; ?>
         <div class="plyr__play">
 	  <img src="/<?php print drupal_get_path('theme', $GLOBALS['theme']); ?>/dist/img/icon-play.svg" alt="Play <?php print render($content['field_title']) ?>" />
 	  <div class="plyr__livestream-not_ready">This live stream event hasn't started.<br />Check back in <span id="plyr__livestream-countdown"></span></div>	  
@@ -117,14 +122,15 @@ function liveStreamNotReady(){
 
 var doc = document;
 var vids = vids || {};
-var live_stream_status = live_stream_status || 0;
-imgButton = doc.querySelector("article.live-stream-1 .plyr__play img");
-liveStreamTxt = doc.querySelector("article.live-stream-1 .plyr__play div");
-playerElement = doc.querySelector("article.live-stream-1 .plyr__play");
+var live_stream_status = <?php echo($field_live_stream[0]['value']) ?>;
+imgButton = doc.querySelector("article .plyr__play img");
+liveStreamTxt = doc.querySelector("article .plyr__play div");
+playerElement = doc.querySelector("article .plyr__play");
 vids['<?php print $id; ?>'] = { button: document.getElementById("plyr__<?php print $id; ?>") };
 
 
 if (live_stream_status == 1) {
+  var live_stream_start = new Date('<?php echo($live_stream_start->format('Y-m-d H:i:s T')); ?>');
   var isLiveStreamStart = live_stream_start.getTime();
   var isNow = new Date().getTime();
   var goTime;

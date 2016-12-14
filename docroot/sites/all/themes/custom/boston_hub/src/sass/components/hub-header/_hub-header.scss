@@ -19,13 +19,6 @@
     background-size: 112px;
   }
 
-  .header-seal .shadow-layer {
-    // Overrides the seal's background color
-    background-color: color(section-bg-dark);
-    // Removes the seal's box-shadow - unnecessary with dark background
-    box-shadow: none;
-  }
-
 }
 
 // New Styles for user section of header
@@ -103,5 +96,27 @@
       width: 152px;
     }
   }
+
+}
+
+.logged-in .header-right {
+
+  li[class^="menu-"].first {
+    display: none;
+  }
+
+}
+
+.not-logged-in .header-right {
+
+  li[class^="menu-"] {
+    display: none;
+  }
+
+  li[class^="menu-"].first {
+    display: block;
+  }
+
+
 
 }
