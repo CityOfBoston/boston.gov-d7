@@ -61,8 +61,24 @@
    * We'll use this container to load external content
    */
   ?>
-  <div class="ext-c">
-    <%= yield %>
+  <div class="main">
+    <div class="container">
+      <section class="main-content" id="content" role="main">
+        <div class="ext-c">
+          <a href="#skip-link" class="visually-hidden--focusable" id="main-content">Back to top</a>
+          <?php if (!isset($header_image) || !empty($node) && $node->type == 'how_to'): ?>
+            <?php if ($breadcrumb): ?>
+              <div class="breadcrumb">
+                <a href="/">Home</a>
+                <span class="crumbs-separator"> &gt; </span>
+                Search
+              </div>
+            <?php endif; ?>
+          <?php endif; ?>
+          <%= yield %>
+        </div>
+      </section>
+    </div>
   </div>
   <?php print render($page['modal']); ?>
   <?php print render($page['footer']); ?>
