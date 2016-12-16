@@ -384,6 +384,18 @@ function boston_preprocess_page(array &$variables) {
     );
     drupal_add_html_head($element, 'swiftype_type');
   }
+
+  // Add a site priority meta tag for swiftype
+  $priority_element = array(
+    '#tag' => 'meta', // The #tag is the html tag -
+    '#attributes' => array( // Set up an array of attributes inside the tag
+      'class' => 'swiftype',
+      'name' => 'site-priority',
+      'data-type' => 'integer',
+      'content' => 5,
+    ),
+  );
+  drupal_add_html_head($priority_element, 'swiftype_type');
 }
 
 /**
