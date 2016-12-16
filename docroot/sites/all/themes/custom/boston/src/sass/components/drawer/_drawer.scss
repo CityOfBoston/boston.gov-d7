@@ -39,7 +39,9 @@
 .view-public-notice-archive,
 .view-metrolist-affordable-housing-page {
   .view-filters .drawer-wrapper {
-    width: calc(33.3% - 66px);
+    @include respond-to(xl) {
+      width: calc(33.3% - 66px);
+    }
   }
 
   .b.views-exposed-topbar {
