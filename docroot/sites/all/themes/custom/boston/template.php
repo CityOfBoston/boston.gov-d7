@@ -367,13 +367,14 @@ function boston_preprocess_page(array &$variables) {
     $variables['theme_hook_suggestions'][] = 'page__403';
   }
 
-  // some content types aren't special
   $no_type_needed = array(
     'listing_page',
     'landing_page',
   );
+
+  // some content types aren't special
   if (isset($variables['node']) && !in_array($variables['node']->type, $no_type_needed)) {
-    $element = array(
+    $type_element = array(
       '#tag' => 'meta', // The #tag is the html tag -
       '#attributes' => array( // Set up an array of attributes inside the tag
         'class' => 'swiftype',
@@ -382,7 +383,7 @@ function boston_preprocess_page(array &$variables) {
         'content' => $variables['node']->type,
       ),
     );
-    drupal_add_html_head($element, 'swiftype_type');
+    drupal_add_html_head($type_element, 'swiftype_type');
   }
 
   // Add a site priority meta tag for swiftype
@@ -395,7 +396,7 @@ function boston_preprocess_page(array &$variables) {
       'content' => 5,
     ),
   );
-  drupal_add_html_head($priority_element, 'swiftype_type');
+  drupal_add_html_head($priority_element, 'swiftype_priority');
 }
 
 /**
