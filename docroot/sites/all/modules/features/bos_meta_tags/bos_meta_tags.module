@@ -7,28 +7,28 @@
  /**
   * Implements metatag_metatags_view_alter().
   */
- function bos_meta_tags_metatag_metatags_view_alter(&$output, $instance) {
-   if ($output["article:published_time"] && $output["article:published_time"]["#attached"]["drupal_add_html_head"][0][0]) {
-     $tag = $output["article:published_time"]["#attached"]["drupal_add_html_head"][0][0];
+function bos_meta_tags_metatag_metatags_view_alter(&$output, $instance) {
+  if ($output["article:published_time"] && $output["article:published_time"]["#attached"]["drupal_add_html_head"][0][0]) {
+    $tag = $output["article:published_time"]["#attached"]["drupal_add_html_head"][0][0];
 
-     $output["article:published_time"] = null;
+    $output["article:published_time"] = NULL;
 
-     $published_at_element = array(
-       '#tag' => 'meta',
-       '#attributes' => array(
-         'class' => 'swiftype',
-         'name' => 'published_at',
-         'data-type' => 'date',
-         'content' => $tag['#value'],
-       ),
-     );
-     drupal_add_html_head($published_at_element, 'swiftype_published_at');
+    $published_at_element = array(
+      '#tag' => 'meta',
+      '#attributes' => array(
+        'class' => 'swiftype',
+        'name' => 'published_at',
+        'data-type' => 'date',
+        'content' => $tag['#value'],
+      ),
+    );
+    drupal_add_html_head($published_at_element, 'swiftype_published_at');
   }
 
   if ($output["article:modified_time"] && $output["article:modified_time"]["#attached"]["drupal_add_html_head"][0][0]) {
     $tag = $output["article:modified_time"]["#attached"]["drupal_add_html_head"][0][0];
 
-    $output["article:modified_time"] = null;
+    $output["article:modified_time"] = NULL;
 
     $modified_at_element = array(
       '#tag' => 'meta',
@@ -45,7 +45,7 @@
   if ($output["description"] && $output["description"]["#attached"]["drupal_add_html_head"][0][0]) {
     $tag = $output["description"]["#attached"]["drupal_add_html_head"][0][0];
 
-    $output["description"] = null;
+    $output["description"] = NULL;
 
     $description_element = array(
       '#tag' => 'meta',
