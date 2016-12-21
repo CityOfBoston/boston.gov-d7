@@ -7,6 +7,8 @@
  *
  * @see https://drupal.org/node/1728148
  */
+
+ $avatar_email = $field_work_email != '' ? $field_work_email : 'default@boston.gov';
 ?>
 
 <input type="checkbox" id="hb__trigger" class="hb__trigger" aria-hidden="true" />
@@ -59,7 +61,7 @@
             <div class="dd" aria-expanded="false">
               <label class="dd__trigger user-menu-trigger" for="dd__menu__box">
                 <span id="menu-link" aria-haspopup="true" aria-owns="menu-translation">
-                  <div class="avatar-wrapper" style="background-image: url(//cob-avatars.herokuapp.com/photos/<?php print base64_encode($field_work_email); ?>)">User Menu</div>
+                  <div class="avatar-wrapper" style="background-image: url(//cob-avatars.herokuapp.com/photos/<?php print base64_encode($avatar_email); ?>)">User Menu</div>
                 </span>
               </label>
               <div class="dd__menu menu-user" id="menu-user" role="group" aria-labelledby="menu-link">
