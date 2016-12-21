@@ -91,12 +91,12 @@
     <div class="drawer-trigger-chevron"></div>
     <?php if (isset($time_range)): ?>
       <span class="time-range">
-        <?php if ($live_stream) :?><span class="live-stream-flag">Live</span><?php endif; ?>
+        <?php if ($live_stream) :?><span class="live-stream-flag">Live:</span><?php endif; ?>
         <?php print $time_range; ?>
       </span>
     <?php endif; ?>
     <div class="title">
-      <?php if ($live_stream):?><span class="live-stream-flag">Live</span><?php endif; ?>
+      <?php if ($live_stream):?><span class="live-stream-flag">Live:</span><?php endif; ?>
       <?php print $title; ?>
     </div>
   </div>
