@@ -148,6 +148,11 @@ hide($content['links']);
           <?php print render($content['field_phone_number']); ?>
         </div>
       <?php endif; ?>
+      <?php if (isset($content['field_cost'])): ?>
+        <div class="list-item">
+          <?php print render($content['field_cost']); ?>
+        </div>
+      <?php endif; ?>
       <?php if (isset($content['field_event_contact'])): ?>
         <div class="list-item">
           <?php print render($content['field_event_contact']); ?>
