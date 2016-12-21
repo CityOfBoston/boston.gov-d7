@@ -5,7 +5,7 @@
  */
 
  /**
-  * Implements metatag_metatags_view_alter()
+  * Implements metatag_metatags_view_alter().
   */
  function bos_meta_tags_metatag_metatags_view_alter(&$output, $instance) {
    if ($output["article:published_time"] && $output["article:published_time"]["#attached"]["drupal_add_html_head"][0][0]) {
@@ -14,8 +14,8 @@
      $output["article:published_time"] = null;
 
      $published_at_element = array(
-       '#tag' => 'meta', // The #tag is the html tag -
-       '#attributes' => array( // Set up an array of attributes inside the tag
+       '#tag' => 'meta',
+       '#attributes' => array(
          'class' => 'swiftype',
          'name' => 'published_at',
          'data-type' => 'date',
@@ -23,39 +23,39 @@
        ),
      );
      drupal_add_html_head($published_at_element, 'swiftype_published_at');
-   }
+  }
 
-   if ($output["article:modified_time"] && $output["article:modified_time"]["#attached"]["drupal_add_html_head"][0][0]) {
-     $tag = $output["article:modified_time"]["#attached"]["drupal_add_html_head"][0][0];
+  if ($output["article:modified_time"] && $output["article:modified_time"]["#attached"]["drupal_add_html_head"][0][0]) {
+    $tag = $output["article:modified_time"]["#attached"]["drupal_add_html_head"][0][0];
 
-     $output["article:modified_time"] = null;
+    $output["article:modified_time"] = null;
 
-     $modified_at_element = array(
-       '#tag' => 'meta', // The #tag is the html tag -
-       '#attributes' => array( // Set up an array of attributes inside the tag
-         'class' => 'swiftype',
-         'name' => 'modified_at',
-         'data-type' => 'date',
-         'content' => $tag['#value'],
-       ),
-     );
-     drupal_add_html_head($modified_at_element, 'swiftype_modified_at');
-   }
+    $modified_at_element = array(
+      '#tag' => 'meta',
+      '#attributes' => array(
+        'class' => 'swiftype',
+        'name' => 'modified_at',
+        'data-type' => 'date',
+        'content' => $tag['#value'],
+      ),
+    );
+    drupal_add_html_head($modified_at_element, 'swiftype_modified_at');
+  }
 
-   if ($output["description"] && $output["description"]["#attached"]["drupal_add_html_head"][0][0]) {
-     $tag = $output["description"]["#attached"]["drupal_add_html_head"][0][0];
+  if ($output["description"] && $output["description"]["#attached"]["drupal_add_html_head"][0][0]) {
+    $tag = $output["description"]["#attached"]["drupal_add_html_head"][0][0];
 
-     $output["description"] = null;
+    $output["description"] = null;
 
-     $description_element = array(
-       '#tag' => 'meta', // The #tag is the html tag -
-       '#attributes' => array( // Set up an array of attributes inside the tag
-         'class' => 'swiftype',
-         'name' => 'description',
-         'data-type' => 'text',
-         'content' => $tag['#value'],
-       ),
-     );
-     drupal_add_html_head($description_element, 'swiftype_description');
-   }
- }
+    $description_element = array(
+      '#tag' => 'meta',
+      '#attributes' => array(
+        'class' => 'swiftype',
+        'name' => 'description',
+        'data-type' => 'text',
+        'content' => $tag['#value'],
+      ),
+    );
+    drupal_add_html_head($description_element, 'swiftype_description');
+  }
+}
