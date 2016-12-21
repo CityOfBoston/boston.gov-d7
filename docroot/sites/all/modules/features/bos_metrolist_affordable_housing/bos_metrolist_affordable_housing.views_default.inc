@@ -489,6 +489,17 @@ function bos_metrolist_affordable_housing_views_default_views() {
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['label'] = 'Property Address';
   $handler->display->display_options['fields']['nothing']['alter']['text'] = '[field_mah_address] [field_mah_neighborhood] [field_mah_zipcode]';
+  /* Field: Content: Property Manager Contact */
+  $handler->display->display_options['fields']['field_mah_contact']['id'] = 'field_mah_contact';
+  $handler->display->display_options['fields']['field_mah_contact']['table'] = 'field_data_field_mah_contact';
+  $handler->display->display_options['fields']['field_mah_contact']['field'] = 'field_mah_contact';
+  $handler->display->display_options['fields']['field_mah_contact']['label'] = '';
+  $handler->display->display_options['fields']['field_mah_contact']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_mah_contact']['element_type'] = '0';
+  $handler->display->display_options['fields']['field_mah_contact']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_mah_contact']['element_wrapper_type'] = '0';
+  $handler->display->display_options['fields']['field_mah_contact']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_mah_contact']['field_api_classes'] = TRUE;
   /* Field: Content: Phone */
   $handler->display->display_options['fields']['field_mah_phone']['id'] = 'field_mah_phone';
   $handler->display->display_options['fields']['field_mah_phone']['table'] = 'field_data_field_mah_phone';
@@ -504,7 +515,7 @@ function bos_metrolist_affordable_housing_views_default_views() {
   $handler->display->display_options['fields']['field_mah_email']['field'] = 'field_mah_email';
   $handler->display->display_options['fields']['field_mah_email']['label'] = 'Contact';
   $handler->display->display_options['fields']['field_mah_email']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_mah_email']['alter']['text'] = '[field_mah_phone] [field_mah_email]';
+  $handler->display->display_options['fields']['field_mah_email']['alter']['text'] = '[field_mah_contact] [field_mah_phone] [field_mah_email]';
   $handler->display->display_options['fields']['field_mah_email']['element_type'] = '0';
   $handler->display->display_options['fields']['field_mah_email']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_mah_email']['element_wrapper_type'] = '0';
@@ -528,6 +539,18 @@ function bos_metrolist_affordable_housing_views_default_views() {
     'show_repeat_rule' => 'show',
   );
   $handler->display->display_options['fields']['field_mah_lottery_deadline']['field_api_classes'] = TRUE;
+  /* Field: Content: Lottery Flyer URL */
+  $handler->display->display_options['fields']['field_mah_lottery_flyer_url']['id'] = 'field_mah_lottery_flyer_url';
+  $handler->display->display_options['fields']['field_mah_lottery_flyer_url']['table'] = 'field_data_field_mah_lottery_flyer_url';
+  $handler->display->display_options['fields']['field_mah_lottery_flyer_url']['field'] = 'field_mah_lottery_flyer_url';
+  $handler->display->display_options['fields']['field_mah_lottery_flyer_url']['label'] = 'Application';
+  $handler->display->display_options['fields']['field_mah_lottery_flyer_url']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_mah_lottery_flyer_url']['alter']['text'] = '<a href="[field_mah_lottery_flyer_url]">View application</a>';
+  $handler->display->display_options['fields']['field_mah_lottery_flyer_url']['element_type'] = '0';
+  $handler->display->display_options['fields']['field_mah_lottery_flyer_url']['element_wrapper_type'] = '0';
+  $handler->display->display_options['fields']['field_mah_lottery_flyer_url']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_mah_lottery_flyer_url']['empty'] = 'No application available';
+  $handler->display->display_options['fields']['field_mah_lottery_flyer_url']['field_api_classes'] = TRUE;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */

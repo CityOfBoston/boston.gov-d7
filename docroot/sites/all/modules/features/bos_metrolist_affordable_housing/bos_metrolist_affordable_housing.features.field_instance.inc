@@ -304,6 +304,54 @@ function bos_metrolist_affordable_housing_field_default_field_instances() {
   );
 
   // Exported field_instance:
+  // 'node-metrolist_affordable_housing-field_mah_lottery_flyer_url'.
+  $field_instances['node-metrolist_affordable_housing-field_mah_lottery_flyer_url'] = array(
+    'bundle' => 'metrolist_affordable_housing',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 15,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div_div_div',
+    'field_name' => 'field_mah_lottery_flyer_url',
+    'label' => 'Lottery Flyer URL',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'show_token_tree' => 0,
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 15,
+    ),
+  );
+
+  // Exported field_instance:
   // 'node-metrolist_affordable_housing-field_mah_neighborhood'.
   $field_instances['node-metrolist_affordable_housing-field_mah_neighborhood'] = array(
     'bundle' => 'metrolist_affordable_housing',
@@ -496,6 +544,7 @@ function bos_metrolist_affordable_housing_field_default_field_instances() {
   t('Email');
   t('Lottery');
   t('Lottery Application Deadline');
+  t('Lottery Flyer URL');
   t('Neighborhood');
   t('Phone');
   t('Property Address');
