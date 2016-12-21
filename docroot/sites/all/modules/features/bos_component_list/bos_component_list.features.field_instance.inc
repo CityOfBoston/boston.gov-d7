@@ -175,6 +175,7 @@ function bos_component_list_field_default_field_instances() {
         'transactions' => 'transactions',
         'upcoming_events' => 0,
         'upcoming_events_feed' => 0,
+        'metrolist_affordable_housing' => 'metrolist_affordable_housing',
       ),
       'force_default' => 0,
       'user_register_form' => FALSE,
