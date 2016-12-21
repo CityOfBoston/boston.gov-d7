@@ -311,11 +311,19 @@ function bos_metrolist_affordable_housing_views_default_views() {
   $handler->display->display_options['fields']['field_mah_email']['element_wrapper_type'] = '0';
   $handler->display->display_options['fields']['field_mah_email']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['field_mah_email']['field_api_classes'] = TRUE;
+  /* Sort criterion: Content: Property Address (field_mah_address) */
+  $handler->display->display_options['sorts']['field_mah_address_value']['id'] = 'field_mah_address_value';
+  $handler->display->display_options['sorts']['field_mah_address_value']['table'] = 'field_data_field_mah_address';
+  $handler->display->display_options['sorts']['field_mah_address_value']['field'] = 'field_mah_address_value';
   /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  $handler->display->display_options['filter_groups']['groups'] = array(
+    1 => 'AND',
+    2 => 'OR',
+  );
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
@@ -330,11 +338,13 @@ function bos_metrolist_affordable_housing_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'metrolist_affordable_housing' => 'metrolist_affordable_housing',
   );
+  $handler->display->display_options['filters']['type']['group'] = 1;
   /* Filter criterion: Global: Combine fields filter */
   $handler->display->display_options['filters']['combine']['id'] = 'combine';
   $handler->display->display_options['filters']['combine']['table'] = 'views';
   $handler->display->display_options['filters']['combine']['field'] = 'combine';
   $handler->display->display_options['filters']['combine']['operator'] = 'contains';
+  $handler->display->display_options['filters']['combine']['group'] = 1;
   $handler->display->display_options['filters']['combine']['exposed'] = TRUE;
   $handler->display->display_options['filters']['combine']['expose']['operator_id'] = 'combine_op';
   $handler->display->display_options['filters']['combine']['expose']['label'] = 'Search';
@@ -364,6 +374,7 @@ function bos_metrolist_affordable_housing_views_default_views() {
   $handler->display->display_options['filters']['tid']['id'] = 'tid';
   $handler->display->display_options['filters']['tid']['table'] = 'taxonomy_index';
   $handler->display->display_options['filters']['tid']['field'] = 'tid';
+  $handler->display->display_options['filters']['tid']['group'] = 1;
   $handler->display->display_options['filters']['tid']['exposed'] = TRUE;
   $handler->display->display_options['filters']['tid']['expose']['operator_id'] = 'tid_op';
   $handler->display->display_options['filters']['tid']['expose']['operator'] = 'tid_op';
@@ -389,22 +400,39 @@ function bos_metrolist_affordable_housing_views_default_views() {
   $handler->display->display_options['filters']['field_mah_address_value']['table'] = 'field_data_field_mah_address';
   $handler->display->display_options['filters']['field_mah_address_value']['field'] = 'field_mah_address_value';
   $handler->display->display_options['filters']['field_mah_address_value']['operator'] = '!=';
+  $handler->display->display_options['filters']['field_mah_address_value']['group'] = 1;
   /* Filter criterion: Content: Zipcode (field_mah_zipcode) */
   $handler->display->display_options['filters']['field_mah_zipcode_value']['id'] = 'field_mah_zipcode_value';
   $handler->display->display_options['filters']['field_mah_zipcode_value']['table'] = 'field_data_field_mah_zipcode';
   $handler->display->display_options['filters']['field_mah_zipcode_value']['field'] = 'field_mah_zipcode_value';
   $handler->display->display_options['filters']['field_mah_zipcode_value']['operator'] = '!=';
+  $handler->display->display_options['filters']['field_mah_zipcode_value']['group'] = 1;
   /* Filter criterion: Content: Neighborhood (field_mah_neighborhood) */
   $handler->display->display_options['filters']['field_mah_neighborhood_target_id']['id'] = 'field_mah_neighborhood_target_id';
   $handler->display->display_options['filters']['field_mah_neighborhood_target_id']['table'] = 'field_data_field_mah_neighborhood';
   $handler->display->display_options['filters']['field_mah_neighborhood_target_id']['field'] = 'field_mah_neighborhood_target_id';
   $handler->display->display_options['filters']['field_mah_neighborhood_target_id']['operator'] = '!=';
   $handler->display->display_options['filters']['field_mah_neighborhood_target_id']['value']['value'] = '""';
+  $handler->display->display_options['filters']['field_mah_neighborhood_target_id']['group'] = 1;
+  /* Filter criterion: Content: Phone (field_mah_phone) */
+  $handler->display->display_options['filters']['field_mah_phone_value']['id'] = 'field_mah_phone_value';
+  $handler->display->display_options['filters']['field_mah_phone_value']['table'] = 'field_data_field_mah_phone';
+  $handler->display->display_options['filters']['field_mah_phone_value']['field'] = 'field_mah_phone_value';
+  $handler->display->display_options['filters']['field_mah_phone_value']['operator'] = '!=';
+  $handler->display->display_options['filters']['field_mah_phone_value']['group'] = 2;
+  /* Filter criterion: Content: Email (field_mah_email) */
+  $handler->display->display_options['filters']['field_mah_email_value']['id'] = 'field_mah_email_value';
+  $handler->display->display_options['filters']['field_mah_email_value']['table'] = 'field_data_field_mah_email';
+  $handler->display->display_options['filters']['field_mah_email_value']['field'] = 'field_mah_email_value';
+  $handler->display->display_options['filters']['field_mah_email_value']['operator'] = '!=';
+  $handler->display->display_options['filters']['field_mah_email_value']['group'] = 2;
   /* Filter criterion: Content: Publish to Metrolist (field_mah_publish_to_metrolist) */
   $handler->display->display_options['filters']['field_mah_publish_to_metrolist_value']['id'] = 'field_mah_publish_to_metrolist_value';
   $handler->display->display_options['filters']['field_mah_publish_to_metrolist_value']['table'] = 'field_data_field_mah_publish_to_metrolist';
   $handler->display->display_options['filters']['field_mah_publish_to_metrolist_value']['field'] = 'field_mah_publish_to_metrolist_value';
-  $handler->display->display_options['filters']['field_mah_publish_to_metrolist_value']['value']['value'] = '1';
+  $handler->display->display_options['filters']['field_mah_publish_to_metrolist_value']['value'] = array(
+    1 => '1',
+  );
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
@@ -532,11 +560,6 @@ function bos_metrolist_affordable_housing_views_default_views() {
   $handler->display->display_options['filters']['field_mah_neighborhood_target_id']['field'] = 'field_mah_neighborhood_target_id';
   $handler->display->display_options['filters']['field_mah_neighborhood_target_id']['operator'] = '!=';
   $handler->display->display_options['filters']['field_mah_neighborhood_target_id']['value']['value'] = '""';
-  /* Filter criterion: Content: Publish to Metrolist (field_mah_publish_to_metrolist) */
-  $handler->display->display_options['filters']['field_mah_publish_to_metrolist_value']['id'] = 'field_mah_publish_to_metrolist_value';
-  $handler->display->display_options['filters']['field_mah_publish_to_metrolist_value']['table'] = 'field_data_field_mah_publish_to_metrolist';
-  $handler->display->display_options['filters']['field_mah_publish_to_metrolist_value']['field'] = 'field_mah_publish_to_metrolist_value';
-  $handler->display->display_options['filters']['field_mah_publish_to_metrolist_value']['value']['value'] = '1';
   /* Filter criterion: Content: Lottery (field_mah_lottery) */
   $handler->display->display_options['filters']['field_mah_lottery_value']['id'] = 'field_mah_lottery_value';
   $handler->display->display_options['filters']['field_mah_lottery_value']['table'] = 'field_data_field_mah_lottery';

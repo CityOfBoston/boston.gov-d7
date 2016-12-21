@@ -401,21 +401,20 @@ function bos_metrolist_affordable_housing_field_default_field_instances() {
   // 'node-metrolist_affordable_housing-field_mah_publish_to_metrolist'.
   $field_instances['node-metrolist_affordable_housing-field_mah_publish_to_metrolist'] = array(
     'bundle' => 'metrolist_affordable_housing',
-    'default_value' => NULL,
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
     'deleted' => 0,
     'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'number',
-        'settings' => array(
-          'decimal_separator' => '.',
-          'prefix_suffix' => TRUE,
-          'scale' => 0,
-          'thousand_separator' => '',
-        ),
-        'type' => 'number_integer',
-        'weight' => 9,
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 14,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -430,17 +429,15 @@ function bos_metrolist_affordable_housing_field_default_field_instances() {
     'label' => 'Publish to Metrolist',
     'required' => 0,
     'settings' => array(
-      'max' => '',
-      'min' => '',
-      'prefix' => '',
-      'suffix' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
-      'active' => 0,
-      'module' => 'number',
-      'settings' => array(),
-      'type' => 'number',
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
       'weight' => 12,
     ),
   );

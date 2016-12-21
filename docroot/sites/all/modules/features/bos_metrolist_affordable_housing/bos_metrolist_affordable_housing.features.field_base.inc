@@ -192,12 +192,22 @@ function bos_metrolist_affordable_housing_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_mah_publish_to_metrolist',
-    'indexes' => array(),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
     'locked' => 0,
-    'module' => 'number',
-    'settings' => array(),
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        0 => '',
+        1 => '',
+      ),
+      'allowed_values_function' => '',
+    ),
     'translatable' => 0,
-    'type' => 'number_integer',
+    'type' => 'list_boolean',
   );
 
   // Exported field_base: 'field_mah_zipcode'.
