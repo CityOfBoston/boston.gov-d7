@@ -14,6 +14,7 @@ function bos_metrolist_affordable_housing_preprocess_views_exposed_form(&$vars) 
     $vars['widget_groups'] = array(
       'key words' => array(),
       'neighborhood' => array(),
+      'lottery' => array(),
     );
 
     foreach ($vars['widgets'] as $id => $widget) {
@@ -25,6 +26,10 @@ function bos_metrolist_affordable_housing_preprocess_views_exposed_form(&$vars) 
 
         case 'filter-tid':
           $vars['widget_groups']['neighborhood'][$id] = $widget;
+          break;
+
+        case 'filter-lottery':
+          $vars['widget_groups']['lottery'][$id] = $widget;
           break;
       }
     }
