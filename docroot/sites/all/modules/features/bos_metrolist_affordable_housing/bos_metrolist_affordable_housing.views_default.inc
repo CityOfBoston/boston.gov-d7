@@ -405,32 +405,6 @@ function bos_metrolist_affordable_housing_views_default_views() {
   $handler->display->display_options['filters']['field_mah_publish_to_metrolist_value']['table'] = 'field_data_field_mah_publish_to_metrolist';
   $handler->display->display_options['filters']['field_mah_publish_to_metrolist_value']['field'] = 'field_mah_publish_to_metrolist_value';
   $handler->display->display_options['filters']['field_mah_publish_to_metrolist_value']['value']['value'] = '1';
-  /* Filter criterion: Content: Lottery (field_mah_lottery) */
-  $handler->display->display_options['filters']['field_mah_lottery_value']['id'] = 'field_mah_lottery_value';
-  $handler->display->display_options['filters']['field_mah_lottery_value']['table'] = 'field_data_field_mah_lottery';
-  $handler->display->display_options['filters']['field_mah_lottery_value']['field'] = 'field_mah_lottery_value';
-  $handler->display->display_options['filters']['field_mah_lottery_value']['value'] = array(
-    1 => '1',
-  );
-  $handler->display->display_options['filters']['field_mah_lottery_value']['expose']['operator_id'] = 'field_mah_lottery_value_op';
-  $handler->display->display_options['filters']['field_mah_lottery_value']['expose']['label'] = 'Lottery';
-  $handler->display->display_options['filters']['field_mah_lottery_value']['expose']['operator'] = 'field_mah_lottery_value_op';
-  $handler->display->display_options['filters']['field_mah_lottery_value']['expose']['identifier'] = 'field_mah_lottery_value';
-  $handler->display->display_options['filters']['field_mah_lottery_value']['expose']['multiple'] = TRUE;
-  $handler->display->display_options['filters']['field_mah_lottery_value']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    11 => 0,
-    16 => 0,
-    21 => 0,
-    26 => 0,
-    31 => 0,
-    36 => 0,
-    41 => 0,
-    46 => 0,
-    51 => 0,
-  );
-  $handler->display->display_options['filters']['field_mah_lottery_value']['expose']['reduce'] = TRUE;
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
