@@ -379,6 +379,7 @@ function bos_metrolist_affordable_housing_views_default_views() {
   $handler->display->display_options['filters']['combine']['fields'] = array(
     'field_mah_address' => 'field_mah_address',
     'field_mah_zipcode' => 'field_mah_zipcode',
+    'field_mah_outer_location' => 'field_mah_outer_location',
     'field_mah_neighborhood' => 'field_mah_neighborhood',
     'field_mah_phone' => 'field_mah_phone',
     'field_mah_email' => 'field_mah_email',
