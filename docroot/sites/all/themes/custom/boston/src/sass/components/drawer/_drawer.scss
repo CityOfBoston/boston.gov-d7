@@ -38,24 +38,28 @@
 .view-public-notice-landing,
 .view-public-notice-archive,
 .view-metrolist-affordable-housing-page {
-  .view-filters .drawer-wrapper {
-    width: calc(33.3% - 66px);
+  @include respond-to(xl) {
+    .view-filters .drawer-wrapper {
+        width: calc(33.3% - 66px);
+    }
+    .b.views-exposed-topbar {
+      margin-top: -25px;
+    }
+    .b-fv {
+      transform: translateY(50%);
+    }
   }
 
   .b.views-exposed-topbar {
-    margin-top: -25px;
+    margin-top: 25px;
     z-index: 1;
-  }
-
-  .b-fv {
-    transform: translateY(50%);
   }
 
   .views-exposed-topbar .view-filters .drawer.mobile-only {
     padding: 0;
   }
 }
-
+/*
 .b {
   .view-filters .drawer-trigger:first-child,
   .views-exposed-widget.views-submit-button input[type="submit"],
@@ -63,3 +67,4 @@
     margin-top: 0;
   }
 }
+*/

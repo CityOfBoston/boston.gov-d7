@@ -94,15 +94,15 @@
     <div class="container">
       <section class="main-content" id="content" role="main">
         <?php print render($page['highlighted']); ?>
-        <a href="#skip-link" class="visually-hidden--focusable" id="main-content">Back to top</a>
+        <a href="#skip-link" class="visually-hidden--focusable" id="main-content" data-swiftype-index="false">Back to top</a>
         <?php if (!isset($header_image) || (!empty($node) && ($node->type == 'tabbed_content' || $node->type == 'how_to'))): ?>
           <?php if ($breadcrumb): ?>
-            <div id="breadcrumb" class="breadcrumb-outter"><?php print $breadcrumb; ?></div>
+            <div id="breadcrumb" class="breadcrumb-outter" data-swiftype-index="false"><?php print $breadcrumb; ?></div>
           <?php endif; ?>
         <?php endif; ?>
         <?php print render($title_prefix); ?>
         <?php if ($title): ?>
-          <h1 class="page-title"><?php print $title; ?></h1>
+          <h1 class="page-title" data-swiftype-name="title" data-swiftype-type="string"><?php print $title; ?></h1>
         <?php endif; ?>
         <?php print render($title_suffix); ?>
         <?php print $messages; ?>
@@ -119,7 +119,7 @@
         </div>
         <?php if (!empty($node) && ($node->type !== 'tabbed_content' && $node->type !== 'how_to')): ?>
         <?php if ($breadcrumb): ?>
-          <div id="breadcrumb" class="breadcrumb-wrapper with-hero"><?php print $breadcrumb; ?></div>
+          <div id="breadcrumb" class="breadcrumb-wrapper with-hero" data-swiftype-index="false"><?php print $breadcrumb; ?></div>
         <?php endif; ?>
         <?php endif; ?>
         <?php endif; ?>
