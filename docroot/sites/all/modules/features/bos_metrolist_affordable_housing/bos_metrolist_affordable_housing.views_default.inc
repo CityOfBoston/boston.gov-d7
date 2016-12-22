@@ -280,16 +280,29 @@ function bos_metrolist_affordable_housing_views_default_views() {
   $handler->display->display_options['fields']['field_mah_zipcode']['element_wrapper_type'] = '0';
   $handler->display->display_options['fields']['field_mah_zipcode']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['field_mah_zipcode']['field_api_classes'] = TRUE;
+  /* Field: Content: Outer Location */
+  $handler->display->display_options['fields']['field_mah_outer_location']['id'] = 'field_mah_outer_location';
+  $handler->display->display_options['fields']['field_mah_outer_location']['table'] = 'field_data_field_mah_outer_location';
+  $handler->display->display_options['fields']['field_mah_outer_location']['field'] = 'field_mah_outer_location';
+  $handler->display->display_options['fields']['field_mah_outer_location']['label'] = '';
+  $handler->display->display_options['fields']['field_mah_outer_location']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_mah_outer_location']['element_type'] = '0';
+  $handler->display->display_options['fields']['field_mah_outer_location']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_mah_outer_location']['element_wrapper_type'] = '0';
+  $handler->display->display_options['fields']['field_mah_outer_location']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_mah_outer_location']['field_api_classes'] = TRUE;
   /* Field: Content: Neighborhood */
   $handler->display->display_options['fields']['field_mah_neighborhood']['id'] = 'field_mah_neighborhood';
   $handler->display->display_options['fields']['field_mah_neighborhood']['table'] = 'field_data_field_mah_neighborhood';
   $handler->display->display_options['fields']['field_mah_neighborhood']['field'] = 'field_mah_neighborhood';
+  $handler->display->display_options['fields']['field_mah_neighborhood']['label'] = 'Location';
   $handler->display->display_options['fields']['field_mah_neighborhood']['alter']['make_link'] = TRUE;
   $handler->display->display_options['fields']['field_mah_neighborhood']['alter']['path'] = 'neighborhood/[field_mah_neighborhood]';
   $handler->display->display_options['fields']['field_mah_neighborhood']['alter']['replace_spaces'] = TRUE;
   $handler->display->display_options['fields']['field_mah_neighborhood']['element_type'] = '0';
   $handler->display->display_options['fields']['field_mah_neighborhood']['element_wrapper_type'] = '0';
   $handler->display->display_options['fields']['field_mah_neighborhood']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_mah_neighborhood']['empty'] = '[field_mah_outer_location]';
   $handler->display->display_options['fields']['field_mah_neighborhood']['settings'] = array(
     'link' => 0,
   );
@@ -407,13 +420,6 @@ function bos_metrolist_affordable_housing_views_default_views() {
   $handler->display->display_options['filters']['field_mah_zipcode_value']['field'] = 'field_mah_zipcode_value';
   $handler->display->display_options['filters']['field_mah_zipcode_value']['operator'] = '!=';
   $handler->display->display_options['filters']['field_mah_zipcode_value']['group'] = 1;
-  /* Filter criterion: Content: Neighborhood (field_mah_neighborhood) */
-  $handler->display->display_options['filters']['field_mah_neighborhood_target_id']['id'] = 'field_mah_neighborhood_target_id';
-  $handler->display->display_options['filters']['field_mah_neighborhood_target_id']['table'] = 'field_data_field_mah_neighborhood';
-  $handler->display->display_options['filters']['field_mah_neighborhood_target_id']['field'] = 'field_mah_neighborhood_target_id';
-  $handler->display->display_options['filters']['field_mah_neighborhood_target_id']['operator'] = '!=';
-  $handler->display->display_options['filters']['field_mah_neighborhood_target_id']['value']['value'] = '""';
-  $handler->display->display_options['filters']['field_mah_neighborhood_target_id']['group'] = 1;
   /* Filter criterion: Content: Phone (field_mah_phone) */
   $handler->display->display_options['filters']['field_mah_phone_value']['id'] = 'field_mah_phone_value';
   $handler->display->display_options['filters']['field_mah_phone_value']['table'] = 'field_data_field_mah_phone';
