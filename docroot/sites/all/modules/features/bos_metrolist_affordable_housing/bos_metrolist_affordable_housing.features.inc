@@ -409,13 +409,13 @@ function bos_metrolist_affordable_housing_default_salesforce_mapping() {
         "drupal_field" : { "fieldmap_type" : "property", "fieldmap_value" : "field_mah_contact" },
         "salesforce_field" : {
           "autoNumber" : false,
-          "byteLength" : 18,
-          "calculated" : false,
-          "calculatedFormula" : null,
+          "byteLength" : 3900,
+          "calculated" : true,
+          "calculatedFormula" : "Property_Manager_Contact__r.Full_Name__c + \\u0022 \\/ \\u0022 +  Property_Manager_Contact__r.Account.Name",
           "cascadeDelete" : false,
           "caseSensitive" : false,
           "controllerName" : null,
-          "createable" : true,
+          "createable" : false,
           "custom" : true,
           "defaultValue" : null,
           "defaultValueFormula" : null,
@@ -426,30 +426,30 @@ function bos_metrolist_affordable_housing_default_salesforce_mapping() {
           "displayLocationInDecimal" : false,
           "externalId" : false,
           "filterable" : true,
-          "groupable" : true,
+          "groupable" : false,
           "htmlFormatted" : false,
           "idLookup" : false,
-          "inlineHelpText" : "Link the Property Manager Contact record here.",
-          "label" : "Property Manager Contact",
-          "length" : 18,
-          "name" : "Property_Manager_Contact__c",
+          "inlineHelpText" : null,
+          "label" : "Property Manager Contact\\/Account",
+          "length" : 1300,
+          "name" : "Property_Manager_Contact_Account__c",
           "nameField" : false,
           "namePointing" : false,
           "nillable" : true,
           "permissionable" : true,
           "picklistValues" : [],
           "precision" : 0,
-          "referenceTo" : [ "Contact" ],
-          "relationshipName" : "Property_Manager_Contact__r",
+          "referenceTo" : [],
+          "relationshipName" : null,
           "relationshipOrder" : null,
           "restrictedDelete" : false,
           "restrictedPicklist" : false,
           "scale" : 0,
-          "soapType" : "tns:ID",
+          "soapType" : "xsd:string",
           "sortable" : true,
-          "type" : "reference",
+          "type" : "string",
           "unique" : false,
-          "updateable" : true,
+          "updateable" : false,
           "writeRequiresMasterRead" : false
         },
         "key" : false,
@@ -558,7 +558,7 @@ function bos_metrolist_affordable_housing_default_salesforce_mapping() {
       {
         "drupal_field" : {
           "fieldmap_type" : "property",
-          "fieldmap_value" : "field_mah_metrolist_hold"
+          "fieldmap_value" : "field_mah_publish_to_metrolist"
         },
         "salesforce_field" : {
           "autoNumber" : false,
@@ -582,10 +582,10 @@ function bos_metrolist_affordable_housing_default_salesforce_mapping() {
           "groupable" : true,
           "htmlFormatted" : false,
           "idLookup" : false,
-          "inlineHelpText" : "If this box checked, the record will no be displayed on the Metrolist web page.",
-          "label" : "Metrolist hold",
+          "inlineHelpText" : null,
+          "label" : "Publish to Metrolist",
           "length" : 0,
-          "name" : "Metrolist_hold__c",
+          "name" : "Publish_to_Metrolist__c",
           "nameField" : false,
           "namePointing" : false,
           "nillable" : false,
@@ -601,6 +601,972 @@ function bos_metrolist_affordable_housing_default_salesforce_mapping() {
           "soapType" : "xsd:boolean",
           "sortable" : true,
           "type" : "boolean",
+          "unique" : false,
+          "updateable" : true,
+          "writeRequiresMasterRead" : false
+        },
+        "key" : false,
+        "direction" : "sf_drupal"
+      },
+      {
+        "drupal_field" : { "fieldmap_type" : "property", "fieldmap_value" : "field_mah_lottery" },
+        "salesforce_field" : {
+          "autoNumber" : false,
+          "byteLength" : 0,
+          "calculated" : false,
+          "calculatedFormula" : null,
+          "cascadeDelete" : false,
+          "caseSensitive" : false,
+          "controllerName" : null,
+          "createable" : true,
+          "custom" : true,
+          "defaultValue" : null,
+          "defaultValueFormula" : null,
+          "defaultedOnCreate" : true,
+          "dependentPicklist" : false,
+          "deprecatedAndHidden" : false,
+          "digits" : 0,
+          "displayLocationInDecimal" : false,
+          "externalId" : false,
+          "filterable" : true,
+          "groupable" : true,
+          "htmlFormatted" : false,
+          "idLookup" : false,
+          "inlineHelpText" : null,
+          "label" : "Lottery",
+          "length" : 0,
+          "name" : "Lottery__c",
+          "nameField" : false,
+          "namePointing" : false,
+          "nillable" : false,
+          "permissionable" : true,
+          "picklistValues" : [],
+          "precision" : 0,
+          "referenceTo" : [],
+          "relationshipName" : null,
+          "relationshipOrder" : null,
+          "restrictedDelete" : false,
+          "restrictedPicklist" : false,
+          "scale" : 0,
+          "soapType" : "xsd:boolean",
+          "sortable" : true,
+          "type" : "boolean",
+          "unique" : false,
+          "updateable" : true,
+          "writeRequiresMasterRead" : false
+        },
+        "key" : false,
+        "direction" : "sf_drupal"
+      },
+      {
+        "drupal_field" : {
+          "fieldmap_type" : "property",
+          "fieldmap_value" : "field_mah_lottery_deadline"
+        },
+        "salesforce_field" : {
+          "autoNumber" : false,
+          "byteLength" : 0,
+          "calculated" : false,
+          "calculatedFormula" : null,
+          "cascadeDelete" : false,
+          "caseSensitive" : false,
+          "controllerName" : null,
+          "createable" : true,
+          "custom" : true,
+          "defaultValue" : null,
+          "defaultValueFormula" : null,
+          "defaultedOnCreate" : false,
+          "dependentPicklist" : false,
+          "deprecatedAndHidden" : false,
+          "digits" : 0,
+          "displayLocationInDecimal" : false,
+          "externalId" : false,
+          "filterable" : true,
+          "groupable" : false,
+          "htmlFormatted" : false,
+          "idLookup" : false,
+          "inlineHelpText" : "Enter in the Application Deadline and Time.",
+          "label" : "Lottery Application Deadline",
+          "length" : 0,
+          "name" : "Lottery_Application_Deadline__c",
+          "nameField" : false,
+          "namePointing" : false,
+          "nillable" : true,
+          "permissionable" : true,
+          "picklistValues" : [],
+          "precision" : 0,
+          "referenceTo" : [],
+          "relationshipName" : null,
+          "relationshipOrder" : null,
+          "restrictedDelete" : false,
+          "restrictedPicklist" : false,
+          "scale" : 0,
+          "soapType" : "xsd:dateTime",
+          "sortable" : true,
+          "type" : "datetime",
+          "unique" : false,
+          "updateable" : true,
+          "writeRequiresMasterRead" : false
+        },
+        "key" : false,
+        "direction" : "sf_drupal"
+      },
+      {
+        "drupal_field" : {
+          "fieldmap_type" : "property",
+          "fieldmap_value" : "field_mah_lottery_flyer_url"
+        },
+        "salesforce_field" : {
+          "autoNumber" : false,
+          "byteLength" : 765,
+          "calculated" : false,
+          "calculatedFormula" : null,
+          "cascadeDelete" : false,
+          "caseSensitive" : false,
+          "controllerName" : null,
+          "createable" : true,
+          "custom" : true,
+          "defaultValue" : null,
+          "defaultValueFormula" : null,
+          "defaultedOnCreate" : false,
+          "dependentPicklist" : false,
+          "deprecatedAndHidden" : false,
+          "digits" : 0,
+          "displayLocationInDecimal" : false,
+          "externalId" : false,
+          "filterable" : true,
+          "groupable" : true,
+          "htmlFormatted" : false,
+          "idLookup" : false,
+          "inlineHelpText" : null,
+          "label" : "Lottery Advertisement Flyer",
+          "length" : 255,
+          "name" : "Lottery_Advertisement_Flyer__c",
+          "nameField" : false,
+          "namePointing" : false,
+          "nillable" : true,
+          "permissionable" : true,
+          "picklistValues" : [],
+          "precision" : 0,
+          "referenceTo" : [],
+          "relationshipName" : null,
+          "relationshipOrder" : null,
+          "restrictedDelete" : false,
+          "restrictedPicklist" : false,
+          "scale" : 0,
+          "soapType" : "xsd:string",
+          "sortable" : true,
+          "type" : "url",
+          "unique" : false,
+          "updateable" : true,
+          "writeRequiresMasterRead" : false
+        },
+        "key" : false,
+        "direction" : "sf_drupal"
+      },
+      {
+        "drupal_field" : {
+          "fieldmap_type" : "property",
+          "fieldmap_value" : "field_mah_outer_location"
+        },
+        "salesforce_field" : {
+          "autoNumber" : false,
+          "byteLength" : 765,
+          "calculated" : false,
+          "calculatedFormula" : null,
+          "cascadeDelete" : false,
+          "caseSensitive" : false,
+          "controllerName" : null,
+          "createable" : true,
+          "custom" : true,
+          "defaultValue" : null,
+          "defaultValueFormula" : null,
+          "defaultedOnCreate" : false,
+          "dependentPicklist" : false,
+          "deprecatedAndHidden" : false,
+          "digits" : 0,
+          "displayLocationInDecimal" : false,
+          "externalId" : false,
+          "filterable" : true,
+          "groupable" : true,
+          "htmlFormatted" : false,
+          "idLookup" : false,
+          "inlineHelpText" : null,
+          "label" : "Outside Boston Neighborhood",
+          "length" : 255,
+          "name" : "Outside_Boston_Neighborhood__c",
+          "nameField" : false,
+          "namePointing" : false,
+          "nillable" : true,
+          "permissionable" : true,
+          "picklistValues" : [
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Acton",
+              "validFor" : null,
+              "value" : "Acton"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Amesbury",
+              "validFor" : null,
+              "value" : "Amesbury"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Arlington",
+              "validFor" : null,
+              "value" : "Arlington"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Ashland",
+              "validFor" : null,
+              "value" : "Ashland"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Bedford",
+              "validFor" : null,
+              "value" : "Bedford"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Bellingham",
+              "validFor" : null,
+              "value" : "Bellingham"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Belmont",
+              "validFor" : null,
+              "value" : "Belmont"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Beverly",
+              "validFor" : null,
+              "value" : "Beverly"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Boxborough",
+              "validFor" : null,
+              "value" : "Boxborough"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Braintree",
+              "validFor" : null,
+              "value" : "Braintree"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Brookline",
+              "validFor" : null,
+              "value" : "Brookline"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Burlington",
+              "validFor" : null,
+              "value" : "Burlington"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Cambridge",
+              "validFor" : null,
+              "value" : "Cambridge"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Canton",
+              "validFor" : null,
+              "value" : "Canton"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Carlisle",
+              "validFor" : null,
+              "value" : "Carlisle"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Carver",
+              "validFor" : null,
+              "value" : "Carver"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Chelsea",
+              "validFor" : null,
+              "value" : "Chelsea"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Cohasset",
+              "validFor" : null,
+              "value" : "Cohasset"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Concord",
+              "validFor" : null,
+              "value" : "Concord"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Danvers",
+              "validFor" : null,
+              "value" : "Danvers"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Dedham",
+              "validFor" : null,
+              "value" : "Dedham"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Dover",
+              "validFor" : null,
+              "value" : "Dover"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Duxbury",
+              "validFor" : null,
+              "value" : "Duxbury"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Essex",
+              "validFor" : null,
+              "value" : "Essex"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Everett",
+              "validFor" : null,
+              "value" : "Everett"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Foxborough",
+              "validFor" : null,
+              "value" : "Foxborough"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Framigham",
+              "validFor" : null,
+              "value" : "Framigham"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Franklin",
+              "validFor" : null,
+              "value" : "Franklin"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Gloucester",
+              "validFor" : null,
+              "value" : "Gloucester"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Hamilton",
+              "validFor" : null,
+              "value" : "Hamilton"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Hanover",
+              "validFor" : null,
+              "value" : "Hanover"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Hingham",
+              "validFor" : null,
+              "value" : "Hingham"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Holbrook",
+              "validFor" : null,
+              "value" : "Holbrook"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Holliston",
+              "validFor" : null,
+              "value" : "Holliston"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Hopedale",
+              "validFor" : null,
+              "value" : "Hopedale"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Hopkinton",
+              "validFor" : null,
+              "value" : "Hopkinton"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Hudson",
+              "validFor" : null,
+              "value" : "Hudson"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Hull",
+              "validFor" : null,
+              "value" : "Hull"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Ipswich",
+              "validFor" : null,
+              "value" : "Ipswich"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Kingston",
+              "validFor" : null,
+              "value" : "Kingston"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Lexington",
+              "validFor" : null,
+              "value" : "Lexington"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Lincoln",
+              "validFor" : null,
+              "value" : "Lincoln"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Littleton",
+              "validFor" : null,
+              "value" : "Littleton"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Lynn",
+              "validFor" : null,
+              "value" : "Lynn"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Lynnfield",
+              "validFor" : null,
+              "value" : "Lynnfield"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Malborough",
+              "validFor" : null,
+              "value" : "Malborough"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Malden",
+              "validFor" : null,
+              "value" : "Malden"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Manchester-by-the-Sea",
+              "validFor" : null,
+              "value" : "Manchester-by-the-Sea"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Marblehead",
+              "validFor" : null,
+              "value" : "Marblehead"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Marshfield",
+              "validFor" : null,
+              "value" : "Marshfield"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Maynard",
+              "validFor" : null,
+              "value" : "Maynard"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Medfield",
+              "validFor" : null,
+              "value" : "Medfield"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Medford",
+              "validFor" : null,
+              "value" : "Medford"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Medway",
+              "validFor" : null,
+              "value" : "Medway"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Melrose",
+              "validFor" : null,
+              "value" : "Melrose"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Middleton",
+              "validFor" : null,
+              "value" : "Middleton"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Milford",
+              "validFor" : null,
+              "value" : "Milford"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Millis",
+              "validFor" : null,
+              "value" : "Millis"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Milton",
+              "validFor" : null,
+              "value" : "Milton"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Nahant",
+              "validFor" : null,
+              "value" : "Nahant"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Natick",
+              "validFor" : null,
+              "value" : "Natick"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Needham",
+              "validFor" : null,
+              "value" : "Needham"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Newbury",
+              "validFor" : null,
+              "value" : "Newbury"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Newburyport",
+              "validFor" : null,
+              "value" : "Newburyport"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Newton",
+              "validFor" : null,
+              "value" : "Newton"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Norfolk",
+              "validFor" : null,
+              "value" : "Norfolk"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "North Reading",
+              "validFor" : null,
+              "value" : "North Reading"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Norwell",
+              "validFor" : null,
+              "value" : "Norwell"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Norwood",
+              "validFor" : null,
+              "value" : "Norwood"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Peabody",
+              "validFor" : null,
+              "value" : "Peabody"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Pembroke",
+              "validFor" : null,
+              "value" : "Pembroke"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Plainville",
+              "validFor" : null,
+              "value" : "Plainville"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Plymouth",
+              "validFor" : null,
+              "value" : "Plymouth"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Quincy",
+              "validFor" : null,
+              "value" : "Quincy"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Randolph",
+              "validFor" : null,
+              "value" : "Randolph"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Reading",
+              "validFor" : null,
+              "value" : "Reading"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Revere",
+              "validFor" : null,
+              "value" : "Revere"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Rockland",
+              "validFor" : null,
+              "value" : "Rockland"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Rockport",
+              "validFor" : null,
+              "value" : "Rockport"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Rowley",
+              "validFor" : null,
+              "value" : "Rowley"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Salem",
+              "validFor" : null,
+              "value" : "Salem"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Salisbury",
+              "validFor" : null,
+              "value" : "Salisbury"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Saugus",
+              "validFor" : null,
+              "value" : "Saugus"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Scituate",
+              "validFor" : null,
+              "value" : "Scituate"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Sharon",
+              "validFor" : null,
+              "value" : "Sharon"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Sherborn",
+              "validFor" : null,
+              "value" : "Sherborn"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Somerville",
+              "validFor" : null,
+              "value" : "Somerville"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Southborough",
+              "validFor" : null,
+              "value" : "Southborough"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Stoneham",
+              "validFor" : null,
+              "value" : "Stoneham"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Stoughton",
+              "validFor" : null,
+              "value" : "Stoughton"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Stow",
+              "validFor" : null,
+              "value" : "Stow"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Sudbury",
+              "validFor" : null,
+              "value" : "Sudbury"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Swampscott",
+              "validFor" : null,
+              "value" : "Swampscott"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Topsfield",
+              "validFor" : null,
+              "value" : "Topsfield"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Wakefield",
+              "validFor" : null,
+              "value" : "Wakefield"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Waltham",
+              "validFor" : null,
+              "value" : "Waltham"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Watertown",
+              "validFor" : null,
+              "value" : "Watertown"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Wayland",
+              "validFor" : null,
+              "value" : "Wayland"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Wellesly",
+              "validFor" : null,
+              "value" : "Wellesly"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Wenham",
+              "validFor" : null,
+              "value" : "Wenham"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Weston",
+              "validFor" : null,
+              "value" : "Weston"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Westwood",
+              "validFor" : null,
+              "value" : "Westwood"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Weymouth",
+              "validFor" : null,
+              "value" : "Weymouth"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Wilmington",
+              "validFor" : null,
+              "value" : "Wilmington"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Winchester",
+              "validFor" : null,
+              "value" : "Winchester"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Winthrop",
+              "validFor" : null,
+              "value" : "Winthrop"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Woburn",
+              "validFor" : null,
+              "value" : "Woburn"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Wrentham",
+              "validFor" : null,
+              "value" : "Wrentham"
+            }
+          ],
+          "precision" : 0,
+          "referenceTo" : [],
+          "relationshipName" : null,
+          "relationshipOrder" : null,
+          "restrictedDelete" : false,
+          "restrictedPicklist" : true,
+          "scale" : 0,
+          "soapType" : "xsd:string",
+          "sortable" : true,
+          "type" : "picklist",
           "unique" : false,
           "updateable" : true,
           "writeRequiresMasterRead" : false
