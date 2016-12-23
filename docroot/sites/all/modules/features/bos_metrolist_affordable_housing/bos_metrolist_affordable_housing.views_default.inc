@@ -532,14 +532,18 @@ function bos_metrolist_affordable_housing_views_default_views() {
   $handler->display->display_options['fields']['field_mah_email']['id'] = 'field_mah_email';
   $handler->display->display_options['fields']['field_mah_email']['table'] = 'field_data_field_mah_email';
   $handler->display->display_options['fields']['field_mah_email']['field'] = 'field_mah_email';
-  $handler->display->display_options['fields']['field_mah_email']['label'] = 'Contact';
-  $handler->display->display_options['fields']['field_mah_email']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_mah_email']['alter']['text'] = '[field_mah_contact] [field_mah_phone] [field_mah_email]';
+  $handler->display->display_options['fields']['field_mah_email']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_mah_email']['element_type'] = '0';
   $handler->display->display_options['fields']['field_mah_email']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_mah_email']['element_wrapper_type'] = '0';
   $handler->display->display_options['fields']['field_mah_email']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['field_mah_email']['field_api_classes'] = TRUE;
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing_1']['id'] = 'nothing_1';
+  $handler->display->display_options['fields']['nothing_1']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing_1']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing_1']['label'] = 'Contact';
+  $handler->display->display_options['fields']['nothing_1']['alter']['text'] = '[field_mah_contact] [field_mah_phone] [field_mah_email]';
   /* Field: Content: Lottery Application Deadline */
   $handler->display->display_options['fields']['field_mah_lottery_deadline']['id'] = 'field_mah_lottery_deadline';
   $handler->display->display_options['fields']['field_mah_lottery_deadline']['table'] = 'field_data_field_mah_lottery_deadline';
@@ -563,12 +567,11 @@ function bos_metrolist_affordable_housing_views_default_views() {
   $handler->display->display_options['fields']['field_mah_lottery_flyer_url']['table'] = 'field_data_field_mah_lottery_flyer_url';
   $handler->display->display_options['fields']['field_mah_lottery_flyer_url']['field'] = 'field_mah_lottery_flyer_url';
   $handler->display->display_options['fields']['field_mah_lottery_flyer_url']['label'] = 'Application';
-  $handler->display->display_options['fields']['field_mah_lottery_flyer_url']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_mah_lottery_flyer_url']['alter']['text'] = '<a href="[field_mah_lottery_flyer_url]">View application</a>';
   $handler->display->display_options['fields']['field_mah_lottery_flyer_url']['element_type'] = '0';
   $handler->display->display_options['fields']['field_mah_lottery_flyer_url']['element_wrapper_type'] = '0';
   $handler->display->display_options['fields']['field_mah_lottery_flyer_url']['element_default_classes'] = FALSE;
-  $handler->display->display_options['fields']['field_mah_lottery_flyer_url']['empty'] = 'No application available';
+  $handler->display->display_options['fields']['field_mah_lottery_flyer_url']['empty'] = 'Application Not Available';
+  $handler->display->display_options['fields']['field_mah_lottery_flyer_url']['click_sort_column'] = 'url';
   $handler->display->display_options['fields']['field_mah_lottery_flyer_url']['field_api_classes'] = TRUE;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
