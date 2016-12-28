@@ -329,7 +329,6 @@ function hub_profile_update_7012() {
 function hub_profile_update_7013() {
   $enabled_modules = array(
     'keyboard_shortcuts',
-    'bos_keyboard_shortcuts',
   );
   module_enable($enabled_modules);
 }

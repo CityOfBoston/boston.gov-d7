@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the Boston Keyboard Shortcuts feature.
- */
-
-include_once 'bos_keyboard_shortcuts.features.inc';
