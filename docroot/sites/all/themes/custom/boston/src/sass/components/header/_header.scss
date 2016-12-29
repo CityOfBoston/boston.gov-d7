@@ -96,51 +96,6 @@
     clear: both;
   }
 
-  .header-seal {
-    position: absolute;
-    border-radius: 100%;
-    left: 50%;
-    margin-left: -52px;
-    display: none;
-    width: 105px;
-    height: 105px;
-
-    @include respond-to(xxl) {
-      display: block;
-    }
-
-    .seal-image {
-      position: absolute;
-      z-index: 1;
-      width: 85px;
-      height: 85px;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%,-50%);
-
-      &:hover {
-        cursor: pointer;
-      }
-    }
-
-    .hide-shadow-layer {
-      background-color: color('text-bg');
-      width: 115px;
-      height: 65px;
-      position: fixed;
-      top: 0;
-      margin-left: -5px;
-    }
-
-    .shadow-layer {
-      height: 105px;
-      width: 105px;
-      border-radius: 100%;
-      box-shadow: 0 1px 2px 2px rgba(0,0,0,.1);
-      background-color: white;
-    }
-}
-
   .container,
   .nav-trigger {
     height: 3.6rem;

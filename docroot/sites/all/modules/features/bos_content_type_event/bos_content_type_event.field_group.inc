@@ -121,7 +121,6 @@ function bos_content_type_event_field_group_info() {
       6 => 'field_event_type',
       7 => 'field_multiple_neighborhoods',
       8 => 'field_email',
-      9 => 'field_live_stream',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

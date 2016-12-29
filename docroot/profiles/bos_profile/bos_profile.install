@@ -503,19 +503,25 @@ function bos_profile_update_7014() {
 }
 
 /**
- * Updates for Metrolist + Salesforce
- * for 11/30/2016.
+ * Updates for 12/12/2016.
  */
 function bos_profile_update_7015() {
   $enabled_modules = array(
-    // Contrib:
+    'bos_view_blank_layouts',
+  );
+  module_enable($enabled_modules);
+}
+
+/**
+ * Updates for 12/14/2016.
+ */
+function bos_profile_update_7016() {
+  $enabled_modules = array(
     'salesforce',
-    'salesforce_mapping',    
+    'salesforce_mapping',
     'salesforce_pull',
-    // Custom:
-    'bos_salesforce',
-    // Feature:
-    'bos_metrolist',
+    'salesforce_term_ref',
+    'bos_metrolist_affordable_housing',
   );
   module_enable($enabled_modules);
 }

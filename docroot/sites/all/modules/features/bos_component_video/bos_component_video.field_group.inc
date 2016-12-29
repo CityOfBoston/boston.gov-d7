@@ -28,6 +28,8 @@ function bos_component_video_field_group_info() {
       2 => 'field_short_title',
       3 => 'field_title',
       4 => 'field_contact',
+      5 => 'field_live_stream',
+      6 => 'field_event_dates',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

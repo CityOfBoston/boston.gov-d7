@@ -37,3 +37,4 @@ features[variable][] = rh_node_override_transaction
 features[variable][] = rh_node_redirect_response_transaction
 features[variable][] = rh_node_redirect_transaction
 features[variable][] = workbench_moderation_default_state_transaction
+features[variable][] = xmlsitemap_settings_node_transaction
