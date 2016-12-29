@@ -109,7 +109,6 @@ function getTimeRemaining(endtime){
 }
 
 function liveStreamNotReady(){
-    event_listing = doc.getElementById(event_id);
     playas = doc.getElementsByClassName('plyr__play');
     n = playas.length;
     imgButton.style.cssText = "display: none;"
@@ -127,7 +126,6 @@ imgButton = doc.querySelector("article .plyr__play img");
 liveStreamTxt = doc.querySelector("article .plyr__play div");
 playerElement = doc.querySelector("article .plyr__play");
 vids['<?php print $id; ?>'] = { button: document.getElementById("plyr__<?php print $id; ?>") };
-
 
 if (live_stream_status == 1) {
   var live_stream_start = new Date('<?php echo($live_stream_start->format('Y-m-d H:i:s T')); ?>');
