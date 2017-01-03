@@ -160,6 +160,11 @@ projects:
     - https://www.drupal.org/files/issues/imce.extension.validator-1018344-3.patch
   insert:
     version: 1.3
+  keyboard_shortcut:
+    version: 2.x-dev
+    patch:
+    # Patch adds role access and dynamic loading of libs
+    - https://www.drupal.org/files/issues/2839535_keyboard_shortcut-roles_and_conditional_js-7.x-2.x-dev.patch
   login_security:
     version: 1.9
   masquerade:
@@ -318,6 +323,12 @@ libraries:
       type: "file"
       url: "../../../libraries/ckeditor-4.5.8.tar.gz"
     directory_name: "ckeditor"
+    type: "library"
+  mousetrap:
+    download:
+      type: "git"
+      url: "https://github.com/ccampbell/mousetrap.git"
+    directory_name: "mousetrap"
     type: "library"
   phpexcel:
     download:
