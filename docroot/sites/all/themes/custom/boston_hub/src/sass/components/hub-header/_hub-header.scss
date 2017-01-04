@@ -12,13 +12,6 @@
   // Overrides the header's background color
   background-color: color(section-bg-dark);
   margin-left: 0;
-
-  // Small adjustments for dimensions of Hub logo.
-  &__site-name {
-    width: 112px;
-    background-size: 112px;
-  }
-
 }
 
 // New Styles for user section of header
