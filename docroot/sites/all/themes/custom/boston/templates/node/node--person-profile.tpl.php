@@ -63,6 +63,7 @@
   </div>
   <?php if (isset($content['field_components'])): ?>
     <div class="person-profile-components desktop-100" <?php print $content_attributes; ?>>
+      <?php print_r($type); ?>
       <?php print render($content['field_components']); ?>
     </div>
   <?php endif; ?>

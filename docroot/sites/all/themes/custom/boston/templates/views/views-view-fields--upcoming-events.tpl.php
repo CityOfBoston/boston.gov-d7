@@ -24,7 +24,14 @@
  * @ingroup views_templates
  */
 ?>
+<!--
+Foo: <?php 
+  print_r($view->name);
+  print_r($view->current_display);
+  print_r($view->fun_query_time);
+?>
 
+-->
 <div class="mobile-1-col tablet-1-col xxl-desktop-2-col clearfix news-item news-item-short-listing">
   <a href="<?php print $fields['path']->content; ?>" class="item-link"></a>
   <div class="news-item-wrapper">
@@ -48,7 +55,7 @@
     </div>
     <div class="text-wrapper">
       <h3 class="title">
-        <?php print $fields['title']->content; ?>
+       Baz: <?php print $fields['title']->content; ?>
       </h3>
     </div>
   </div>
