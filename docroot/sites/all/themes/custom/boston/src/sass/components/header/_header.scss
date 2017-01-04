@@ -32,50 +32,6 @@
     float: left;
   }
 
-  // The name of the website.
-  &__site-name {
-    padding: 0;
-    position: absolute;
-    top: 0;
-    left: 2.7em;
-    margin: 0;
-    height: 65px;
-    width: 140px;
-    line-height: 0;
-    display: block;
-    background: url('../../logo.svg') no-repeat 0 0 transparent;
-    background-position: 0 54%;
-    background-size: 120px 16px;
-
-    @include respond-to(xl) {
-      left: 1.3em;
-      background-size: auto;
-      width: 180px;
-    }
-  }
-
-  &__site-name a {
-    height: 100%;
-    width: 100%;
-    display: block;
-    text-indent: -9999px;
-    overflow: hidden;
-  }
-
-  // The link around the name of the website.
-  &__site-link {
-    &:link,
-    &:visited {
-      color: color(text);
-      text-decoration: none;
-    }
-
-    &:hover,
-    &:focus {
-      text-decoration: underline;
-    }
-  }
-
   // The slogan (or tagline) of a website.
   &__site-slogan {
     margin: 0;
@@ -126,7 +82,7 @@
     padding: 0;
     display: none;
 
-    @include respond-to(l) {
+    @include respond-to(pl) {
       display: block;
     }
   }
