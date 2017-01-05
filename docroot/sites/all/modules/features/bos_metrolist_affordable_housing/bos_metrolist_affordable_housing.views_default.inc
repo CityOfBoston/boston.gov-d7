@@ -447,6 +447,14 @@ function bos_metrolist_affordable_housing_views_default_views() {
 
   /* Display: Page - Lottery */
   $handler = $view->new_display('page', 'Page - Lottery', 'page_1');
+  $handler->display->display_options['defaults']['empty'] = FALSE;
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = 'There are no Lottery listings at this time. Please check back here for updates.';
+  $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
@@ -625,6 +633,12 @@ function bos_metrolist_affordable_housing_views_default_views() {
     51 => 0,
   );
   $handler->display->display_options['filters']['field_mah_lottery_value']['expose']['reduce'] = TRUE;
+  /* Filter criterion: Content: Lottery Application Deadline (field_mah_lottery_deadline) */
+  $handler->display->display_options['filters']['field_mah_lottery_deadline_value']['id'] = 'field_mah_lottery_deadline_value';
+  $handler->display->display_options['filters']['field_mah_lottery_deadline_value']['table'] = 'field_data_field_mah_lottery_deadline';
+  $handler->display->display_options['filters']['field_mah_lottery_deadline_value']['field'] = 'field_mah_lottery_deadline_value';
+  $handler->display->display_options['filters']['field_mah_lottery_deadline_value']['operator'] = '>=';
+  $handler->display->display_options['filters']['field_mah_lottery_deadline_value']['default_date'] = 'today';
   $handler->display->display_options['path'] = 'metrolist-affordable-housing-lottery';
   $export['metrolist_affordable_housing'] = $view;
 
