@@ -215,6 +215,13 @@ a.item-link {
 
 }
 
+.post-featured-item-wrapper {
+  .department-title {
+    float: right;
+    margin-top: 3rem;
+  }
+}
+
 // THEME
 .news-item,
 .post-featured-item-wrapper,
@@ -428,7 +435,7 @@ a.item-link {
   .date-flag {
     background-image: none;
     background-repeat: no-repeat;
-    background-size: auto;    
+    background-size: auto;
     width: auto;
     color: color(optimistic-blue);
     text-align: left;
@@ -436,7 +443,7 @@ a.item-link {
     top: 20px;
     padding: 0;
 
-    
+
     @include respond-to(m) {
       position: absolute;
       top: -1px;
@@ -462,7 +469,7 @@ a.item-link {
       &--left {
         margin-left: 0;
         top: 0;
-      }    
+      }
 
     }
   }
