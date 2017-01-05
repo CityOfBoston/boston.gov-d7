@@ -313,10 +313,10 @@ function bos_metrolist_affordable_housing_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'link',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'link_default',
-        'weight' => 17,
+        'type' => 'text_default',
+        'weight' => 15,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -334,11 +334,8 @@ function bos_metrolist_affordable_housing_field_default_field_instances() {
       'absolute_url' => 1,
       'attributes' => array(
         'class' => '',
-        'configurable_class' => 0,
-        'configurable_title' => 0,
         'rel' => '',
         'target' => 'default',
-        'title' => '',
       ),
       'display' => array(
         'url_cutoff' => 80,
@@ -349,20 +346,23 @@ function bos_metrolist_affordable_housing_field_default_field_instances() {
         'enable' => 0,
         'profile' => '',
       ),
-      'rel_remove' => 'default',
-      'title' => 'value',
-      'title_label_use_field_label' => 0,
+      'text_processing' => 0,
+      'title' => 'optional',
+      'title_label_use_field_label' => FALSE,
       'title_maxlength' => 128,
-      'title_value' => 'View Application',
+      'title_value' => '',
       'url' => 0,
       'user_register_form' => FALSE,
       'validate_url' => 1,
     ),
     'widget' => array(
-      'active' => 0,
-      'module' => 'link',
-      'settings' => array(),
-      'type' => 'link_field',
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'show_token_tree' => 0,
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
       'weight' => 15,
     ),
   );
