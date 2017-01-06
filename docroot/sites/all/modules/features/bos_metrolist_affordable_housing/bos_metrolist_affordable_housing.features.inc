@@ -257,6 +257,13 @@ function bos_metrolist_affordable_housing_default_salesforce_mapping() {
             {
               "active" : true,
               "defaultValue" : false,
+              "label" : "Bay Village",
+              "validFor" : null,
+              "value" : "Bay Village"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
               "label" : "Beacon Hill",
               "validFor" : null,
               "value" : "Beacon Hill"
@@ -285,9 +292,23 @@ function bos_metrolist_affordable_housing_default_salesforce_mapping() {
             {
               "active" : true,
               "defaultValue" : false,
+              "label" : "Chinatown\\/Leather District",
+              "validFor" : null,
+              "value" : "Chinatown\\/Leather District"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
               "label" : "Dorchester",
               "validFor" : null,
               "value" : "Dorchester"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Downtown",
+              "validFor" : null,
+              "value" : "Downtown"
             },
             {
               "active" : true,
@@ -299,9 +320,9 @@ function bos_metrolist_affordable_housing_default_salesforce_mapping() {
             {
               "active" : true,
               "defaultValue" : false,
-              "label" : "Fenway",
+              "label" : "Fenway\\/Kenmore",
               "validFor" : null,
-              "value" : "Fenway"
+              "value" : "Fenway\\/Kenmore"
             },
             {
               "active" : true,
@@ -320,16 +341,30 @@ function bos_metrolist_affordable_housing_default_salesforce_mapping() {
             {
               "active" : true,
               "defaultValue" : false,
-              "label" : "Kenmore",
+              "label" : "Mattapan",
               "validFor" : null,
-              "value" : "Kenmore"
+              "value" : "Mattapan"
             },
             {
               "active" : true,
               "defaultValue" : false,
-              "label" : "Mattapan",
+              "label" : "Mid-Dorchester",
               "validFor" : null,
-              "value" : "Mattapan"
+              "value" : "Mid-Dorchester"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Mission Hill",
+              "validFor" : null,
+              "value" : "Mission Hill"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "North End",
+              "validFor" : null,
+              "value" : "North End"
             },
             {
               "active" : true,
@@ -362,9 +397,9 @@ function bos_metrolist_affordable_housing_default_salesforce_mapping() {
             {
               "active" : true,
               "defaultValue" : false,
-              "label" : "Uncertain",
+              "label" : "West End",
               "validFor" : null,
-              "value" : "Uncertain"
+              "value" : "West End"
             },
             {
               "active" : true,
@@ -372,20 +407,6 @@ function bos_metrolist_affordable_housing_default_salesforce_mapping() {
               "label" : "West Roxbury",
               "validFor" : null,
               "value" : "West Roxbury"
-            },
-            {
-              "active" : true,
-              "defaultValue" : false,
-              "label" : "- Outside Boston -",
-              "validFor" : null,
-              "value" : "- Outside Boston -"
-            },
-            {
-              "active" : true,
-              "defaultValue" : false,
-              "label" : "South Easton",
-              "validFor" : null,
-              "value" : "South Easton"
             }
           ],
           "precision" : 0,
@@ -714,7 +735,7 @@ function bos_metrolist_affordable_housing_default_salesforce_mapping() {
       {
         "drupal_field" : {
           "fieldmap_type" : "property",
-          "fieldmap_value" : "field_mah_lottery_flyer_url"
+          "fieldmap_value" : "field_mah_lottery_flyer_url:url"
         },
         "salesforce_field" : {
           "autoNumber" : false,
@@ -792,7 +813,7 @@ function bos_metrolist_affordable_housing_default_salesforce_mapping() {
           "htmlFormatted" : false,
           "idLookup" : false,
           "inlineHelpText" : null,
-          "label" : "Outside Boston Neighborhood",
+          "label" : "Outside Boston Location",
           "length" : 255,
           "name" : "Outside_Boston_Neighborhood__c",
           "nameField" : false,
@@ -1415,6 +1436,13 @@ function bos_metrolist_affordable_housing_default_salesforce_mapping() {
               "label" : "Southborough",
               "validFor" : null,
               "value" : "Southborough"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "South Easton",
+              "validFor" : null,
+              "value" : "South Easton"
             },
             {
               "active" : true,
