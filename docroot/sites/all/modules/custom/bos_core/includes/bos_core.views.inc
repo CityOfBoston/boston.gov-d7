@@ -30,12 +30,15 @@ function bos_core_views_pre_view(&$view) {
       case 'place_profile':
         $view->set_display('block_3');
         break;
+
       case 'person_profile':
         $view->set_display('block_4');
         break;
+
       case 'department_profile':
         $view->set_display('block_2');
         break;
+
       case 'program_initiative_profile':
         $view->set_display('block_5');
         break;
@@ -47,12 +50,15 @@ function bos_core_views_pre_view(&$view) {
       case 'place_profile':
         $view->set_display('places');
         break;
+
       case 'person_profile':
         $view->set_display('people');
         break;
+
       case 'department_profile':
         $view->set_display('departments');
         break;
+
       case 'program_initiative_profile':
         $view->set_display('programs');
         break;
