@@ -25,14 +25,14 @@
       display:none;
 
       @include respond-to(xl) {
-        @include font-size(xxs);
+        @include font-size(m);
         font-family: $montserrat;
         text-transform: uppercase;
         color: color(freedom-trail-red);
         font-weight: bold;
         display: inline;
         float: left;
-        background-image: url("../img/icon-play.svg");
+        background-image: url("../img/icon-play-bold.svg");
         background-position: 0 5px;
         background-repeat: no-repeat;
         background-size: 16px 16px;
