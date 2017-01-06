@@ -20,20 +20,43 @@ function bos_core_views_plugins() {
 }
 
 /**
- * Implements hook_views_query_alter();
+ * Implements hook_views_pre_view();
  */
-function bos_core_views_query_alter(&$view, &$query) {
+
+function bos_core_views_pre_view(&$view){
+  $parent_node = node_load(trim($view->override_path, 'node\/'));
+  $view->parent_node = $parent_node;
   if ($view->name == 'upcoming_events') {
-    $parent_node = node_load(trim($view->override_path, 'node\/'));
-    if ($parent_node->type == 'person_profile') {
-      $view->set_items_per_page(2);
-    } else if ($parent_node->type == 'place_profile') {
-      $query->where[0]['conditions'][0]['field'] = 'node_field_data_field_related_content.nid != :node_nid';  
-      $view->set_items_per_page(5);
-    } else {
-    $view->set_items_per_page(3);
-    $view->parent_content_type = $parent_node->type;;
-    $view->fun_query_time = $query->where;
+    switch ($parent_node->type) {
+           case 'place_profile':
+       	      $view->set_display('block_3');
+              break;
+           case 'person_profile':
+	      $view->set_display('block_4');
+              break;
+           case 'department_profile':
+	      $view->set_display('block_2');
+              break;
+           case 'program_initiative_profile':
+	     $view->set_display('block_5');
+              break;
+    }
+  }
+
+  if ($view->name == 'news_announcements') {
+    switch ($parent_node->type) {
+      	   case 'place_profile':
+	      $view->set_display('places');
+       	      break;
+      	   case 'person_profile':
+	      $view->set_display('people');
+              break;
+           case 'department_profile':
+	      $view->set_display('departments');
+              break;
+           case 'program_initiative_profile':
+	      $view->set_display('programs');
+              break;
     }
   }
 }

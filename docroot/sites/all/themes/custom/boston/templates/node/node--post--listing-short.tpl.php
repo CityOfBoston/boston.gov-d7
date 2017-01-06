@@ -84,8 +84,6 @@ hide($content['links']);
 
 ?>
 
-<!-- Baz <?php print_r($view_mode); ?> -->
-
 <div class="mobile-1-col tablet-1-col xxl-desktop-2-col clearfix news-item news-item-short-listing">
   <a href="<?php print $node_url; ?>" class="item-link"></a>
   <div class="news-item-wrapper">
