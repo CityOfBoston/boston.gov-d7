@@ -569,6 +569,16 @@ function bos_metrolist_affordable_housing_views_default_views() {
     'show_repeat_rule' => 'show',
   );
   $handler->display->display_options['fields']['field_mah_lottery_deadline']['field_api_classes'] = TRUE;
+  /* Field: Content: Lottery URL */
+  $handler->display->display_options['fields']['field_mah_lottery_url']['id'] = 'field_mah_lottery_url';
+  $handler->display->display_options['fields']['field_mah_lottery_url']['table'] = 'field_data_field_mah_lottery_url';
+  $handler->display->display_options['fields']['field_mah_lottery_url']['field'] = 'field_mah_lottery_url';
+  $handler->display->display_options['fields']['field_mah_lottery_url']['element_type'] = '0';
+  $handler->display->display_options['fields']['field_mah_lottery_url']['element_wrapper_type'] = '0';
+  $handler->display->display_options['fields']['field_mah_lottery_url']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_mah_lottery_url']['empty'] = 'Application Not Available';
+  $handler->display->display_options['fields']['field_mah_lottery_url']['click_sort_column'] = 'url';
+  $handler->display->display_options['fields']['field_mah_lottery_url']['field_api_classes'] = TRUE;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */

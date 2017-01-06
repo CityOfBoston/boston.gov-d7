@@ -304,6 +304,70 @@ function bos_metrolist_affordable_housing_field_default_field_instances() {
   );
 
   // Exported field_instance:
+  // 'node-metrolist_affordable_housing-field_mah_lottery_url'.
+  $field_instances['node-metrolist_affordable_housing-field_mah_lottery_url'] = array(
+    'bundle' => 'metrolist_affordable_housing',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'link',
+        'settings' => array(),
+        'type' => 'link_default',
+        'weight' => 17,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div_div_div',
+    'field_name' => 'field_mah_lottery_url',
+    'label' => 'Lottery URL',
+    'required' => 0,
+    'settings' => array(
+      'absolute_url' => 1,
+      'attributes' => array(
+        'class' => '',
+        'configurable_class' => 0,
+        'configurable_title' => 0,
+        'rel' => '',
+        'target' => 'default',
+        'title' => '',
+      ),
+      'display' => array(
+        'url_cutoff' => 80,
+      ),
+      'enable_tokens' => 1,
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'rel_remove' => 'default',
+      'title' => 'value',
+      'title_label_use_field_label' => 0,
+      'title_maxlength' => 128,
+      'title_value' => 'View Application',
+      'url' => 0,
+      'user_register_form' => FALSE,
+      'validate_url' => 1,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'link',
+      'settings' => array(),
+      'type' => 'link_field',
+      'weight' => 15,
+    ),
+  );
+
+  // Exported field_instance:
   // 'node-metrolist_affordable_housing-field_mah_neighborhood'.
   $field_instances['node-metrolist_affordable_housing-field_mah_neighborhood'] = array(
     'bundle' => 'metrolist_affordable_housing',
@@ -544,6 +608,7 @@ function bos_metrolist_affordable_housing_field_default_field_instances() {
   t('Email');
   t('Lottery');
   t('Lottery Application Deadline');
+  t('Lottery URL');
   t('Neighborhood');
   t('Outer Location');
   t('Phone');
