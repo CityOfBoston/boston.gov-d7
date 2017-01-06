@@ -535,3 +535,16 @@ function bos_profile_update_7017() {
   );
   module_enable($enabled_modules);
 }
+
+/**
+ * Hotfix for field name conflict on 1/6/2017.
+ */
+function bos_profile_update_7018() {
+  field_delete_field(field_mah_lottery_flyer_url);
+  field_purge_batch(1);
+  if(module_exists('bos_metrolist_affordable_housing')) {
+    module_disable(array('bos_metrolist_afforable_housing'));
+    drupal_uninstall_modules(array('bos_metrolist_affordable_housing'));
+  }
+  module_enable(array('bos_metrolist_affordable_housing'));
+}
