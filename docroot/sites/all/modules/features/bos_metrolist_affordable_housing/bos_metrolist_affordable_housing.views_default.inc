@@ -255,6 +255,13 @@ function bos_metrolist_affordable_housing_views_default_views() {
       'empty_column' => 0,
     ),
   );
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = 'There are no Lottery listings at this time. Please check back here for updates.';
+  $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -447,14 +454,6 @@ function bos_metrolist_affordable_housing_views_default_views() {
 
   /* Display: Page - Lottery */
   $handler = $view->new_display('page', 'Page - Lottery', 'page_1');
-  $handler->display->display_options['defaults']['empty'] = FALSE;
-  /* No results behavior: Global: Text area */
-  $handler->display->display_options['empty']['area']['id'] = 'area';
-  $handler->display->display_options['empty']['area']['table'] = 'views';
-  $handler->display->display_options['empty']['area']['field'] = 'area';
-  $handler->display->display_options['empty']['area']['empty'] = TRUE;
-  $handler->display->display_options['empty']['area']['content'] = 'There are no Lottery listings at this time. Please check back here for updates.';
-  $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
@@ -570,17 +569,16 @@ function bos_metrolist_affordable_housing_views_default_views() {
     'show_repeat_rule' => 'show',
   );
   $handler->display->display_options['fields']['field_mah_lottery_deadline']['field_api_classes'] = TRUE;
-  /* Field: Content: Lottery Flyer URL */
-  $handler->display->display_options['fields']['field_mah_lottery_flyer_url']['id'] = 'field_mah_lottery_flyer_url';
-  $handler->display->display_options['fields']['field_mah_lottery_flyer_url']['table'] = 'field_data_field_mah_lottery_flyer_url';
-  $handler->display->display_options['fields']['field_mah_lottery_flyer_url']['field'] = 'field_mah_lottery_flyer_url';
-  $handler->display->display_options['fields']['field_mah_lottery_flyer_url']['label'] = 'Application';
-  $handler->display->display_options['fields']['field_mah_lottery_flyer_url']['element_type'] = '0';
-  $handler->display->display_options['fields']['field_mah_lottery_flyer_url']['element_wrapper_type'] = '0';
-  $handler->display->display_options['fields']['field_mah_lottery_flyer_url']['element_default_classes'] = FALSE;
-  $handler->display->display_options['fields']['field_mah_lottery_flyer_url']['empty'] = 'Application Not Available';
-  $handler->display->display_options['fields']['field_mah_lottery_flyer_url']['click_sort_column'] = 'url';
-  $handler->display->display_options['fields']['field_mah_lottery_flyer_url']['field_api_classes'] = TRUE;
+  /* Field: Content: Lottery URL */
+  $handler->display->display_options['fields']['field_mah_lottery_url']['id'] = 'field_mah_lottery_url';
+  $handler->display->display_options['fields']['field_mah_lottery_url']['table'] = 'field_data_field_mah_lottery_url';
+  $handler->display->display_options['fields']['field_mah_lottery_url']['field'] = 'field_mah_lottery_url';
+  $handler->display->display_options['fields']['field_mah_lottery_url']['element_type'] = '0';
+  $handler->display->display_options['fields']['field_mah_lottery_url']['element_wrapper_type'] = '0';
+  $handler->display->display_options['fields']['field_mah_lottery_url']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_mah_lottery_url']['empty'] = 'Application Not Available';
+  $handler->display->display_options['fields']['field_mah_lottery_url']['click_sort_column'] = 'url';
+  $handler->display->display_options['fields']['field_mah_lottery_url']['field_api_classes'] = TRUE;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
