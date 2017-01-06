@@ -525,13 +525,3 @@ function bos_profile_update_7016() {
   );
   module_enable($enabled_modules);
 }
-
-/**
- * Updates for 12/27/2016.
- */
-function bos_profile_update_7017() {
-  $enabled_modules = array(
-    'keyboard_shortcuts',
-  );
-  module_enable($enabled_modules);
-}

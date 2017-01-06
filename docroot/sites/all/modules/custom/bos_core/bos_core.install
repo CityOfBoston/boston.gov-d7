@@ -412,3 +412,13 @@ function bos_core_update_7022() {
   );
   module_enable($enabled_modules);
 }
+
+/**
+ * Updates for 1/5/2016.
+ */
+function bos_core_update_7023() {
+  $enabled_modules = array(
+    'keyboard_shortcuts',
+  );
+  module_enable($enabled_modules);
+}
