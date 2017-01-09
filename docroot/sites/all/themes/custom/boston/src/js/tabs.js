@@ -13,7 +13,6 @@
     $(function () {
       // Get hash from URL.
       var hash = window.location.hash;
-      console.log(hash);
       if (hash) {
         var elementID = hash.replace('#', '');
         $('div.tab-content[id="' + elementID + '"]').addClass('is-active');
@@ -35,7 +34,6 @@
 
     $('ul.tabs li').click(function () {
       var tab_id = $(this).attr('data-tab');
-      console.log();
 
       $('ul.tabs li').removeClass('is-active').find('a').removeClass('is-active');
       $('.tab-content').removeClass('is-active');

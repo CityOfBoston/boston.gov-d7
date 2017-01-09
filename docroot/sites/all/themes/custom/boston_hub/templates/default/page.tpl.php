@@ -7,6 +7,8 @@
  *
  * @see https://drupal.org/node/1728148
  */
+
+ $avatar_email = $field_work_email != '' ? $field_work_email : 'default@boston.gov';
 ?>
 
 <input type="checkbox" id="hb__trigger" class="hb__trigger" aria-hidden="true" />
@@ -37,24 +39,31 @@
       </label>
 
       <?php if ($site_name): ?>
-        <h1 class="header__site-name">
-          <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" class="header__site-link" rel="home"><span><?php print $site_name; ?></span></a>
-        </h1>
+        <div class="lo lo--abs">
+          <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" class="lo-l">
+            <img src="<?php print $asset_url ?>/images/<?php print $asset_name ?>/logo.svg" alt="<?php print $site_name; ?>" class="lo-i" />
+          </a>
+        </div>
       <?php endif; ?>
 
-      <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="seal" class="header-seal" title="Go Home">
-        <span class="seal-image"><?php print file_get_contents(drupal_get_path('theme', $GLOBALS['theme']) . '/dist/img/seal.svg') ?></span>
-        <div class="shadow-layer"></div>
+      <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" class="s">
+        <img src="<?php print $asset_url ?>/images/<?php print $asset_name ?>/seal.svg" alt="City of Boston Seal" class="s-i" />
       </a>
 
       <div class="header-right">
+        <?php print theme('links__system_secondary_menu', array(
+          'links' => $secondary_menu,
+          'attributes' => array(
+            'class' => array('header-menu', 'links', 'inline', 'clearfix'),
+          ),
+        )); ?>
         <?php if ($logged_in): ?>
           <div class="user_info">
             <input type="checkbox" id="dd__menu__box" class="dd__input">
             <div class="dd" aria-expanded="false">
               <label class="dd__trigger user-menu-trigger" for="dd__menu__box">
                 <span id="menu-link" aria-haspopup="true" aria-owns="menu-translation">
-                  <div class="avatar-wrapper" style="background-image: url(//cob-avatars.herokuapp.com/photos/<?php print base64_encode($field_work_email); ?>)">User Menu</div>
+                  <div class="avatar-wrapper" style="background-image: url(//cob-avatars.herokuapp.com/photos/<?php print base64_encode($avatar_email); ?>)">User Menu</div>
                 </span>
               </label>
               <div class="dd__menu menu-user" id="menu-user" role="group" aria-labelledby="menu-link">
@@ -78,13 +87,6 @@
               </div>
             </div>
           </div>
-        <?php else: ?>
-          <?php print theme('links__system_secondary_menu', array(
-            'links' => $secondary_menu,
-            'attributes' => array(
-              'class' => array('header-menu', 'links', 'inline', 'clearfix'),
-            ),
-          )); ?>
         <?php endif; ?>
         <?php print render($page['header']); ?>
       </div>
@@ -96,15 +98,15 @@
     <div class="container">
       <section class="main-content" id="content" role="main">
         <?php print render($page['highlighted']); ?>
-        <a href="#skip-link" class="visually-hidden--focusable" id="main-content">Back to top</a>
+        <a href="#skip-link" class="visually-hidden--focusable" id="main-content" data-swiftype-index="false">Back to top</a>
         <?php if (!isset($header_image) || (!empty($node) && ($node->type == 'tabbed_content' || $node->type == 'how_to'))): ?>
           <?php if ($breadcrumb): ?>
-            <div id="breadcrumb" class="breadcrumb-outter"><?php print $breadcrumb; ?></div>
+            <div id="breadcrumb" class="breadcrumb-outter" data-swiftype-index="false"><?php print $breadcrumb; ?></div>
           <?php endif; ?>
         <?php endif; ?>
         <?php print render($title_prefix); ?>
         <?php if ($title): ?>
-          <h1 class="page-title"><?php print $title; ?></h1>
+          <h1 class="page-title" data-swiftype-name="title" data-swiftype-type="string"><?php print $title; ?></h1>
         <?php endif; ?>
         <?php print render($title_suffix); ?>
         <?php print $messages; ?>
@@ -121,7 +123,7 @@
         </div>
         <?php if (!empty($node) && ($node->type !== 'tabbed_content' && $node->type !== 'how_to')): ?>
         <?php if ($breadcrumb): ?>
-          <div id="breadcrumb" class="breadcrumb-wrapper with-hero"><?php print $breadcrumb; ?></div>
+          <div id="breadcrumb" class="breadcrumb-wrapper with-hero" data-swiftype-index="false"><?php print $breadcrumb; ?></div>
         <?php endif; ?>
         <?php endif; ?>
         <?php endif; ?>

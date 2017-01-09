@@ -15,12 +15,12 @@
     "behat/mink-selenium2-driver":  "*",
     "behat/mink-browserkit-driver": "*",
     "drupal/drupal-extension":      "*",
-    "drupal/coder":                 "8.2.*",
+    "drupal/coder":                 "8.2.6",
     "drush/drush":                  "~7.2",
     "phpunit/phpunit":              "4.6.*",
     "squizlabs/php_codesniffer":    "2.*",
-    "phing/phing":                  "dev-master#0ef30e55bb5871cb38903cc0ee9d76074118a22c",
-    "jakoch/phantomjs-installer":   "1.9.8",
+    "phing/phing":                  "~2.15",
+    "jakoch/phantomjs-installer":   "*",
     "jarnaiz/behat-junit-formatter": "^1.2"
   },
   "scripts": {

@@ -185,5 +185,15 @@ function bos_content_type_place_profile_strongarm() {
   );
   $export['workbench_scheduler_place_profile'] = $strongarm;
 
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'xmlsitemap_settings_node_place_profile';
+  $strongarm->value = array(
+    'status' => '1',
+    'priority' => '0.3',
+  );
+  $export['xmlsitemap_settings_node_place_profile'] = $strongarm;
+
   return $export;
 }

@@ -205,6 +205,13 @@ function acquia_permissions_map() {
       'edit any topic_page content',
       'edit own topic_page content',
     ),
+    // Landing Page Author role permissions.
+    // Assumes user is at least a content author.
+    'Landing Author' => array(
+      'create landing_page content',
+      'edit any landing_page content',
+      'edit own landing_page content',
+    ),
     // Content Author role permissions.
     'Content Author' => array(
       'access administration menu',
@@ -219,6 +226,7 @@ function acquia_permissions_map() {
       'create files',
       'create how_to content',
       'create post content',
+      'create public_notice content',
       'create tabbed_content content',
       'edit any article content',
       'edit any department_profile content',
@@ -226,6 +234,7 @@ function acquia_permissions_map() {
       'edit any how_to content',
       'edit any image files',
       'edit any post content',
+      'edit any public_notice content',
       'edit any tabbed_content content',
       'edit meta tags',
       'edit own article content',
@@ -235,6 +244,7 @@ function acquia_permissions_map() {
       'edit own image files',
       'edit own post content',
       'edit own tabbed_content content',
+      'edit own public_notice content',
       'moderate content from archive to draft',
       'moderate content from draft to needs_review',
       'moderate content from needs_review to draft',

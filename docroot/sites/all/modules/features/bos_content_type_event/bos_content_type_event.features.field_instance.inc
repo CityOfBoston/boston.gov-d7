@@ -1988,68 +1988,6 @@ function bos_content_type_event_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-event-field_live_stream'.
-  $field_instances['node-event-field_live_stream'] = array(
-    'bundle' => 'event',
-    'default_value' => array(
-      0 => array(
-        'value' => 0,
-      ),
-    ),
-    'deleted' => 0,
-    'description' => 'Check if event will have a live streamed video associated with it.',
-    'display' => array(
-      'calendar_listing' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'module' => 'list',
-        'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 32,
-      ),
-      'featured_item' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'listing' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'listing_short' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'fences_wrapper' => 'no_wrapper',
-    'field_name' => 'field_live_stream',
-    'label' => 'Live Stream',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(
-        'display_label' => 1,
-      ),
-      'type' => 'options_onoff',
-      'weight' => 38,
-    ),
-  );
-
   // Exported field_instance: 'node-event-field_multiple_neighborhoods'.
   $field_instances['node-event-field_multiple_neighborhoods'] = array(
     'bundle' => 'event',
@@ -3179,7 +3117,6 @@ function bos_content_type_event_field_default_field_instances() {
   t('Add download resources here.');
   t('An email address for constituents to reach out about the event.');
   t('Body');
-  t('Check if event will have a live streamed video associated with it.');
   t('Components');
   t('Contact');
   t('Contact Email');
@@ -3194,7 +3131,6 @@ function bos_content_type_event_field_default_field_instances() {
   t('Event Type');
   t('Featured');
   t('Intro Image');
-  t('Live Stream');
   t('Location');
   t('Neighborhood');
   t('People');

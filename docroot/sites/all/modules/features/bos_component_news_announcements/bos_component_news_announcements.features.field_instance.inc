@@ -42,8 +42,13 @@ function bos_component_news_announcements_field_default_field_instances() {
     'fences_wrapper' => 'no_wrapper',
     'field_name' => 'field_component_title',
     'label' => 'Title',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
       'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
