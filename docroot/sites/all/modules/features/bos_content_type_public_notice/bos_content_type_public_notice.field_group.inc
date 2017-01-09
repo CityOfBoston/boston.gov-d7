@@ -193,7 +193,7 @@ function bos_content_type_public_notice_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'public_notice';
   $field_group->mode = 'form';
-  $field_group->parent_name = 'group_details';
+  $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Live streaming video?',
     'weight' => '19',
@@ -286,6 +286,12 @@ function bos_content_type_public_notice_field_group_info() {
       0 => 'field_contacts',
       1 => 'field_multiple_neighborhoods',
       2 => 'field_related_content',
+      3 => 'field_program_initiative',
+      4 => 'field_people',
+      5 => 'field_related_guides',
+      6 => 'field_place',
+      7 => 'field_related_posts',
+      8 => 'field_related_events_notices',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
