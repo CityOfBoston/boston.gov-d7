@@ -12,20 +12,6 @@
   // Overrides the header's background color
   background-color: color(section-bg-dark);
   margin-left: 0;
-
-  // Small adjustments for dimensions of Hub logo.
-  &__site-name {
-    width: 112px;
-    background-size: 112px;
-  }
-
-  .header-seal .shadow-layer {
-    // Overrides the seal's background color
-    background-color: color(section-bg-dark);
-    // Removes the seal's box-shadow - unnecessary with dark background
-    box-shadow: none;
-  }
-
 }
 
 // New Styles for user section of header

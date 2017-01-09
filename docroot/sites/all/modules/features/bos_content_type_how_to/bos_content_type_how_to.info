@@ -73,4 +73,5 @@ features[variable][] = node_options_how_to
 features[variable][] = node_preview_how_to
 features[variable][] = node_submitted_how_to
 features[variable][] = pathauto_node_how_to_pattern
+features[variable][] = xmlsitemap_settings_node_how_to
 packages = Boston

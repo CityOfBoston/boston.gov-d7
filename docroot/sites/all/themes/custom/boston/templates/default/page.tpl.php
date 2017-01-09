@@ -11,7 +11,7 @@
 
 <input type="checkbox" id="hb__trigger" class="hb__trigger" aria-hidden="true" />
 
-<div class="main-navigation">
+<div class="main-navigation" data-swiftype-index="false">
   <div class="main-navigation-wrapper">
     <div class="main-navigation-title"></div>
     <?php print render($page['navigation']); ?>
@@ -19,7 +19,7 @@
 </div>
 
 <div class="page" id="page">
-  <header id="main-menu" class="header" role="banner">
+  <header id="main-menu" class="header" role="banner" data-swiftype-index="false">
     <div class="container">
       <label tabindex="0" for="hb__trigger" class="nav-trigger" type="button" aria-label="Menu" aria-controls="navigation"  aria-expanded="false">
         <div class="hb">
@@ -31,15 +31,16 @@
       </label>
 
       <?php if ($site_name): ?>
-        <h1 class="header__site-name">
-          <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" class="header__site-link" rel="home"><span><?php print $site_name; ?></span></a>
-        </h1>
+        <div class="lo lo--abs">
+          <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" class="lo-l">
+            <img src="<?php print $asset_url ?>/images/<?php print $asset_name ?>/logo.svg" alt="<?php print $site_name; ?>" class="lo-i" />
+            <span class="lo-t">Mayor Martin J. Walsh</span>
+          </a>
+        </div>
       <?php endif; ?>
 
-      <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="seal" class="header-seal">
-        <span class="seal-image"><?php print file_get_contents(drupal_get_path('theme', $GLOBALS['theme']) . '/dist/img/seal.svg') ?></span>
-        <div class="hide-shadow-layer"></div>
-        <div class="shadow-layer"></div>
+      <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" class="s">
+        <img src="<?php print $asset_url ?>/images/<?php print $asset_name ?>/seal.svg" alt="City of Boston Seal" class="s-i" />
       </a>
 
       <div class="tr">
@@ -70,10 +71,10 @@
     <div class="container">
       <section class="main-content" id="content" role="main">
         <?php print render($page['highlighted']); ?>
-        <a href="#skip-link" class="visually-hidden--focusable" id="main-content">Back to top</a>
+        <a href="#skip-link" class="visually-hidden--focusable" id="main-content" data-swiftype-index="false">Back to top</a>
         <?php if (!isset($header_image) || !empty($node) && $node->type == 'how_to'): ?>
           <?php if ($breadcrumb): ?>
-            <div id="breadcrumb"><?php print $breadcrumb; ?></div>
+            <div id="breadcrumb" data-swiftype-index="false"><?php print $breadcrumb; ?></div>
           <?php endif; ?>
         <?php endif; ?>
         <?php print render($title_prefix); ?>
@@ -95,7 +96,7 @@
         </div>
         <?php if (!empty($node) && $node->type !== 'how_to'): ?>
         <?php if ($breadcrumb): ?>
-          <div id="breadcrumb" class="breadcrumb-wrapper with-hero"><?php print $breadcrumb; ?></div>
+          <div id="breadcrumb" class="breadcrumb-wrapper with-hero" data-swiftype-index="false"><?php print $breadcrumb; ?></div>
         <?php endif; ?>
         <?php endif; ?>
         <?php endif; ?>

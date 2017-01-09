@@ -19,7 +19,7 @@
  * @ingroup views_templates
  */
 ?>
-<table <?php if ($classes) { print 'class="'. $classes . ' responsive-table" '; } ?><?php print $attributes; ?>>
+<table <?php if ($classes) { print 'class="'. $classes . ' responsive-table responsive-table--horizontal" '; } ?><?php print $attributes; ?>>
    <?php if (!empty($title) || !empty($caption)) : ?>
      <caption><?php print $caption . $title; ?></caption>
   <?php endif; ?>
@@ -34,9 +34,9 @@
       </tr>
     </thead>
   <?php endif; ?>
-  <tbody class="b--w">
+  <tbody>
     <?php foreach ($rows as $row_count => $row): ?>
-      <tr <?php if ($row_classes[$row_count]) { print 'class="' . implode(' ', $row_classes[$row_count]) .'"';  } ?>>
+      <tr <?php if ($row_classes[$row_count]) { print 'class="' . implode(' ', $row_classes[$row_count]) .' b--w"';  } ?>>
         <?php foreach ($row as $field => $content): ?>
           <td <?php if ($field_classes[$field][$row_count]) { print 'class="'. $field_classes[$field][$row_count] . '" '; } ?><?php print drupal_attributes($field_attributes[$field][$row_count]); ?>>
             <?php print $content; ?>
