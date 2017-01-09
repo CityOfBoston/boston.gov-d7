@@ -322,13 +322,3 @@ function hub_profile_update_7012() {
 
   field_purge_batch(1000);
 }
-
-/**
- * Updates for 12/27/2016.
- */
-function hub_profile_update_7013() {
-  $enabled_modules = array(
-    'keyboard_shortcuts',
-  );
-  module_enable($enabled_modules);
-}
