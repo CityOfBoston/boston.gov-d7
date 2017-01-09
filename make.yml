@@ -146,8 +146,6 @@ projects:
     - https://www.drupal.org/files/issues/validate_url-2299657-22.patch
   linkit:
     version: 3.x-dev
-    patch:
-    - https://www.drupal.org/files/issues/linkit_button_doesn_t-2550845-23.patch
   libraries:
     version: 2.2
   imce:
