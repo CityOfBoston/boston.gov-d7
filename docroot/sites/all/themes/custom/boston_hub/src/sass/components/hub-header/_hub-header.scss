@@ -98,6 +98,10 @@
     display: none;
   }
 
+  li[class^="menu-"].last {
+    margin-right: 1.4em;
+  }
+
 }
 
 .not-logged-in .header-right {
