@@ -423,7 +423,6 @@ function bos_core_update_7023() {
   module_enable($enabled_modules);
 }
 
-
 /**
  * Updates for 01/10/2017.
  */
@@ -453,4 +452,14 @@ function bos_core_update_7024() {
       }
     }
   }
+}
+
+/**
+ * Updates for 1/12/2016.
+ */
+function bos_core_update_7025() {
+  $enabled_modules = array(
+    'login_destination',
+  );
+  module_enable($enabled_modules);
 }
