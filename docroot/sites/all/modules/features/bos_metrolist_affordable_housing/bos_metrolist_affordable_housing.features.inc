@@ -762,7 +762,7 @@ function bos_metrolist_affordable_housing_default_salesforce_mapping() {
           "inlineHelpText" : null,
           "label" : "Outside Boston Location",
           "length" : 255,
-          "name" : "Outside_Boston_Neighborhood__c",
+          "name" : "Outside_Boston_Location__c",
           "nameField" : false,
           "namePointing" : false,
           "nillable" : true,
@@ -953,9 +953,9 @@ function bos_metrolist_affordable_housing_default_salesforce_mapping() {
             {
               "active" : true,
               "defaultValue" : false,
-              "label" : "Framigham",
+              "label" : "Framingham",
               "validFor" : null,
-              "value" : "Framigham"
+              "value" : "Framingham"
             },
             {
               "active" : true,
