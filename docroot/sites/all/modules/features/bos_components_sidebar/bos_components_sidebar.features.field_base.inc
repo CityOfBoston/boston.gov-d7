@@ -32,6 +32,8 @@ function bos_components_sidebar_field_default_field_bases() {
         'icon-payment' => 'Payment',
         'icon-phone' => 'Phone',
         'icon-time' => 'Time',
+        'icon-form' => 'Form',
+        'icon-event' => 'Event',
       ),
       'allowed_values_function' => '',
     ),
