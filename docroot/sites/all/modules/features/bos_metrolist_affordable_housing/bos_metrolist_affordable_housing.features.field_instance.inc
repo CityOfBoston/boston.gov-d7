@@ -401,7 +401,7 @@ function bos_metrolist_affordable_housing_field_default_field_instances() {
       'title' => 'value',
       'title_label_use_field_label' => 0,
       'title_maxlength' => 128,
-      'title_value' => 'View Application',
+      'title_value' => 'Lottery Info',
       'url' => 0,
       'user_register_form' => FALSE,
       'validate_url' => 1,
