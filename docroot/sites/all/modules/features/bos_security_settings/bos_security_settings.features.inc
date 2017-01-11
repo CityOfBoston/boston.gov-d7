@@ -29,8 +29,7 @@ function bos_security_settings_password_policy_features_default_policy() {
         'length' => 8,
       ),
       'created' => 1450737105,
-      'expiration' => 180,
-      'warning' => 10,
+      'expiration' => 0,
       'weight' => 0,
       'roles' => array(
         'authenticated user' => 'authenticated user',

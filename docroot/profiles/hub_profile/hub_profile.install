@@ -324,11 +324,14 @@ function hub_profile_update_7012() {
 }
 
 /**
- * Updates for 12/27/2016.
+ * Update for 1/8/16
  */
 function hub_profile_update_7013() {
   $enabled_modules = array(
-    'keyboard_shortcuts',
+    'bos_component_status_override',
+    'bos_content_type_emergency_alert',
+    'bos_content_type_status_item',
+    'bos_view_status_displays',
   );
   module_enable($enabled_modules);
 }
