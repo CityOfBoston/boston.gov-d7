@@ -1601,6 +1601,81 @@ function bos_metrolist_affordable_housing_default_salesforce_mapping() {
         },
         "key" : false,
         "direction" : "sf_drupal"
+      },
+      {
+        "drupal_field" : {
+          "fieldmap_type" : "property",
+          "fieldmap_value" : "field_mah_lottery_type"
+        },
+        "salesforce_field" : {
+          "autoNumber" : false,
+          "byteLength" : 765,
+          "calculated" : false,
+          "calculatedFormula" : null,
+          "cascadeDelete" : false,
+          "caseSensitive" : false,
+          "controllerName" : null,
+          "createable" : true,
+          "custom" : true,
+          "defaultValue" : null,
+          "defaultValueFormula" : null,
+          "defaultedOnCreate" : false,
+          "dependentPicklist" : false,
+          "deprecatedAndHidden" : false,
+          "digits" : 0,
+          "displayLocationInDecimal" : false,
+          "externalId" : false,
+          "filterable" : true,
+          "groupable" : true,
+          "htmlFormatted" : false,
+          "idLookup" : false,
+          "inlineHelpText" : null,
+          "label" : "Lottery Type",
+          "length" : 255,
+          "name" : "Lottery_Type__c",
+          "nameField" : false,
+          "namePointing" : false,
+          "nillable" : true,
+          "permissionable" : true,
+          "picklistValues" : [
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Rental",
+              "validFor" : null,
+              "value" : "Rental"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Ownership",
+              "validFor" : null,
+              "value" : "Ownership"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Resale",
+              "validFor" : null,
+              "value" : "Resale"
+            }
+          ],
+          "precision" : 0,
+          "referenceTo" : [],
+          "relationshipName" : null,
+          "relationshipOrder" : null,
+          "restrictedDelete" : false,
+          "restrictedPicklist" : true,
+          "scale" : 0,
+          "soapType" : "xsd:string",
+          "sortable" : true,
+          "type" : "picklist",
+          "unique" : false,
+          "updateable" : true,
+          "writeRequiresMasterRead" : false
+        },
+        "key" : false,
+        "direction" : "sf_drupal"
       }
     ],
     "pull_trigger_date" : "LastModifiedDate",
