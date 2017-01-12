@@ -454,6 +454,116 @@ function bos_metrolist_affordable_housing_views_default_views() {
 
   /* Display: Page - Lottery */
   $handler = $view->new_display('page', 'Page - Lottery', 'page_1');
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'title' => 'title',
+    'field_mah_address' => 'field_mah_address',
+    'field_mah_zipcode' => 'field_mah_zipcode',
+    'field_mah_outer_location' => 'field_mah_outer_location',
+    'field_mah_neighborhood' => 'field_mah_neighborhood',
+    'field_mah_lottery_type' => 'field_mah_lottery_type',
+    'nothing' => 'nothing',
+    'field_mah_contact' => 'field_mah_contact',
+    'field_mah_phone' => 'field_mah_phone',
+    'field_mah_email' => 'field_mah_email',
+    'nothing_1' => 'nothing_1',
+    'field_mah_lottery_deadline' => 'field_mah_lottery_deadline',
+    'field_mah_lottery_url' => 'field_mah_lottery_url',
+  );
+  $handler->display->display_options['style_options']['default'] = '-1';
+  $handler->display->display_options['style_options']['info'] = array(
+    'title' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_mah_address' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_mah_zipcode' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_mah_outer_location' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_mah_neighborhood' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_mah_lottery_type' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'nothing' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_mah_contact' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_mah_phone' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_mah_email' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'nothing_1' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_mah_lottery_deadline' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_mah_lottery_url' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
@@ -509,6 +619,15 @@ function bos_metrolist_affordable_housing_views_default_views() {
     'link' => 0,
   );
   $handler->display->display_options['fields']['field_mah_neighborhood']['field_api_classes'] = TRUE;
+  /* Field: Content: Lottery Type */
+  $handler->display->display_options['fields']['field_mah_lottery_type']['id'] = 'field_mah_lottery_type';
+  $handler->display->display_options['fields']['field_mah_lottery_type']['table'] = 'field_data_field_mah_lottery_type';
+  $handler->display->display_options['fields']['field_mah_lottery_type']['field'] = 'field_mah_lottery_type';
+  $handler->display->display_options['fields']['field_mah_lottery_type']['label'] = 'Type';
+  $handler->display->display_options['fields']['field_mah_lottery_type']['element_type'] = '0';
+  $handler->display->display_options['fields']['field_mah_lottery_type']['element_wrapper_type'] = '0';
+  $handler->display->display_options['fields']['field_mah_lottery_type']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_mah_lottery_type']['field_api_classes'] = TRUE;
   /* Field: Global: Custom text */
   $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
@@ -576,7 +695,7 @@ function bos_metrolist_affordable_housing_views_default_views() {
   $handler->display->display_options['fields']['field_mah_lottery_url']['element_type'] = '0';
   $handler->display->display_options['fields']['field_mah_lottery_url']['element_wrapper_type'] = '0';
   $handler->display->display_options['fields']['field_mah_lottery_url']['element_default_classes'] = FALSE;
-  $handler->display->display_options['fields']['field_mah_lottery_url']['empty'] = 'Application Not Available';
+  $handler->display->display_options['fields']['field_mah_lottery_url']['empty'] = '--';
   $handler->display->display_options['fields']['field_mah_lottery_url']['click_sort_column'] = 'url';
   $handler->display->display_options['fields']['field_mah_lottery_url']['field_api_classes'] = TRUE;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;

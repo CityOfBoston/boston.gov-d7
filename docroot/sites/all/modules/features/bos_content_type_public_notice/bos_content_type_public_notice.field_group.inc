@@ -193,7 +193,7 @@ function bos_content_type_public_notice_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'public_notice';
   $field_group->mode = 'form';
-  $field_group->parent_name = '';
+  $field_group->parent_name = 'group_details';
   $field_group->data = array(
     'label' => 'Live streaming video?',
     'weight' => '19',

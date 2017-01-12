@@ -478,7 +478,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 17,
+      'weight' => 16,
     ),
   );
 

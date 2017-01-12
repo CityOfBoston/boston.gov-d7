@@ -558,7 +558,7 @@ function bos_content_type_post_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 2,
+      'weight' => 10,
     ),
   );
 
@@ -953,7 +953,7 @@ function bos_content_type_post_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 1,
+      'weight' => 7,
     ),
   );
 
@@ -1148,7 +1148,7 @@ function bos_content_type_post_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 5,
+      'weight' => 9,
     ),
   );
 
@@ -1216,7 +1216,7 @@ function bos_content_type_post_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 6,
+      'weight' => 11,
     ),
   );
 
