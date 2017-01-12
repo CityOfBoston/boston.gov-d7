@@ -422,7 +422,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
     'bundle' => 'public_notice',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'The Departments that this notice applies to.',
+    'description' => 'List all departments related to this public notice.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -453,7 +453,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
     'entity_type' => 'node',
     'fences_wrapper' => 'no_wrapper',
     'field_name' => 'field_contacts',
-    'label' => 'Related Departments',
+    'label' => 'All related departments',
     'required' => 1,
     'settings' => array(
       'behaviors' => array(
@@ -1235,7 +1235,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
     'bundle' => 'public_notice',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Which people are relevant for this public notice?',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1256,7 +1256,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
     'entity_type' => 'node',
     'fences_wrapper' => 'div_div_div',
     'field_name' => 'field_people',
-    'label' => 'Related People',
+    'label' => 'Related people',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -1339,7 +1339,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
     'bundle' => 'public_notice',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Are any cemeteries, parks, historic districts, or community centers relevant for this public notice?',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1360,7 +1360,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
     'entity_type' => 'node',
     'fences_wrapper' => 'div_div_div',
     'field_name' => 'field_place',
-    'label' => 'Related Place',
+    'label' => 'Related places',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -1585,7 +1585,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
     'bundle' => 'public_notice',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Enter content that is related to this public notice.',
+    'description' => 'Which articles, how tos, and / or other content are relevant for this public notice?',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -1615,7 +1615,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
     'entity_type' => 'node',
     'fences_wrapper' => 'no_wrapper',
     'field_name' => 'field_related_content',
-    'label' => 'Related Content',
+    'label' => 'Other related content',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -1644,7 +1644,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
     'bundle' => 'public_notice',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Which other events or public notices are relevant for this public notice?',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1665,7 +1665,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
     'entity_type' => 'node',
     'fences_wrapper' => 'no_wrapper',
     'field_name' => 'field_related_events_notices',
-    'label' => 'Related Events/Public Notices',
+    'label' => 'Related events / public notices',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -1694,7 +1694,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
     'bundle' => 'public_notice',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Which guides are relevant for this public notice?',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1715,7 +1715,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
     'entity_type' => 'node',
     'fences_wrapper' => 'no_wrapper',
     'field_name' => 'field_related_guides',
-    'label' => 'Related Guides',
+    'label' => 'Related guides',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -1744,7 +1744,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
     'bundle' => 'public_notice',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Which press releases or blog posts are relevant for this public notice?',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1765,7 +1765,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
     'entity_type' => 'node',
     'fences_wrapper' => 'no_wrapper',
     'field_name' => 'field_related_posts',
-    'label' => 'Related Posts',
+    'label' => 'Related posts',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -1938,6 +1938,8 @@ function bos_content_type_public_notice_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('A sentence describing the purpose of the meeting.');
+  t('All related departments');
+  t('Are any cemeteries, parks, historic districts, or community centers relevant for this public notice?');
   t('Body');
   t('Canceled');
   t('Cancellation Reason');
@@ -1948,28 +1950,26 @@ function bos_content_type_public_notice_field_default_field_instances() {
   t('Department');
   t('Discussion Topics');
   t('Downloads');
-  t('Enter content that is related to this public notice.');
   t('Featured');
   t('If this notice is cancelled, check this box and give a reason below.');
   t('If this notice is cancelled, enter a reason.');
   t('Intro Text');
   t('Is there public testimony?');
+  t('List all departments related to this public notice.');
   t('Live Stream');
   t('Location');
+  t('Other related content');
   t('Please attach filed posting here.');
   t('Point of Contact');
   t('Published Date');
-  t('Related Content');
-  t('Related Departments');
-  t('Related Events/Public Notices');
-  t('Related Guides');
   t('Related Neighborhoods');
-  t('Related People');
-  t('Related Place');
-  t('Related Posts');
   t('Related Program/Initiative');
+  t('Related events / public notices');
+  t('Related guides');
+  t('Related people');
+  t('Related places');
+  t('Related posts');
   t('The Department that is primarily responsible for this notice.');
-  t('The Departments that this notice applies to.');
   t('The date and time when the Meeting / Hearing / Working Session is happening. Enter an end time if known.');
   t('The email that should be used to request information about this notice.');
   t('The expected time that the public testimony will begin.');
@@ -1979,6 +1979,11 @@ function bos_content_type_public_notice_field_default_field_instances() {
   t('The phone number that should be used to inquire about this notice.');
   t('Time public testimony begins');
   t('Updated Date');
+  t('Which articles, how tos, and / or other content are relevant for this public notice?');
+  t('Which guides are relevant for this public notice?');
+  t('Which other events or public notices are relevant for this public notice?');
+  t('Which people are relevant for this public notice?');
+  t('Which press releases or blog posts are relevant for this public notice?');
 
   return $field_instances;
 }

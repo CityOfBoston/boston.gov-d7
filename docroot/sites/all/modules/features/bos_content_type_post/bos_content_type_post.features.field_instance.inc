@@ -533,8 +533,8 @@ function bos_content_type_post_field_default_field_instances() {
     'entity_type' => 'node',
     'fences_wrapper' => 'no_wrapper',
     'field_name' => 'field_contacts',
-    'label' => 'Departments',
-    'required' => 0,
+    'label' => 'All related departments',
+    'required' => 1,
     'settings' => array(
       'behaviors' => array(
         'taxonomy-index' => array(
@@ -1089,7 +1089,7 @@ function bos_content_type_post_field_default_field_instances() {
     'bundle' => 'post',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Which people are relevant for this post?',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -1128,7 +1128,7 @@ function bos_content_type_post_field_default_field_instances() {
     'entity_type' => 'node',
     'fences_wrapper' => 'no_wrapper',
     'field_name' => 'field_people',
-    'label' => 'People',
+    'label' => 'Related people',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -1157,7 +1157,7 @@ function bos_content_type_post_field_default_field_instances() {
     'bundle' => 'post',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Are any cemeteries, parks, historic districts, or community centers relevant for this post?',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -1196,7 +1196,7 @@ function bos_content_type_post_field_default_field_instances() {
     'entity_type' => 'node',
     'fences_wrapper' => 'no_wrapper',
     'field_name' => 'field_place',
-    'label' => 'Places',
+    'label' => 'Related places',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -1225,7 +1225,7 @@ function bos_content_type_post_field_default_field_instances() {
     'bundle' => 'post',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Which programs or initiatives are relevant for this post?',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -1264,7 +1264,7 @@ function bos_content_type_post_field_default_field_instances() {
     'entity_type' => 'node',
     'fences_wrapper' => 'no_wrapper',
     'field_name' => 'field_program_initiative',
-    'label' => 'Programs/Initiatives',
+    'label' => 'Related programs / initiatives',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -1459,7 +1459,7 @@ function bos_content_type_post_field_default_field_instances() {
     'bundle' => 'post',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Which articles, how tos, and / or other content are relevant for this post?',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1498,7 +1498,7 @@ function bos_content_type_post_field_default_field_instances() {
     'entity_type' => 'node',
     'fences_wrapper' => 'no_wrapper',
     'field_name' => 'field_related_content',
-    'label' => 'Related Content',
+    'label' => 'Other related content',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -1527,7 +1527,7 @@ function bos_content_type_post_field_default_field_instances() {
     'bundle' => 'post',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Which other events or public notices are relevant for this post?',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1566,7 +1566,7 @@ function bos_content_type_post_field_default_field_instances() {
     'entity_type' => 'node',
     'fences_wrapper' => 'div_div_div',
     'field_name' => 'field_related_events_notices',
-    'label' => 'Events/Public Notices',
+    'label' => 'Related events / public notices',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -1595,7 +1595,7 @@ function bos_content_type_post_field_default_field_instances() {
     'bundle' => 'post',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Which guides are relevant for this post?',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1634,7 +1634,7 @@ function bos_content_type_post_field_default_field_instances() {
     'entity_type' => 'node',
     'fences_wrapper' => 'div_div_div',
     'field_name' => 'field_related_guides',
-    'label' => 'Guides',
+    'label' => 'Related guides',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -1663,7 +1663,7 @@ function bos_content_type_post_field_default_field_instances() {
     'bundle' => 'post',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Which other press releases or blog posts are relevant for this post?',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1702,7 +1702,7 @@ function bos_content_type_post_field_default_field_instances() {
     'entity_type' => 'node',
     'fences_wrapper' => 'div_div_div',
     'field_name' => 'field_related_posts',
-    'label' => 'Posts',
+    'label' => 'Related posts',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -2199,29 +2199,36 @@ function bos_content_type_post_field_default_field_instances() {
   t('A short description or intro to the Post');
   t('Add Tags to group similar news Posts together.');
   t('Add a list of components that should be displayed on this page. Drag and drop components to adjust the ordering.');
+  t('All related departments');
+  t('Are any cemeteries, parks, historic districts, or community centers relevant for this post?');
   t('Body');
   t('Components');
   t('Contact');
-  t('Departments');
-  t('Events/Public Notices');
-  t('Guides');
   t('Intro Image');
   t('Intro Text');
   t('Neighborhoods');
   t('News Tags');
-  t('People');
-  t('Places');
+  t('Other related content');
   t('Please select the Departments or Contacts who are involved. ');
   t('Please select the type of content this piece of content can be filtered by.  NOTE:  This is currently used for the Hub.');
-  t('Posts');
-  t('Programs/Initiatives');
   t('Published Date');
-  t('Related Content');
+  t('Related events / public notices');
+  t('Related guides');
+  t('Related people');
+  t('Related places');
+  t('Related posts');
+  t('Related programs / initiatives');
   t('Sidebar Components');
   t('The image that is displayed when this post is used in a News page.');
   t('Thumbnail');
   t('Type of Content');
   t('Updated Date');
+  t('Which articles, how tos, and / or other content are relevant for this post?');
+  t('Which guides are relevant for this post?');
+  t('Which other events or public notices are relevant for this post?');
+  t('Which other press releases or blog posts are relevant for this post?');
+  t('Which people are relevant for this post?');
+  t('Which programs or initiatives are relevant for this post?');
 
   return $field_instances;
 }
