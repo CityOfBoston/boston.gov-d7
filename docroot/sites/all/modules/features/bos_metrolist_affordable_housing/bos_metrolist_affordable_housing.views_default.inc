@@ -255,6 +255,13 @@ function bos_metrolist_affordable_housing_views_default_views() {
       'empty_column' => 0,
     ),
   );
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = 'There are no Lottery listings at this time. Please check back here for updates.';
+  $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -447,6 +454,116 @@ function bos_metrolist_affordable_housing_views_default_views() {
 
   /* Display: Page - Lottery */
   $handler = $view->new_display('page', 'Page - Lottery', 'page_1');
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'title' => 'title',
+    'field_mah_address' => 'field_mah_address',
+    'field_mah_zipcode' => 'field_mah_zipcode',
+    'field_mah_outer_location' => 'field_mah_outer_location',
+    'field_mah_neighborhood' => 'field_mah_neighborhood',
+    'field_mah_lottery_type' => 'field_mah_lottery_type',
+    'nothing' => 'nothing',
+    'field_mah_contact' => 'field_mah_contact',
+    'field_mah_phone' => 'field_mah_phone',
+    'field_mah_email' => 'field_mah_email',
+    'nothing_1' => 'nothing_1',
+    'field_mah_lottery_deadline' => 'field_mah_lottery_deadline',
+    'field_mah_lottery_url' => 'field_mah_lottery_url',
+  );
+  $handler->display->display_options['style_options']['default'] = '-1';
+  $handler->display->display_options['style_options']['info'] = array(
+    'title' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_mah_address' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_mah_zipcode' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_mah_outer_location' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_mah_neighborhood' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_mah_lottery_type' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'nothing' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_mah_contact' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_mah_phone' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_mah_email' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'nothing_1' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_mah_lottery_deadline' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_mah_lottery_url' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
@@ -502,6 +619,15 @@ function bos_metrolist_affordable_housing_views_default_views() {
     'link' => 0,
   );
   $handler->display->display_options['fields']['field_mah_neighborhood']['field_api_classes'] = TRUE;
+  /* Field: Content: Lottery Type */
+  $handler->display->display_options['fields']['field_mah_lottery_type']['id'] = 'field_mah_lottery_type';
+  $handler->display->display_options['fields']['field_mah_lottery_type']['table'] = 'field_data_field_mah_lottery_type';
+  $handler->display->display_options['fields']['field_mah_lottery_type']['field'] = 'field_mah_lottery_type';
+  $handler->display->display_options['fields']['field_mah_lottery_type']['label'] = 'Type';
+  $handler->display->display_options['fields']['field_mah_lottery_type']['element_type'] = '0';
+  $handler->display->display_options['fields']['field_mah_lottery_type']['element_wrapper_type'] = '0';
+  $handler->display->display_options['fields']['field_mah_lottery_type']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_mah_lottery_type']['field_api_classes'] = TRUE;
   /* Field: Global: Custom text */
   $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
@@ -532,14 +658,18 @@ function bos_metrolist_affordable_housing_views_default_views() {
   $handler->display->display_options['fields']['field_mah_email']['id'] = 'field_mah_email';
   $handler->display->display_options['fields']['field_mah_email']['table'] = 'field_data_field_mah_email';
   $handler->display->display_options['fields']['field_mah_email']['field'] = 'field_mah_email';
-  $handler->display->display_options['fields']['field_mah_email']['label'] = 'Contact';
-  $handler->display->display_options['fields']['field_mah_email']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_mah_email']['alter']['text'] = '[field_mah_contact] [field_mah_phone] [field_mah_email]';
+  $handler->display->display_options['fields']['field_mah_email']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_mah_email']['element_type'] = '0';
   $handler->display->display_options['fields']['field_mah_email']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_mah_email']['element_wrapper_type'] = '0';
   $handler->display->display_options['fields']['field_mah_email']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['field_mah_email']['field_api_classes'] = TRUE;
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing_1']['id'] = 'nothing_1';
+  $handler->display->display_options['fields']['nothing_1']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing_1']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing_1']['label'] = 'Contact';
+  $handler->display->display_options['fields']['nothing_1']['alter']['text'] = '[field_mah_contact] [field_mah_phone] [field_mah_email]';
   /* Field: Content: Lottery Application Deadline */
   $handler->display->display_options['fields']['field_mah_lottery_deadline']['id'] = 'field_mah_lottery_deadline';
   $handler->display->display_options['fields']['field_mah_lottery_deadline']['table'] = 'field_data_field_mah_lottery_deadline';
@@ -558,18 +688,16 @@ function bos_metrolist_affordable_housing_views_default_views() {
     'show_repeat_rule' => 'show',
   );
   $handler->display->display_options['fields']['field_mah_lottery_deadline']['field_api_classes'] = TRUE;
-  /* Field: Content: Lottery Flyer URL */
-  $handler->display->display_options['fields']['field_mah_lottery_flyer_url']['id'] = 'field_mah_lottery_flyer_url';
-  $handler->display->display_options['fields']['field_mah_lottery_flyer_url']['table'] = 'field_data_field_mah_lottery_flyer_url';
-  $handler->display->display_options['fields']['field_mah_lottery_flyer_url']['field'] = 'field_mah_lottery_flyer_url';
-  $handler->display->display_options['fields']['field_mah_lottery_flyer_url']['label'] = 'Application';
-  $handler->display->display_options['fields']['field_mah_lottery_flyer_url']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_mah_lottery_flyer_url']['alter']['text'] = '<a href="[field_mah_lottery_flyer_url]">View application</a>';
-  $handler->display->display_options['fields']['field_mah_lottery_flyer_url']['element_type'] = '0';
-  $handler->display->display_options['fields']['field_mah_lottery_flyer_url']['element_wrapper_type'] = '0';
-  $handler->display->display_options['fields']['field_mah_lottery_flyer_url']['element_default_classes'] = FALSE;
-  $handler->display->display_options['fields']['field_mah_lottery_flyer_url']['empty'] = 'No application available';
-  $handler->display->display_options['fields']['field_mah_lottery_flyer_url']['field_api_classes'] = TRUE;
+  /* Field: Content: Lottery URL */
+  $handler->display->display_options['fields']['field_mah_lottery_url']['id'] = 'field_mah_lottery_url';
+  $handler->display->display_options['fields']['field_mah_lottery_url']['table'] = 'field_data_field_mah_lottery_url';
+  $handler->display->display_options['fields']['field_mah_lottery_url']['field'] = 'field_mah_lottery_url';
+  $handler->display->display_options['fields']['field_mah_lottery_url']['element_type'] = '0';
+  $handler->display->display_options['fields']['field_mah_lottery_url']['element_wrapper_type'] = '0';
+  $handler->display->display_options['fields']['field_mah_lottery_url']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_mah_lottery_url']['empty'] = '--';
+  $handler->display->display_options['fields']['field_mah_lottery_url']['click_sort_column'] = 'url';
+  $handler->display->display_options['fields']['field_mah_lottery_url']['field_api_classes'] = TRUE;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
@@ -622,6 +750,12 @@ function bos_metrolist_affordable_housing_views_default_views() {
     51 => 0,
   );
   $handler->display->display_options['filters']['field_mah_lottery_value']['expose']['reduce'] = TRUE;
+  /* Filter criterion: Content: Lottery Application Deadline (field_mah_lottery_deadline) */
+  $handler->display->display_options['filters']['field_mah_lottery_deadline_value']['id'] = 'field_mah_lottery_deadline_value';
+  $handler->display->display_options['filters']['field_mah_lottery_deadline_value']['table'] = 'field_data_field_mah_lottery_deadline';
+  $handler->display->display_options['filters']['field_mah_lottery_deadline_value']['field'] = 'field_mah_lottery_deadline_value';
+  $handler->display->display_options['filters']['field_mah_lottery_deadline_value']['operator'] = '>=';
+  $handler->display->display_options['filters']['field_mah_lottery_deadline_value']['default_date'] = 'today';
   $handler->display->display_options['path'] = 'metrolist-affordable-housing-lottery';
   $export['metrolist_affordable_housing'] = $view;
 

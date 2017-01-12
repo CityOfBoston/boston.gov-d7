@@ -65,6 +65,20 @@
   width: 35px;
   height: 35px;
 }
+.icon-form {
+  @extend %icon-common;
+  background-image: url("../img/icon-form.svg");
+  background-size: 35px 35px;
+  width: 35px;
+  height: 35px;
+}
+.icon-event {
+  @extend %icon-common;
+  background-image: url("../img/icon-event.svg");
+  background-size: 35px 35px;
+  width: 35px;
+  height: 35px;
+}
 
 .icon-social {
   display: block;

@@ -257,6 +257,13 @@ function bos_metrolist_affordable_housing_default_salesforce_mapping() {
             {
               "active" : true,
               "defaultValue" : false,
+              "label" : "Bay Village",
+              "validFor" : null,
+              "value" : "Bay Village"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
               "label" : "Beacon Hill",
               "validFor" : null,
               "value" : "Beacon Hill"
@@ -285,9 +292,23 @@ function bos_metrolist_affordable_housing_default_salesforce_mapping() {
             {
               "active" : true,
               "defaultValue" : false,
+              "label" : "Chinatown\\/Leather District",
+              "validFor" : null,
+              "value" : "Chinatown\\/Leather District"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
               "label" : "Dorchester",
               "validFor" : null,
               "value" : "Dorchester"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Downtown",
+              "validFor" : null,
+              "value" : "Downtown"
             },
             {
               "active" : true,
@@ -299,9 +320,9 @@ function bos_metrolist_affordable_housing_default_salesforce_mapping() {
             {
               "active" : true,
               "defaultValue" : false,
-              "label" : "Fenway",
+              "label" : "Fenway\\/Kenmore",
               "validFor" : null,
-              "value" : "Fenway"
+              "value" : "Fenway\\/Kenmore"
             },
             {
               "active" : true,
@@ -320,16 +341,30 @@ function bos_metrolist_affordable_housing_default_salesforce_mapping() {
             {
               "active" : true,
               "defaultValue" : false,
-              "label" : "Kenmore",
+              "label" : "Mattapan",
               "validFor" : null,
-              "value" : "Kenmore"
+              "value" : "Mattapan"
             },
             {
               "active" : true,
               "defaultValue" : false,
-              "label" : "Mattapan",
+              "label" : "Mid-Dorchester",
               "validFor" : null,
-              "value" : "Mattapan"
+              "value" : "Mid-Dorchester"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Mission Hill",
+              "validFor" : null,
+              "value" : "Mission Hill"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "North End",
+              "validFor" : null,
+              "value" : "North End"
             },
             {
               "active" : true,
@@ -362,9 +397,9 @@ function bos_metrolist_affordable_housing_default_salesforce_mapping() {
             {
               "active" : true,
               "defaultValue" : false,
-              "label" : "Uncertain",
+              "label" : "West End",
               "validFor" : null,
-              "value" : "Uncertain"
+              "value" : "West End"
             },
             {
               "active" : true,
@@ -372,20 +407,6 @@ function bos_metrolist_affordable_housing_default_salesforce_mapping() {
               "label" : "West Roxbury",
               "validFor" : null,
               "value" : "West Roxbury"
-            },
-            {
-              "active" : true,
-              "defaultValue" : false,
-              "label" : "- Outside Boston -",
-              "validFor" : null,
-              "value" : "- Outside Boston -"
-            },
-            {
-              "active" : true,
-              "defaultValue" : false,
-              "label" : "South Easton",
-              "validFor" : null,
-              "value" : "South Easton"
             }
           ],
           "precision" : 0,
@@ -714,59 +735,6 @@ function bos_metrolist_affordable_housing_default_salesforce_mapping() {
       {
         "drupal_field" : {
           "fieldmap_type" : "property",
-          "fieldmap_value" : "field_mah_lottery_flyer_url"
-        },
-        "salesforce_field" : {
-          "autoNumber" : false,
-          "byteLength" : 765,
-          "calculated" : false,
-          "calculatedFormula" : null,
-          "cascadeDelete" : false,
-          "caseSensitive" : false,
-          "controllerName" : null,
-          "createable" : true,
-          "custom" : true,
-          "defaultValue" : null,
-          "defaultValueFormula" : null,
-          "defaultedOnCreate" : false,
-          "dependentPicklist" : false,
-          "deprecatedAndHidden" : false,
-          "digits" : 0,
-          "displayLocationInDecimal" : false,
-          "externalId" : false,
-          "filterable" : true,
-          "groupable" : true,
-          "htmlFormatted" : false,
-          "idLookup" : false,
-          "inlineHelpText" : null,
-          "label" : "Lottery Advertisement Flyer",
-          "length" : 255,
-          "name" : "Lottery_Advertisement_Flyer__c",
-          "nameField" : false,
-          "namePointing" : false,
-          "nillable" : true,
-          "permissionable" : true,
-          "picklistValues" : [],
-          "precision" : 0,
-          "referenceTo" : [],
-          "relationshipName" : null,
-          "relationshipOrder" : null,
-          "restrictedDelete" : false,
-          "restrictedPicklist" : false,
-          "scale" : 0,
-          "soapType" : "xsd:string",
-          "sortable" : true,
-          "type" : "url",
-          "unique" : false,
-          "updateable" : true,
-          "writeRequiresMasterRead" : false
-        },
-        "key" : false,
-        "direction" : "sf_drupal"
-      },
-      {
-        "drupal_field" : {
-          "fieldmap_type" : "property",
           "fieldmap_value" : "field_mah_outer_location"
         },
         "salesforce_field" : {
@@ -792,9 +760,9 @@ function bos_metrolist_affordable_housing_default_salesforce_mapping() {
           "htmlFormatted" : false,
           "idLookup" : false,
           "inlineHelpText" : null,
-          "label" : "Outside Boston Neighborhood",
+          "label" : "Outside Boston Location",
           "length" : 255,
-          "name" : "Outside_Boston_Neighborhood__c",
+          "name" : "Outside_Boston_Location__c",
           "nameField" : false,
           "namePointing" : false,
           "nillable" : true,
@@ -985,9 +953,9 @@ function bos_metrolist_affordable_housing_default_salesforce_mapping() {
             {
               "active" : true,
               "defaultValue" : false,
-              "label" : "Framigham",
+              "label" : "Framingham",
               "validFor" : null,
-              "value" : "Framigham"
+              "value" : "Framingham"
             },
             {
               "active" : true,
@@ -1419,6 +1387,13 @@ function bos_metrolist_affordable_housing_default_salesforce_mapping() {
             {
               "active" : true,
               "defaultValue" : false,
+              "label" : "South Easton",
+              "validFor" : null,
+              "value" : "South Easton"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
               "label" : "Stoneham",
               "validFor" : null,
               "value" : "Stoneham"
@@ -1555,6 +1530,134 @@ function bos_metrolist_affordable_housing_default_salesforce_mapping() {
               "label" : "Wrentham",
               "validFor" : null,
               "value" : "Wrentham"
+            }
+          ],
+          "precision" : 0,
+          "referenceTo" : [],
+          "relationshipName" : null,
+          "relationshipOrder" : null,
+          "restrictedDelete" : false,
+          "restrictedPicklist" : true,
+          "scale" : 0,
+          "soapType" : "xsd:string",
+          "sortable" : true,
+          "type" : "picklist",
+          "unique" : false,
+          "updateable" : true,
+          "writeRequiresMasterRead" : false
+        },
+        "key" : false,
+        "direction" : "sf_drupal"
+      },
+      {
+        "drupal_field" : {
+          "fieldmap_type" : "property",
+          "fieldmap_value" : "field_mah_lottery_url:url"
+        },
+        "salesforce_field" : {
+          "autoNumber" : false,
+          "byteLength" : 765,
+          "calculated" : false,
+          "calculatedFormula" : null,
+          "cascadeDelete" : false,
+          "caseSensitive" : false,
+          "controllerName" : null,
+          "createable" : true,
+          "custom" : true,
+          "defaultValue" : null,
+          "defaultValueFormula" : null,
+          "defaultedOnCreate" : false,
+          "dependentPicklist" : false,
+          "deprecatedAndHidden" : false,
+          "digits" : 0,
+          "displayLocationInDecimal" : false,
+          "externalId" : false,
+          "filterable" : true,
+          "groupable" : true,
+          "htmlFormatted" : false,
+          "idLookup" : false,
+          "inlineHelpText" : null,
+          "label" : "Lottery Advertisement Flyer",
+          "length" : 255,
+          "name" : "Lottery_Advertisement_Flyer__c",
+          "nameField" : false,
+          "namePointing" : false,
+          "nillable" : true,
+          "permissionable" : true,
+          "picklistValues" : [],
+          "precision" : 0,
+          "referenceTo" : [],
+          "relationshipName" : null,
+          "relationshipOrder" : null,
+          "restrictedDelete" : false,
+          "restrictedPicklist" : false,
+          "scale" : 0,
+          "soapType" : "xsd:string",
+          "sortable" : true,
+          "type" : "url",
+          "unique" : false,
+          "updateable" : true,
+          "writeRequiresMasterRead" : false
+        },
+        "key" : false,
+        "direction" : "sf_drupal"
+      },
+      {
+        "drupal_field" : {
+          "fieldmap_type" : "property",
+          "fieldmap_value" : "field_mah_lottery_type"
+        },
+        "salesforce_field" : {
+          "autoNumber" : false,
+          "byteLength" : 765,
+          "calculated" : false,
+          "calculatedFormula" : null,
+          "cascadeDelete" : false,
+          "caseSensitive" : false,
+          "controllerName" : null,
+          "createable" : true,
+          "custom" : true,
+          "defaultValue" : null,
+          "defaultValueFormula" : null,
+          "defaultedOnCreate" : false,
+          "dependentPicklist" : false,
+          "deprecatedAndHidden" : false,
+          "digits" : 0,
+          "displayLocationInDecimal" : false,
+          "externalId" : false,
+          "filterable" : true,
+          "groupable" : true,
+          "htmlFormatted" : false,
+          "idLookup" : false,
+          "inlineHelpText" : null,
+          "label" : "Lottery Type",
+          "length" : 255,
+          "name" : "Lottery_Type__c",
+          "nameField" : false,
+          "namePointing" : false,
+          "nillable" : true,
+          "permissionable" : true,
+          "picklistValues" : [
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Rental",
+              "validFor" : null,
+              "value" : "Rental"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Ownership",
+              "validFor" : null,
+              "value" : "Ownership"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Resale",
+              "validFor" : null,
+              "value" : "Resale"
             }
           ],
           "precision" : 0,
