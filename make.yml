@@ -165,6 +165,8 @@ projects:
     - https://www.drupal.org/files/issues/2839535_keyboard_shortcut-roles_and_conditional_js-7.x-2.x-dev.patch
   login_security:
     version: 1.9
+  login_destination:
+    version: 1.4
   masquerade:
     version: 1.0-rc7
   media:

@@ -422,3 +422,44 @@ function bos_core_update_7023() {
   );
   module_enable($enabled_modules);
 }
+
+/**
+ * Updates for 01/10/2017.
+ */
+function bos_core_update_7024() {
+  $deleted_field_instances = array(
+    'node' => array(
+      'event' => array(
+        'field_live_stream',
+      ),
+      'public_notice' => array(
+        'field_live_stream',
+      ),
+    ),
+    'paragraphs_item' => array(
+      'video' => array(
+        'field_photo_credit',
+      ),
+    ),
+  );
+
+  // Remove field instances.
+  foreach ($deleted_field_instances as $entity_type => $bundles) {
+    foreach ($bundles as $bundle_id => $bundle_fields) {
+      foreach ($bundle_fields as $field) {
+        $instance = field_info_instance($entity_type, $field, $bundle_id);
+        field_delete_instance($instance);
+      }
+    }
+  }
+}
+
+/**
+ * Updates for 1/12/2016.
+ */
+function bos_core_update_7025() {
+  $enabled_modules = array(
+    'login_destination',
+  );
+  module_enable($enabled_modules);
+}

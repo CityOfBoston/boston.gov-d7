@@ -197,7 +197,7 @@ function bos_view_news_landing_views_default_views() {
   $handler->display->display_options['exposed_form']['options']['input_required'] = 0;
   $handler->display->display_options['exposed_form']['options']['text_input_required_format'] = 'filtered_html';
   $handler->display->display_options['pager']['type'] = 'full';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '50';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '30';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['pager']['options']['id'] = '0';
   $handler->display->display_options['pager']['options']['quantity'] = '9';
@@ -301,11 +301,14 @@ function bos_view_news_landing_views_default_views() {
     1 => 0,
     11 => 0,
     16 => 0,
-    17 => 0,
-    18 => 0,
-    19 => 0,
-    20 => 0,
     21 => 0,
+    26 => 0,
+    31 => 0,
+    36 => 0,
+    41 => 0,
+    46 => 0,
+    51 => 0,
+    56 => 0,
   );
   $handler->display->display_options['filters']['field_published_date_value']['form_type'] = 'date_popup';
 
