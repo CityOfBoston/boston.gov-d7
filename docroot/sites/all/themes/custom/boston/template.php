@@ -1179,6 +1179,12 @@ function boston_preprocess_menu_tree(&$variables) {
  * Implements hook_preprocess_menu_link().
  */
 function boston_preprocess_menu_link(array &$variables, $hook) {
+  // If it's the footer menu, set it and go
+  if (isset($variables['element']['#original_link']['menu_name']) && $variables['element']['#original_link']['menu_name'] == 'menu-footer-menu') {
+    $variables['element']['#localized_options']['attributes']['class'] = array('ft-ll-a');
+    return;
+  }
+
   // Normalize menu item classes to be an array.
   if (empty($variables['element']['#attributes']['class'])) {
     $variables['element']['#attributes']['class'] = array();
@@ -1193,6 +1199,7 @@ function boston_preprocess_menu_link(array &$variables, $hook) {
     $variables['element']['#localized_options']['attributes']['class'] = array();
   }
   $menu_link_classes =& $variables['element']['#localized_options']['attributes']['class'];
+
   if (!is_array($menu_link_classes)) {
     $menu_link_classes = array($menu_link_classes);
   }
@@ -1736,3 +1743,23 @@ function _get_message_host($message) {
    }
    return FALSE;
  }
+
+/**
+ * Implements hook_theme_menu_tree() for footer menu block.
+ */
+ function boston_menu_tree__menu_footer_menu($variables) {
+   return '<ul class="ft-ll">' . $variables['tree'] . '</ul>';
+ }
+
+ /**
+ * Implements theme_menu_link().
+ */
+function boston_menu_link__menu_footer_menu(array $variables) {
+  $element = $variables['element'];
+
+  $element['#attributes']['class'][] = 'ft-ll-a';
+
+  $output = l($element['#title'], $element['#href'], $element['#localized_options']);
+
+  return '<li class="ft-ll-i">' . $output . "</li>\n";
+}
