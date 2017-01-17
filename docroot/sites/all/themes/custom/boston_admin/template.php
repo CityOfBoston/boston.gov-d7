@@ -10,9 +10,6 @@
  * @ingroup themeable
  */
 function boston_admin_menu_local_tasks(array &$variables) {
-  // Attaches JS for extending validation messages
-  drupal_add_js(drupal_get_path('theme', $GLOBALS['theme']) . '/js/related-content-messaging.js', array('type' => 'file', 'scope' => 'footer'));
-
   $output = '';
 
   // Add theme hook suggestions for tab type.
@@ -42,4 +39,9 @@ function boston_admin_menu_local_tasks(array &$variables) {
   }
 
   return $output;
+}
+
+function boston_admin_preprocess_page() {
+  // Attaches JS for extending validation messages
+  drupal_add_js(drupal_get_path('theme', $GLOBALS['theme']) . '/js/related-content-messaging.js', array('type' => 'file', 'scope' => 'footer'));
 }
