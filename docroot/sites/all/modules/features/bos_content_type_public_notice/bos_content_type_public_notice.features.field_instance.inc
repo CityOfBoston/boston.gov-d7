@@ -1276,7 +1276,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 21,
+      'weight' => 18,
     ),
   );
 
@@ -1380,7 +1380,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 22,
+      'weight' => 19,
     ),
   );
 
@@ -1389,7 +1389,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
     'bundle' => 'public_notice',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Which programs or initiatives are relevant for this post?',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1408,9 +1408,9 @@ function bos_content_type_public_notice_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'fences_wrapper' => 'div_div_div',
+    'fences_wrapper' => 'no_wrapper',
     'field_name' => 'field_program_initiative',
-    'label' => 'Related Program/Initiative',
+    'label' => 'Related programs / initiatives',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -1430,7 +1430,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 24,
+      'weight' => 21,
     ),
   );
 
@@ -1635,7 +1635,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 26,
+      'weight' => 22,
     ),
   );
 
@@ -1644,7 +1644,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
     'bundle' => 'public_notice',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Which other events or public notices are relevant for this public notice?',
+    'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1653,7 +1653,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
-        'weight' => 29,
+        'weight' => 28,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1663,9 +1663,9 @@ function bos_content_type_public_notice_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'fences_wrapper' => 'no_wrapper',
+    'fences_wrapper' => 'div_div_div',
     'field_name' => 'field_related_events_notices',
-    'label' => 'Related events / public notices',
+    'label' => 'Related events/notices',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -1685,57 +1685,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 18,
-    ),
-  );
-
-  // Exported field_instance: 'node-public_notice-field_related_guides'.
-  $field_instances['node-public_notice-field_related_guides'] = array(
-    'bundle' => 'public_notice',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'Which guides are relevant for this public notice?',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 25,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'fences_wrapper' => 'no_wrapper',
-    'field_name' => 'field_related_guides',
-    'label' => 'Related guides',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'entityreference',
-      'settings' => array(
-        'entityreference_autocreate' => array(
-          'active' => 0,
-          'author' => '',
-          'author_current_user' => 1,
-          'status' => -1,
-        ),
-        'match_operator' => 'CONTAINS',
-        'path' => '',
-        'size' => 60,
-      ),
-      'type' => 'entityreference_autocomplete',
-      'weight' => 19,
+      'weight' => 17,
     ),
   );
 
@@ -1744,7 +1694,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
     'bundle' => 'public_notice',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Which press releases or blog posts are relevant for this public notice?',
+    'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1763,7 +1713,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'fences_wrapper' => 'no_wrapper',
+    'fences_wrapper' => 'div_div_div',
     'field_name' => 'field_related_posts',
     'label' => 'Related posts',
     'required' => 0,
@@ -1785,7 +1735,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 23,
+      'weight' => 20,
     ),
   );
 
@@ -1963,12 +1913,11 @@ function bos_content_type_public_notice_field_default_field_instances() {
   t('Point of Contact');
   t('Published Date');
   t('Related Neighborhoods');
-  t('Related Program/Initiative');
-  t('Related events / public notices');
-  t('Related guides');
+  t('Related events/notices');
   t('Related people');
   t('Related places');
   t('Related posts');
+  t('Related programs / initiatives');
   t('The Department that is primarily responsible for this notice.');
   t('The date and time when the Meeting / Hearing / Working Session is happening. Enter an end time if known.');
   t('The email that should be used to request information about this notice.');
@@ -1980,10 +1929,8 @@ function bos_content_type_public_notice_field_default_field_instances() {
   t('Time public testimony begins');
   t('Updated Date');
   t('Which articles, how tos, and / or other content are relevant for this public notice?');
-  t('Which guides are relevant for this public notice?');
-  t('Which other events or public notices are relevant for this public notice?');
   t('Which people are relevant for this public notice?');
-  t('Which press releases or blog posts are relevant for this public notice?');
+  t('Which programs or initiatives are relevant for this post?');
 
   return $field_instances;
 }

@@ -41,6 +41,9 @@ function boston_admin_menu_local_tasks(array &$variables) {
   return $output;
 }
 
+/**
+ * Implements hook_preprocess_page
+ */
 function boston_admin_preprocess_page() {
   // Attaches JS for extending validation messages
   drupal_add_js(drupal_get_path('theme', $GLOBALS['theme']) . '/js/related-content-messaging.js', array('type' => 'file', 'scope' => 'footer'));

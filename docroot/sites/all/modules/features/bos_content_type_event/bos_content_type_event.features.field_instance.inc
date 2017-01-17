@@ -662,7 +662,7 @@ function bos_content_type_event_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 12,
+      'weight' => 9,
     ),
   );
 
@@ -2331,7 +2331,7 @@ function bos_content_type_event_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 9,
+      'weight' => 12,
     ),
   );
 
@@ -2402,7 +2402,7 @@ function bos_content_type_event_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 10,
+      'weight' => 14,
     ),
   );
 
@@ -2618,7 +2618,7 @@ function bos_content_type_event_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 13,
+      'weight' => 15,
     ),
   );
 
@@ -2627,7 +2627,7 @@ function bos_content_type_event_field_default_field_instances() {
     'bundle' => 'event',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Which other events or public notices are relevant for this public notice?',
+    'description' => 'Which other events or public notices are relevant for this post?',
     'display' => array(
       'calendar_listing' => array(
         'label' => 'above',
@@ -2666,7 +2666,7 @@ function bos_content_type_event_field_default_field_instances() {
     'entity_type' => 'node',
     'fences_wrapper' => 'no_wrapper',
     'field_name' => 'field_related_events_notices',
-    'label' => 'Related events / public notices',
+    'label' => 'Related events/notices',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -2686,75 +2686,7 @@ function bos_content_type_event_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 3,
-    ),
-  );
-
-  // Exported field_instance: 'node-event-field_related_guides'.
-  $field_instances['node-event-field_related_guides'] = array(
-    'bundle' => 'event',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'Which guides are relevant for this event?',
-    'display' => array(
-      'calendar_listing' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 35,
-      ),
-      'featured_item' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'listing' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'listing_short' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'fences_wrapper' => 'div_div_div',
-    'field_name' => 'field_related_guides',
-    'label' => 'Related guides',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'entityreference',
-      'settings' => array(
-        'entityreference_autocreate' => array(
-          'active' => 0,
-          'author' => '',
-          'author_current_user' => 1,
-          'status' => -1,
-        ),
-        'match_operator' => 'CONTAINS',
-        'path' => '',
-        'size' => 60,
-      ),
-      'type' => 'entityreference_autocomplete',
-      'weight' => 4,
+      'weight' => 10,
     ),
   );
 
@@ -2778,7 +2710,7 @@ function bos_content_type_event_field_default_field_instances() {
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
-        'weight' => 34,
+        'weight' => 32,
       ),
       'featured_item' => array(
         'label' => 'above',
@@ -2800,7 +2732,7 @@ function bos_content_type_event_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'fences_wrapper' => 'div_div_div',
+    'fences_wrapper' => 'no_wrapper',
     'field_name' => 'field_related_posts',
     'label' => 'Related posts',
     'required' => 0,
@@ -2822,7 +2754,7 @@ function bos_content_type_event_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 7,
+      'weight' => 13,
     ),
   );
 
@@ -3337,7 +3269,6 @@ function bos_content_type_event_field_default_field_instances() {
   t('Featured');
   t('Intro Image');
   t('List all departments related to this event.');
-  t('Live Stream');
   t('Location');
   t('Neighborhood');
   t('Other related content');
@@ -3348,8 +3279,7 @@ function bos_content_type_event_field_default_field_instances() {
   t('Point of Contact');
   t('Provides a description for the event.');
   t('Published Date');
-  t('Related events / public notices');
-  t('Related guides');
+  t('Related events/notices');
   t('Related people');
   t('Related places');
   t('Related posts');
@@ -3365,8 +3295,7 @@ function bos_content_type_event_field_default_field_instances() {
   t('Use this field to display a date to the user audience indicating when this event was published.');
   t('Use this field to provide a longer description about the event.');
   t('Which articles, how tos, and / or other content are relevant for this public notice?');
-  t('Which guides are relevant for this event?');
-  t('Which other events or public notices are relevant for this public notice?');
+  t('Which other events or public notices are relevant for this post?');
   t('Which people are relevant for this public notice?');
   t('Which press releases or blog posts are relevant for this event?');
   t('Which programs or initiatives are relevant for this public notice?');
