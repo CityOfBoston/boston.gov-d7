@@ -41,13 +41,13 @@
       <?php if ($site_name): ?>
         <div class="lo lo--abs">
           <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" class="lo-l">
-            <img src="<?php print $asset_url ?>/images/<?php print $asset_name ?>/logo.svg" alt="<?php print $site_name; ?>" class="lo-i" />
+            <img src="<?php print $asset_url ?>/images/<?php print $asset_name ?>/logo.svg?<?php print $cache_buster ?>" alt="<?php print $site_name; ?>" class="lo-i" />
           </a>
         </div>
       <?php endif; ?>
 
       <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" class="s">
-        <img src="<?php print $asset_url ?>/images/<?php print $asset_name ?>/seal.svg" alt="City of Boston Seal" class="s-i" />
+        <img src="<?php print $asset_url ?>/images/<?php print $asset_name ?>/seal.svg?<?php print $cache_buster ?>" alt="City of Boston Seal" class="s-i" />
       </a>
 
       <div class="header-right">

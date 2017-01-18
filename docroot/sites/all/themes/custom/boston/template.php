@@ -108,6 +108,9 @@ function boston_preprocess_breadcrumb(array &$variables, $hook) {
  *   this function to have consistent variables.
  */
 function boston_preprocess_html(array &$variables, $hook) {
+  // A variable to define the cache buster
+  $variables['cache_buster'] = variable_get('css_js_query_string', '0');
+
   // A variable to define the asset url
   $variables['asset_url'] = variable_get('asset_url', 'https://patterns.boston.gov');
   $variables['asset_name'] = $GLOBALS['theme'] == 'boston_hub' ? 'hub' : 'public';
@@ -319,6 +322,8 @@ function boston_html_head_alter(&$head) {
  * Implements hook_preprocess_page().
  */
 function boston_preprocess_page(array &$variables) {
+  // A variable to define the cache buster
+  $variables['cache_buster'] = variable_get('css_js_query_string', '0');
   $variables['asset_url'] = variable_get('asset_url', 'https://patterns.boston.gov');
   $variables['asset_name'] = $GLOBALS['theme'] == 'boston_hub' ? 'hub' : 'public';
 
