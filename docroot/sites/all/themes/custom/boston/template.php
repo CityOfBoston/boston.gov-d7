@@ -1699,21 +1699,6 @@ function boston_advpoll_ids($variables) {
   }
 }
 
-
-/**
- * Implements hook_preprocess_node_BUNDLE().
- */
-function boston_preprocess_paragraphs_item_fyi(&$variables) {
-  $file = render($variables['content']['field_icon']);
-  if (!empty($file)) {
-    $variables['icon'] = file_get_contents(drupal_realpath(trim($file)));
-    $variables['icon'] = filter_xss($variables['icon'], explode(' ', BOS_CORE_SVG_ELEMENTS));
-  }
-  else {
-    $variables['icon'] = FALSE;
-  }
-}
-
 /**
  * Helper function for getting the host of a message for the day paragraph.
  *
