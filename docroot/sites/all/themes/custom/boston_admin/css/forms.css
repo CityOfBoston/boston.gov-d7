@@ -9,3 +9,8 @@ tr.odd .form-item, tr.even .form-item {
   display: inline;
   content: 'and Time';
 }
+
+div[class*='form-item-field-related-content'] div {
+  color: #f00;
+  font-weight: bold;
+}
