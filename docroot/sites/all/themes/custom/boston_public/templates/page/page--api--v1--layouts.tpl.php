@@ -28,9 +28,12 @@
         </div>
       </label>
       <?php if ($site_name): ?>
-        <h1 class="header__site-name">
-          <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" class="header__site-link" rel="home"><span><?php print $site_name; ?></span></a>
-        </h1>
+        <div class="lo lo--abs">
+          <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" class="lo-l">
+            <img src="<?php print $asset_url ?>/images/<?php print $asset_name ?>/logo.svg" alt="<?php print $site_name; ?>" class="lo-i" />
+            <span class="lo-t">Mayor Martin J. Walsh</span>
+          </a>
+        </div>
       <?php endif; ?>
       <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" class="s">
         <img src="<?php print $asset_url ?>/images/<?php print $asset_name ?>/seal.svg" alt="City of Boston Seal" class="s-i" />

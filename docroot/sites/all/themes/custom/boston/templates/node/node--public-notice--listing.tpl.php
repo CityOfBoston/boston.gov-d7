@@ -104,7 +104,9 @@ hide($content['links']);
         <ul class="dl">
           <li class="dl-i">
             <span class="dl-t">When</span>
-            <span class="dl-d"><?php print render($content['field_public_notice_date']) ?></span>
+            <span class="dl-d">
+              <?php print render($content['field_public_notice_date']) ?> - <?php print $time_range ?>
+            </span>
           </li>
           <?php if (isset($content['field_address'])): ?>
             <li class="dl-i">
