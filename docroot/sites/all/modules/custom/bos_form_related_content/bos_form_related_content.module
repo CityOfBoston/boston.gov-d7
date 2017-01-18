@@ -1,0 +1,79 @@
+<?php
+
+/**
+ * Implementation of hook_enable().
+ */
+function bos_form_related_content_enable() {
+  // Check that our field is not already created.
+  if (!field_info_field('field_neighborhood_quick_pick')) {
+    $field = array(
+      'field_name' => 'field_neighborhood_quick_pick',
+      'type' => 'list_boolean',
+   );
+    // Add table for field to db.
+    $field = field_create_field($field);
+  }
+  // Create the instance on the bundle.
+	$instance = array(
+		'field_name' => $field['field_neighborhood_quick_pick'],
+		'entity_type' => 'node',
+		'bundle' => 'event',
+		'label' => 'Neighborhood Picklist',
+		'description' => 'Quick list of neighborhoods broken out from the place_profile content type.',
+		'required' => TRUE,
+		'settings' => array(),
+		'widget' => array(),
+		'display' => array(
+			'default' => array('label' => 'hidden'),
+		),
+	);
+	field_create_instance($instance);
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function bos_form_related_content_form_alter(&$form, &$form_state, $form_id) {
+  // Make sure option is added to the correct form
+  if ($form_id == "event_node_form") {
+    // Get all the places in system
+    $type = "place_profile";
+    $nodes = node_load_multiple(array(), array('type' => $type));
+    // Create a list of all places flagged as a neighborhood
+    $neighborhoods = array();
+    foreach($nodes as $place) {
+      if($place->field_place_neighborhood['und'][0]['value']) {
+        $neighborhoods[] = $place->title;
+      }
+    }
+    $nid = $form_state['node']->nid;
+    $node = node_load($nid);
+    // Add options for neighborhoods
+    $form['field_neighborhood_quick_pick'] = array(
+      '#title' => t('Neighborhoods'),
+      '#description' => t('Quick picklist of Boston neighborhoods.'),
+      '#type' => 'checkboxes',
+      '#options' => $neighborhoods,
+      '#default_value' => unserialize($node->field_neighborhood_quick_pick[LANGUAGE_NONE][0]['value']),
+      //'#default_value' => unserialize($form_state['node']->field_place_neighborhood[0]),
+      //'#default_value' => unserialize($form_state['values']['field_neighborhood_quick_pick']),
+    );
+    // Place neighborhoods in the Relate Content group
+    $form['#group_children']['field_neighborhood_quick_pick'] = 'group_related_content';
+    $form['actions']['submit']['#submit'][] = 'bos_form_related_content_form_submit';
+  }
+}
+
+/**
+ * Form submit.
+ */
+function bos_form_related_content_form_submit($form, &$form_state) {
+  $nid = $form_state['node']->nid;
+  $node = node_load($nid);
+  //$node->field_place_neighborhood['und'][0]['value'] = serialize($form_state['node']->field_place_neighborhood[0]);
+  //$node->field_neighborhood_quick_pick['und'][0]['value'] = serialize($form_state['values']['field_neighborhood_quick_pick']);
+  $node->field_neighborhood_quick_pick = serialize($form_state['values']['field_neighborhood_quick_pick']);
+  node_save($node);
+  //$form_state['node']->field_place_neighborhood[0] = serialize($form_state['node']->field_place_neighborhood[0]);
+  //$form_state['values']['field_neighborhood_quick_pick'] = serialize($form_state['values']['field_neighborhood_quick_pick']);
+}
