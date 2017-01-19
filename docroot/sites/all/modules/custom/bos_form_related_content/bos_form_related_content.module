@@ -1,65 +1,66 @@
 <?php
 
 /**
- * Implementation of hook_enable().
- */
-function bos_form_related_content_enable() {
-  // Check that our field is not already created.
-  if (!field_info_field('field_neighborhood_quick_pick')) {
-    $field = array(
-      'field_name' => 'field_neighborhood_quick_pick',
-      'type' => 'list_boolean',
-   );
-    // Add table for field to db.
-    $field = field_create_field($field);
-  }
-  // Create the instance on the bundle.
-	$instance = array(
-		'field_name' => $field['field_neighborhood_quick_pick'],
-		'entity_type' => 'node',
-		'bundle' => 'event',
-		'label' => 'Neighborhood Picklist',
-		'description' => 'Quick list of neighborhoods broken out from the place_profile content type.',
-		'required' => TRUE,
-		'settings' => array(),
-		'widget' => array(),
-		'display' => array(
-			'default' => array('label' => 'hidden'),
-		),
-	);
-	field_create_instance($instance);
-}
-
-/**
  * Implements hook_form_alter().
  */
 function bos_form_related_content_form_alter(&$form, &$form_state, $form_id) {
-  // Make sure option is added to the correct form
+  // Make sure option is added to the correct form.
   if ($form_id == "event_node_form") {
     // Get all the places in system
     $type = "place_profile";
     $nodes = node_load_multiple(array(), array('type' => $type));
-    // Create a list of all places flagged as a neighborhood
+    // Create a list of all places flagged as a neighborhood.
     $neighborhoods = array();
     foreach($nodes as $place) {
+      // Check that the place_profile has checked off the boolean to indicate it is a neighborhood.
       if($place->field_place_neighborhood['und'][0]['value']) {
-        $neighborhoods[] = $place->title;
+        // Set the place_profile nid as the array ID so it can be retrieved in form_submit.
+        // Set the place_profile title as the array value so it is used as the checkbox label.
+        $neighborhoods[$place->nid] = $place->title;
       }
     }
+    // Load object for event node that is currently being edited.
     $nid = $form_state['node']->nid;
     $node = node_load($nid);
-    // Add options for neighborhoods
+    // Get node object for current workbench moderation draft.
+    $node = workbench_moderation_node_current_load($node);
+    // Check if any of the saved options are neighborhoods.
+    $checkbox_defaults = array();
+    // Make sure there is at least on field_place value saved.
+    if (isset($node->field_place['und'])) {
+      foreach ($node->field_place['und'] as $key => $place) {
+        if (array_key_exists($place['target_id'], $neighborhoods)) {
+          // If the node object has a value found in the neighborhood checkboxes,
+          // save it to be used as default_value on the form.
+          $checkbox_defaults[] = $place['target_id'];
+        }
+      }
+    }
+    // Remove neighborhoods from field_place display.
+    foreach ($form['field_place']['und'] as $key => $displayed_place) {
+      if (isset($displayed_place['target_id']['#default_value'])) {
+        // Get the Title & ID for each field_place set on the event node.
+        $title_and_nid = $displayed_place['target_id']['#default_value'];
+        // Extract just the NID value.
+        preg_match('#\((.*?)\)#', $title_and_nid, $match);
+        $place_nid = $match[1];
+        if (in_array($place_nid, $checkbox_defaults)) {
+          // Remove the place from the form since it's already displayed as checked in the neighborhoods field.
+          unset($form['field_place']['und'][$key]);
+        }
+      }
+    }
+    // Add quick pick checkbox options for neighborhoods.
     $form['field_neighborhood_quick_pick'] = array(
       '#title' => t('Neighborhoods'),
       '#description' => t('Quick picklist of Boston neighborhoods.'),
       '#type' => 'checkboxes',
       '#options' => $neighborhoods,
-      '#default_value' => unserialize($node->field_neighborhood_quick_pick[LANGUAGE_NONE][0]['value']),
-      //'#default_value' => unserialize($form_state['node']->field_place_neighborhood[0]),
-      //'#default_value' => unserialize($form_state['values']['field_neighborhood_quick_pick']),
+      '#default_value' => $checkbox_defaults,
     );
-    // Place neighborhoods in the Relate Content group
+    // Put neighborhoods in the Relate Content group.
     $form['#group_children']['field_neighborhood_quick_pick'] = 'group_related_content';
+    // Specify form_submit handler.
     $form['actions']['submit']['#submit'][] = 'bos_form_related_content_form_submit';
   }
 }
@@ -68,12 +69,17 @@ function bos_form_related_content_form_alter(&$form, &$form_state, $form_id) {
  * Form submit.
  */
 function bos_form_related_content_form_submit($form, &$form_state) {
+  // Load object for node that's being edited.
   $nid = $form_state['node']->nid;
   $node = node_load($nid);
-  //$node->field_place_neighborhood['und'][0]['value'] = serialize($form_state['node']->field_place_neighborhood[0]);
-  //$node->field_neighborhood_quick_pick['und'][0]['value'] = serialize($form_state['values']['field_neighborhood_quick_pick']);
-  $node->field_neighborhood_quick_pick = serialize($form_state['values']['field_neighborhood_quick_pick']);
+  // Iterate through each of the Neighborhood checkbox options.
+  foreach ($form_state['values']['field_neighborhood_quick_pick'] as $pick => $pick_value) {
+    // Check if the box is checks (would be 0 if not).
+    if($pick_value) {
+      // Save the NID for the selected place_profile to the event node's field_place reference field.
+      $node->field_place['und'][]['target_id'] = $pick_value;
+    }
+  }
+  // Save the node so the field logic above is committed to the db.
   node_save($node);
-  //$form_state['node']->field_place_neighborhood[0] = serialize($form_state['node']->field_place_neighborhood[0]);
-  //$form_state['values']['field_neighborhood_quick_pick'] = serialize($form_state['values']['field_neighborhood_quick_pick']);
 }
