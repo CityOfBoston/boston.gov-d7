@@ -84,6 +84,20 @@ a.item-link {
     span {
      display: none;
     }
+
+  }
+
+  &-news .news-item-default-image,
+  &-post .news-item-default-image {
+    background-image: url('../img/news-default-thumb.svg');
+  }
+
+  &-event .news-item-default-image {
+    background-image: url('../img/icon-calendar.svg');
+  }
+
+  &-public_notice .news-item-default-image {
+    background-image: url('../img/icon-public_notice.svg');
   }
 
   .thumb-wrapper {

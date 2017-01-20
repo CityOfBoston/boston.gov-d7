@@ -87,7 +87,7 @@ function bos_content_type_public_notice_strongarm() {
         'custom_settings' => FALSE,
       ),
       'featured_item' => array(
-        'custom_settings' => FALSE,
+        'custom_settings' => TRUE,
       ),
       'featured_topics' => array(
         'custom_settings' => FALSE,

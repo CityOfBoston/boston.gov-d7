@@ -24,6 +24,13 @@ function bos_content_type_public_notice_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 0,
       ),
+      'featured_item' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
       'listing' => array(
         'label' => 'hidden',
         'module' => 'text',
@@ -77,6 +84,18 @@ function bos_content_type_public_notice_field_default_field_instances() {
     'description' => 'The location of the meeting / hearing / working session.',
     'display' => array(
       'default' => array(
+        'label' => 'hidden',
+        'module' => 'addressfield',
+        'settings' => array(
+          'format_handlers' => array(
+            0 => 'address',
+          ),
+          'use_widget_handlers' => 1,
+        ),
+        'type' => 'addressfield_default',
+        'weight' => 9,
+      ),
+      'featured_item' => array(
         'label' => 'hidden',
         'module' => 'addressfield',
         'settings' => array(
@@ -157,6 +176,13 @@ function bos_content_type_public_notice_field_default_field_instances() {
         'type' => 'list_default',
         'weight' => 13,
       ),
+      'featured_item' => array(
+        'label' => 'hidden',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 13,
+      ),
       'listing' => array(
         'label' => 'hidden',
         'module' => 'list',
@@ -198,6 +224,15 @@ function bos_content_type_public_notice_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
+        'label' => 'hidden',
+        'module' => 'paragraphs',
+        'settings' => array(
+          'view_mode' => 'full',
+        ),
+        'type' => 'paragraphs_view',
+        'weight' => 15,
+      ),
+      'featured_item' => array(
         'label' => 'hidden',
         'module' => 'paragraphs',
         'settings' => array(
@@ -368,6 +403,15 @@ function bos_content_type_public_notice_field_default_field_instances() {
         'type' => 'entityreference_entity_view',
         'weight' => 3,
       ),
+      'featured_item' => array(
+        'label' => 'hidden',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 3,
+      ),
       'listing' => array(
         'label' => 'hidden',
         'module' => 'entityreference',
@@ -434,6 +478,12 @@ function bos_content_type_public_notice_field_default_field_instances() {
         'type' => 'entityreference_entity_view',
         'weight' => 12,
       ),
+      'featured_item' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 12,
+      ),
       'listing' => array(
         'label' => 'hidden',
         'module' => 'entityreference',
@@ -490,6 +540,15 @@ function bos_content_type_public_notice_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
+        'label' => 'hidden',
+        'module' => 'paragraphs',
+        'settings' => array(
+          'view_mode' => 'full',
+        ),
+        'type' => 'paragraphs_view',
+        'weight' => 17,
+      ),
+      'featured_item' => array(
         'label' => 'hidden',
         'module' => 'paragraphs',
         'settings' => array(
@@ -659,6 +718,13 @@ function bos_content_type_public_notice_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 5,
       ),
+      'featured_item' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 5,
+      ),
       'listing' => array(
         'label' => 'hidden',
         'module' => 'text',
@@ -707,6 +773,13 @@ function bos_content_type_public_notice_field_default_field_instances() {
     'description' => 'The name of the primary point of contact for this notice',
     'display' => array(
       'default' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 4,
+      ),
+      'featured_item' => array(
         'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
@@ -767,6 +840,13 @@ function bos_content_type_public_notice_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 14,
       ),
+      'featured_item' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 14,
+      ),
       'listing' => array(
         'label' => 'hidden',
         'module' => 'text',
@@ -821,6 +901,13 @@ function bos_content_type_public_notice_field_default_field_instances() {
         'type' => 'list_default',
         'weight' => 1,
       ),
+      'featured_item' => array(
+        'label' => 'hidden',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 1,
+      ),
       'listing' => array(
         'label' => 'hidden',
         'module' => 'list',
@@ -860,6 +947,13 @@ function bos_content_type_public_notice_field_default_field_instances() {
     'description' => 'A sentence describing the purpose of the meeting.',
     'display' => array(
       'default' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 2,
+      ),
+      'featured_item' => array(
         'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
@@ -925,6 +1019,13 @@ function bos_content_type_public_notice_field_default_field_instances() {
         'type' => 'list_default',
         'weight' => 18,
       ),
+      'featured_item' => array(
+        'label' => 'hidden',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 18,
+      ),
       'listing' => array(
         'label' => 'above',
         'module' => 'list',
@@ -966,6 +1067,15 @@ function bos_content_type_public_notice_field_default_field_instances() {
     'description' => 'Please attach filed posting here.',
     'display' => array(
       'default' => array(
+        'label' => 'hidden',
+        'module' => 'paragraphs',
+        'settings' => array(
+          'view_mode' => 'full',
+        ),
+        'type' => 'paragraphs_view',
+        'weight' => 16,
+      ),
+      'featured_item' => array(
         'label' => 'hidden',
         'module' => 'paragraphs',
         'settings' => array(
@@ -1139,6 +1249,13 @@ function bos_content_type_public_notice_field_default_field_instances() {
         'type' => 'list_default',
         'weight' => 20,
       ),
+      'featured_item' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 20,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1179,6 +1296,12 @@ function bos_content_type_public_notice_field_default_field_instances() {
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
+        'weight' => 11,
+      ),
+      'featured_item' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 11,
       ),
       'listing' => array(
@@ -1244,6 +1367,13 @@ function bos_content_type_public_notice_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 6,
       ),
+      'featured_item' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 6,
+      ),
       'listing' => array(
         'label' => 'hidden',
         'module' => 'text',
@@ -1295,6 +1425,21 @@ function bos_content_type_public_notice_field_default_field_instances() {
         'module' => 'date',
         'settings' => array(
           'format_type' => 'normal_date',
+          'fromto' => 'value',
+          'multiple_from' => '',
+          'multiple_number' => '',
+          'multiple_to' => '',
+          'show_remaining_days' => 0,
+          'show_repeat_rule' => 'show',
+        ),
+        'type' => 'date_default',
+        'weight' => 8,
+      ),
+      'featured_item' => array(
+        'label' => 'hidden',
+        'module' => 'date',
+        'settings' => array(
+          'format_type' => 'boston_featured',
           'fromto' => 'value',
           'multiple_from' => '',
           'multiple_number' => '',
@@ -1378,6 +1523,21 @@ function bos_content_type_public_notice_field_default_field_instances() {
         'type' => 'date_default',
         'weight' => 20,
       ),
+      'featured_item' => array(
+        'label' => 'hidden',
+        'module' => 'date',
+        'settings' => array(
+          'format_type' => 'short',
+          'fromto' => 'both',
+          'multiple_from' => '',
+          'multiple_number' => '',
+          'multiple_to' => '',
+          'show_remaining_days' => 0,
+          'show_repeat_rule' => 'show',
+        ),
+        'type' => 'date_default',
+        'weight' => 20,
+      ),
       'listing' => array(
         'label' => 'hidden',
         'module' => 'date',
@@ -1446,6 +1606,12 @@ function bos_content_type_public_notice_field_default_field_instances() {
         'type' => 'entityreference_label',
         'weight' => 10,
       ),
+      'featured_item' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 10,
+      ),
       'listing' => array(
         'label' => 'hidden',
         'module' => 'entityreference',
@@ -1496,6 +1662,21 @@ function bos_content_type_public_notice_field_default_field_instances() {
     'description' => 'The expected time that the public testimony will begin.',
     'display' => array(
       'default' => array(
+        'label' => 'hidden',
+        'module' => 'date',
+        'settings' => array(
+          'format_type' => 'calendar_time',
+          'fromto' => 'both',
+          'multiple_from' => '',
+          'multiple_number' => '',
+          'multiple_to' => '',
+          'show_remaining_days' => 0,
+          'show_repeat_rule' => 'show',
+        ),
+        'type' => 'date_default',
+        'weight' => 19,
+      ),
+      'featured_item' => array(
         'label' => 'hidden',
         'module' => 'date',
         'settings' => array(
@@ -1569,6 +1750,21 @@ function bos_content_type_public_notice_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
+        'label' => 'hidden',
+        'module' => 'date',
+        'settings' => array(
+          'format_type' => 'short',
+          'fromto' => 'both',
+          'multiple_from' => '',
+          'multiple_number' => '',
+          'multiple_to' => '',
+          'show_remaining_days' => 0,
+          'show_repeat_rule' => 'show',
+        ),
+        'type' => 'date_default',
+        'weight' => 21,
+      ),
+      'featured_item' => array(
         'label' => 'hidden',
         'module' => 'date',
         'settings' => array(
