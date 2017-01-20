@@ -55,6 +55,10 @@ function bos_view_upcoming_events_views_default_views() {
   $handler->display->display_options['relationships']['field_department_profile_target_id']['field'] = 'field_department_profile_target_id';
   $handler->display->display_options['relationships']['field_department_profile_target_id']['relationship'] = 'field_contact_target_id';
   $handler->display->display_options['relationships']['field_department_profile_target_id']['required'] = TRUE;
+  /* Relationship: Entity Reference: Referenced Entity */
+  $handler->display->display_options['relationships']['field_place_target_id']['id'] = 'field_place_target_id';
+  $handler->display->display_options['relationships']['field_place_target_id']['table'] = 'field_data_field_place';
+  $handler->display->display_options['relationships']['field_place_target_id']['field'] = 'field_place_target_id';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -126,21 +130,37 @@ function bos_view_upcoming_events_views_default_views() {
     'image_link' => '',
   );
   $handler->display->display_options['fields']['field_thumbnail']['field_api_classes'] = TRUE;
-  /* Sort criterion: Content: Published Date (field_published_date) */
-  $handler->display->display_options['sorts']['field_published_date_value']['id'] = 'field_published_date_value';
-  $handler->display->display_options['sorts']['field_published_date_value']['table'] = 'field_data_field_published_date';
-  $handler->display->display_options['sorts']['field_published_date_value']['field'] = 'field_published_date_value';
-  $handler->display->display_options['sorts']['field_published_date_value']['order'] = 'DESC';
-  /* Contextual filter: Content: Nid */
-  $handler->display->display_options['arguments']['nid']['id'] = 'nid';
-  $handler->display->display_options['arguments']['nid']['table'] = 'node';
-  $handler->display->display_options['arguments']['nid']['field'] = 'nid';
-  $handler->display->display_options['arguments']['nid']['relationship'] = 'field_department_profile_target_id';
-  $handler->display->display_options['arguments']['nid']['default_action'] = 'default';
-  $handler->display->display_options['arguments']['nid']['default_argument_type'] = 'node';
-  $handler->display->display_options['arguments']['nid']['summary']['number_of_records'] = '0';
-  $handler->display->display_options['arguments']['nid']['summary']['format'] = 'default_summary';
-  $handler->display->display_options['arguments']['nid']['summary_options']['items_per_page'] = '25';
+  /* Field: Content: Date */
+  $handler->display->display_options['fields']['field_public_notice_date']['id'] = 'field_public_notice_date';
+  $handler->display->display_options['fields']['field_public_notice_date']['table'] = 'field_data_field_public_notice_date';
+  $handler->display->display_options['fields']['field_public_notice_date']['field'] = 'field_public_notice_date';
+  $handler->display->display_options['fields']['field_public_notice_date']['label'] = '';
+  $handler->display->display_options['fields']['field_public_notice_date']['element_type'] = '0';
+  $handler->display->display_options['fields']['field_public_notice_date']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_public_notice_date']['element_wrapper_type'] = '0';
+  $handler->display->display_options['fields']['field_public_notice_date']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_public_notice_date']['settings'] = array(
+    'format_type' => 'boston_featured',
+    'fromto' => 'value',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+    'show_repeat_rule' => 'show',
+  );
+  $handler->display->display_options['fields']['field_public_notice_date']['field_api_classes'] = TRUE;
+  /* Sort criterion: Content: Date -  start date (field_public_notice_date) */
+  $handler->display->display_options['sorts']['field_public_notice_date_value']['id'] = 'field_public_notice_date_value';
+  $handler->display->display_options['sorts']['field_public_notice_date_value']['table'] = 'field_data_field_public_notice_date';
+  $handler->display->display_options['sorts']['field_public_notice_date_value']['field'] = 'field_public_notice_date_value';
+  /* Sort criterion: Field: Event Dates -  start date (field_event_dates) */
+  $handler->display->display_options['sorts']['field_event_dates_value']['id'] = 'field_event_dates_value';
+  $handler->display->display_options['sorts']['field_event_dates_value']['table'] = 'field_data_field_event_dates';
+  $handler->display->display_options['sorts']['field_event_dates_value']['field'] = 'field_event_dates_value';
+  $handler->display->display_options['filter_groups']['groups'] = array(
+    1 => 'AND',
+    2 => 'OR',
+  );
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
@@ -153,8 +173,36 @@ function bos_view_upcoming_events_views_default_views() {
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
-    'post' => 'post',
+    'event' => 'event',
+    'public_notice' => 'public_notice',
   );
+  $handler->display->display_options['filters']['type']['group'] = 1;
+  /* Filter criterion: Content: Date -  start date (field_public_notice_date) */
+  $handler->display->display_options['filters']['field_public_notice_date_value']['id'] = 'field_public_notice_date_value';
+  $handler->display->display_options['filters']['field_public_notice_date_value']['table'] = 'field_data_field_public_notice_date';
+  $handler->display->display_options['filters']['field_public_notice_date_value']['field'] = 'field_public_notice_date_value';
+  $handler->display->display_options['filters']['field_public_notice_date_value']['operator'] = '>=';
+  $handler->display->display_options['filters']['field_public_notice_date_value']['group'] = 2;
+  $handler->display->display_options['filters']['field_public_notice_date_value']['granularity'] = 'minute';
+  $handler->display->display_options['filters']['field_public_notice_date_value']['form_type'] = 'date_text';
+  $handler->display->display_options['filters']['field_public_notice_date_value']['default_date'] = 'now';
+  /* Filter criterion: Views: Views Exclude Previous */
+  $handler->display->display_options['filters']['views_exclude_previous']['id'] = 'views_exclude_previous';
+  $handler->display->display_options['filters']['views_exclude_previous']['table'] = 'node';
+  $handler->display->display_options['filters']['views_exclude_previous']['field'] = 'views_exclude_previous';
+  $handler->display->display_options['filters']['views_exclude_previous']['value'] = array(
+    'node_view' => 'node_view',
+  );
+  $handler->display->display_options['filters']['views_exclude_previous']['group'] = 1;
+  /* Filter criterion: Field: Event Dates -  start date (field_event_dates) */
+  $handler->display->display_options['filters']['field_event_dates_value']['id'] = 'field_event_dates_value';
+  $handler->display->display_options['filters']['field_event_dates_value']['table'] = 'field_data_field_event_dates';
+  $handler->display->display_options['filters']['field_event_dates_value']['field'] = 'field_event_dates_value';
+  $handler->display->display_options['filters']['field_event_dates_value']['operator'] = '>=';
+  $handler->display->display_options['filters']['field_event_dates_value']['group'] = 2;
+  $handler->display->display_options['filters']['field_event_dates_value']['granularity'] = 'minute';
+  $handler->display->display_options['filters']['field_event_dates_value']['form_type'] = 'date_text';
+  $handler->display->display_options['filters']['field_event_dates_value']['default_date'] = 'now';
 
   /* Display: Upcoming Events */
   $handler = $view->new_display('block', 'Upcoming Events', 'most_recent');
@@ -179,8 +227,16 @@ function bos_view_upcoming_events_views_default_views() {
   $handler->display->display_options['sorts']['field_event_dates_value']['id'] = 'field_event_dates_value';
   $handler->display->display_options['sorts']['field_event_dates_value']['table'] = 'field_data_field_event_dates';
   $handler->display->display_options['sorts']['field_event_dates_value']['field'] = 'field_event_dates_value';
+  /* Sort criterion: Content: Date -  start date (field_public_notice_date) */
+  $handler->display->display_options['sorts']['field_public_notice_date_value']['id'] = 'field_public_notice_date_value';
+  $handler->display->display_options['sorts']['field_public_notice_date_value']['table'] = 'field_data_field_public_notice_date';
+  $handler->display->display_options['sorts']['field_public_notice_date_value']['field'] = 'field_public_notice_date_value';
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['filter_groups']['groups'] = array(
+    1 => 'AND',
+    2 => 'OR',
+  );
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
@@ -195,16 +251,35 @@ function bos_view_upcoming_events_views_default_views() {
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'event' => 'event',
+    'public_notice' => 'public_notice',
   );
+  $handler->display->display_options['filters']['type']['group'] = 1;
   /* Filter criterion: Field: Event Dates -  start date (field_event_dates) */
   $handler->display->display_options['filters']['field_event_dates_value']['id'] = 'field_event_dates_value';
   $handler->display->display_options['filters']['field_event_dates_value']['table'] = 'field_data_field_event_dates';
   $handler->display->display_options['filters']['field_event_dates_value']['field'] = 'field_event_dates_value';
   $handler->display->display_options['filters']['field_event_dates_value']['operator'] = '>=';
+  $handler->display->display_options['filters']['field_event_dates_value']['group'] = 2;
   $handler->display->display_options['filters']['field_event_dates_value']['granularity'] = 'minute';
   $handler->display->display_options['filters']['field_event_dates_value']['form_type'] = 'date_text';
   $handler->display->display_options['filters']['field_event_dates_value']['default_date'] = 'now';
   $handler->display->display_options['filters']['field_event_dates_value']['add_delta'] = 'yes';
+  /* Filter criterion: Content: Date -  start date (field_public_notice_date) */
+  $handler->display->display_options['filters']['field_public_notice_date_value']['id'] = 'field_public_notice_date_value';
+  $handler->display->display_options['filters']['field_public_notice_date_value']['table'] = 'field_data_field_public_notice_date';
+  $handler->display->display_options['filters']['field_public_notice_date_value']['field'] = 'field_public_notice_date_value';
+  $handler->display->display_options['filters']['field_public_notice_date_value']['operator'] = '>=';
+  $handler->display->display_options['filters']['field_public_notice_date_value']['group'] = 2;
+  $handler->display->display_options['filters']['field_public_notice_date_value']['granularity'] = 'minute';
+  $handler->display->display_options['filters']['field_public_notice_date_value']['form_type'] = 'date_text';
+  $handler->display->display_options['filters']['field_public_notice_date_value']['default_date'] = 'now';
+  /* Filter criterion: Views: Views Exclude Previous */
+  $handler->display->display_options['filters']['views_exclude_previous']['id'] = 'views_exclude_previous';
+  $handler->display->display_options['filters']['views_exclude_previous']['table'] = 'node';
+  $handler->display->display_options['filters']['views_exclude_previous']['field'] = 'views_exclude_previous';
+  $handler->display->display_options['filters']['views_exclude_previous']['value'] = array(
+    'node_view' => 'node_view',
+  );
 
   /* Display: Related Events */
   $handler = $view->new_display('block', 'Related Events', 'block_1');
@@ -373,6 +448,7 @@ function bos_view_upcoming_events_views_default_views() {
   $handler->display->display_options['filters']['field_public_notice_date_value']['operator'] = '>=';
   $handler->display->display_options['filters']['field_public_notice_date_value']['group'] = 2;
   $handler->display->display_options['filters']['field_public_notice_date_value']['granularity'] = 'minute';
+  $handler->display->display_options['filters']['field_public_notice_date_value']['form_type'] = 'date_text';
   $handler->display->display_options['filters']['field_public_notice_date_value']['default_date'] = 'now';
   /* Filter criterion: Views: Views Exclude Previous */
   $handler->display->display_options['filters']['views_exclude_previous']['id'] = 'views_exclude_previous';
@@ -381,6 +457,262 @@ function bos_view_upcoming_events_views_default_views() {
   $handler->display->display_options['filters']['views_exclude_previous']['value'] = array(
     'node_view' => 'node_view',
   );
+  $handler->display->display_options['filters']['views_exclude_previous']['group'] = 1;
+
+  /* Display: Departments */
+  $handler = $view->new_display('block', 'Departments', 'block_2');
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Entity Reference: Referenced Entity */
+  $handler->display->display_options['relationships']['field_contacts_target_id']['id'] = 'field_contacts_target_id';
+  $handler->display->display_options['relationships']['field_contacts_target_id']['table'] = 'field_data_field_contacts';
+  $handler->display->display_options['relationships']['field_contacts_target_id']['field'] = 'field_contacts_target_id';
+  $handler->display->display_options['relationships']['field_contacts_target_id']['required'] = TRUE;
+  /* Relationship: Entity Reference: Referenced Entity */
+  $handler->display->display_options['relationships']['field_department_profile_target_id']['id'] = 'field_department_profile_target_id';
+  $handler->display->display_options['relationships']['field_department_profile_target_id']['table'] = 'field_data_field_department_profile';
+  $handler->display->display_options['relationships']['field_department_profile_target_id']['field'] = 'field_department_profile_target_id';
+  $handler->display->display_options['relationships']['field_department_profile_target_id']['relationship'] = 'field_contacts_target_id';
+  $handler->display->display_options['relationships']['field_department_profile_target_id']['required'] = TRUE;
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Field: Event Dates -  start date (field_event_dates) */
+  $handler->display->display_options['sorts']['field_event_dates_value']['id'] = 'field_event_dates_value';
+  $handler->display->display_options['sorts']['field_event_dates_value']['table'] = 'field_data_field_event_dates';
+  $handler->display->display_options['sorts']['field_event_dates_value']['field'] = 'field_event_dates_value';
+  /* Sort criterion: Content: Date -  start date (field_public_notice_date) */
+  $handler->display->display_options['sorts']['field_public_notice_date_value']['id'] = 'field_public_notice_date_value';
+  $handler->display->display_options['sorts']['field_public_notice_date_value']['table'] = 'field_data_field_public_notice_date';
+  $handler->display->display_options['sorts']['field_public_notice_date_value']['field'] = 'field_public_notice_date_value';
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Content: Nid */
+  $handler->display->display_options['arguments']['nid']['id'] = 'nid';
+  $handler->display->display_options['arguments']['nid']['table'] = 'node';
+  $handler->display->display_options['arguments']['nid']['field'] = 'nid';
+  $handler->display->display_options['arguments']['nid']['relationship'] = 'field_department_profile_target_id';
+  $handler->display->display_options['arguments']['nid']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['nid']['default_argument_type'] = 'node';
+  $handler->display->display_options['arguments']['nid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['nid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['nid']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['filter_groups']['groups'] = array(
+    1 => 'AND',
+    2 => 'OR',
+  );
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'event' => 'event',
+    'public_notice' => 'public_notice',
+  );
+  $handler->display->display_options['filters']['type']['group'] = 1;
+  /* Filter criterion: Field: Event Dates -  start date (field_event_dates) */
+  $handler->display->display_options['filters']['field_event_dates_value']['id'] = 'field_event_dates_value';
+  $handler->display->display_options['filters']['field_event_dates_value']['table'] = 'field_data_field_event_dates';
+  $handler->display->display_options['filters']['field_event_dates_value']['field'] = 'field_event_dates_value';
+  $handler->display->display_options['filters']['field_event_dates_value']['operator'] = '>=';
+  $handler->display->display_options['filters']['field_event_dates_value']['group'] = 2;
+  $handler->display->display_options['filters']['field_event_dates_value']['granularity'] = 'minute';
+  $handler->display->display_options['filters']['field_event_dates_value']['form_type'] = 'date_text';
+  $handler->display->display_options['filters']['field_event_dates_value']['default_date'] = 'now';
+  /* Filter criterion: Content: Date -  start date (field_public_notice_date) */
+  $handler->display->display_options['filters']['field_public_notice_date_value']['id'] = 'field_public_notice_date_value';
+  $handler->display->display_options['filters']['field_public_notice_date_value']['table'] = 'field_data_field_public_notice_date';
+  $handler->display->display_options['filters']['field_public_notice_date_value']['field'] = 'field_public_notice_date_value';
+  $handler->display->display_options['filters']['field_public_notice_date_value']['operator'] = '>=';
+  $handler->display->display_options['filters']['field_public_notice_date_value']['group'] = 2;
+  $handler->display->display_options['filters']['field_public_notice_date_value']['granularity'] = 'minute';
+  $handler->display->display_options['filters']['field_public_notice_date_value']['form_type'] = 'date_text';
+  $handler->display->display_options['filters']['field_public_notice_date_value']['default_date'] = 'now';
+  /* Filter criterion: Views: Views Exclude Previous */
+  $handler->display->display_options['filters']['views_exclude_previous']['id'] = 'views_exclude_previous';
+  $handler->display->display_options['filters']['views_exclude_previous']['table'] = 'node';
+  $handler->display->display_options['filters']['views_exclude_previous']['field'] = 'views_exclude_previous';
+  $handler->display->display_options['filters']['views_exclude_previous']['value'] = array(
+    'node_view' => 'node_view',
+  );
+  $handler->display->display_options['filters']['views_exclude_previous']['group'] = 1;
+
+  /* Display: Places */
+  $handler = $view->new_display('block', 'Places', 'block_3');
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Entity Reference: Referenced Entity */
+  $handler->display->display_options['relationships']['field_place_target_id']['id'] = 'field_place_target_id';
+  $handler->display->display_options['relationships']['field_place_target_id']['table'] = 'field_data_field_place';
+  $handler->display->display_options['relationships']['field_place_target_id']['field'] = 'field_place_target_id';
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Field: Event Dates -  start date (field_event_dates) */
+  $handler->display->display_options['sorts']['field_event_dates_value']['id'] = 'field_event_dates_value';
+  $handler->display->display_options['sorts']['field_event_dates_value']['table'] = 'field_data_field_event_dates';
+  $handler->display->display_options['sorts']['field_event_dates_value']['field'] = 'field_event_dates_value';
+  /* Sort criterion: Content: Date -  start date (field_public_notice_date) */
+  $handler->display->display_options['sorts']['field_public_notice_date_value']['id'] = 'field_public_notice_date_value';
+  $handler->display->display_options['sorts']['field_public_notice_date_value']['table'] = 'field_data_field_public_notice_date';
+  $handler->display->display_options['sorts']['field_public_notice_date_value']['field'] = 'field_public_notice_date_value';
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Content: Nid */
+  $handler->display->display_options['arguments']['nid']['id'] = 'nid';
+  $handler->display->display_options['arguments']['nid']['table'] = 'node';
+  $handler->display->display_options['arguments']['nid']['field'] = 'nid';
+  $handler->display->display_options['arguments']['nid']['relationship'] = 'field_place_target_id';
+  $handler->display->display_options['arguments']['nid']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['nid']['default_argument_type'] = 'node';
+  $handler->display->display_options['arguments']['nid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['nid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['nid']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['filter_groups']['groups'] = array(
+    1 => 'AND',
+    2 => 'OR',
+  );
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'event' => 'event',
+    'public_notice' => 'public_notice',
+  );
+  $handler->display->display_options['filters']['type']['group'] = 1;
+  /* Filter criterion: Field: Event Dates -  start date (field_event_dates) */
+  $handler->display->display_options['filters']['field_event_dates_value']['id'] = 'field_event_dates_value';
+  $handler->display->display_options['filters']['field_event_dates_value']['table'] = 'field_data_field_event_dates';
+  $handler->display->display_options['filters']['field_event_dates_value']['field'] = 'field_event_dates_value';
+  $handler->display->display_options['filters']['field_event_dates_value']['operator'] = '>=';
+  $handler->display->display_options['filters']['field_event_dates_value']['group'] = 2;
+  $handler->display->display_options['filters']['field_event_dates_value']['granularity'] = 'minute';
+  $handler->display->display_options['filters']['field_event_dates_value']['form_type'] = 'date_text';
+  $handler->display->display_options['filters']['field_event_dates_value']['default_date'] = 'now';
+  /* Filter criterion: Content: Date -  start date (field_public_notice_date) */
+  $handler->display->display_options['filters']['field_public_notice_date_value']['id'] = 'field_public_notice_date_value';
+  $handler->display->display_options['filters']['field_public_notice_date_value']['table'] = 'field_data_field_public_notice_date';
+  $handler->display->display_options['filters']['field_public_notice_date_value']['field'] = 'field_public_notice_date_value';
+  $handler->display->display_options['filters']['field_public_notice_date_value']['operator'] = '>=';
+  $handler->display->display_options['filters']['field_public_notice_date_value']['group'] = 2;
+  $handler->display->display_options['filters']['field_public_notice_date_value']['granularity'] = 'minute';
+  $handler->display->display_options['filters']['field_public_notice_date_value']['form_type'] = 'date_text';
+  $handler->display->display_options['filters']['field_public_notice_date_value']['default_date'] = 'now';
+  /* Filter criterion: Views: Views Exclude Previous */
+  $handler->display->display_options['filters']['views_exclude_previous']['id'] = 'views_exclude_previous';
+  $handler->display->display_options['filters']['views_exclude_previous']['table'] = 'node';
+  $handler->display->display_options['filters']['views_exclude_previous']['field'] = 'views_exclude_previous';
+  $handler->display->display_options['filters']['views_exclude_previous']['value'] = array(
+    'node_view' => 'node_view',
+  );
+  $handler->display->display_options['filters']['views_exclude_previous']['group'] = 1;
+
+  /* Display: People */
+  $handler = $view->new_display('block', 'People', 'block_4');
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Entity Reference: Referenced Entity */
+  $handler->display->display_options['relationships']['field_people_target_id']['id'] = 'field_people_target_id';
+  $handler->display->display_options['relationships']['field_people_target_id']['table'] = 'field_data_field_people';
+  $handler->display->display_options['relationships']['field_people_target_id']['field'] = 'field_people_target_id';
+  $handler->display->display_options['relationships']['field_people_target_id']['required'] = TRUE;
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Field: Event Dates -  start date (field_event_dates) */
+  $handler->display->display_options['sorts']['field_event_dates_value']['id'] = 'field_event_dates_value';
+  $handler->display->display_options['sorts']['field_event_dates_value']['table'] = 'field_data_field_event_dates';
+  $handler->display->display_options['sorts']['field_event_dates_value']['field'] = 'field_event_dates_value';
+  /* Sort criterion: Content: Date -  start date (field_public_notice_date) */
+  $handler->display->display_options['sorts']['field_public_notice_date_value']['id'] = 'field_public_notice_date_value';
+  $handler->display->display_options['sorts']['field_public_notice_date_value']['table'] = 'field_data_field_public_notice_date';
+  $handler->display->display_options['sorts']['field_public_notice_date_value']['field'] = 'field_public_notice_date_value';
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Content: Nid */
+  $handler->display->display_options['arguments']['nid']['id'] = 'nid';
+  $handler->display->display_options['arguments']['nid']['table'] = 'node';
+  $handler->display->display_options['arguments']['nid']['field'] = 'nid';
+  $handler->display->display_options['arguments']['nid']['relationship'] = 'field_people_target_id';
+  $handler->display->display_options['arguments']['nid']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['nid']['default_argument_type'] = 'node';
+  $handler->display->display_options['arguments']['nid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['nid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['nid']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['filter_groups']['groups'] = array(
+    1 => 'AND',
+    2 => 'OR',
+  );
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'event' => 'event',
+    'public_notice' => 'public_notice',
+  );
+  $handler->display->display_options['filters']['type']['group'] = 1;
+  /* Filter criterion: Field: Event Dates -  start date (field_event_dates) */
+  $handler->display->display_options['filters']['field_event_dates_value']['id'] = 'field_event_dates_value';
+  $handler->display->display_options['filters']['field_event_dates_value']['table'] = 'field_data_field_event_dates';
+  $handler->display->display_options['filters']['field_event_dates_value']['field'] = 'field_event_dates_value';
+  $handler->display->display_options['filters']['field_event_dates_value']['operator'] = '>=';
+  $handler->display->display_options['filters']['field_event_dates_value']['group'] = 2;
+  $handler->display->display_options['filters']['field_event_dates_value']['granularity'] = 'minute';
+  $handler->display->display_options['filters']['field_event_dates_value']['form_type'] = 'date_text';
+  $handler->display->display_options['filters']['field_event_dates_value']['default_date'] = 'now';
+  /* Filter criterion: Content: Date -  start date (field_public_notice_date) */
+  $handler->display->display_options['filters']['field_public_notice_date_value']['id'] = 'field_public_notice_date_value';
+  $handler->display->display_options['filters']['field_public_notice_date_value']['table'] = 'field_data_field_public_notice_date';
+  $handler->display->display_options['filters']['field_public_notice_date_value']['field'] = 'field_public_notice_date_value';
+  $handler->display->display_options['filters']['field_public_notice_date_value']['operator'] = '>=';
+  $handler->display->display_options['filters']['field_public_notice_date_value']['group'] = 2;
+  $handler->display->display_options['filters']['field_public_notice_date_value']['granularity'] = 'minute';
+  $handler->display->display_options['filters']['field_public_notice_date_value']['form_type'] = 'date_text';
+  $handler->display->display_options['filters']['field_public_notice_date_value']['default_date'] = 'now';
+  /* Filter criterion: Views: Views Exclude Previous */
+  $handler->display->display_options['filters']['views_exclude_previous']['id'] = 'views_exclude_previous';
+  $handler->display->display_options['filters']['views_exclude_previous']['table'] = 'node';
+  $handler->display->display_options['filters']['views_exclude_previous']['field'] = 'views_exclude_previous';
+  $handler->display->display_options['filters']['views_exclude_previous']['value'] = array(
+    'node_view' => 'node_view',
+  );
+  $handler->display->display_options['filters']['views_exclude_previous']['group'] = 1;
+
+  /* Display: Programs */
+  $handler = $view->new_display('block', 'Programs', 'block_5');
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Entity Reference: Referenced Entity */
+  $handler->display->display_options['relationships']['field_program_initiative_target_id']['id'] = 'field_program_initiative_target_id';
+  $handler->display->display_options['relationships']['field_program_initiative_target_id']['table'] = 'field_data_field_program_initiative';
+  $handler->display->display_options['relationships']['field_program_initiative_target_id']['field'] = 'field_program_initiative_target_id';
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Content: Nid */
+  $handler->display->display_options['arguments']['nid']['id'] = 'nid';
+  $handler->display->display_options['arguments']['nid']['table'] = 'node';
+  $handler->display->display_options['arguments']['nid']['field'] = 'nid';
+  $handler->display->display_options['arguments']['nid']['relationship'] = 'field_program_initiative_target_id';
+  $handler->display->display_options['arguments']['nid']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['nid']['default_argument_type'] = 'node';
+  $handler->display->display_options['arguments']['nid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['nid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['nid']['summary_options']['items_per_page'] = '25';
   $export['upcoming_events'] = $view;
 
   return $export;

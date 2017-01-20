@@ -1841,7 +1841,12 @@ function bos_shared_fields_field_default_field_bases() {
         'sort' => array(
           'type' => 'none',
         ),
-        'target_bundles' => array(),
+        'target_bundles' => array(
+          'article' => 'article',
+          'how_to' => 'how_to',
+          'landing_page' => 'landing_page',
+          'script_page' => 'script_page',
+        ),
       ),
       'target_type' => 'node',
     ),

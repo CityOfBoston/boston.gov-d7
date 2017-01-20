@@ -41,17 +41,6 @@ function bos_view_news_announcements_views_default_views() {
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
   $handler->display->display_options['empty']['area']['content'] = 'No post content related to this department is available at this time.';
   $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
-  /* Relationship: Entity Reference: Referenced Entity */
-  $handler->display->display_options['relationships']['field_contact_target_id']['id'] = 'field_contact_target_id';
-  $handler->display->display_options['relationships']['field_contact_target_id']['table'] = 'field_data_field_contact';
-  $handler->display->display_options['relationships']['field_contact_target_id']['field'] = 'field_contact_target_id';
-  $handler->display->display_options['relationships']['field_contact_target_id']['required'] = TRUE;
-  /* Relationship: Entity Reference: Referenced Entity */
-  $handler->display->display_options['relationships']['field_department_profile_target_id']['id'] = 'field_department_profile_target_id';
-  $handler->display->display_options['relationships']['field_department_profile_target_id']['table'] = 'field_data_field_department_profile';
-  $handler->display->display_options['relationships']['field_department_profile_target_id']['field'] = 'field_department_profile_target_id';
-  $handler->display->display_options['relationships']['field_department_profile_target_id']['relationship'] = 'field_contact_target_id';
-  $handler->display->display_options['relationships']['field_department_profile_target_id']['required'] = TRUE;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -59,16 +48,10 @@ function bos_view_news_announcements_views_default_views() {
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Sort criterion: Content: Published Date (field_published_date) */
-  $handler->display->display_options['sorts']['field_published_date_value']['id'] = 'field_published_date_value';
-  $handler->display->display_options['sorts']['field_published_date_value']['table'] = 'field_data_field_published_date';
-  $handler->display->display_options['sorts']['field_published_date_value']['field'] = 'field_published_date_value';
-  $handler->display->display_options['sorts']['field_published_date_value']['order'] = 'DESC';
   /* Contextual filter: Content: Nid */
   $handler->display->display_options['arguments']['nid']['id'] = 'nid';
   $handler->display->display_options['arguments']['nid']['table'] = 'node';
   $handler->display->display_options['arguments']['nid']['field'] = 'nid';
-  $handler->display->display_options['arguments']['nid']['relationship'] = 'field_department_profile_target_id';
   $handler->display->display_options['arguments']['nid']['default_action'] = 'default';
   $handler->display->display_options['arguments']['nid']['default_argument_type'] = 'node';
   $handler->display->display_options['arguments']['nid']['summary']['number_of_records'] = '0';
@@ -91,6 +74,35 @@ function bos_view_news_announcements_views_default_views() {
 
   /* Display: Departments */
   $handler = $view->new_display('block', 'Departments', 'departments');
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Entity Reference: Referenced Entity */
+  $handler->display->display_options['relationships']['field_contacts_target_id']['id'] = 'field_contacts_target_id';
+  $handler->display->display_options['relationships']['field_contacts_target_id']['table'] = 'field_data_field_contacts';
+  $handler->display->display_options['relationships']['field_contacts_target_id']['field'] = 'field_contacts_target_id';
+  $handler->display->display_options['relationships']['field_contacts_target_id']['required'] = TRUE;
+  /* Relationship: Entity Reference: Referenced Entity */
+  $handler->display->display_options['relationships']['field_department_profile_target_id']['id'] = 'field_department_profile_target_id';
+  $handler->display->display_options['relationships']['field_department_profile_target_id']['table'] = 'field_data_field_department_profile';
+  $handler->display->display_options['relationships']['field_department_profile_target_id']['field'] = 'field_department_profile_target_id';
+  $handler->display->display_options['relationships']['field_department_profile_target_id']['relationship'] = 'field_contacts_target_id';
+  $handler->display->display_options['relationships']['field_department_profile_target_id']['required'] = TRUE;
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Content: Published Date (field_published_date) */
+  $handler->display->display_options['sorts']['field_published_date_value']['id'] = 'field_published_date_value';
+  $handler->display->display_options['sorts']['field_published_date_value']['table'] = 'field_data_field_published_date';
+  $handler->display->display_options['sorts']['field_published_date_value']['field'] = 'field_published_date_value';
+  $handler->display->display_options['sorts']['field_published_date_value']['order'] = 'DESC';
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Content: Nid */
+  $handler->display->display_options['arguments']['nid']['id'] = 'nid';
+  $handler->display->display_options['arguments']['nid']['table'] = 'node';
+  $handler->display->display_options['arguments']['nid']['field'] = 'nid';
+  $handler->display->display_options['arguments']['nid']['relationship'] = 'field_department_profile_target_id';
+  $handler->display->display_options['arguments']['nid']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['nid']['default_argument_type'] = 'node';
+  $handler->display->display_options['arguments']['nid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['nid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['nid']['summary_options']['items_per_page'] = '25';
 
   /* Display: Most Recent */
   $handler = $view->new_display('block', 'Most Recent', 'most_recent');
@@ -147,6 +159,111 @@ function bos_view_news_announcements_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'post' => 'post',
   );
+
+  /* Display: People */
+  $handler = $view->new_display('block', 'People', 'people');
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Entity Reference: Referenced Entity */
+  $handler->display->display_options['relationships']['field_people_target_id']['id'] = 'field_people_target_id';
+  $handler->display->display_options['relationships']['field_people_target_id']['table'] = 'field_data_field_people';
+  $handler->display->display_options['relationships']['field_people_target_id']['field'] = 'field_people_target_id';
+  $handler->display->display_options['relationships']['field_people_target_id']['required'] = TRUE;
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Content: Published Date (field_published_date) */
+  $handler->display->display_options['sorts']['field_published_date_value']['id'] = 'field_published_date_value';
+  $handler->display->display_options['sorts']['field_published_date_value']['table'] = 'field_data_field_published_date';
+  $handler->display->display_options['sorts']['field_published_date_value']['field'] = 'field_published_date_value';
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Content: Nid */
+  $handler->display->display_options['arguments']['nid']['id'] = 'nid';
+  $handler->display->display_options['arguments']['nid']['table'] = 'node';
+  $handler->display->display_options['arguments']['nid']['field'] = 'nid';
+  $handler->display->display_options['arguments']['nid']['relationship'] = 'field_people_target_id';
+  $handler->display->display_options['arguments']['nid']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['nid']['default_argument_type'] = 'node';
+  $handler->display->display_options['arguments']['nid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['nid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['nid']['summary_options']['items_per_page'] = '25';
+
+  /* Display: Programs */
+  $handler = $view->new_display('block', 'Programs', 'programs');
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Entity Reference: Referenced Entity */
+  $handler->display->display_options['relationships']['field_program_initiative_target_id']['id'] = 'field_program_initiative_target_id';
+  $handler->display->display_options['relationships']['field_program_initiative_target_id']['table'] = 'field_data_field_program_initiative';
+  $handler->display->display_options['relationships']['field_program_initiative_target_id']['field'] = 'field_program_initiative_target_id';
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Content: Published Date (field_published_date) */
+  $handler->display->display_options['sorts']['field_published_date_value']['id'] = 'field_published_date_value';
+  $handler->display->display_options['sorts']['field_published_date_value']['table'] = 'field_data_field_published_date';
+  $handler->display->display_options['sorts']['field_published_date_value']['field'] = 'field_published_date_value';
+  $handler->display->display_options['sorts']['field_published_date_value']['order'] = 'DESC';
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Content: Nid */
+  $handler->display->display_options['arguments']['nid']['id'] = 'nid';
+  $handler->display->display_options['arguments']['nid']['table'] = 'node';
+  $handler->display->display_options['arguments']['nid']['field'] = 'nid';
+  $handler->display->display_options['arguments']['nid']['relationship'] = 'field_program_initiative_target_id';
+  $handler->display->display_options['arguments']['nid']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['nid']['default_argument_type'] = 'node';
+  $handler->display->display_options['arguments']['nid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['nid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['nid']['summary_options']['items_per_page'] = '25';
+
+  /* Display: Places */
+  $handler = $view->new_display('block', 'Places', 'places');
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Entity Reference: Referenced Entity */
+  $handler->display->display_options['relationships']['field_place_target_id']['id'] = 'field_place_target_id';
+  $handler->display->display_options['relationships']['field_place_target_id']['table'] = 'field_data_field_place';
+  $handler->display->display_options['relationships']['field_place_target_id']['field'] = 'field_place_target_id';
+  $handler->display->display_options['relationships']['field_place_target_id']['required'] = TRUE;
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Content: Published Date (field_published_date) */
+  $handler->display->display_options['sorts']['field_published_date_value']['id'] = 'field_published_date_value';
+  $handler->display->display_options['sorts']['field_published_date_value']['table'] = 'field_data_field_published_date';
+  $handler->display->display_options['sorts']['field_published_date_value']['field'] = 'field_published_date_value';
+  $handler->display->display_options['sorts']['field_published_date_value']['order'] = 'DESC';
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Content: Nid */
+  $handler->display->display_options['arguments']['nid']['id'] = 'nid';
+  $handler->display->display_options['arguments']['nid']['table'] = 'node';
+  $handler->display->display_options['arguments']['nid']['field'] = 'nid';
+  $handler->display->display_options['arguments']['nid']['relationship'] = 'field_place_target_id';
+  $handler->display->display_options['arguments']['nid']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['nid']['default_argument_type'] = 'node';
+  $handler->display->display_options['arguments']['nid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['nid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['nid']['summary_options']['items_per_page'] = '25';
+
+  /* Display: Neighborhoods */
+  $handler = $view->new_display('block', 'Neighborhoods', 'neighborhoods');
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Entity Reference: Referenced Entity */
+  $handler->display->display_options['relationships']['field_multiple_neighborhoods_target_id']['id'] = 'field_multiple_neighborhoods_target_id';
+  $handler->display->display_options['relationships']['field_multiple_neighborhoods_target_id']['table'] = 'field_data_field_multiple_neighborhoods';
+  $handler->display->display_options['relationships']['field_multiple_neighborhoods_target_id']['field'] = 'field_multiple_neighborhoods_target_id';
+  /* Relationship: Entity Reference: Referencing entity */
+  $handler->display->display_options['relationships']['reverse_field_multiple_neighborhoods_node']['id'] = 'reverse_field_multiple_neighborhoods_node';
+  $handler->display->display_options['relationships']['reverse_field_multiple_neighborhoods_node']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['relationships']['reverse_field_multiple_neighborhoods_node']['field'] = 'reverse_field_multiple_neighborhoods_node';
+  $handler->display->display_options['relationships']['reverse_field_multiple_neighborhoods_node']['relationship'] = 'field_multiple_neighborhoods_target_id';
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Content: Published Date (field_published_date) */
+  $handler->display->display_options['sorts']['field_published_date_value']['id'] = 'field_published_date_value';
+  $handler->display->display_options['sorts']['field_published_date_value']['table'] = 'field_data_field_published_date';
+  $handler->display->display_options['sorts']['field_published_date_value']['field'] = 'field_published_date_value';
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Content: Nid */
+  $handler->display->display_options['arguments']['nid']['id'] = 'nid';
+  $handler->display->display_options['arguments']['nid']['table'] = 'node';
+  $handler->display->display_options['arguments']['nid']['field'] = 'nid';
+  $handler->display->display_options['arguments']['nid']['relationship'] = 'reverse_field_multiple_neighborhoods_node';
+  $handler->display->display_options['arguments']['nid']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['nid']['default_argument_type'] = 'node';
+  $handler->display->display_options['arguments']['nid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['nid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['nid']['summary_options']['items_per_page'] = '25';
   $export['news_announcements'] = $view;
 
   return $export;

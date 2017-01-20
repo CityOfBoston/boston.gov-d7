@@ -335,3 +335,14 @@ function hub_profile_update_7013() {
   );
   module_enable($enabled_modules);
 }
+
+/**
+ * Update for 1/18/17
+ */
+function hub_profile_update_7014() {
+  $enabled_modules = array(
+    'keyboard_shortcuts',
+    'hub_keyboard_shortcuts',
+  );
+  module_enable($enabled_modules);
+}
