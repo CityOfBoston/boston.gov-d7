@@ -31,7 +31,7 @@ function bos_core_views_query_alter(&$view, &$query) {
           field_data_field_public_notice_date.field_public_notice_date_value  ELSE
           field_data_field_event_dates.field_event_dates_value END',
         'direction' => 'ASC',
-      )
+      ),
     );
   }
 }
