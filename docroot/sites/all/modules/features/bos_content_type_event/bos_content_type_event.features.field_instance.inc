@@ -2071,7 +2071,7 @@ function bos_content_type_event_field_default_field_instances() {
     'bundle' => 'event',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Which people are relevant for this public notice?',
+    'description' => 'Which people are relevant for this event?',
     'display' => array(
       'calendar_listing' => array(
         'label' => 'above',
@@ -2340,7 +2340,7 @@ function bos_content_type_event_field_default_field_instances() {
     'bundle' => 'event',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Which programs or initiatives are relevant for this public notice?',
+    'description' => 'Which programs or initiatives are relevant for this event?',
     'display' => array(
       'calendar_listing' => array(
         'label' => 'above',
@@ -2556,7 +2556,7 @@ function bos_content_type_event_field_default_field_instances() {
     'bundle' => 'event',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Which articles, how tos, and / or other content are relevant for this public notice?',
+    'description' => 'Which articles, how tos, and / or other content are relevant for this event?',
     'display' => array(
       'calendar_listing' => array(
         'label' => 'above',
@@ -2627,7 +2627,7 @@ function bos_content_type_event_field_default_field_instances() {
     'bundle' => 'event',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Which other events or public notices are relevant for this post?',
+    'description' => 'Which other events or public notices are relevant for this event?',
     'display' => array(
       'calendar_listing' => array(
         'label' => 'above',
@@ -3294,11 +3294,11 @@ function bos_content_type_event_field_default_field_instances() {
   t('Use this field to display a date to the user audience indicating when this event was last updated.');
   t('Use this field to display a date to the user audience indicating when this event was published.');
   t('Use this field to provide a longer description about the event.');
-  t('Which articles, how tos, and / or other content are relevant for this public notice?');
-  t('Which other events or public notices are relevant for this post?');
-  t('Which people are relevant for this public notice?');
+  t('Which articles, how tos, and / or other content are relevant for this event?');
+  t('Which other events or public notices are relevant for this event?');
+  t('Which people are relevant for this event?');
   t('Which press releases or blog posts are relevant for this event?');
-  t('Which programs or initiatives are relevant for this public notice?');
+  t('Which programs or initiatives are relevant for this event?');
 
   return $field_instances;
 }

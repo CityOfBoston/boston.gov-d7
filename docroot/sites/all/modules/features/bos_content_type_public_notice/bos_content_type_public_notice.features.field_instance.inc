@@ -1389,7 +1389,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
     'bundle' => 'public_notice',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Which programs or initiatives are relevant for this post?',
+    'description' => 'Which programs or initiatives are relevant for this public notice?',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1644,7 +1644,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
     'bundle' => 'public_notice',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Which other events or public notices are relevant for this public notice?',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1694,7 +1694,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
     'bundle' => 'public_notice',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Which press releases or blog posts are relevant for this public notice?',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1929,8 +1929,10 @@ function bos_content_type_public_notice_field_default_field_instances() {
   t('Time public testimony begins');
   t('Updated Date');
   t('Which articles, how tos, and / or other content are relevant for this public notice?');
+  t('Which other events or public notices are relevant for this public notice?');
   t('Which people are relevant for this public notice?');
-  t('Which programs or initiatives are relevant for this post?');
+  t('Which press releases or blog posts are relevant for this public notice?');
+  t('Which programs or initiatives are relevant for this public notice?');
 
   return $field_instances;
 }
