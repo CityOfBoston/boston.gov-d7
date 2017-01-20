@@ -72,7 +72,7 @@
       <section class="main-content" id="content" role="main">
         <?php print render($page['highlighted']); ?>
         <a href="#skip-link" class="visually-hidden--focusable" id="main-content" data-swiftype-index="false">Back to top</a>
-        <?php if (!isset($header_image) || !empty($node) && $node->type == 'how_to'): ?>
+        <?php if (!isset($header_image) || (!empty($node) && ($node->type == 'tabbed_content' || $node->type == 'how_to'))): ?>
           <?php if ($breadcrumb): ?>
             <div id="breadcrumb" data-swiftype-index="false"><?php print $breadcrumb; ?></div>
           <?php endif; ?>
@@ -94,7 +94,7 @@
             <?php print render($header_image); ?>
           </div>
         </div>
-        <?php if (!empty($node) && $node->type !== 'how_to'): ?>
+        <?php if (!empty($node) && ($node->type !== 'tabbed_content' && $node->type !== 'how_to')): ?>
         <?php if ($breadcrumb): ?>
           <div id="breadcrumb" class="breadcrumb-wrapper with-hero" data-swiftype-index="false"><?php print $breadcrumb; ?></div>
         <?php endif; ?>
