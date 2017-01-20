@@ -493,7 +493,7 @@ function bos_content_type_post_field_default_field_instances() {
     'bundle' => 'post',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Please select the Departments or Contacts who are involved. ',
+    'description' => 'List all departments related to this post.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -2138,10 +2138,10 @@ function bos_content_type_post_field_default_field_instances() {
   t('Contact');
   t('Intro Image');
   t('Intro Text');
+  t('List all departments related to this post.');
   t('Neighborhoods');
   t('News Tags');
   t('Other related content');
-  t('Please select the Departments or Contacts who are involved. ');
   t('Please select the type of content this piece of content can be filtered by.  NOTE:  This is currently used for the Hub.');
   t('Published Date');
   t('Related events/notices');

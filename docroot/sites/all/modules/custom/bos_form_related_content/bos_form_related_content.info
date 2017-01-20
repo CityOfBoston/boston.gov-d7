@@ -1,0 +1,4 @@
+name = Related Content Forms
+core = 7.x
+package = Boston Custom
+description = Breaks neighborhoods out from places for easier admin experience in related content
