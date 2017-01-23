@@ -574,6 +574,7 @@ function bos_metrolist_affordable_housing_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
   /* Field: Content: Property Address */
   $handler->display->display_options['fields']['field_mah_address']['id'] = 'field_mah_address';
   $handler->display->display_options['fields']['field_mah_address']['table'] = 'field_data_field_mah_address';
@@ -633,7 +634,7 @@ function bos_metrolist_affordable_housing_views_default_views() {
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['label'] = 'Property Address';
-  $handler->display->display_options['fields']['nothing']['alter']['text'] = '[field_mah_address] [field_mah_neighborhood] [field_mah_zipcode]';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '[title] [field_mah_address] [field_mah_neighborhood] [field_mah_zipcode]';
   /* Field: Content: Property Manager Contact */
   $handler->display->display_options['fields']['field_mah_contact']['id'] = 'field_mah_contact';
   $handler->display->display_options['fields']['field_mah_contact']['table'] = 'field_data_field_mah_contact';
