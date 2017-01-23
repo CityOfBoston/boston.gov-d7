@@ -81,7 +81,7 @@
  */
 
  $has_email = isset($content['field_email']) && $content['field_email'][0]['#markup'] != "";
- $live_stream = $field_live_stream['und'][0][value] == 1;
+ $live_stream = $live_stream_active == 1;
 ?>
 
 <article id="node-<?php print $node->nid; ?>"
