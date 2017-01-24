@@ -73,31 +73,6 @@ function bos_metrolist_affordable_housing_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_mah_lottery'.
-  $field_bases['field_mah_lottery'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_mah_lottery',
-    'indexes' => array(
-      'value' => array(
-        0 => 'value',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'list',
-    'settings' => array(
-      'allowed_values' => array(
-        0 => '',
-        1 => '',
-      ),
-      'allowed_values_function' => '',
-    ),
-    'translatable' => 0,
-    'type' => 'list_boolean',
-  );
-
   // Exported field_base: 'field_mah_lottery_deadline'.
   $field_bases['field_mah_lottery_deadline'] = array(
     'active' => 1,
@@ -126,6 +101,27 @@ function bos_metrolist_affordable_housing_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'datetime',
+  );
+
+  // Exported field_base: 'field_mah_lottery_indicator'.
+  $field_bases['field_mah_lottery_indicator'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_mah_lottery_indicator',
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(
+      'max_length' => 255,
+    ),
+    'translatable' => 0,
+    'type' => 'text',
   );
 
   // Exported field_base: 'field_mah_lottery_type'.

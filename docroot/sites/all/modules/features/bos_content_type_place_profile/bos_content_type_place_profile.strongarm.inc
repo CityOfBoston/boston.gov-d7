@@ -125,6 +125,15 @@ function bos_content_type_place_profile_strongarm() {
         'path' => array(
           'weight' => '0',
         ),
+        'rabbit_hole' => array(
+          'weight' => '0',
+        ),
+        'redirect' => array(
+          'weight' => '30',
+        ),
+        'xmlsitemap' => array(
+          'weight' => '30',
+        ),
       ),
       'display' => array(),
     ),

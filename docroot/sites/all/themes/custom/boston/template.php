@@ -108,6 +108,9 @@ function boston_preprocess_breadcrumb(array &$variables, $hook) {
  *   this function to have consistent variables.
  */
 function boston_preprocess_html(array &$variables, $hook) {
+  // A variable to define the cache buster
+  $variables['cache_buster'] = variable_get('css_js_query_string', '0');
+
   // A variable to define the asset url
   $variables['asset_url'] = variable_get('asset_url', 'https://patterns.boston.gov');
   $variables['asset_name'] = $GLOBALS['theme'] == 'boston_hub' ? 'hub' : 'public';
@@ -319,6 +322,8 @@ function boston_html_head_alter(&$head) {
  * Implements hook_preprocess_page().
  */
 function boston_preprocess_page(array &$variables) {
+  // A variable to define the cache buster
+  $variables['cache_buster'] = variable_get('css_js_query_string', '0');
   $variables['asset_url'] = variable_get('asset_url', 'https://patterns.boston.gov');
   $variables['asset_name'] = $GLOBALS['theme'] == 'boston_hub' ? 'hub' : 'public';
 
@@ -631,6 +636,24 @@ function boston_preprocess_accessibility_toolbar(&$variables) {
  * Implements hook_preprocess_node_BUNDLE().
  */
 function boston_preprocess_node_event(&$variables) {
+  $components_field = $variables['field_components']['und'];
+  $comp_entity_id_array = array();
+  foreach ($components_field as $comp) {
+    $comp_entity_id_array[] = $comp['value'];
+  }
+
+  $components = entity_load('paragraphs_item', $components_field);
+  if (!empty($components)) {
+    foreach ($components as $comp) {
+      $video = field_get_items('paragraphs_item', $comp, 'field_live_stream');
+      if (!empty($video)) {
+        $variables['live_stream_active'] = 1; 
+      } else {
+        $variables['live_stream_active'] = 0;
+      }
+    }
+  }
+
   $time_range_view_modes = array(
     'calendar_listing',
     'full',
@@ -1179,6 +1202,12 @@ function boston_preprocess_menu_tree(&$variables) {
  * Implements hook_preprocess_menu_link().
  */
 function boston_preprocess_menu_link(array &$variables, $hook) {
+  // If it's the footer menu, set it and go
+  if (isset($variables['element']['#original_link']['menu_name']) && $variables['element']['#original_link']['menu_name'] == 'menu-footer-menu') {
+    $variables['element']['#localized_options']['attributes']['class'] = array('ft-ll-a');
+    return;
+  }
+
   // Normalize menu item classes to be an array.
   if (empty($variables['element']['#attributes']['class'])) {
     $variables['element']['#attributes']['class'] = array();
@@ -1193,6 +1222,7 @@ function boston_preprocess_menu_link(array &$variables, $hook) {
     $variables['element']['#localized_options']['attributes']['class'] = array();
   }
   $menu_link_classes =& $variables['element']['#localized_options']['attributes']['class'];
+
   if (!is_array($menu_link_classes)) {
     $menu_link_classes = array($menu_link_classes);
   }
@@ -1692,21 +1722,6 @@ function boston_advpoll_ids($variables) {
   }
 }
 
-
-/**
- * Implements hook_preprocess_node_BUNDLE().
- */
-function boston_preprocess_paragraphs_item_fyi(&$variables) {
-  $file = render($variables['content']['field_icon']);
-  if (!empty($file)) {
-    $variables['icon'] = file_get_contents(drupal_realpath(trim($file)));
-    $variables['icon'] = filter_xss($variables['icon'], explode(' ', BOS_CORE_SVG_ELEMENTS));
-  }
-  else {
-    $variables['icon'] = FALSE;
-  }
-}
-
 /**
  * Helper function for getting the host of a message for the day paragraph.
  *
@@ -1736,3 +1751,23 @@ function _get_message_host($message) {
    }
    return FALSE;
  }
+
+/**
+ * Implements hook_theme_menu_tree() for footer menu block.
+ */
+ function boston_menu_tree__menu_footer_menu($variables) {
+   return '<ul class="ft-ll">' . $variables['tree'] . '</ul>';
+ }
+
+ /**
+ * Implements theme_menu_link().
+ */
+function boston_menu_link__menu_footer_menu(array $variables) {
+  $element = $variables['element'];
+
+  $element['#attributes']['class'][] = 'ft-ll-a';
+
+  $output = l($element['#title'], $element['#href'], $element['#localized_options']);
+
+  return '<li class="ft-ll-i">' . $output . "</li>\n";
+}

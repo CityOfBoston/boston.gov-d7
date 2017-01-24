@@ -37,7 +37,7 @@ function bos_content_type_place_profile_field_group_info() {
       ),
     ),
   );
-  $field_groups['group_additional_info|node|place_profile|form'] = $field_group;
+  $field_groups[''] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -58,6 +58,7 @@ function bos_content_type_place_profile_field_group_info() {
       3 => 'field_intro_text',
       4 => 'field_place_type',
       5 => 'title',
+      6 => 'group_neighborhood',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -69,7 +70,7 @@ function bos_content_type_place_profile_field_group_info() {
       ),
     ),
   );
-  $field_groups['group_basic_info|node|place_profile|form'] = $field_group;
+  $field_groups[''] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -96,7 +97,7 @@ function bos_content_type_place_profile_field_group_info() {
       ),
     ),
   );
-  $field_groups['group_components|node|place_profile|form'] = $field_group;
+  $field_groups[''] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -127,7 +128,35 @@ function bos_content_type_place_profile_field_group_info() {
       ),
     ),
   );
-  $field_groups['group_contact_info|node|place_profile|form'] = $field_group;
+  $field_groups[''] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_neighborhood|node|place_profile|form';
+  $field_group->group_name = 'group_neighborhood';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'place_profile';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_basic_info';
+  $field_group->data = array(
+    'label' => 'Neighborhood',
+    'weight' => '6',
+    'children' => array(
+      0 => 'field_place_neighborhood',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-neighborhood field-group-fieldset',
+        'required_fields' => 1,
+        'id' => '',
+      ),
+    ),
+  );
+  $field_groups[''] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -155,7 +184,7 @@ function bos_content_type_place_profile_field_group_info() {
       ),
     ),
   );
-  $field_groups['group_page_metadata|node|place_profile|form'] = $field_group;
+  $field_groups[''] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -182,7 +211,7 @@ function bos_content_type_place_profile_field_group_info() {
       ),
     ),
   );
-  $field_groups['group_sidebar_components|node|place_profile|form'] = $field_group;
+  $field_groups[''] = $field_group;
 
   // Translatables
   // Included for use with string extractors like potx.
@@ -190,6 +219,7 @@ function bos_content_type_place_profile_field_group_info() {
   t('Basic Information');
   t('Components');
   t('Contact Information');
+  t('Neighborhood');
   t('Page Metadata');
   t('Sidebar Components');
 
