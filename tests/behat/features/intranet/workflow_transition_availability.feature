@@ -14,8 +14,6 @@ Feature: Workflow Transition Availability
       | Content Editor              |
       | Content Author              |
       | Status Alert Editor         |
-      | Press Release Editor        |
-      | Events Editor               |
 
   Scenario Outline: Content types are configured to use workbench
     Given that workbench is setup
