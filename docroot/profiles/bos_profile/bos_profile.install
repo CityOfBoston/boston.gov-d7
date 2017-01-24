@@ -535,3 +535,13 @@ function bos_profile_update_7017() {
   );
   module_enable($enabled_modules);
 }
+
+/**
+ * Updates for 1/20/2017.
+ */
+function bos_profile_update_7018() {
+  $enabled_modules = array(
+    'bos_content_type_tabbed_content',
+  );
+  module_enable($enabled_modules);
+}

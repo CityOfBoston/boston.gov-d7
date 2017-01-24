@@ -20,6 +20,23 @@ function bos_core_views_plugins() {
 }
 
 /**
+ * Implements hook_views_query_alter().
+ */
+function bos_core_views_query_alter(&$view, &$query) {
+  if ($view->name == 'upcoming_events') {
+    $query->orderby = array(
+      array(
+        'field' => 'CASE WHEN 
+          field_data_field_public_notice_date.field_public_notice_date_value THEN
+          field_data_field_public_notice_date.field_public_notice_date_value  ELSE
+          field_data_field_event_dates.field_event_dates_value END',
+        'direction' => 'ASC',
+      ),
+    );
+  }
+}
+
+/**
  * Implements hook_views_pre_view().
  */
 function bos_core_views_pre_view(&$view) {
