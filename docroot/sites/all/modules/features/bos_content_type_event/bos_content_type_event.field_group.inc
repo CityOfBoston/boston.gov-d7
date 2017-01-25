@@ -183,6 +183,7 @@ function bos_content_type_event_field_group_info() {
       4 => 'field_related_content',
       5 => 'field_related_events_notices',
       6 => 'field_related_posts',
+      7 => 'field_related_guides',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
