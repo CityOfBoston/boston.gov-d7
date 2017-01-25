@@ -636,20 +636,22 @@ function boston_preprocess_accessibility_toolbar(&$variables) {
  * Implements hook_preprocess_node_BUNDLE().
  */
 function boston_preprocess_node_event(&$variables) {
-  $components_field = $variables['field_components']['und'];
-  $comp_entity_id_array = array();
-  foreach ($components_field as $comp) {
-    $comp_entity_id_array[] = $comp['value'];
-  }
+  if ($variables['view_mode'] == 'calendar_listing') {
+    $components_field = $variables['field_components']['und'];
+    $comp_entity_id_array = array();
+    foreach ($components_field as $comp) {
+      $comp_entity_id_array[] = $comp['value'];
+    }
 
-  $components = entity_load('paragraphs_item', $components_field);
-  if (!empty($components)) {
-    foreach ($components as $comp) {
-      $video = field_get_items('paragraphs_item', $comp, 'field_live_stream');
-      if (!empty($video)) {
-        $variables['live_stream_active'] = 1; 
-      } else {
-        $variables['live_stream_active'] = 0;
+    $components = entity_load('paragraphs_item', $comp_entity_id_array);
+    if (!empty($components)) {
+      foreach ($components as $comp) {
+        $video = field_get_items('paragraphs_item', $comp, 'field_live_stream');
+        if (!empty($video)) {
+          $variables['live_stream_active'] = 1; 
+        } else {
+          $variables['live_stream_active'] = 0;
+        }
       }
     }
   }
@@ -705,6 +707,26 @@ function boston_preprocess_node_event(&$variables) {
  * Implements hook_preprocess_node_BUNDLE().
  */
 function boston_preprocess_node_public_notice(&$variables) {
+  if ($variables['view_mode'] == 'calendar_listing') {
+    $components_field = $variables['field_components']['und'];
+    $comp_entity_id_array = array();
+    foreach ($components_field as $comp) {
+      $comp_entity_id_array[] = $comp['value'];
+    }
+
+    $components = entity_load('paragraphs_item', $comp_entity_id_array);
+    if (!empty($components)) {
+      foreach ($components as $comp) {
+       	      $video = field_get_items('paragraphs_item', $comp, 'field_live_stream');
+       	      if (!empty($video)) {
+          $variables['live_stream_active'] = 1;
+       	  } else {
+          $variables['live_stream_active'] = 0;
+        }
+      }
+    }
+  }
+
   $time_range_view_modes = array(
     'calendar_listing',
     'listing',
