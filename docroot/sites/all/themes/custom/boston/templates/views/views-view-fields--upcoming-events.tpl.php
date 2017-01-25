@@ -23,11 +23,9 @@
  *
  * @ingroup views_templates
  */
- $node_type = node_load($row->nid)->type;
- if (!empty($node_type)) { $type_class = 'news-item-' . $node_type; } else { $class_type = 'news-item-news'; };
 ?>
 
-<div class="mobile-1-col tablet-1-col xxl-desktop-2-col clearfix news-item news-item-short-listing <?php echo $type_class; ?>">
+<div class="mobile-1-col tablet-1-col xxl-desktop-2-col clearfix news-item news-item-short-listing">
   <a href="<?php print $fields['path']->content; ?>" class="item-link"></a>
   <div class="news-item-wrapper">
     <div class="thumb-wrapper float-left">
@@ -37,7 +35,7 @@
           <?php if ($fields['field_intro_image']->content != "default"): ?>
             <?php print $fields['field_intro_image']->content; ?>
           <?php else: ?>
-            <div class="news-item-default-image">
+            <div class="news-item-default-image" style="background-image: url('/<?php print drupal_get_path('theme', $GLOBALS['theme']) ?>/src/img/news-default-thumb.svg');">
               <span>Image for <?php print $fields['title']->content; ?></span>
             </div>
           <?php endif; ?>
@@ -45,8 +43,6 @@
       <div class="date-flag">
         <?php if (isset($fields['field_event_dates']->content)): ?>
           <?php print $fields['field_event_dates']->content; ?>
-        <?php elseif (isset($fields['field_public_notice_date']->content)): ?>
-          <?php print $fields['field_public_notice_date']->content; ?>
         <?php endif; ?>
       </div>
     </div>

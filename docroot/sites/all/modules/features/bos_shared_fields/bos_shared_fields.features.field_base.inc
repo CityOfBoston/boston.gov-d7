@@ -697,7 +697,7 @@ function bos_shared_fields_field_default_field_bases() {
         ),
         'target_bundles' => array(
           'event' => 'event',
-          'public_notice' => 'public_notice',
+          'post' => 'post',
         ),
       ),
       'target_type' => 'node',
