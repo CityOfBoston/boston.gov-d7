@@ -395,7 +395,7 @@ function bos_content_type_place_profile_field_default_field_instances() {
         ),
       ),
       'type' => 'addressfield_standard',
-      'weight' => 14,
+      'weight' => 15,
     ),
   );
 
@@ -628,7 +628,7 @@ function bos_content_type_place_profile_field_default_field_instances() {
       'module' => 'paragraphs',
       'settings' => array(),
       'type' => 'paragraphs_embed',
-      'weight' => 7,
+      'weight' => 11,
     ),
   );
 
@@ -760,7 +760,7 @@ function bos_content_type_place_profile_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 17,
+      'weight' => 18,
     ),
   );
 
@@ -881,7 +881,7 @@ function bos_content_type_place_profile_field_default_field_instances() {
         'show_token_tree' => FALSE,
       ),
       'type' => 'text_textarea',
-      'weight' => 9,
+      'weight' => 12,
     ),
   );
 
@@ -939,7 +939,7 @@ function bos_content_type_place_profile_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 7,
+      'weight' => 9,
     ),
   );
 
@@ -1458,7 +1458,7 @@ function bos_content_type_place_profile_field_default_field_instances() {
       'module' => 'paragraphs',
       'settings' => array(),
       'type' => 'paragraphs_embed',
-      'weight' => 8,
+      'weight' => 11,
     ),
   );
 
@@ -1639,7 +1639,7 @@ function bos_content_type_place_profile_field_default_field_instances() {
       'module' => 'paragraphs',
       'settings' => array(),
       'type' => 'paragraphs_embed',
-      'weight' => 16,
+      'weight' => 17,
     ),
   );
 
@@ -1760,7 +1760,7 @@ function bos_content_type_place_profile_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 15,
+      'weight' => 16,
     ),
   );
 
@@ -2077,7 +2077,7 @@ function bos_content_type_place_profile_field_default_field_instances() {
         'year_range' => '-3:+3',
       ),
       'type' => 'date_popup',
-      'weight' => 6,
+      'weight' => 4,
     ),
   );
 
@@ -2248,7 +2248,7 @@ function bos_content_type_place_profile_field_default_field_instances() {
       'module' => 'paragraphs',
       'settings' => array(),
       'type' => 'paragraphs_embed',
-      'weight' => 7,
+      'weight' => 34,
     ),
   );
 
@@ -2313,7 +2313,7 @@ function bos_content_type_place_profile_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 13,
+      'weight' => 14,
     ),
   );
 
@@ -2458,7 +2458,7 @@ function bos_content_type_place_profile_field_default_field_instances() {
         'year_range' => '-3:+3',
       ),
       'type' => 'date_popup',
-      'weight' => 7,
+      'weight' => 5,
     ),
   );
 
