@@ -268,8 +268,6 @@ projects:
     version: 1.5
   views_bulk_operations:
     version: 3.3
-  views_exclude_previous:
-    version: 1.x-dev
   viewfield:
     version: 2.0
   votingapi:

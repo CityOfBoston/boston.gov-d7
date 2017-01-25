@@ -6,10 +6,10 @@
   <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic|Montserrat:400,700' rel='stylesheet' type='text/css'>
 
   <!--[if !IE]><!-->
-	<link href='<?php print $asset_url ?>/css/<?php print $asset_name ?>.css?<?php print $cache_buster ?>' rel='stylesheet' type='text/css'>
+	<link href='<?php print $asset_url ?>/css/<?php print $asset_name ?>.css' rel='stylesheet' type='text/css'>
   <!--<![endif]-->
   <!--[if lt IE 10]>
-    <link href='<?php print $asset_url ?>/css/ie.css?<?php print $cache_buster ?>' rel='stylesheet' type='text/css'>
+    <link href='<?php print $asset_url ?>/css/ie.css' rel='stylesheet' type='text/css'>
   <![endif]-->
 
   <?php if ($default_mobile_metatags): ?>
@@ -42,6 +42,6 @@
   <?php print $page_top; ?>
   <?php print $page; ?>
   <?php print $page_bottom; ?>
-  <script src="<?php print $asset_url ?>/scripts/all.js?<?php print $cache_buster ?>" async></script>
+  <script src="<?php print $asset_url ?>/scripts/all.js" async></script>
 </body>
 </html>

@@ -86,9 +86,6 @@ function bos_core_entity_info_alter(&$info) {
         'select_list' => array(
           'label' => t('Select List'),
         ),
-        'fyi' => array(
-          'label' => t('FYI'),
-        ),
       ),
     ),
     'taxonomy_term' => array(

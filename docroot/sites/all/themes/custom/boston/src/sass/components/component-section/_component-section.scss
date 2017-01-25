@@ -32,7 +32,8 @@
 // Overrides
 
 .paragraphs-items-field-components > .component-section.component-no-title,
-.paragraphs-items-field-components > .component-section.paragraphs-item-photo {
+.paragraphs-items-field-components > .component-section.paragraphs-item-photo,
+.paragraphs-items-field-components > .component-section.paragraphs-item-fyi, {
   padding-top: 0px;
   padding-bottom: 0px;
 }

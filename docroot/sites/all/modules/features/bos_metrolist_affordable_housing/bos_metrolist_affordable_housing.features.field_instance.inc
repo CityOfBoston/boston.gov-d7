@@ -200,6 +200,51 @@ function bos_metrolist_affordable_housing_field_default_field_instances() {
   );
 
   // Exported field_instance:
+  // 'node-metrolist_affordable_housing-field_mah_lottery'.
+  $field_instances['node-metrolist_affordable_housing-field_mah_lottery'] = array(
+    'bundle' => 'metrolist_affordable_housing',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 13,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div_div_div',
+    'field_name' => 'field_mah_lottery',
+    'label' => 'Lottery',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 13,
+    ),
+  );
+
+  // Exported field_instance:
   // 'node-metrolist_affordable_housing-field_mah_lottery_deadline'.
   $field_instances['node-metrolist_affordable_housing-field_mah_lottery_deadline'] = array(
     'bundle' => 'metrolist_affordable_housing',
@@ -255,54 +300,6 @@ function bos_metrolist_affordable_housing_field_default_field_instances() {
       ),
       'type' => 'date_popup',
       'weight' => 14,
-    ),
-  );
-
-  // Exported field_instance:
-  // 'node-metrolist_affordable_housing-field_mah_lottery_indicator'.
-  $field_instances['node-metrolist_affordable_housing-field_mah_lottery_indicator'] = array(
-    'bundle' => 'metrolist_affordable_housing',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 19,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'fences_wrapper' => 'div_div_div',
-    'field_name' => 'field_mah_lottery_indicator',
-    'label' => 'Lottery',
-    'required' => 0,
-    'settings' => array(
-      'linkit' => array(
-        'button_text' => 'Search',
-        'enable' => 0,
-        'profile' => '',
-      ),
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'show_token_tree' => 0,
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 18,
     ),
   );
 

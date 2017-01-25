@@ -597,7 +597,7 @@ function bos_content_type_event_field_default_field_instances() {
     'bundle' => 'event',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'List all departments related to this event.',
+    'description' => 'Please select the Departments or Contacts who are involved. ',
     'display' => array(
       'calendar_listing' => array(
         'label' => 'above',
@@ -637,8 +637,8 @@ function bos_content_type_event_field_default_field_instances() {
     'entity_type' => 'node',
     'fences_wrapper' => 'no_wrapper',
     'field_name' => 'field_contacts',
-    'label' => 'All related departments',
-    'required' => 1,
+    'label' => 'Departments',
+    'required' => 0,
     'settings' => array(
       'behaviors' => array(
         'taxonomy-index' => array(
@@ -662,7 +662,7 @@ function bos_content_type_event_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 9,
+      'weight' => 12,
     ),
   );
 
@@ -2071,7 +2071,7 @@ function bos_content_type_event_field_default_field_instances() {
     'bundle' => 'event',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Which people are relevant for this event?',
+    'description' => '',
     'display' => array(
       'calendar_listing' => array(
         'label' => 'above',
@@ -2113,7 +2113,7 @@ function bos_content_type_event_field_default_field_instances() {
     'entity_type' => 'node',
     'fences_wrapper' => 'no_wrapper',
     'field_name' => 'field_people',
-    'label' => 'Related people',
+    'label' => 'People',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -2269,7 +2269,7 @@ function bos_content_type_event_field_default_field_instances() {
     'bundle' => 'event',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Are any cemeteries, parks, historic districts, or community centers relevant for this event?',
+    'description' => '',
     'display' => array(
       'calendar_listing' => array(
         'label' => 'above',
@@ -2311,7 +2311,7 @@ function bos_content_type_event_field_default_field_instances() {
     'entity_type' => 'node',
     'fences_wrapper' => 'no_wrapper',
     'field_name' => 'field_place',
-    'label' => 'Related places',
+    'label' => 'Places',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -2331,7 +2331,7 @@ function bos_content_type_event_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 12,
+      'weight' => 9,
     ),
   );
 
@@ -2340,7 +2340,7 @@ function bos_content_type_event_field_default_field_instances() {
     'bundle' => 'event',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Which programs or initiatives are relevant for this event?',
+    'description' => '',
     'display' => array(
       'calendar_listing' => array(
         'label' => 'above',
@@ -2382,7 +2382,7 @@ function bos_content_type_event_field_default_field_instances() {
     'entity_type' => 'node',
     'fences_wrapper' => 'no_wrapper',
     'field_name' => 'field_program_initiative',
-    'label' => 'Related programs / initiatives',
+    'label' => 'Programs/Initiatives',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -2402,7 +2402,7 @@ function bos_content_type_event_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 14,
+      'weight' => 10,
     ),
   );
 
@@ -2556,7 +2556,7 @@ function bos_content_type_event_field_default_field_instances() {
     'bundle' => 'event',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Which articles, how tos, and / or other content are relevant for this event?',
+    'description' => '',
     'display' => array(
       'calendar_listing' => array(
         'label' => 'above',
@@ -2598,144 +2598,8 @@ function bos_content_type_event_field_default_field_instances() {
     'entity_type' => 'node',
     'fences_wrapper' => 'no_wrapper',
     'field_name' => 'field_related_content',
-    'label' => 'Other related content',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'entityreference',
-      'settings' => array(
-        'entityreference_autocreate' => array(
-          'active' => 0,
-          'author' => '',
-          'author_current_user' => 1,
-          'status' => -1,
-        ),
-        'match_operator' => 'CONTAINS',
-        'path' => '',
-        'size' => 60,
-      ),
-      'type' => 'entityreference_autocomplete',
-      'weight' => 15,
-    ),
-  );
-
-  // Exported field_instance: 'node-event-field_related_events_notices'.
-  $field_instances['node-event-field_related_events_notices'] = array(
-    'bundle' => 'event',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'Which other events or public notices are relevant for this event?',
-    'display' => array(
-      'calendar_listing' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 33,
-      ),
-      'featured_item' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'listing' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'listing_short' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'fences_wrapper' => 'no_wrapper',
-    'field_name' => 'field_related_events_notices',
-    'label' => 'Related events/notices',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'entityreference',
-      'settings' => array(
-        'entityreference_autocreate' => array(
-          'active' => 0,
-          'author' => '',
-          'author_current_user' => 1,
-          'status' => -1,
-        ),
-        'match_operator' => 'CONTAINS',
-        'path' => '',
-        'size' => 60,
-      ),
-      'type' => 'entityreference_autocomplete',
-      'weight' => 10,
-    ),
-  );
-
-  // Exported field_instance: 'node-event-field_related_posts'.
-  $field_instances['node-event-field_related_posts'] = array(
-    'bundle' => 'event',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'Which press releases or blog posts are relevant for this event?',
-    'display' => array(
-      'calendar_listing' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 32,
-      ),
-      'featured_item' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'listing' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'listing_short' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'fences_wrapper' => 'no_wrapper',
-    'field_name' => 'field_related_posts',
-    'label' => 'Related posts',
-    'required' => 0,
+    'label' => 'Related Content',
+    'required' => 1,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
@@ -3251,14 +3115,13 @@ function bos_content_type_event_field_default_field_instances() {
   t('Add an intro image to the page. It will display at the very top of the page, slightly above the content. It will also be used as the thumbnail if no thumbnail is entered.');
   t('Add components to the events page here.');
   t('Add download resources here.');
-  t('All related departments');
   t('An email address for constituents to reach out about the event.');
-  t('Are any cemeteries, parks, historic districts, or community centers relevant for this event?');
   t('Body');
   t('Components');
   t('Contact');
   t('Contact Email');
   t('Cost');
+  t('Departments');
   t('Description');
   t('Details Link');
   t('Downloads');
@@ -3268,22 +3131,20 @@ function bos_content_type_event_field_default_field_instances() {
   t('Event Type');
   t('Featured');
   t('Intro Image');
-  t('List all departments related to this event.');
   t('Location');
   t('Neighborhood');
-  t('Other related content');
+  t('People');
   t('Phone Number');
+  t('Places');
   t('Please select one or more Neighborhoods for this event.');
+  t('Please select the Departments or Contacts who are involved. ');
   t('Please select the Event Type for this event.');
   t('Please select the type of content this piece of content can be filtered by.  NOTE:  This is currently used for the Hub.');
   t('Point of Contact');
+  t('Programs/Initiatives');
   t('Provides a description for the event.');
   t('Published Date');
-  t('Related events/notices');
-  t('Related people');
-  t('Related places');
-  t('Related posts');
-  t('Related programs / initiatives');
+  t('Related Content');
   t('Sidebar Components');
   t('The Department primarily responsible for this event.');
   t('The name of the contact for this event.');
@@ -3294,11 +3155,6 @@ function bos_content_type_event_field_default_field_instances() {
   t('Use this field to display a date to the user audience indicating when this event was last updated.');
   t('Use this field to display a date to the user audience indicating when this event was published.');
   t('Use this field to provide a longer description about the event.');
-  t('Which articles, how tos, and / or other content are relevant for this event?');
-  t('Which other events or public notices are relevant for this event?');
-  t('Which people are relevant for this event?');
-  t('Which press releases or blog posts are relevant for this event?');
-  t('Which programs or initiatives are relevant for this event?');
 
   return $field_instances;
 }
