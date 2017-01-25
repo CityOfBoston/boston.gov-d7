@@ -140,6 +140,9 @@ function bos_content_type_public_notice_strongarm() {
         'redirect' => array(
           'weight' => '7',
         ),
+        'xmlsitemap' => array(
+          'weight' => '30',
+        ),
       ),
       'display' => array(),
     ),

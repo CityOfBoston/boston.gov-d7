@@ -2690,6 +2690,74 @@ function bos_content_type_event_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-event-field_related_guides'.
+  $field_instances['node-event-field_related_guides'] = array(
+    'bundle' => 'event',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'What guides are relevant for this event?',
+    'display' => array(
+      'calendar_listing' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 34,
+      ),
+      'featured_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'listing' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'listing_short' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'no_wrapper',
+    'field_name' => 'field_related_guides',
+    'label' => 'Related guides',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference',
+      'settings' => array(
+        'entityreference_autocreate' => array(
+          'active' => 0,
+          'author' => '',
+          'author_current_user' => 1,
+          'status' => -1,
+        ),
+        'match_operator' => 'CONTAINS',
+        'path' => '',
+        'size' => 60,
+      ),
+      'type' => 'entityreference_autocomplete',
+      'weight' => 11,
+    ),
+  );
+
   // Exported field_instance: 'node-event-field_related_posts'.
   $field_instances['node-event-field_related_posts'] = array(
     'bundle' => 'event',
@@ -3280,6 +3348,7 @@ function bos_content_type_event_field_default_field_instances() {
   t('Provides a description for the event.');
   t('Published Date');
   t('Related events/notices');
+  t('Related guides');
   t('Related people');
   t('Related places');
   t('Related posts');
@@ -3294,6 +3363,7 @@ function bos_content_type_event_field_default_field_instances() {
   t('Use this field to display a date to the user audience indicating when this event was last updated.');
   t('Use this field to display a date to the user audience indicating when this event was published.');
   t('Use this field to provide a longer description about the event.');
+  t('What guides are relevant for this event?');
   t('Which articles, how tos, and / or other content are relevant for this event?');
   t('Which other events or public notices are relevant for this event?');
   t('Which people are relevant for this event?');
