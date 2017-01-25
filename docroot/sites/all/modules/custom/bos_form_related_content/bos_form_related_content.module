@@ -10,7 +10,7 @@
  */
 function bos_form_related_content_form_alter(&$form, &$form_state, $form_id) {
   // Make sure option is added to the correct form.
-  if ($form_id == "event_node_form") {
+  if (($form_id == "event_node_form") || ($form_id == "post_node_form")) {
     // Get all the places in system.
     $type = "place_profile";
     $nodes = node_load_multiple(array(), array('type' => $type));
@@ -34,7 +34,7 @@ function bos_form_related_content_form_alter(&$form, &$form_state, $form_id) {
     $node = workbench_moderation_node_current_load($node);
     // Check if any of the saved options are neighborhoods.
     $checkbox_defaults = array();
-    // Make sure there is at least on field_place value saved.
+    // Make sure there is at least one field_place value saved.
     if (isset($node->field_place['und'])) {
       foreach ($node->field_place['und'] as $key => $place) {
         if (array_key_exists($place['target_id'], $neighborhoods)) {
