@@ -33,14 +33,14 @@
       <?php if ($site_name): ?>
         <div class="lo lo--abs">
           <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" class="lo-l">
-            <img src="<?php print $asset_url ?>/images/<?php print $asset_name ?>/logo.svg" alt="<?php print $site_name; ?>" class="lo-i" />
+            <img src="<?php print $asset_url ?>/images/<?php print $asset_name ?>/logo.svg?<?php print $cache_buster ?>" alt="<?php print $site_name; ?>" class="lo-i" />
             <span class="lo-t">Mayor Martin J. Walsh</span>
           </a>
         </div>
       <?php endif; ?>
 
       <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" class="s">
-        <img src="<?php print $asset_url ?>/images/<?php print $asset_name ?>/seal.svg" alt="City of Boston Seal" class="s-i" />
+        <img src="<?php print $asset_url ?>/images/<?php print $asset_name ?>/seal.svg?<?php print $cache_buster ?>" alt="City of Boston Seal" class="s-i" />
       </a>
 
       <div class="tr">
@@ -72,7 +72,7 @@
       <section class="main-content" id="content" role="main">
         <?php print render($page['highlighted']); ?>
         <a href="#skip-link" class="visually-hidden--focusable" id="main-content" data-swiftype-index="false">Back to top</a>
-        <?php if (!isset($header_image) || !empty($node) && $node->type == 'how_to'): ?>
+        <?php if (!isset($header_image) || (!empty($node) && ($node->type == 'tabbed_content' || $node->type == 'how_to'))): ?>
           <?php if ($breadcrumb): ?>
             <div id="breadcrumb" data-swiftype-index="false"><?php print $breadcrumb; ?></div>
           <?php endif; ?>
@@ -94,7 +94,7 @@
             <?php print render($header_image); ?>
           </div>
         </div>
-        <?php if (!empty($node) && $node->type !== 'how_to'): ?>
+        <?php if (!empty($node) && ($node->type !== 'tabbed_content' && $node->type !== 'how_to')): ?>
         <?php if ($breadcrumb): ?>
           <div id="breadcrumb" class="breadcrumb-wrapper with-hero" data-swiftype-index="false"><?php print $breadcrumb; ?></div>
         <?php endif; ?>

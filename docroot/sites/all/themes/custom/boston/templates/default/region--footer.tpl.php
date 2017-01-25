@@ -9,15 +9,11 @@
  */
 ?>
 <?php if ($content): ?>
-  <footer class="footer <?php print $classes; ?>" data-swiftype-index="false">
-    <div class="container">
-      <a class="icon-311-link" href="http://www.cityofboston.gov/311/" target="_blank">
-        <span class="icon-311-reportbos">BOS-311 - </span><span class="icon-311-report">Report an issue</span>
-        <div class="icon-311">
-          <span class="icon-311-bos">BOS:</span>
-          <span class="icon-311-number">311</span>
-        </div>
-      </a>
+  <footer class="ft">
+    <div class="ft-c">
+      <ul class="ft-ll ft-ll--r">
+        <li class="ft-ll-i"><a href="http://www.cityofboston.gov/311/" class="ft-ll-a lnk--yellow"><span class="ft-ll-311">BOS:311</span><span class="tablet--hidden"> - </span>Report an issue</a></li>
+      </ul>
       <?php print $content; ?>
     </div>
   </footer>

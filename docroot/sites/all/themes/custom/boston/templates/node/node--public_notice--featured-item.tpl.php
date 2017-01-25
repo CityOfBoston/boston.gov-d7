@@ -79,68 +79,43 @@
  *
  * @ingroup themeable
  */
-
- $has_email = isset($content['field_email']) && $content['field_email'][0]['#markup'] != "";
- $live_stream = $live_stream_active == 1;
 ?>
 
 <article id="node-<?php print $node->nid; ?>"
-     class="<?php print $classes; ?> calendar-listing-wrapper"
-     <?php if ($live_stream): ?>data-livestream="1"<?php endif; ?>>
-  <div class="teaser drawer-trigger">
-    <div class="drawer-trigger-chevron"></div>
-    <?php if (isset($time_range)): ?>
-      <span class="time-range">
-        <?php if ($live_stream) :?><span class="live-stream-flag">Live:</span><?php endif; ?>
-        <?php print $time_range; ?>
-      </span>
-    <?php endif; ?>
-    <div class="title">
-      <?php if ($live_stream):?><span class="live-stream-flag">Live:</span><?php endif; ?>
-      <?php print $title; ?>
+         class="<?php print $classes; ?> event-featured-item-wrapper clearfix">
+  <div class="desktop-2-col featured-item-details featured-item-details--relative">
+    <div class="date-flag date-flag--blue date-flag--left">
+      <?php if (isset($content['field_public_notice_date'])): ?>
+        <?php print render($content['field_public_notice_date']); ?>
+      <?php endif; ?>
     </div>
-  </div>
-  <div class="event-details drawer">
-    <?php if (isset($content['field_address'])): ?>
-      <div class="list-item">
-        <?php print render($content['field_address']); ?>
+    <h3 class="featured-event-title">
+      <?php print render($title); ?>
+      <div class="department-title" style="font-style:normal;">
+        <?php print render($content['field_contact']); ?>
       </div>
-    <?php endif; ?>
-    <?php if ($has_email): ?>
-      <div class="list-item">
-        <?php print render($content['field_email']); ?>
-      </div>
-    <?php endif; ?>
-    <?php if (isset($content['field_phone_number'])): ?>
-      <div class="list-item">
-        <?php print render($content['field_phone_number']); ?>
-      </div>
-    <?php endif; ?>
-    <?php if (isset($content['field_cost'])): ?>
-      <div class="list-item">
-        <?php print render($content['field_cost']); ?>
-      </div>
-    <?php endif; ?>
-    <?php if (isset($content['field_links'])): ?>
-      <div class="list-item">
-        <?php print render($content['field_links']); ?>
-      </div>
-    <?php endif; ?>
+    </h3>
     <?php if (isset($content['field_intro_text'])): ?>
-      <div class="description">
-      <?php print render($content['field_intro_text']); ?>
+      <div class="featured-description">
+        <?php print render($content['field_intro_text']); ?>
       </div>
-    <?php endif; ?>
+    <?php endif ?>
     <?php if (isset($content['field_details_link'])): ?>
       <div class="external-link external-link--inline">
         <a class="button" href="<?php print render($content['field_details_link']); ?>">Event website<span class="a11y--hidden"> for <?php print $title; ?></span></a>
       </div>
     <?php else: ?>
-      <?php if ($live_stream): ?>
-        <a class="button live-stream" href="<?php print $node_url; ?>" title="Live stream for <?php print $title; ?>">Event details<span class="a11y--hidden"> for <?php print $title; ?></span></a>
-      <?php else: ?>
-        <a class="button" href="<?php print $node_url; ?>" title="get more details">Event details<span class="a11y--hidden"> for <?php print $title; ?></span></a>
-      <?php endif; ?>
+      <a class="button" href="<?php print $node_url; ?>">Notice details<span class="a11y--hidden"> for <?php print $title; ?></span></a>
     <?php endif; ?>
+  </div>
+  <div class="desktop-2-col featured-item-thumb" style="background-color: #091f2f;">
+    <div class="featured-thumb-wrapper">
+      <div class="featured-banner">Featured</div>
+      <?php if (isset($content['field_thumbnail'])): ?>
+        <?php print render($content['field_thumbnail']); ?>
+      <?php else: ?>
+        <img src="/<?php print drupal_get_path('theme', $GLOBALS['theme']) ?>/dist/img/icon-public_notice.svg" />
+      <?php endif; ?>
+    </div>
   </div>
 </article>
