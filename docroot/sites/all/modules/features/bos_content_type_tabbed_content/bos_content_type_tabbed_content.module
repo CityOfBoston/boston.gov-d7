@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the bos_content_type_tabbed_content feature.
+ */
+
+include_once 'bos_content_type_tabbed_content.features.inc';
