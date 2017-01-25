@@ -119,18 +119,6 @@
     top: 50%;
     position: relative;
     text-align: center;
-
-    & p {
-      line-height: 1.44;
-    }
-
-    & p:last-of-type {
-      margin-bottom: 0;
-    }
-
-    & .supporting-text {
-      padding-bottom: 0.25rem;
-    }
   }
 
   .intro-text {
