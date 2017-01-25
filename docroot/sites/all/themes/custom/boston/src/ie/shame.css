@@ -3,6 +3,7 @@
 .paragraphs-item-grid-of-quotes .quote,
 .form__fieldset--inline .fieldset-wrapper,
 .component__content--flex,
+.fyi-container,
 .form--inline {
   -js-display: flex;
 }

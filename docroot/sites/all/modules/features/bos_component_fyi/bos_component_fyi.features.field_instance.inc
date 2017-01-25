@@ -133,7 +133,7 @@ function bos_component_fyi_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'paragraphs',
         'settings' => array(
-          'view_mode' => 'fyi',
+          'view_mode' => 'full',
         ),
         'type' => 'paragraphs_view',
         'weight' => 3,
