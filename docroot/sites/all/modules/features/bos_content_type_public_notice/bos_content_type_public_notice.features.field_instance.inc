@@ -1231,57 +1231,6 @@ function bos_content_type_public_notice_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-public_notice-field_live_stream'.
-  $field_instances['node-public_notice-field_live_stream'] = array(
-    'bundle' => 'public_notice',
-    'default_value' => array(
-      0 => array(
-        'value' => 0,
-      ),
-    ),
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'list',
-        'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 20,
-      ),
-      'featured_item' => array(
-        'label' => 'above',
-        'module' => 'list',
-        'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 20,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'fences_wrapper' => 'div_div_div',
-    'field_name' => 'field_live_stream',
-    'label' => 'Live Stream',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(
-        'display_label' => 1,
-      ),
-      'type' => 'options_onoff',
-      'weight' => 20,
-    ),
-  );
-
   // Exported field_instance: 'node-public_notice-field_multiple_neighborhoods'.
   $field_instances['node-public_notice-field_multiple_neighborhoods'] = array(
     'bundle' => 'public_notice',
@@ -1879,6 +1828,62 @@ function bos_content_type_public_notice_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-public_notice-field_related_guides'.
+  $field_instances['node-public_notice-field_related_guides'] = array(
+    'bundle' => 'public_notice',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Which guides are relevant for this public notice?',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 29,
+      ),
+      'featured_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'no_wrapper',
+    'field_name' => 'field_related_guides',
+    'label' => 'Related guides',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference',
+      'settings' => array(
+        'entityreference_autocreate' => array(
+          'active' => 0,
+          'author' => '',
+          'author_current_user' => 1,
+          'status' => -1,
+        ),
+        'match_operator' => 'CONTAINS',
+        'path' => '',
+        'size' => 60,
+      ),
+      'type' => 'entityreference_autocomplete',
+      'weight' => 18,
+    ),
+  );
+
   // Exported field_instance: 'node-public_notice-field_related_posts'.
   $field_instances['node-public_notice-field_related_posts'] = array(
     'bundle' => 'public_notice',
@@ -2132,7 +2137,6 @@ function bos_content_type_public_notice_field_default_field_instances() {
   t('Intro Text');
   t('Is there public testimony?');
   t('List all departments related to this public notice.');
-  t('Live Stream');
   t('Location');
   t('Other related content');
   t('Please attach filed posting here.');
@@ -2140,6 +2144,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
   t('Published Date');
   t('Related Neighborhoods');
   t('Related events/notices');
+  t('Related guides');
   t('Related people');
   t('Related places');
   t('Related posts');
@@ -2155,6 +2160,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
   t('Time public testimony begins');
   t('Updated Date');
   t('Which articles, how tos, and / or other content are relevant for this public notice?');
+  t('Which guides are relevant for this public notice?');
   t('Which other events or public notices are relevant for this public notice?');
   t('Which people are relevant for this public notice?');
   t('Which press releases or blog posts are relevant for this public notice?');
