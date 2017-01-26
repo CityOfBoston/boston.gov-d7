@@ -30,18 +30,13 @@ function bos_related_content_migration_action(&$entity, $context) {
     if (isset($value['target_id'])) {
 
       $referenced_nid = $value['target_id'];
-      $referenced_node = node_load($referenced_nid) ? node_load($referenced_nid) : taxonomy_term_load($referenced_nid);
+      $referenced_node = node_load($referenced_nid);
       $referenced_node_type = $referenced_node->type;
 
       switch ($referenced_node_type) {
 
         case 'place_profile':
           $entity->field_place[$entity->language][]['target_id'] = $value['target_id'];
-          unset($entity->field_related_content['und'][$key]);
-          break;
-
-        case 'contact':
-          $entity->field_contacts[$entity->language][]['target_id'] = $value['target_id'];
           unset($entity->field_related_content['und'][$key]);
           break;
 
