@@ -699,6 +699,21 @@ function boston_preprocess_node_event(&$variables) {
     $variables['event_date_canonical'] = $event_date;
   }
 
+  // Checks to see if current time is more than 6 hours past the start
+  // time of the event. If so, the featured event is not rendered.
+  if ($variables['view_mode'] == "featured_item") {
+    $dates = field_get_items('node', $variables['node'], 'field_event_dates');
+    $dt = new DateTime();
+    $start_time = strtotime($dates[0]['value'] . " +0000");
+    $current_time = date_format($dt, U);
+    $future_time = $start_time + 21600;
+
+    if ($current_time > $future_time) {
+      $variables['is_expired'] = 1;
+    } else {
+      $variables['is_expired'] = 0;
+    }
+  }
 }
 
 /**
@@ -751,6 +766,23 @@ function boston_preprocess_node_public_notice(&$variables) {
   if ($has_testimony[0]['value']) {
     $variables['has_testimony'] = true;
   }
+
+  // Checks to see if current time is more than 6 hours past the start time
+  // of the public notice. If so, the featured public notice is not rendered.
+  if ($variables['view_mode'] == "featured_item") {
+    $dates = field_get_items('node', $variables['node'], 'field_public_notice_date');
+    $dt = new DateTime();
+    $start_time = strtotime($dates[0]['value'] . " +0000");
+    $current_time = date_format($dt, U);
+    $future_time = $start_time + 21600;
+ 
+    if ($current_time > $future_time) {
+      $variables['is_expired'] = 1;
+    } else {
+      $variables['is_expired'] = 0;    
+    }
+  }
+
 }
 
 /**
