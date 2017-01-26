@@ -30,7 +30,7 @@ function bos_related_content_migration_action(&$entity, $context) {
     if (isset($value['target_id'])) {
 
       $referenced_nid = $value['target_id'];
-      $referenced_node = node_load($referenced_nid);
+      $referenced_node = node_load($referenced_nid) ? node_load($referenced_nid) : taxonomy_term_load($referenced_nid);
       $referenced_node_type = $referenced_node->type;
 
       switch ($referenced_node_type) {
@@ -40,7 +40,7 @@ function bos_related_content_migration_action(&$entity, $context) {
           unset($entity->field_related_content['und'][$key]);
           break;
 
-        case 'department_profile':
+        case 'contact':
           $entity->field_contacts[$entity->language][]['target_id'] = $value['target_id'];
           unset($entity->field_related_content['und'][$key]);
           break;
@@ -63,6 +63,11 @@ function bos_related_content_migration_action(&$entity, $context) {
 
         case 'post':
           $entity->field_related_posts[$entity->language][]['target_id'] = $value['target_id'];
+          unset($entity->field_related_content['und'][$key]);
+          break;
+
+        case 'topic_page':
+          $entity->field_related_guides[$entity->language][]['target_id'] = $value['target_id'];
           unset($entity->field_related_content['und'][$key]);
           break;
 
