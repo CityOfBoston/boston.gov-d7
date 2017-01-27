@@ -5,7 +5,7 @@
  * Migrates field_related_content data to appropriate entity reference.
  */
 
-/*
+/**
  * Implements hook_action_info().
  */
 function bos_related_content_migration_action_info() {
@@ -20,7 +20,7 @@ function bos_related_content_migration_action_info() {
   );
 }
 
-/*
+/**
  * Action callback for VBO.
  */
 function bos_related_content_migration_action(&$entity, $context) {
