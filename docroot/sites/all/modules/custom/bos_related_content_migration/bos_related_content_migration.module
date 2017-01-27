@@ -37,23 +37,25 @@ function bos_related_content_migration_action(&$entity, $context) {
         case 'contact':
         case 'department_profile':
           $title = $referenced_node->title;
-          $tid = FALSE;
-
           $term_array = taxonomy_get_term_by_name($title, 'contact');
+          $temp_array = array();
 
-          if ($title = "Women's Advancement") {
-            $tid = '536';
+          if (!empty($entity->field_contacts[$entity->language])) {
+            foreach ($entity->field_contacts[$entity->language] as $value) {
+              array_push($temp_array, $value['target_id']);
+            }
           }
 
-          if ($term_array || $tid) {
-            if ($tid) {
-              $term_id = $tid;
+          if ($term_array) {
+            $term = reset($term_array);
+            $term_id = $term->tid;
+          } else {
+            if ($title = "Women's Advancement") {
+              $term_id = '536';
             }
-            else {
-              $term = reset($term_array);
-              $term_id = $term->tid;
-            }
+          }
 
+          if (!in_array($term_id, $temp_array)) {
             $entity->field_contacts[$entity->language][]['target_id'] = $term_id;
             unset($entity->field_related_content['und'][$key]);
           }
