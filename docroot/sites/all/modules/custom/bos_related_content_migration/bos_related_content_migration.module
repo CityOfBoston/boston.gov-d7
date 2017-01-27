@@ -49,7 +49,8 @@ function bos_related_content_migration_action(&$entity, $context) {
           if ($term_array) {
             $term = reset($term_array);
             $term_id = $term->tid;
-          } else {
+          }
+          else {
             if ($title = "Women's Advancement") {
               $term_id = '536';
             }
