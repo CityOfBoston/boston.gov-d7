@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Boston Component Card feature.
+ */
+
+include_once 'bos_component_card.features.inc';

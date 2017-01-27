@@ -545,3 +545,14 @@ function bos_profile_update_7018() {
   );
   module_enable($enabled_modules);
 }
+
+/**
+ * Updates for 1/27/2017.
+ */
+function bos_profile_update_7019() {
+  $enabled_modules = array(
+    'bos_component_card',
+    'bos_component_grid_of_cards',
+  );
+  module_enable($enabled_modules);
+}
