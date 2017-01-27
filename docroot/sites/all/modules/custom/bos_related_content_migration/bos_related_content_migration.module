@@ -34,6 +34,30 @@ function bos_related_content_migration_action(&$entity, $context) {
       $referenced_node_type = $referenced_node->type;
 
       switch ($referenced_node_type) {
+        case 'contact':
+        case 'department_profile':
+          $title = $referenced_node->title;
+          $tid = false;
+
+          $term_array = taxonomy_get_term_by_name($title, 'contact');
+
+          if ($title = "Women's Advancement") {
+            $tid = '536';
+          }
+
+          if ($term_array || $tid) {
+            if ($tid) {
+              $term_id = $tid;
+            } else {
+              $term = reset($term_array);
+              $term_id = $term->tid;
+            }
+
+            $entity->field_contacts[$entity->language][]['target_id'] = $term_id;
+            unset($entity->field_related_content['und'][$key]);
+          }
+
+          break;
 
         case 'place_profile':
           $entity->field_place[$entity->language][]['target_id'] = $value['target_id'];
