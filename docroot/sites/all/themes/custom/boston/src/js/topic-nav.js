@@ -26,7 +26,7 @@
       $('.scroll-link-js').click(function () {
         $('html, body').animate({
           scrollTop: $('[name="' + $.attr(this, 'href').substr(1) + '"]').offset().top - 75
-        }, 500);
+        }, 1);
       });
 
       // Fade in/out topic nav when .sub-nav-button link is clicked
