@@ -268,9 +268,11 @@ function bos_content_type_public_notice_field_default_field_instances() {
         '3_column_w_image' => '3_column_w_image',
         'bos311' => 'bos311',
         'cabinet' => 'cabinet',
+        'card' => -1,
         'city_score_dashboard' => -1,
         'custom_hours_text' => -1,
         'daily_hours' => -1,
+        'discussion_topic' => -1,
         'document' => -1,
         'drawer' => -1,
         'drawers' => 'drawers',
@@ -281,6 +283,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
         'feedback' => 'feedback',
         'fyi' => 'fyi',
         'gol_list_links' => -1,
+        'grid_of_cards' => 'grid_of_cards',
         'grid_of_people' => 'grid_of_people',
         'grid_of_places' => 'grid_of_places',
         'grid_of_programs_initiatives' => 'grid_of_programs_initiatives',
@@ -309,6 +312,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
         'social_media_links' => -1,
         'social_networking' => -1,
         'status_override' => -1,
+        'tabbed_content_tab' => -1,
         'text' => 'text',
         'text_one_column' => -1,
         'text_three_column' => -1,
@@ -322,9 +326,11 @@ function bos_content_type_public_notice_field_default_field_instances() {
         '3_column_w_image' => 2,
         'bos311' => 3,
         'cabinet' => 4,
+        'card' => 58,
         'city_score_dashboard' => 5,
         'custom_hours_text' => 6,
         'daily_hours' => 7,
+        'discussion_topic' => 62,
         'document' => 8,
         'drawer' => 9,
         'drawers' => 10,
@@ -335,6 +341,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
         'feedback' => 15,
         'fyi' => 16,
         'gol_list_links' => 17,
+        'grid_of_cards' => 73,
         'grid_of_people' => 18,
         'grid_of_places' => 19,
         'grid_of_programs_initiatives' => 20,
@@ -363,6 +370,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
         'social_media_links' => 43,
         'social_networking' => 44,
         'status_override' => 45,
+        'tabbed_content_tab' => 102,
         'text' => 46,
         'text_one_column' => 47,
         'text_three_column' => 48,
@@ -1228,6 +1236,56 @@ function bos_content_type_public_notice_field_default_field_instances() {
       'settings' => array(),
       'type' => 'paragraphs_embed',
       'weight' => 17,
+    ),
+  );
+
+  // Exported field_instance: 'node-public_notice-field_live_stream'.
+  $field_instances['node-public_notice-field_live_stream'] = array(
+    'bundle' => 'public_notice',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 20,
+      ),
+      'featured_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div_div_div',
+    'field_name' => 'field_live_stream',
+    'label' => 'Live Stream',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 20,
     ),
   );
 
@@ -2137,6 +2195,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
   t('Intro Text');
   t('Is there public testimony?');
   t('List all departments related to this public notice.');
+  t('Live Stream');
   t('Location');
   t('Other related content');
   t('Please attach filed posting here.');
