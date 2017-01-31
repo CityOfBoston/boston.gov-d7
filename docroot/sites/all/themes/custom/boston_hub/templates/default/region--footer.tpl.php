@@ -9,12 +9,12 @@
  */
 ?>
 <?php if ($content): ?>
-  <footer class="footer <?php print $classes; ?>">
-    <div class="container">
+  <footer class="ft">
+    <div class="ft-c">
+      <ul class="ft-ll ft-ll--r">
+        <li class="ft-ll-i"><a href="https://www.boston.gov/mayor" class="ft-ll-a lnk--white">Mayor Martin J. Walsh</a></li>
+      </ul>
       <?php print $content; ?>
-      <span class="footer-feature">
-        Mayor Martin J. Walsh
-      </span>
     </div>
   </footer>
 <?php endif; ?>
