@@ -3,6 +3,14 @@
   <?php print $head; ?>
   <title><?php print $head_title; ?></title>
 
+  <?php if ($google_tag_manager_id) { ?>
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','<?php echo $google_tag_manager_id ?>');</script>
+  <?php } ?>
+
   <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic|Montserrat:400,700' rel='stylesheet' type='text/css'>
 
   <!--[if !IE]><!-->
@@ -41,5 +49,9 @@
   <?php print $page; ?>
   <?php print $page_bottom; ?>
   <script src="<?php print $asset_url ?>/scripts/all.js?<?php print $cache_buster ?>" async></script>
+  <?php if ($google_tag_manager_id) { ?>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=<?php echo $google_tag_manager_id ?>"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <?php } ?>
 </body>
 </html>
