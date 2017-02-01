@@ -615,6 +615,10 @@ if (isset($ah_site_directory) && file_exists($ah_site_directory . '/nobackup/inc
 
 if (file_exists('/var/www/site-php') && isset($_ENV['AH_SITE_GROUP'])) {
   require "/var/www/site-php/" . $_ENV['AH_SITE_GROUP'] . "/$ac_subname-settings.inc";
+  // Set the Google Analytics account variable but just on production.
+  if (isset($_ENV['AH_SITE_ENVIRONMENT']) && $_ENV['AH_SITE_ENVIRONMENT'] == 'prod') {
+    $conf['google_tag_container_id'] = "GTM-TKGRDS";
+  }
 }
 
 if (file_exists('/var/www/site-php') && isset($_ENV['AH_SITE_GROUP'])) {

@@ -42,6 +42,7 @@ function bos_core_views_query_alter(&$view, &$query) {
 function bos_core_views_pre_view(&$view) {
   $parent_node = node_load(trim($view->override_path, 'node\/'));
   $view->parent_node = $parent_node;
+
   if ($view->name == 'upcoming_events') {
     switch ($parent_node->type) {
       case 'place_profile':
@@ -58,6 +59,18 @@ function bos_core_views_pre_view(&$view) {
 
       case 'program_initiative_profile':
         $view->set_display('block_5');
+        break;
+
+      case 'topic_page':
+        $view->set_display('block_6');
+        break;
+
+      case 'event':
+        $view->set_display('block_7');
+        break;
+
+      case 'post':
+        $view->set_display('block_8');
         break;
     }
   }
@@ -78,6 +91,18 @@ function bos_core_views_pre_view(&$view) {
 
       case 'program_initiative_profile':
         $view->set_display('programs');
+        break;
+
+      case 'topic_page':
+        $view->set_display('guides');
+        break;
+
+      case 'event':
+        $view->set_display('events');
+        break;
+
+      case 'post':
+        $view->set_display('posts');
         break;
     }
   }
