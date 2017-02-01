@@ -29,6 +29,8 @@ function bos_related_content_migration_action(&$entity, $context) {
 
     if (isset($value['target_id'])) {
 
+      $term_id = NULL;
+
       $referenced_nid = $value['target_id'];
       $referenced_node = node_load($referenced_nid);
       $referenced_node_type = $referenced_node->type;
@@ -51,14 +53,20 @@ function bos_related_content_migration_action(&$entity, $context) {
             $term_id = $term->tid;
           }
           else {
-            if ($title = "Women's Advancement") {
+            if ($referenced_node->nid == "71") {
               $term_id = '536';
+            }
+
+            if ($title == "BOS:311") {
+              $term_id = '16';
             }
           }
 
-          if (!in_array($term_id, $temp_array)) {
-            $entity->field_contacts[$entity->language][]['target_id'] = $term_id;
-            unset($entity->field_related_content['und'][$key]);
+          if ($term_id != NULL) {
+            if (!in_array($term_id, $temp_array)) {
+              $entity->field_contacts[$entity->language][]['target_id'] = $term_id;
+              unset($entity->field_related_content['und'][$key]);
+            }
           }
 
           break;
