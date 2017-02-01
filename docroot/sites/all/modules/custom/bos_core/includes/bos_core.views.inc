@@ -72,9 +72,6 @@ function bos_core_views_pre_view(&$view) {
       case 'post':
         $view->set_display('block_8');
         break;
-
-      default: // Do nothing;
-        break;
     }
   }
 
@@ -106,9 +103,6 @@ function bos_core_views_pre_view(&$view) {
 
       case 'post':
         $view->set_display('posts');
-        break;
-
-      default: // Do nothing;
         break;
     }
   }
