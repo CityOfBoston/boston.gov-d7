@@ -576,7 +576,7 @@ function bos_content_type_tabbed_content_field_default_field_instances() {
     'fences_wrapper' => 'no_wrapper',
     'field_name' => 'field_component_title',
     'label' => 'Title',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'linkit' => array(
         'button_text' => 'Search',
