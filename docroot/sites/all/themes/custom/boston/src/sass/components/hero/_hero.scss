@@ -66,7 +66,7 @@
 // .with-hero state (currently used on article and breadcrumb-wrapper)
 
 .with-hero,
-.node-public-notice {
+.node-type-public-notice .node-public-notice {
   @include respond-to(xl) {
     z-index: 10;
     position: relative;
@@ -119,6 +119,18 @@
     top: 50%;
     position: relative;
     text-align: center;
+
+    & p {
+      line-height: 1.44;
+    }
+
+    & p:last-of-type {
+      margin-bottom: 0;
+    }
+
+    & .supporting-text {
+      padding-bottom: 0.25rem;
+    }
   }
 
   .intro-text {

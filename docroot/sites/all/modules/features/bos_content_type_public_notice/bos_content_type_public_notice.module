@@ -20,7 +20,7 @@ function bos_content_type_public_notice_form_alter(&$form, &$form_state, $form_i
             $item['name_block']['name_line']['#title'] = 'Name of location';
             $item['name_block']['name_line']['#description'] = t('For example: Ianella Chamber, BPDA Conference Room, or Environment Department');
             $item['street_block']['thoroughfare']['#title'] = 'Address of location';
-            $item['street_block']['thoroughfare']['#description'] = t('For example: 1 City Hall Plaza or 1010 Massachusetts Ave');
+            $item['street_block']['thoroughfare']['#description'] = t('For example: 1 City Hall Square or 1010 Massachusetts Ave');
             $item['street_block']['premise']['#title'] = 'Room or floor number';
             $item['street_block']['premise']['#description'] = t('For example: Fifth floor or Room 709');
             $item['locality_block']['postal_code']['#description'] = t('City Hall is 02201');

@@ -117,22 +117,22 @@ function bos_content_type_place_profile_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '1',
+          'weight' => '3',
         ),
         'title' => array(
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '0',
+          'weight' => '2',
         ),
         'rabbit_hole' => array(
-          'weight' => '0',
+          'weight' => '1',
         ),
         'redirect' => array(
-          'weight' => '30',
+          'weight' => '7',
         ),
         'xmlsitemap' => array(
-          'weight' => '30',
+          'weight' => '6',
         ),
       ),
       'display' => array(),

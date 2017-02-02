@@ -114,6 +114,7 @@ function boston_preprocess_html(array &$variables, $hook) {
   // A variable to define the asset url
   $variables['asset_url'] = variable_get('asset_url', 'https://patterns.boston.gov');
   $variables['asset_name'] = $GLOBALS['theme'] == 'boston_hub' ? 'hub' : 'public';
+  $variables['google_tag_manager_id'] = variable_get('google_tag_manager_id', FALSE);
 
   // Add variables and paths needed for HTML5 and responsive support.
   $variables['base_path'] = base_path();
@@ -636,6 +637,24 @@ function boston_preprocess_accessibility_toolbar(&$variables) {
  * Implements hook_preprocess_node_BUNDLE().
  */
 function boston_preprocess_node_event(&$variables) {
+  $components_field = $variables['field_components']['und'];
+  $comp_entity_id_array = array();
+  foreach ($components_field as $comp) {
+    $comp_entity_id_array[] = $comp['value'];
+  }
+
+  $components = entity_load('paragraphs_item', $components_field);
+  if (!empty($components)) {
+    foreach ($components as $comp) {
+      $video = field_get_items('paragraphs_item', $comp, 'field_live_stream');
+      if (!empty($video)) {
+        $variables['live_stream_active'] = 1;
+      } else {
+        $variables['live_stream_active'] = 0;
+      }
+    }
+  }
+
   $time_range_view_modes = array(
     'calendar_listing',
     'full',
