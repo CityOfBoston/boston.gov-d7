@@ -10,7 +10,7 @@
       // Gets the parent submenu's title and stores it in a variable.
       var parentTitle = $(this).parents('.menu__item.expanded').eq(1).children('.nolink').text();
       // If the variable's content is empty, sets value to 'Menu'.
-      if (parentTitle == '') {
+      if (parentTitle === '') {
         parentTitle = 'Menu';
       }
       // Adds the submenu's title to the menu header.

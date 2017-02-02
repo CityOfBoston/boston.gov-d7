@@ -34,7 +34,7 @@
       $(this).closest('.drawer.active').toggleClass('active').slideUp(400).prev('.drawer-trigger.active').toggleClass('active');
       $('#query').blur();
     });
-  };
+  }
 
   if ($('.drawer.mobile-only').length) {
     $(window).resize(function () {
@@ -46,6 +46,6 @@
         $('.drawer.mobile-only').css('display', '');
       }
     });
-  };
+  }
 
 })(jQuery, Drupal, this, this.document);
