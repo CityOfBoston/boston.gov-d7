@@ -52,6 +52,8 @@ function bos_view_blank_layouts_views_default_views() {
 
   /* Display: Generic */
   $handler = $view->new_display('page', 'Generic', 'page_2');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Generic';
   $handler->display->display_options['path'] = 'api/v1/layouts/generic';
   $export['blank_layouts'] = $view;
 
