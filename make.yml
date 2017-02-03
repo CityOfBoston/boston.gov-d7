@@ -300,8 +300,6 @@ projects:
       - https://www.drupal.org/files/wysiwyg_filter_alter_blacklist-1783966-4.patch
   xmlsitemap:
     version: 2.3
-  google_tag:
-    version : 1.0
   ape:
     version : 1.1
   metatag:
