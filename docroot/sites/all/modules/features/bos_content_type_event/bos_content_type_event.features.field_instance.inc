@@ -669,7 +669,11 @@ function bos_content_type_event_field_default_field_instances() {
   // Exported field_instance: 'node-event-field_cost'.
   $field_instances['node-event-field_cost'] = array(
     'bundle' => 'event',
-    'default_value' => NULL,
+    'default_value' => array(
+      0 => array(
+        'value' => 'FREE',
+      ),
+    ),
     'deleted' => 0,
     'description' => 'Enter the cost, with a $ or FREE',
     'display' => array(
@@ -773,6 +777,11 @@ function bos_content_type_event_field_default_field_instances() {
     'label' => 'Cost',
     'required' => 0,
     'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
       'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
@@ -780,7 +789,7 @@ function bos_content_type_event_field_default_field_instances() {
       'active' => 1,
       'module' => 'text',
       'settings' => array(
-        'show_token_tree' => FALSE,
+        'show_token_tree' => 0,
         'size' => 60,
       ),
       'type' => 'text_textfield',
