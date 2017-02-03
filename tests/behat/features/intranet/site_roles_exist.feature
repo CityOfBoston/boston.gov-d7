@@ -12,6 +12,8 @@ Feature: Site Roles
     | Site Administrator      |
     | Content Editor          |
     | Content Author          |
+    | Press Release Editor    |
+    | Events Editor           |
     | Status Alert Editor     |
     | Manager                 |
     | Guide Author            |
