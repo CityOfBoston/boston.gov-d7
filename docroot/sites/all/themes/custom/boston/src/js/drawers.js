@@ -15,6 +15,6 @@
       el.toggleClass('dr__header--active');
       isActive ? content.slideUp().attr('aria-hidden', true) : content.slideDown().attr('aria-hidden', false);
     });
-  };
+  }
 
 })(jQuery, Drupal, this, this.document);
