@@ -49,6 +49,10 @@ function bos_view_blank_layouts_views_default_views() {
   $handler = $view->new_display('page', 'Search', 'page_1');
   $handler->display->display_options['display_description'] = 'The layout container for search results';
   $handler->display->display_options['path'] = 'api/v1/layouts/search';
+
+  /* Display: Generic */
+  $handler = $view->new_display('page', 'Generic', 'page_2');
+  $handler->display->display_options['path'] = 'api/v1/layouts/generic';
   $export['blank_layouts'] = $view;
 
   return $export;
