@@ -121,6 +121,6 @@ hide($content['links']);
   </div>
   <?php endif; ?>
   <?php if (isset($content['field_contacts'])): ?>
-    <?php print theme('page_contacts', array('title' => "TBD", 'contacts' => $content['field_contacts'])); ?>
+    <?php print theme('page_contacts', array('title' => "Who's Involved", 'contacts' => $content['field_contacts'])); ?>
   <?php endif; ?>
 </article>
