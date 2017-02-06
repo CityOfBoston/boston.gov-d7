@@ -67,7 +67,7 @@
   <div class="main">
     <div class="container">
       <section class="main-content" id="content" role="main">
-        <%= yield %>
+        {{ content }}
       </section>
     </div>
   </div>
