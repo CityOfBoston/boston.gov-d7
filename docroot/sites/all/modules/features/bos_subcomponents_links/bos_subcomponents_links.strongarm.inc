@@ -101,9 +101,6 @@ function bos_subcomponents_links_strongarm() {
       'token' => array(
         'custom_settings' => FALSE,
       ),
-      'ribbon_link' => array(
-        'custom_settings' => FALSE,
-      ),
     ),
     'extra_fields' => array(
       'form' => array(),

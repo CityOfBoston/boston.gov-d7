@@ -5,7 +5,7 @@
   if ($('.views-exposed-topbar .view-filters').length) {
 
     $('.form-checkboxes').each(function () {
-      var checkboxArr = new Array();
+      var checkboxArr = [];
       var $checkboxList = $(this).find('.bef-checkboxes');
 
       // Create array of all .form-items in .bef-checkboxes.
@@ -24,7 +24,7 @@
         ListHTML = '';
         for (var i = 0; i < list.length; i++) {
           ListHTML += '<div class="form-item form-type-bef-checkbox">' + list[i] + '</div>';
-        };
+        }
       }
 
       // Generate HTML for first list.

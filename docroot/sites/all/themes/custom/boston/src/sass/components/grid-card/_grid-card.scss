@@ -42,6 +42,13 @@
   @include respond-to(xl) {
     font-size: 1.4rem;
   }
+  @include respond-to(s) {
+    line-height: 1rem;
+  }
+  @include respond-to(m) {
+    line-height: inherit;
+  }
+
 }
 
 .grid-card__subtitle {
