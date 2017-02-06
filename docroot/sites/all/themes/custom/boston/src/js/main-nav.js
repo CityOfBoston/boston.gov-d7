@@ -32,7 +32,7 @@
   $('.hb__trigger').attr('checked', false);
 
   $('.dd__input').on('change', function () {
-    var el = $(this)
+    var el = $(this);
     var isChecked = el.is(':checked');
 
     $('.dd').attr('aria-expanded', isChecked);
@@ -68,7 +68,7 @@
   $('.menu-item-back a.menu-link-back').on('click', function (event) {
     event.preventDefault();
     $(this).closest('.is-open')
-      .removeClass('is-open')
+      .removeClass('is-open');
     // Traverses up the tree to show/hide menu elements.
     $(this).closest('.menu').menuHide()
       .prev('.menu__link').menuShow()

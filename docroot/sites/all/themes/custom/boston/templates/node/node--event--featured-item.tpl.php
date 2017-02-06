@@ -80,37 +80,37 @@
  * @ingroup themeable
  */
 ?>
-<article id="node-<?php print $node->nid; ?>"
-         class="<?php print $classes; ?> event-featured-item-wrapper clearfix">
 
-  <div class="desktop-2-col featured-item-details featured-item-details--relative">
-    <div class="date-flag date-flag--blue date-flag--left">
-      <?php if (isset($content['field_event_dates'])): ?>
-        <?php print render($content['field_event_dates']); ?>
+<?php if(!$is_expired): ?>
+  <article id="node-<?php print $node->nid; ?>"
+           class="<?php print $classes; ?> event-featured-item-wrapper clearfix">
+    <div class="desktop-2-col featured-item-details featured-item-details--relative">
+      <div class="date-flag date-flag--blue date-flag--left">
+        <?php if (isset($content['field_event_dates'])): ?>
+          <?php print render($content['field_event_dates']); ?>
+        <?php endif; ?>
+      </div>
+      <h3 class="featured-event-title">
+        <?php print render($title); ?>
+      </h3>
+      <?php if (isset($content['field_intro_text'])): ?>
+        <div class="featured-description">
+          <?php print render($content['field_intro_text']); ?>
+        </div>
+      <?php endif ?>
+      <?php if (isset($content['field_details_link'])): ?>
+        <div class="external-link external-link--inline">
+          <a class="button" href="<?php print render($content['field_details_link']); ?>">Event website<span class="a11y--hidden"> for <?php print $title; ?></span></a>
+        </div>
+      <?php else: ?>
+        <a class="button" href="<?php print $node_url; ?>">Event details<span class="a11y--hidden"> for <?php print $title; ?></span></a>
       <?php endif; ?>
     </div>
-    <h3 class="featured-event-title">
-      <?php print render($title); ?>
-    </h3>
-    <?php if (isset($content['field_intro_text'])): ?>
-      <div class="featured-description">
-        <?php print render($content['field_intro_text']); ?>
-      </div>
-    <?php endif ?>
-    <?php if (isset($content['field_details_link'])): ?>
-      <div class="external-link external-link--inline">
-        <a class="button" href="<?php print render($content['field_details_link']); ?>">Event website<span class="a11y--hidden"> for <?php print $title; ?></span></a>
-      </div>
-    <?php else: ?>
-      <a class="button" href="<?php print $node_url; ?>">Event details<span class="a11y--hidden"> for <?php print $title; ?></span></a>
-    <?php endif; ?>
-  </div>
-
-  <div class="desktop-2-col featured-item-thumb">
-    <div class="featured-thumb-wrapper">
-      <div class="featured-banner">Featured</div>
+    <div class="desktop-2-col featured-item-thumb">
+      <div class="featured-thumb-wrapper">
+        <div class="featured-banner">Featured</div>
         <?php print render($content['field_thumbnail']); ?>
+      </div>
     </div>
-  </div>
-
-</article>
+  </article>
+<?php endif; ?>

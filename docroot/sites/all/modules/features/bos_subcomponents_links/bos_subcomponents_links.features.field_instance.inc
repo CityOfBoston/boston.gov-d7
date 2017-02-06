@@ -55,7 +55,7 @@ function bos_subcomponents_links_field_default_field_instances() {
     'fences_wrapper' => 'no_wrapper',
     'field_name' => 'field_document',
     'label' => 'Document',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'description_field' => 0,
       'file_directory' => 'document-file-[current-date:file_directory_storage_date]',
@@ -77,6 +77,8 @@ function bos_subcomponents_links_field_default_field_instances() {
           'video' => 0,
         ),
         'browser_plugins' => array(
+          'boston_media_browser_tabs--boston_media' => 0,
+          'boston_media_browser_tabs--icons' => 0,
           'media_default--media_browser_1' => 'media_default--media_browser_1',
           'media_default--media_browser_my_files' => 'media_default--media_browser_my_files',
           'upload' => 'upload',
@@ -300,6 +302,7 @@ function bos_subcomponents_links_field_default_field_instances() {
       'active' => 1,
       'module' => 'entityreference',
       'settings' => array(
+        'entityreference_autocreate' => 0,
         'match_operator' => 'CONTAINS',
         'path' => '',
         'size' => 60,

@@ -11,7 +11,7 @@
         var thisTrim = $(this).data('short-title').trim();
 
         if (thisTrim.length > 0) {
-          var tagID = "nav" + thisTrim.split("").reduce(function(a,b){a=((a<<10)-a)+b.charCodeAt(0);return a&a},0);
+          var tagID = "nav" + thisTrim.split("").reduce(function(a,b){a=((a<<10)-a)+b.charCodeAt(0);return a&a;},0);
           $('<a name="' + tagID + '"id="' + tagID + '" class="subnav-anchor"></a>').insertBefore(this);
           $(list).append('<li><a class="scroll-link-js" href="#' + tagID + '">' + thisTrim + '</a></li>');
         }
@@ -26,7 +26,7 @@
       $('.scroll-link-js').click(function () {
         $('html, body').animate({
           scrollTop: $('[name="' + $.attr(this, 'href').substr(1) + '"]').offset().top - 75
-        }, 500);
+        }, 1);
       });
 
       // Fade in/out topic nav when .sub-nav-button link is clicked
@@ -93,8 +93,8 @@
         fromTop = fromTop + 100;
 
         var currentItems = scrollItems.filter(function (item) {
-          var item     = document.querySelectorAll(item)[0];
-          var itemTop  = item ? item.getBoundingClientRect().top + fromTop - 100 : 0;
+          var items     = document.querySelectorAll(item)[0];
+          var itemTop  = items ? items.getBoundingClientRect().top + fromTop - 100 : 0;
 
           if (fromTop >= itemTop)
             return item;

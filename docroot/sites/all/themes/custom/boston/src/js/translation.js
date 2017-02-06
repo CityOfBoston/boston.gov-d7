@@ -28,11 +28,11 @@
 
       var setLanguage = function (language) {
         localStorage.setItem('language', language);
-      }
+      };
 
       var translatePage = function (to, el) {
         Microsoft.Translator.Widget.Translate('en', to, onProgress, onError, onComplete, onRestoreOriginal, 2000);
-      }
+      };
 
       var loadScript = function (cb) {
         var success = cb;
@@ -49,12 +49,12 @@
             success();
           })
           .fail(function() {
-            $('.tr-dd-link--message').html('Translations are down temporarily.')
+            $('.tr-dd-link--message').html('Translations are down temporarily.');
           });
         } else {
           success();
         }
-      }
+      };
 
       translateTrigger.on('click', function (ev) {
         ev.preventDefault();

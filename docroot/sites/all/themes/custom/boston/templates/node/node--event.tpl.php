@@ -148,11 +148,23 @@ hide($content['links']);
           <?php print render($content['field_phone_number']); ?>
         </div>
       <?php endif; ?>
-      <?php if (isset($content['field_cost'])): ?>
-        <div class="list-item">
-          <?php print render($content['field_cost']); ?>
-        </div>
-      <?php endif; ?>
+      <div class="list-item">
+        <?php 
+          if (isset($content['field_cost'])) {
+            print render($content['field_cost']);
+          } else {
+            $cost_vars = array(
+              'label' => 'Price',
+              'body' => 'Free',
+              'classes' => array(
+                'detail' => 'detail-item--secondary',
+                'body' => 'detail-item__body--secondary',
+              ),
+            );
+            print theme('detail_item', $cost_vars);
+          }
+        ?>
+      </div>
       <?php if (isset($content['field_event_contact'])): ?>
         <div class="list-item">
           <?php print render($content['field_event_contact']); ?>

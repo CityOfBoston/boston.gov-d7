@@ -11,5 +11,6 @@ $detail_item_variables = array(
     'icon' => 'icon-phone',
     'body' => 'detail-item__body--secondary',
   ),
+  'phone' => TRUE,
 );
 print theme('detail_item', $detail_item_variables);
