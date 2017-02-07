@@ -82,6 +82,9 @@ function bos_metrolist_affordable_housing_strongarm() {
         'redirect' => array(
           'weight' => '3',
         ),
+        'xmlsitemap' => array(
+          'weight' => '19',
+        ),
       ),
       'display' => array(),
     ),
