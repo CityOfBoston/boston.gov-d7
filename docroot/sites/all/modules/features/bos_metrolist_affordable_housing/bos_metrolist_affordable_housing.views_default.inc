@@ -679,6 +679,7 @@ function bos_metrolist_affordable_housing_views_default_views() {
   $handler->display->display_options['fields']['field_mah_lottery_deadline']['element_type'] = '0';
   $handler->display->display_options['fields']['field_mah_lottery_deadline']['element_wrapper_type'] = '0';
   $handler->display->display_options['fields']['field_mah_lottery_deadline']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_mah_lottery_deadline']['empty'] = 'Open Enrollment';
   $handler->display->display_options['fields']['field_mah_lottery_deadline']['settings'] = array(
     'format_type' => 'long',
     'fromto' => 'both',
