@@ -533,7 +533,15 @@ function boston_preprocess_node(array &$variables, $hook) {
   if ($variables['type'] == 'listing_page') {
     _boston_listing_page_title($variables);
   }
+}
 
+function boston_preprocess_field_field_how_to_tabs(&$variables) {
+  $GLOBALS['how_to_tabs_count'] = 0;
+}
+
+function boston_preprocess_paragraphs_item_how_to_tab(&$variables) {
+  $variables['how_to_tabs_count'] = $GLOBALS['how_to_tabs_count'];
+  $GLOBALS['how_to_tabs_count']++;
 }
 
 function boston_preprocess_field_field_how_to_steps(&$variables) {
@@ -776,11 +784,11 @@ function boston_preprocess_node_public_notice(&$variables) {
     $start_time = strtotime($dates[0]['value'] . " +0000");
     $current_time = date_format($dt, U);
     $future_time = $start_time + 21600;
- 
+
     if ($current_time > $future_time) {
       $variables['is_expired'] = 1;
     } else {
-      $variables['is_expired'] = 0;    
+      $variables['is_expired'] = 0;
     }
   }
 

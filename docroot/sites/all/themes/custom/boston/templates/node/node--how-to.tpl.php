@@ -9,32 +9,59 @@
  */
 ?>
 
-<div class="title-wrapper">
-  <div class="title-inner-wrapper">
-    <h1 class="title-with-hero"><?php print $title; ?></h1>
-    <div class="title-body supporting-text">
-      <?php if (isset($content['body'])): ?>
-        <?php print render($content['body']); ?>
-      <?php endif; ?>
-    </div>
-  </div>
-</div>
-<ul class="how-to-tabs tabs content-section-tabs">
-  <?php
-  foreach($content['field_how_to_tabs'] as $key => $array){
-    if (is_int($key)) {
-      foreach ($array['entity']['paragraphs_item'] as $pid => $item) {
-        if (is_int($pid)) {
-          $title = $item['field_how_to_title'][0]['#markup'];
-          $title_id = drupal_clean_css_identifier(drupal_html_class($title));
-          print "<li data-tab=\"$title_id\" class=\"tabs__tab\"><a href=\"#$title_id\" class=\"tabs__tab-link\">$title</a></li>";
-        }
+<input id="tabMenuCTRL" type="checkbox" name="tab-menu-ctrl" class="tab-menu-ctrl" aria-hidden="true">
+
+<?php
+$count = 0;
+foreach($content['field_how_to_tabs'] as $key => $array){
+  if (is_int($key)) {
+    foreach ($array['entity']['paragraphs_item'] as $pid => $item) {
+      if (is_int($pid)) {
+        $title_text = $item['field_how_to_title'][0]['#markup'];
+        $title_id = drupal_clean_css_identifier(drupal_html_class($title_text));
+        $checked = $count == 0 ? 'checked' : '';
+
+        print "<input id=\"tabCTRL$count\" type=\"radio\" name=\"tab-ctrl\" class=\"tab-ctrl tab-ctrl-$count\" data-href=\"#$title_id\" $checked aria-hidden=\"true\">";
+        $count++;
       }
     }
   }
-  ?>
-</ul>
-<article class="<?php print $classes; ?> clearfix node-<?php print $node->nid; ?>"<?php print $attributes; ?>>
+}
+?>
+
+<div class="hro hro--d hro--wh b--fw">
+  <div class="hro-c b-c b-c--nbp">
+    <h1 class="hro-t hro-t--l"><?php print $title; ?></h1>
+    <?php if (isset($content['body'])): ?>
+      <div class="hro-st hro-st--l"><?php print render($content['body']); ?></div>
+    <?php endif; ?>
+  </div>
+  <ul class="tab">
+    <?php
+    $count = 0;
+    foreach($content['field_how_to_tabs'] as $key => $array){
+      if (is_int($key)) {
+        foreach ($array['entity']['paragraphs_item'] as $pid => $item) {
+          if (is_int($pid)) {
+            $title = $item['field_how_to_title'][0]['#markup'];
+            $title_id = drupal_clean_css_identifier(drupal_html_class($title));
+            print "<li class=\"tab-li tab-li-$count\">";
+            print "<label for=\"tabMenuCTRL\" class=\"tab-li-m\" aria-hidden=\"true\">$title</label>";
+            print "<label for=\"tabCTRL$count\" data-href=\"#$title_id\" class=\"tab-li-a tab-li-a-$count\">$title</label>";
+            print "</li>";
+            $count++;
+          }
+        }
+      }
+    }
+    ?>
+    <li class="tab-li tab-li-close">
+      <label for="tabMenuCTRL" class="tab-li-a tab-li-a--c" aria-hidden="true">Close</label>
+    </li>
+  </ul>
+</div>
+
+<article class="<?php print $classes; ?> clearfix node-<?php print $node->nid; ?> tab-pc p-t500"<?php print $attributes; ?>>
   <?php if (isset($content['field_updated_date'])): ?>
     <div class="breadcrumb-last-updated">
       Last updated:<?php print render($content['field_updated_date']); ?>

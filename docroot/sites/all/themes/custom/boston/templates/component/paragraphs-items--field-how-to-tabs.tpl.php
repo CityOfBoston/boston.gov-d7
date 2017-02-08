@@ -25,15 +25,5 @@
  * @see template_preprocess_entity()
  * @see template_process()
  */
-$title = $content['field_how_to_title'][0]['#markup'];
-$title_id = drupal_clean_css_identifier(drupal_html_class($title));
 ?>
-
-<div class="tab-p tab-p-<?php print $how_to_tabs_count ?>" id="<?php print $title_id; ?>" <?php print $content_attributes; ?>>
-  <?php if (isset($content['field_how_to_steps'])): ?>
-    <?php print render($content['field_how_to_steps']); ?>
-  <?php endif; ?>
-  <?php if (isset($content['field_keep_in_mind'])): ?>
-    <?php print render($content['field_keep_in_mind']); ?>
-  <?php endif; ?>
-</div>
+<?php print render($content); ?>
