@@ -369,6 +369,13 @@ function bos_metrolist_affordable_housing_default_salesforce_mapping() {
             {
               "active" : true,
               "defaultValue" : false,
+              "label" : "Outside Boston",
+              "validFor" : null,
+              "value" : "Outside Boston"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
               "label" : "Roslindale",
               "validFor" : null,
               "value" : "Roslindale"
@@ -386,6 +393,13 @@ function bos_metrolist_affordable_housing_default_salesforce_mapping() {
               "label" : "South Boston",
               "validFor" : null,
               "value" : "South Boston"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "South Easton",
+              "validFor" : null,
+              "value" : "South Easton"
             },
             {
               "active" : true,
@@ -1679,7 +1693,7 @@ function bos_metrolist_affordable_housing_default_salesforce_mapping() {
             },
             {
               "active" : true,
-              "defaultValue" : true,
+              "defaultValue" : false,
               "label" : "No answer",
               "validFor" : null,
               "value" : "No answer"
@@ -1695,6 +1709,59 @@ function bos_metrolist_affordable_housing_default_salesforce_mapping() {
           "soapType" : "xsd:string",
           "sortable" : true,
           "type" : "picklist",
+          "unique" : false,
+          "updateable" : true,
+          "writeRequiresMasterRead" : false
+        },
+        "key" : false,
+        "direction" : "sf_drupal"
+      },
+      {
+        "drupal_field" : {
+          "fieldmap_type" : "property",
+          "fieldmap_value" : "field_mah_not_active"
+        },
+        "salesforce_field" : {
+          "autoNumber" : false,
+          "byteLength" : 0,
+          "calculated" : false,
+          "calculatedFormula" : null,
+          "cascadeDelete" : false,
+          "caseSensitive" : false,
+          "controllerName" : null,
+          "createable" : true,
+          "custom" : true,
+          "defaultValue" : null,
+          "defaultValueFormula" : null,
+          "defaultedOnCreate" : true,
+          "dependentPicklist" : false,
+          "deprecatedAndHidden" : false,
+          "digits" : 0,
+          "displayLocationInDecimal" : false,
+          "externalId" : false,
+          "filterable" : true,
+          "groupable" : true,
+          "htmlFormatted" : false,
+          "idLookup" : false,
+          "inlineHelpText" : null,
+          "label" : "Not Active",
+          "length" : 0,
+          "name" : "Not_Active__c",
+          "nameField" : false,
+          "namePointing" : false,
+          "nillable" : false,
+          "permissionable" : true,
+          "picklistValues" : [],
+          "precision" : 0,
+          "referenceTo" : [],
+          "relationshipName" : null,
+          "relationshipOrder" : null,
+          "restrictedDelete" : false,
+          "restrictedPicklist" : false,
+          "scale" : 0,
+          "soapType" : "xsd:boolean",
+          "sortable" : true,
+          "type" : "boolean",
           "unique" : false,
           "updateable" : true,
           "writeRequiresMasterRead" : false
