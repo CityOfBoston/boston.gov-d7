@@ -2,25 +2,23 @@
 
   'use strict';
   if ($('.topic-nav').length) {
-
     var list = $('.topic-nav ul');
 
     // Creates a menu item on any element it is called on.
     $.fn.createNavItem = function () {
       $(this).each(function () {
-        var thisTrim = $(this).data('short-title').trim();
+        var thisTrim = $(this).attr('name');
 
         if (thisTrim.length > 0) {
-          var tagID = "nav" + thisTrim.split("").reduce(function(a,b){a=((a<<10)-a)+b.charCodeAt(0);return a&a;},0);
-          $('<a name="' + tagID + '"id="' + tagID + '" class="subnav-anchor"></a>').insertBefore(this);
-          $(list).append('<li><a class="scroll-link-js" href="#' + tagID + '">' + thisTrim + '</a></li>');
+          var tagID = thisTrim;
+          $(list).append('<li><a class="scroll-link-js" href="#' + tagID + '">' + $(this).data('text') + '</a></li>');
         }
       });
     };
 
-    if ($("h2[data-short-title]").length) {
+    if ($(".subnav-anchor").length) {
       // Calling createNavItem on short titles.
-      $("h2[data-short-title]").once('createNavItem').createNavItem();
+      $(".subnav-anchor").once('createNavItem').createNavItem();
 
       // Creates scroll effect on anchor links.
       $('.scroll-link-js').click(function () {

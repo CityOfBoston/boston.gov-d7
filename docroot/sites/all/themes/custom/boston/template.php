@@ -776,11 +776,11 @@ function boston_preprocess_node_public_notice(&$variables) {
     $start_time = strtotime($dates[0]['value'] . " +0000");
     $current_time = date_format($dt, U);
     $future_time = $start_time + 21600;
- 
+
     if ($current_time > $future_time) {
       $variables['is_expired'] = 1;
     } else {
-      $variables['is_expired'] = 0;    
+      $variables['is_expired'] = 0;
     }
   }
 
@@ -1602,6 +1602,7 @@ function boston_preprocess_field_field_component_title(&$variables) {
     $short_title = field_get_items('paragraphs_item', $component, 'field_short_title');
     if ($short_title !== FALSE) {
       $variables['short_title'] = $short_title[0]['safe_value'];
+      $variables['short_title_link'] = preg_replace('@[^a-z0-9-]+@','-', strtolower($short_title[0]['safe_value']));
     }
   }
 }

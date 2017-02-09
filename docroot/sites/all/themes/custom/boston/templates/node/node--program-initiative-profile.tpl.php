@@ -85,9 +85,9 @@ hide($content['links']);
 $has_sidebar = isset($content['field_sidebar_components']) || isset($content['field_program_logo']);
 
 ?>
-<article id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?> clearfix desktop-100"<?php print $attributes; ?>>
+<article id="node-<?php print $node->nid; ?>" class="relative-free-article clearfix">
   <?php if (isset($content['field_updated_date'])): ?>
-    <div class="breadcrumb-last-updated">
+    <div class="breadcrumb-last-updated breadcrumb-last-updated--hack">
       Last updated: <?php print render($content['field_updated_date']); ?>
     </div>
   <?php endif; ?>
@@ -97,6 +97,14 @@ $has_sidebar = isset($content['field_sidebar_components']) || isset($content['fi
       <?php if (isset($content['field_intro_text'])): ?>
         <?php print render($content['field_intro_text']); ?>
       <?php endif; ?>
+      <div class="sub-nav-trigger drawer-trigger">
+        <div class="sub-nav-chevron"><?php print file_get_contents(drupal_get_path('theme', $GLOBALS['theme']) . '/dist/img/subnav-toggle.svg') ?></div>
+        Program Menu
+      </div>
+      <nav class="topic-nav topic-nav__left">
+        <ul></ul>
+        <a name="section-nav"></a>
+      </nav>
       <?php if (isset($content['body'])): ?>
         <div class="body">
           <?php print render($content['body']); ?>
