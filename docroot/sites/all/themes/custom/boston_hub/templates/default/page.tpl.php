@@ -24,8 +24,7 @@
   </div>
 </div>
 
-<div class="page" id="page">
-
+<div <?php if (!empty($node) && ($node->type !== 'tabbed_content' && $node->type !== 'how_to')): ?>class="page"<?php endif; ?> id="page">
   <header class="header" role="banner">
     <div class="header-container">
 
@@ -116,16 +115,18 @@
           <ul class="action-links"><?php print render($action_links); ?></ul>
         <?php endif; ?>
         <?php if (isset($header_image)): ?>
-        <div class="hero-image fullwidth">
-          <div class="hero-image-wrapper <?php print $hero_classes; ?>">
-            <?php print render($header_image); ?>
-          </div>
-        </div>
-        <?php if (!empty($node) && ($node->type !== 'tabbed_content' && $node->type !== 'how_to')): ?>
-        <?php if ($breadcrumb): ?>
-          <div id="breadcrumb" class="breadcrumb-wrapper with-hero" data-swiftype-index="false"><?php print $breadcrumb; ?></div>
-        <?php endif; ?>
-        <?php endif; ?>
+          <?php if (!empty($node) && ($node->type !== 'tabbed_content' && $node->type !== 'how_to')): ?>
+            <div class="hero-image fullwidth">
+              <div class="hero-image-wrapper <?php print $hero_classes; ?>">
+                <?php print render($header_image); ?>
+              </div>
+            </div>
+          <?php endif; ?>
+          <?php if (!empty($node) && ($node->type !== 'tabbed_content' && $node->type !== 'how_to')): ?>
+            <?php if ($breadcrumb): ?>
+              <div id="breadcrumb" class="breadcrumb-wrapper with-hero" data-swiftype-index="false"><?php print $breadcrumb; ?></div>
+            <?php endif; ?>
+          <?php endif; ?>
         <?php endif; ?>
 
         <?php print render($page['content']); ?>

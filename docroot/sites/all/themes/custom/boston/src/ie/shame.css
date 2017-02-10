@@ -36,8 +36,8 @@
   display: none;
 }
 
-.hb__trigger:checked ~ .page,
-.hb__trigger:checked ~ .page > .header,
-.hb__trigger:checked ~ .page .topic-nav.sticky {
+.hb__trigger:checked ~ #page,
+.hb__trigger:checked ~ #page > .header,
+.hb__trigger:checked ~ #page .topic-nav.sticky {
   left: 285px;
 }

@@ -25,10 +25,5 @@
  * @see template_preprocess_entity()
  * @see template_process()
  */
-$title = $content['field_component_title'][0]['#markup'];
-$title_id = drupal_clean_css_identifier(drupal_html_class($title));
 ?>
-
-<div class="tab-p tab-p-<?php print $tabbed_content_tabs_count ?>" id="<?php print $title_id; ?>" <?php print $content_attributes; ?>>
-	<?php print render($content['field_components']); ?>
-</div>
+<?php print render($content); ?>

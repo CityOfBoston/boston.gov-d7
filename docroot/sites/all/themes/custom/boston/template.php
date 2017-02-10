@@ -533,7 +533,15 @@ function boston_preprocess_node(array &$variables, $hook) {
   if ($variables['type'] == 'listing_page') {
     _boston_listing_page_title($variables);
   }
+}
 
+function boston_preprocess_field_field_how_to_tabs(&$variables) {
+  $GLOBALS['how_to_tabs_count'] = 0;
+}
+
+function boston_preprocess_paragraphs_item_how_to_tab(&$variables) {
+  $variables['how_to_tabs_count'] = $GLOBALS['how_to_tabs_count'];
+  $GLOBALS['how_to_tabs_count']++;
 }
 
 function boston_preprocess_field_field_how_to_steps(&$variables) {
@@ -1804,4 +1812,13 @@ function boston_menu_link__menu_footer_menu(array $variables) {
   $output = l($element['#title'], $element['#href'], $element['#localized_options']);
 
   return '<li class="ft-ll-i">' . $output . "</li>\n";
+}
+
+function boston_preprocess_field_field_tabbed_content(&$variables) {
+  $GLOBALS['tabbed_content_tabs_count'] = 0;
+}
+
+function boston_preprocess_paragraphs_item_tabbed_content_tab(&$variables) {
+  $variables['tabbed_content_tabs_count'] = $GLOBALS['tabbed_content_tabs_count'];
+  $GLOBALS['tabbed_content_tabs_count']++;
 }

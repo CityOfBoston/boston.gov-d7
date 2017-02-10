@@ -647,23 +647,12 @@ function bos_content_type_how_to_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'hidden',
-        'module' => 'picture',
+        'module' => 'image',
         'settings' => array(
-          'colorbox_settings' => array(
-            'colorbox_caption' => 'auto',
-            'colorbox_caption_custom' => '',
-            'colorbox_gallery' => 'post',
-            'colorbox_gallery_custom' => '',
-            'colorbox_group' => '',
-            'colorbox_multivalue_index' => NULL,
-          ),
-          'fallback_image_style' => 'rep_wide_2000x700custom_boston_wide_1x',
           'image_link' => '',
-          'lazyload' => 0,
-          'lazyload_aspect_ratio' => 0,
-          'picture_mapping' => 'wide_2000x700',
+          'image_style' => '',
         ),
-        'type' => 'picture',
+        'type' => 'image',
         'weight' => 1,
       ),
       'department_listing' => array(
