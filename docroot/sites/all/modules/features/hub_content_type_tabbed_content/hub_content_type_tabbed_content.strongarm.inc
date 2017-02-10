@@ -116,6 +116,18 @@ function hub_content_type_tabbed_content_strongarm() {
       'token' => array(
         'custom_settings' => FALSE,
       ),
+      'search_index' => array(
+        'custom_settings' => FALSE,
+      ),
+      'search_result' => array(
+        'custom_settings' => FALSE,
+      ),
+      'icon_popup' => array(
+        'custom_settings' => FALSE,
+      ),
+      'ical' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(

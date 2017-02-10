@@ -18,23 +18,12 @@ function hub_content_type_tabbed_content_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'hidden',
-        'module' => 'picture',
+        'module' => 'image',
         'settings' => array(
-          'colorbox_settings' => array(
-            'colorbox_caption' => 'auto',
-            'colorbox_caption_custom' => '',
-            'colorbox_gallery' => 'post',
-            'colorbox_gallery_custom' => '',
-            'colorbox_group' => '',
-            'colorbox_multivalue_index' => NULL,
-          ),
-          'fallback_image_style' => '',
           'image_link' => '',
-          'lazyload' => 0,
-          'lazyload_aspect_ratio' => 0,
-          'picture_mapping' => 'wide_2000x460',
+          'image_style' => '',
         ),
-        'type' => 'picture',
+        'type' => 'image',
         'weight' => 1,
       ),
     ),
