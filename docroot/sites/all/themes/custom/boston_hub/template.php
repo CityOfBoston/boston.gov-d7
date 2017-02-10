@@ -332,3 +332,12 @@ function boston_hub_preprocess_entity_profile2(&$variables, $hook) {
   $variables['change_password_url'] = variable_get('hub_profile_change_password_url', '');
   drupal_add_js(drupal_get_path('theme', $GLOBALS['theme']) . '/dist/js/resizer.js');
 }
+
+function boston_preprocess_field_field_tabbed_content(&$variables) {
+  $GLOBALS['tabbed_content_tabs_count'] = 0;
+}
+
+function boston_preprocess_paragraphs_item_tabbed_content_tab(&$variables) {
+  $variables['tabbed_content_tabs_count'] = $GLOBALS['tabbed_content_tabs_count'];
+  $GLOBALS['tabbed_content_tabs_count']++;
+}

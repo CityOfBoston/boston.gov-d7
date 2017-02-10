@@ -41,15 +41,17 @@ foreach($content['field_how_to_tabs'] as $key => $array){
     $count = 0;
     foreach($content['field_how_to_tabs'] as $key => $array){
       if (is_int($key)) {
-        foreach ($array['entity']['paragraphs_item'] as $pid => $item) {
-          if (is_int($pid)) {
-            $title = $item['field_how_to_title'][0]['#markup'];
-            $title_id = drupal_clean_css_identifier(drupal_html_class($title));
-            print "<li class=\"tab-li tab-li-$count\">";
-            print "<label for=\"tabMenuCTRL\" class=\"tab-li-m\" aria-hidden=\"true\">$title</label>";
-            print "<label for=\"tabCTRL$count\" data-href=\"#$title_id\" class=\"tab-li-a tab-li-a-$count\">$title</label>";
-            print "</li>";
-            $count++;
+        if (count($array['entity']['paragraphs_item']) > 1) {
+          foreach ($array['entity']['paragraphs_item'] as $pid => $item) {
+            if (is_int($pid)) {
+              $title = $item['field_how_to_title'][0]['#markup'];
+              $title_id = drupal_clean_css_identifier(drupal_html_class($title));
+              print "<li class=\"tab-li tab-li-$count\">";
+              print "<label for=\"tabMenuCTRL\" class=\"tab-li-m\" aria-hidden=\"true\">$title</label>";
+              print "<label for=\"tabCTRL$count\" data-href=\"#$title_id\" class=\"tab-li-a tab-li-a-$count\">$title</label>";
+              print "</li>";
+              $count++;
+            }
           }
         }
       }
