@@ -8,24 +8,26 @@
 // Offsets the height of the header with extra space
 .page {
   padding-top: 6.6em;
+}
+
+#page {
   position: relative;
   min-height: 100%;
   min-width: 100%;
-  position: relative;
   left: 0;
   z-index: 1;
   background-color: white;
 }
 
-.page,
-.page > .header,
-.page .topic-nav.sticky {
+#page,
+#page > .header,
+#page .topic-nav.sticky {
   transition: left 0.2s;
 }
 
-.hb__trigger:checked ~ .page,
-.hb__trigger:checked ~ .page .header,
-.hb__trigger:checked ~ .page .topic-nav.sticky {
+.hb__trigger:checked ~ #page,
+.hb__trigger:checked ~ #page .header,
+.hb__trigger:checked ~ #page .topic-nav.sticky {
   left: 256px;
 
   @include respond-to(s) {

@@ -545,3 +545,21 @@ function bos_profile_update_7018() {
   );
   module_enable($enabled_modules);
 }
+
+/**
+ * Update for 2/7/2017.
+ */
+function bos_profile_update_7019() {
+  $delete_fields = array(
+    'field_mah_metrolist_hold',
+    'field_mah_lottery',
+    'field_mah_lottery_flyer_url',
+  );
+  foreach ($delete_fields as $field) {
+    if (field_info_field($field)) {
+      field_delete_field($field);
+    }
+  }
+
+  field_purge_batch(1000);
+}

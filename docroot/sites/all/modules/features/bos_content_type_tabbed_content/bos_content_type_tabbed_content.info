@@ -1,11 +1,11 @@
 name = Boston Content Type Tabbed Content
 core = 7.x
 package = Boston
+dependencies[] = bos_pathauto
 dependencies[] = bos_shared_fields
 dependencies[] = ctools
 dependencies[] = features
 dependencies[] = field_group
-dependencies[] = bos_pathauto
 dependencies[] = media
 dependencies[] = node
 dependencies[] = options

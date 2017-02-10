@@ -679,6 +679,7 @@ function bos_metrolist_affordable_housing_views_default_views() {
   $handler->display->display_options['fields']['field_mah_lottery_deadline']['element_type'] = '0';
   $handler->display->display_options['fields']['field_mah_lottery_deadline']['element_wrapper_type'] = '0';
   $handler->display->display_options['fields']['field_mah_lottery_deadline']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_mah_lottery_deadline']['empty'] = 'Open Enrollment';
   $handler->display->display_options['fields']['field_mah_lottery_deadline']['settings'] = array(
     'format_type' => 'long',
     'fromto' => 'both',
@@ -725,17 +726,19 @@ function bos_metrolist_affordable_housing_views_default_views() {
   $handler->display->display_options['filters']['field_mah_zipcode_value']['table'] = 'field_data_field_mah_zipcode';
   $handler->display->display_options['filters']['field_mah_zipcode_value']['field'] = 'field_mah_zipcode_value';
   $handler->display->display_options['filters']['field_mah_zipcode_value']['operator'] = '!=';
-  /* Filter criterion: Content: Lottery Application Deadline (field_mah_lottery_deadline) */
-  $handler->display->display_options['filters']['field_mah_lottery_deadline_value']['id'] = 'field_mah_lottery_deadline_value';
-  $handler->display->display_options['filters']['field_mah_lottery_deadline_value']['table'] = 'field_data_field_mah_lottery_deadline';
-  $handler->display->display_options['filters']['field_mah_lottery_deadline_value']['field'] = 'field_mah_lottery_deadline_value';
-  $handler->display->display_options['filters']['field_mah_lottery_deadline_value']['operator'] = '>=';
-  $handler->display->display_options['filters']['field_mah_lottery_deadline_value']['default_date'] = 'today';
   /* Filter criterion: Content: Lottery (field_mah_lottery_indicator) */
   $handler->display->display_options['filters']['field_mah_lottery_indicator_value']['id'] = 'field_mah_lottery_indicator_value';
   $handler->display->display_options['filters']['field_mah_lottery_indicator_value']['table'] = 'field_data_field_mah_lottery_indicator';
   $handler->display->display_options['filters']['field_mah_lottery_indicator_value']['field'] = 'field_mah_lottery_indicator_value';
   $handler->display->display_options['filters']['field_mah_lottery_indicator_value']['value'] = 'Yes';
+  /* Filter criterion: Content: Not Active (field_mah_not_active) */
+  $handler->display->display_options['filters']['field_mah_not_active_value']['id'] = 'field_mah_not_active_value';
+  $handler->display->display_options['filters']['field_mah_not_active_value']['table'] = 'field_data_field_mah_not_active';
+  $handler->display->display_options['filters']['field_mah_not_active_value']['field'] = 'field_mah_not_active_value';
+  $handler->display->display_options['filters']['field_mah_not_active_value']['operator'] = 'not';
+  $handler->display->display_options['filters']['field_mah_not_active_value']['value'] = array(
+    1 => '1',
+  );
   $handler->display->display_options['path'] = 'metrolist-affordable-housing-lottery';
   $export['metrolist_affordable_housing'] = $view;
 

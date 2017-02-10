@@ -26,7 +26,7 @@ function bos_content_type_emergency_alert_menu() {
  * Callback for the emergency-alert path.
  */
 function bos_content_type_emergency_alert_json() {
-  $max_age = 604800;
+  $max_age = 60;
   $data = array(
     'emergency' => FALSE,
     'html' => "",
