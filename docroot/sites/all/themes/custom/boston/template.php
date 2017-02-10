@@ -1812,3 +1812,12 @@ function boston_menu_link__menu_footer_menu(array $variables) {
 
   return '<li class="ft-ll-i">' . $output . "</li>\n";
 }
+
+function boston_preprocess_field_field_tabbed_content(&$variables) {
+  $GLOBALS['tabbed_content_tabs_count'] = 0;
+}
+
+function boston_preprocess_paragraphs_item_tabbed_content_tab(&$variables) {
+  $variables['tabbed_content_tabs_count'] = $GLOBALS['tabbed_content_tabs_count'];
+  $GLOBALS['tabbed_content_tabs_count']++;
+}

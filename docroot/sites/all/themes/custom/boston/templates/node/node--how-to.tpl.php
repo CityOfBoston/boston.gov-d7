@@ -12,17 +12,17 @@
 <input id="tabMenuCTRL" type="checkbox" name="tab-menu-ctrl" class="tab-menu-ctrl" aria-hidden="true">
 
 <?php
-$count = 0;
+$ctrlCount = 0;
 foreach($content['field_how_to_tabs'] as $key => $array){
   if (is_int($key)) {
     foreach ($array['entity']['paragraphs_item'] as $pid => $item) {
       if (is_int($pid)) {
         $title_text = $item['field_how_to_title'][0]['#markup'];
         $title_id = drupal_clean_css_identifier(drupal_html_class($title_text));
-        $checked = $count == 0 ? 'checked' : '';
+        $checked = $ctrlCount == 0 ? 'checked' : '';
 
-        print "<input id=\"tabCTRL$count\" type=\"radio\" name=\"tab-ctrl\" class=\"tab-ctrl tab-ctrl-$count\" data-href=\"#$title_id\" $checked aria-hidden=\"true\">";
-        $count++;
+        print "<input id=\"tabCTRL$ctrlCount\" type=\"radio\" name=\"tab-ctrl\" class=\"tab-ctrl tab-ctrl-$ctrlCount\" data-href=\"#$title_id\" $checked aria-hidden=\"true\">";
+        $ctrlCount++;
       }
     }
   }
@@ -41,7 +41,7 @@ foreach($content['field_how_to_tabs'] as $key => $array){
     $count = 0;
     foreach($content['field_how_to_tabs'] as $key => $array){
       if (is_int($key)) {
-        if (count($array['entity']['paragraphs_item']) > 1) {
+        if ($ctrlCount > 1) {
           foreach ($array['entity']['paragraphs_item'] as $pid => $item) {
             if (is_int($pid)) {
               $title = $item['field_how_to_title'][0]['#markup'];

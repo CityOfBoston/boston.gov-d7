@@ -12,7 +12,7 @@
 <input id="tabMenuCTRL" type="checkbox" name="tab-menu-ctrl" class="tab-menu-ctrl" aria-hidden="true">
 
 <?php
-$count = 0;
+$ctrlCount = 0;
 if (!empty($content['field_tabbed_content'])) {
   foreach($content['field_tabbed_content'] as $key => $array){
     if (is_int($key)) {
@@ -20,9 +20,9 @@ if (!empty($content['field_tabbed_content'])) {
         if (is_int($pid)) {
           $title_text = $item['field_component_title'][0]['#markup'];
           $title_id = drupal_clean_css_identifier(drupal_html_class($title_text));
-          $checked = $count == 0 ? 'checked' : '';
+          $checked = $ctrlCount == 0 ? 'checked' : '';
           print "<input id=\"tabCTRL$count\" type=\"radio\" name=\"tab-ctrl\" class=\"tab-ctrl tab-ctrl-$count\" data-href=\"#$title_id\" $checked aria-hidden=\"true\">";
-          $count++;
+          $ctrlCount++;
         }
       }
     }
@@ -46,14 +46,16 @@ if (!empty($content['field_tabbed_content'])) {
         if (is_int($key)) {
           foreach ($array['entity']['paragraphs_item'] as $pid => $item) {
             if (is_int($pid)) {
-              $title = $item['field_component_title'][0]['#markup'];
-              $title_id = drupal_clean_css_identifier(drupal_html_class($title));
-              $checked = $count == 0 ? 'checked' : '';
-              print "<li class=\"tab-li tab-li-$count\">";
-              print "<label for=\"tabMenuCTRL\" class=\"tab-li-m\" aria-hidden=\"true\">$title</label>";
-              print "<label for=\"tabCTRL$count\" data-href=\"#$title_id\" class=\"tab-li-a tab-li-a-$count\">$title</label>";
-              print "</li>";
-              $count++;
+              if ($ctrlCount > 1) {
+                $title = $item['field_component_title'][0]['#markup'];
+                $title_id = drupal_clean_css_identifier(drupal_html_class($title));
+                $checked = $count == 0 ? 'checked' : '';
+                print "<li class=\"tab-li tab-li-$count\">";
+                print "<label for=\"tabMenuCTRL\" class=\"tab-li-m\" aria-hidden=\"true\">$title</label>";
+                print "<label for=\"tabCTRL$count\" data-href=\"#$title_id\" class=\"tab-li-a tab-li-a-$count\">$title</label>";
+                print "</li>";
+                $count++;
+              }
             }
           }
         }
@@ -66,7 +68,7 @@ if (!empty($content['field_tabbed_content'])) {
   </ul>
 </div>
 
-<article class="<?php print $classes; ?> clearfix node-<?php print $node->nid; ?>"<?php print $attributes; ?>>
+<article class="<?php print $classes; ?> clearfix node-<?php print $node->nid; ?> tab-pc p-t500"<?php print $attributes; ?>>
   <?php if (isset($content['field_updated_date'])): ?>
     <div class="breadcrumb-last-updated">
       Last updated:<?php print render($content['field_updated_date']); ?>
