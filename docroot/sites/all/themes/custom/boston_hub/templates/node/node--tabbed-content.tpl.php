@@ -11,6 +11,10 @@
 
 <input id="tabMenuCTRL" type="checkbox" name="tab-menu-ctrl" class="tab-menu-ctrl" aria-hidden="true">
 
+<?php if (isset($content['field_intro_image'])) { ?>
+  <?php print render($content['field_intro_image']); ?>
+<?php } ?>
+
 <?php
 $count = 0;
 if (!empty($content['field_tabbed_content'])) {
@@ -30,7 +34,7 @@ if (!empty($content['field_tabbed_content'])) {
 }
 ?>
 
-<div class="hro hro--d hro--wh b--fw">
+<div class="hro <?php if (isset($content['field_intro_image'])) { ?>hro--t<?php } else { ?>hro--d<?php } ?> hro--wh b--fw">
   <div class="hro-c b-c b-c--nbp">
     <h1 class="hro-t hro-t--l"><?php print $title; ?></h1>
     <?php if (isset($content['field_intro_text'])): ?>
