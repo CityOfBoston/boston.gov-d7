@@ -313,7 +313,6 @@ function bos_content_type_public_notice_field_group_info() {
   t('Contact Information');
   t('Details');
   t('Downloads');
-  t('Live streaming video?');
   t('Page Meta Data');
   t('Public Testimony');
   t('Related Items');
