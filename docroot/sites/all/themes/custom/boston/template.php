@@ -792,6 +792,10 @@ function boston_preprocess_node_public_notice(&$variables) {
     }
   }
 
+  if (isset($variables['node']->published_at)) {
+    $variables['notice_date_short'] = format_date($variables['node']->published_at, 'short');
+    $variables['notice_date_long'] = format_date($variables['node']->published_at, 'long');
+  }
 }
 
 /**

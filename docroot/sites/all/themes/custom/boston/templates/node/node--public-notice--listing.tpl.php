@@ -120,10 +120,10 @@ hide($content['links']);
               <span class="dl-d"><?php print render($content['field_posted']); ?></span>
             </li>
           <?php endif; ?>
-          <?php if (isset($content['field_published_date'])): ?>
+          <?php if (isset($notice_date_short)): ?>
             <li class="dl-i">
               <span class="dl-t">Posted</span>
-              <span class="dl-d"><?php print render($content['field_published_date']); ?></span>
+              <span class="dl-d"><?php print $notice_date_short; ?></span>
             </li>
           <?php endif; ?>
         </ul>

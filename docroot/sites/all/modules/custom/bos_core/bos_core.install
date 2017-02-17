@@ -475,13 +475,14 @@ function bos_core_update_7026() {
 }
 
 /**
- * Work for 2/15/2016
+ * Work for 2/15/2016.
  */
 function bos_core_update_7027() {
   $deleted_field_instances = array(
     'node' => array(
       'public_notice' => array(
         'field_live_stream',
+        'field_published_date',
       ),
     ),
   );
@@ -495,4 +496,10 @@ function bos_core_update_7027() {
       }
     }
   }
+
+  // Add a module.
+  $enabled_modules = array(
+    'publication_date',
+  );
+  module_enable($enabled_modules);
 }
