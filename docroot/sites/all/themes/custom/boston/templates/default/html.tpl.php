@@ -50,7 +50,7 @@
   <?php print $page_bottom; ?>
   <script src="<?php print $asset_url ?>/scripts/all.js?<?php print $cache_buster ?>" async></script>
   <?php if ($google_tag_manager_id) { ?>
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=<?php echo $google_tag_manager_id ?>"
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=<?php echo $google_tag_manager_id ?>&noscript=true"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <?php } ?>
 </body>
