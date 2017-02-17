@@ -497,7 +497,7 @@ function bos_core_update_7027() {
     }
   }
 
-  // Add a module
+  // Add a module.
   $enabled_modules = array(
     'publication_date',
   );
