@@ -54,6 +54,10 @@
   .call-to-action.emergency a {
     background-color: color(optimistic-blue);
     color: color(white);
+
+    &:hover {
+      background-color: color(freedom-trail-red);
+    }
   }
 }
 
@@ -140,6 +144,10 @@
 .call-to-action.emergency a {
   background-color: color(text-bg);
   color: color(link-secondary);
+
+  &:hover {
+    background-color: color(charles-blue);
+  }
 }
 
 .emergency-header-tail {

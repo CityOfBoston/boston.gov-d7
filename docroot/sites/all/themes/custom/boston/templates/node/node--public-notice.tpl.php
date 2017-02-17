@@ -179,9 +179,16 @@ hide($content['links']);
           <?php print render($content['field_event_type']); ?>
         </div>
       <?php endif; ?>
-      <?php if (isset($content['field_published_date'])): ?>
+      <?php if (isset($notice_date_long)): ?>
         <div class="list-item">
-          <?php print render($content['field_published_date']); ?>
+          <div class="detail-item detail-item--secondary">
+            <div class="detail-item__left">
+              <div>Posted:</div>
+            </div>
+            <div class="detail-item__content">
+              <div class="detail-item__body detail-item__body--secondary"><?php print $notice_date_short; ?></div>
+            </div>
+          </div>
         </div>
       <?php endif; ?>
       <?php if (isset($content['field_links'])): ?>
