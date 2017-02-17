@@ -2,7 +2,7 @@
     Drupal.behaviors.bosContentTypeEmergencyAlert = {
         'attach': function(context) {
             $('.view-status-displays').once("emergency-override", function() {
-                $.get( "/emergency-alert", null, callback);
+                $.get( "/emergency-alert?" + Math.round(new Date().getTime() / 1000), null, callback);
             });
         }
     };
