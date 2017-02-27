@@ -382,6 +382,7 @@ function bos_core_flush_caches() {
   // the user might already be authenticated.
   $buster = variable_get('css_js_query_string', FALSE);
   if ($buster !== FALSE) {
+    $buster = str_replace('k=', '', $buster);
     variable_set('css_js_query_string', 'k=' . $buster);
   }
   // Return an empty array since bos_core provides no cache tables that need to
