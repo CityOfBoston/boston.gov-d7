@@ -563,3 +563,13 @@ function bos_profile_update_7019() {
 
   field_purge_batch(1000);
 }
+
+/**
+ * Updates for 2/28/2017.
+ */
+function bos_profile_update_7020() {
+  $enabled_modules = array(
+    'bos_view_feeds',
+  );
+  module_enable($enabled_modules);
+}
