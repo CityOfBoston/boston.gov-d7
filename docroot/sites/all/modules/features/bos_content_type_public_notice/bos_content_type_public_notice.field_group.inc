@@ -52,7 +52,7 @@ function bos_content_type_public_notice_field_group_info() {
   $field_group->parent_name = 'group_details';
   $field_group->data = array(
     'label' => 'Cancel Public Notice',
-    'weight' => '17',
+    'weight' => '38',
     'children' => array(
       0 => 'field_cancelled',
       1 => 'field_extra_info',
@@ -139,11 +139,11 @@ function bos_content_type_public_notice_field_group_info() {
     'label' => 'Details',
     'weight' => '2',
     'children' => array(
-      0 => 'field_address',
-      1 => 'field_public_notice_date',
-      2 => 'group_cancelled',
-      3 => 'group_downloads',
-      4 => 'group_public_testimony',
+      0 => 'field_public_notice_date',
+      1 => 'group_cancelled',
+      2 => 'group_downloads',
+      3 => 'group_public_testimony',
+      4 => 'group_meeting_location',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -168,7 +168,7 @@ function bos_content_type_public_notice_field_group_info() {
   $field_group->parent_name = 'group_details';
   $field_group->data = array(
     'label' => 'Downloads',
-    'weight' => '18',
+    'weight' => '39',
     'children' => array(
       0 => 'field_links',
     ),
@@ -188,6 +188,35 @@ function bos_content_type_public_notice_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_meeting_location|node|public_notice|form';
+  $field_group->group_name = 'group_meeting_location';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'public_notice';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_details';
+  $field_group->data = array(
+    'label' => 'Meeting Location',
+    'weight' => '34',
+    'children' => array(
+      0 => 'field_address',
+      1 => 'field_city_hall',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-meeting-location field-group-fieldset',
+        'required_fields' => 1,
+        'id' => '',
+      ),
+    ),
+  );
+  $field_groups['group_meeting_location|node|public_notice|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_meta_data|node|public_notice|form';
   $field_group->group_name = 'group_meta_data';
   $field_group->entity_type = 'node';
@@ -198,8 +227,7 @@ function bos_content_type_public_notice_field_group_info() {
     'label' => 'Page Meta Data',
     'weight' => '6',
     'children' => array(
-      0 => 'field_published_date',
-      1 => 'field_updated_date',
+      0 => 'field_updated_date',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -224,7 +252,7 @@ function bos_content_type_public_notice_field_group_info() {
   $field_group->parent_name = 'group_details';
   $field_group->data = array(
     'label' => 'Public Testimony',
-    'weight' => '16',
+    'weight' => '37',
     'children' => array(
       0 => 'field_is_there_public_testimony',
       1 => 'field_time',
@@ -256,14 +284,14 @@ function bos_content_type_public_notice_field_group_info() {
     'weight' => '5',
     'children' => array(
       0 => 'field_contacts',
-      1 => 'field_related_content',
-      2 => 'field_people',
-      3 => 'field_place',
-      4 => 'field_program_initiative',
-      5 => 'field_related_events_notices',
-      6 => 'field_related_posts',
+      1 => 'field_multiple_neighborhoods',
+      2 => 'field_related_content',
+      3 => 'field_people',
+      4 => 'field_place',
+      5 => 'field_program_initiative',
+      6 => 'field_related_events_notices',
       7 => 'field_related_guides',
-      8 => 'field_multiple_neighborhoods',
+      8 => 'field_related_posts',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -313,6 +341,7 @@ function bos_content_type_public_notice_field_group_info() {
   t('Contact Information');
   t('Details');
   t('Downloads');
+  t('Meeting Location');
   t('Page Meta Data');
   t('Public Testimony');
   t('Related Items');
