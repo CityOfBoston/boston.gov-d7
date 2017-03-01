@@ -116,11 +116,12 @@ function bos_content_type_event_field_group_info() {
       1 => 'field_details_link',
       2 => 'field_event_contact',
       3 => 'field_phone_number',
-      4 => 'field_address',
-      5 => 'field_links',
-      6 => 'field_event_type',
-      7 => 'field_multiple_neighborhoods',
-      8 => 'field_email',
+      4 => 'field_links',
+      5 => 'field_event_type',
+      6 => 'field_multiple_neighborhoods',
+      7 => 'field_email',
+      8 => 'field_city_sponsored',
+      9 => 'group_event_location',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -133,6 +134,35 @@ function bos_content_type_event_field_group_info() {
     ),
   );
   $field_groups['group_event_details|node|event|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_event_location|node|event|form';
+  $field_group->group_name = 'group_event_location';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'event';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_event_details';
+  $field_group->data = array(
+    'label' => 'Event Location',
+    'weight' => '43',
+    'children' => array(
+      0 => 'field_address',
+      1 => 'field_city_hall',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-event-location field-group-fieldset',
+        'required_fields' => 1,
+        'id' => '',
+      ),
+    ),
+  );
+  $field_groups['group_event_location|node|event|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -230,6 +260,7 @@ function bos_content_type_event_field_group_info() {
   t('Components');
   t('Event Dates');
   t('Event Details');
+  t('Event Location');
   t('Page Meta Data');
   t('Related Content');
   t('Sidebar Components');

@@ -40,7 +40,7 @@ function bos_content_type_event_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 1,
+        'weight' => 0,
       ),
       'department_listing' => array(
         'label' => 'above',
@@ -179,7 +179,7 @@ function bos_content_type_event_field_default_field_instances() {
           'use_widget_handlers' => 1,
         ),
         'type' => 'addressfield_default',
-        'weight' => 5,
+        'weight' => 4,
       ),
       'department_listing' => array(
         'label' => 'above',
@@ -282,7 +282,131 @@ function bos_content_type_event_field_default_field_instances() {
         ),
       ),
       'type' => 'addressfield_standard',
-      'weight' => 32,
+      'weight' => 44,
+    ),
+  );
+
+  // Exported field_instance: 'node-event-field_city_hall'.
+  $field_instances['node-event-field_city_hall'] = array(
+    'bundle' => 'event',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'Check this box if the event is happening at City Hall, or on City Hall Plaza.',
+    'display' => array(
+      'calendar_listing' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 27,
+      ),
+      'featured_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'listing' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'listing_short' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'no_wrapper',
+    'field_name' => 'field_city_hall',
+    'label' => 'Is this event happening at City Hall?',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 45,
+    ),
+  );
+
+  // Exported field_instance: 'node-event-field_city_sponsored'.
+  $field_instances['node-event-field_city_sponsored'] = array(
+    'bundle' => 'event',
+    'default_value' => array(
+      0 => array(
+        'value' => 1,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'Check this box if the event is sponsored by the City and should show up in the Boston.gov calendar. Otherwise, uncheck it.',
+    'display' => array(
+      'calendar_listing' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 28,
+      ),
+      'featured_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'listing' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'listing_short' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'no_wrapper',
+    'field_name' => 'field_city_sponsored',
+    'label' => 'Sponsored by the City?',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 39,
     ),
   );
 
@@ -318,7 +442,7 @@ function bos_content_type_event_field_default_field_instances() {
           'view_mode' => 'full',
         ),
         'type' => 'paragraphs_view',
-        'weight' => 15,
+        'weight' => 11,
       ),
       'department_listing' => array(
         'label' => 'above',
@@ -539,7 +663,7 @@ function bos_content_type_event_field_default_field_instances() {
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
-        'weight' => 31,
+        'weight' => 23,
       ),
       'featured_item' => array(
         'label' => 'above',
@@ -613,7 +737,7 @@ function bos_content_type_event_field_default_field_instances() {
           'view_mode' => 'department_listing',
         ),
         'type' => 'entityreference_entity_view',
-        'weight' => 27,
+        'weight' => 20,
       ),
       'featured_item' => array(
         'label' => 'above',
@@ -701,7 +825,7 @@ function bos_content_type_event_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_plain',
-        'weight' => 6,
+        'weight' => 5,
       ),
       'department_listing' => array(
         'label' => 'above',
@@ -793,7 +917,7 @@ function bos_content_type_event_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 35,
+      'weight' => 48,
     ),
   );
 
@@ -828,7 +952,7 @@ function bos_content_type_event_field_default_field_instances() {
         'module' => 'link',
         'settings' => array(),
         'type' => 'link_plain',
-        'weight' => 2,
+        'weight' => 1,
       ),
       'department_listing' => array(
         'label' => 'above',
@@ -932,7 +1056,7 @@ function bos_content_type_event_field_default_field_instances() {
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 34,
+      'weight' => 47,
     ),
   );
 
@@ -959,7 +1083,7 @@ function bos_content_type_event_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 30,
+        'weight' => 22,
       ),
       'featured_item' => array(
         'label' => 'above',
@@ -1002,7 +1126,7 @@ function bos_content_type_event_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 30,
+      'weight' => 41,
     ),
   );
 
@@ -1036,7 +1160,7 @@ function bos_content_type_event_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 3,
+        'weight' => 2,
       ),
       'department_listing' => array(
         'label' => 'above',
@@ -1128,7 +1252,7 @@ function bos_content_type_event_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 29,
+      'weight' => 40,
     ),
   );
 
@@ -1178,7 +1302,7 @@ function bos_content_type_event_field_default_field_instances() {
           'show_repeat_rule' => 'hide',
         ),
         'type' => 'date_default',
-        'weight' => 9,
+        'weight' => 6,
       ),
       'department_listing' => array(
         'label' => 'above',
@@ -1328,7 +1452,7 @@ function bos_content_type_event_field_default_field_instances() {
           'view_mode' => 'default',
         ),
         'type' => 'entityreference_entity_view',
-        'weight' => 21,
+        'weight' => 14,
       ),
       'department_listing' => array(
         'label' => 'above',
@@ -1420,7 +1544,7 @@ function bos_content_type_event_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 36,
+      'weight' => 49,
     ),
   );
 
@@ -1454,7 +1578,7 @@ function bos_content_type_event_field_default_field_instances() {
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 10,
+        'weight' => 7,
       ),
       'department_listing' => array(
         'label' => 'above',
@@ -1584,7 +1708,7 @@ function bos_content_type_event_field_default_field_instances() {
           'picture_mapping' => 'wide_2000x460',
         ),
         'type' => 'picture',
-        'weight' => 11,
+        'weight' => 8,
       ),
       'department_listing' => array(
         'label' => 'above',
@@ -1739,7 +1863,7 @@ function bos_content_type_event_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 18,
+        'weight' => 13,
       ),
       'department_listing' => array(
         'label' => 'above',
@@ -1866,7 +1990,7 @@ function bos_content_type_event_field_default_field_instances() {
           'view_mode' => 'full',
         ),
         'type' => 'paragraphs_view',
-        'weight' => 17,
+        'weight' => 12,
       ),
       'department_listing' => array(
         'label' => 'above',
@@ -1993,7 +2117,7 @@ function bos_content_type_event_field_default_field_instances() {
       'module' => 'paragraphs',
       'settings' => array(),
       'type' => 'paragraphs_embed',
-      'weight' => 37,
+      'weight' => 50,
     ),
   );
 
@@ -2017,7 +2141,7 @@ function bos_content_type_event_field_default_field_instances() {
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
-        'weight' => 22,
+        'weight' => 15,
       ),
       'featured_item' => array(
         'label' => 'above',
@@ -2071,7 +2195,7 @@ function bos_content_type_event_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 33,
+      'weight' => 46,
     ),
   );
 
@@ -2095,7 +2219,7 @@ function bos_content_type_event_field_default_field_instances() {
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
-        'weight' => 26,
+        'weight' => 19,
       ),
       'featured_item' => array(
         'label' => 'above',
@@ -2177,7 +2301,7 @@ function bos_content_type_event_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 4,
+        'weight' => 3,
       ),
       'department_listing' => array(
         'label' => 'above',
@@ -2269,7 +2393,7 @@ function bos_content_type_event_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 31,
+      'weight' => 42,
     ),
   );
 
@@ -2293,7 +2417,7 @@ function bos_content_type_event_field_default_field_instances() {
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
-        'weight' => 24,
+        'weight' => 17,
       ),
       'featured_item' => array(
         'label' => 'above',
@@ -2364,7 +2488,7 @@ function bos_content_type_event_field_default_field_instances() {
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
-        'weight' => 25,
+        'weight' => 18,
       ),
       'featured_item' => array(
         'label' => 'above',
@@ -2452,7 +2576,7 @@ function bos_content_type_event_field_default_field_instances() {
           'show_repeat_rule' => 'show',
         ),
         'type' => 'date_default',
-        'weight' => 13,
+        'weight' => 10,
       ),
       'department_listing' => array(
         'label' => 'above',
@@ -2556,7 +2680,7 @@ function bos_content_type_event_field_default_field_instances() {
         'year_range' => '-3:+3',
       ),
       'type' => 'date_popup',
-      'weight' => 34,
+      'weight' => 41,
     ),
   );
 
@@ -2580,7 +2704,7 @@ function bos_content_type_event_field_default_field_instances() {
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
-        'weight' => 29,
+        'weight' => 21,
       ),
       'featured_item' => array(
         'label' => 'above',
@@ -2651,7 +2775,7 @@ function bos_content_type_event_field_default_field_instances() {
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
-        'weight' => 33,
+        'weight' => 25,
       ),
       'featured_item' => array(
         'label' => 'above',
@@ -2719,7 +2843,7 @@ function bos_content_type_event_field_default_field_instances() {
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
-        'weight' => 34,
+        'weight' => 26,
       ),
       'featured_item' => array(
         'label' => 'above',
@@ -2787,7 +2911,7 @@ function bos_content_type_event_field_default_field_instances() {
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
-        'weight' => 32,
+        'weight' => 24,
       ),
       'featured_item' => array(
         'label' => 'above',
@@ -2855,7 +2979,7 @@ function bos_content_type_event_field_default_field_instances() {
           'view_mode' => 'full',
         ),
         'type' => 'paragraphs_view',
-        'weight' => 23,
+        'weight' => 16,
       ),
       'featured_item' => array(
         'label' => 'above',
@@ -3004,7 +3128,7 @@ function bos_content_type_event_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 16,
+        'weight' => 29,
       ),
       'department_listing' => array(
         'label' => 'above',
@@ -3134,7 +3258,7 @@ function bos_content_type_event_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 28,
+        'weight' => 30,
       ),
       'featured_item' => array(
         'label' => 'above',
@@ -3173,7 +3297,7 @@ function bos_content_type_event_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 36,
+      'weight' => 42,
     ),
   );
 
@@ -3214,7 +3338,7 @@ function bos_content_type_event_field_default_field_instances() {
           'show_repeat_rule' => 'show',
         ),
         'type' => 'date_default',
-        'weight' => 12,
+        'weight' => 9,
       ),
       'department_listing' => array(
         'label' => 'above',
@@ -3318,7 +3442,7 @@ function bos_content_type_event_field_default_field_instances() {
         'year_range' => '-3:+3',
       ),
       'type' => 'date_popup',
-      'weight' => 33,
+      'weight' => 40,
     ),
   );
 
@@ -3332,6 +3456,8 @@ function bos_content_type_event_field_default_field_instances() {
   t('An email address for constituents to reach out about the event.');
   t('Are any cemeteries, parks, historic districts, or community centers relevant for this event?');
   t('Body');
+  t('Check this box if the event is happening at City Hall, or on City Hall Plaza.');
+  t('Check this box if the event is sponsored by the City and should show up in the Boston.gov calendar. Otherwise, uncheck it.');
   t('Components');
   t('Contact');
   t('Contact Email');
@@ -3345,6 +3471,7 @@ function bos_content_type_event_field_default_field_instances() {
   t('Event Type');
   t('Featured');
   t('Intro Image');
+  t('Is this event happening at City Hall?');
   t('List all departments related to this event.');
   t('Location');
   t('Neighborhood');
@@ -3363,6 +3490,7 @@ function bos_content_type_event_field_default_field_instances() {
   t('Related posts');
   t('Related programs / initiatives');
   t('Sidebar Components');
+  t('Sponsored by the City?');
   t('The Department primarily responsible for this event.');
   t('The name of the contact for this event.');
   t('This will be displayed with the event in the upcoming events component.');
