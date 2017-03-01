@@ -109,7 +109,8 @@ function boston_preprocess_breadcrumb(array &$variables, $hook) {
  */
 function boston_preprocess_html(array &$variables, $hook) {
   // A variable to define the cache buster
-  $variables['cache_buster'] = variable_get('css_js_query_string', '0');
+  $buster = variable_get('css_js_query_string', '0');
+  $variables['cache_buster'] = $buster;
 
   // A variable to define the asset url
   $variables['asset_url'] = variable_get('asset_url', 'https://patterns.boston.gov');
