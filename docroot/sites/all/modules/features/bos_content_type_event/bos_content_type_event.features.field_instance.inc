@@ -134,7 +134,7 @@ function bos_content_type_event_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 28,
+      'weight' => 29,
     ),
   );
 
@@ -353,11 +353,11 @@ function bos_content_type_event_field_default_field_instances() {
     'bundle' => 'event',
     'default_value' => array(
       0 => array(
-        'value' => 1,
+        'value' => 0,
       ),
     ),
     'deleted' => 0,
-    'description' => 'Check this box if the event is sponsored by the City and should show up in the Boston.gov calendar. Otherwise, uncheck it.',
+    'description' => 'Check this box if the event is <strong>NOT</strong> sponsored by the City, or should <strong>NOT</strong> show up in the Boston.gov calendar for any reason. This event will still be added to the events feed for consumption by other sites or applications.',
     'display' => array(
       'calendar_listing' => array(
         'label' => 'above',
@@ -394,7 +394,7 @@ function bos_content_type_event_field_default_field_instances() {
     'entity_type' => 'node',
     'fences_wrapper' => 'no_wrapper',
     'field_name' => 'field_city_sponsored',
-    'label' => 'Sponsored by the City?',
+    'label' => 'Event not sponsored by the City',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -406,7 +406,7 @@ function bos_content_type_event_field_default_field_instances() {
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 39,
+      'weight' => 50,
     ),
   );
 
@@ -712,7 +712,7 @@ function bos_content_type_event_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 29,
+      'weight' => 30,
     ),
   );
 
@@ -917,7 +917,7 @@ function bos_content_type_event_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 48,
+      'weight' => 47,
     ),
   );
 
@@ -1056,7 +1056,7 @@ function bos_content_type_event_field_default_field_instances() {
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 47,
+      'weight' => 46,
     ),
   );
 
@@ -1544,7 +1544,7 @@ function bos_content_type_event_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 49,
+      'weight' => 48,
     ),
   );
 
@@ -1661,7 +1661,7 @@ function bos_content_type_event_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 24,
+      'weight' => 25,
     ),
   );
 
@@ -1828,7 +1828,7 @@ function bos_content_type_event_field_default_field_instances() {
         ),
       ),
       'type' => 'media_generic',
-      'weight' => 25,
+      'weight' => 26,
     ),
   );
 
@@ -1951,7 +1951,7 @@ function bos_content_type_event_field_default_field_instances() {
         'show_token_tree' => FALSE,
       ),
       'type' => 'text_textarea',
-      'weight' => 27,
+      'weight' => 28,
     ),
   );
 
@@ -2117,7 +2117,7 @@ function bos_content_type_event_field_default_field_instances() {
       'module' => 'paragraphs',
       'settings' => array(),
       'type' => 'paragraphs_embed',
-      'weight' => 50,
+      'weight' => 49,
     ),
   );
 
@@ -2195,7 +2195,7 @@ function bos_content_type_event_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 46,
+      'weight' => 45,
     ),
   );
 
@@ -3237,7 +3237,7 @@ function bos_content_type_event_field_default_field_instances() {
         ),
       ),
       'type' => 'media_generic',
-      'weight' => 26,
+      'weight' => 27,
     ),
   );
 
@@ -3456,8 +3456,8 @@ function bos_content_type_event_field_default_field_instances() {
   t('An email address for constituents to reach out about the event.');
   t('Are any cemeteries, parks, historic districts, or community centers relevant for this event?');
   t('Body');
+  t('Check this box if the event is <strong>NOT</strong> sponsored by the City, or should <strong>NOT</strong> show up in the Boston.gov calendar for any reason. This event will still be added to the events feed for consumption by other sites or applications.');
   t('Check this box if the event is happening at City Hall, or on City Hall Plaza.');
-  t('Check this box if the event is sponsored by the City and should show up in the Boston.gov calendar. Otherwise, uncheck it.');
   t('Components');
   t('Contact');
   t('Contact Email');
@@ -3469,6 +3469,7 @@ function bos_content_type_event_field_default_field_instances() {
   t('Enter the cost, with a $ or FREE');
   t('Event Dates');
   t('Event Type');
+  t('Event not sponsored by the City');
   t('Featured');
   t('Intro Image');
   t('Is this event happening at City Hall?');
@@ -3490,7 +3491,6 @@ function bos_content_type_event_field_default_field_instances() {
   t('Related posts');
   t('Related programs / initiatives');
   t('Sidebar Components');
-  t('Sponsored by the City?');
   t('The Department primarily responsible for this event.');
   t('The name of the contact for this event.');
   t('This will be displayed with the event in the upcoming events component.');

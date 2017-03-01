@@ -38,6 +38,7 @@ features[field_group][] = group_components|node|event|form
 features[field_group][] = group_event_basic_info|node|event|form
 features[field_group][] = group_event_dates|node|event|form
 features[field_group][] = group_event_details|node|event|form
+features[field_group][] = group_event_information|node|event|form
 features[field_group][] = group_event_location|node|event|form
 features[field_group][] = group_page_metadata|node|event|form
 features[field_group][] = group_related_content|node|event|form
