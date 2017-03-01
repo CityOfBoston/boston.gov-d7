@@ -203,6 +203,14 @@ function bos_view_upcoming_events_views_default_views() {
   $handler->display->display_options['filters']['field_event_dates_value']['granularity'] = 'minute';
   $handler->display->display_options['filters']['field_event_dates_value']['form_type'] = 'date_text';
   $handler->display->display_options['filters']['field_event_dates_value']['default_date'] = '-3 hours';
+  /* Filter criterion: Content: Event not sponsored by the City (field_city_sponsored) */
+  $handler->display->display_options['filters']['field_city_sponsored_value']['id'] = 'field_city_sponsored_value';
+  $handler->display->display_options['filters']['field_city_sponsored_value']['table'] = 'field_data_field_city_sponsored';
+  $handler->display->display_options['filters']['field_city_sponsored_value']['field'] = 'field_city_sponsored_value';
+  $handler->display->display_options['filters']['field_city_sponsored_value']['operator'] = 'not';
+  $handler->display->display_options['filters']['field_city_sponsored_value']['value'] = array(
+    1 => '1',
+  );
 
   /* Display: Upcoming Events */
   $handler = $view->new_display('block', 'Upcoming Events', 'most_recent');
@@ -232,54 +240,6 @@ function bos_view_upcoming_events_views_default_views() {
   $handler->display->display_options['sorts']['field_public_notice_date_value']['table'] = 'field_data_field_public_notice_date';
   $handler->display->display_options['sorts']['field_public_notice_date_value']['field'] = 'field_public_notice_date_value';
   $handler->display->display_options['defaults']['arguments'] = FALSE;
-  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
-  $handler->display->display_options['filter_groups']['groups'] = array(
-    1 => 'AND',
-    2 => 'OR',
-  );
-  $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Filter criterion: Content: Published */
-  $handler->display->display_options['filters']['status']['id'] = 'status';
-  $handler->display->display_options['filters']['status']['table'] = 'node';
-  $handler->display->display_options['filters']['status']['field'] = 'status';
-  $handler->display->display_options['filters']['status']['value'] = 1;
-  $handler->display->display_options['filters']['status']['group'] = 1;
-  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Content: Type */
-  $handler->display->display_options['filters']['type']['id'] = 'type';
-  $handler->display->display_options['filters']['type']['table'] = 'node';
-  $handler->display->display_options['filters']['type']['field'] = 'type';
-  $handler->display->display_options['filters']['type']['value'] = array(
-    'event' => 'event',
-    'public_notice' => 'public_notice',
-  );
-  $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Field: Event Dates -  start date (field_event_dates) */
-  $handler->display->display_options['filters']['field_event_dates_value']['id'] = 'field_event_dates_value';
-  $handler->display->display_options['filters']['field_event_dates_value']['table'] = 'field_data_field_event_dates';
-  $handler->display->display_options['filters']['field_event_dates_value']['field'] = 'field_event_dates_value';
-  $handler->display->display_options['filters']['field_event_dates_value']['operator'] = '>=';
-  $handler->display->display_options['filters']['field_event_dates_value']['group'] = 2;
-  $handler->display->display_options['filters']['field_event_dates_value']['granularity'] = 'minute';
-  $handler->display->display_options['filters']['field_event_dates_value']['form_type'] = 'date_text';
-  $handler->display->display_options['filters']['field_event_dates_value']['default_date'] = '-3 hours';
-  $handler->display->display_options['filters']['field_event_dates_value']['add_delta'] = 'yes';
-  /* Filter criterion: Content: Date -  start date (field_public_notice_date) */
-  $handler->display->display_options['filters']['field_public_notice_date_value']['id'] = 'field_public_notice_date_value';
-  $handler->display->display_options['filters']['field_public_notice_date_value']['table'] = 'field_data_field_public_notice_date';
-  $handler->display->display_options['filters']['field_public_notice_date_value']['field'] = 'field_public_notice_date_value';
-  $handler->display->display_options['filters']['field_public_notice_date_value']['operator'] = '>=';
-  $handler->display->display_options['filters']['field_public_notice_date_value']['group'] = 2;
-  $handler->display->display_options['filters']['field_public_notice_date_value']['granularity'] = 'minute';
-  $handler->display->display_options['filters']['field_public_notice_date_value']['form_type'] = 'date_text';
-  $handler->display->display_options['filters']['field_public_notice_date_value']['default_date'] = '-3 hours';
-  /* Filter criterion: Broken/missing handler */
-  $handler->display->display_options['filters']['views_exclude_previous']['id'] = 'views_exclude_previous';
-  $handler->display->display_options['filters']['views_exclude_previous']['table'] = 'node';
-  $handler->display->display_options['filters']['views_exclude_previous']['field'] = 'views_exclude_previous';
-  $handler->display->display_options['filters']['views_exclude_previous']['value'] = array(
-    'node_view' => 'node_view',
-  );
 
   /* Display: Related Events */
   $handler = $view->new_display('block', 'Related Events', 'block_1');
@@ -458,6 +418,14 @@ function bos_view_upcoming_events_views_default_views() {
     'node_view' => 'node_view',
   );
   $handler->display->display_options['filters']['views_exclude_previous']['group'] = 1;
+  /* Filter criterion: Content: Event not sponsored by the City (field_city_sponsored) */
+  $handler->display->display_options['filters']['field_city_sponsored_value']['id'] = 'field_city_sponsored_value';
+  $handler->display->display_options['filters']['field_city_sponsored_value']['table'] = 'field_data_field_city_sponsored';
+  $handler->display->display_options['filters']['field_city_sponsored_value']['field'] = 'field_city_sponsored_value';
+  $handler->display->display_options['filters']['field_city_sponsored_value']['operator'] = 'not';
+  $handler->display->display_options['filters']['field_city_sponsored_value']['value'] = array(
+    1 => '1',
+  );
 
   /* Display: Departments */
   $handler = $view->new_display('block', 'Departments', 'block_2');
@@ -541,6 +509,14 @@ function bos_view_upcoming_events_views_default_views() {
     'node_view' => 'node_view',
   );
   $handler->display->display_options['filters']['views_exclude_previous']['group'] = 1;
+  /* Filter criterion: Content: Event not sponsored by the City (field_city_sponsored) */
+  $handler->display->display_options['filters']['field_city_sponsored_value']['id'] = 'field_city_sponsored_value';
+  $handler->display->display_options['filters']['field_city_sponsored_value']['table'] = 'field_data_field_city_sponsored';
+  $handler->display->display_options['filters']['field_city_sponsored_value']['field'] = 'field_city_sponsored_value';
+  $handler->display->display_options['filters']['field_city_sponsored_value']['operator'] = 'not';
+  $handler->display->display_options['filters']['field_city_sponsored_value']['value'] = array(
+    1 => '1',
+  );
 
   /* Display: Places */
   $handler = $view->new_display('block', 'Places', 'block_3');
@@ -617,6 +593,13 @@ function bos_view_upcoming_events_views_default_views() {
     'node_view' => 'node_view',
   );
   $handler->display->display_options['filters']['views_exclude_previous']['group'] = 1;
+  /* Filter criterion: Content: Event not sponsored by the City (field_city_sponsored) */
+  $handler->display->display_options['filters']['field_city_sponsored_value']['id'] = 'field_city_sponsored_value';
+  $handler->display->display_options['filters']['field_city_sponsored_value']['table'] = 'field_data_field_city_sponsored';
+  $handler->display->display_options['filters']['field_city_sponsored_value']['field'] = 'field_city_sponsored_value';
+  $handler->display->display_options['filters']['field_city_sponsored_value']['value'] = array(
+    1 => '1',
+  );
 
   /* Display: People */
   $handler = $view->new_display('block', 'People', 'block_4');
@@ -694,6 +677,14 @@ function bos_view_upcoming_events_views_default_views() {
     'node_view' => 'node_view',
   );
   $handler->display->display_options['filters']['views_exclude_previous']['group'] = 1;
+  /* Filter criterion: Content: Event not sponsored by the City (field_city_sponsored) */
+  $handler->display->display_options['filters']['field_city_sponsored_value']['id'] = 'field_city_sponsored_value';
+  $handler->display->display_options['filters']['field_city_sponsored_value']['table'] = 'field_data_field_city_sponsored';
+  $handler->display->display_options['filters']['field_city_sponsored_value']['field'] = 'field_city_sponsored_value';
+  $handler->display->display_options['filters']['field_city_sponsored_value']['operator'] = 'not';
+  $handler->display->display_options['filters']['field_city_sponsored_value']['value'] = array(
+    1 => '1',
+  );
 
   /* Display: Programs */
   $handler = $view->new_display('block', 'Programs', 'block_5');
