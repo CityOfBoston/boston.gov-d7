@@ -56,6 +56,13 @@ function bos_api_public_notice_default_services_endpoint() {
         ),
       ),
     ),
+    'events' => array(
+      'operations' => array(
+        'index' => array(
+          'enabled' => '1',
+        ),
+      ),
+    ),
   );
   $endpoint->debug = 0;
   $export['public_notices'] = $endpoint;
