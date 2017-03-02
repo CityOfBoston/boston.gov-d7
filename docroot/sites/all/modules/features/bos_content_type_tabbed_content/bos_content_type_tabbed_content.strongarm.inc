@@ -126,13 +126,22 @@ function bos_content_type_tabbed_content_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '4',
+          'weight' => '6',
         ),
         'title' => array(
           'weight' => '1',
         ),
         'path' => array(
-          'weight' => '3',
+          'weight' => '5',
+        ),
+        'rabbit_hole' => array(
+          'weight' => '1',
+        ),
+        'redirect' => array(
+          'weight' => '8',
+        ),
+        'xmlsitemap' => array(
+          'weight' => '7',
         ),
       ),
       'display' => array(),

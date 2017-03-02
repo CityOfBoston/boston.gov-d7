@@ -50,10 +50,10 @@ function bos_content_type_tabbed_content_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Page Metadata',
-    'weight' => '1',
+    'weight' => '2',
     'children' => array(
-      0 => 'field_type_of_content',
-      1 => 'field_published_date',
+      0 => 'field_published_date',
+      1 => 'field_type_of_content',
       2 => 'field_updated_date',
     ),
     'format_type' => 'tab',
@@ -67,6 +67,33 @@ function bos_content_type_tabbed_content_field_group_info() {
     ),
   );
   $field_groups['group_page_metadata|node|tabbed_content|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_sidebar_components|node|tabbed_content|form';
+  $field_group->group_name = 'group_sidebar_components';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'tabbed_content';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Sidebar Components',
+    'weight' => '4',
+    'children' => array(
+      0 => 'field_sidebar_components',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-sidebar-components field-group-tab',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $field_groups['group_sidebar_components|node|tabbed_content|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -109,7 +136,7 @@ function bos_content_type_tabbed_content_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Tabs',
-    'weight' => '2',
+    'weight' => '3',
     'children' => array(
       0 => 'field_tabbed_content',
     ),
@@ -129,6 +156,7 @@ function bos_content_type_tabbed_content_field_group_info() {
   // Included for use with string extractors like potx.
   t('Basic Information');
   t('Page Metadata');
+  t('Sidebar Components');
   t('Tab');
   t('Tabs');
 
