@@ -112,15 +112,11 @@ function bos_content_type_event_field_group_info() {
     'label' => 'Event Details',
     'weight' => '5',
     'children' => array(
-      0 => 'field_cost',
-      1 => 'field_details_link',
-      2 => 'field_event_contact',
-      3 => 'field_phone_number',
-      4 => 'field_address',
-      5 => 'field_links',
-      6 => 'field_event_type',
-      7 => 'field_multiple_neighborhoods',
-      8 => 'field_email',
+      0 => 'field_event_contact',
+      1 => 'field_phone_number',
+      2 => 'field_email',
+      3 => 'group_event_location',
+      4 => 'group_event_information',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -133,6 +129,69 @@ function bos_content_type_event_field_group_info() {
     ),
   );
   $field_groups['group_event_details|node|event|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_event_information|node|event|form';
+  $field_group->group_name = 'group_event_information';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'event';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_event_details';
+  $field_group->data = array(
+    'label' => 'Event Information',
+    'weight' => '44',
+    'children' => array(
+      0 => 'field_cost',
+      1 => 'field_details_link',
+      2 => 'field_links',
+      3 => 'field_event_type',
+      4 => 'field_multiple_neighborhoods',
+      5 => 'field_city_sponsored',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Event Information',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'id' => '',
+        'classes' => 'group-event-information field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $field_groups['group_event_information|node|event|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_event_location|node|event|form';
+  $field_group->group_name = 'group_event_location';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'event';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_event_details';
+  $field_group->data = array(
+    'label' => 'Event Location',
+    'weight' => '43',
+    'children' => array(
+      0 => 'field_address',
+      1 => 'field_city_hall',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-event-location field-group-fieldset',
+        'required_fields' => 1,
+        'id' => '',
+      ),
+    ),
+  );
+  $field_groups['group_event_location|node|event|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -230,6 +289,8 @@ function bos_content_type_event_field_group_info() {
   t('Components');
   t('Event Dates');
   t('Event Details');
+  t('Event Information');
+  t('Event Location');
   t('Page Meta Data');
   t('Related Content');
   t('Sidebar Components');

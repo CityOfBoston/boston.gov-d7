@@ -487,6 +487,14 @@ function bos_view_calendar_listing_views_default_views() {
     36 => 0,
     41 => 0,
   );
+  /* Filter criterion: Content: Event not sponsored by the City (field_city_sponsored) */
+  $handler->display->display_options['filters']['field_city_sponsored_value']['id'] = 'field_city_sponsored_value';
+  $handler->display->display_options['filters']['field_city_sponsored_value']['table'] = 'field_data_field_city_sponsored';
+  $handler->display->display_options['filters']['field_city_sponsored_value']['field'] = 'field_city_sponsored_value';
+  $handler->display->display_options['filters']['field_city_sponsored_value']['operator'] = 'not';
+  $handler->display->display_options['filters']['field_city_sponsored_value']['value'] = array(
+    1 => '1',
+  );
 
   /* Display: Listing */
   $handler = $view->new_display('page', 'Listing', 'listing');
