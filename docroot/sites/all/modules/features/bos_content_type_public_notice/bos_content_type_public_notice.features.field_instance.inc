@@ -154,7 +154,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
         ),
       ),
       'type' => 'addressfield_standard',
-      'weight' => 15,
+      'weight' => 35,
     ),
   );
 
@@ -213,6 +213,56 @@ function bos_content_type_public_notice_field_default_field_instances() {
       ),
       'type' => 'options_onoff',
       'weight' => 17,
+    ),
+  );
+
+  // Exported field_instance: 'node-public_notice-field_city_hall'.
+  $field_instances['node-public_notice-field_city_hall'] = array(
+    'bundle' => 'public_notice',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'Check this box if the meeting is happening at City Hall, or on City Hall plaza',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 30,
+      ),
+      'featured_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'no_wrapper',
+    'field_name' => 'field_city_hall',
+    'label' => 'Is this meeting happening at City Hall?',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 36,
     ),
   );
 
@@ -1665,7 +1715,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
         'year_range' => '-0:+3',
       ),
       'type' => 'date_popup',
-      'weight' => 14,
+      'weight' => 33,
     ),
   );
 
@@ -2086,6 +2136,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
   t('Body');
   t('Canceled');
   t('Cancellation Reason');
+  t('Check this box if the meeting is happening at City Hall, or on City Hall plaza');
   t('Components');
   t('Contact Email');
   t('Contact Phone Number');
@@ -2098,6 +2149,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
   t('If this notice is cancelled, enter a reason.');
   t('Intro Text');
   t('Is there public testimony?');
+  t('Is this meeting happening at City Hall?');
   t('List all departments related to this public notice.');
   t('Live Stream');
   t('Location');
