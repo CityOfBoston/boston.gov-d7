@@ -162,11 +162,9 @@
     <div class="lo">
       <a href="https://www.boston.gov" class="lo-l">
         <img src="<?php print $asset_url ?>/images/public/logo.svg" alt="City of Boston" class="lo-i" />
+        <span class="lo-t">Mayor Martin J. Walsh</span>
       </a>
     </div>
-    <a href="https://www.boston.gov" class="s">
-      <img src="<?php print $asset_url ?>/images/public/seal.svg" alt="City of Boston" class="s-i" />
-    </a>
     <nav class="nv-h">
       <ul class="nv-h-l">
         <?php foreach ($secondary_menu as &$link) { ?>
