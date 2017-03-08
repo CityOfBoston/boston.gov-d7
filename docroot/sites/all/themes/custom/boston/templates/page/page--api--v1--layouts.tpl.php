@@ -10,12 +10,18 @@
 ?>
 
 <input type="checkbox" id="hb__trigger" class="hb__trigger" aria-hidden="true" />
-<div class="main-navigation">
-  <div class="main-navigation-wrapper">
-    <div class="main-navigation-title"></div>
+<nav class="nv-m">
+  <div class="nv-m-h">
+      <div class="nv-m-h-ic">
+        <img src="<?php print $asset_url ?>/images/b-dark.svg" title="B" aria-hidden="true" class="nv-m-h-i" />
+      </div>
+      <div id="nv-m-h-t" class="nv-m-h-t">&nbsp;</div>
+  </div>
+  <div class="nv-m-c">
     <?php print render($page['navigation']); ?>
   </div>
-</div>
+  <?php print theme('nav_js'); ?>
+</nav>
 <div class="page" id="page">
   <header id="main-menu" class="header" role="banner">
     <div class="container">

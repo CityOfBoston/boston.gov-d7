@@ -49,6 +49,16 @@ function boston_theme() {
       'render element' => 'form',
       'template' => 'templates/snippets/user_login',
     ),
+    'nav_js' => array(
+      'template' => 'templates/snippets/nav-js',
+    ),
+    'profile_address' => array(
+      'variables' => array(
+        'address' => NULL,
+        'address_type' => NULL,
+      ),
+      'template' => 'templates/snippets/profile-address',
+    ),
   );
 }
 

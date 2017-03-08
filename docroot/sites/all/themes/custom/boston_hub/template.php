@@ -5,22 +5,6 @@
  */
 
 /**
- * Implements hook_theme().
- */
-function boston_hub_theme() {
-  return array(
-    'profile_address' => array(
-      'variables' => array(
-        'address' => NULL,
-        'address_type' => NULL,
-      ),
-      'template' => 'templates/snippets/profile-address',
-    ),
-
-  );
-}
-
-/**
  * Implements hook_preprocess_page().
  */
 function boston_hub_preprocess_page(array &$variables) {
