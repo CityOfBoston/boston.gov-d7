@@ -1287,6 +1287,8 @@ function boston_preprocess_menu_link(array &$variables, $hook) {
   // Add BEM-style classes to the menu item classes.
   if (!in_array('masquerade', $menu_item_classes)) {
     $extra_classes = $variables['element']['#original_link']['depth'] == '1' ? array('nv-m-c-l-i') : array('nv-m-c-l-l-i');
+  } else {
+    $extra_classes = array();
   }
 
   foreach ($menu_item_classes as $key => $class) {
@@ -1310,7 +1312,12 @@ function boston_preprocess_menu_link(array &$variables, $hook) {
 
   if (isset($variables['element']['#original_link']['menu_name']) && $variables['element']['#original_link']['menu_name'] == 'main-menu') {
     // Add BEM-style classes to the menu link classes.
-    $extra_classes = array('nv-m-c-a nv-m-c-a--p');
+    $extra_classes = array(
+      'nv-m-c-a',
+      'nv-m-c-a--p',
+    );
+  } else {
+    $extra_classes = array();
   }
 
   if (empty($menu_link_classes)) {

@@ -55,6 +55,10 @@ function bos_view_blank_layouts_views_default_views() {
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'Generic';
   $handler->display->display_options['path'] = 'api/v1/layouts/generic';
+
+  /* Display: App */
+  $handler = $view->new_display('page', 'App', 'page_3');
+  $handler->display->display_options['path'] = 'api/v1/layouts/app';
   $export['blank_layouts'] = $view;
 
   return $export;
