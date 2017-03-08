@@ -68,11 +68,6 @@
 
   li {
     list-style-type: none;
-    border-top: 3px solid color(main-nav-bg);
-
-    &:last-child {
-      border-bottom: 3px solid color(main-nav-bg);
-    }
   }
 
   a {
@@ -100,14 +95,6 @@
     &.active-trail {
       background-color: color(main-nav-li-bg-active);
     }
-
-    &.three-one-one {
-      background-color: color(three-one-one);
-      &:hover {
-          background-color: color(three-one-one-bg-hover);
-      }
-    }
-
   }
 
   li.expanded a.nolink {
