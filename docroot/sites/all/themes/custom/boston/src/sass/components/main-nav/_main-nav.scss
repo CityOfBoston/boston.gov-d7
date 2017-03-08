@@ -25,9 +25,9 @@
   transition: left 0.2s;
 }
 
-.hb__trigger:checked ~ #page,
-.hb__trigger:checked ~ #page .header,
-.hb__trigger:checked ~ #page .topic-nav.sticky {
+.brg-tr:checked ~ #page,
+.brg-tr:checked ~ #page .header,
+.brg-tr:checked ~ #page .topic-nav.sticky {
   left: 256px;
 
   @include respond-to(s) {

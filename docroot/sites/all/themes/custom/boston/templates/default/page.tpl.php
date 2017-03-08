@@ -9,7 +9,7 @@
  */
 ?>
 
-<input type="checkbox" id="hb__trigger" class="hb__trigger" aria-hidden="true" />
+<input type="checkbox" id="brg-tr" class="brg-tr" aria-hidden="true" />
 
 <nav class="nv-m">
   <div class="nv-m-h">
@@ -27,7 +27,7 @@
 <div <?php if (!empty($node) && ($node->type !== 'tabbed_content' && $node->type !== 'how_to')): ?>class="page"<?php endif; ?> id="page">
   <header id="main-menu" class="header" role="banner" data-swiftype-index="false">
     <div class="container">
-      <label tabindex="0" for="hb__trigger" class="nav-trigger" type="button" aria-label="Menu" aria-controls="navigation"  aria-expanded="false">
+      <label tabindex="0" for="brg-tr" class="nav-trigger" type="button" aria-label="Menu" aria-controls="navigation"  aria-expanded="false">
         <div class="hb">
           <span class="hb__box">
             <span class="hb__inner"></span>
