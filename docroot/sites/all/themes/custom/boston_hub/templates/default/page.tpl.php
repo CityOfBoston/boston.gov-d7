@@ -11,24 +11,26 @@
  $avatar_email = $field_work_email != '' ? $field_work_email : 'default@boston.gov';
 ?>
 
-<input type="checkbox" id="hb__trigger" class="hb__trigger" aria-hidden="true" />
+<input type="checkbox" id="brg-tr" class="brg-tr" aria-hidden="true" />
 
-<div class="main-navigation">
-  <div class="main-navigation-wrapper">
-    <a href="#skip-link" class="visually-hidden--focusable" id="main-menu" tabindex="-1">Back to top</a>
-    <div class="seal__container">
-      <?php print file_get_contents(drupal_get_path('theme', $GLOBALS['theme']) . '/dist/img/seal.svg') ?>
+<nav class="nv-m">
+  <div class="nv-m-h">
+    <div class="nv-m-h-ic">
+      <img src="<?php print $asset_url ?>/images/hub/seal.svg" title="The Hub" aria-hidden="true" class="nv-m-h-i" />
     </div>
-    <div class="main-navigation-title">Menu</div>
+    <div id="nv-m-h-t" class="nv-m-h-t">Menu</div>
+  </div>
+  <div class="nv-m-c">
     <?php print render($page['navigation']); ?>
   </div>
-</div>
+  <?php print theme('nav_js'); ?>
+</nav>
 
 <div <?php if (!empty($node) && ($node->type !== 'tabbed_content' && $node->type !== 'how_to')): ?>class="page"<?php endif; ?> id="page">
   <header class="header" role="banner">
     <div class="header-container">
 
-      <label for="hb__trigger" class="nav-trigger" type="button" aria-label="Menu" aria-controls="navigation" aria-expanded="false">
+      <label for="brg-tr" class="nav-trigger" type="button" aria-label="Menu" aria-controls="navigation" aria-expanded="false">
         <div class="hb">
           <span class="hb__box">
             <span class="hb__inner"></span>

@@ -49,6 +49,16 @@ function boston_theme() {
       'render element' => 'form',
       'template' => 'templates/snippets/user_login',
     ),
+    'nav_js' => array(
+      'template' => 'templates/snippets/nav-js',
+    ),
+    'profile_address' => array(
+      'variables' => array(
+        'address' => NULL,
+        'address_type' => NULL,
+      ),
+      'template' => 'templates/snippets/profile-address',
+    ),
   );
 }
 
@@ -338,6 +348,7 @@ function boston_preprocess_page(array &$variables) {
   else {
     $variables['secondary_menu_heading'] = '';
   }
+
   // This is done to bring the hero image rendered output to the page level
   // of rendering. Hero image styling fits more naturally at the page level
   // as opposed to the rendered node output in the system block.
@@ -1241,7 +1252,7 @@ function boston_form_alter(&$form, $form_state, $form_id) {
  */
 function boston_preprocess_menu_tree(&$variables) {
   $tree = $variables['tree'];
-  $variables['menu_classes'] = strpos($tree, '<li class="menu-item-back"') === 0 ? 'menu submenu' : 'menu';
+  $variables['menu_classes'] = strpos($tree, '<li class="nv-m-c-bc nv-m-c-b--h"') === 0 ? 'nv-m-c-l-l' : 'nv-m-c-l';
 }
 
 /**
@@ -1274,7 +1285,10 @@ function boston_preprocess_menu_link(array &$variables, $hook) {
   }
 
   // Add BEM-style classes to the menu item classes.
-  $extra_classes = array('menu__item');
+  if (!in_array('masquerade', $menu_item_classes)) {
+    $extra_classes = $variables['element']['#original_link']['depth'] == '1' ? array('nv-m-c-l-i') : array('nv-m-c-l-l-i');
+  }
+
   foreach ($menu_item_classes as $key => $class) {
     switch ($class) {
       // Menu module classes.
@@ -1284,18 +1298,21 @@ function boston_preprocess_menu_link(array &$variables, $hook) {
       case 'active':
         // Menu block module classes.
       case 'active-trail':
-        $extra_classes[] = 'is-' . $class;
+        $extra_classes[] = 'is-' . $class[0];
         break;
 
       case 'has-children':
-        $extra_classes[] = 'is-parent';
+        $extra_classes[] = 'nv-m-c-l-i--k';
         break;
     }
   }
   $menu_item_classes = array_merge($extra_classes, $menu_item_classes);
 
-  // Add BEM-style classes to the menu link classes.
-  $extra_classes = array('menu__link');
+  if (isset($variables['element']['#original_link']['menu_name']) && $variables['element']['#original_link']['menu_name'] == 'main-menu') {
+    // Add BEM-style classes to the menu link classes.
+    $extra_classes = array('nv-m-c-a nv-m-c-a--p');
+  }
+
   if (empty($menu_link_classes)) {
     $menu_link_classes = array();
   }
@@ -1304,7 +1321,7 @@ function boston_preprocess_menu_link(array &$variables, $hook) {
       switch ($class) {
         case 'active':
         case 'active-trail':
-          $extra_classes[] = 'is-' . $class;
+          $extra_classes[] = 'is-' . $class[0];
           break;
       }
     }

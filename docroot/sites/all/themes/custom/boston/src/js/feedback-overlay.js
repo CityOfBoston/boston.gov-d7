@@ -13,7 +13,7 @@
         e.preventDefault();
         var modal_id = $(this).data('modal');
 
-        if ($('#hb__trigger').is(':checked')) {
+        if ($('#brg-tr').is(':checked')) {
           $('.nav-trigger').trigger('click');
         }
 

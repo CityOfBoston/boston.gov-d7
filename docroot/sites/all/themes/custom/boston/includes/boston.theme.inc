@@ -423,7 +423,7 @@ function boston_menu_link__main_menu($variables) {
   if ($element['#below']) {
     // Add a Back button to subnav items in the main menu. Sort the array and
     // so Back is always first, and tell Drupal to re-render the render array.
-    $back_button[] = array('#markup' => '<li class="menu-item-back"><a href="#" class="menu-link-back">Back</a></li>');
+    $back_button[] = array('#markup' => '<li class="nv-m-c-bc nv-m-c-b--h"><button class="nv-m-c-b">Back</button></li>');
     $element['#below'] = $back_button + $element['#below'];
     $sub_menu = drupal_render($element['#below']);
   }

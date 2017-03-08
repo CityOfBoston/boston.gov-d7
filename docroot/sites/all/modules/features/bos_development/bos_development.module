@@ -22,7 +22,7 @@ function bos_development_block_view_alter(&$data, $block) {
     $data['content']['#content']['masquerade'] = array(
       '#theme' => array('menu_link'),
       '#attributes' => array(
-        'class' => array('modal-link'),
+        'class' => array('modal-link', 'masquerade'),
         'data-modal' => 'masquerade',
       ),
       '#title' => 'Masquerade',
