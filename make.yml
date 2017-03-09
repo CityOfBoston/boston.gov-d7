@@ -263,7 +263,7 @@ projects:
   token_filter:
     version: 1.1
   views:
-    version: 3.14
+    version: 3.15
   views_datasource:
     version: 1.0-alpha2
   views_load_more:
