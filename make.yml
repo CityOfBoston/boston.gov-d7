@@ -305,7 +305,7 @@ projects:
   ape:
     version : 1.1
   metatag:
-    version : 1.7
+    version : 1.21
   xautoload:
     version: 5.7
   # Currently unused modules.
