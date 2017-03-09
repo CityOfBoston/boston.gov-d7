@@ -233,7 +233,7 @@ projects:
   panels:
     version: 3.6
   paragraphs:
-    version: 1.0-rc4
+    version: 1.0-rc5
     patch:
     # Issue Link https://www.drupal.org/node/2603424
     # Resolves issue with nested paragraphs & Workbench.
