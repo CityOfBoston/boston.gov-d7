@@ -22,7 +22,7 @@ projects:
       - https://www.drupal.org/files/issues/drupal-image-style-not-found-2211429-4.patch
 
   acquia_connector:
-    version: 2.16
+    version: 2.17
   acquia_purge:
     version: 1.3
   acquia_search_multi_subs:
