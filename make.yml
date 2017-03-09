@@ -227,7 +227,7 @@ projects:
   strongarm:
     version: 2.0
   title:
-    version: 1.0-alpha7
+    version: 1.0-alpha9
   transliteration:
     version: 3.2
   panels:
