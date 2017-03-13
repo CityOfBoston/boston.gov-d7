@@ -597,6 +597,7 @@ function bos_view_upcoming_events_views_default_views() {
   $handler->display->display_options['filters']['field_city_sponsored_value']['id'] = 'field_city_sponsored_value';
   $handler->display->display_options['filters']['field_city_sponsored_value']['table'] = 'field_data_field_city_sponsored';
   $handler->display->display_options['filters']['field_city_sponsored_value']['field'] = 'field_city_sponsored_value';
+  $handler->display->display_options['filters']['field_city_sponsored_value']['operator'] = 'not';
   $handler->display->display_options['filters']['field_city_sponsored_value']['value'] = array(
     1 => '1',
   );
