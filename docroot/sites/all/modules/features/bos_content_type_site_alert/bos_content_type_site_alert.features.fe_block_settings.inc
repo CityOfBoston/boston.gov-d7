@@ -34,10 +34,10 @@ function bos_content_type_site_alert_default_fe_block_settings() {
         'weight' => 0,
       ),
       'boston_public' => array(
-        'region' => '',
-        'status' => 0,
+        'region' => 'site_alert',
+        'status' => 1,
         'theme' => 'boston_public',
-        'weight' => 0,
+        'weight' => -27,
       ),
       'seven' => array(
         'region' => '',
