@@ -17,6 +17,13 @@ function bos_content_type_site_alert_ctools_plugin_api($module = NULL, $api = NU
 }
 
 /**
+ * Implements hook_views_api().
+ */
+function bos_content_type_site_alert_views_api($module = NULL, $api = NULL) {
+  return array("api" => "3.0");
+}
+
+/**
  * Implements hook_node_info().
  */
 function bos_content_type_site_alert_node_info() {
