@@ -656,6 +656,16 @@ function boston_preprocess_accessibility_toolbar(&$variables) {
 /**
  * Implements hook_preprocess_node_BUNDLE().
  */
+function boston_preprocess_node_site_alert(&$variables) {
+  if ($variables['content']['field_icon'] && $variables['content']['field_icon'][0]) {
+    $variables['icon'] = file_get_contents(drupal_realpath(trim(render($variables['content']['field_icon'][0]))));
+    $variables['icon'] = filter_xss($variables['icon'], explode(' ', BOS_CORE_SVG_ELEMENTS));
+  }
+}
+
+/**
+ * Implements hook_preprocess_node_BUNDLE().
+ */
 function boston_preprocess_node_event(&$variables) {
   $components_field = $variables['field_components']['und'];
   $comp_entity_id_array = array();
