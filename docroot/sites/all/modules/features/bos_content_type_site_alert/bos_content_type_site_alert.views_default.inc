@@ -37,7 +37,7 @@ function bos_content_type_site_alert_views_default_views() {
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Field: Field: Cancellation Reason */
+  /* Field: Field: Video ID */
   $handler->display->display_options['fields']['field_extra_info']['id'] = 'field_extra_info';
   $handler->display->display_options['fields']['field_extra_info']['table'] = 'field_data_field_extra_info';
   $handler->display->display_options['fields']['field_extra_info']['field'] = 'field_extra_info';
@@ -145,8 +145,8 @@ function bos_content_type_site_alert_views_default_views() {
   );
 
   /* Display: Block */
-  $handler = $view->new_display('block', 'Block', 'block');
-  $handler->display->display_options['block_description'] = 'site_alert';
+  $handler = $view->new_display('block', 'Block', 'block_site_alert');
+  $handler->display->display_options['block_description'] = 'Site Alerts';
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page_1');
