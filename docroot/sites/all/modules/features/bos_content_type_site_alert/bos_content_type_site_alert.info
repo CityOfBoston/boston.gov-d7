@@ -32,4 +32,5 @@ features[variable][] = node_options_site_alert
 features[variable][] = node_preview_site_alert
 features[variable][] = node_submitted_site_alert
 features[variable][] = xmlsitemap_settings_node_site_alert
+features[views_view][] = boston_site_alerts
 features[views_view][] = site_alert
