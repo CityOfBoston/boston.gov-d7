@@ -28,13 +28,13 @@
  * @see template_process()
  */
 ?>
-<div class="b b--b b--fw"<?php print $attributes; ?>>
-  <div class="b-c b-c--smv fyi">
+<div class="b b--<?php print $block_theme; ?> b--fw"<?php print $attributes; ?>>
+  <div class="b-c b-c--xsmv fyi--<?php print $block_theme; ?>">
     <div class="fyi-c">
-      <?php if (!empty($icon)): ?><div class="fyi-i"><?php print render($icon) ?></div><?php endif; ?>
-      <div class="fyi-t"><?php print render($content['title_field']); ?></div>
-      <div class="fyi-s">/</div>
-      <div class="fyi-d"><?php print render($content['field_extra_info']); ?></div>
+      <?php if (!empty($icon)): ?><div class="fyi-i fyi-i--<?php print $block_theme; ?>"><?php print render($icon) ?></div><?php endif; ?>
+      <div class="fyi-t fyi-t--<?php print $block_theme; ?>"><?php print render($content['title_field']); ?></div>
+      <div class="fyi-s fyi-s--<?php print $block_theme; ?>">/</div>
+      <div class="fyi-d fyi-d--<?php print $block_theme; ?>"><?php print render($content['field_extra_info']); ?></div>
       <?php print render($content['field_link']); ?>
     </div>
   </div>

@@ -24,7 +24,10 @@ function bos_content_type_site_alert_views_default_views() {
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Boston Site Alerts';
   $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['access']['type'] = 'role';
+  $handler->display->display_options['access']['role'] = array(
+    11 => '11',
+  );
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
@@ -37,11 +40,10 @@ function bos_content_type_site_alert_views_default_views() {
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Field: Field: Video ID */
+  /* Field: Field: FYI Content */
   $handler->display->display_options['fields']['field_extra_info']['id'] = 'field_extra_info';
   $handler->display->display_options['fields']['field_extra_info']['table'] = 'field_data_field_extra_info';
   $handler->display->display_options['fields']['field_extra_info']['field'] = 'field_extra_info';
-  $handler->display->display_options['fields']['field_extra_info']['label'] = 'FYI Content';
   $handler->display->display_options['fields']['field_extra_info']['element_default_classes'] = FALSE;
   /* Field: Field: Call to Action */
   $handler->display->display_options['fields']['field_link']['id'] = 'field_link';
