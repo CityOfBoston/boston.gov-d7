@@ -23,20 +23,21 @@ function bos_content_type_site_alert_field_group_info() {
     'label' => 'Info',
     'weight' => '0',
     'children' => array(
-      0 => 'field_icon',
-      1 => 'field_extra_info',
+      0 => 'field_extra_info',
+      1 => 'field_icon',
       2 => 'field_link',
-      3 => 'title_field',
-      4 => 'field_theme',
+      3 => 'field_theme',
+      4 => 'title_field',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
-      'formatter' => 'closed',
+      'label' => 'Info',
       'instance_settings' => array(
-        'description' => '',
-        'classes' => 'group-info field-group-tab',
         'required_fields' => 1,
+        'classes' => 'group-info field-group-tab',
+        'description' => '',
       ),
+      'formatter' => 'closed',
     ),
   );
   $field_groups['group_info|node|site_alert|form'] = $field_group;

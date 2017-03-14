@@ -135,10 +135,10 @@ function bos_content_type_site_alert_strongarm() {
           'weight' => '5',
         ),
         'rabbit_hole' => array(
-          'weight' => '2',
+          'weight' => '3',
         ),
         'redirect' => array(
-          'weight' => '3',
+          'weight' => '2',
         ),
         'xmlsitemap' => array(
           'weight' => '4',
