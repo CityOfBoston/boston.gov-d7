@@ -10,6 +10,17 @@
 function bos_meta_tags_metatag_export_default() {
   $config = array();
 
+  // Exported Metatag config instance: global:frontpage.
+  $config['global:frontpage'] = array(
+    'instance' => 'global:frontpage',
+    'disabled' => FALSE,
+    'config' => array(
+      'title' => array(
+        'value' => '[site:name]',
+      ),
+    ),
+  );
+
   // Exported Metatag config instance: node.
   $config['node'] = array(
     'instance' => 'node',
