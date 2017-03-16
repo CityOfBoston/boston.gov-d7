@@ -85,7 +85,11 @@ function boston_hub_preprocess_page(array &$variables) {
   }
 
   // Create necessary page classes
-  $page_class = '';
+  if ($variables['node']->type !== 'tabbed_content' && $variables['node']->type !== 'how_to') {
+    $page_class = 'page';
+  } else {
+    $page_class = NULL;
+  }
 
   if (!empty($variables['page']['site_alert'])) {
     // Get the active alert node

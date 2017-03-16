@@ -27,6 +27,12 @@ function bos_content_type_site_alert_default_fe_block_settings() {
         'theme' => 'boston',
         'weight' => -27,
       ),
+      'boston' => array(
+        'region' => 'site_alert',
+        'status' => 1,
+        'theme' => 'boston_hub',
+        'weight' => -27,
+      ),
       'boston_admin' => array(
         'region' => '',
         'status' => 0,

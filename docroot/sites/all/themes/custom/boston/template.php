@@ -417,7 +417,11 @@ function boston_preprocess_page(array &$variables) {
   drupal_add_html_head($priority_element, 'swiftype_priority');
 
   // Create necessary page classes
-  $page_class = 'page';
+  if ($variables['node']->type !== 'tabbed_content' && $variables['node']->type !== 'how_to') {
+    $page_class = 'page';
+  } else {
+    $page_class = NULL;
+  }
 
   if (!empty($variables['page']['site_alert'])) {
     // Get the active alert node
