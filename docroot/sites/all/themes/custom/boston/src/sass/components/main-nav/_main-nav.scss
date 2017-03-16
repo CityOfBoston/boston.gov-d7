@@ -8,6 +8,32 @@
 // Offsets the height of the header with extra space
 .page {
   padding-top: 6.6em;
+
+  &--wa {
+    padding-top: 3.5rem;
+
+    .main {
+      padding-top: 2rem;
+    }
+
+    .hero-image {
+      padding-top: 1rem;
+    }
+
+    .hero-image-wrapper:after {
+      top: 1rem;
+    }
+  }
+
+  &--nm {
+    .main {
+      padding-top: 0;
+    }
+
+    .hro--wh {
+      padding-top: 0;
+    }
+  }
 }
 
 #page {
