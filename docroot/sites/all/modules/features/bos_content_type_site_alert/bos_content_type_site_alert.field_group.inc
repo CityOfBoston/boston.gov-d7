@@ -13,6 +13,33 @@ function bos_content_type_site_alert_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_exclude|node|site_alert|form';
+  $field_group->group_name = 'group_exclude';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'site_alert';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Exclude pages',
+    'weight' => '1',
+    'children' => array(
+      0 => 'field_excluded_nodes',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-exclude field-group-tab',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $field_groups['group_exclude|node|site_alert|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_info|node|site_alert|form';
   $field_group->group_name = 'group_info';
   $field_group->entity_type = 'node';
@@ -44,6 +71,7 @@ function bos_content_type_site_alert_field_group_info() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Exclude pages');
   t('Info');
 
   return $field_groups;

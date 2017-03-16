@@ -427,8 +427,10 @@ function boston_preprocess_page(array &$variables) {
     $excluded_nodes = [];
     $excluded = field_get_items('node', $site_alert, 'field_excluded_nodes');
 
-    foreach ($excluded as $key => $value) {
-      $excluded_nodes[] = $value['target_id'];
+    if ($excluded) {
+      foreach ($excluded as $key => $value) {
+        $excluded_nodes[] = $value['target_id'];
+      }
     }
 
     if (isset($variables['node'])) {

@@ -10,6 +10,56 @@
 function bos_content_type_site_alert_field_default_field_instances() {
   $field_instances = array();
 
+  // Exported field_instance: 'node-site_alert-field_excluded_nodes'.
+  $field_instances['node-site_alert-field_excluded_nodes'] = array(
+    'bundle' => 'site_alert',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'If you don\'t want this alert to show on a specific page, add them here.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 5,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div_div_div',
+    'field_name' => 'field_excluded_nodes',
+    'label' => 'Pages to exclude',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference',
+      'settings' => array(
+        'entityreference_autocreate' => array(
+          'active' => 0,
+          'author' => '',
+          'author_current_user' => 1,
+          'status' => -1,
+        ),
+        'match_operator' => 'CONTAINS',
+        'path' => '',
+        'size' => 60,
+      ),
+      'type' => 'entityreference_autocomplete',
+      'weight' => 6,
+    ),
+  );
+
   // Exported field_instance: 'node-site_alert-field_extra_info'.
   $field_instances['node-site_alert-field_extra_info'] = array(
     'bundle' => 'site_alert',
@@ -376,6 +426,8 @@ function bos_content_type_site_alert_field_default_field_instances() {
   t('Call to Action');
   t('Content');
   t('Icon');
+  t('If you don\'t want this alert to show on a specific page, add them here.');
+  t('Pages to exclude');
   t('Site alerts can be red or blue. Pick one.');
   t('The main text of the alert.');
   t('Theme');

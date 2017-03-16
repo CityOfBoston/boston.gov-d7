@@ -40,11 +40,10 @@ function bos_content_type_site_alert_views_default_views() {
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Field: Field: Video ID */
+  /* Field: Field: FYI Content */
   $handler->display->display_options['fields']['field_extra_info']['id'] = 'field_extra_info';
   $handler->display->display_options['fields']['field_extra_info']['table'] = 'field_data_field_extra_info';
   $handler->display->display_options['fields']['field_extra_info']['field'] = 'field_extra_info';
-  $handler->display->display_options['fields']['field_extra_info']['label'] = 'FYI Content';
   $handler->display->display_options['fields']['field_extra_info']['element_default_classes'] = FALSE;
   /* Field: Field: Call to Action */
   $handler->display->display_options['fields']['field_link']['id'] = 'field_link';
