@@ -325,6 +325,24 @@ function bos_core_filter_type_by_all_except($view, $displays, $exceptions) {
 }
 
 /**
+ * Get the nid of an active site alert.
+ */
+function bos_core_active_site_alert() {
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node');
+  $query->entityCondition('bundle', 'site_alert');
+  $query->propertyCondition('status', 1);
+  $query->range(0, 1);
+
+  $results = $query->execute();
+
+  if (!empty($results)) {
+    return array_shift(array_keys($results['node']));
+  }
+  return NULL;
+}
+
+/**
  * Get the nid of an active emergency.
  */
 function bos_core_active_emergency() {

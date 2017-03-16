@@ -24,7 +24,7 @@
   <?php print theme('nav_js'); ?>
 </nav>
 
-<div <?php if (!empty($node) && ($node->type !== 'tabbed_content' && $node->type !== 'how_to')): ?>class="page"<?php endif; ?> id="page">
+<div <?php if (isset($page_class)): ?>class="<?php print $page_class; ?>"<?php endif; ?> id="page">
   <header id="main-menu" class="header" role="banner" data-swiftype-index="false">
     <div class="container">
       <label tabindex="0" for="brg-tr" class="nav-trigger" type="button" aria-label="Menu" aria-controls="navigation"  aria-expanded="false">
@@ -45,9 +45,11 @@
         </div>
       <?php endif; ?>
 
-      <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" class="s">
-        <img src="<?php print $asset_url ?>/images/<?php print $asset_name ?>/seal.svg?<?php print $cache_buster ?>" alt="City of Boston Seal" class="s-i" />
-      </a>
+      <?php if (empty($page['site_alert']) && !$exclude_alert): ?>
+        <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" class="s">
+          <img src="<?php print $asset_url ?>/images/<?php print $asset_name ?>/seal.svg?<?php print $cache_buster ?>" alt="City of Boston Seal" class="s-i" />
+        </a>
+      <?php endif; ?>
 
       <div class="tr">
         <a href="#" class="tr-link">Translate</a>
@@ -70,9 +72,10 @@
 
       <?php print render($page['header']); ?>
     </div>
-
   </header>
-
+  <?php if (!$exclude_alert): ?>
+    <?php print render($page['site_alert']); ?>
+  <?php endif; ?>
   <div class="main">
     <div class="container">
       <section class="main-content" id="content" role="main">

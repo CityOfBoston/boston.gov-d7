@@ -83,6 +83,50 @@ function boston_hub_preprocess_page(array &$variables) {
     $variables['search_block'] = $block;
     $variables['search_id'] = 'block-hub-blocks-search';
   }
+
+  // Create necessary page classes
+  if ($variables['node']->type !== 'tabbed_content' && $variables['node']->type !== 'how_to') {
+    $page_class = 'page';
+  } else {
+    $page_class = NULL;
+  }
+
+  if (!empty($variables['page']['site_alert'])) {
+    // Get the active alert node
+    $site_alert_id = bos_core_active_site_alert();
+    $site_alert = node_load($site_alert_id);
+
+    $excluded_nodes = [];
+    $excluded = field_get_items('node', $site_alert, 'field_excluded_nodes');
+
+    if ($excluded) {
+      foreach ($excluded as $key => $value) {
+        $excluded_nodes[] = $value['target_id'];
+      }
+    }
+
+    if (isset($variables['node'])) {
+      if (!in_array($variables['node']->nid, $excluded_nodes)) {
+        if (!empty($variables['page']['site_alert']) && $variables['node']->type !== 'landing_page') {
+          if ($variables['node']->type !== 'tabbed_content' && $variables['node']->type !== 'how_to') {
+            $page_class = 'page page--wa';
+          } else {
+            $page_class = 'page page--wa page--nm';
+          }
+        } else {
+          $page_class = 'page';
+        }
+
+        if (drupal_is_front_page() && !empty($variables['page']['site_alert'])) {
+          $page_class = 'page';
+        }
+      } else {
+        $variables['exclude_alert'] = TRUE;
+      }
+    }
+  }
+
+  $variables['page_class'] = $page_class;
 }
 
 /**

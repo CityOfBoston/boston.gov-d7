@@ -415,6 +415,50 @@ function boston_preprocess_page(array &$variables) {
     ),
   );
   drupal_add_html_head($priority_element, 'swiftype_priority');
+
+  // Create necessary page classes
+  if ($variables['node']->type !== 'tabbed_content' && $variables['node']->type !== 'how_to') {
+    $page_class = 'page';
+  } else {
+    $page_class = NULL;
+  }
+
+  if (!empty($variables['page']['site_alert'])) {
+    // Get the active alert node
+    $site_alert_id = bos_core_active_site_alert();
+    $site_alert = node_load($site_alert_id);
+
+    $excluded_nodes = [];
+    $excluded = field_get_items('node', $site_alert, 'field_excluded_nodes');
+
+    if ($excluded) {
+      foreach ($excluded as $key => $value) {
+        $excluded_nodes[] = $value['target_id'];
+      }
+    }
+
+    if (isset($variables['node'])) {
+      if (!in_array($variables['node']->nid, $excluded_nodes)) {
+        if (!empty($variables['page']['site_alert']) && $variables['node']->type !== 'landing_page') {
+          if ($variables['node']->type !== 'tabbed_content' && $variables['node']->type !== 'how_to') {
+            $page_class = 'page page--wa';
+          } else {
+            $page_class = 'page page--wa page--nm';
+          }
+        } else {
+          $page_class = 'page';
+        }
+
+        if (drupal_is_front_page() && !empty($variables['page']['site_alert'])) {
+          $page_class = 'page page--wa page--fp';
+        }
+      } else {
+        $variables['exclude_alert'] = TRUE;
+      }
+    }
+  }
+
+  $variables['page_class'] = $page_class;
 }
 
 /**
@@ -651,6 +695,22 @@ function boston_preprocess_accessibility_toolbar(&$variables) {
   // Set the menus for accessibility and translation
   $variables['accessibilityMenu'] = menu_navigation_links('menu-accessibility-menu');
   $variables['translationMenu'] = menu_navigation_links('menu-translation-menu');
+}
+
+/**
+ * Implements hook_preprocess_node_BUNDLE().
+ */
+function boston_preprocess_node_site_alert(&$variables) {
+  $item = field_get_items('node', $variables['node'], 'field_theme');
+
+  if ($item && $item[0]) {
+    $variables['block_theme'] = $item[0]['value'];
+  }
+
+  if ($variables['content']['field_icon'] && $variables['content']['field_icon'][0]) {
+    $variables['icon'] = file_get_contents(drupal_realpath(trim(render($variables['content']['field_icon'][0]))));
+    $variables['icon'] = filter_xss($variables['icon'], explode(' ', BOS_CORE_SVG_ELEMENTS));
+  }
 }
 
 /**

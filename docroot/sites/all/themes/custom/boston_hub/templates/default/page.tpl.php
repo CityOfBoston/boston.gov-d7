@@ -26,7 +26,7 @@
   <?php print theme('nav_js'); ?>
 </nav>
 
-<div <?php if (!empty($node) && ($node->type !== 'tabbed_content' && $node->type !== 'how_to')): ?>class="page"<?php endif; ?> id="page">
+<div <?php if ($page_class): ?>class="<?php print $page_class; ?>"<?php endif; ?> id="page">
   <header class="header" role="banner">
     <div class="header-container">
 
@@ -47,9 +47,11 @@
         </div>
       <?php endif; ?>
 
-      <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" class="s">
-        <img src="<?php print $asset_url ?>/images/<?php print $asset_name ?>/seal.svg?<?php print $cache_buster ?>" alt="City of Boston Seal" class="s-i" />
-      </a>
+      <?php if (empty($page['site_alert'])): ?>
+        <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" class="s">
+          <img src="<?php print $asset_url ?>/images/<?php print $asset_name ?>/seal.svg?<?php print $cache_buster ?>" alt="City of Boston Seal" class="s-i" />
+        </a>
+      <?php endif; ?>
 
       <div class="header-right">
         <?php print theme('links__system_secondary_menu', array(
@@ -94,6 +96,10 @@
 
     </div>
   </header>
+
+  <?php if (!$exclude_alert): ?>
+    <?php print render($page['site_alert']); ?>
+  <?php endif; ?>
 
   <div class="main">
     <div class="container">
