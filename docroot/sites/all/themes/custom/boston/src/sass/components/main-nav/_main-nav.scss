@@ -25,6 +25,16 @@
     }
   }
 
+  &--fp {
+    .main {
+      position: relative;
+    }
+
+    .view-status-displays {
+      margin-top: 50px;
+    }
+  }
+
   &--nm {
     .main {
       padding-top: 0;

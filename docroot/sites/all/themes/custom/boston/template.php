@@ -431,6 +431,10 @@ function boston_preprocess_page(array &$variables) {
     }
   }
 
+  if (drupal_is_front_page() && !empty($variables['page']['site_alert'])) {
+    $page_class = 'page page--wa page--fp';
+  }
+
   $variables['page_class'] = $page_class;
 }
 
