@@ -6,6 +6,8 @@ env:
 - TASK="./hub-task.sh -Dbehat.run-server=true build:test:hub"
 php:
 - 5.6
+node_js:
+- "6.0"
 addons:
   ssh_known_hosts:
   - svn-14671.prod.hosting.acquia.com
@@ -38,8 +40,6 @@ before_install:
 - mysql -e 'CREATE DATABASE drupal;'
 - mysql -e 'CREATE DATABASE hub;'
 install:
-- nvm install 5.6.0
-- nvm use 5.6.0
 - composer install --prefer-source
 - export PATH=$PATH:$TRAVIS_BUILD_DIR/bin
 before_script:

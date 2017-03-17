@@ -2,5 +2,3 @@
 # in rsync-exclude.txt
 default.settings.php
 example.sites.php
-docroot/crispus
-docroot/crispus/**
