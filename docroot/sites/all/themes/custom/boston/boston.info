@@ -92,6 +92,7 @@ regions[content]        = Content
 regions[footer]         = Footer
 regions[modal]          = Hidden Modal
 regions[bottom]         = Page bottom
+regions[site_alert]     = Site alert
 
 
 

@@ -31,6 +31,7 @@ regions[content]        = Content
 regions[footer]         = Footer
 regions[modal]          = Hidden Modal
 regions[bottom]         = Page bottom
+regions[site_alert]     = Site alert
 
 ; The page_top and page_bottom regions are hidden, which means they will not
 ; show up on the blocks administration page. But they are required in order for

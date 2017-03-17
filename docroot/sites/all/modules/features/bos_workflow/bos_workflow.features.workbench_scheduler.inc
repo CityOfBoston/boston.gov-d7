@@ -27,6 +27,7 @@ function bos_workflow_workbench_scheduler_export_schedules() {
         9 => 'program_initiative_profile',
         10 => 'topic_page',
         11 => 'emergency_alert',
+        12 => 'site_alert',
       ),
     ),
   );

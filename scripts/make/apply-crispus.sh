@@ -13,11 +13,15 @@ DOCROOT=$GIT_ROOT/docroot
 set -e
 
 echo "--------------------------------"
+rm -Rf ${DIR}/tmp/patterns
 echo "Cloning patterns"
 git clone -b gh-pages --single-branch git@github.com:CityOfBoston/patterns.git ${DIR}/tmp/patterns
 echo "Patterns cloned. Release the kraken!"
 echo "--------------------------------"
+rm -Rf $DOCROOT/crispus
+echo "Removed Crispus directory"
 rm -Rf ${DIR}/tmp/patterns/.git
+echo "Removed .git from patterns"
 mv ${DIR}/tmp/patterns $DOCROOT/crispus
 echo "Applied Crispus"
 echo "--------------------------------"
