@@ -32,7 +32,6 @@ docroot/**/*.txt
 /docroot/web.config
 /docroot/xmlrpc.php
 /docroot/.htaccess
-/docroot/crispus
 
 # Ignore some settings files
 /simplesamlphp
