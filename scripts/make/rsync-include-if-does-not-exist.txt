@@ -9,3 +9,5 @@ auth.settings.php
 cache.settings.php
 edit-domain.settings.php
 saml.settings.php
+docroot/crispus
+docroot/crispus/**
