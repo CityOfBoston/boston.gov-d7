@@ -2,3 +2,7 @@
 # in rsync-exclude.txt
 default.settings.php
 example.sites.php
+auth.settings.php
+cache.settings.php
+edit-domain.settings.php
+saml.settings.php
