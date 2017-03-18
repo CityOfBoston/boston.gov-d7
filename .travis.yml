@@ -45,7 +45,6 @@ install:
 before_script:
 - rm -f ~/.drush/cache/download/*---updates.drupal.org-release-history-*
 - scripts/make/apply-settings.sh
-- scripts/make/apply-crispus.sh
 script:
 - "$TASK"
 after_success:
