@@ -553,6 +553,10 @@ $module_dir = 'sites/all/modules';
 //AC Domain
 $ac_subname = 'thehub';
 
+if (isset($_ENV['AH_SITE_GROUP'])) {
+  $ah_site_directory = '/mnt/gfs/' . $_ENV['AH_SITE_GROUP'] . '.' . $_ENV['AH_SITE_ENVIRONMENT'];
+}
+
 // Non-edit domain base URL settings for hub.
 require DRUPAL_ROOT . '/sites/hub/settings/base.settings.php';
 
