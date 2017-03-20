@@ -30,30 +30,29 @@
       var title = document.getElementById('nv-m-h-t');
 
       // Find the secondary nav and trigger
-      parentItem.childNodes.forEach(function(child) {
-        if (child.classList && child.classList.contains('nv-m-c-l-l')) {
-          secondaryNav = child;
+      for (var i = 0; i < parentItem.childNodes.length; i++) {
+        if (parentItem.childNodes[i].classList && parentItem.childNodes[i].classList.contains('nv-m-c-l-l')) {
+          secondaryNav = parentItem.childNodes[i];
         }
 
-        if (child.classList && child.classList.contains('nv-m-c-a')) {
-          trigger = child;
+        if (parentItem.childNodes[i].classList && parentItem.childNodes[i].classList.contains('nv-m-c-a')) {
+          trigger = parentItem.childNodes[i];
         }
-      });
+      }
 
       // Find the backTrigger
-      secondaryNav.childNodes.forEach(function(child) {
-        if (child.classList && child.classList.contains('nv-m-c-bc')) {
-          backTrigger = child;
+      for (var i = 0; i < secondaryNav.childNodes.length; i++) {
+        if (secondaryNav.childNodes[i].classList && secondaryNav.childNodes[i].classList.contains('nv-m-c-bc')) {
+          backTrigger = secondaryNav.childNodes[i];
         }
-      });
+      }
 
       if (method === 'nav') {
-        // Hide all the other menu items
-        listItems.forEach(function(listItem) {
-          if (parentItem != listItem) {
-            listItem.classList.add('nv-m-c-l-i--h');
+        for (var i = 0; i < listItems.length; i++) {
+          if (parentItem != listItems[i]) {
+            listItems[i].classList.add('nv-m-c-l-i--h');
           }
-        });
+        }
 
         // Hide the trigger
         trigger.classList.add('nv-m-c-a--h');
@@ -67,12 +66,11 @@
         // Update the title
         title.innerHTML = trigger.innerHTML;
       } else {
-        // Hide all the other menu items
-        listItems.forEach(function(listItem) {
-          if (parentItem != listItem) {
-            listItem.classList.remove('nv-m-c-l-i--h');
+        for (var i = 0; i < listItems.length; i++) {
+          if (parentItem != listItems[i]) {
+            listItems[i].classList.remove('nv-m-c-l-i--h');
           }
-        });
+        }
 
         // Hide the trigger
         trigger.classList.remove('nv-m-c-a--h');
@@ -99,38 +97,37 @@
       placeholder = document.getElementById('nv-m-h-t').innerHTML;
 
       // Set the secondary navigation menus to hidden
-      secondaryNavs.forEach(function(nav) {
-        nav.classList.add('nv-m-c-l-l--h');
-      });
+      for (var i = 0; i < secondaryNavs.length; i++) {
+        secondaryNavs[i].classList.add('nv-m-c-l-l--h');
+      }
 
       // Get the secondary navigation triggers ready
-      secondaryTriggers.forEach(function(trigger) {
+      for (var i = 0; i < secondaryTriggers.length; i++) {
         // Set to active
-        trigger.classList.add('nolink--a');
+        secondaryTriggers[i].classList.add('nolink--a');
 
         // Handle clicks
-        trigger.addEventListener('click', function(ev) {
+        secondaryTriggers[i].addEventListener('click', function(ev) {
           ev.preventDefault();
 
           handleTrigger(ev, 'nav');
         });
-      });
+      }
 
       // Get the secondary navigation triggers ready
-      backTriggers.forEach(function(trigger) {
-        // Handle clicks
-        trigger.addEventListener('click', function(ev) {
+      for (var i = 0; i < backTriggers.length; i++) {
+        backTriggers[i].addEventListener('click', function(ev) {
           ev.preventDefault();
 
           handleTrigger(ev, 'reset');
         });
-      });
+      }
 
       // Set the secondary navigation menus to hidden
-      secondaryNavItems.forEach(function(nav) {
-        nav.classList.remove('nv-m-c-a--s');
-        nav.classList.add('nv-m-c-a--p');
-      });
+      for (var i = 0; i < secondaryNavItems.length; i++) {
+        secondaryNavItems[i].classList.remove('nv-m-c-a--s');
+        secondaryNavItems[i].classList.add('nv-m-c-a--p');
+      }
 
       if (burger) {
         burger.addEventListener('change', handleBurgerChange);
