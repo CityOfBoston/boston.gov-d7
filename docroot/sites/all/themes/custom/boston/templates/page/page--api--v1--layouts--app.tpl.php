@@ -1,3 +1,5 @@
+<input type="checkbox" id="brg-tr" class="brg-tr" aria-hidden="true">
+
 <nav class="nv-m">
   <div class="nv-m-h">
       <div class="nv-m-h-ic">
@@ -11,16 +13,16 @@
   <?php print theme('nav_js'); ?>
 </nav>
 
-<input type="checkbox" id="brg-tr" class="brg-tr" aria-hidden="true">
-
 <div class="mn">
   <input type="checkbox" id="s-tr" class="s-tr" aria-hidden="true">
 
   <header class="h" role="header">
-    <label for="brg-tr" class="brg" type="button" aria-label="Menu" aria-controls="navigation" aria-expanded="false">
-      <div class="brg-w">
-        <div class="brg-b"></div>
-        <div class="brg-t">Menu</div>
+    <label for="brg-tr" class="brg-b" type="button">
+      <div class="brg">
+        <span class="brg-c">
+          <span class="brg-c-i"></span>
+        </span>
+        <span class="brg-t"><span class="a11y--h">Toggle </span>Menu</span>
       </div>
     </label>
     <div class="lo">
