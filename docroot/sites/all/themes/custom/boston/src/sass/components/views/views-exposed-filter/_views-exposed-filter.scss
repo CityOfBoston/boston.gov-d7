@@ -302,3 +302,22 @@
     }
   }
 }
+
+
+.bef-checkboxes {
+  display: flex;
+  flex-wrap: wrap;
+
+  .form-item {
+    width: 100%;
+
+    @include respond-to(l) {
+      width: 50%;
+    }
+
+    @include respond-to(xl) {
+      width: 30%;
+      margin-right: 3.3%;
+    }
+  }
+}
