@@ -1719,6 +1719,33 @@ function boston_preprocess_paragraphs_item_text(&$variables) {
 /**
  * Implements hook_preprocess_HOOK().
  */
+function boston_preprocess_paragraphs_item_hero_image(&$variables) {
+  // Provide a class on the text paragraph entity wrapper indicating what
+  // the background image of the component should be, if one is specified.
+  $has_background = true;
+  $background_image = field_get_items('paragraphs_item', $variables['paragraphs_item'], 'field_image');
+
+  if ($background_image[0]['uri']) {
+    $xlarge_image = image_style_url('rep_wide_2000x700custom_boston_desktop_2x', $background_image[0]['uri']);
+    $large_image = image_style_url('rep_wide_2000x700custom_boston_desktop_1x', $background_image[0]['uri']);
+    $medium_image = image_style_url('rep_wide_2000x700custom_boston_tablet_2x', $background_image[0]['uri']);
+    $small_image = image_style_url('rep_wide_2000x700custom_boston_mobile_2x', $background_image[0]['uri']);
+  } else {
+    $has_background = false;
+  }
+
+  // Set variables for the page
+  $variables['has_background'] = $has_background;
+  $variables['xlarge_image'] = $xlarge_image;
+  $variables['large_image'] = $large_image;
+  $variables['medium_image'] = $medium_image;
+  $variables['small_image'] = $small_image;
+  $variables['asset_url'] = variable_get('asset_url', 'https://patterns.boston.gov');
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
 function boston_preprocess_paragraphs_item_quote(&$variables) {
 
   if (!isset($variables['field_person_photo'])) {
