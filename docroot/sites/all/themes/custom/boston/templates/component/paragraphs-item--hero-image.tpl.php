@@ -25,35 +25,48 @@
  * @see template_process()
  */
 ?>
-<div class="<?php print $classes; ?> landing-hero"<?php print $attributes; ?>>
-  <div class="content landing-hero-content"<?php print $content_attributes; ?>>
-    <div class="container">
-      <div class="landing-hero-intro-text">
-        <?php if (isset($content['field_intro_text'])): ?>
-          <?php print render($content['field_intro_text']); ?>
-        <?php endif; ?>
-      </div>
-      <h1 class="landing-hero-header">
-        <?php print render($content['field_header']); ?>
-      </h1>
-        <?php if (isset($content['field_subheader'])): ?>
-          <div class="landing-hero-subhead">
-              <?php print render($content['field_subheader']); ?>
-          </div>
-        <?php endif; ?>
-        <?php if (isset($content['field_grid_link'])): ?>
-          <div class="landing-hero-cta">
-            <?php print render($content['field_grid_link']); ?>
-          </div>
-        <?php endif; ?>
+<style>
+  .hro {
+    background-image: url(<?php print $small_image ?>);
+  }
+
+  @media screen and (min-width: 768px) {
+    .hro {
+      background-image: url(<?php print $medium_image ?>);
+    }
+  }
+
+  @media screen and (min-width: 1024px) {
+    .hro {
+      background-image: url(<?php print $large_image ?>);
+    }
+  }
+
+  @media screen and (min-width: 1200px) {
+    .hro {
+      background-image: url(<?php print $xlarge_image ?>);
+    }
+  }
+</style>
+
+<div class="b b--fw">
+  <div class="hro hro--t">
+    <div class="hro-c">
+      <?php if (isset($content['field_intro_text'])): ?>
+        <?php print render($content['field_intro_text']); ?>
+      <?php endif; ?>
+      <h1 class="hro-t hro-t--l m-t000"><?php print render($content['field_header']); ?></h1>
+      <?php if (isset($content['field_subheader'])): ?>
+        <div class="hro-st hro-st--l hro-st--w"><?php print render($content['field_subheader']); ?></div>
+      <?php endif; ?>
+      <?php if (isset($content['field_grid_link'])): ?>
+        <div class="hro-lnk"><?php print render($content['field_grid_link']); ?></div>
+      <?php endif; ?>
     </div>
     <?php if (!isset($content['field_grid_link'])): ?>
-      <div class="landing-hero-logo">
-        <img src="/<?php print drupal_get_path('theme', $GLOBALS['theme']); ?>/dist/img/b-logo-light.svg" alt="B Logo">
+      <div class="the-b the-b--c">
+        <img src="<?php print $asset_url ?>/images/b-light.svg" alt="B Logo" class="the-b-i">
       </div>
     <?php endif; ?>
-  </div>
-  <div class="landing-hero-image-wrapper">
-    <?php print render($content['field_image']); ?>
   </div>
 </div>
