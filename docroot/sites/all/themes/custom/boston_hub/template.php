@@ -31,6 +31,13 @@ function boston_hub_preprocess_page(array &$variables) {
       $variables['field_work_email'] = strtolower($field_work_email);
     }
 
+    // Create necessary page classes
+    if ($variables['node']->type !== 'tabbed_content' && $variables['node']->type !== 'how_to') {
+      $page_class = 'page';
+    } else {
+      $page_class = NULL;
+    }
+
     // Set profile_avatar variable to profile picture if it exists,
     // otherwise set it to default image.
     if (!empty($profile_main) && !empty($profile_main->field_user_picture)) {
@@ -54,8 +61,10 @@ function boston_hub_preprocess_page(array &$variables) {
     $variables['logout_path'] = base_path() . 'user/logout';
     $variables['change_password_path'] = 'https://oimprd.cityofboston.gov/admin/faces/pages/pwdmgmt.jspx?backUrl=https%3A%2F%2Foif.cityofboston.gov%2Ffed%2Fidp%2Finitiatesso%3Fproviderid%3Dthehubprod';
   }
+
+  $current_path = current_path();
+
   if (!empty($variables['page']['content']['system_main']['search_results'])) {
-    $current_path = current_path();
     if (!empty($variables['page']['content']['system_main']['search_results']['#results'])) {
       drupal_set_title('Search Results');
       if (!empty($variables['page']['content']['system_main']['suggestions'])) {
@@ -74,21 +83,21 @@ function boston_hub_preprocess_page(array &$variables) {
     // If we are on the employee directory page, change the title.
     if (strpos($current_path, 'employee-directory') === 0) {
       drupal_set_title('Employee Search');
+      $page_class = 'page page--wa';
     }
   }
+
+  // If we are on the employee directory page, change the title.
+  if (strpos($current_path, 'my-profile') === 0 || strpos($current_path, 'user') === 0) {
+    $page_class = 'page page--wa';
+  }
+
   // If this is a 404 page, $variables['search_block'] will exist but be NULL,
   // so load this site's search block.
   if (is_null($variables['search_block'])) {
     $block = module_invoke('hub_blocks', 'block_view', 'search');
     $variables['search_block'] = $block;
     $variables['search_id'] = 'block-hub-blocks-search';
-  }
-
-  // Create necessary page classes
-  if ($variables['node']->type !== 'tabbed_content' && $variables['node']->type !== 'how_to') {
-    $page_class = 'page';
-  } else {
-    $page_class = NULL;
   }
 
   if (!empty($variables['page']['site_alert'])) {
