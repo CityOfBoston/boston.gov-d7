@@ -42,7 +42,6 @@
     <?php if ($viewing_own) : ?>
       <div class="user-profile-header-block">
         <div class="container">
-
           <h1>My Profile <label><a href="https://ess.boston.gov" title="Edit profile">Edit profile</a></label></h1>
           <?php if (!empty($header_data)) : ?>
             <div class="profile-header-links">
