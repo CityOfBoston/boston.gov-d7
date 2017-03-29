@@ -49,6 +49,16 @@ function boston_theme() {
       'render element' => 'form',
       'template' => 'templates/snippets/user_login',
     ),
+    'nav_js' => array(
+      'template' => 'templates/snippets/nav-js',
+    ),
+    'profile_address' => array(
+      'variables' => array(
+        'address' => NULL,
+        'address_type' => NULL,
+      ),
+      'template' => 'templates/snippets/profile-address',
+    ),
   );
 }
 
@@ -338,6 +348,7 @@ function boston_preprocess_page(array &$variables) {
   else {
     $variables['secondary_menu_heading'] = '';
   }
+
   // This is done to bring the hero image rendered output to the page level
   // of rendering. Hero image styling fits more naturally at the page level
   // as opposed to the rendered node output in the system block.
@@ -404,6 +415,50 @@ function boston_preprocess_page(array &$variables) {
     ),
   );
   drupal_add_html_head($priority_element, 'swiftype_priority');
+
+  // Create necessary page classes
+  if ($variables['node']->type !== 'tabbed_content' && $variables['node']->type !== 'how_to') {
+    $page_class = 'page';
+  } else {
+    $page_class = NULL;
+  }
+
+  if (!empty($variables['page']['site_alert'])) {
+    // Get the active alert node
+    $site_alert_id = bos_core_active_site_alert();
+    $site_alert = node_load($site_alert_id);
+
+    $excluded_nodes = [];
+    $excluded = field_get_items('node', $site_alert, 'field_excluded_nodes');
+
+    if ($excluded) {
+      foreach ($excluded as $key => $value) {
+        $excluded_nodes[] = $value['target_id'];
+      }
+    }
+
+    if (isset($variables['node'])) {
+      if (!in_array($variables['node']->nid, $excluded_nodes)) {
+        if (!empty($variables['page']['site_alert']) && $variables['node']->type !== 'landing_page') {
+          if ($variables['node']->type !== 'tabbed_content' && $variables['node']->type !== 'how_to') {
+            $page_class = 'page page--wa';
+          } else {
+            $page_class = 'page page--wa page--nm';
+          }
+        } else {
+          $page_class = 'page';
+        }
+
+        if (drupal_is_front_page() && !empty($variables['page']['site_alert'])) {
+          $page_class = 'page page--wa page--fp';
+        }
+      } else {
+        $variables['exclude_alert'] = TRUE;
+      }
+    }
+  }
+
+  $variables['page_class'] = $page_class;
 }
 
 /**
@@ -640,6 +695,22 @@ function boston_preprocess_accessibility_toolbar(&$variables) {
   // Set the menus for accessibility and translation
   $variables['accessibilityMenu'] = menu_navigation_links('menu-accessibility-menu');
   $variables['translationMenu'] = menu_navigation_links('menu-translation-menu');
+}
+
+/**
+ * Implements hook_preprocess_node_BUNDLE().
+ */
+function boston_preprocess_node_site_alert(&$variables) {
+  $item = field_get_items('node', $variables['node'], 'field_theme');
+
+  if ($item && $item[0]) {
+    $variables['block_theme'] = $item[0]['value'];
+  }
+
+  if ($variables['content']['field_icon'] && $variables['content']['field_icon'][0]) {
+    $variables['icon'] = file_get_contents(drupal_realpath(trim(render($variables['content']['field_icon'][0]))));
+    $variables['icon'] = filter_xss($variables['icon'], explode(' ', BOS_CORE_SVG_ELEMENTS));
+  }
 }
 
 /**
@@ -1241,7 +1312,7 @@ function boston_form_alter(&$form, $form_state, $form_id) {
  */
 function boston_preprocess_menu_tree(&$variables) {
   $tree = $variables['tree'];
-  $variables['menu_classes'] = strpos($tree, '<li class="menu-item-back"') === 0 ? 'menu submenu' : 'menu';
+  $variables['menu_classes'] = strpos($tree, '<li class="nv-m-c-bc nv-m-c-b--h"') === 0 ? 'nv-m-c-l-l' : 'nv-m-c-l';
 }
 
 /**
@@ -1274,7 +1345,12 @@ function boston_preprocess_menu_link(array &$variables, $hook) {
   }
 
   // Add BEM-style classes to the menu item classes.
-  $extra_classes = array('menu__item');
+  if (!in_array('masquerade', $menu_item_classes)) {
+    $extra_classes = $variables['element']['#original_link']['depth'] == '1' ? array('nv-m-c-l-i') : array('nv-m-c-l-l-i');
+  } else {
+    $extra_classes = array();
+  }
+
   foreach ($menu_item_classes as $key => $class) {
     switch ($class) {
       // Menu module classes.
@@ -1284,18 +1360,26 @@ function boston_preprocess_menu_link(array &$variables, $hook) {
       case 'active':
         // Menu block module classes.
       case 'active-trail':
-        $extra_classes[] = 'is-' . $class;
+        $extra_classes[] = 'is-' . $class[0];
         break;
 
       case 'has-children':
-        $extra_classes[] = 'is-parent';
+        $extra_classes[] = 'nv-m-c-l-i--k';
         break;
     }
   }
   $menu_item_classes = array_merge($extra_classes, $menu_item_classes);
 
-  // Add BEM-style classes to the menu link classes.
-  $extra_classes = array('menu__link');
+  if (isset($variables['element']['#original_link']['menu_name']) && $variables['element']['#original_link']['menu_name'] == 'main-menu') {
+    // Add BEM-style classes to the menu link classes.
+    $extra_classes = array(
+      'nv-m-c-a',
+      'nv-m-c-a--p',
+    );
+  } else {
+    $extra_classes = array();
+  }
+
   if (empty($menu_link_classes)) {
     $menu_link_classes = array();
   }
@@ -1304,7 +1388,7 @@ function boston_preprocess_menu_link(array &$variables, $hook) {
       switch ($class) {
         case 'active':
         case 'active-trail':
-          $extra_classes[] = 'is-' . $class;
+          $extra_classes[] = 'is-' . $class[0];
           break;
       }
     }
@@ -1630,6 +1714,33 @@ function boston_preprocess_paragraphs_item_text(&$variables) {
   if ($background_image !== FALSE) {
     $variables['classes_array'][] = $background_image[0]['value'];
   }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function boston_preprocess_paragraphs_item_hero_image(&$variables) {
+  // Provide a class on the text paragraph entity wrapper indicating what
+  // the background image of the component should be, if one is specified.
+  $has_background = true;
+  $background_image = field_get_items('paragraphs_item', $variables['paragraphs_item'], 'field_image');
+
+  if ($background_image[0]['uri']) {
+    $xlarge_image = image_style_url('rep_wide_2000x700custom_boston_desktop_2x', $background_image[0]['uri']);
+    $large_image = image_style_url('rep_wide_2000x700custom_boston_desktop_1x', $background_image[0]['uri']);
+    $medium_image = image_style_url('rep_wide_2000x700custom_boston_tablet_2x', $background_image[0]['uri']);
+    $small_image = image_style_url('rep_wide_2000x700custom_boston_mobile_2x', $background_image[0]['uri']);
+  } else {
+    $has_background = false;
+  }
+
+  // Set variables for the page
+  $variables['has_background'] = $has_background;
+  $variables['xlarge_image'] = $xlarge_image;
+  $variables['large_image'] = $large_image;
+  $variables['medium_image'] = $medium_image;
+  $variables['small_image'] = $small_image;
+  $variables['asset_url'] = variable_get('asset_url', 'https://patterns.boston.gov');
 }
 
 /**

@@ -66,6 +66,7 @@
 
   <target name="deploy:artifact:commit">
     <exec command="git add -A" dir="${deploy.dir}" logoutput="true" passthru="true"/>
+    <exec command="git add docroot/crispus --force" dir="${deploy.dir}" logoutput="true" passthru="true"/>
     <exec command="git add docroot/sites/all/themes/custom/boston_public/dist --force" dir="${deploy.dir}" logoutput="true" passthru="true"/>
     <exec command="git add docroot/sites/all/themes/custom/boston_hub/dist --force" dir="${deploy.dir}" logoutput="true" passthru="true"/>
     <exec command="git commit -m '${deploy.commitMsg}' --quiet" dir="${deploy.dir}" logoutput="true" passthru="true"/>

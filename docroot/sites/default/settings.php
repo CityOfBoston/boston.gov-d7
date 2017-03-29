@@ -624,16 +624,16 @@ if (file_exists('/var/www/site-php') && isset($_ENV['AH_SITE_GROUP'])) {
 if (file_exists('/var/www/site-php') && isset($_ENV['AH_SITE_GROUP'])) {
   // Include settings for having a separate "edit domain" for authenticated
   // traffic. Requires setting additional configuration within include file.
-  require DRUPAL_ROOT . '/sites/default/settings/edit-domain.settings.php';
+  require $ah_site_directory . '/nobackup/edit-domain.settings.php';
 
   // Includes default caching settings specific to boston.
-  require DRUPAL_ROOT . '/sites/default/settings/cache.settings.php';
+  require $ah_site_directory . '/nobackup/cache.settings.php';
 
   // Include SAML settings.
-  require DRUPAL_ROOT . '/sites/default/settings/saml.settings.php';
+  require $ah_site_directory . '/nobackup/saml.settings.php';
 
   // Include Auth settings.
-  require DRUPAL_ROOT . '/sites/default/settings/auth.settings.php';
+  require $ah_site_directory . '/nobackup/auth.settings.php';
 
   // Includes functions for protecting a site via ip, password, etc.
   require_once DRUPAL_ROOT . '/sites/all/settings/site-protection.php';

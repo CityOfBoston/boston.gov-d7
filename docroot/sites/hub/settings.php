@@ -553,6 +553,10 @@ $module_dir = 'sites/all/modules';
 //AC Domain
 $ac_subname = 'thehub';
 
+if (isset($_ENV['AH_SITE_GROUP'])) {
+  $ah_site_directory = '/mnt/gfs/' . $_ENV['AH_SITE_GROUP'] . '.' . $_ENV['AH_SITE_ENVIRONMENT'];
+}
+
 // Non-edit domain base URL settings for hub.
 require DRUPAL_ROOT . '/sites/hub/settings/base.settings.php';
 
@@ -593,17 +597,17 @@ if (file_exists(DRUPAL_ROOT . '/sites/hub/settings/local.settings.php')) {
 
 if (file_exists('/var/www/site-php') && isset($_ENV['AH_SITE_GROUP'])) {
   // Include settings for having a separate "edit domain" for authenticated
-  // traffic. Requires setting additioanl configuration within include file.
-  require DRUPAL_ROOT . '/sites/hub/settings/edit-domain.settings.php';
+  // traffic. Requires setting additional configuration within include file.
+  require $ah_site_directory . '/nobackup/edit-domain.settings.php';
 
-  // Includes default caching settings specific to hub.
-  require DRUPAL_ROOT . '/sites/hub/settings/cache.settings.php';
+  // Includes default caching settings specific to boston.
+  require $ah_site_directory . '/nobackup/cache.settings.php';
 
   // Include SAML settings.
-  require DRUPAL_ROOT . '/sites/hub/settings/saml.settings.php';
+  require $ah_site_directory . '/nobackup/saml.settings.php';
 
-  // Include auth settings.
-  require DRUPAL_ROOT . '/sites/hub/settings/auth.settings.php';
+  // Include Auth settings.
+  require $ah_site_directory . '/nobackup/auth.settings.php';
 
   // Includes functions for protecting a site via ip, password, etc.
   require_once DRUPAL_ROOT . '/sites/all/settings/site-protection.php';

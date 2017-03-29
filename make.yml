@@ -22,7 +22,7 @@ projects:
       - https://www.drupal.org/files/issues/drupal-image-style-not-found-2211429-4.patch
 
   acquia_connector:
-    version: 2.16
+    version: 2.17
   acquia_purge:
     version: 1.3
   acquia_search_multi_subs:
@@ -70,7 +70,7 @@ projects:
   background_image_formatter:
     version: 1.3
   better_exposed_filters :
-      version : 3.2
+      version : 3.4
   breakpoints:
     version: 1.3
   chosen:
@@ -227,13 +227,13 @@ projects:
   strongarm:
     version: 2.0
   title:
-    version: 1.0-alpha7
+    version: 1.0-alpha9
   transliteration:
     version: 3.2
   panels:
     version: 3.6
   paragraphs:
-    version: 1.0-rc4
+    version: 1.0-rc5
     patch:
     # Issue Link https://www.drupal.org/node/2603424
     # Resolves issue with nested paragraphs & Workbench.
@@ -263,7 +263,7 @@ projects:
   token_filter:
     version: 1.1
   views:
-    version: 3.14
+    version: 3.15
   views_datasource:
     version: 1.0-alpha2
   views_load_more:
@@ -305,7 +305,7 @@ projects:
   ape:
     version : 1.1
   metatag:
-    version : 1.7
+    version : 1.21
   xautoload:
     version: 5.7
   # Currently unused modules.

@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the bos_content_type_site_alert feature.
+ */
+
+include_once 'bos_content_type_site_alert.features.inc';

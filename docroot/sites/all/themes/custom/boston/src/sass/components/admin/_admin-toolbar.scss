@@ -7,9 +7,26 @@
 
 
 .admin-menu {
+  .slicknav_menu {
+    display: none;
+  }
+
+  #admin-menu {
+    overflow-x: auto;
+  }
+
+  #admin-menu-wrapper {
+    min-width: 1350px;
+  }
+
+  a.slicknav_btn.slicknav_collapsed {
+    display: none;
+  }
 
   header {
-    top: 20px;
+    @media (min-width: 1026px) {
+      top: 28px;
+    }
   }
 
   .topic-nav.sticky {

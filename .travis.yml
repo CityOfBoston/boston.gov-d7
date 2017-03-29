@@ -44,9 +44,9 @@ install:
 - export PATH=$PATH:$TRAVIS_BUILD_DIR/bin
 before_script:
 - rm -f ~/.drush/cache/download/*---updates.drupal.org-release-history-*
-- scripts/make/apply-settings.sh
 script:
 - "$TASK"
 after_success:
+- scripts/make/apply-crispus.sh
 - scripts/deploy/travis-deploy.sh develop develop-build
 - scripts/deploy/travis-deploy.sh master master-build

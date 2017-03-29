@@ -9,19 +9,25 @@
  */
 ?>
 
-<input type="checkbox" id="hb__trigger" class="hb__trigger" aria-hidden="true" />
+<input type="checkbox" id="brg-tr" class="brg-tr" aria-hidden="true" />
 
-<div class="main-navigation" data-swiftype-index="false">
-  <div class="main-navigation-wrapper">
-    <div class="main-navigation-title"></div>
+<nav class="nv-m">
+  <div class="nv-m-h">
+      <div class="nv-m-h-ic">
+        <img src="<?php print $asset_url ?>/images/b-dark.svg" title="B" aria-hidden="true" class="nv-m-h-i" />
+      </div>
+      <div id="nv-m-h-t" class="nv-m-h-t">&nbsp;</div>
+  </div>
+  <div class="nv-m-c">
     <?php print render($page['navigation']); ?>
   </div>
-</div>
+  <?php print theme('nav_js'); ?>
+</nav>
 
-<div <?php if (!empty($node) && ($node->type !== 'tabbed_content' && $node->type !== 'how_to')): ?>class="page"<?php endif; ?> id="page">
+<div <?php if (isset($page_class)): ?>class="<?php print $page_class; ?>"<?php endif; ?> id="page">
   <header id="main-menu" class="header" role="banner" data-swiftype-index="false">
     <div class="container">
-      <label tabindex="0" for="hb__trigger" class="nav-trigger" type="button" aria-label="Menu" aria-controls="navigation"  aria-expanded="false">
+      <label tabindex="0" for="brg-tr" class="nav-trigger" type="button" aria-label="Menu" aria-controls="navigation"  aria-expanded="false">
         <div class="hb">
           <span class="hb__box">
             <span class="hb__inner"></span>
@@ -39,9 +45,11 @@
         </div>
       <?php endif; ?>
 
-      <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" class="s">
-        <img src="<?php print $asset_url ?>/images/<?php print $asset_name ?>/seal.svg?<?php print $cache_buster ?>" alt="City of Boston Seal" class="s-i" />
-      </a>
+      <?php if (empty($page['site_alert']) && !$exclude_alert): ?>
+        <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" class="s">
+          <img src="<?php print $asset_url ?>/images/<?php print $asset_name ?>/seal.svg?<?php print $cache_buster ?>" alt="City of Boston Seal" class="s-i" />
+        </a>
+      <?php endif; ?>
 
       <div class="tr">
         <a href="#" class="tr-link">Translate</a>
@@ -64,9 +72,10 @@
 
       <?php print render($page['header']); ?>
     </div>
-
   </header>
-
+  <?php if (!$exclude_alert): ?>
+    <?php print render($page['site_alert']); ?>
+  <?php endif; ?>
   <div class="main">
     <div class="container">
       <section class="main-content" id="content" role="main">
