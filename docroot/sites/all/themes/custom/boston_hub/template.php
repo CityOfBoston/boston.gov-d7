@@ -65,8 +65,11 @@ function boston_hub_preprocess_page(array &$variables) {
   $current_path = current_path();
 
   if (!empty($variables['page']['content']['system_main']['search_results'])) {
+<<<<<<< HEAD
     $page_class = 'page page--wa';
 
+=======
+>>>>>>> 584e4f6fd125dd88567afe0049487ff78d7741e6
     if (!empty($variables['page']['content']['system_main']['search_results']['#results'])) {
       drupal_set_title('Search Results');
       if (!empty($variables['page']['content']['system_main']['suggestions'])) {
@@ -85,6 +88,7 @@ function boston_hub_preprocess_page(array &$variables) {
     // If we are on the employee directory page, change the title.
     if (strpos($current_path, 'employee-directory') === 0) {
       drupal_set_title('Employee Search');
+      $page_class = 'page page--wa';
     }
   }
 
