@@ -65,6 +65,8 @@ function boston_hub_preprocess_page(array &$variables) {
   $current_path = current_path();
 
   if (!empty($variables['page']['content']['system_main']['search_results'])) {
+    $page_class = 'page page--wa';
+
     if (!empty($variables['page']['content']['system_main']['search_results']['#results'])) {
       drupal_set_title('Search Results');
       if (!empty($variables['page']['content']['system_main']['suggestions'])) {
@@ -83,7 +85,6 @@ function boston_hub_preprocess_page(array &$variables) {
     // If we are on the employee directory page, change the title.
     if (strpos($current_path, 'employee-directory') === 0) {
       drupal_set_title('Employee Search');
-      $page_class = 'page page--wa';
     }
   }
 
@@ -343,6 +344,18 @@ function boston_hub_preprocess_entity(&$variables, $hook) {
   $function = __FUNCTION__ . '_' . $variables['entity_type'];
   if (function_exists($function)) {
     $function($variables, $hook);
+  }
+}
+
+/**
+ * Hides user menu
+ *
+ */
+function boston_hub_menu_local_tasks_alter(&$data, $router_item, $root_path) {
+  global $user;
+
+  if ($user && !in_array('administrator', array_values($user->roles))) {
+    unset($data['tabs']);
   }
 }
 
