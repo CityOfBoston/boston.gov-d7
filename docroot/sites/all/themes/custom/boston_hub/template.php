@@ -90,7 +90,7 @@ function boston_hub_preprocess_page(array &$variables) {
   }
 
   // If we are on the employee directory page, change the title.
-  if (strpos($current_path, 'my-profile') === 0 || strpos($current_path, 'user') === 0) {
+  if (strpos($current_path, 'search') === 0 || strpos($current_path, 'my-profile') === 0 || strpos($current_path, 'user') === 0) {
     $page_class_alert = 'page page--wa';
   }
 
