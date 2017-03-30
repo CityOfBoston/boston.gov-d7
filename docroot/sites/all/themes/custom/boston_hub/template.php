@@ -64,8 +64,10 @@ function boston_hub_preprocess_page(array &$variables) {
 
   $current_path = current_path();
 
+  $page_class_alert = $page_class;
+
   if (!empty($variables['page']['content']['system_main']['search_results'])) {
-    $page_class = 'page page--wa';
+    $page_class_alert = 'page page--wa';
     if (!empty($variables['page']['content']['system_main']['search_results']['#results'])) {
       drupal_set_title('Search Results');
       if (!empty($variables['page']['content']['system_main']['suggestions'])) {
@@ -89,7 +91,7 @@ function boston_hub_preprocess_page(array &$variables) {
 
   // If we are on the employee directory page, change the title.
   if (strpos($current_path, 'my-profile') === 0 || strpos($current_path, 'user') === 0) {
-    $page_class = 'page page--wa';
+    $page_class_alert = 'page page--wa';
   }
 
   // If this is a 404 page, $variables['search_block'] will exist but be NULL,
@@ -100,42 +102,24 @@ function boston_hub_preprocess_page(array &$variables) {
     $variables['search_id'] = 'block-hub-blocks-search';
   }
 
-  if (!empty($variables['page']['site_alert'])) {
-    // Get the active alert node
-    $site_alert_id = bos_core_active_site_alert();
-    $site_alert = node_load($site_alert_id);
-
-    $excluded_nodes = [];
-    $excluded = field_get_items('node', $site_alert, 'field_excluded_nodes');
-
-    if ($excluded) {
-      foreach ($excluded as $key => $value) {
-        $excluded_nodes[] = $value['target_id'];
+  if (isset($variables['node'])) {
+    if ($variables['node']->type !== 'landing_page') {
+      if ($variables['node']->type !== 'tabbed_content' && $variables['node']->type !== 'how_to') {
+        $page_class_alert = 'page page--wa';
+      } else {
+        $page_class_alert = 'page page--wa page--nm';
       }
+    } else {
+      $page_class_alert = 'page';
     }
 
-    if (isset($variables['node'])) {
-      if (!in_array($variables['node']->nid, $excluded_nodes)) {
-        if (!empty($variables['page']['site_alert']) && $variables['node']->type !== 'landing_page') {
-          if ($variables['node']->type !== 'tabbed_content' && $variables['node']->type !== 'how_to') {
-            $page_class = 'page page--wa';
-          } else {
-            $page_class = 'page page--wa page--nm';
-          }
-        } else {
-          $page_class = 'page';
-        }
-
-        if (drupal_is_front_page() && !empty($variables['page']['site_alert'])) {
-          $page_class = 'page';
-        }
-      } else {
-        $variables['exclude_alert'] = TRUE;
-      }
+    if (drupal_is_front_page()) {
+      $page_class_alert = 'page';
     }
   }
 
   $variables['page_class'] = $page_class;
+  $variables['page_class_alert'] = $page_class_alert;
 }
 
 /**

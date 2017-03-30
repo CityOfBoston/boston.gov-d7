@@ -47,11 +47,9 @@
         </div>
       <?php endif; ?>
 
-      <?php if (empty($page['site_alert'])): ?>
-        <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" class="s">
-          <img src="<?php print $asset_url ?>/images/<?php print $asset_name ?>/seal.svg?<?php print $cache_buster ?>" alt="City of Boston Seal" class="s-i" />
-        </a>
-      <?php endif; ?>
+      <a id="seal" href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" class="s">
+        <img src="<?php print $asset_url ?>/images/<?php print $asset_name ?>/seal.svg?<?php print $cache_buster ?>" alt="City of Boston Seal" class="s-i" />
+      </a>
 
       <div class="header-right">
         <?php print theme('links__system_secondary_menu', array(
@@ -97,9 +95,8 @@
     </div>
   </header>
 
-  <?php if (!$exclude_alert): ?>
-    <?php print render($page['site_alert']); ?>
-  <?php endif; ?>
+  <div id="sa" data-target="<?php print $target_id; ?>" data-classes="<?php print $page_class_alert ?>" class="d--n"></div>
+  <?php print theme('alert_js'); ?>
 
   <div class="main">
     <div class="container">
