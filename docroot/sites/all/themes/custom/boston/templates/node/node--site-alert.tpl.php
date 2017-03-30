@@ -28,7 +28,7 @@
  * @see template_process()
  */
 ?>
-<div class="b b--<?php print $block_theme; ?> b--fw"<?php print $attributes; ?>>
+<div id="sa-a" class="b b--<?php print $block_theme; ?> b--fw"<?php print $attributes; ?> data-excludes="<?php print implode(',', $excluded_nodes) ?>">
   <div class="b-c b-c--xsmv fyi--<?php print $block_theme; ?>">
     <div class="fyi-c">
       <?php if (!empty($icon)): ?><div class="fyi-i fyi-i--<?php print $block_theme; ?>"><?php print render($icon) ?></div><?php endif; ?>
