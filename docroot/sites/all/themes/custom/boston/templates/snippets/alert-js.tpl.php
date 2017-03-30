@@ -33,8 +33,14 @@
 
             if (alert) {
               var excludes = alert.getAttribute('data-excludes');
-              excludes = excludes.split(',');
-              if (excludes.indexOf(target) == -1) {
+
+              if (excludes === "") {
+                excludes = false;
+              } else {
+                excludes = excludes.split(',');
+              }
+
+              if (excludes && excludes.indexOf(target) == -1) {
                 exclude = false;
                 el.style.display = 'block';
               }

@@ -728,18 +728,21 @@ function boston_preprocess_node_site_alert(&$variables) {
 function boston_preprocess_node_event(&$variables) {
   $components_field = $variables['field_components']['und'];
   $comp_entity_id_array = array();
-  foreach ($components_field as $comp) {
-    $comp_entity_id_array[] = $comp['value'];
-  }
 
-  $components = entity_load('paragraphs_item', $components_field);
-  if (!empty($components)) {
-    foreach ($components as $comp) {
-      $video = field_get_items('paragraphs_item', $comp, 'field_live_stream');
-      if (!empty($video)) {
-        $variables['live_stream_active'] = 1;
-      } else {
-        $variables['live_stream_active'] = 0;
+  $variables['live_stream_active'] = 0;
+
+  if ($components_field) {
+    foreach ($components_field as $comp) {
+      $comp_entity_id_array[] = $comp['value'];
+    }
+
+    $components = entity_load('paragraphs_item', $components_field);
+    if (!empty($components)) {
+      foreach ($components as $comp) {
+        $video = field_get_items('paragraphs_item', $comp, 'field_live_stream');
+        if (!empty($video)) {
+          $variables['live_stream_active'] = 1;
+        }
       }
     }
   }

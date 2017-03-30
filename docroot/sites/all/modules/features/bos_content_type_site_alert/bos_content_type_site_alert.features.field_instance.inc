@@ -18,12 +18,10 @@ function bos_content_type_site_alert_field_default_field_instances() {
     'description' => 'If you don\'t want this alert to show on a specific page, add them here.',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
+        'settings' => array(),
+        'type' => 'entityreference_entity_id',
         'weight' => 5,
       ),
       'teaser' => array(
