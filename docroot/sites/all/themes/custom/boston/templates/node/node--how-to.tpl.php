@@ -34,8 +34,8 @@ foreach($content['field_how_to_tabs'] as $key => $array){
 ?>
 
 <div class="hro <?php if (isset($content['field_intro_image'])) { ?>hro--t<?php } else { ?>hro--d<?php } ?> hro--wh b--fw">
-  <div class="hro-c b-c b-c--nbp">
-    <h1 class="hro-t hro-t--l"><?php print $title; ?></h1>
+  <div class="hro-c b-c">
+    <h1 class="hro-t"><?php print $title; ?></h1>
     <?php if (isset($content['body'])): ?>
       <div class="hro-st hro-st--l"><?php print render($content['body']); ?></div>
     <?php endif; ?>
