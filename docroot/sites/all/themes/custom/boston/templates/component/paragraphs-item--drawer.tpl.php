@@ -24,18 +24,19 @@
  * @see template_preprocess_entity()
  * @see template_process()
  */
+
+ $id = uniqid();
 ?>
 <div class="dr"<?php print $attributes; ?>>
-  <div class="dr__header">
-    <div class="dr__buffer">
-      <div class="dr__title"><?php print render($content['field_title']); ?></div>
-      <?php if (isset($content['field_short_description'])): ?>
-        <div class="dr__subtitle"><?php print render($content['field_short_description']); ?></div>
-      <?php endif; ?>
-    </div>
-    <?php print file_get_contents(drupal_get_path('theme', $GLOBALS['theme']) . '/dist/img/subnav-toggle.svg') ?>
-  </div>
-  <div class="dr__content">
+  <input type="checkbox" id="dr-<?php print $id; ?>" class="dr-tr a11y--h">
+  <label for="dr-<?php print $id; ?>" class="dr-h">
+    <div class="dr-ic"><svg xmlns="http://www.w3.org/2000/svg" viewBox="-2 8.5 18 25"><path class="dr-i" d="M16 21L.5 33.2c-.6.5-1.5.4-2.2-.2-.5-.6-.4-1.6.2-2l12.6-10-12.6-10c-.6-.5-.7-1.5-.2-2s1.5-.7 2.2-.2L16 21z"/></svg></div>
+    <div class="dr-t"><?php print render($content['field_title']); ?></div>
+    <?php if (isset($content['field_short_description'])): ?>
+      <div class="dr-st"><?php print render($content['field_short_description']); ?></div>
+    <?php endif; ?>
+  </label>
+  <div class="dr-c">
     <?php print render($content['field_text_blocks']); ?>
   </div>
 </div>
