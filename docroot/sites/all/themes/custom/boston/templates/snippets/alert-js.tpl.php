@@ -27,8 +27,6 @@
 
             el.innerHTML = resp;
 
-            document.getElementById('page').className = classes;
-
             var alert = document.getElementById('sa-a');
 
             if (alert) {
@@ -37,6 +35,7 @@
               if (target === ""  ||  excludes.indexOf(target) == -1) {
                 exclude = false;
                 el.style.display = 'block';
+                document.getElementById('page').className = classes;
               }
             }
           }
