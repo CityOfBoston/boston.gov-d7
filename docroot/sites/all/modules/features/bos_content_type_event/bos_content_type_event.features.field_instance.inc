@@ -258,7 +258,7 @@ function bos_content_type_event_field_default_field_instances() {
     'fences_wrapper' => 'no_wrapper',
     'field_name' => 'field_address',
     'label' => 'Location',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
@@ -269,15 +269,16 @@ function bos_content_type_event_field_default_field_instances() {
         'available_countries' => array(
           'US' => 'US',
         ),
-        'default_country' => 'US',
+        'default_country' => 'site_default',
         'format_handlers' => array(
           'address' => 'address',
+          'address-hide-country' => 'address-hide-country',
+          'name-oneline' => 'name-oneline',
           'address-hide-postal-code' => 0,
           'address-hide-street' => 0,
-          'address-hide-country' => 0,
+          'thoroughfare-textarea' => 0,
           'organisation' => 0,
           'name-full' => 0,
-          'name-oneline' => 0,
           'address-optional' => 0,
         ),
       ),
