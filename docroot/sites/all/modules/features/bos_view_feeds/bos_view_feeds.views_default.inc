@@ -254,6 +254,11 @@ function bos_view_feeds_views_default_views() {
     'show_remaining_days' => 0,
     'show_repeat_rule' => 'show',
   );
+  /* Field: Content: Nid */
+  $handler->display->display_options['fields']['nid']['id'] = 'nid';
+  $handler->display->display_options['fields']['nid']['table'] = 'node';
+  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid']['label'] = 'id';
   /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
@@ -307,6 +312,7 @@ function bos_view_feeds_views_default_views() {
   $handler->display->display_options['filters']['field_city_hall_value']['id'] = 'field_city_hall_value';
   $handler->display->display_options['filters']['field_city_hall_value']['table'] = 'field_data_field_city_hall';
   $handler->display->display_options['filters']['field_city_hall_value']['field'] = 'field_city_hall_value';
+  $handler->display->display_options['filters']['field_city_hall_value']['operator'] = 'and';
   $handler->display->display_options['filters']['field_city_hall_value']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_city_hall_value']['expose']['operator_id'] = 'field_city_hall_value_op';
   $handler->display->display_options['filters']['field_city_hall_value']['expose']['label'] = 'city-hall';

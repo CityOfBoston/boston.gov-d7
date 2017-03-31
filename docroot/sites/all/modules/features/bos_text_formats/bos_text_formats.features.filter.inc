@@ -43,6 +43,8 @@ th[align|valign|width],tbody,thead,tfoot',
           'nofollow_policy' => 'whitelist',
           'nofollow_domains' => array(
             0 => 'boston.dev',
+            2 => 'boston.gov',
+            4 => 'cityofboston.gov',
           ),
           'style_color' => array(
             'color' => 0,
