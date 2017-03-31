@@ -115,6 +115,7 @@ function boston_hub_preprocess_page(array &$variables) {
 
     if (drupal_is_front_page()) {
       $page_class_alert = 'page';
+      $page_class = 'page';
     }
   }
 
