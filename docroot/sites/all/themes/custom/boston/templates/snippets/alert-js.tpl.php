@@ -27,22 +27,15 @@
 
             el.innerHTML = resp;
 
-            document.getElementById('page').className = classes;
-
             var alert = document.getElementById('sa-a');
 
             if (alert) {
               var excludes = alert.getAttribute('data-excludes');
-
-              if (excludes === "") {
-                excludes = false;
-              } else {
-                excludes = excludes.split(',');
-              }
-
-              if (excludes && excludes.indexOf(target) == -1) {
+              
+              if (target === ""  ||  excludes.indexOf(target) == -1) {
                 exclude = false;
                 el.style.display = 'block';
+                document.getElementById('page').className = classes;
               }
             }
           }
