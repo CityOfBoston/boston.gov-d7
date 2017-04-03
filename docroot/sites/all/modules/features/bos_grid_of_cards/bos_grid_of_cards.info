@@ -1,0 +1,17 @@
+name = bos_grid_of_cards
+core = 7.x
+package = Features
+dependencies[] = bos_shared_fields
+dependencies[] = features
+dependencies[] = image_url_formatter
+dependencies[] = media
+dependencies[] = paragraphs
+dependencies[] = text
+features[features_api][] = api:2
+features[field_instance][] = paragraphs_item-card-field_link
+features[field_instance][] = paragraphs_item-card-field_short_description
+features[field_instance][] = paragraphs_item-card-field_subheader
+features[field_instance][] = paragraphs_item-card-field_thumbnail
+features[field_instance][] = paragraphs_item-card-field_title
+features[paragraphs][] = card
+features[paragraphs][] = grid_of_cards
