@@ -495,6 +495,9 @@ function bos_core_update_7028() {
   module_enable($enabled_modules);
 }
 
+/**
+ * Updates for 4/3/2017.
+ */
 function bos_core_update_7029() {
   $deleted_field_instances = array(
     'node' => array(
