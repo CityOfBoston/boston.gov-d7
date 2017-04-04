@@ -396,10 +396,10 @@ function bos_grid_of_cards_field_default_field_instances() {
     'description' => 'This will change the colors output for the component. This component defaults to the grey theme, but supports white, or blue.',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'list',
         'settings' => array(),
-        'type' => 'list_default',
+        'type' => 'list_key',
         'weight' => 4,
       ),
       'paragraphs_editor_preview' => array(
