@@ -455,6 +455,12 @@ function boston_preprocess_page(array &$variables) {
     }
   }
 
+  // If we are on the employee directory page, change the title.
+  $current_path = current_path();
+  if (strpos($current_path, 'user') === 0) {
+    $page_class_alert = 'page page--wa';
+  }
+
   $variables['target_id'] = $target_id;
   $variables['page_class'] = $page_class;
   $variables['page_class_alert'] = $page_class_alert;
