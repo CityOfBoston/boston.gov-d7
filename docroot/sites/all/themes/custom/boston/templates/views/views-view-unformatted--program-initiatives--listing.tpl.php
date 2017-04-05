@@ -7,7 +7,7 @@
  * @ingroup views_templates
  */
 ?>
-<div class="grid-wrapper clearfix">
+<div class="g">
   <?php foreach ($rows as $id => $row): ?>
     <?php print $row; ?>
   <?php endforeach; ?>

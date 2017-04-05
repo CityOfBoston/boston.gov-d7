@@ -251,7 +251,7 @@ function bos_content_type_program_initiative_profile_field_default_field_instanc
         'feedback' => 'feedback',
         'fyi' => 'fyi',
         'gol_list_links' => -1,
-        'grid_of_cards' => 'grid_of_cards',
+        'grid_of_cards' => -1,
         'grid_of_people' => 'grid_of_people',
         'grid_of_places' => 'grid_of_places',
         'grid_of_programs_initiatives' => 'grid_of_programs_initiatives',
@@ -561,12 +561,13 @@ function bos_content_type_program_initiative_profile_field_default_field_instanc
       ),
       'listing' => array(
         'label' => 'hidden',
-        'module' => 'image',
+        'module' => 'image_url_formatter',
         'settings' => array(
           'image_link' => '',
           'image_style' => 'grid_card_image',
+          'url_type' => 0,
         ),
-        'type' => 'image',
+        'type' => 'image_url',
         'weight' => 1,
       ),
       'listing_long' => array(
