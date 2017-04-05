@@ -11,6 +11,51 @@ function bos_component_grid_of_places_field_default_field_instances() {
   $field_instances = array();
 
   // Exported field_instance:
+  // 'paragraphs_item-grid_of_places-field_component_theme'.
+  $field_instances['paragraphs_item-grid_of_places-field_component_theme'] = array(
+    'bundle' => 'grid_of_places',
+    'default_value' => array(
+      0 => array(
+        'value' => 'g',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_key',
+        'weight' => 5,
+      ),
+      'paragraphs_editor_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'paragraphs_item',
+    'fences_wrapper' => 'no_wrapper',
+    'field_name' => 'field_component_theme',
+    'label' => 'Component Theme',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
+      'type' => 'options_select',
+      'weight' => 4,
+    ),
+  );
+
+  // Exported field_instance:
   // 'paragraphs_item-grid_of_places-field_component_title'.
   $field_instances['paragraphs_item-grid_of_places-field_component_title'] = array(
     'bundle' => 'grid_of_places',
@@ -101,6 +146,7 @@ function bos_component_grid_of_places_field_default_field_instances() {
       'active' => 1,
       'module' => 'entityreference',
       'settings' => array(
+        'entityreference_autocreate' => 0,
         'match_operator' => 'CONTAINS',
         'path' => '',
         'size' => 60,
@@ -152,6 +198,7 @@ function bos_component_grid_of_places_field_default_field_instances() {
       'active' => 1,
       'module' => 'entityreference',
       'settings' => array(
+        'entityreference_autocreate' => 0,
         'match_operator' => 'CONTAINS',
         'path' => '',
         'size' => 60,
@@ -213,6 +260,7 @@ function bos_component_grid_of_places_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Add Places to this component.');
+  t('Component Theme');
   t('Contact');
   t('Place');
   t('Please enter the title for this component here.');
