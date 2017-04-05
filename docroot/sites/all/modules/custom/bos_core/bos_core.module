@@ -383,7 +383,7 @@ function bos_core_field_get_link_url($link) {
   }
 
   if ($link->field_internal_link) {
-    $url = url('node/'. $link->field_internal_link["und"][0]["target_id"]);
+    $url = url('node/' . $link->field_internal_link["und"][0]["target_id"]);
   }
 
   if ($link->field_document) {

@@ -522,11 +522,10 @@ function bos_core_update_7029() {
   }
 }
 
-
 /**
  * Updates for 4/3/2017.
  */
-function bos_core_update_7029() {
+function bos_core_update_7030() {
   $enabled_modules = array(
     'bos_grid_of_cards',
   );
