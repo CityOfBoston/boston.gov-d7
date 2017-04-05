@@ -1587,7 +1587,7 @@ function boston_preprocess_field_collection_item_field_transactions(&$variables)
   $link_icon = array(
     "image" => file_create_url($icon[0]["uri"]),
     "classes" => array(
-      "container" => "lwi g--4",
+      "container" => "lwi g--3 g--3--sl m-t500",
       "icon" => "lwi-ic",
       "text" => "lwi-t",
     ),
