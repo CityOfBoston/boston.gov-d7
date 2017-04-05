@@ -107,21 +107,6 @@ function bos_content_type_how_to_strongarm() {
       'token' => array(
         'custom_settings' => FALSE,
       ),
-      'icon_popup' => array(
-        'custom_settings' => FALSE,
-      ),
-      'listing' => array(
-        'custom_settings' => FALSE,
-      ),
-      'listing_short' => array(
-        'custom_settings' => FALSE,
-      ),
-      'listing_long' => array(
-        'custom_settings' => FALSE,
-      ),
-      'ical' => array(
-        'custom_settings' => FALSE,
-      ),
     ),
     'extra_fields' => array(
       'form' => array(
