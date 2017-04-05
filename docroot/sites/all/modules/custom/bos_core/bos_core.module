@@ -373,6 +373,27 @@ function bos_core_field_get_first_item($entity_type, $entity, $field_name) {
 }
 
 /**
+ * Take a link reference and return the URL.
+ */
+function bos_core_field_get_link_url($link) {
+  $url = NULL;
+
+  if ($link->field_external_link) {
+    $url = $link->field_external_link["und"][0]["url"];
+  }
+
+  if ($link->field_internal_link) {
+    $url = url('node/' . $link->field_internal_link["und"][0]["target_id"]);
+  }
+
+  if ($link->field_document) {
+    $url = file_create_url($link->field_document["und"][0]["uri"]);
+  }
+
+  return $url;
+}
+
+/**
  * Helper function for setting SAML roles that can log in using Drupal default.
  */
 function _bos_core_set_default_saml_roles() {

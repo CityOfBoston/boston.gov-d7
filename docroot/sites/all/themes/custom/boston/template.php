@@ -596,6 +596,27 @@ function boston_preprocess_node(array &$variables, $hook) {
   }
 }
 
+function boston_preprocess_paragraphs_item_grid_of_cards(&$variables) {
+  $theme = bos_core_field_get_first_item('paragraphs_item', $variables['paragraphs_item'], 'field_component_theme')['value'];
+
+  $variables['component_theme'] = $theme;
+  $variables['section_header_theme'] = $theme === 'b' ? 'sh--w' : '';
+}
+
+function boston_preprocess_paragraphs_item_card(&$variables) {
+  $link_id = bos_core_field_get_first_item('paragraphs_item', $variables['paragraphs_item'], 'field_link')['value'];
+
+  if ($link_id) {
+    // Load the link references
+    $link = paragraphs_item_load($link_id);
+
+    // Return the url
+    $url = bos_core_field_get_link_url($link);
+  }
+
+  $variables['card_url'] = $url;
+}
+
 function boston_preprocess_field_field_how_to_tabs(&$variables) {
   $GLOBALS['how_to_tabs_count'] = 0;
 }
