@@ -25,21 +25,21 @@
  * @see template_process()
  */
 ?>
-<div class="<?php print $classes; ?> fullwidth"<?php print $attributes; ?>>
-  <div class="content container"<?php print $content_attributes; ?>>
-  	  <div class="sh">
-        <?php if (isset($content['field_component_title'])): ?>
-          <?php print render($content['field_component_title']); ?>
-        <?php endif; ?>
-        <?php if (isset($content['field_short_title'])): ?>
-          <?php print render($content['field_short_title']); ?>
-        <?php endif; ?>
-        <?php if (isset($content['field_contact'])): ?>
-          <?php print render($content['field_contact']); ?>
-        <?php endif; ?>
-      </div>
-    <div class="grid-wrapper clearfix">
-      <?php print render($content['field_place']); ?>
+<div class="b b--<?php print $component_theme; ?> b--fw">
+  <div class="b-c">
+  	<div class="sh <?php print $section_header_theme; ?>">
+	    <?php print render($content['field_component_title']); ?>
+      <?php if (isset($content['field_short_title'])): ?>
+        <?php print render($content['field_short_title']); ?>
+      <?php endif; ?>
+	    <?php if (isset($content['field_contact'])): ?>
+	      <div class="sh-contact"><?php print render($content['field_contact']); ?></div>
+	    <?php endif; ?>
+    </div>
+    <div class="g">
+      <?php if (isset($content['field_place'])): ?>
+        <?php print render($content['field_place']); ?>
+      <?php endif; ?>
     </div>
   </div>
 </div>

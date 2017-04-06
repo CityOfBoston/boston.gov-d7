@@ -12,6 +12,7 @@ dependencies[] = entityreference
 dependencies[] = features
 dependencies[] = field_group
 dependencies[] = image
+dependencies[] = image_url_formatter
 dependencies[] = media
 dependencies[] = options
 dependencies[] = paragraphs

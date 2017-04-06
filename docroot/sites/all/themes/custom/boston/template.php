@@ -603,6 +603,20 @@ function boston_preprocess_paragraphs_item_grid_of_cards(&$variables) {
   $variables['section_header_theme'] = $theme === 'b' ? 'sh--w' : '';
 }
 
+function boston_preprocess_paragraphs_item_grid_of_places(&$variables) {
+  $theme = bos_core_field_get_first_item('paragraphs_item', $variables['paragraphs_item'], 'field_component_theme')['value'];
+
+  $variables['component_theme'] = isset($theme) ? $theme : 'g';
+  $variables['section_header_theme'] = $theme === 'b' ? 'sh--w' : '';
+}
+
+function boston_preprocess_paragraphs_item_grid_of_programs_initiatives(&$variables) {
+  $theme = bos_core_field_get_first_item('paragraphs_item', $variables['paragraphs_item'], 'field_component_theme')['value'];
+
+  $variables['component_theme'] = isset($theme) ? $theme : 'g';
+  $variables['section_header_theme'] = $theme === 'b' ? 'sh--w' : '';
+}
+
 function boston_preprocess_paragraphs_item_card(&$variables) {
   $link_id = bos_core_field_get_first_item('paragraphs_item', $variables['paragraphs_item'], 'field_link')['value'];
 
@@ -1587,7 +1601,7 @@ function boston_preprocess_field_collection_item_field_transactions(&$variables)
   $link_icon = array(
     "image" => file_create_url($icon[0]["uri"]),
     "classes" => array(
-      "container" => "lwi g--4",
+      "container" => "lwi g--3 g--3--sl m-t500",
       "icon" => "lwi-ic",
       "text" => "lwi-t",
     ),

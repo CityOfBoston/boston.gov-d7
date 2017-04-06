@@ -79,6 +79,7 @@
  *
  * @ingroup themeable
  */
+
 hide($content['comments']);
 hide($content['links']);
 $render = array(

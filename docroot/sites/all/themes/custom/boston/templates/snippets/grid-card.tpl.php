@@ -9,28 +9,20 @@
  * - $description: Description of card content.
  */
 ?>
-<div class="grid-card <?php print $classes; ?>">
+<div class="cd g--4 g--4--sl m-t500">
   <?php if (isset($link)): ?>
     <a href="<?php print $link; ?>">
   <?php endif; ?>
   <?php if (isset($image)): ?>
-  <div class="grid-card__image">
-    <?php print $image; ?>
-  </div>
+    <div class="cd-ic" style="background-image: url(<?php print $image ?>)"></div>
   <?php endif; ?>
-  <div class="grid-card__text">
-    <h3 class="grid-card__title">
-      <?php print $title; ?>
-    </h3>
+  <div class="cd-c">
+    <h3 class="cd-t"><?php print $title; ?></h3>
     <?php if (isset($subtitle)): ?>
-    <div class="grid-card__subtitle">
-      <?php print $subtitle; ?>
-    </div>
+    <div class="cd-st"><?php print $subtitle; ?></div>
     <?php endif; ?>
     <?php if (isset($description)): ?>
-    <div class="grid-card__description">
-      <?php print $description; ?>
-    </div>
+    <div class="cd-d"><?php print $description; ?></div>
   </div>
   <?php endif; ?>
   <?php if (isset($link)): ?>

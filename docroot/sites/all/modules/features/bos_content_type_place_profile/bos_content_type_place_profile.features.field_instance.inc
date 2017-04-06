@@ -1039,12 +1039,13 @@ function bos_content_type_place_profile_field_default_field_instances() {
       ),
       'listing' => array(
         'label' => 'hidden',
-        'module' => 'image',
+        'module' => 'image_url_formatter',
         'settings' => array(
           'image_link' => '',
           'image_style' => 'grid_card_image',
+          'url_type' => 0,
         ),
-        'type' => 'image',
+        'type' => 'image_url',
         'weight' => 0,
       ),
       'listing_long' => array(
