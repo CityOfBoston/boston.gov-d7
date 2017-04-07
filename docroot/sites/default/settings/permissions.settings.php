@@ -291,6 +291,7 @@ function acquia_permissions_map() {
       'edit own event content',
       'edit own how_to content',
       'edit own image files',
+      'edit own listing_page content',
       'edit own person_profile content',
       'edit own place_profile content',
       'edit own post content',
