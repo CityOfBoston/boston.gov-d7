@@ -1543,6 +1543,8 @@ function boston_preprocess_paragraphs_item(&$variables) {
   if (!in_array($bundle, $media_bundles)) {
     $variables['classes_array'][] = 'component-section';
   }
+
+  $variables['asset_url'] = variable_get('asset_url', 'https://patterns.boston.gov');
 }
 
 /**

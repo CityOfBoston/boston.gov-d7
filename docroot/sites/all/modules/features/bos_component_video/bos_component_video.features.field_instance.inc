@@ -114,7 +114,7 @@ function bos_component_video_field_default_field_instances() {
         'year_range' => '-3:+3',
       ),
       'type' => 'date_popup',
-      'weight' => 7,
+      'weight' => 8,
     ),
   );
 
@@ -173,23 +173,13 @@ function bos_component_video_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'hidden',
-        'module' => 'picture',
+        'module' => 'image_url_formatter',
         'settings' => array(
-          'colorbox_settings' => array(
-            'colorbox_caption' => 'auto',
-            'colorbox_caption_custom' => '',
-            'colorbox_gallery' => 'post',
-            'colorbox_gallery_custom' => '',
-            'colorbox_group' => '',
-            'colorbox_multivalue_index' => NULL,
-          ),
-          'fallback_image_style' => '',
           'image_link' => '',
-          'lazyload' => '',
-          'lazyload_aspect_ratio' => '',
-          'picture_mapping' => 'wide_2000x700',
+          'image_style' => 'rep_wide_2000x700custom_boston_desktop_1x',
+          'url_type' => 0,
         ),
-        'type' => 'picture',
+        'type' => 'image_url',
         'weight' => 5,
       ),
       'paragraphs_editor_preview' => array(
@@ -237,7 +227,7 @@ function bos_component_video_field_default_field_instances() {
         ),
       ),
       'type' => 'media_generic',
-      'weight' => 5,
+      'weight' => 6,
     ),
   );
 
@@ -281,7 +271,7 @@ function bos_component_video_field_default_field_instances() {
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 6,
+      'weight' => 7,
     ),
   );
 
@@ -329,6 +319,50 @@ function bos_component_video_field_default_field_instances() {
       ),
       'type' => 'text_textfield',
       'weight' => 3,
+    ),
+  );
+
+  // Exported field_instance: 'paragraphs_item-video-field_sticky'.
+  $field_instances['paragraphs_item-video-field_sticky'] = array(
+    'bundle' => 'video',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'Check this if the video ID is a channel. ',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 9,
+      ),
+      'paragraphs_editor_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'paragraphs_item',
+    'fences_wrapper' => 'no_wrapper',
+    'field_name' => 'field_sticky',
+    'label' => 'Is a Youtube channel?',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 0,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 5,
     ),
   );
 
@@ -382,8 +416,10 @@ function bos_component_video_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Check if the video will be live streamed');
+  t('Check this if the video ID is a channel. ');
   t('Department');
   t('Event Dates');
+  t('Is a Youtube channel?');
   t('Large scale image to use as the image for the video.');
   t('Live Stream');
   t('Poster Image');
