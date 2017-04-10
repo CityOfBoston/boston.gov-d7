@@ -428,6 +428,54 @@ function bos_grid_of_cards_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance:
+  // 'paragraphs_item-grid_of_cards-field_component_title'.
+  $field_instances['paragraphs_item-grid_of_cards-field_component_title'] = array(
+    'bundle' => 'grid_of_cards',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 5,
+      ),
+      'paragraphs_editor_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'paragraphs_item',
+    'fences_wrapper' => 'div_div_div',
+    'field_name' => 'field_component_title',
+    'label' => 'Title',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'show_token_tree' => 0,
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 6,
+    ),
+  );
+
   // Exported field_instance: 'paragraphs_item-grid_of_cards-field_contact'.
   $field_instances['paragraphs_item-grid_of_cards-field_contact'] = array(
     'bundle' => 'grid_of_cards',
@@ -466,7 +514,7 @@ function bos_grid_of_cards_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 3,
+      'weight' => 8,
     ),
   );
 
@@ -673,54 +721,7 @@ function bos_grid_of_cards_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 2,
-    ),
-  );
-
-  // Exported field_instance: 'paragraphs_item-grid_of_cards-field_title'.
-  $field_instances['paragraphs_item-grid_of_cards-field_title'] = array(
-    'bundle' => 'grid_of_cards',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'The title for this component.',
-    'display' => array(
-      'default' => array(
-        'label' => 'hidden',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 0,
-      ),
-      'paragraphs_editor_preview' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'paragraphs_item',
-    'fences_wrapper' => 'div_div_div',
-    'field_name' => 'field_title',
-    'label' => 'Title',
-    'required' => 1,
-    'settings' => array(
-      'linkit' => array(
-        'button_text' => 'Search',
-        'enable' => 0,
-        'profile' => '',
-      ),
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'show_token_tree' => 0,
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 1,
+      'weight' => 7,
     ),
   );
 
@@ -739,7 +740,6 @@ function bos_grid_of_cards_field_default_field_instances() {
   t('Sub-Title');
   t('The short title is used to populate the in-page navigation. Please keep it short: one to three words is ideal. Example can be found on boston.gov/winter/.');
   t('The title for the card. <strong>Display is limited to 70 characters.</strong>');
-  t('The title for this component.');
   t('This image will display with the card. ');
   t('This is where the card links to. Only the URL is used, <strong>the title is not displayed</strong> on the card.');
   t('This will change the colors output for the component. This component defaults to the grey theme, but supports white, or blue.');
