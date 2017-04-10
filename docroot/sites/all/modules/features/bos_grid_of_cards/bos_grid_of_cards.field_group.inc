@@ -51,9 +51,9 @@ function bos_grid_of_cards_field_group_info() {
     'label' => 'Info',
     'weight' => '0',
     'children' => array(
-      0 => 'field_title',
+      0 => 'field_contact',
       1 => 'field_short_title',
-      2 => 'field_contact',
+      2 => 'field_component_title',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
