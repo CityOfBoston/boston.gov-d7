@@ -133,6 +133,7 @@ dependencies[] = bos_content_type_topic_page
 dependencies[] = bos_context_global_footer
 dependencies[] = bos_file_type_image
 dependencies[] = bos_file_type_document
+dependencies[] = bos_grid_of_cards
 dependencies[] = bos_image_styles
 dependencies[] = bos_menu_block_footer_menu
 dependencies[] = bos_menu_block_main_menu
