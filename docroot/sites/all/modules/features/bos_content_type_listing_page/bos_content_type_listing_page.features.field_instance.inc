@@ -125,7 +125,7 @@ function bos_content_type_listing_page_field_default_field_instances() {
         'feedback' => 'feedback',
         'fyi' => 'fyi',
         'gol_list_links' => -1,
-        'grid_of_cards' => 'grid_of_cards',
+        'grid_of_cards' => -1,
         'grid_of_people' => 'grid_of_people',
         'grid_of_places' => 'grid_of_places',
         'grid_of_programs_initiatives' => 'grid_of_programs_initiatives',
