@@ -29,6 +29,7 @@ function acquia_permissions_map() {
     // Authenticated user role permissions.
     'authenticated user' => array(
       'access content',
+      'access keyboard shortcuts',
       'access media browser',
       'access user profiles',
       'create files',
@@ -310,6 +311,7 @@ function acquia_permissions_map() {
       'edit own article content',
       'edit own department_profile content',
       'edit own event content',
+      'edit own listing_page content',
       'edit own how_to content',
       'edit own image files',
       'edit own post content',

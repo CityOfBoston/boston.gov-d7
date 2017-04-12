@@ -191,7 +191,7 @@ function bos_view_feeds_views_default_views() {
     'image_style' => '',
     'image_link' => '',
   );
-  /* Field: Content: Thumbnail */
+  /* Field: Field: Thumbnail */
   $handler->display->display_options['fields']['field_thumbnail']['id'] = 'field_thumbnail';
   $handler->display->display_options['fields']['field_thumbnail']['table'] = 'field_data_field_thumbnail';
   $handler->display->display_options['fields']['field_thumbnail']['field'] = 'field_thumbnail';
