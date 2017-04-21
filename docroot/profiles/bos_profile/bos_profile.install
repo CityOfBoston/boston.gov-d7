@@ -579,7 +579,7 @@ function bos_profile_update_7020() {
  */
 function bos_profile_update_7021() {
   $enabled_modules = array(
-    'keyboard_shortcuts',
+    'keyboard_shortcut',
     'bos_keyboard_shortcuts',
   );
   module_enable($enabled_modules);
