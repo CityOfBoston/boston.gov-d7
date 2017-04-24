@@ -1407,6 +1407,13 @@ function bos_metrolist_affordable_housing_default_salesforce_mapping() {
             {
               "active" : true,
               "defaultValue" : false,
+              "label" : "Walpole",
+              "validFor" : null,
+              "value" : "Walpole"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
               "label" : "Waltham",
               "validFor" : null,
               "value" : "Waltham"
@@ -1693,10 +1700,17 @@ function bos_metrolist_affordable_housing_default_salesforce_mapping() {
             },
             {
               "active" : true,
-              "defaultValue" : false,
+              "defaultValue" : true,
               "label" : "No answer",
               "validFor" : null,
               "value" : "No answer"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Unknown",
+              "validFor" : null,
+              "value" : "Unknown"
             }
           ],
           "precision" : 0,
@@ -1762,6 +1776,137 @@ function bos_metrolist_affordable_housing_default_salesforce_mapping() {
           "soapType" : "xsd:boolean",
           "sortable" : true,
           "type" : "boolean",
+          "unique" : false,
+          "updateable" : true,
+          "writeRequiresMasterRead" : false
+        },
+        "key" : false,
+        "direction" : "sf_drupal"
+      },
+      {
+        "drupal_field" : {
+          "fieldmap_type" : "property",
+          "fieldmap_value" : "field_mah_household_income_limit"
+        },
+        "salesforce_field" : {
+          "autoNumber" : false,
+          "byteLength" : 4099,
+          "calculated" : false,
+          "calculatedFormula" : null,
+          "cascadeDelete" : false,
+          "caseSensitive" : false,
+          "controllerName" : null,
+          "createable" : true,
+          "custom" : true,
+          "defaultValue" : null,
+          "defaultValueFormula" : null,
+          "defaultedOnCreate" : false,
+          "dependentPicklist" : false,
+          "deprecatedAndHidden" : false,
+          "digits" : 0,
+          "displayLocationInDecimal" : false,
+          "externalId" : false,
+          "filterable" : true,
+          "groupable" : false,
+          "htmlFormatted" : false,
+          "idLookup" : false,
+          "inlineHelpText" : null,
+          "label" : "Household Income Limits (AMI %)",
+          "length" : 4099,
+          "name" : "Household_Income_Limits_AMI__c",
+          "nameField" : false,
+          "namePointing" : false,
+          "nillable" : true,
+          "permissionable" : true,
+          "picklistValues" : [
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "50%",
+              "validFor" : null,
+              "value" : "50%"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "60%",
+              "validFor" : null,
+              "value" : "60%"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "70%",
+              "validFor" : null,
+              "value" : "70%"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "80%",
+              "validFor" : null,
+              "value" : "80%"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "80% CDBG",
+              "validFor" : null,
+              "value" : "80% CDBG"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "90%",
+              "validFor" : null,
+              "value" : "90%"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "100%",
+              "validFor" : null,
+              "value" : "100%"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "110%",
+              "validFor" : null,
+              "value" : "110%"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "120%",
+              "validFor" : null,
+              "value" : "120%"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "135%",
+              "validFor" : null,
+              "value" : "135%"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "\\u003E135%",
+              "validFor" : null,
+              "value" : "\\u003E135%"
+            }
+          ],
+          "precision" : 0,
+          "referenceTo" : [],
+          "relationshipName" : null,
+          "relationshipOrder" : null,
+          "restrictedDelete" : false,
+          "restrictedPicklist" : true,
+          "scale" : 0,
+          "soapType" : "xsd:string",
+          "sortable" : false,
+          "type" : "multipicklist",
           "unique" : false,
           "updateable" : true,
           "writeRequiresMasterRead" : false

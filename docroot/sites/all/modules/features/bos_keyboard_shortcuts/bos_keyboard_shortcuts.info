@@ -1,0 +1,10 @@
+name = Boston Keyboard Shortcuts
+description = Sets global permissions for keyboard shortcuts
+core = 7.x
+package = Features
+version = 7.x-1.0
+project = bos_keyboard_shortcuts
+dependencies[] = features
+dependencies[] = keyboard_shortcut
+features[features_api][] = api:2
+features[user_permission][] = access keyboard shortcuts
