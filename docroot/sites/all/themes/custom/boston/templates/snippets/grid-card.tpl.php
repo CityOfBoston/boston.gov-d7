@@ -19,7 +19,7 @@
   <div class="cd-c">
     <h3 class="cd-t"><?php print $title; ?></h3>
     <?php if (isset($subtitle)): ?>
-    <div class="cd-st"><?php print $subtitle; ?></div>
+    <div class="cd-st t--upper t--subtitle"><?php print $subtitle; ?></div>
     <?php endif; ?>
     <?php if (isset($description)): ?>
     <div class="cd-d"><?php print $description; ?></div>
