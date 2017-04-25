@@ -197,8 +197,6 @@ function bos_metrolist_affordable_housing_views_default_views() {
     'any_label' => NULL,
     'filter_rewrite_values' => NULL,
   );
-  $handler->display->display_options['exposed_form']['options']['input_required'] = 0;
-  $handler->display->display_options['exposed_form']['options']['text_input_required_format'] = 'filtered_html';
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '10';
   $handler->display->display_options['style_plugin'] = 'table';
@@ -635,6 +633,15 @@ function bos_metrolist_affordable_housing_views_default_views() {
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['label'] = 'Property Address';
   $handler->display->display_options['fields']['nothing']['alter']['text'] = '[title] [field_mah_address] [field_mah_neighborhood] [field_mah_zipcode]';
+  /* Field: Content: Household Income Limits (AMI) */
+  $handler->display->display_options['fields']['field_mah_household_income_limit']['id'] = 'field_mah_household_income_limit';
+  $handler->display->display_options['fields']['field_mah_household_income_limit']['table'] = 'field_data_field_mah_household_income_limit';
+  $handler->display->display_options['fields']['field_mah_household_income_limit']['field'] = 'field_mah_household_income_limit';
+  $handler->display->display_options['fields']['field_mah_household_income_limit']['label'] = 'Household Income Limits ​(AMI%)';
+  $handler->display->display_options['fields']['field_mah_household_income_limit']['element_type'] = '0';
+  $handler->display->display_options['fields']['field_mah_household_income_limit']['element_wrapper_type'] = '0';
+  $handler->display->display_options['fields']['field_mah_household_income_limit']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_mah_household_income_limit']['field_api_classes'] = TRUE;
   /* Field: Content: Property Manager Contact */
   $handler->display->display_options['fields']['field_mah_contact']['id'] = 'field_mah_contact';
   $handler->display->display_options['fields']['field_mah_contact']['table'] = 'field_data_field_mah_contact';
@@ -694,10 +701,11 @@ function bos_metrolist_affordable_housing_views_default_views() {
   $handler->display->display_options['fields']['field_mah_lottery_url']['id'] = 'field_mah_lottery_url';
   $handler->display->display_options['fields']['field_mah_lottery_url']['table'] = 'field_data_field_mah_lottery_url';
   $handler->display->display_options['fields']['field_mah_lottery_url']['field'] = 'field_mah_lottery_url';
+  $handler->display->display_options['fields']['field_mah_lottery_url']['label'] = 'Listing Information';
   $handler->display->display_options['fields']['field_mah_lottery_url']['element_type'] = '0';
   $handler->display->display_options['fields']['field_mah_lottery_url']['element_wrapper_type'] = '0';
   $handler->display->display_options['fields']['field_mah_lottery_url']['element_default_classes'] = FALSE;
-  $handler->display->display_options['fields']['field_mah_lottery_url']['empty'] = '--';
+  $handler->display->display_options['fields']['field_mah_lottery_url']['empty'] = 'Reach out to Contact';
   $handler->display->display_options['fields']['field_mah_lottery_url']['click_sort_column'] = 'url';
   $handler->display->display_options['fields']['field_mah_lottery_url']['field_api_classes'] = TRUE;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
