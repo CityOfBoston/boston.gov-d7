@@ -573,3 +573,13 @@ function bos_profile_update_7020() {
   );
   module_enable($enabled_modules);
 }
+
+/**
+ * Update for 4/21/17
+ */
+function bos_profile_update_7021() {
+  $enabled_modules = array(
+    'keyboard_shortcut',
+  );
+  module_enable($enabled_modules);
+}
