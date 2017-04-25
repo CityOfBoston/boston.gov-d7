@@ -28,9 +28,11 @@
 <div class="b b--<?php print $component_theme; ?> b--fw">
   <div class="b-c">
   	<div class="sh <?php print $section_header_theme; ?>">
-	    <div class="sh-title"><?php print render($content['field_component_title']); ?></div>
+      <?php if (isset($content['field_component_title'])): ?>
+        <?php print render($content['field_component_title']); ?>
+      <?php endif; ?>
 	    <?php if (isset($content['field_contact'])): ?>
-	      <div class="sh-contact">Contact: <?php print render($content['field_contact']); ?></div>
+	      <div class="sh-contact"><?php print render($content['field_contact']); ?></div>
 	    <?php endif; ?>
     </div>
     <div class="g">

@@ -272,7 +272,7 @@ function bos_grid_of_cards_field_default_field_instances() {
   $field_instances['paragraphs_item-card-field_thumbnail'] = array(
     'bundle' => 'card',
     'deleted' => 0,
-    'description' => 'This image will display with the card. ',
+    'description' => 'This image will appear as a banner on the card.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -739,7 +739,7 @@ function bos_grid_of_cards_field_default_field_instances() {
   t('Sub-Title');
   t('The short title is used to populate the in-page navigation. Please keep it short: one to three words is ideal. Example can be found on boston.gov/winter/.');
   t('The title for the card. <strong>Display is limited to 70 characters.</strong>');
-  t('This image will display with the card. ');
+  t('This image will appear as a banner on the card.');
   t('This is where the card links to. Only the URL is used, <strong>the title is not displayed</strong> on the card.');
   t('This will change the colors output for the component. This component defaults to the grey theme, but supports white, or blue.');
   t('Title');

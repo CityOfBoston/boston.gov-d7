@@ -222,6 +222,7 @@ function _bos_core_get_components() {
     'transaction_grid',
     'video',
     'grid_of_quotes',
+    'grid_of_cards',
   ];
   $profile_components['bos_profile'] = [
     'feedback',
