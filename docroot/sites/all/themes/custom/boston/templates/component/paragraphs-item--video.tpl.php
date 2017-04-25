@@ -26,13 +26,10 @@
  */
 
  $id = uniqid();
- $live_stream_start = $content['field_event_dates']['#object']->field_event_dates['und']['0']['value'];
- $live_stream_start = new DateTime($live_stream_start, new DateTimeZone('UTC'));
- $live_stream_start->setTimeZone(new DateTimeZone('America/New_York'));
 ?>
 
 <div class="b b--fw">
-  <div id="vid_<?php print $id; ?>" class="vid" style="background-image: url(<?php print render($content['field_image']) ?>)" data-vid-live-start="<?php echo($live_stream_start->format('Y-m-d H:i:s T')); ?>" data-vid-id="<?php print trim(render($content['field_extra_info'])) ?>" data-vid-channel="<?php print trim(render($content['field_sticky'])) ?>">
+  <div id="vid_<?php print $id; ?>" class="vid" style="background-image: url(<?php print render($content['field_image']) ?>)" data-vid-id="<?php print trim(render($content['field_extra_info'])) ?>" data-vid-channel="<?php print trim(render($content['field_is_channel'])) ?>">
     <div class="vid-c">
       <div class="vid-ci">
         <div class="b-c">
