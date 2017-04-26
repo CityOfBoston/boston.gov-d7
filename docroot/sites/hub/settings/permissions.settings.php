@@ -32,6 +32,7 @@ function acquia_permissions_map() {
       'access keyboard shortcuts',
       'access media browser',
       'access user profiles',
+      'access keyboard shortcuts',
       'create files',
       'delete own image files',
       'edit own image files',
