@@ -24,26 +24,15 @@
  * @see template_preprocess_entity()
  * @see template_process()
  */
-
- $id = uniqid();
 ?>
 
-<div class="b b--fw">
-  <div id="vid_<?php print $id; ?>" class="vid" style="background-image: url(<?php print render($content['field_image']) ?>)" data-vid-id="<?php print trim(render($content['field_extra_info'])) ?>" data-vid-channel="<?php print trim(render($content['field_is_channel'])) ?>">
-    <div class="vid-c">
-      <div class="vid-ci">
-        <div class="b-c">
-          <div class="vid-t"><?php print render($content['field_title']) ?></div>
-          <?php if (isset($content['field_contact'])) : ?>
-            <div class="vid-st m-t300">Credit: <?php print_r($field_contact[0]['entity']->name) ?></div>
-          <?php endif; ?>
-          <div class="vid-ic m-t300">
-            <button class="vid-cta">
-              <img src="<?php print $asset_url ?>/images/global/icons/play.svg" alt="Play Video" height="97" width="97" class="vid-cta-i" />
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
+<a href="<?php print $card_url; ?>" class="cd g--4 g--4--sl m-t500">
+  <div class="cd-ic" style="background-image: url(<?php print render($content['field_thumbnail']); ?>)"></div>
+  <div class="cd-c">
+    <div class="cd-t"><?php print render($content['field_title']); ?></div>
+    <?php if (isset($content['field_subheader'])): ?>
+      <div class="cd-st t--upper t--subtitle"><?php print render($content['field_subheader']); ?></div>
+    <?php endif; ?>
+    <div class="cd-d"><?php print render($content['field_short_description']); ?></div>
   </div>
-</div>
+</a>

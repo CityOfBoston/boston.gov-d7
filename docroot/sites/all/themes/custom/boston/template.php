@@ -455,6 +455,12 @@ function boston_preprocess_page(array &$variables) {
     }
   }
 
+  // If we are on the employee directory page, change the title.
+  $current_path = current_path();
+  if (strpos($current_path, 'user') === 0) {
+    $page_class_alert = 'page page--wa';
+  }
+
   $variables['target_id'] = $target_id;
   $variables['page_class'] = $page_class;
   $variables['page_class_alert'] = $page_class_alert;
@@ -588,6 +594,41 @@ function boston_preprocess_node(array &$variables, $hook) {
   if ($variables['type'] == 'listing_page') {
     _boston_listing_page_title($variables);
   }
+}
+
+function boston_preprocess_paragraphs_item_grid_of_cards(&$variables) {
+  $theme = bos_core_field_get_first_item('paragraphs_item', $variables['paragraphs_item'], 'field_component_theme')['value'];
+
+  $variables['component_theme'] = $theme;
+  $variables['section_header_theme'] = $theme === 'b' ? 'sh--w' : '';
+}
+
+function boston_preprocess_paragraphs_item_grid_of_places(&$variables) {
+  $theme = bos_core_field_get_first_item('paragraphs_item', $variables['paragraphs_item'], 'field_component_theme')['value'];
+
+  $variables['component_theme'] = isset($theme) ? $theme : 'g';
+  $variables['section_header_theme'] = $theme === 'b' ? 'sh--w' : '';
+}
+
+function boston_preprocess_paragraphs_item_grid_of_programs_initiatives(&$variables) {
+  $theme = bos_core_field_get_first_item('paragraphs_item', $variables['paragraphs_item'], 'field_component_theme')['value'];
+
+  $variables['component_theme'] = isset($theme) ? $theme : 'g';
+  $variables['section_header_theme'] = $theme === 'b' ? 'sh--w' : '';
+}
+
+function boston_preprocess_paragraphs_item_card(&$variables) {
+  $link_id = bos_core_field_get_first_item('paragraphs_item', $variables['paragraphs_item'], 'field_link')['value'];
+
+  if ($link_id) {
+    // Load the link references
+    $link = paragraphs_item_load($link_id);
+
+    // Return the url
+    $url = bos_core_field_get_link_url($link);
+  }
+
+  $variables['card_url'] = $url;
 }
 
 function boston_preprocess_field_field_how_to_tabs(&$variables) {
@@ -1502,6 +1543,8 @@ function boston_preprocess_paragraphs_item(&$variables) {
   if (!in_array($bundle, $media_bundles)) {
     $variables['classes_array'][] = 'component-section';
   }
+
+  $variables['asset_url'] = variable_get('asset_url', 'https://patterns.boston.gov');
 }
 
 /**
@@ -1560,7 +1603,7 @@ function boston_preprocess_field_collection_item_field_transactions(&$variables)
   $link_icon = array(
     "image" => file_create_url($icon[0]["uri"]),
     "classes" => array(
-      "container" => "lwi g--4",
+      "container" => "lwi g--3 g--3--sl m-t500",
       "icon" => "lwi-ic",
       "text" => "lwi-t",
     ),
@@ -1709,6 +1752,7 @@ function boston_preprocess_field_field_component_title(&$variables) {
   if ($variables['is_component_field']) {
     $component = $variables['element']['#object'];
     $short_title = field_get_items('paragraphs_item', $component, 'field_short_title');
+
     if ($short_title !== FALSE) {
       $variables['short_title'] = $short_title[0]['safe_value'];
       $variables['short_title_link'] = preg_replace('@[^a-z0-9-]+@','-', strtolower($short_title[0]['safe_value']));

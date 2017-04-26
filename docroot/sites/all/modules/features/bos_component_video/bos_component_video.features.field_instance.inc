@@ -10,7 +10,7 @@
 function bos_component_video_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'paragraphs_item-video-field_contact'.
+  // Exported field_instance: 'paragraphs_item-video-field_contact'
   $field_instances['paragraphs_item-video-field_contact'] = array(
     'bundle' => 'video',
     'default_value' => NULL,
@@ -18,7 +18,7 @@ function bos_component_video_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'entityreference',
         'settings' => array(
           'link' => FALSE,
@@ -60,65 +60,7 @@ function bos_component_video_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-video-field_event_dates'.
-  $field_instances['paragraphs_item-video-field_event_dates'] = array(
-    'bundle' => 'video',
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'date',
-        'settings' => array(
-          'format_type' => 'long',
-          'fromto' => 'both',
-          'multiple_from' => '',
-          'multiple_number' => '',
-          'multiple_to' => '',
-          'show_remaining_days' => FALSE,
-          'show_repeat_rule' => 'show',
-        ),
-        'type' => 'date_default',
-        'weight' => 8,
-      ),
-      'paragraphs_editor_preview' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'paragraphs_item',
-    'fences_wrapper' => 'no_wrapper',
-    'field_name' => 'field_event_dates',
-    'label' => 'Event Dates',
-    'required' => 0,
-    'settings' => array(
-      'default_value' => 'now',
-      'default_value2' => 'same',
-      'default_value_code' => '',
-      'default_value_code2' => '',
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'date',
-      'settings' => array(
-        'increment' => 15,
-        'input_format' => 'm/d/Y - g:i:sa',
-        'input_format_custom' => '',
-        'label_position' => 'above',
-        'no_fieldset' => 0,
-        'repeat_collapsed' => 1,
-        'text_parts' => array(),
-        'year_range' => '-3:+3',
-      ),
-      'type' => 'date_popup',
-      'weight' => 7,
-    ),
-  );
-
-  // Exported field_instance: 'paragraphs_item-video-field_extra_info'.
+  // Exported field_instance: 'paragraphs_item-video-field_extra_info'
   $field_instances['paragraphs_item-video-field_extra_info'] = array(
     'bundle' => 'video',
     'default_value' => NULL,
@@ -165,7 +107,7 @@ function bos_component_video_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-video-field_image'.
+  // Exported field_instance: 'paragraphs_item-video-field_image'
   $field_instances['paragraphs_item-video-field_image'] = array(
     'bundle' => 'video',
     'deleted' => 0,
@@ -173,23 +115,13 @@ function bos_component_video_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'hidden',
-        'module' => 'picture',
+        'module' => 'image_url_formatter',
         'settings' => array(
-          'colorbox_settings' => array(
-            'colorbox_caption' => 'auto',
-            'colorbox_caption_custom' => '',
-            'colorbox_gallery' => 'post',
-            'colorbox_gallery_custom' => '',
-            'colorbox_group' => '',
-            'colorbox_multivalue_index' => NULL,
-          ),
-          'fallback_image_style' => '',
           'image_link' => '',
-          'lazyload' => '',
-          'lazyload_aspect_ratio' => '',
-          'picture_mapping' => 'wide_2000x700',
+          'image_style' => 'rep_wide_2000x700custom_boston_desktop_1x',
+          'url_type' => 0,
         ),
-        'type' => 'picture',
+        'type' => 'image_url',
         'weight' => 5,
       ),
       'paragraphs_editor_preview' => array(
@@ -241,22 +173,18 @@ function bos_component_video_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-video-field_live_stream'.
-  $field_instances['paragraphs_item-video-field_live_stream'] = array(
+  // Exported field_instance: 'paragraphs_item-video-field_is_channel'
+  $field_instances['paragraphs_item-video-field_is_channel'] = array(
     'bundle' => 'video',
-    'default_value' => array(
-      0 => array(
-        'value' => 0,
-      ),
-    ),
+    'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Check if the video will be live streamed',
+    'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'list',
         'settings' => array(),
-        'type' => 'list_default',
+        'type' => 'list_key',
         'weight' => 7,
       ),
       'paragraphs_editor_preview' => array(
@@ -268,9 +196,9 @@ function bos_component_video_field_default_field_instances() {
     ),
     'entity_type' => 'paragraphs_item',
     'fences_wrapper' => 'no_wrapper',
-    'field_name' => 'field_live_stream',
-    'label' => 'Live Stream',
-    'required' => 0,
+    'field_name' => 'field_is_channel',
+    'label' => 'Is a Youtube channel?',
+    'required' => 1,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
@@ -278,14 +206,14 @@ function bos_component_video_field_default_field_instances() {
       'active' => 1,
       'module' => 'options',
       'settings' => array(
-        'display_label' => 1,
+        'apply_chosen' => '',
       ),
-      'type' => 'options_onoff',
+      'type' => 'options_select',
       'weight' => 6,
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-video-field_short_title'.
+  // Exported field_instance: 'paragraphs_item-video-field_short_title'
   $field_instances['paragraphs_item-video-field_short_title'] = array(
     'bundle' => 'video',
     'default_value' => NULL,
@@ -332,7 +260,7 @@ function bos_component_video_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-video-field_title'.
+  // Exported field_instance: 'paragraphs_item-video-field_title'
   $field_instances['paragraphs_item-video-field_title'] = array(
     'bundle' => 'video',
     'default_value' => NULL,
@@ -381,11 +309,9 @@ function bos_component_video_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Check if the video will be live streamed');
   t('Department');
-  t('Event Dates');
+  t('Is a Youtube channel?');
   t('Large scale image to use as the image for the video.');
-  t('Live Stream');
   t('Poster Image');
   t('Short Title');
   t('The ID of the video you want to embed. Currently only supports Youtube. If given the Youtube URL https://www.youtube.com/watch?v=bTqVqk7FSmY, then "bTqVqk7FSmY" would be ID.');

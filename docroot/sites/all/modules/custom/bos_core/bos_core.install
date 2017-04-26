@@ -478,25 +478,6 @@ function bos_core_update_7026() {
  * Work for 2/15/2016.
  */
 function bos_core_update_7027() {
-  $deleted_field_instances = array(
-    'node' => array(
-      'public_notice' => array(
-        'field_live_stream',
-        'field_published_date',
-      ),
-    ),
-  );
-
-  // Remove field instances.
-  foreach ($deleted_field_instances as $entity_type => $bundles) {
-    foreach ($bundles as $bundle_id => $bundle_fields) {
-      foreach ($bundle_fields as $field) {
-        $instance = field_info_instance($entity_type, $field, $bundle_id);
-        field_delete_instance($instance);
-      }
-    }
-  }
-
   // Add a module.
   $enabled_modules = array(
     'publication_date',
@@ -512,4 +493,66 @@ function bos_core_update_7028() {
     'bos_content_type_site_alert',
   );
   module_enable($enabled_modules);
+}
+
+/**
+ * Updates for 4/3/2017.
+ */
+function bos_core_update_7029() {
+  $deleted_field_instances = array(
+    'node' => array(
+      'public_notice' => array(
+        'field_live_stream',
+        'field_published_date',
+      ),
+      'post' => array(
+        'field_multiple_neighborhoods',
+      ),
+    ),
+  );
+
+  // Remove field instances.
+  foreach ($deleted_field_instances as $entity_type => $bundles) {
+    foreach ($bundles as $bundle_id => $bundle_fields) {
+      foreach ($bundle_fields as $field) {
+        $instance = field_info_instance($entity_type, $field, $bundle_id);
+        field_delete_instance($instance);
+      }
+    }
+  }
+}
+
+/**
+ * Updates for 4/3/2017.
+ */
+function bos_core_update_7030() {
+  $enabled_modules = array(
+    'bos_grid_of_cards',
+  );
+  module_enable($enabled_modules);
+}
+
+/**
+ * Updates for 4/25/2017.
+ */
+function bos_core_update_7031() {
+  $deleted_field_instances = array(
+    'paragraphs_item' => array(
+      'video' => array(
+        'field_event_dates',
+        'field_live_stream',
+        'field_sticky',
+      ),
+    ),
+  );
+
+  // Remove field instances.
+  foreach ($deleted_field_instances as $entity_type => $bundles) {
+    foreach ($bundles as $bundle_id => $bundle_fields) {
+      foreach ($bundle_fields as $field) {
+        $instance = field_info_instance($entity_type, $field, $bundle_id);
+        field_delete_instance($instance);
+      }
+    }
+  }
 }

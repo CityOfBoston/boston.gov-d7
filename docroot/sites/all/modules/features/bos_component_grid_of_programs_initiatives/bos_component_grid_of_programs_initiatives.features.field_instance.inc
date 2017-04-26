@@ -11,6 +11,51 @@ function bos_component_grid_of_programs_initiatives_field_default_field_instance
   $field_instances = array();
 
   // Exported field_instance:
+  // 'paragraphs_item-grid_of_programs_initiatives-field_component_theme'.
+  $field_instances['paragraphs_item-grid_of_programs_initiatives-field_component_theme'] = array(
+    'bundle' => 'grid_of_programs_initiatives',
+    'default_value' => array(
+      0 => array(
+        'value' => 'g',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 4,
+      ),
+      'paragraphs_editor_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'paragraphs_item',
+    'fences_wrapper' => 'no_wrapper',
+    'field_name' => 'field_component_theme',
+    'label' => 'Component Theme',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
+      'type' => 'options_select',
+      'weight' => 4,
+    ),
+  );
+
+  // Exported field_instance:
   // 'paragraphs_item-grid_of_programs_initiatives-field_component_title'.
   $field_instances['paragraphs_item-grid_of_programs_initiatives-field_component_title'] = array(
     'bundle' => 'grid_of_programs_initiatives',
@@ -102,6 +147,7 @@ function bos_component_grid_of_programs_initiatives_field_default_field_instance
       'active' => 1,
       'module' => 'entityreference',
       'settings' => array(
+        'entityreference_autocreate' => 0,
         'match_operator' => 'CONTAINS',
         'path' => '',
         'size' => 60,
@@ -154,6 +200,7 @@ function bos_component_grid_of_programs_initiatives_field_default_field_instance
       'active' => 1,
       'module' => 'entityreference',
       'settings' => array(
+        'entityreference_autocreate' => 0,
         'match_operator' => 'CONTAINS',
         'path' => '',
         'size' => 60,
@@ -215,6 +262,7 @@ function bos_component_grid_of_programs_initiatives_field_default_field_instance
   // Translatables
   // Included for use with string extractors like potx.
   t('Add the Programs/Initiatives for this Grid.');
+  t('Component Theme');
   t('Contact');
   t('Please enter the title for this component here.');
   t('Program/Initiative');

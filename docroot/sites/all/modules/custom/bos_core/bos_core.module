@@ -222,6 +222,7 @@ function _bos_core_get_components() {
     'transaction_grid',
     'video',
     'grid_of_quotes',
+    'grid_of_cards',
   ];
   $profile_components['bos_profile'] = [
     'feedback',
@@ -370,6 +371,27 @@ function bos_core_field_get_first_item($entity_type, $entity, $field_name) {
     return reset($items);
   }
   return NULL;
+}
+
+/**
+ * Take a link reference and return the URL.
+ */
+function bos_core_field_get_link_url($link) {
+  $url = NULL;
+
+  if ($link->field_external_link) {
+    $url = $link->field_external_link["und"][0]["url"];
+  }
+
+  if ($link->field_internal_link) {
+    $url = url('node/' . $link->field_internal_link["und"][0]["target_id"]);
+  }
+
+  if ($link->field_document) {
+    $url = file_create_url($link->field_document["und"][0]["uri"]);
+  }
+
+  return $url;
 }
 
 /**
