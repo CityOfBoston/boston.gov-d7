@@ -341,8 +341,8 @@ function bos_view_related_events_views_default_views() {
   $handler->display->display_options['arguments']['nid']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['nid']['summary_options']['items_per_page'] = '25';
 
-  /* Display: People */
-  $handler = $view->new_display('block', 'People', 'block_3');
+  /* Display: Person */
+  $handler = $view->new_display('block', 'Person', 'block_3');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'Related Events';
   $handler->display->display_options['display_description'] = 'The events in the near future.';
