@@ -1,0 +1,11 @@
+name = Boston View Related Events
+description = View with multiple displays for Events with entity references to various Content Types
+core = 7.x
+package = Features
+version = 7.x-1.0
+project = bos_view_related_events
+dependencies[] = views
+features[ctools][] = views:views_default:3.0
+features[features_api][] = api:2
+features[views_view][] = related_events
+features_exclude[dependencies][ctools] = ctools
