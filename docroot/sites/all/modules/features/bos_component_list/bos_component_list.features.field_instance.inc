@@ -10,7 +10,7 @@
 function bos_component_list_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'paragraphs_item-list-field_component_title'.
+  // Exported field_instance: 'paragraphs_item-list-field_component_title'
   $field_instances['paragraphs_item-list-field_component_title'] = array(
     'bundle' => 'list',
     'default_value' => NULL,
@@ -58,7 +58,7 @@ function bos_component_list_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-list-field_contact'.
+  // Exported field_instance: 'paragraphs_item-list-field_contact'
   $field_instances['paragraphs_item-list-field_contact'] = array(
     'bundle' => 'list',
     'default_value' => NULL,
@@ -110,7 +110,7 @@ function bos_component_list_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-list-field_list'.
+  // Exported field_instance: 'paragraphs_item-list-field_list'
   $field_instances['paragraphs_item-list-field_list'] = array(
     'bundle' => 'list',
     'default_value' => NULL,
@@ -164,7 +164,10 @@ function bos_component_list_field_default_field_instances() {
         'boston_scheduling' => 0,
         'boston_scheduling_event' => 0,
         'boston_scheduling_post' => 0,
+        'boston_site_alerts' => 0,
         'calendar' => 'calendar',
+        'feed_departments' => 0,
+        'feed_events' => 0,
         'media_default' => 0,
         'metrolist_affordable_housing' => 'metrolist_affordable_housing',
         'news_announcements' => 0,
@@ -172,6 +175,8 @@ function bos_component_list_field_default_field_instances() {
         'program_initiatives' => 0,
         'public_notice' => 'public_notice',
         'related_content_migration' => 0,
+        'related_events' => 'related_events',
+        'site_alert' => 0,
         'status_displays' => 'status_displays',
         'topic_landing_page' => 'topic_landing_page',
         'transactions' => 'transactions',
@@ -190,7 +195,7 @@ function bos_component_list_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-list-field_short_title'.
+  // Exported field_instance: 'paragraphs_item-list-field_short_title'
   $field_instances['paragraphs_item-list-field_short_title'] = array(
     'bundle' => 'list',
     'default_value' => NULL,
