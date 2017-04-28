@@ -10,8 +10,7 @@
 function bos_component_transaction_grid_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance:
-  // 'field_collection_item-field_transactions-field_grid_link'.
+  // Exported field_instance: 'field_collection_item-field_transactions-field_grid_link'
   $field_instances['field_collection_item-field_transactions-field_grid_link'] = array(
     'bundle' => 'field_transactions',
     'default_value' => NULL,
@@ -79,8 +78,7 @@ function bos_component_transaction_grid_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance:
-  // 'field_collection_item-field_transactions-field_icon'.
+  // Exported field_instance: 'field_collection_item-field_transactions-field_icon'
   $field_instances['field_collection_item-field_transactions-field_icon'] = array(
     'bundle' => 'field_transactions',
     'deleted' => 0,
@@ -139,8 +137,7 @@ function bos_component_transaction_grid_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance:
-  // 'paragraphs_item-transaction_grid-field_component_title'.
+  // Exported field_instance: 'paragraphs_item-transaction_grid-field_component_title'
   $field_instances['paragraphs_item-transaction_grid-field_component_title'] = array(
     'bundle' => 'transaction_grid',
     'default_value' => NULL,
@@ -188,7 +185,7 @@ function bos_component_transaction_grid_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-transaction_grid-field_contact'.
+  // Exported field_instance: 'paragraphs_item-transaction_grid-field_contact'
   $field_instances['paragraphs_item-transaction_grid-field_contact'] = array(
     'bundle' => 'transaction_grid',
     'default_value' => NULL,
@@ -240,13 +237,12 @@ function bos_component_transaction_grid_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance:
-  // 'paragraphs_item-transaction_grid-field_short_title'.
+  // Exported field_instance: 'paragraphs_item-transaction_grid-field_short_title'
   $field_instances['paragraphs_item-transaction_grid-field_short_title'] = array(
     'bundle' => 'transaction_grid',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Please enter a short title (try to keep it under 15 characters) to be used in the subnavigation on topics pages.',
+    'description' => 'The short title is used to populate the in-page navigation. Please keep it short: one to three words is ideal. Example can be found on boston.gov/winter/.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -274,6 +270,11 @@ function bos_component_transaction_grid_field_default_field_instances() {
     'label' => 'Short Title',
     'required' => 0,
     'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
       'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
@@ -281,7 +282,7 @@ function bos_component_transaction_grid_field_default_field_instances() {
       'active' => 1,
       'module' => 'text',
       'settings' => array(
-        'show_token_tree' => FALSE,
+        'show_token_tree' => 0,
         'size' => 60,
       ),
       'type' => 'text_textfield',
@@ -289,8 +290,7 @@ function bos_component_transaction_grid_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance:
-  // 'paragraphs_item-transaction_grid-field_transactions'.
+  // Exported field_instance: 'paragraphs_item-transaction_grid-field_transactions'
   $field_instances['paragraphs_item-transaction_grid-field_transactions'] = array(
     'bundle' => 'transaction_grid',
     'default_value' => NULL,
@@ -341,10 +341,10 @@ function bos_component_transaction_grid_field_default_field_instances() {
   t('Contact');
   t('Icon');
   t('Link');
-  t('Please enter a short title (try to keep it under 15 characters) to be used in the subnavigation on topics pages.');
   t('Please provide a title for this component. The title will be displayed across the top of the component underlined by a black bar.');
   t('Please select a Contact who owns this content. The contact will be displayed on the component to give users a way to get in contact with the owner.');
   t('Short Title');
+  t('The short title is used to populate the in-page navigation. Please keep it short: one to three words is ideal. Example can be found on boston.gov/winter/.');
   t('Title');
   t('Transaction');
 

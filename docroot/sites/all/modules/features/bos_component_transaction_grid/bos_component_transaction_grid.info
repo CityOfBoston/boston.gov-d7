@@ -23,3 +23,4 @@ features[field_instance][] = paragraphs_item-transaction_grid-field_contact
 features[field_instance][] = paragraphs_item-transaction_grid-field_short_title
 features[field_instance][] = paragraphs_item-transaction_grid-field_transactions
 features[paragraphs][] = transaction_grid
+mtime = 1480263901
