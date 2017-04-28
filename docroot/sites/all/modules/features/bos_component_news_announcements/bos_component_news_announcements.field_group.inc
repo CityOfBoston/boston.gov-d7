@@ -21,7 +21,7 @@ function bos_component_news_announcements_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'News & Announcements',
-    'weight' => '0',
+    'weight' => '1',
     'children' => array(
       0 => 'field_component_title',
       1 => 'field_featured_post',
