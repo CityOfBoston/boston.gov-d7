@@ -68,7 +68,6 @@
 .with-hero,
 .node-type-public-notice .node-public-notice {
   @include respond-to(xl) {
-    z-index: 10;
     position: relative;
     width: 100%;
     padding: 45px 50px 0;
