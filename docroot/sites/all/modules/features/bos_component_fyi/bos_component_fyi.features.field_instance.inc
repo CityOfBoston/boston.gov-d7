@@ -243,7 +243,7 @@ function bos_component_fyi_field_default_field_instances() {
     'bundle' => 'fyi',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'The short title is used to populate the in-page navigation. Please keep it short: one to three words is ideal. Example can be found on boston.gov/winter/.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -342,6 +342,7 @@ function bos_component_fyi_field_default_field_instances() {
   t('Icon');
   t('Optional link for users to get more information. Limited to 30 characters.');
   t('Short Title');
+  t('The short title is used to populate the in-page navigation. Please keep it short: one to three words is ideal. Example can be found on boston.gov/winter/.');
   t('The title doesn’t have to be the name of a department (“Leaf and Yard Waste Collection”), but it might be (“Public Works”). Limited to 30 characters.');
 
   return $field_instances;
