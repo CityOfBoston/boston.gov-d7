@@ -29,16 +29,14 @@
 
 <div class="b b--fw b--b b--by"<?php print $attributes; ?>>
   <div class="b-c">
-    <div class="sh sh--y sh--b0">
+    <div class="sh sh--y sh--b0 m-b200">
       <?php print render($content['field_component_title']); ?>
       <?php if (isset($content['field_short_title'])) : ?>
         <?php print render($content['field_short_title']); ?>
       <?php endif; ?>
     </div>
-    <div class="component__content">
-      <div class="component__content--flex component__content--flex-wrap"<?php print $content_attributes; ?>>
-        <?php print render($content); ?>
-      </div>
+    <div class="g">
+      <?php print render($content); ?>
     </div>
   </div>
 </div>

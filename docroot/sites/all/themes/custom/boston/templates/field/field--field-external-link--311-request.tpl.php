@@ -45,6 +45,9 @@
  */
 ?>
 
-<div class="bos311__link">
-  <?php print render($items); ?>
-</div>
+<?php foreach ($items as $delta => $item): ?>
+  <?php
+    $item["#element"]["attributes"]["class"] = 'g--4 g--4--sl lwa lwa--w';
+    print theme('link_formatter_link_default', $item);
+  ?>
+<?php endforeach; ?>
