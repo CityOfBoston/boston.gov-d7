@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the bos_change_log feature.
- */
-
-include_once 'bos_change_log.features.inc';
