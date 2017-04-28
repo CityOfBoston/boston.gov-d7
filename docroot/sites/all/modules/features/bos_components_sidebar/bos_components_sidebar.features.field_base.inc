@@ -27,13 +27,14 @@ function bos_components_sidebar_field_default_field_bases() {
     'settings' => array(
       'allowed_values' => array(
         'icon-alert' => 'Alert',
+        'icon-document' => 'Document',
         'icon-email' => 'Email',
+        'icon-event' => 'Event',
+        'icon-form' => 'Form',
         'icon-location' => 'Location',
         'icon-payment' => 'Payment',
         'icon-phone' => 'Phone',
         'icon-time' => 'Time',
-        'icon-form' => 'Form',
-        'icon-event' => 'Event',
       ),
       'allowed_values_function' => '',
     ),
