@@ -33,4 +33,5 @@ features[paragraphs][] = gol_list_links
 features[paragraphs][] = group_of_links_list
 features[variable][] = field_bundle_settings_paragraphs_item__gol_list_links
 features[variable][] = field_bundle_settings_paragraphs_item__group_of_links_list
+mtime = 1480263901
 project path = sites/all/modules/features
