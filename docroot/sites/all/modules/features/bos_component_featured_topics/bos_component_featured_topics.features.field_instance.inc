@@ -15,7 +15,7 @@ function bos_component_featured_topics_field_default_field_instances() {
     'bundle' => 'featured_topics',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'The short title is used to populate the in-page navigation. Please keep it short: one to three words is ideal. Example can be found on boston.gov/winter/.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -118,6 +118,7 @@ function bos_component_featured_topics_field_default_field_instances() {
   t('Control + Click to select multiple (CMD+Click on a Mac)');
   t('Guides');
   t('Short Title');
+  t('The short title is used to populate the in-page navigation. Please keep it short: one to three words is ideal. Example can be found on boston.gov/winter/.');
 
   return $field_instances;
 }
