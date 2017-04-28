@@ -556,3 +556,13 @@ function bos_core_update_7031() {
     }
   }
 }
+
+/**
+ * Updates for 4/28/2017.
+ */
+function bos_core_update_7032() {
+  $enabled_modules = array(
+    'bos_change_log',
+  );
+  module_enable($enabled_modules);
+}
