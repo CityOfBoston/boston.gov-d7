@@ -581,7 +581,7 @@ function bos_workflow_views_default_views() {
     'link' => 0,
   );
   $handler->display->display_options['fields']['field_contact']['field_api_classes'] = TRUE;
-  /* Field: Content: Neighborhood */
+  /* Field: Content: Related Neighborhoods */
   $handler->display->display_options['fields']['field_multiple_neighborhoods']['id'] = 'field_multiple_neighborhoods';
   $handler->display->display_options['fields']['field_multiple_neighborhoods']['table'] = 'field_data_field_multiple_neighborhoods';
   $handler->display->display_options['fields']['field_multiple_neighborhoods']['field'] = 'field_multiple_neighborhoods';
@@ -611,7 +611,7 @@ function bos_workflow_views_default_views() {
   );
   $handler->display->display_options['fields']['field_event_dates']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_event_dates']['field_api_classes'] = TRUE;
-  /* Field: Field: People */
+  /* Field: Field: Related people */
   $handler->display->display_options['fields']['field_people']['id'] = 'field_people';
   $handler->display->display_options['fields']['field_people']['table'] = 'field_data_field_people';
   $handler->display->display_options['fields']['field_people']['field'] = 'field_people';
@@ -623,7 +623,7 @@ function bos_workflow_views_default_views() {
   );
   $handler->display->display_options['fields']['field_people']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_people']['field_api_classes'] = TRUE;
-  /* Field: Field: Programs/Initiatives */
+  /* Field: Field: Related programs / initiatives */
   $handler->display->display_options['fields']['field_program_initiative']['id'] = 'field_program_initiative';
   $handler->display->display_options['fields']['field_program_initiative']['table'] = 'field_data_field_program_initiative';
   $handler->display->display_options['fields']['field_program_initiative']['field'] = 'field_program_initiative';
@@ -635,7 +635,7 @@ function bos_workflow_views_default_views() {
   );
   $handler->display->display_options['fields']['field_program_initiative']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_program_initiative']['field_api_classes'] = TRUE;
-  /* Field: Field: Places */
+  /* Field: Field: Related places */
   $handler->display->display_options['fields']['field_place']['id'] = 'field_place';
   $handler->display->display_options['fields']['field_place']['table'] = 'field_data_field_place';
   $handler->display->display_options['fields']['field_place']['field'] = 'field_place';
@@ -652,7 +652,7 @@ function bos_workflow_views_default_views() {
   $handler->display->display_options['fields']['status']['table'] = 'node';
   $handler->display->display_options['fields']['status']['field'] = 'status';
   $handler->display->display_options['fields']['status']['not'] = 0;
-  /* Field: Content: Updated Date */
+  /* Field: Field: Updated Date */
   $handler->display->display_options['fields']['field_updated_date']['id'] = 'field_updated_date';
   $handler->display->display_options['fields']['field_updated_date']['table'] = 'field_data_field_updated_date';
   $handler->display->display_options['fields']['field_updated_date']['field'] = 'field_updated_date';
@@ -748,7 +748,7 @@ function bos_workflow_views_default_views() {
     41 => 0,
   );
   $handler->display->display_options['filters']['field_event_dates_value']['form_type'] = 'date_popup';
-  /* Filter criterion: Content: Neighborhood (field_multiple_neighborhoods) */
+  /* Filter criterion: Content: Related Neighborhoods (field_multiple_neighborhoods) */
   $handler->display->display_options['filters']['field_multiple_neighborhoods_target_id']['id'] = 'field_multiple_neighborhoods_target_id';
   $handler->display->display_options['filters']['field_multiple_neighborhoods_target_id']['table'] = 'field_data_field_multiple_neighborhoods';
   $handler->display->display_options['filters']['field_multiple_neighborhoods_target_id']['field'] = 'field_multiple_neighborhoods_target_id';
@@ -769,7 +769,7 @@ function bos_workflow_views_default_views() {
     36 => 0,
     41 => 0,
   );
-  /* Filter criterion: Field: People (field_people) */
+  /* Filter criterion: Field: Related people (field_people) */
   $handler->display->display_options['filters']['field_people_target_id']['id'] = 'field_people_target_id';
   $handler->display->display_options['filters']['field_people_target_id']['table'] = 'field_data_field_people';
   $handler->display->display_options['filters']['field_people_target_id']['field'] = 'field_people_target_id';
@@ -790,7 +790,7 @@ function bos_workflow_views_default_views() {
     36 => 0,
     41 => 0,
   );
-  /* Filter criterion: Field: Programs/Initiatives (field_program_initiative) */
+  /* Filter criterion: Field: Related programs / initiatives (field_program_initiative) */
   $handler->display->display_options['filters']['field_program_initiative_target_id']['id'] = 'field_program_initiative_target_id';
   $handler->display->display_options['filters']['field_program_initiative_target_id']['table'] = 'field_data_field_program_initiative';
   $handler->display->display_options['filters']['field_program_initiative_target_id']['field'] = 'field_program_initiative_target_id';
@@ -811,7 +811,7 @@ function bos_workflow_views_default_views() {
     36 => 0,
     41 => 0,
   );
-  /* Filter criterion: Field: Places (field_place) */
+  /* Filter criterion: Field: Related places (field_place) */
   $handler->display->display_options['filters']['field_place_target_id']['id'] = 'field_place_target_id';
   $handler->display->display_options['filters']['field_place_target_id']['table'] = 'field_data_field_place';
   $handler->display->display_options['filters']['field_place_target_id']['field'] = 'field_place_target_id';
@@ -1286,7 +1286,7 @@ function bos_workflow_views_default_views() {
     'link' => 0,
   );
   $handler->display->display_options['fields']['field_contact']['field_api_classes'] = TRUE;
-  /* Field: Field: People */
+  /* Field: Field: Related people */
   $handler->display->display_options['fields']['field_people']['id'] = 'field_people';
   $handler->display->display_options['fields']['field_people']['table'] = 'field_data_field_people';
   $handler->display->display_options['fields']['field_people']['field'] = 'field_people';
@@ -1298,7 +1298,7 @@ function bos_workflow_views_default_views() {
   );
   $handler->display->display_options['fields']['field_people']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_people']['field_api_classes'] = TRUE;
-  /* Field: Field: Programs/Initiatives */
+  /* Field: Field: Related programs / initiatives */
   $handler->display->display_options['fields']['field_program_initiative']['id'] = 'field_program_initiative';
   $handler->display->display_options['fields']['field_program_initiative']['table'] = 'field_data_field_program_initiative';
   $handler->display->display_options['fields']['field_program_initiative']['field'] = 'field_program_initiative';
@@ -1310,7 +1310,7 @@ function bos_workflow_views_default_views() {
   );
   $handler->display->display_options['fields']['field_program_initiative']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_program_initiative']['field_api_classes'] = TRUE;
-  /* Field: Field: Places */
+  /* Field: Field: Related places */
   $handler->display->display_options['fields']['field_place']['id'] = 'field_place';
   $handler->display->display_options['fields']['field_place']['table'] = 'field_data_field_place';
   $handler->display->display_options['fields']['field_place']['field'] = 'field_place';
@@ -1340,7 +1340,7 @@ function bos_workflow_views_default_views() {
     'show_remaining_days' => 0,
     'show_repeat_rule' => 'show',
   );
-  /* Field: Content: Updated Date */
+  /* Field: Field: Updated Date */
   $handler->display->display_options['fields']['field_updated_date']['id'] = 'field_updated_date';
   $handler->display->display_options['fields']['field_updated_date']['table'] = 'field_data_field_updated_date';
   $handler->display->display_options['fields']['field_updated_date']['field'] = 'field_updated_date';
@@ -1437,7 +1437,7 @@ function bos_workflow_views_default_views() {
     41 => 0,
   );
   $handler->display->display_options['filters']['field_published_date_value']['form_type'] = 'date_popup';
-  /* Filter criterion: Field: People (field_people) */
+  /* Filter criterion: Field: Related people (field_people) */
   $handler->display->display_options['filters']['field_people_target_id']['id'] = 'field_people_target_id';
   $handler->display->display_options['filters']['field_people_target_id']['table'] = 'field_data_field_people';
   $handler->display->display_options['filters']['field_people_target_id']['field'] = 'field_people_target_id';
@@ -1458,7 +1458,7 @@ function bos_workflow_views_default_views() {
     36 => 0,
     41 => 0,
   );
-  /* Filter criterion: Field: Programs/Initiatives (field_program_initiative) */
+  /* Filter criterion: Field: Related programs / initiatives (field_program_initiative) */
   $handler->display->display_options['filters']['field_program_initiative_target_id']['id'] = 'field_program_initiative_target_id';
   $handler->display->display_options['filters']['field_program_initiative_target_id']['table'] = 'field_data_field_program_initiative';
   $handler->display->display_options['filters']['field_program_initiative_target_id']['field'] = 'field_program_initiative_target_id';
@@ -1479,7 +1479,7 @@ function bos_workflow_views_default_views() {
     36 => 0,
     41 => 0,
   );
-  /* Filter criterion: Field: Places (field_place) */
+  /* Filter criterion: Field: Related places (field_place) */
   $handler->display->display_options['filters']['field_place_target_id']['id'] = 'field_place_target_id';
   $handler->display->display_options['filters']['field_place_target_id']['table'] = 'field_data_field_place';
   $handler->display->display_options['filters']['field_place_target_id']['field'] = 'field_place_target_id';
@@ -1707,14 +1707,23 @@ function bos_workflow_views_default_views() {
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'article' => 'article',
+    'emergency_alert' => 'emergency_alert',
     'how_to' => 'how_to',
     'landing_page' => 'landing_page',
     'listing_page' => 'listing_page',
     'person_profile' => 'person_profile',
     'place_profile' => 'place_profile',
     'program_initiative_profile' => 'program_initiative_profile',
+    'public_notice' => 'public_notice',
+    'script_page' => 'script_page',
+    'site_alert' => 'site_alert',
+    'status_item' => 'status_item',
+    'tabbed_content' => 'tabbed_content',
     'topic_page' => 'topic_page',
+    'transaction' => 'transaction',
+    'metrolist_affordable_housing' => 'metrolist_affordable_housing',
     'advpoll' => 'advpoll',
+    'change' => 'change',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
   $handler->display->display_options['filters']['type']['exposed'] = TRUE;
