@@ -3,6 +3,7 @@
  * @file
  * bos_component_featured_topics.features.inc
  */
+
 /**
  * Implements hook_ctools_plugin_api().
  */
@@ -11,7 +12,6 @@ function bos_component_featured_topics_ctools_plugin_api($module = NULL, $api = 
     return array("version" => "1");
   }
 }
-
 
 /**
  * Implements hook_paragraphs_info().

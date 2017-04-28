@@ -10,7 +10,54 @@
 function bos_component_featured_topics_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'paragraphs_item-featured_topics-field_topics'.
+  // Exported field_instance: 'paragraphs_item-featured_topics-field_short_title'
+  $field_instances['paragraphs_item-featured_topics-field_short_title'] = array(
+    'bundle' => 'featured_topics',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 1,
+      ),
+      'paragraphs_editor_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'paragraphs_item',
+    'fences_wrapper' => 'div_div_div',
+    'field_name' => 'field_short_title',
+    'label' => 'Short Title',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'show_token_tree' => 0,
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 3,
+    ),
+  );
+
+  // Exported field_instance: 'paragraphs_item-featured_topics-field_topics'
   $field_instances['paragraphs_item-featured_topics-field_topics'] = array(
     'bundle' => 'featured_topics',
     'default_value' => array(
@@ -70,6 +117,7 @@ function bos_component_featured_topics_field_default_field_instances() {
   // Included for use with string extractors like potx.
   t('Control + Click to select multiple (CMD+Click on a Mac)');
   t('Guides');
+  t('Short Title');
 
   return $field_instances;
 }
