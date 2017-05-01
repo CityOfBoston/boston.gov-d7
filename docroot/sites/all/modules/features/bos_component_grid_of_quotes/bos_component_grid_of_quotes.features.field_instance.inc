@@ -10,8 +10,7 @@
 function bos_component_grid_of_quotes_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance:
-  // 'paragraphs_item-grid_of_quotes-field_component_title'.
+  // Exported field_instance: 'paragraphs_item-grid_of_quotes-field_component_title'
   $field_instances['paragraphs_item-grid_of_quotes-field_component_title'] = array(
     'bundle' => 'grid_of_quotes',
     'default_value' => NULL,
@@ -58,8 +57,7 @@ function bos_component_grid_of_quotes_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance:
-  // 'paragraphs_item-grid_of_quotes-field_grid_of_quotes'.
+  // Exported field_instance: 'paragraphs_item-grid_of_quotes-field_grid_of_quotes'
   $field_instances['paragraphs_item-grid_of_quotes-field_grid_of_quotes'] = array(
     'bundle' => 'grid_of_quotes',
     'default_value' => NULL,
@@ -197,13 +195,12 @@ function bos_component_grid_of_quotes_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance:
-  // 'paragraphs_item-grid_of_quotes-field_short_title'.
+  // Exported field_instance: 'paragraphs_item-grid_of_quotes-field_short_title'
   $field_instances['paragraphs_item-grid_of_quotes-field_short_title'] = array(
     'bundle' => 'grid_of_quotes',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Enter the short title for the component. This is displayed in the topic sub nav. ',
+    'description' => 'The short title is used to populate the in-page navigation. Please keep it short: one to three words is ideal. Example can be found on boston.gov/winter/.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -248,10 +245,10 @@ function bos_component_grid_of_quotes_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Add the quotes that will appear in this grid of quotes component. ');
-  t('Enter the short title for the component. This is displayed in the topic sub nav. ');
   t('Enter the title of the component. ');
   t('Grid of Quotes');
   t('Short Title');
+  t('The short title is used to populate the in-page navigation. Please keep it short: one to three words is ideal. Example can be found on boston.gov/winter/.');
   t('Title');
 
   return $field_instances;

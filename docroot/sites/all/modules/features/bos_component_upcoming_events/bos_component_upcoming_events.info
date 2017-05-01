@@ -16,4 +16,6 @@ features[field_instance][] = paragraphs_item-upcoming_events-field_component_tit
 features[field_instance][] = paragraphs_item-upcoming_events-field_featured_item
 features[field_instance][] = paragraphs_item-upcoming_events-field_link
 features[field_instance][] = paragraphs_item-upcoming_events-field_list
+features[field_instance][] = paragraphs_item-upcoming_events-field_short_title
 features[paragraphs][] = upcoming_events
+mtime = 1480263901

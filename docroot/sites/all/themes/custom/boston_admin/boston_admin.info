@@ -23,3 +23,4 @@ core        = 7.x
 
 stylesheets[all][] = css/tabs.css
 stylesheets[all][] = css/forms.css
+stylesheets[all][] = css/panels.css

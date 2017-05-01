@@ -14,5 +14,7 @@ features[field_group][] = group_iframe_info|paragraphs_item|iframe|form
 features[field_instance][] = paragraphs_item-iframe-field_component_title
 features[field_instance][] = paragraphs_item-iframe-field_contact
 features[field_instance][] = paragraphs_item-iframe-field_iframe_size
+features[field_instance][] = paragraphs_item-iframe-field_short_title
 features[field_instance][] = paragraphs_item-iframe-field_source_url
 features[paragraphs][] = iframe
+mtime = 1480263901

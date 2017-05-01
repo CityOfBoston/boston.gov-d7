@@ -10,8 +10,7 @@
 function bos_component_gol_mini_grid_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance:
-  // 'paragraphs_item-group_of_links_mini_grid-field_component_title'.
+  // Exported field_instance: 'paragraphs_item-group_of_links_mini_grid-field_component_title'
   $field_instances['paragraphs_item-group_of_links_mini_grid-field_component_title'] = array(
     'bundle' => 'group_of_links_mini_grid',
     'default_value' => NULL,
@@ -58,8 +57,7 @@ function bos_component_gol_mini_grid_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance:
-  // 'paragraphs_item-group_of_links_mini_grid-field_contact'.
+  // Exported field_instance: 'paragraphs_item-group_of_links_mini_grid-field_contact'
   $field_instances['paragraphs_item-group_of_links_mini_grid-field_contact'] = array(
     'bundle' => 'group_of_links_mini_grid',
     'default_value' => NULL,
@@ -109,8 +107,7 @@ function bos_component_gol_mini_grid_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance:
-  // 'paragraphs_item-group_of_links_mini_grid-field_links'.
+  // Exported field_instance: 'paragraphs_item-group_of_links_mini_grid-field_links'
   $field_instances['paragraphs_item-group_of_links_mini_grid-field_links'] = array(
     'bundle' => 'group_of_links_mini_grid',
     'default_value' => NULL,
@@ -244,13 +241,12 @@ function bos_component_gol_mini_grid_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance:
-  // 'paragraphs_item-group_of_links_mini_grid-field_short_title'.
+  // Exported field_instance: 'paragraphs_item-group_of_links_mini_grid-field_short_title'
   $field_instances['paragraphs_item-group_of_links_mini_grid-field_short_title'] = array(
     'bundle' => 'group_of_links_mini_grid',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'The short title is used to populate the in-page navigation. Please keep it short: one to three words is ideal. Example can be found on boston.gov/winter/.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -297,6 +293,7 @@ function bos_component_gol_mini_grid_field_default_field_instances() {
   t('Contact');
   t('Grid Links');
   t('Short Title');
+  t('The short title is used to populate the in-page navigation. Please keep it short: one to three words is ideal. Example can be found on boston.gov/winter/.');
   t('The title of the component that is displayed on the top of this component.');
   t('Title');
 

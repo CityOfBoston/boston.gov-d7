@@ -10,7 +10,7 @@
 function bos_component_fyi_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'paragraphs_item-fyi-field_extra_info'.
+  // Exported field_instance: 'paragraphs_item-fyi-field_extra_info'
   $field_instances['paragraphs_item-fyi-field_extra_info'] = array(
     'bundle' => 'fyi',
     'default_value' => NULL,
@@ -57,7 +57,7 @@ function bos_component_fyi_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-fyi-field_icon'.
+  // Exported field_instance: 'paragraphs_item-fyi-field_icon'
   $field_instances['paragraphs_item-fyi-field_icon'] = array(
     'bundle' => 'fyi',
     'deleted' => 0,
@@ -122,7 +122,7 @@ function bos_component_fyi_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-fyi-field_link'.
+  // Exported field_instance: 'paragraphs_item-fyi-field_link'
   $field_instances['paragraphs_item-fyi-field_link'] = array(
     'bundle' => 'fyi',
     'default_value' => NULL,
@@ -238,7 +238,54 @@ function bos_component_fyi_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-fyi-field_title'.
+  // Exported field_instance: 'paragraphs_item-fyi-field_short_title'
+  $field_instances['paragraphs_item-fyi-field_short_title'] = array(
+    'bundle' => 'fyi',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'The short title is used to populate the in-page navigation. Please keep it short: one to three words is ideal. Example can be found on boston.gov/winter/.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 4,
+      ),
+      'paragraphs_editor_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'paragraphs_item',
+    'fences_wrapper' => 'div_div_div',
+    'field_name' => 'field_short_title',
+    'label' => 'Short Title',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'show_token_tree' => 0,
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 0,
+    ),
+  );
+
+  // Exported field_instance: 'paragraphs_item-fyi-field_title'
   $field_instances['paragraphs_item-fyi-field_title'] = array(
     'bundle' => 'fyi',
     'default_value' => NULL,
@@ -294,6 +341,8 @@ function bos_component_fyi_field_default_field_instances() {
   t('FYI Title');
   t('Icon');
   t('Optional link for users to get more information. Limited to 30 characters.');
+  t('Short Title');
+  t('The short title is used to populate the in-page navigation. Please keep it short: one to three words is ideal. Example can be found on boston.gov/winter/.');
   t('The title doesn’t have to be the name of a department (“Leaf and Yard Waste Collection”), but it might be (“Public Works”). Limited to 30 characters.');
 
   return $field_instances;

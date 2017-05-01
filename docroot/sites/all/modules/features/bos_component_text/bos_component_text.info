@@ -26,3 +26,4 @@ features[field_instance][] = paragraphs_item-text-field_short_title
 features[field_instance][] = paragraphs_item-text-field_text_blocks
 features[paragraphs][] = text
 features[variable][] = field_bundle_settings_paragraphs_item__text
+mtime = 1480263901

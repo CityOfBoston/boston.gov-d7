@@ -10,7 +10,7 @@
 function bos_component_iframe_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'paragraphs_item-iframe-field_component_title'.
+  // Exported field_instance: 'paragraphs_item-iframe-field_component_title'
   $field_instances['paragraphs_item-iframe-field_component_title'] = array(
     'bundle' => 'iframe',
     'default_value' => NULL,
@@ -57,7 +57,7 @@ function bos_component_iframe_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-iframe-field_contact'.
+  // Exported field_instance: 'paragraphs_item-iframe-field_contact'
   $field_instances['paragraphs_item-iframe-field_contact'] = array(
     'bundle' => 'iframe',
     'default_value' => NULL,
@@ -107,7 +107,7 @@ function bos_component_iframe_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-iframe-field_iframe_size'.
+  // Exported field_instance: 'paragraphs_item-iframe-field_iframe_size'
   $field_instances['paragraphs_item-iframe-field_iframe_size'] = array(
     'bundle' => 'iframe',
     'default_value' => array(
@@ -151,7 +151,54 @@ function bos_component_iframe_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-iframe-field_source_url'.
+  // Exported field_instance: 'paragraphs_item-iframe-field_short_title'
+  $field_instances['paragraphs_item-iframe-field_short_title'] = array(
+    'bundle' => 'iframe',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'The short title is used to populate the in-page navigation. Please keep it short: one to three words is ideal. Example can be found on boston.gov/winter/.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 4,
+      ),
+      'paragraphs_editor_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'paragraphs_item',
+    'fences_wrapper' => 'div_div_div',
+    'field_name' => 'field_short_title',
+    'label' => 'Short Title',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'show_token_tree' => 0,
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 0,
+    ),
+  );
+
+  // Exported field_instance: 'paragraphs_item-iframe-field_source_url'
   $field_instances['paragraphs_item-iframe-field_source_url'] = array(
     'bundle' => 'iframe',
     'default_value' => NULL,
@@ -204,7 +251,9 @@ function bos_component_iframe_field_default_field_instances() {
   t('An optional contact for this iframe.');
   t('An optional title for this iframe.');
   t('Contact');
+  t('Short Title');
   t('Source URL');
+  t('The short title is used to populate the in-page navigation. Please keep it short: one to three words is ideal. Example can be found on boston.gov/winter/.');
   t('This determines the height of the iframe. Auto will resize automatically. To get auto setup correctly, contact digital@boston.gov.');
   t('Title');
   t('iFrame Size');
