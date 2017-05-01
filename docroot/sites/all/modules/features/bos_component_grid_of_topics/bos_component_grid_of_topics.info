@@ -20,4 +20,5 @@ features[field_instance][] = paragraphs_item-grid_of_topics-field_short_title
 features[field_instance][] = paragraphs_item-grid_of_topics-field_topics
 features[paragraphs][] = grid_of_topics
 features[variable][] = field_bundle_settings_paragraphs_item__grid_of_topics
+mtime = 1480263901
 project path = sites/all/modules/features

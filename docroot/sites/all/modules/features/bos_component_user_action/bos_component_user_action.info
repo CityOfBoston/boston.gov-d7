@@ -17,4 +17,6 @@ features[field_group][] = group_user_action_info|paragraphs_item|user_action|for
 features[field_instance][] = paragraphs_item-user_action-field_image
 features[field_instance][] = paragraphs_item-user_action-field_intro_text
 features[field_instance][] = paragraphs_item-user_action-field_links
+features[field_instance][] = paragraphs_item-user_action-field_short_title
 features[paragraphs][] = user_action
+mtime = 1493401534

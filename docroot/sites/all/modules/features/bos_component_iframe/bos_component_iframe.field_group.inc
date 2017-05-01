@@ -21,7 +21,7 @@ function bos_component_iframe_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Iframe Info',
-    'weight' => '4',
+    'weight' => '1',
     'children' => array(
       0 => 'field_source_url',
       1 => 'field_component_title',

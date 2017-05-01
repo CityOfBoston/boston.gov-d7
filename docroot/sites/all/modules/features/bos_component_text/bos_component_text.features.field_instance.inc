@@ -10,7 +10,7 @@
 function bos_component_text_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'paragraphs_item-text-field_background_image'.
+  // Exported field_instance: 'paragraphs_item-text-field_background_image'
   $field_instances['paragraphs_item-text-field_background_image'] = array(
     'bundle' => 'text',
     'default_value' => NULL,
@@ -48,13 +48,15 @@ function bos_component_text_field_default_field_instances() {
     'widget' => array(
       'active' => 1,
       'module' => 'options',
-      'settings' => array(),
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
       'type' => 'options_select',
       'weight' => 5,
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-text-field_component_title'.
+  // Exported field_instance: 'paragraphs_item-text-field_component_title'
   $field_instances['paragraphs_item-text-field_component_title'] = array(
     'bundle' => 'text',
     'default_value' => NULL,
@@ -94,6 +96,7 @@ function bos_component_text_field_default_field_instances() {
       'active' => 1,
       'module' => 'text',
       'settings' => array(
+        'show_token_tree' => FALSE,
         'size' => 60,
       ),
       'type' => 'text_textfield',
@@ -101,7 +104,7 @@ function bos_component_text_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-text-field_contact'.
+  // Exported field_instance: 'paragraphs_item-text-field_contact'
   $field_instances['paragraphs_item-text-field_contact'] = array(
     'bundle' => 'text',
     'default_value' => NULL,
@@ -148,6 +151,7 @@ function bos_component_text_field_default_field_instances() {
       'active' => 1,
       'module' => 'entityreference',
       'settings' => array(
+        'entityreference_autocreate' => 0,
         'match_operator' => 'CONTAINS',
         'path' => '',
         'size' => 60,
@@ -157,7 +161,7 @@ function bos_component_text_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-text-field_hide_title_bar'.
+  // Exported field_instance: 'paragraphs_item-text-field_hide_title_bar'
   $field_instances['paragraphs_item-text-field_hide_title_bar'] = array(
     'bundle' => 'text',
     'default_value' => array(
@@ -207,12 +211,12 @@ function bos_component_text_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-text-field_short_title'.
+  // Exported field_instance: 'paragraphs_item-text-field_short_title'
   $field_instances['paragraphs_item-text-field_short_title'] = array(
     'bundle' => 'text',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'The short title is used to populate the in-page navigation. Please keep it short: one to three words is ideal. Example can be found on boston.gov/winter/.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -240,6 +244,11 @@ function bos_component_text_field_default_field_instances() {
     'label' => 'Short Title',
     'required' => 0,
     'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
       'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
@@ -247,6 +256,7 @@ function bos_component_text_field_default_field_instances() {
       'active' => 1,
       'module' => 'text',
       'settings' => array(
+        'show_token_tree' => 0,
         'size' => 60,
       ),
       'type' => 'text_textfield',
@@ -254,7 +264,7 @@ function bos_component_text_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-text-field_text_blocks'.
+  // Exported field_instance: 'paragraphs_item-text-field_text_blocks'
   $field_instances['paragraphs_item-text-field_text_blocks'] = array(
     'bundle' => 'text',
     'default_value' => NULL,
@@ -338,6 +348,7 @@ function bos_component_text_field_default_field_instances() {
   t('Please select a Contact who owns this content. The contact will be displayed on the component to give users a way to get in contact with the owner.');
   t('Short Title');
   t('Text Blocks');
+  t('The short title is used to populate the in-page navigation. Please keep it short: one to three words is ideal. Example can be found on boston.gov/winter/.');
   t('Title');
   t('Use this select if you would like to include the City Hall image as a background in the lower right of this component.');
 

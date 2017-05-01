@@ -218,7 +218,7 @@ function bos_component_video_field_default_field_instances() {
     'bundle' => 'video',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'This will display as the subnav on topic pages.',
+    'description' => 'The short title is used to populate the in-page navigation. Please keep it short: one to three words is ideal. Example can be found on boston.gov/winter/.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -315,7 +315,7 @@ function bos_component_video_field_default_field_instances() {
   t('Poster Image');
   t('Short Title');
   t('The ID of the video you want to embed. Currently only supports Youtube. If given the Youtube URL https://www.youtube.com/watch?v=bTqVqk7FSmY, then "bTqVqk7FSmY" would be ID.');
-  t('This will display as the subnav on topic pages.');
+  t('The short title is used to populate the in-page navigation. Please keep it short: one to three words is ideal. Example can be found on boston.gov/winter/.');
   t('Title');
   t('Video ID');
 

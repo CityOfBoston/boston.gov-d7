@@ -21,12 +21,12 @@ function bos_component_upcoming_events_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Upcoming Events',
-    'weight' => '0',
+    'weight' => '1',
     'children' => array(
       0 => 'field_component_title',
       1 => 'field_featured_item',
-      2 => 'field_list',
-      3 => 'field_link',
+      2 => 'field_link',
+      3 => 'field_list',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

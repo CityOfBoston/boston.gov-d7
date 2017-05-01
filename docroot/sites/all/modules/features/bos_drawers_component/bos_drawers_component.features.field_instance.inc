@@ -10,7 +10,7 @@
 function bos_drawers_component_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'paragraphs_item-drawers-field_component_title'.
+  // Exported field_instance: 'paragraphs_item-drawers-field_component_title'
   $field_instances['paragraphs_item-drawers-field_component_title'] = array(
     'bundle' => 'drawers',
     'default_value' => NULL,
@@ -57,7 +57,7 @@ function bos_drawers_component_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-drawers-field_contact'.
+  // Exported field_instance: 'paragraphs_item-drawers-field_contact'
   $field_instances['paragraphs_item-drawers-field_contact'] = array(
     'bundle' => 'drawers',
     'default_value' => NULL,
@@ -107,7 +107,7 @@ function bos_drawers_component_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-drawers-field_drawer'.
+  // Exported field_instance: 'paragraphs_item-drawers-field_drawer'
   $field_instances['paragraphs_item-drawers-field_drawer'] = array(
     'bundle' => 'drawers',
     'default_value' => NULL,
@@ -227,12 +227,12 @@ function bos_drawers_component_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-drawers-field_short_title'.
+  // Exported field_instance: 'paragraphs_item-drawers-field_short_title'
   $field_instances['paragraphs_item-drawers-field_short_title'] = array(
     'bundle' => 'drawers',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'The short title is used to populate the in-page navigation. Please keep it short: one to three words is ideal. Example can be found on boston.gov/winter/.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -279,6 +279,7 @@ function bos_drawers_component_field_default_field_instances() {
   t('Contact');
   t('Drawer');
   t('Short Title');
+  t('The short title is used to populate the in-page navigation. Please keep it short: one to three words is ideal. Example can be found on boston.gov/winter/.');
   t('Title');
 
   return $field_instances;

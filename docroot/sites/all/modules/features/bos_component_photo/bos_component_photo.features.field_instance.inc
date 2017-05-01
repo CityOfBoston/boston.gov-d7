@@ -10,7 +10,7 @@
 function bos_component_photo_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'paragraphs_item-photo-field_component_title'.
+  // Exported field_instance: 'paragraphs_item-photo-field_component_title'
   $field_instances['paragraphs_item-photo-field_component_title'] = array(
     'bundle' => 'photo',
     'default_value' => NULL,
@@ -58,7 +58,7 @@ function bos_component_photo_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-photo-field_contacts'.
+  // Exported field_instance: 'paragraphs_item-photo-field_contacts'
   $field_instances['paragraphs_item-photo-field_contacts'] = array(
     'bundle' => 'photo',
     'default_value' => NULL,
@@ -106,7 +106,7 @@ function bos_component_photo_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-photo-field_image'.
+  // Exported field_instance: 'paragraphs_item-photo-field_image'
   $field_instances['paragraphs_item-photo-field_image'] = array(
     'bundle' => 'photo',
     'deleted' => 0,
@@ -186,7 +186,7 @@ function bos_component_photo_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-photo-field_link'.
+  // Exported field_instance: 'paragraphs_item-photo-field_link'
   $field_instances['paragraphs_item-photo-field_link'] = array(
     'bundle' => 'photo',
     'default_value' => NULL,
@@ -320,7 +320,7 @@ function bos_component_photo_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-photo-field_photo_caption'.
+  // Exported field_instance: 'paragraphs_item-photo-field_photo_caption'
   $field_instances['paragraphs_item-photo-field_photo_caption'] = array(
     'bundle' => 'photo',
     'default_value' => NULL,
@@ -373,7 +373,7 @@ function bos_component_photo_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-photo-field_photo_credit'.
+  // Exported field_instance: 'paragraphs_item-photo-field_photo_credit'
   $field_instances['paragraphs_item-photo-field_photo_credit'] = array(
     'bundle' => 'photo',
     'default_value' => NULL,
@@ -421,12 +421,12 @@ function bos_component_photo_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-photo-field_short_title'.
+  // Exported field_instance: 'paragraphs_item-photo-field_short_title'
   $field_instances['paragraphs_item-photo-field_short_title'] = array(
     'bundle' => 'photo',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'The short title is used to populate the in-page navigation. Please keep it short: one to three words is ideal. Example can be found on boston.gov/winter/.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -453,6 +453,11 @@ function bos_component_photo_field_default_field_instances() {
     'label' => 'Short Title',
     'required' => 0,
     'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
       'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
@@ -460,7 +465,7 @@ function bos_component_photo_field_default_field_instances() {
       'active' => 1,
       'module' => 'text',
       'settings' => array(
-        'show_token_tree' => FALSE,
+        'show_token_tree' => 0,
         'size' => 60,
       ),
       'type' => 'text_textfield',
@@ -478,6 +483,7 @@ function bos_component_photo_field_default_field_instances() {
   t('Please select a Contact who owns this content.');
   t('Short Title');
   t('The image that will be used for this component. The image size should be between 400px and 800px tall and 2000px wide.');
+  t('The short title is used to populate the in-page navigation. Please keep it short: one to three words is ideal. Example can be found on boston.gov/winter/.');
   t('Title');
 
   return $field_instances;
