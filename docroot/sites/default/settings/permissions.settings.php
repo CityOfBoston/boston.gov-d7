@@ -21,7 +21,6 @@ function acquia_permissions_map() {
     // Anonymous user role permissions.
     'anonymous user' => array(
       'access content',
-      'access keyboard shortcut bindings',
       'view files',
       'vote on polls',
     ),
@@ -30,7 +29,7 @@ function acquia_permissions_map() {
       'access administration menu',
       'access administration pages',
       'access content',
-      'access keyboard shortcut bindings',
+      'access keyboard shortcuts',
       'use workbench_moderation my drafts tab',
       'view files',
       'view all unpublished content',
@@ -43,7 +42,7 @@ function acquia_permissions_map() {
       'access media browser',
       'access workbench',
       'administer custom tokens',
-      'administer keyboard shortcut',
+      'administer keyboard shortcuts',
       'administer media wysiwyg view mode',
       'administer menu',
       'administer taxonomy',

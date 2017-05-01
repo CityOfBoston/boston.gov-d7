@@ -346,3 +346,13 @@ function hub_profile_update_7014() {
   );
   module_enable($enabled_modules);
 }
+
+/**
+ * Update for 3/22/17
+ */
+function hub_profile_update_7015() {
+  $disabled_modules = array(
+    'hub_keyboard_shortcuts',
+  );
+  module_disable($disabled_modules);
+}

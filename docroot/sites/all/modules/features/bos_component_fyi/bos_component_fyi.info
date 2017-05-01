@@ -14,5 +14,7 @@ features[field_group][] = group_fyi_info|paragraphs_item|fyi|form
 features[field_instance][] = paragraphs_item-fyi-field_extra_info
 features[field_instance][] = paragraphs_item-fyi-field_icon
 features[field_instance][] = paragraphs_item-fyi-field_link
+features[field_instance][] = paragraphs_item-fyi-field_short_title
 features[field_instance][] = paragraphs_item-fyi-field_title
 features[paragraphs][] = fyi
+mtime = 1493400878

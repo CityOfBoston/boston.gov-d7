@@ -10,7 +10,7 @@
 function bos_component_user_action_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'paragraphs_item-user_action-field_image'.
+  // Exported field_instance: 'paragraphs_item-user_action-field_image'
   $field_instances['paragraphs_item-user_action-field_image'] = array(
     'bundle' => 'user_action',
     'deleted' => 0,
@@ -74,7 +74,7 @@ function bos_component_user_action_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-user_action-field_intro_text'.
+  // Exported field_instance: 'paragraphs_item-user_action-field_intro_text'
   $field_instances['paragraphs_item-user_action-field_intro_text'] = array(
     'bundle' => 'user_action',
     'default_value' => NULL,
@@ -121,7 +121,7 @@ function bos_component_user_action_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-user_action-field_links'.
+  // Exported field_instance: 'paragraphs_item-user_action-field_links'
   $field_instances['paragraphs_item-user_action-field_links'] = array(
     'bundle' => 'user_action',
     'default_value' => NULL,
@@ -233,11 +233,60 @@ function bos_component_user_action_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'paragraphs_item-user_action-field_short_title'
+  $field_instances['paragraphs_item-user_action-field_short_title'] = array(
+    'bundle' => 'user_action',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'The short title is used to populate the in-page navigation. Please keep it short: one to three words is ideal. Example can be found on boston.gov/winter/.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 3,
+      ),
+      'paragraphs_editor_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'paragraphs_item',
+    'fences_wrapper' => 'div_div_div',
+    'field_name' => 'field_short_title',
+    'label' => 'Short Title',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'show_token_tree' => 0,
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 0,
+    ),
+  );
+
   // Translatables
   // Included for use with string extractors like potx.
   t('Background Image');
   t('Intro Text');
   t('List of Links');
+  t('Short Title');
+  t('The short title is used to populate the in-page navigation. Please keep it short: one to three words is ideal. Example can be found on boston.gov/winter/.');
 
   return $field_instances;
 }

@@ -10,13 +10,14 @@
 function bos_component_iframe_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'field_iframe_size'.
+  // Exported field_base: 'field_iframe_size'
   $field_bases['field_iframe_size'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_iframe_size',
+    'foreign keys' => array(),
     'indexes' => array(
       'value' => array(
         0 => 'value',
@@ -37,13 +38,21 @@ function bos_component_iframe_field_default_field_bases() {
     'type' => 'list_integer',
   );
 
-  // Exported field_base: 'field_source_url'.
+  // Exported field_base: 'field_source_url'
   $field_bases['field_source_url'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_source_url',
+    'foreign keys' => array(
+      'format' => array(
+        'columns' => array(
+          'format' => 'format',
+        ),
+        'table' => 'filter_format',
+      ),
+    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',

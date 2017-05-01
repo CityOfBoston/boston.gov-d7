@@ -341,6 +341,8 @@ function boston_html_head_alter(&$head) {
  * Implements hook_preprocess_page().
  */
 function boston_preprocess_page(array &$variables) {
+  $has_hero = false;
+
   if (isset($_GET['response_type']) && $_GET['response_type'] == 'embed') {
     $variables['theme_hook_suggestions'][] = 'page__embed';
   }
@@ -366,16 +368,20 @@ function boston_preprocess_page(array &$variables) {
   $nid = arg(1);
   if (arg(0) == 'node' && is_numeric($nid)) {
     if (isset($variables['page']['content']['system_main']['nodes'][$nid]['field_intro_image'])) {
-      $variables['header_image'] = $variables['page']['content']['system_main']['nodes'][$nid]['field_intro_image'];
-    }
-    // Provides default image for node types specified in the array if
-    // 'field_intro_image is not set.
-    $hero_persist = array(
-      'how_to',
-      'tabbed_content',
-    );
-    if (!isset($variables['page']['content']['system_main']['nodes'][$nid]['field_intro_image']) && in_array($variables['node']->type, $hero_persist)) {
-      $variables['header_image'] = '<img src="/' . drupal_get_path('theme', $GLOBALS['theme']) . '/dist/img/default-hero-image.svg">';
+      $has_hero = true;
+      $background_image = $variables['page']['content']['system_main']['nodes'][$nid]['field_intro_image'];
+      $uri = $background_image[0]['#item']['uri'];
+
+      $xlarge_image = image_style_url('rep_wide_2000x700custom_boston_desktop_2x', $uri);
+      $large_image = image_style_url('rep_wide_2000x700custom_boston_desktop_1x', $uri);
+      $medium_image = image_style_url('rep_wide_2000x700custom_boston_tablet_2x', $uri);
+      $small_image = image_style_url('rep_wide_2000x700custom_boston_mobile_2x', $uri);
+
+      $variables['header_image'] = $has_hero;
+      $variables['xlarge_image'] = $xlarge_image;
+      $variables['large_image'] = $large_image;
+      $variables['medium_image'] = $medium_image;
+      $variables['small_image'] = $small_image;
     }
   }
   // Removes breadcrumbs on node types specified in the array.
@@ -428,7 +434,7 @@ function boston_preprocess_page(array &$variables) {
   drupal_add_html_head($priority_element, 'swiftype_priority');
 
   // Create necessary page classes
-  if ($variables['node']->type !== 'tabbed_content' && $variables['node']->type !== 'how_to') {
+  if ($variables['node']->type !== 'tabbed_content' && $variables['node']->type !== 'how_to' && !$has_hero) {
     $page_class = 'page';
   } else {
     $page_class = NULL;

@@ -10,8 +10,7 @@
 function bos_component_gol_grid_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance:
-  // 'field_collection_item-field_grid_links-field_extra_info'.
+  // Exported field_instance: 'field_collection_item-field_grid_links-field_extra_info'
   $field_instances['field_collection_item-field_grid_links-field_extra_info'] = array(
     'bundle' => 'field_grid_links',
     'default_value' => NULL,
@@ -54,8 +53,7 @@ function bos_component_gol_grid_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance:
-  // 'field_collection_item-field_grid_links-field_grid_link'.
+  // Exported field_instance: 'field_collection_item-field_grid_links-field_grid_link'
   $field_instances['field_collection_item-field_grid_links-field_grid_link'] = array(
     'bundle' => 'field_grid_links',
     'default_value' => NULL,
@@ -114,8 +112,7 @@ function bos_component_gol_grid_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance:
-  // 'field_collection_item-field_grid_links-field_short_description'.
+  // Exported field_instance: 'field_collection_item-field_grid_links-field_short_description'
   $field_instances['field_collection_item-field_grid_links-field_short_description'] = array(
     'bundle' => 'field_grid_links',
     'default_value' => NULL,
@@ -173,8 +170,7 @@ function bos_component_gol_grid_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance:
-  // 'paragraphs_item-group_of_links_grid-field_component_title'.
+  // Exported field_instance: 'paragraphs_item-group_of_links_grid-field_component_title'
   $field_instances['paragraphs_item-group_of_links_grid-field_component_title'] = array(
     'bundle' => 'group_of_links_grid',
     'default_value' => NULL,
@@ -228,8 +224,7 @@ function bos_component_gol_grid_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance:
-  // 'paragraphs_item-group_of_links_grid-field_contact'.
+  // Exported field_instance: 'paragraphs_item-group_of_links_grid-field_contact'
   $field_instances['paragraphs_item-group_of_links_grid-field_contact'] = array(
     'bundle' => 'group_of_links_grid',
     'default_value' => NULL,
@@ -292,8 +287,7 @@ function bos_component_gol_grid_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance:
-  // 'paragraphs_item-group_of_links_grid-field_description'.
+  // Exported field_instance: 'paragraphs_item-group_of_links_grid-field_description'
   $field_instances['paragraphs_item-group_of_links_grid-field_description'] = array(
     'bundle' => 'group_of_links_grid',
     'default_value' => NULL,
@@ -347,8 +341,7 @@ function bos_component_gol_grid_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance:
-  // 'paragraphs_item-group_of_links_grid-field_grid_links'.
+  // Exported field_instance: 'paragraphs_item-group_of_links_grid-field_grid_links'
   $field_instances['paragraphs_item-group_of_links_grid-field_grid_links'] = array(
     'bundle' => 'group_of_links_grid',
     'default_value' => NULL,
@@ -400,7 +393,7 @@ function bos_component_gol_grid_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-group_of_links_grid-field_link'.
+  // Exported field_instance: 'paragraphs_item-group_of_links_grid-field_link'
   $field_instances['paragraphs_item-group_of_links_grid-field_link'] = array(
     'bundle' => 'group_of_links_grid',
     'default_value' => NULL,
@@ -546,13 +539,12 @@ function bos_component_gol_grid_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance:
-  // 'paragraphs_item-group_of_links_grid-field_short_title'.
+  // Exported field_instance: 'paragraphs_item-group_of_links_grid-field_short_title'
   $field_instances['paragraphs_item-group_of_links_grid-field_short_title'] = array(
     'bundle' => 'group_of_links_grid',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'The short title is used to populate the in-page navigation. Please keep it short: one to three words is ideal. Example can be found on boston.gov/winter/.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -590,6 +582,11 @@ function bos_component_gol_grid_field_default_field_instances() {
     'label' => 'Short Title',
     'required' => 0,
     'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
       'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
@@ -597,7 +594,7 @@ function bos_component_gol_grid_field_default_field_instances() {
       'active' => 1,
       'module' => 'text',
       'settings' => array(
-        'show_token_tree' => FALSE,
+        'show_token_tree' => 0,
         'size' => 60,
       ),
       'type' => 'text_textfield',
@@ -605,8 +602,7 @@ function bos_component_gol_grid_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance:
-  // 'paragraphs_item-group_of_links_grid-field_subheader'.
+  // Exported field_instance: 'paragraphs_item-group_of_links_grid-field_subheader'
   $field_instances['paragraphs_item-group_of_links_grid-field_subheader'] = array(
     'bundle' => 'group_of_links_grid',
     'default_value' => NULL,
@@ -674,6 +670,7 @@ function bos_component_gol_grid_field_default_field_instances() {
   t('Short Description');
   t('Short Title');
   t('Subheader');
+  t('The short title is used to populate the in-page navigation. Please keep it short: one to three words is ideal. Example can be found on boston.gov/winter/.');
   t('The title of the component that is displayed on the top of this component.');
   t('Title');
 

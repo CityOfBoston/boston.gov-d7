@@ -10,8 +10,7 @@
 function bos_component_grid_of_topics_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance:
-  // 'paragraphs_item-grid_of_topics-field_component_title'.
+  // Exported field_instance: 'paragraphs_item-grid_of_topics-field_component_title'
   $field_instances['paragraphs_item-grid_of_topics-field_component_title'] = array(
     'bundle' => 'grid_of_topics',
     'default_value' => NULL,
@@ -59,7 +58,7 @@ function bos_component_grid_of_topics_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-grid_of_topics-field_contact'.
+  // Exported field_instance: 'paragraphs_item-grid_of_topics-field_contact'
   $field_instances['paragraphs_item-grid_of_topics-field_contact'] = array(
     'bundle' => 'grid_of_topics',
     'default_value' => NULL,
@@ -101,6 +100,7 @@ function bos_component_grid_of_topics_field_default_field_instances() {
       'active' => 1,
       'module' => 'entityreference',
       'settings' => array(
+        'entityreference_autocreate' => 0,
         'match_operator' => 'CONTAINS',
         'path' => '',
         'size' => 60,
@@ -110,13 +110,12 @@ function bos_component_grid_of_topics_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance:
-  // 'paragraphs_item-grid_of_topics-field_short_title'.
+  // Exported field_instance: 'paragraphs_item-grid_of_topics-field_short_title'
   $field_instances['paragraphs_item-grid_of_topics-field_short_title'] = array(
     'bundle' => 'grid_of_topics',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'The short title is used to populate the in-page navigation. Please keep it short: one to three words is ideal. Example can be found on boston.gov/winter/.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -144,6 +143,11 @@ function bos_component_grid_of_topics_field_default_field_instances() {
     'label' => 'Short Title',
     'required' => 0,
     'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
       'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
@@ -159,7 +163,7 @@ function bos_component_grid_of_topics_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-grid_of_topics-field_topics'.
+  // Exported field_instance: 'paragraphs_item-grid_of_topics-field_topics'
   $field_instances['paragraphs_item-grid_of_topics-field_topics'] = array(
     'bundle' => 'grid_of_topics',
     'default_value' => NULL,
@@ -201,6 +205,7 @@ function bos_component_grid_of_topics_field_default_field_instances() {
       'active' => 1,
       'module' => 'entityreference',
       'settings' => array(
+        'entityreference_autocreate' => 0,
         'match_operator' => 'CONTAINS',
         'path' => '',
         'size' => 60,
@@ -213,12 +218,13 @@ function bos_component_grid_of_topics_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Contact');
+  t('Guides');
   t('Please provide a title for this component. The title will be displayed across the top of the component.');
   t('Please select a Contact who owns this content.');
   t('Select the topics that should be displayed on this page.');
   t('Short Title');
+  t('The short title is used to populate the in-page navigation. Please keep it short: one to three words is ideal. Example can be found on boston.gov/winter/.');
   t('Title');
-  t('Guides');
 
   return $field_instances;
 }

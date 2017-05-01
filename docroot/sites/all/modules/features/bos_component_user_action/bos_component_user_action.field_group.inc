@@ -21,7 +21,7 @@ function bos_component_user_action_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'User Action Info',
-    'weight' => '0',
+    'weight' => '1',
     'children' => array(
       0 => 'field_image',
       1 => 'field_intro_text',

@@ -14,7 +14,9 @@
 <nav class="nv-m">
   <div class="nv-m-h">
       <div class="nv-m-h-ic">
-        <img src="<?php print $asset_url ?>/images/b-dark.svg" title="B" aria-hidden="true" class="nv-m-h-i" />
+        <a href="/" title="Go to home page">
+          <img src="<?php print $asset_url ?>/images/b-dark.svg" title="B" aria-hidden="true" class="nv-m-h-i" />
+        </a>
       </div>
       <div id="nv-m-h-t" class="nv-m-h-t">&nbsp;</div>
   </div>
@@ -98,10 +100,31 @@
         <?php endif; ?>
         <?php if (isset($header_image)): ?>
           <?php if (!empty($node) && ($node->type !== 'tabbed_content' && $node->type !== 'how_to')): ?>
-            <div class="hero-image fullwidth">
-              <div class="hero-image-wrapper <?php print $hero_classes; ?>">
-                <?php print render($header_image); ?>
-              </div>
+            <style>
+              .hro {
+                background-image: url(<?php print $small_image ?>);
+              }
+
+              @media screen and (min-width: 768px) {
+                .hro {
+                  background-image: url(<?php print $medium_image ?>);
+                }
+              }
+
+              @media screen and (min-width: 1024px) {
+                .hro {
+                  background-image: url(<?php print $large_image ?>);
+                }
+              }
+
+              @media screen and (min-width: 1200px) {
+                .hro {
+                  background-image: url(<?php print $xlarge_image ?>);
+                }
+              }
+            </style>
+            <div class="b b--fw">
+              <div class="hro hro--pt hro--pb"></div>
             </div>
           <?php endif; ?>
           <?php if (!empty($node) && ($node->type !== 'tabbed_content' && $node->type !== 'how_to')): ?>

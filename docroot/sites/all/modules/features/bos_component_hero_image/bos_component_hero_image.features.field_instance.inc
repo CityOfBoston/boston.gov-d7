@@ -10,7 +10,7 @@
 function bos_component_hero_image_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'paragraphs_item-hero_image-field_grid_link'.
+  // Exported field_instance: 'paragraphs_item-hero_image-field_grid_link'
   $field_instances['paragraphs_item-hero_image-field_grid_link'] = array(
     'bundle' => 'hero_image',
     'default_value' => NULL,
@@ -90,7 +90,7 @@ function bos_component_hero_image_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-hero_image-field_header'.
+  // Exported field_instance: 'paragraphs_item-hero_image-field_header'
   $field_instances['paragraphs_item-hero_image-field_header'] = array(
     'bundle' => 'hero_image',
     'default_value' => NULL,
@@ -130,6 +130,7 @@ function bos_component_hero_image_field_default_field_instances() {
       'active' => 1,
       'module' => 'text',
       'settings' => array(
+        'show_token_tree' => FALSE,
         'size' => 60,
       ),
       'type' => 'text_textfield',
@@ -137,7 +138,7 @@ function bos_component_hero_image_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-hero_image-field_image'.
+  // Exported field_instance: 'paragraphs_item-hero_image-field_image'
   $field_instances['paragraphs_item-hero_image-field_image'] = array(
     'bundle' => 'hero_image',
     'deleted' => 0,
@@ -217,7 +218,7 @@ function bos_component_hero_image_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-hero_image-field_intro_text'.
+  // Exported field_instance: 'paragraphs_item-hero_image-field_intro_text'
   $field_instances['paragraphs_item-hero_image-field_intro_text'] = array(
     'bundle' => 'hero_image',
     'default_value' => NULL,
@@ -258,13 +259,61 @@ function bos_component_hero_image_field_default_field_instances() {
       'module' => 'text',
       'settings' => array(
         'rows' => 5,
+        'show_token_tree' => FALSE,
       ),
       'type' => 'text_textarea',
       'weight' => 1,
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-hero_image-field_subheader'.
+  // Exported field_instance: 'paragraphs_item-hero_image-field_short_title'
+  $field_instances['paragraphs_item-hero_image-field_short_title'] = array(
+    'bundle' => 'hero_image',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'The short title is used to populate the in-page navigation. Please keep it short: one to three words is ideal. Example can be found on boston.gov/winter/.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 5,
+      ),
+      'paragraphs_editor_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'paragraphs_item',
+    'fences_wrapper' => 'div_div_div',
+    'field_name' => 'field_short_title',
+    'label' => 'Short Title',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'show_token_tree' => 0,
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 0,
+    ),
+  );
+
+  // Exported field_instance: 'paragraphs_item-hero_image-field_subheader'
   $field_instances['paragraphs_item-hero_image-field_subheader'] = array(
     'bundle' => 'hero_image',
     'default_value' => NULL,
@@ -304,6 +353,7 @@ function bos_component_hero_image_field_default_field_instances() {
       'active' => 1,
       'module' => 'text',
       'settings' => array(
+        'show_token_tree' => FALSE,
         'size' => 60,
       ),
       'type' => 'text_textfield',
@@ -318,9 +368,11 @@ function bos_component_hero_image_field_default_field_instances() {
   t('Header');
   t('Image');
   t('Intro Text');
+  t('Short Title');
   t('Subheader');
   t('The Hero Image to display on this component.');
   t('The large heading displayed on the image');
+  t('The short title is used to populate the in-page navigation. Please keep it short: one to three words is ideal. Example can be found on boston.gov/winter/.');
   t('The text to be displayed after the large header text on the image.');
   t('The text to be displayed before the large header text on the image.');
 

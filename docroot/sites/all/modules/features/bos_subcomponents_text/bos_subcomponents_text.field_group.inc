@@ -49,7 +49,7 @@ function bos_subcomponents_text_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Column Info',
-    'weight' => '0',
+    'weight' => '1',
     'children' => array(
       0 => 'field_left_column',
       1 => 'field_middle_column',

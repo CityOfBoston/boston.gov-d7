@@ -10,7 +10,7 @@
 function bos_component_list_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'paragraphs_item-list-field_component_title'.
+  // Exported field_instance: 'paragraphs_item-list-field_component_title'
   $field_instances['paragraphs_item-list-field_component_title'] = array(
     'bundle' => 'list',
     'default_value' => NULL,
@@ -58,7 +58,7 @@ function bos_component_list_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-list-field_contact'.
+  // Exported field_instance: 'paragraphs_item-list-field_contact'
   $field_instances['paragraphs_item-list-field_contact'] = array(
     'bundle' => 'list',
     'default_value' => NULL,
@@ -110,7 +110,7 @@ function bos_component_list_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-list-field_list'.
+  // Exported field_instance: 'paragraphs_item-list-field_list'
   $field_instances['paragraphs_item-list-field_list'] = array(
     'bundle' => 'list',
     'default_value' => NULL,
@@ -190,12 +190,12 @@ function bos_component_list_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-list-field_short_title'.
+  // Exported field_instance: 'paragraphs_item-list-field_short_title'
   $field_instances['paragraphs_item-list-field_short_title'] = array(
     'bundle' => 'list',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Add a short title for topic navigation.',
+    'description' => 'The short title is used to populate the in-page navigation. Please keep it short: one to three words is ideal. Example can be found on boston.gov/winter/.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -240,11 +240,11 @@ function bos_component_list_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Add a list to this component.');
-  t('Add a short title for topic navigation.');
   t('Contact');
   t('List');
   t('Short Title');
   t('The contact associated with this list component.');
+  t('The short title is used to populate the in-page navigation. Please keep it short: one to three words is ideal. Example can be found on boston.gov/winter/.');
   t('Title');
 
   return $field_instances;
