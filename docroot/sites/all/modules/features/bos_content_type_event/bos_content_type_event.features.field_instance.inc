@@ -10,7 +10,7 @@
 function bos_content_type_event_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-event-body'.
+  // Exported field_instance: 'node-event-body'
   $field_instances['node-event-body'] = array(
     'bundle' => 'event',
     'default_value' => NULL,
@@ -138,7 +138,7 @@ function bos_content_type_event_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-event-field_address'.
+  // Exported field_instance: 'node-event-field_address'
   $field_instances['node-event-field_address'] = array(
     'bundle' => 'event',
     'default_value' => NULL,
@@ -287,7 +287,7 @@ function bos_content_type_event_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-event-field_city_hall'.
+  // Exported field_instance: 'node-event-field_city_hall'
   $field_instances['node-event-field_city_hall'] = array(
     'bundle' => 'event',
     'default_value' => array(
@@ -349,7 +349,7 @@ function bos_content_type_event_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-event-field_city_sponsored'.
+  // Exported field_instance: 'node-event-field_city_sponsored'
   $field_instances['node-event-field_city_sponsored'] = array(
     'bundle' => 'event',
     'default_value' => array(
@@ -411,7 +411,7 @@ function bos_content_type_event_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-event-field_components'.
+  // Exported field_instance: 'node-event-field_components'
   $field_instances['node-event-field_components'] = array(
     'bundle' => 'event',
     'default_value' => NULL,
@@ -652,7 +652,7 @@ function bos_content_type_event_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-event-field_contact'.
+  // Exported field_instance: 'node-event-field_contact'
   $field_instances['node-event-field_contact'] = array(
     'bundle' => 'event',
     'default_value' => NULL,
@@ -725,7 +725,7 @@ function bos_content_type_event_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-event-field_contacts'.
+  // Exported field_instance: 'node-event-field_contacts'
   $field_instances['node-event-field_contacts'] = array(
     'bundle' => 'event',
     'default_value' => NULL,
@@ -799,7 +799,7 @@ function bos_content_type_event_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-event-field_cost'.
+  // Exported field_instance: 'node-event-field_cost'
   $field_instances['node-event-field_cost'] = array(
     'bundle' => 'event',
     'default_value' => array(
@@ -930,7 +930,7 @@ function bos_content_type_event_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-event-field_details_link'.
+  // Exported field_instance: 'node-event-field_details_link'
   $field_instances['node-event-field_details_link'] = array(
     'bundle' => 'event',
     'default_value' => NULL,
@@ -1069,7 +1069,7 @@ function bos_content_type_event_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-event-field_email'.
+  // Exported field_instance: 'node-event-field_email'
   $field_instances['node-event-field_email'] = array(
     'bundle' => 'event',
     'default_value' => NULL,
@@ -1139,7 +1139,7 @@ function bos_content_type_event_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-event-field_event_contact'.
+  // Exported field_instance: 'node-event-field_event_contact'
   $field_instances['node-event-field_event_contact'] = array(
     'bundle' => 'event',
     'default_value' => NULL,
@@ -1265,7 +1265,7 @@ function bos_content_type_event_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-event-field_event_dates'.
+  // Exported field_instance: 'node-event-field_event_dates'
   $field_instances['node-event-field_event_dates'] = array(
     'bundle' => 'event',
     'deleted' => 0,
@@ -1428,7 +1428,7 @@ function bos_content_type_event_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-event-field_event_type'.
+  // Exported field_instance: 'node-event-field_event_type'
   $field_instances['node-event-field_event_type'] = array(
     'bundle' => 'event',
     'default_value' => NULL,
@@ -1557,7 +1557,7 @@ function bos_content_type_event_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-event-field_featured'.
+  // Exported field_instance: 'node-event-field_featured'
   $field_instances['node-event-field_featured'] = array(
     'bundle' => 'event',
     'default_value' => NULL,
@@ -1674,7 +1674,7 @@ function bos_content_type_event_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-event-field_intro_image'.
+  // Exported field_instance: 'node-event-field_intro_image'
   $field_instances['node-event-field_intro_image'] = array(
     'bundle' => 'event',
     'deleted' => 0,
@@ -1841,7 +1841,7 @@ function bos_content_type_event_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-event-field_intro_text'.
+  // Exported field_instance: 'node-event-field_intro_text'
   $field_instances['node-event-field_intro_text'] = array(
     'bundle' => 'event',
     'default_value' => NULL,
@@ -1964,7 +1964,7 @@ function bos_content_type_event_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-event-field_links'.
+  // Exported field_instance: 'node-event-field_links'
   $field_instances['node-event-field_links'] = array(
     'bundle' => 'event',
     'default_value' => NULL,
@@ -2130,7 +2130,7 @@ function bos_content_type_event_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-event-field_multiple_neighborhoods'.
+  // Exported field_instance: 'node-event-field_multiple_neighborhoods'
   $field_instances['node-event-field_multiple_neighborhoods'] = array(
     'bundle' => 'event',
     'default_value' => NULL,
@@ -2208,7 +2208,7 @@ function bos_content_type_event_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-event-field_people'.
+  // Exported field_instance: 'node-event-field_people'
   $field_instances['node-event-field_people'] = array(
     'bundle' => 'event',
     'default_value' => NULL,
@@ -2275,11 +2275,11 @@ function bos_content_type_event_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 11,
+      'weight' => 13,
     ),
   );
 
-  // Exported field_instance: 'node-event-field_phone_number'.
+  // Exported field_instance: 'node-event-field_phone_number'
   $field_instances['node-event-field_phone_number'] = array(
     'bundle' => 'event',
     'default_value' => NULL,
@@ -2406,7 +2406,7 @@ function bos_content_type_event_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-event-field_place'.
+  // Exported field_instance: 'node-event-field_place'
   $field_instances['node-event-field_place'] = array(
     'bundle' => 'event',
     'default_value' => NULL,
@@ -2473,11 +2473,11 @@ function bos_content_type_event_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 12,
+      'weight' => 14,
     ),
   );
 
-  // Exported field_instance: 'node-event-field_program_initiative'.
+  // Exported field_instance: 'node-event-field_program_initiative'
   $field_instances['node-event-field_program_initiative'] = array(
     'bundle' => 'event',
     'default_value' => NULL,
@@ -2544,11 +2544,11 @@ function bos_content_type_event_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 14,
+      'weight' => 16,
     ),
   );
 
-  // Exported field_instance: 'node-event-field_published_date'.
+  // Exported field_instance: 'node-event-field_published_date'
   $field_instances['node-event-field_published_date'] = array(
     'bundle' => 'event',
     'deleted' => 0,
@@ -2693,7 +2693,7 @@ function bos_content_type_event_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-event-field_related_content'.
+  // Exported field_instance: 'node-event-field_related_content'
   $field_instances['node-event-field_related_content'] = array(
     'bundle' => 'event',
     'default_value' => NULL,
@@ -2760,11 +2760,79 @@ function bos_content_type_event_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 15,
+      'weight' => 17,
     ),
   );
 
-  // Exported field_instance: 'node-event-field_related_events_notices'.
+  // Exported field_instance: 'node-event-field_related_departments'
+  $field_instances['node-event-field_related_departments'] = array(
+    'bundle' => 'event',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'calendar_listing' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 31,
+      ),
+      'featured_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'listing' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'listing_short' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div_div_div',
+    'field_name' => 'field_related_departments',
+    'label' => 'Related departments',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference',
+      'settings' => array(
+        'entityreference_autocreate' => array(
+          'active' => 0,
+          'author' => '',
+          'author_current_user' => 1,
+          'status' => -1,
+        ),
+        'match_operator' => 'CONTAINS',
+        'path' => '',
+        'size' => 60,
+      ),
+      'type' => 'entityreference_autocomplete',
+      'weight' => 10,
+    ),
+  );
+
+  // Exported field_instance: 'node-event-field_related_events_notices'
   $field_instances['node-event-field_related_events_notices'] = array(
     'bundle' => 'event',
     'default_value' => NULL,
@@ -2828,11 +2896,11 @@ function bos_content_type_event_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 10,
+      'weight' => 11,
     ),
   );
 
-  // Exported field_instance: 'node-event-field_related_guides'.
+  // Exported field_instance: 'node-event-field_related_guides'
   $field_instances['node-event-field_related_guides'] = array(
     'bundle' => 'event',
     'default_value' => NULL,
@@ -2896,11 +2964,11 @@ function bos_content_type_event_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 11,
+      'weight' => 12,
     ),
   );
 
-  // Exported field_instance: 'node-event-field_related_posts'.
+  // Exported field_instance: 'node-event-field_related_posts'
   $field_instances['node-event-field_related_posts'] = array(
     'bundle' => 'event',
     'default_value' => NULL,
@@ -2964,11 +3032,11 @@ function bos_content_type_event_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 13,
+      'weight' => 15,
     ),
   );
 
-  // Exported field_instance: 'node-event-field_sidebar_components'.
+  // Exported field_instance: 'node-event-field_sidebar_components'
   $field_instances['node-event-field_sidebar_components'] = array(
     'bundle' => 'event',
     'default_value' => NULL,
@@ -3109,7 +3177,7 @@ function bos_content_type_event_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-event-field_thumbnail'.
+  // Exported field_instance: 'node-event-field_thumbnail'
   $field_instances['node-event-field_thumbnail'] = array(
     'bundle' => 'event',
     'deleted' => 0,
@@ -3250,7 +3318,7 @@ function bos_content_type_event_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-event-field_type_of_content'.
+  // Exported field_instance: 'node-event-field_type_of_content'
   $field_instances['node-event-field_type_of_content'] = array(
     'bundle' => 'event',
     'default_value' => NULL,
@@ -3310,7 +3378,7 @@ function bos_content_type_event_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-event-field_updated_date'.
+  // Exported field_instance: 'node-event-field_updated_date'
   $field_instances['node-event-field_updated_date'] = array(
     'bundle' => 'event',
     'deleted' => 0,
@@ -3493,6 +3561,7 @@ function bos_content_type_event_field_default_field_instances() {
   t('Point of Contact');
   t('Provides a description for the event.');
   t('Published Date');
+  t('Related departments');
   t('Related events/notices');
   t('Related guides');
   t('Related people');
