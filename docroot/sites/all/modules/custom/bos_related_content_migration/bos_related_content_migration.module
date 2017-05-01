@@ -1,0 +1,49 @@
+<?php
+
+/**
+ * @file
+ * Migrates field_related_content data to appropriate entity reference.
+ */
+
+/**
+ * Implements hook_action_info().
+ */
+function bos_related_content_migration_action_info() {
+  return array(
+    'bos_related_content_migration_action' => array(
+      'type' => 'node',
+      'label' => t('Dept Mig'),
+      'behavior' => array('changes_property'),
+      'triggers' => array('any'),
+      'configurable' => FALSE,
+    ),
+  );
+}
+
+/**
+ * Action callback for VBO.
+ */
+function bos_related_content_migration_action(&$entity, $context) {
+
+  foreach ($entity->field_contacts[$entity->language] as $key => $value) {
+
+    if (isset($value['target_id'])) {
+
+      $referenced_nid = $value['target_id'];
+      $referenced_node = node_load($referenced_nid);
+      $referenced_node_type = $referenced_node->type;
+
+      switch ($referenced_node_type) {
+
+        case 'event':
+        case 'public_notice':
+          $entity->field_related_departments[$entity->language][]['target_id'] = $value['target_id'];
+          break;
+
+        default:
+          break;
+      }
+    }
+  }
+  node_save($entity);
+}
