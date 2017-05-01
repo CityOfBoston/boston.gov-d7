@@ -29,20 +29,26 @@ function bos_related_content_migration_action(&$entity, $context) {
 
     if (isset($value['target_id'])) {
 
-      $referenced_nid = $value['target_id'];
-      $referenced_node = node_load($referenced_nid);
-      $referenced_node_type = $referenced_node->type;
+      // Contains TID of referenced entity in field_contacts.
+      $referenced_tid = $value['target_id'];
 
-      switch ($referenced_node_type) {
+      // Get the info for the term that was referenced.
+      $referenced_term = taxonomy_term_load($referenced_tid);
 
-        case 'event':
-        case 'public_notice':
-          $entity->field_related_departments[$entity->language][]['target_id'] = $value['target_id'];
-          break;
+      // Find all the nodes that match the term name.
+      $matched_nodes = node_load_multiple(NULL, array("title" => $referenced_term->name));
 
-        default:
-          break;
+      // Loop through all nodes that match the term name.
+      foreach ($matched_nodes as $node) {
+        // Get the Node ID of the nodes that match the term name.
+        $first_match_nid = $node->nid;
+        // Only need the first match.
+        break;
       }
+      if ($entity->type == 'event' || $entity->type == 'public_notice') {
+        $entity->field_related_departments[$entity->language][]['target_id'] = $first_match_nid;
+      }
+
     }
   }
   node_save($entity);
