@@ -2809,7 +2809,7 @@ function bos_content_type_event_field_default_field_instances() {
     'fences_wrapper' => 'div_div_div',
     'field_name' => 'field_related_departments',
     'label' => 'Related departments',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
