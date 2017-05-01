@@ -590,6 +590,8 @@ function bos_profile_update_7021() {
 function bos_profile_update_7022() {
   $enabled_modules = array(
     'bos_view_related_events',
+    'bos_related_content_migration_view',
+    'bos_related_content_migration',
   );
   module_enable($enabled_modules);
 }
