@@ -42,7 +42,7 @@ $hamburger-hover-filter    : opacity(50%) !default;
   text-transform: none;
   background-color: transparent;
   border: 0;
-  margin: 0;
+  margin: 10px 0 0;
   overflow: visible;
   outline: none;
 
@@ -60,7 +60,6 @@ $hamburger-hover-filter    : opacity(50%) !default;
     height: $hamburger-layer-height * 3 + $hamburger-layer-spacing * 2;
     display: inline-block;
     position: relative;
-    margin-top: 10px;
   }
 
   &__inner {
@@ -112,10 +111,6 @@ $hamburger-hover-filter    : opacity(50%) !default;
 }
 
 .brg-tr:checked ~ #page {
-  .hb {
-    margin-top: 10px;
-  }
-
   .hb__inner {
     transform: translate3d(0, ($hamburger-layer-spacing + $hamburger-layer-height) * -1, 0) rotate(-45deg);
     transition-delay: 0.32s;
