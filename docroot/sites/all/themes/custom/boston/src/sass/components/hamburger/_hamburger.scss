@@ -60,6 +60,7 @@ $hamburger-hover-filter    : opacity(50%) !default;
     height: $hamburger-layer-height * 3 + $hamburger-layer-spacing * 2;
     display: inline-block;
     position: relative;
+    margin-top: 10px;
   }
 
   &__inner {
@@ -102,14 +103,10 @@ $hamburger-hover-filter    : opacity(50%) !default;
   }
 
   &__label {
-    position: absolute;
     font-family: $montserrat;
     letter-spacing: 0;
     @include type-layout(10px, 12px);
     text-transform: uppercase;
-    bottom: -10px;
-    left: -5px;
-    right:  -5px;
     text-align: center;
   }
 }
