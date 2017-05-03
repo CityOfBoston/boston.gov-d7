@@ -1,0 +1,63 @@
+<?php
+
+/**
+ * @file
+ * Migrates field_related_content data to appropriate entity reference.
+ */
+
+/**
+ * Implements hook_action_info().
+ */
+function bos_related_content_migration_action_info() {
+  return array(
+    'bos_related_content_migration_action' => array(
+      'type' => 'node',
+      'label' => t('Dept Mig'),
+      'behavior' => array('changes_property'),
+      'triggers' => array('any'),
+      'configurable' => FALSE,
+    ),
+  );
+}
+
+/**
+ * Action callback for VBO.
+ */
+function bos_related_content_migration_action(&$entity, $context) {
+
+  // Loop through referenced entities in old "All related departments" field.
+  foreach ($entity->field_contacts[$entity->language] as $key => $value) {
+
+    // Check that there is a Term ID for the referenced entity.
+    if (isset($value['target_id'])) {
+
+      // Contains TID of referenced entity in field_contacts.
+      $referenced_tid = $value['target_id'];
+
+      // Get the info for the term that was referenced.
+      $referenced_term = taxonomy_term_load($referenced_tid);
+
+      // Find all the nodes that match the term name.
+      $matched_nodes = node_load_multiple(NULL, array("title" => $referenced_term->name));
+
+      // Loop through all nodes that match the term name.
+      foreach ($matched_nodes as $node) {
+        // Get the Node ID of the nodes that match the term name.
+        $first_match_nid = $node->nid;
+        // Only need the first match.
+        break;
+      }
+
+      // Make sure we actually matched a node.
+      if ($first_match_nid) {
+        // Double check that we're updating the corrent bundles.
+        if ($entity->type == 'event' || $entity->type == 'public_notice') {
+          // Add converted value from the old field to the new field.
+          $entity->field_related_departments[$entity->language][]['target_id'] = $first_match_nid;
+        }
+      }
+    }
+  }
+  // Save the updated entity.
+  node_save($entity);
+}
