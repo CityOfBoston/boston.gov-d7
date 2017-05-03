@@ -142,8 +142,8 @@ function bos_content_type_public_notice_field_group_info() {
       0 => 'field_public_notice_date',
       1 => 'group_cancelled',
       2 => 'group_downloads',
-      3 => 'group_public_testimony',
-      4 => 'group_meeting_location',
+      3 => 'group_meeting_location',
+      4 => 'group_public_testimony',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -292,6 +292,7 @@ function bos_content_type_public_notice_field_group_info() {
       6 => 'field_related_events_notices',
       7 => 'field_related_guides',
       8 => 'field_related_posts',
+      9 => 'field_related_departments',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
