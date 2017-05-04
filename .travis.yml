@@ -1,6 +1,8 @@
 dist: trusty
 sudo: false
 language: php
+services:
+- mysql
 env:
 - TASK="./task.sh validate:all"
 - TASK="./task.sh -Dbehat.run-server=true build:test"
