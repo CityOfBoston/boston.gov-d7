@@ -27,6 +27,7 @@ function bos_component_iframe_field_group_info() {
       1 => 'field_component_title',
       2 => 'field_contact',
       3 => 'field_iframe_size',
+      4 => 'field_short_title',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
