@@ -41,9 +41,9 @@ before_install:
 - echo 'variables_order = "EGPCS"' >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
 - git config --global user.name "Travis-CI"
 - git config --global user.email "noreply@travis-ci.org"
+install:
 - mysql -e 'CREATE DATABASE drupal;'
 - mysql -e 'CREATE DATABASE hub;'
-install:
 - yarn install
 - composer install --prefer-source
 - export PATH=$PATH:$TRAVIS_BUILD_DIR/bin
