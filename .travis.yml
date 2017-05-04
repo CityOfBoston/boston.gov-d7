@@ -1,8 +1,5 @@
-dist: trusty
 sudo: false
 language: php
-services:
-- mysql
 env:
 - TASK="./task.sh validate:all"
 - TASK="./task.sh -Dbehat.run-server=true build:test"
@@ -24,7 +21,6 @@ cache:
   - "$HOME/.composer/cache"
   - "$HOME/.drush/cache"
   - "$HOME/.nvm"
-  - "$HOME/.yarn-cache"
   - vendor
   - node_modules
   - docroot/sites/all/themes/custom/boston/node_modules
@@ -34,19 +30,16 @@ notifications:
   slack:
     secure: b2UX5FnE2/C5MDNK47EP0GZIRmfwX+18HES0Q/uSwt6t7+ogKCtIjWCp1sIPd7jqRak0VmLoM0OHy6MBjz6x+1MQMNUqPEiO1f2APgBJ48c6rzeWQKTVfrKsUvPYIA+gxQ7jq7Gn0zPYQ5/+KXkxac+NrVoH85sI0xIL2BhFgQu1W4OlLLFKT11U7zJtCi3bcYhF7/eyCcrs3+IBGGp9sldjWvaVLDqUnFjz3c5AXwxlbJ6UTq7GIdIEe5Xw/UOJS9weedhoYH2XSNzFpmqqkAGcvkFpgCeYxf12iiqkmoAq5A0CxWVXqA3vG+imabuQonpbQsGdvtFP71EV9o9DxwATwxaGhBpX+Sw4zN7v25IC6n7rcvcK2F9dtY0CAb8BpWbEbWMDXXmVvFEVAvgARQ/b+L7YOJbNbbJwJQqZkllJp0lAFluyMDwpP2Ncr177S5hR/4Z6rlj1aLK1nhbmi/tK/kSNe+bcashm7/S2KG076hN0b5TB87hsbkvHsnVJDMKXSHwKrrdJiXDAkwZbl2sBp/bbfMTXyEqrINUG4WA70WXP3lR/QJy2pldVEYIU5rRwSzZ0BJ9raF7iiXFgTn3+Yhl0U/UgcDCEKoRvutM/suCy1mQBYP+Gv1uyFNFco37doQbPeyAXNb1vjfJQtyzy8I31gIN/sK590YxLBCA=
 before_install:
-- nvm install 6.0.0
-- nvm use 6.0.0
-- curl -o- -L https://yarnpkg.com/install.sh | bash
-- export PATH=$HOME/.yarn/bin:$PATH
 - composer selfupdate
 - phpenv config-rm xdebug.ini
 - echo 'variables_order = "EGPCS"' >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
 - git config --global user.name "Travis-CI"
 - git config --global user.email "noreply@travis-ci.org"
-install:
 - mysql -e 'CREATE DATABASE drupal;'
 - mysql -e 'CREATE DATABASE hub;'
-- yarn install
+install:
+- nvm install 5.6.0
+- nvm use 5.6.0
 - composer install --prefer-source
 - export PATH=$PATH:$TRAVIS_BUILD_DIR/bin
 before_script:
