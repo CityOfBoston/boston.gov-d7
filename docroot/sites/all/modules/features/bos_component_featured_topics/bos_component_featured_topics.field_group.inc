@@ -24,6 +24,7 @@ function bos_component_featured_topics_field_group_info() {
     'weight' => '4',
     'children' => array(
       0 => 'field_topics',
+      1 => 'field_short_title',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
