@@ -1,5 +1,4 @@
-sudo: required
-dist: precise
+sudo: false
 language: php
 env:
 - TASK="./task.sh validate:all"
@@ -8,6 +7,9 @@ env:
 php:
 - 5.6
 addons:
+  apt:
+    packages:
+      - libssl1.0.0
   ssh_known_hosts:
   - svn-14671.prod.hosting.acquia.com
   - staging-15139.prod.hosting.acquia.com
@@ -31,6 +33,8 @@ notifications:
   slack:
     secure: b2UX5FnE2/C5MDNK47EP0GZIRmfwX+18HES0Q/uSwt6t7+ogKCtIjWCp1sIPd7jqRak0VmLoM0OHy6MBjz6x+1MQMNUqPEiO1f2APgBJ48c6rzeWQKTVfrKsUvPYIA+gxQ7jq7Gn0zPYQ5/+KXkxac+NrVoH85sI0xIL2BhFgQu1W4OlLLFKT11U7zJtCi3bcYhF7/eyCcrs3+IBGGp9sldjWvaVLDqUnFjz3c5AXwxlbJ6UTq7GIdIEe5Xw/UOJS9weedhoYH2XSNzFpmqqkAGcvkFpgCeYxf12iiqkmoAq5A0CxWVXqA3vG+imabuQonpbQsGdvtFP71EV9o9DxwATwxaGhBpX+Sw4zN7v25IC6n7rcvcK2F9dtY0CAb8BpWbEbWMDXXmVvFEVAvgARQ/b+L7YOJbNbbJwJQqZkllJp0lAFluyMDwpP2Ncr177S5hR/4Z6rlj1aLK1nhbmi/tK/kSNe+bcashm7/S2KG076hN0b5TB87hsbkvHsnVJDMKXSHwKrrdJiXDAkwZbl2sBp/bbfMTXyEqrINUG4WA70WXP3lR/QJy2pldVEYIU5rRwSzZ0BJ9raF7iiXFgTn3+Yhl0U/UgcDCEKoRvutM/suCy1mQBYP+Gv1uyFNFco37doQbPeyAXNb1vjfJQtyzy8I31gIN/sK590YxLBCA=
 before_install:
+- nvm install 5.6.0
+- nvm use 5.6.0
 - composer selfupdate
 - phpenv config-rm xdebug.ini
 - echo 'variables_order = "EGPCS"' >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
@@ -39,8 +43,8 @@ before_install:
 - mysql -e 'CREATE DATABASE drupal;'
 - mysql -e 'CREATE DATABASE hub;'
 install:
-- nvm install 5.6.0
-- nvm use 5.6.0
+- curl -o- -L https://yarnpkg.com/install.sh | bash
+- export PATH=$HOME/.yarn/bin:$PATH
 - composer install --prefer-source
 - export PATH=$PATH:$TRAVIS_BUILD_DIR/bin
 before_script:
