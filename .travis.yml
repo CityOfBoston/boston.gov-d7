@@ -40,11 +40,11 @@ before_install:
 - git config --global user.email "noreply@travis-ci.org"
 - mysql -e 'CREATE DATABASE drupal;'
 - mysql -e 'CREATE DATABASE hub;'
-- curl -o- -L https://yarnpkg.com/install.sh | bash
-- export PATH=$HOME/.yarn/bin:$PATH
 install:
 - nvm install 6.0.0
 - nvm use 6.0.0
+- curl -o- -L https://yarnpkg.com/install.sh | bash
+- export PATH=$HOME/.yarn/bin:$PATH
 - composer install --prefer-source
 - export PATH=$PATH:$TRAVIS_BUILD_DIR/bin
 before_script:
