@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the bos_grid_of_cards feature.
+ */
+
+include_once 'bos_grid_of_cards.features.inc';
