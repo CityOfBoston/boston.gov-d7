@@ -23,4 +23,4 @@ features[field_instance][] = paragraphs_item-hero_image-field_short_title
 features[field_instance][] = paragraphs_item-hero_image-field_subheader
 features[paragraphs][] = hero_image
 features[picture_mapping][] = wide_2000x700
-mtime = 1480263901
+mtime = 1493904233

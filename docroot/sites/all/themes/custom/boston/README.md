@@ -17,7 +17,7 @@ Run these commands from your subtheme directory:
 
 This reads bower.json and installs libraries to the bower_components folder.
 
-`npm install`
+`yarn install`
 
 This reads package.json and installs node modules to node_modules.
 IMPORTANT it also runs a script to remove .info files from the node_modules folder that will cause issues with

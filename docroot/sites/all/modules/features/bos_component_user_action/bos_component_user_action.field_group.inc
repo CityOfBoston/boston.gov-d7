@@ -26,6 +26,7 @@ function bos_component_user_action_field_group_info() {
       0 => 'field_image',
       1 => 'field_intro_text',
       2 => 'field_links',
+      3 => 'field_short_title',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
