@@ -10,7 +10,7 @@
 function bos_content_type_how_to_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-how_to-body'.
+  // Exported field_instance: 'node-how_to-body'
   $field_instances['node-how_to-body'] = array(
     'bundle' => 'how_to',
     'default_value' => NULL,
@@ -128,7 +128,7 @@ function bos_content_type_how_to_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-how_to-field_components'.
+  // Exported field_instance: 'node-how_to-field_components'
   $field_instances['node-how_to-field_components'] = array(
     'bundle' => 'how_to',
     'default_value' => NULL,
@@ -262,6 +262,7 @@ function bos_content_type_how_to_field_default_field_instances() {
         'list' => 'list',
         'message_for_the_day' => -1,
         'news_announcements' => 'news_announcements',
+        'newsletter' => 'newsletter',
         'photo' => 'photo',
         'quote' => -1,
         'recollect_widget' => -1,
@@ -320,6 +321,7 @@ function bos_content_type_how_to_field_default_field_instances() {
         'list' => -58,
         'message_for_the_day' => -74,
         'news_announcements' => -57,
+        'newsletter' => 38,
         'photo' => -56,
         'quote' => -55,
         'recollect_widget' => -54,
@@ -354,7 +356,7 @@ function bos_content_type_how_to_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-how_to-field_contact'.
+  // Exported field_instance: 'node-how_to-field_contact'
   $field_instances['node-how_to-field_contact'] = array(
     'bundle' => 'how_to',
     'default_value' => NULL,
@@ -471,7 +473,7 @@ function bos_content_type_how_to_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-how_to-field_how_to_tabs'.
+  // Exported field_instance: 'node-how_to-field_how_to_tabs'
   $field_instances['node-how_to-field_how_to_tabs'] = array(
     'bundle' => 'how_to',
     'default_value' => NULL,
@@ -629,7 +631,7 @@ function bos_content_type_how_to_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-how_to-field_intro_image'.
+  // Exported field_instance: 'node-how_to-field_intro_image'
   $field_instances['node-how_to-field_intro_image'] = array(
     'bundle' => 'how_to',
     'deleted' => 0,
@@ -758,7 +760,7 @@ function bos_content_type_how_to_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-how_to-field_links'.
+  // Exported field_instance: 'node-how_to-field_links'
   $field_instances['node-how_to-field_links'] = array(
     'bundle' => 'how_to',
     'default_value' => NULL,
@@ -906,7 +908,7 @@ function bos_content_type_how_to_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-how_to-field_need_to_know'.
+  // Exported field_instance: 'node-how_to-field_need_to_know'
   $field_instances['node-how_to-field_need_to_know'] = array(
     'bundle' => 'how_to',
     'default_value' => NULL,
@@ -1014,7 +1016,7 @@ function bos_content_type_how_to_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-how_to-field_payment_info'.
+  // Exported field_instance: 'node-how_to-field_payment_info'
   $field_instances['node-how_to-field_payment_info'] = array(
     'bundle' => 'how_to',
     'default_value' => NULL,
@@ -1122,7 +1124,7 @@ function bos_content_type_how_to_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-how_to-field_published_date'.
+  // Exported field_instance: 'node-how_to-field_published_date'
   $field_instances['node-how_to-field_published_date'] = array(
     'bundle' => 'how_to',
     'deleted' => 0,
@@ -1246,7 +1248,7 @@ function bos_content_type_how_to_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-how_to-field_sidebar_components'.
+  // Exported field_instance: 'node-how_to-field_sidebar_components'
   $field_instances['node-how_to-field_sidebar_components'] = array(
     'bundle' => 'how_to',
     'default_value' => NULL,
@@ -1284,59 +1286,121 @@ function bos_content_type_how_to_field_default_field_instances() {
       'add_mode' => 'button',
       'allowed_bundles' => array(
         '3_column_w_image' => -1,
+        'bos311' => -1,
+        'cabinet' => -1,
+        'card' => -1,
+        'city_score_dashboard' => -1,
         'custom_hours_text' => -1,
         'daily_hours' => -1,
+        'discussion_topic' => -1,
         'document' => -1,
+        'drawer' => -1,
+        'drawers' => -1,
+        'election_results' => -1,
         'external_link' => -1,
         'featured_item' => -1,
         'featured_topics' => -1,
         'feedback' => -1,
+        'fyi' => -1,
+        'gol_list_links' => -1,
+        'grid_of_cards' => -1,
+        'grid_of_people' => -1,
+        'grid_of_places' => -1,
+        'grid_of_programs_initiatives' => -1,
+        'grid_of_quotes' => -1,
+        'grid_of_topics' => -1,
         'group_of_links_grid' => -1,
+        'group_of_links_list' => -1,
+        'group_of_links_mini_grid' => -1,
         'header_text' => -1,
         'hero_image' => -1,
         'how_to_contact_step' => -1,
         'how_to_tab' => -1,
         'how_to_text_step' => -1,
+        'iframe' => -1,
         'internal_link' => -1,
         'list' => -1,
+        'message_for_the_day' => -1,
+        'news_announcements' => -1,
+        'newsletter' => 'newsletter',
         'photo' => -1,
+        'quote' => -1,
+        'recollect_widget' => -1,
+        'script_embed' => -1,
+        'seamless_doc' => -1,
         'sidebar_item' => 'sidebar_item',
         'sidebar_item_w_icon' => 'sidebar_item_w_icon',
         'social_media_links' => 'social_media_links',
         'social_networking' => -1,
+        'status_override' => -1,
+        'tabbed_content_tab' => -1,
         'text' => -1,
         'text_one_column' => -1,
         'text_three_column' => -1,
         'text_two_column' => -1,
         'transaction_grid' => -1,
+        'upcoming_events' => -1,
+        'user_action' => -1,
+        'video' => -1,
       ),
       'bundle_weights' => array(
         '3_column_w_image' => 2,
+        'bos311' => 30,
+        'cabinet' => 31,
+        'card' => 32,
+        'city_score_dashboard' => 33,
         'custom_hours_text' => 3,
         'daily_hours' => 4,
+        'discussion_topic' => 36,
         'document' => 5,
+        'drawer' => 38,
+        'drawers' => 39,
+        'election_results' => 40,
         'external_link' => 6,
         'featured_item' => 7,
         'featured_topics' => 8,
         'feedback' => 9,
+        'fyi' => 45,
+        'gol_list_links' => 46,
+        'grid_of_cards' => 47,
+        'grid_of_people' => 48,
+        'grid_of_places' => 49,
+        'grid_of_programs_initiatives' => 50,
+        'grid_of_quotes' => 51,
+        'grid_of_topics' => 52,
         'group_of_links_grid' => 10,
+        'group_of_links_list' => 54,
+        'group_of_links_mini_grid' => 55,
         'header_text' => 11,
         'hero_image' => 12,
         'how_to_contact_step' => 13,
         'how_to_tab' => 14,
         'how_to_text_step' => 15,
+        'iframe' => 61,
         'internal_link' => 16,
         'list' => 17,
+        'message_for_the_day' => 64,
+        'news_announcements' => 66,
+        'newsletter' => 65,
         'photo' => 18,
+        'quote' => 68,
+        'recollect_widget' => 69,
+        'script_embed' => 70,
+        'seamless_doc' => 71,
         'sidebar_item' => 19,
         'sidebar_item_w_icon' => 20,
         'social_media_links' => 21,
         'social_networking' => 22,
+        'status_override' => 76,
+        'tabbed_content_tab' => 77,
         'text' => 23,
         'text_one_column' => 24,
         'text_three_column' => 25,
         'text_two_column' => 26,
         'transaction_grid' => 27,
+        'upcoming_events' => 83,
+        'user_action' => 84,
+        'video' => 85,
       ),
       'default_edit_mode' => 'open',
       'title' => 'Paragraph',
@@ -1352,7 +1416,7 @@ function bos_content_type_how_to_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-how_to-field_type_of_content'.
+  // Exported field_instance: 'node-how_to-field_type_of_content'
   $field_instances['node-how_to-field_type_of_content'] = array(
     'bundle' => 'how_to',
     'default_value' => NULL,
@@ -1388,7 +1452,7 @@ function bos_content_type_how_to_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-how_to-field_updated_date'.
+  // Exported field_instance: 'node-how_to-field_updated_date'
   $field_instances['node-how_to-field_updated_date'] = array(
     'bundle' => 'how_to',
     'deleted' => 0,
@@ -1512,8 +1576,7 @@ function bos_content_type_how_to_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance:
-  // 'paragraphs_item-how_to_contact_step-field_address'.
+  // Exported field_instance: 'paragraphs_item-how_to_contact_step-field_address'
   $field_instances['paragraphs_item-how_to_contact_step-field_address'] = array(
     'bundle' => 'how_to_contact_step',
     'default_value' => NULL,
@@ -1577,8 +1640,7 @@ function bos_content_type_how_to_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance:
-  // 'paragraphs_item-how_to_contact_step-field_operation_hours'.
+  // Exported field_instance: 'paragraphs_item-how_to_contact_step-field_operation_hours'
   $field_instances['paragraphs_item-how_to_contact_step-field_operation_hours'] = array(
     'bundle' => 'how_to_contact_step',
     'default_value' => NULL,
@@ -1676,8 +1738,7 @@ function bos_content_type_how_to_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance:
-  // 'paragraphs_item-how_to_contact_step-field_step_details'.
+  // Exported field_instance: 'paragraphs_item-how_to_contact_step-field_step_details'
   $field_instances['paragraphs_item-how_to_contact_step-field_step_details'] = array(
     'bundle' => 'how_to_contact_step',
     'default_value' => NULL,
@@ -1725,7 +1786,7 @@ function bos_content_type_how_to_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-how_to_contact_step-field_title'.
+  // Exported field_instance: 'paragraphs_item-how_to_contact_step-field_title'
   $field_instances['paragraphs_item-how_to_contact_step-field_title'] = array(
     'bundle' => 'how_to_contact_step',
     'default_value' => NULL,
@@ -1773,7 +1834,7 @@ function bos_content_type_how_to_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-how_to_tab-field_how_to_steps'.
+  // Exported field_instance: 'paragraphs_item-how_to_tab-field_how_to_steps'
   $field_instances['paragraphs_item-how_to_tab-field_how_to_steps'] = array(
     'bundle' => 'how_to_tab',
     'default_value' => NULL,
@@ -1871,7 +1932,7 @@ function bos_content_type_how_to_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-how_to_tab-field_how_to_title'.
+  // Exported field_instance: 'paragraphs_item-how_to_tab-field_how_to_title'
   $field_instances['paragraphs_item-how_to_tab-field_how_to_title'] = array(
     'bundle' => 'how_to_tab',
     'default_value' => NULL,
@@ -1919,7 +1980,7 @@ function bos_content_type_how_to_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-how_to_tab-field_keep_in_mind'.
+  // Exported field_instance: 'paragraphs_item-how_to_tab-field_keep_in_mind'
   $field_instances['paragraphs_item-how_to_tab-field_keep_in_mind'] = array(
     'bundle' => 'how_to_tab',
     'default_value' => NULL,
@@ -1967,8 +2028,7 @@ function bos_content_type_how_to_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance:
-  // 'paragraphs_item-how_to_text_step-field_step_details'.
+  // Exported field_instance: 'paragraphs_item-how_to_text_step-field_step_details'
   $field_instances['paragraphs_item-how_to_text_step-field_step_details'] = array(
     'bundle' => 'how_to_text_step',
     'default_value' => NULL,
@@ -2016,7 +2076,7 @@ function bos_content_type_how_to_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-how_to_text_step-field_title'.
+  // Exported field_instance: 'paragraphs_item-how_to_text_step-field_title'
   $field_instances['paragraphs_item-how_to_text_step-field_title'] = array(
     'bundle' => 'how_to_text_step',
     'default_value' => NULL,
