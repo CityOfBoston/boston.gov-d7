@@ -69,13 +69,6 @@
     <div class="column">
       <a href="<?php print $url; ?>" title="Go to <?php print $user_display_name; ?>'s profile">
         <div class="person-highlight-area">
-          <div class="detail-list-item person-profile-photo-list">
-            <?php if (isset($user_work_email)): ?>
-              <div class="person-profile-image" style="background-image: url(//cob-avatars.herokuapp.com/photos/<?php print base64_encode(strtolower($user_work_email)); ?>)"></div>
-            <?php else: ?>
-              <div class="person-profile-image with-border" style="background-image: url(//cob-avatars.herokuapp.com/photos/<?php print base64_encode('default@boston.gov'); ?>)"></div>
-            <?php endif; ?>
-          </div>
           <div class="person-text-data">
             <div class="person-name-and-title">
               <div class="person-profile-display-name">

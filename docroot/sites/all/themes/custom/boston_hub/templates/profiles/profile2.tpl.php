@@ -62,9 +62,6 @@
   <div class="user-profile-info-block">
     <div class="container">
     <div class="user-profile-header-info clearfix">
-      <div class="user-profile-picture user-profile-picture-top">
-        <div class="user-picture-image" style="background-image: url(//cob-avatars.herokuapp.com/photos/<?php print base64_encode($field_work_email); ?>)"></div>
-      </div>
       <div class="user-profile-info">
         <?php if (!empty($content['field_display_name'])) : ?>
           <div class="user-profile-header-display-name">
@@ -103,10 +100,12 @@
           <div class="user-profile-office-location clearfix">
             <div class="user-profile-office-address flex-at-lg">
               <div class="office-location-first-line flex-at-sm flex-width-md">
-                <div class="location">
-                  <label>Room</label>
-                  <div class="field-output"><?php print $office_address['location']; ?></div>
-                </div>
+                <?php if (isset($office_address['location'])) { ?>
+                  <div class="location">
+                    <label>Room</label>
+                    <div class="field-output"><?php print $office_address['location']; ?></div>
+                  </div>
+                <?php } ?>
                 <div class="street">
                   <label>Street Address</label>
                   <div class="field-output"><?php print $office_address['street']; ?></div>
@@ -150,21 +149,23 @@
     </div>
 
 
-    <div class="user-profile-section">
-      <h2>Organizational Information</h2>
-      <?php if (!empty($content['field_contact'])) : ?>
-        <div class="user-profile-department">
-          <label>Department</label>
-          <div class="field-output"><?php print render($content['field_contact']); ?></div>
-        </div>
-      <?php endif ?>
-      <?php if (!empty($content['field_manager'])) : ?>
-        <div class="user-profile-manager clearfix">
-          <label>Manager</label>
-          <div class="field-output"><?php print $manager_display_name; ?></div>
-        </div>
-      <?php endif ?>
-    </div>
+    <?php if (!empty($content['field_contact']) || !empty($content['field_manager'])) : ?>
+      <div class="user-profile-section">
+        <h2>Organizational Information</h2>
+        <?php if (!empty($content['field_contact'])) : ?>
+          <div class="user-profile-department">
+            <label>Department</label>
+            <div class="field-output"><?php print render($content['field_contact']); ?></div>
+          </div>
+        <?php endif ?>
+        <?php if (!empty($content['field_manager'])) : ?>
+          <div class="user-profile-manager clearfix">
+            <label>Manager</label>
+            <div class="field-output"><?php print $manager_display_name; ?></div>
+          </div>
+        <?php endif ?>
+      </div>
+    <?php endif ?>
     </div><!--user-profile-info-block-->
 </div>
     <?php if ($viewing_own) : ?>

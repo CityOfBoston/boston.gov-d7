@@ -104,7 +104,7 @@ function bos_component_upcoming_events_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 2,
+      'weight' => 3,
     ),
   );
 
@@ -236,7 +236,7 @@ function bos_component_upcoming_events_field_default_field_instances() {
       'module' => 'paragraphs',
       'settings' => array(),
       'type' => 'paragraphs_embed',
-      'weight' => 4,
+      'weight' => 5,
     ),
   );
 
@@ -299,7 +299,7 @@ function bos_component_upcoming_events_field_default_field_instances() {
       'module' => 'viewfield',
       'settings' => array(),
       'type' => 'viewfield_select',
-      'weight' => 3,
+      'weight' => 4,
     ),
   );
 
@@ -346,7 +346,7 @@ function bos_component_upcoming_events_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 0,
+      'weight' => 2,
     ),
   );
 
