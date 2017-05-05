@@ -18,4 +18,4 @@ features[field_instance][] = paragraphs_item-upcoming_events-field_link
 features[field_instance][] = paragraphs_item-upcoming_events-field_list
 features[field_instance][] = paragraphs_item-upcoming_events-field_short_title
 features[paragraphs][] = upcoming_events
-mtime = 1480263901
+mtime = 1493904233

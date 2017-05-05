@@ -27,6 +27,7 @@ function bos_component_news_announcements_field_group_info() {
       1 => 'field_featured_post',
       2 => 'field_list',
       3 => 'field_link',
+      4 => 'field_short_title',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
