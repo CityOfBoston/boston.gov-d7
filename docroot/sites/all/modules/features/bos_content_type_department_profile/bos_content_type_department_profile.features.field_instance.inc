@@ -10,7 +10,7 @@
 function bos_content_type_department_profile_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-department_profile-body'.
+  // Exported field_instance: 'node-department_profile-body'
   $field_instances['node-department_profile-body'] = array(
     'bundle' => 'department_profile',
     'default_value' => NULL,
@@ -136,7 +136,7 @@ function bos_content_type_department_profile_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-department_profile-field_address'.
+  // Exported field_instance: 'node-department_profile-field_address'
   $field_instances['node-department_profile-field_address'] = array(
     'bundle' => 'department_profile',
     'default_value' => NULL,
@@ -284,7 +284,7 @@ function bos_content_type_department_profile_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-department_profile-field_components'.
+  // Exported field_instance: 'node-department_profile-field_components'
   $field_instances['node-department_profile-field_components'] = array(
     'bundle' => 'department_profile',
     'default_value' => NULL,
@@ -433,6 +433,7 @@ function bos_content_type_department_profile_field_default_field_instances() {
         'list' => 'list',
         'message_for_the_day' => -1,
         'news_announcements' => 'news_announcements',
+        'newsletter' => 'newsletter',
         'photo' => 'photo',
         'quote' => -1,
         'recollect_widget' => -1,
@@ -491,6 +492,7 @@ function bos_content_type_department_profile_field_default_field_instances() {
         'list' => -65,
         'message_for_the_day' => -50,
         'news_announcements' => -63,
+        'newsletter' => 38,
         'photo' => -62,
         'quote' => -49,
         'recollect_widget' => -48,
@@ -525,7 +527,7 @@ function bos_content_type_department_profile_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-department_profile-field_department_type'.
+  // Exported field_instance: 'node-department_profile-field_department_type'
   $field_instances['node-department_profile-field_department_type'] = array(
     'bundle' => 'department_profile',
     'default_value' => array(
@@ -648,7 +650,7 @@ function bos_content_type_department_profile_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-department_profile-field_email'.
+  // Exported field_instance: 'node-department_profile-field_email'
   $field_instances['node-department_profile-field_email'] = array(
     'bundle' => 'department_profile',
     'default_value' => NULL,
@@ -770,7 +772,7 @@ function bos_content_type_department_profile_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-department_profile-field_icon'.
+  // Exported field_instance: 'node-department_profile-field_icon'
   $field_instances['node-department_profile-field_icon'] = array(
     'bundle' => 'department_profile',
     'deleted' => 0,
@@ -926,7 +928,7 @@ function bos_content_type_department_profile_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-department_profile-field_intro_text'.
+  // Exported field_instance: 'node-department_profile-field_intro_text'
   $field_instances['node-department_profile-field_intro_text'] = array(
     'bundle' => 'department_profile',
     'default_value' => NULL,
@@ -1047,7 +1049,7 @@ function bos_content_type_department_profile_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-department_profile-field_operation_hours'.
+  // Exported field_instance: 'node-department_profile-field_operation_hours'
   $field_instances['node-department_profile-field_operation_hours'] = array(
     'bundle' => 'department_profile',
     'default_value' => NULL,
@@ -1228,7 +1230,7 @@ function bos_content_type_department_profile_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-department_profile-field_phone_number'.
+  // Exported field_instance: 'node-department_profile-field_phone_number'
   $field_instances['node-department_profile-field_phone_number'] = array(
     'bundle' => 'department_profile',
     'default_value' => NULL,
@@ -1351,7 +1353,7 @@ function bos_content_type_department_profile_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-department_profile-field_published_date'.
+  // Exported field_instance: 'node-department_profile-field_published_date'
   $field_instances['node-department_profile-field_published_date'] = array(
     'bundle' => 'department_profile',
     'deleted' => 0,
@@ -1439,8 +1441,7 @@ function bos_content_type_department_profile_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance:
-  // 'node-department_profile-field_sidebar_components'.
+  // Exported field_instance: 'node-department_profile-field_sidebar_components'
   $field_instances['node-department_profile-field_sidebar_components'] = array(
     'bundle' => 'department_profile',
     'default_value' => NULL,
@@ -1553,49 +1554,121 @@ function bos_content_type_department_profile_field_default_field_instances() {
       'add_mode' => 'select',
       'allowed_bundles' => array(
         '3_column_w_image' => -1,
+        'bos311' => -1,
+        'cabinet' => -1,
+        'card' => -1,
+        'city_score_dashboard' => -1,
+        'custom_hours_text' => -1,
+        'daily_hours' => -1,
+        'discussion_topic' => -1,
         'document' => -1,
+        'drawer' => -1,
+        'drawers' => -1,
+        'election_results' => -1,
         'external_link' => -1,
         'featured_item' => -1,
         'featured_topics' => -1,
         'feedback' => -1,
+        'fyi' => -1,
+        'gol_list_links' => -1,
+        'grid_of_cards' => -1,
+        'grid_of_people' => -1,
+        'grid_of_places' => -1,
+        'grid_of_programs_initiatives' => -1,
+        'grid_of_quotes' => -1,
+        'grid_of_topics' => -1,
         'group_of_links_grid' => -1,
+        'group_of_links_list' => -1,
+        'group_of_links_mini_grid' => -1,
         'header_text' => -1,
         'hero_image' => -1,
+        'how_to_contact_step' => -1,
+        'how_to_tab' => -1,
+        'how_to_text_step' => -1,
+        'iframe' => -1,
         'internal_link' => -1,
         'list' => -1,
+        'message_for_the_day' => -1,
+        'news_announcements' => -1,
+        'newsletter' => 'newsletter',
         'photo' => -1,
+        'quote' => -1,
+        'recollect_widget' => -1,
+        'script_embed' => -1,
+        'seamless_doc' => -1,
         'sidebar_item' => 'sidebar_item',
         'sidebar_item_w_icon' => 'sidebar_item_w_icon',
         'social_media_links' => 'social_media_links',
         'social_networking' => -1,
+        'status_override' => -1,
+        'tabbed_content_tab' => -1,
         'text' => -1,
         'text_one_column' => -1,
         'text_three_column' => -1,
         'text_two_column' => -1,
         'transaction_grid' => -1,
+        'upcoming_events' => -1,
+        'user_action' => -1,
+        'video' => -1,
       ),
       'bundle_weights' => array(
         '3_column_w_image' => 2,
+        'bos311' => 26,
+        'cabinet' => 27,
+        'card' => 28,
+        'city_score_dashboard' => 29,
+        'custom_hours_text' => 30,
+        'daily_hours' => 31,
+        'discussion_topic' => 32,
         'document' => 3,
+        'drawer' => 34,
+        'drawers' => 35,
+        'election_results' => 36,
         'external_link' => 4,
         'featured_item' => 5,
         'featured_topics' => 6,
         'feedback' => 7,
+        'fyi' => 41,
+        'gol_list_links' => 42,
+        'grid_of_cards' => 43,
+        'grid_of_people' => 44,
+        'grid_of_places' => 45,
+        'grid_of_programs_initiatives' => 46,
+        'grid_of_quotes' => 47,
+        'grid_of_topics' => 48,
         'group_of_links_grid' => 8,
+        'group_of_links_list' => 50,
+        'group_of_links_mini_grid' => 51,
         'header_text' => 9,
         'hero_image' => 10,
+        'how_to_contact_step' => 54,
+        'how_to_tab' => 55,
+        'how_to_text_step' => 56,
+        'iframe' => 57,
         'internal_link' => 11,
         'list' => 12,
+        'message_for_the_day' => 60,
+        'news_announcements' => 62,
+        'newsletter' => 61,
         'photo' => 14,
+        'quote' => 64,
+        'recollect_widget' => 65,
+        'script_embed' => 66,
+        'seamless_doc' => 67,
         'sidebar_item' => 15,
         'sidebar_item_w_icon' => 16,
         'social_media_links' => 17,
         'social_networking' => 18,
+        'status_override' => 72,
+        'tabbed_content_tab' => 73,
         'text' => 19,
         'text_one_column' => 20,
         'text_three_column' => 21,
         'text_two_column' => 22,
         'transaction_grid' => 23,
+        'upcoming_events' => 79,
+        'user_action' => 80,
+        'video' => 81,
       ),
       'default_edit_mode' => 'open',
       'title' => 'Component',
@@ -1611,7 +1684,7 @@ function bos_content_type_department_profile_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-department_profile-field_type_of_content'.
+  // Exported field_instance: 'node-department_profile-field_type_of_content'
   $field_instances['node-department_profile-field_type_of_content'] = array(
     'bundle' => 'department_profile',
     'default_value' => NULL,
@@ -1686,7 +1759,7 @@ function bos_content_type_department_profile_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-department_profile-field_updated_date'.
+  // Exported field_instance: 'node-department_profile-field_updated_date'
   $field_instances['node-department_profile-field_updated_date'] = array(
     'bundle' => 'department_profile',
     'deleted' => 0,
