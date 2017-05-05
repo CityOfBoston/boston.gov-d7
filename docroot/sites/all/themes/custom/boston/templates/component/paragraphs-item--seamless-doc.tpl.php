@@ -11,5 +11,5 @@
     }
   </script>
   <div id="scriptLoader" class="b" style="border: 3px solid red; padding: 1.25rem 2rem">Loading...</div>
-  <script src="asadasdsdasd" onload="scriptLoaded()" onerror="scriptFailed()"></script>
+  <script src="https://boston.seamlessdocs.com/s/<?php print render($content['field_document_id']); ?>/embed/iframe" onload="scriptLoaded()" onerror="scriptFailed()"></script>
 <?php endif; ?>
