@@ -34,7 +34,6 @@ features[field_instance][] = node-post-field_contact
 features[field_instance][] = node-post-field_contacts
 features[field_instance][] = node-post-field_intro_image
 features[field_instance][] = node-post-field_intro_text
-features[field_instance][] = node-post-field_multiple_neighborhoods
 features[field_instance][] = node-post-field_news_tags
 features[field_instance][] = node-post-field_people
 features[field_instance][] = node-post-field_place
