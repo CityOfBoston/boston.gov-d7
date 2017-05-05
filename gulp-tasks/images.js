@@ -11,7 +11,9 @@ module.exports = function (gulp, plugins, options, util) {
                        options.images + '/**/*.{png,jpg,jpeg,gif,svg}'
                      ])
                      .pipe(plugins.debug({title: 'optimized images:'}))
-                     .pipe(plugins.imagemin({progressive: true}))
+                     .pipe(plugins.image({
+                        guetzli: true,
+                      }))
                      .pipe(gulp.dest(options.dest + '/img'));
 
     return stream;

@@ -27,6 +27,7 @@ function bos_component_fyi_field_group_info() {
       1 => 'field_icon',
       2 => 'field_link',
       3 => 'field_title',
+      4 => 'field_short_title',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
