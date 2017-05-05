@@ -10,7 +10,7 @@
 function bos_content_type_script_page_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-script_page-field_components'.
+  // Exported field_instance: 'node-script_page-field_components'
   $field_instances['node-script_page-field_components'] = array(
     'bundle' => 'script_page',
     'default_value' => NULL,
@@ -81,6 +81,7 @@ function bos_content_type_script_page_field_default_field_instances() {
         'list' => 'list',
         'message_for_the_day' => -1,
         'news_announcements' => 'news_announcements',
+        'newsletter' => 'newsletter',
         'photo' => 'photo',
         'quote' => -1,
         'recollect_widget' => -1,
@@ -139,6 +140,7 @@ function bos_content_type_script_page_field_default_field_instances() {
         'list' => -70,
         'message_for_the_day' => -64,
         'news_announcements' => -65,
+        'newsletter' => 38,
         'photo' => -63,
         'quote' => -48,
         'recollect_widget' => -47,
@@ -173,7 +175,7 @@ function bos_content_type_script_page_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-script_page-field_contact'.
+  // Exported field_instance: 'node-script_page-field_contact'
   $field_instances['node-script_page-field_contact'] = array(
     'bundle' => 'script_page',
     'default_value' => NULL,
@@ -233,7 +235,7 @@ function bos_content_type_script_page_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-script_page-field_embed_list'.
+  // Exported field_instance: 'node-script_page-field_embed_list'
   $field_instances['node-script_page-field_embed_list'] = array(
     'bundle' => 'script_page',
     'default_value' => NULL,
@@ -379,7 +381,7 @@ function bos_content_type_script_page_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-script_page-field_intro_text'.
+  // Exported field_instance: 'node-script_page-field_intro_text'
   $field_instances['node-script_page-field_intro_text'] = array(
     'bundle' => 'script_page',
     'default_value' => NULL,
@@ -427,7 +429,7 @@ function bos_content_type_script_page_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-script_page-field_link'.
+  // Exported field_instance: 'node-script_page-field_link'
   $field_instances['node-script_page-field_link'] = array(
     'bundle' => 'script_page',
     'default_value' => NULL,
@@ -560,7 +562,7 @@ function bos_content_type_script_page_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-script_page-field_sidebar_components'.
+  // Exported field_instance: 'node-script_page-field_sidebar_components'
   $field_instances['node-script_page-field_sidebar_components'] = array(
     'bundle' => 'script_page',
     'default_value' => NULL,
@@ -597,23 +599,30 @@ function bos_content_type_script_page_field_default_field_instances() {
         '3_column_w_image' => -1,
         'bos311' => -1,
         'cabinet' => -1,
+        'card' => -1,
+        'city_score_dashboard' => -1,
         'custom_hours_text' => -1,
         'daily_hours' => -1,
+        'discussion_topic' => -1,
         'document' => -1,
         'drawer' => -1,
         'drawers' => -1,
+        'election_results' => -1,
         'external_link' => -1,
         'featured_item' => -1,
         'featured_topics' => -1,
         'feedback' => -1,
         'fyi' => -1,
         'gol_list_links' => -1,
+        'grid_of_cards' => -1,
         'grid_of_people' => -1,
         'grid_of_places' => -1,
         'grid_of_programs_initiatives' => -1,
+        'grid_of_quotes' => -1,
         'grid_of_topics' => -1,
         'group_of_links_grid' => -1,
         'group_of_links_list' => -1,
+        'group_of_links_mini_grid' => -1,
         'header_text' => -1,
         'hero_image' => -1,
         'how_to_contact_step' => -1,
@@ -624,39 +633,55 @@ function bos_content_type_script_page_field_default_field_instances() {
         'list' => -1,
         'message_for_the_day' => -1,
         'news_announcements' => -1,
+        'newsletter' => 'newsletter',
         'photo' => -1,
+        'quote' => -1,
+        'recollect_widget' => -1,
+        'script_embed' => -1,
+        'seamless_doc' => -1,
         'sidebar_item' => 'sidebar_item',
         'sidebar_item_w_icon' => 'sidebar_item_w_icon',
         'social_media_links' => 'social_media_links',
         'social_networking' => -1,
+        'status_override' => -1,
+        'tabbed_content_tab' => -1,
         'text' => -1,
         'text_one_column' => -1,
         'text_three_column' => -1,
         'text_two_column' => -1,
         'transaction_grid' => -1,
+        'upcoming_events' => -1,
         'user_action' => -1,
+        'video' => -1,
       ),
       'bundle_weights' => array(
         '3_column_w_image' => 2,
         'bos311' => 3,
         'cabinet' => 4,
+        'card' => 47,
+        'city_score_dashboard' => 48,
         'custom_hours_text' => 5,
         'daily_hours' => 6,
+        'discussion_topic' => 51,
         'document' => 7,
         'drawer' => 8,
         'drawers' => 9,
+        'election_results' => 55,
         'external_link' => 10,
         'featured_item' => 11,
         'featured_topics' => 12,
         'feedback' => 13,
         'fyi' => 14,
         'gol_list_links' => 15,
+        'grid_of_cards' => 62,
         'grid_of_people' => 16,
         'grid_of_places' => 17,
         'grid_of_programs_initiatives' => 18,
+        'grid_of_quotes' => 66,
         'grid_of_topics' => 19,
         'group_of_links_grid' => 20,
         'group_of_links_list' => 21,
+        'group_of_links_mini_grid' => 70,
         'header_text' => 22,
         'hero_image' => 23,
         'how_to_contact_step' => 24,
@@ -667,17 +692,26 @@ function bos_content_type_script_page_field_default_field_instances() {
         'list' => 29,
         'message_for_the_day' => 30,
         'news_announcements' => 31,
+        'newsletter' => 80,
         'photo' => 32,
+        'quote' => 83,
+        'recollect_widget' => 84,
+        'script_embed' => 85,
+        'seamless_doc' => 86,
         'sidebar_item' => 33,
         'sidebar_item_w_icon' => 34,
         'social_media_links' => 35,
         'social_networking' => 36,
+        'status_override' => 91,
+        'tabbed_content_tab' => 92,
         'text' => 37,
         'text_one_column' => 38,
         'text_three_column' => 39,
         'text_two_column' => 40,
         'transaction_grid' => 41,
+        'upcoming_events' => 98,
         'user_action' => 42,
+        'video' => 100,
       ),
       'default_edit_mode' => 'open',
       'title' => 'Sidebar Component',
