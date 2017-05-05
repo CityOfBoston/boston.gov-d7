@@ -10,7 +10,7 @@
 function bos_content_type_post_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-post-body'.
+  // Exported field_instance: 'node-post-body'
   $field_instances['node-post-body'] = array(
     'bundle' => 'post',
     'default_value' => NULL,
@@ -126,7 +126,7 @@ function bos_content_type_post_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-post-field_components'.
+  // Exported field_instance: 'node-post-field_components'
   $field_instances['node-post-field_components'] = array(
     'bundle' => 'post',
     'default_value' => NULL,
@@ -266,6 +266,7 @@ function bos_content_type_post_field_default_field_instances() {
         'list' => 'list',
         'message_for_the_day' => -1,
         'news_announcements' => 'news_announcements',
+        'newsletter' => 'newsletter',
         'photo' => 'photo',
         'quote' => -1,
         'recollect_widget' => -1,
@@ -324,6 +325,7 @@ function bos_content_type_post_field_default_field_instances() {
         'list' => -59,
         'message_for_the_day' => -74,
         'news_announcements' => -58,
+        'newsletter' => 38,
         'photo' => -57,
         'quote' => -56,
         'recollect_widget' => -55,
@@ -358,7 +360,7 @@ function bos_content_type_post_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-post-field_contact'.
+  // Exported field_instance: 'node-post-field_contact'
   $field_instances['node-post-field_contact'] = array(
     'bundle' => 'post',
     'default_value' => NULL,
@@ -496,7 +498,7 @@ function bos_content_type_post_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-post-field_contacts'.
+  // Exported field_instance: 'node-post-field_contacts'
   $field_instances['node-post-field_contacts'] = array(
     'bundle' => 'post',
     'default_value' => NULL,
@@ -570,7 +572,7 @@ function bos_content_type_post_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-post-field_intro_image'.
+  // Exported field_instance: 'node-post-field_intro_image'
   $field_instances['node-post-field_intro_image'] = array(
     'bundle' => 'post',
     'deleted' => 0,
@@ -716,7 +718,7 @@ function bos_content_type_post_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-post-field_intro_text'.
+  // Exported field_instance: 'node-post-field_intro_text'
   $field_instances['node-post-field_intro_text'] = array(
     'bundle' => 'post',
     'default_value' => NULL,
@@ -897,7 +899,75 @@ function bos_content_type_post_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-post-field_news_tags'.
+  // Exported field_instance: 'node-post-field_multiple_neighborhoods'
+  $field_instances['node-post-field_multiple_neighborhoods'] = array(
+    'bundle' => 'post',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 13,
+      ),
+      'featured_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'listing' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'listing_short' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'no_wrapper',
+    'field_name' => 'field_multiple_neighborhoods',
+    'label' => 'Neighborhoods',
+    'required' => 0,
+    'settings' => array(
+      'behaviors' => array(
+        'taxonomy-index' => array(
+          'status' => TRUE,
+        ),
+      ),
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference',
+      'settings' => array(
+        'entityreference_autocreate' => 0,
+        'match_operator' => 'CONTAINS',
+        'path' => '',
+        'size' => 60,
+      ),
+      'type' => 'entityreference_autocomplete',
+      'weight' => 7,
+    ),
+  );
+
+  // Exported field_instance: 'node-post-field_news_tags'
   $field_instances['node-post-field_news_tags'] = array(
     'bundle' => 'post',
     'default_value' => NULL,
@@ -1024,7 +1094,7 @@ function bos_content_type_post_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-post-field_people'.
+  // Exported field_instance: 'node-post-field_people'
   $field_instances['node-post-field_people'] = array(
     'bundle' => 'post',
     'default_value' => NULL,
@@ -1092,7 +1162,7 @@ function bos_content_type_post_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-post-field_place'.
+  // Exported field_instance: 'node-post-field_place'
   $field_instances['node-post-field_place'] = array(
     'bundle' => 'post',
     'default_value' => NULL,
@@ -1160,7 +1230,7 @@ function bos_content_type_post_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-post-field_program_initiative'.
+  // Exported field_instance: 'node-post-field_program_initiative'
   $field_instances['node-post-field_program_initiative'] = array(
     'bundle' => 'post',
     'default_value' => NULL,
@@ -1228,7 +1298,7 @@ function bos_content_type_post_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-post-field_published_date'.
+  // Exported field_instance: 'node-post-field_published_date'
   $field_instances['node-post-field_published_date'] = array(
     'bundle' => 'post',
     'deleted' => 0,
@@ -1394,7 +1464,7 @@ function bos_content_type_post_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-post-field_related_content'.
+  // Exported field_instance: 'node-post-field_related_content'
   $field_instances['node-post-field_related_content'] = array(
     'bundle' => 'post',
     'default_value' => NULL,
@@ -1462,7 +1532,7 @@ function bos_content_type_post_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-post-field_related_events_notices'.
+  // Exported field_instance: 'node-post-field_related_events_notices'
   $field_instances['node-post-field_related_events_notices'] = array(
     'bundle' => 'post',
     'default_value' => NULL,
@@ -1530,7 +1600,7 @@ function bos_content_type_post_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-post-field_related_guides'.
+  // Exported field_instance: 'node-post-field_related_guides'
   $field_instances['node-post-field_related_guides'] = array(
     'bundle' => 'post',
     'default_value' => NULL,
@@ -1598,7 +1668,7 @@ function bos_content_type_post_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-post-field_related_posts'.
+  // Exported field_instance: 'node-post-field_related_posts'
   $field_instances['node-post-field_related_posts'] = array(
     'bundle' => 'post',
     'default_value' => NULL,
@@ -1666,7 +1736,7 @@ function bos_content_type_post_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-post-field_sidebar_components'.
+  // Exported field_instance: 'node-post-field_sidebar_components'
   $field_instances['node-post-field_sidebar_components'] = array(
     'bundle' => 'post',
     'default_value' => NULL,
@@ -1722,67 +1792,121 @@ function bos_content_type_post_field_default_field_instances() {
       'add_mode' => 'button',
       'allowed_bundles' => array(
         '3_column_w_image' => -1,
+        'bos311' => -1,
+        'cabinet' => -1,
+        'card' => -1,
+        'city_score_dashboard' => -1,
         'custom_hours_text' => -1,
         'daily_hours' => -1,
+        'discussion_topic' => -1,
         'document' => -1,
+        'drawer' => -1,
+        'drawers' => -1,
+        'election_results' => -1,
         'external_link' => -1,
         'featured_item' => -1,
         'featured_topics' => -1,
         'feedback' => -1,
+        'fyi' => -1,
         'gol_list_links' => -1,
+        'grid_of_cards' => -1,
+        'grid_of_people' => -1,
         'grid_of_places' => -1,
         'grid_of_programs_initiatives' => -1,
+        'grid_of_quotes' => -1,
+        'grid_of_topics' => -1,
         'group_of_links_grid' => -1,
         'group_of_links_list' => -1,
+        'group_of_links_mini_grid' => -1,
         'header_text' => -1,
         'hero_image' => -1,
         'how_to_contact_step' => -1,
         'how_to_tab' => -1,
         'how_to_text_step' => -1,
+        'iframe' => -1,
         'internal_link' => -1,
         'list' => -1,
+        'message_for_the_day' => -1,
+        'news_announcements' => -1,
+        'newsletter' => 'newsletter',
         'photo' => -1,
+        'quote' => -1,
+        'recollect_widget' => -1,
+        'script_embed' => -1,
+        'seamless_doc' => -1,
         'sidebar_item' => 'sidebar_item',
         'sidebar_item_w_icon' => 'sidebar_item_w_icon',
         'social_media_links' => 'social_media_links',
         'social_networking' => -1,
+        'status_override' => -1,
+        'tabbed_content_tab' => -1,
         'text' => -1,
         'text_one_column' => -1,
         'text_three_column' => -1,
         'text_two_column' => -1,
         'transaction_grid' => -1,
+        'upcoming_events' => -1,
+        'user_action' => -1,
+        'video' => -1,
       ),
       'bundle_weights' => array(
         '3_column_w_image' => 2,
+        'bos311' => 34,
+        'cabinet' => 35,
+        'card' => 36,
+        'city_score_dashboard' => 37,
         'custom_hours_text' => 3,
         'daily_hours' => 4,
+        'discussion_topic' => 40,
         'document' => 5,
+        'drawer' => 42,
+        'drawers' => 43,
+        'election_results' => 44,
         'external_link' => 6,
         'featured_item' => 7,
         'featured_topics' => 8,
         'feedback' => 9,
+        'fyi' => 49,
         'gol_list_links' => 10,
+        'grid_of_cards' => 51,
+        'grid_of_people' => 52,
         'grid_of_places' => 11,
         'grid_of_programs_initiatives' => 12,
+        'grid_of_quotes' => 55,
+        'grid_of_topics' => 56,
         'group_of_links_grid' => 13,
         'group_of_links_list' => 14,
+        'group_of_links_mini_grid' => 59,
         'header_text' => 15,
         'hero_image' => 16,
         'how_to_contact_step' => 17,
         'how_to_tab' => 18,
         'how_to_text_step' => 19,
+        'iframe' => 65,
         'internal_link' => 20,
         'list' => 21,
+        'message_for_the_day' => 68,
+        'news_announcements' => 70,
+        'newsletter' => 69,
         'photo' => 22,
+        'quote' => 72,
+        'recollect_widget' => 73,
+        'script_embed' => 74,
+        'seamless_doc' => 75,
         'sidebar_item' => 23,
         'sidebar_item_w_icon' => 24,
         'social_media_links' => 25,
         'social_networking' => 26,
+        'status_override' => 80,
+        'tabbed_content_tab' => 81,
         'text' => 27,
         'text_one_column' => 28,
         'text_three_column' => 29,
         'text_two_column' => 30,
         'transaction_grid' => 31,
+        'upcoming_events' => 87,
+        'user_action' => 88,
+        'video' => 89,
       ),
       'default_edit_mode' => 'open',
       'title' => 'Paragraph',
@@ -1798,7 +1922,7 @@ function bos_content_type_post_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-post-field_thumbnail'.
+  // Exported field_instance: 'node-post-field_thumbnail'
   $field_instances['node-post-field_thumbnail'] = array(
     'bundle' => 'post',
     'deleted' => 0,
@@ -1944,7 +2068,7 @@ function bos_content_type_post_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-post-field_type_of_content'.
+  // Exported field_instance: 'node-post-field_type_of_content'
   $field_instances['node-post-field_type_of_content'] = array(
     'bundle' => 'post',
     'default_value' => NULL,
@@ -2004,7 +2128,7 @@ function bos_content_type_post_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-post-field_updated_date'.
+  // Exported field_instance: 'node-post-field_updated_date'
   $field_instances['node-post-field_updated_date'] = array(
     'bundle' => 'post',
     'deleted' => 0,
