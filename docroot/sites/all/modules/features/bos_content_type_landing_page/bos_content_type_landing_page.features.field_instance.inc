@@ -10,7 +10,7 @@
 function bos_content_type_landing_page_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-landing_page-field_components'.
+  // Exported field_instance: 'node-landing_page-field_components'
   $field_instances['node-landing_page-field_components'] = array(
     'bundle' => 'landing_page',
     'default_value' => NULL,
@@ -144,6 +144,7 @@ function bos_content_type_landing_page_field_default_field_instances() {
         'list' => 'list',
         'message_for_the_day' => -1,
         'news_announcements' => 'news_announcements',
+        'newsletter' => 'newsletter',
         'photo' => 'photo',
         'quote' => -1,
         'recollect_widget' => -1,
@@ -202,6 +203,7 @@ function bos_content_type_landing_page_field_default_field_instances() {
         'list' => -58,
         'message_for_the_day' => -74,
         'news_announcements' => -57,
+        'newsletter' => 38,
         'photo' => -56,
         'quote' => -55,
         'recollect_widget' => -54,
@@ -236,7 +238,7 @@ function bos_content_type_landing_page_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-landing_page-field_contacts'.
+  // Exported field_instance: 'node-landing_page-field_contacts'
   $field_instances['node-landing_page-field_contacts'] = array(
     'bundle' => 'landing_page',
     'default_value' => NULL,
@@ -349,7 +351,7 @@ function bos_content_type_landing_page_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-landing_page-field_published_date'.
+  // Exported field_instance: 'node-landing_page-field_published_date'
   $field_instances['node-landing_page-field_published_date'] = array(
     'bundle' => 'landing_page',
     'deleted' => 0,
@@ -392,7 +394,7 @@ function bos_content_type_landing_page_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-landing_page-field_type_of_content'.
+  // Exported field_instance: 'node-landing_page-field_type_of_content'
   $field_instances['node-landing_page-field_type_of_content'] = array(
     'bundle' => 'landing_page',
     'default_value' => NULL,
@@ -428,7 +430,7 @@ function bos_content_type_landing_page_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-landing_page-field_updated_date'.
+  // Exported field_instance: 'node-landing_page-field_updated_date'
   $field_instances['node-landing_page-field_updated_date'] = array(
     'bundle' => 'landing_page',
     'deleted' => 0,
