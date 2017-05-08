@@ -711,7 +711,7 @@ function bos_content_type_article_field_default_field_instances() {
         'label' => 'above',
         'module' => 'paragraphs',
         'settings' => array(
-          'view_mode' => 'full',
+          'view_mode' => 'sidebar',
         ),
         'type' => 'paragraphs_view',
         'weight' => 6,
@@ -877,10 +877,7 @@ function bos_content_type_article_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
+        'settings' => array(),
         'type' => 'hidden',
         'weight' => 7,
       ),
