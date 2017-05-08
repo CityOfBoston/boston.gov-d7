@@ -34,6 +34,12 @@ function bos_component_newsletter_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'sidebar' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
     ),
     'entity_type' => 'paragraphs_item',
     'fences_wrapper' => 'div_div_div',
@@ -83,6 +89,12 @@ function bos_component_newsletter_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'sidebar' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
     ),
     'entity_type' => 'paragraphs_item',
     'fences_wrapper' => 'div_div_div',
@@ -118,6 +130,12 @@ function bos_component_newsletter_field_default_field_instances() {
         'weight' => 3,
       ),
       'paragraphs_editor_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'sidebar' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -165,6 +183,12 @@ function bos_component_newsletter_field_default_field_instances() {
         'weight' => 1,
       ),
       'paragraphs_editor_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'sidebar' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
