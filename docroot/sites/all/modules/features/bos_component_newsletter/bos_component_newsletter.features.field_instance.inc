@@ -68,7 +68,7 @@ function bos_component_newsletter_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 2,
+      'weight' => 1,
     ),
   );
 
@@ -119,7 +119,7 @@ function bos_component_newsletter_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 6,
+      'weight' => 3,
     ),
   );
 
@@ -198,7 +198,7 @@ function bos_component_newsletter_field_default_field_instances() {
         'show_token_tree' => 0,
       ),
       'type' => 'text_textarea',
-      'weight' => 8,
+      'weight' => 4,
     ),
   );
 
@@ -256,7 +256,7 @@ function bos_component_newsletter_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 4,
+      'weight' => 2,
     ),
   );
 
