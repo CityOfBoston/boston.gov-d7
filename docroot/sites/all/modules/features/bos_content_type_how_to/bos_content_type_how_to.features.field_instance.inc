@@ -1259,7 +1259,7 @@ function bos_content_type_how_to_field_default_field_instances() {
         'label' => 'above',
         'module' => 'paragraphs',
         'settings' => array(
-          'view_mode' => 'full',
+          'view_mode' => 'sidebar',
         ),
         'type' => 'paragraphs_view',
         'weight' => 10,
