@@ -33,15 +33,18 @@
           <?php if (isset($content['field_component_title'])): ?>
             <?php print render($content['field_component_title']); ?>
           <?php endif; ?>
-          <?php if (isset($content['field_contact'])): ?>
-            <?php print render($content['field_contact']); ?>
-          <?php endif; ?>
         </div>
-        <!-- <div class="intro-text supporting-text column mobile-100 desktop-66-left"> -->
         <div class="intro-text supporting-text mobile-1-col tablet-1-col desktop-2-col">
           <?php if (isset($content['field_description'])): ?>
             <?php print render($content['field_description']); ?>
           <?php endif; ?>
+        </div>
+        <div class="mobile-1-col tablet-1-col desktop-2-col">
+          <?php if (isset($content['field_newsletter_email_list'])): ?>
+            <?php $newsletter_id = $content['field_newsletter_email_list']['#items'][0]['entity']->field_id['und'][0]['value']; ?>
+            <?php print render($newsletter_id); ?>
+          <?php endif; ?>
+          <!-- Upaknee form goes here -->
         </div>
       </div>
     </div>
