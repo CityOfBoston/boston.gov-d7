@@ -573,7 +573,7 @@ function bos_content_type_script_page_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'paragraphs',
         'settings' => array(
-          'view_mode' => 'full',
+          'view_mode' => 'sidebar',
         ),
         'type' => 'paragraphs_view',
         'weight' => 5,
