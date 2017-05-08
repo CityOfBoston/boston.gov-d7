@@ -25,7 +25,7 @@
  * @see template_process()
  */
 ?>
-<div class="b b--g clearfix">
+<div class="b b--g p-a500 clearfix">
   <div class="<?php print $classes; ?>"<?php print $attributes; ?>>
     <div class="content"<?php print $content_attributes; ?>>
       <div class="sh">
