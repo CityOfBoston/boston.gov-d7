@@ -20,4 +20,4 @@ features[field_instance][] = paragraphs_item-newsletter-field_short_title
 features[paragraphs][] = newsletter
 features_exclude[field_base][field_newsletter_email_list] = field_newsletter_email_list
 features_exclude[field_instance][paragraphs_item-newsletter-field_newsletter_email_list] = paragraphs_item-newsletter-field_newsletter_email_list
-mtime = 1494264737
+mtime = 1494267191
