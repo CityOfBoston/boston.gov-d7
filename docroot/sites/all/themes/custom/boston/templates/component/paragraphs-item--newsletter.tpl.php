@@ -25,11 +25,11 @@
  * @see template_process()
  */
 ?>
-<div class="b b--fw b--b">
-  <div class="b-c">
+<div class="b b--fw b--g">
+  <div class="b-c clearfix">
     <div class="<?php print $classes; ?>"<?php print $attributes; ?>>
-      <div class="content sh--w"<?php print $content_attributes; ?>>
-        <div class="sh sh--w">
+      <div class="content"<?php print $content_attributes; ?>>
+        <div class="sh">
           <?php if (isset($content['field_component_title'])): ?>
             <?php print render($content['field_component_title']); ?>
           <?php endif; ?>
@@ -37,10 +37,13 @@
             <?php print render($content['field_contact']); ?>
           <?php endif; ?>
         </div>
-        <?php if (isset($content['field_description'])): ?>
-          <?php print render($content['field_description']); ?>
-        <?php endif; ?>
+        <!-- <div class="intro-text supporting-text column mobile-100 desktop-66-left"> -->
+        <div class="intro-text supporting-text mobile-1-col tablet-1-col desktop-2-col">
+          <?php if (isset($content['field_description'])): ?>
+            <?php print render($content['field_description']); ?>
+          <?php endif; ?>
+        </div>
       </div>
-  </div>
+    </div>
   </div>
 </div>
