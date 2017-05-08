@@ -122,6 +122,12 @@ function bos_content_type_post_strongarm() {
       'listing_long' => array(
         'custom_settings' => FALSE,
       ),
+      'icon_popup' => array(
+        'custom_settings' => FALSE,
+      ),
+      'ical' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
