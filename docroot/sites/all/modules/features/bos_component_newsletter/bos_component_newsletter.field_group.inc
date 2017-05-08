@@ -24,9 +24,9 @@ function bos_component_newsletter_field_group_info() {
     'weight' => '0',
     'children' => array(
       0 => 'field_component_title',
-      1 => 'field_short_title',
-      2 => 'field_contact',
-      3 => 'field_description',
+      1 => 'field_contact',
+      2 => 'field_description',
+      3 => 'field_short_title',
       4 => 'field_newsletter_email_list',
     ),
     'format_type' => 'fieldset',
