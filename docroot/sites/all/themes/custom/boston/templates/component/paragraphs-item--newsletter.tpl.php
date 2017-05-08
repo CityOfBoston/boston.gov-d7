@@ -42,43 +42,42 @@
         <div class="mobile-1-col tablet-1-col desktop-2-col">
           <?php if (isset($content['field_newsletter_email_list'])): ?>
             <?php $newsletter_id = $content['field_newsletter_email_list']['#items'][0]['entity']->field_id['und'][0]['value']; ?>
-            <?php print render($newsletter_id); ?>
-          <?php endif; ?>
-          <!-- Start Upaknee -->
-          <div id='form_00411460f7c92d2124a67ea0f4cb5f85'></div><script>
-            window.__ugv = ( typeof window.__ugv != 'undefined' && window.__ugv instanceof Array ) ? window.__ugv : [];
-            var def = {
-              i: '00411460f7c92d2124a67ea0f4cb5f85',
-              s: 'https://widgets.upaknee.com/',
-              f: 'forms/api/',
-              c: 485644,
-              l: 4173778,
-              t: 'd',
-              a: 0,
-              d: ['form_00411460f7c92d2124a67ea0f4cb5f85']
-            };
-            window.__ugv.push(def);
-          </script>
-          <script>
-            (function () {
-              var w = window;
-              var d = document;
-              function l() {
-                var s = d.createElement('script');
-                s.type = 'text/javascript';
-                s.async = true;
-                s.src = def['s']+def['f']+'upakneeForm.js';
-                var x = d.getElementsByTagName('script')[0];
-                x.parentNode.insertBefore(s, x);
-              }
-              if (w.attachEvent) {
-                w.attachEvent('onload', l);
-                } else {
-                  w.addEventListener('load', l, false);
+            <!-- Start Upaknee -->
+            <div id='form_<?php print render($newsletter_id); ?>'></div><script>
+              window.__ugv = ( typeof window.__ugv != 'undefined' && window.__ugv instanceof Array ) ? window.__ugv : [];
+              var def = {
+                i: '<?php print render($newsletter_id); ?>',
+                s: 'https://widgets.upaknee.com/',
+                f: 'forms/api/',
+                c: 485644,
+                l: 4173778,
+                t: 'd',
+                a: 0,
+                d: ['form_<?php print render($newsletter_id); ?>']
+              };
+              window.__ugv.push(def);
+            </script>
+            <script>
+              (function () {
+                var w = window;
+                var d = document;
+                function l() {
+                  var s = d.createElement('script');
+                  s.type = 'text/javascript';
+                  s.async = true;
+                  s.src = def['s']+def['f']+'upakneeForm.js';
+                  var x = d.getElementsByTagName('script')[0];
+                  x.parentNode.insertBefore(s, x);
                 }
-            })()
-          </script>
-          <!-- End Upaknee -->
+                if (w.attachEvent) {
+                  w.attachEvent('onload', l);
+                  } else {
+                    w.addEventListener('load', l, false);
+                  }
+              })()
+            </script>
+            <!-- End Upaknee -->
+          <?php endif; ?>
         </div>
       </div>
     </div>
