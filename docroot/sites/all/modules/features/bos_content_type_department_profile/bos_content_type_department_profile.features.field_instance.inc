@@ -1470,7 +1470,7 @@ function bos_content_type_department_profile_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'paragraphs',
         'settings' => array(
-          'view_mode' => 'full',
+          'view_mode' => 'sidebar',
         ),
         'type' => 'paragraphs_view',
         'weight' => 10,
@@ -1705,10 +1705,7 @@ function bos_content_type_department_profile_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
+        'settings' => array(),
         'type' => 'hidden',
         'weight' => 11,
       ),
