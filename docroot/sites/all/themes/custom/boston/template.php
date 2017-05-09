@@ -1551,6 +1551,13 @@ function boston_preprocess_paragraphs_item(&$variables) {
   }
 
   $variables['asset_url'] = variable_get('asset_url', 'https://patterns.boston.gov');
+
+  $theme = bos_core_field_get_first_item('paragraphs_item', $variables['paragraphs_item'], 'field_component_theme');
+
+  if ($theme) {
+    $variables['component_theme'] = $theme['value'];
+    $variables['section_header_theme'] = $theme['value'] === 'b' ? 'sh--w' : '';
+  }
 }
 
 /**
