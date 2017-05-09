@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Boston View Related Events feature.
+ */
+
+include_once 'bos_view_related_events.features.inc';

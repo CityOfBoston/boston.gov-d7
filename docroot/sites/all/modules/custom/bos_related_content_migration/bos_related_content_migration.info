@@ -1,0 +1,4 @@
+name = Related Content Migration
+core = 7.x
+package = Boston Custom
+description = Temporary module to migrate data from field_contacts to field_related_departments.
