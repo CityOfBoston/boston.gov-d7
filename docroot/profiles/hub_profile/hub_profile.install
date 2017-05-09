@@ -366,3 +366,13 @@ function hub_profile_update_7016() {
   );
   module_enable($enabled_modules);
 }
+
+/**
+ * Update for 5/3/17
+ */
+function hub_profile_update_7017() {
+  $enabled_modules = array(
+    'bos_content_type_person_profile',
+  );
+  module_enable($enabled_modules);
+}
