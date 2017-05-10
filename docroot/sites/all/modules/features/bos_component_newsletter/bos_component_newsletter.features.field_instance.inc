@@ -202,6 +202,48 @@ function bos_component_newsletter_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'paragraphs_item-newsletter-field_newsletter'
+  $field_instances['paragraphs_item-newsletter-field_newsletter'] = array(
+    'bundle' => 'newsletter',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 4,
+      ),
+      'paragraphs_editor_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'paragraphs_item',
+    'fences_wrapper' => 'div_div_div',
+    'field_name' => 'field_newsletter',
+    'label' => 'Email List',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
+      'type' => 'options_select',
+      'weight' => 5,
+    ),
+  );
+
   // Exported field_instance: 'paragraphs_item-newsletter-field_short_title'
   $field_instances['paragraphs_item-newsletter-field_short_title'] = array(
     'bundle' => 'newsletter',
@@ -264,6 +306,7 @@ function bos_component_newsletter_field_default_field_instances() {
   // Included for use with string extractors like potx.
   t('Contact');
   t('Description');
+  t('Email List');
   t('Short Title');
   t('The short title is used to populate the in-page navigation. Please keep it short: one to three words is ideal. Example can be found on boston.gov/winter/.');
   t('This is the title. It\'s a short description of the signup widget. 20-character max.');
