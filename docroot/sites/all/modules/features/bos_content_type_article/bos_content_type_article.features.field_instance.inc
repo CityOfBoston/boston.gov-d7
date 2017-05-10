@@ -257,7 +257,7 @@ function bos_content_type_article_field_default_field_instances() {
         'list' => 'list',
         'message_for_the_day' => -1,
         'news_announcements' => 'news_announcements',
-        'newsletter' => 'newsletter',
+        'newsletter' => -1,
         'photo' => 'photo',
         'quote' => -1,
         'recollect_widget' => -1,
