@@ -40,8 +40,8 @@
           <?php endif; ?>
         </div>
         <div class="mobile-1-col tablet-1-col desktop-2-col">
-          <?php if (isset($content['field_newsletter_email_list'])): ?>
-            <?php $newsletter_id = $content['field_newsletter_email_list']['#items'][0]['entity']->field_id['und'][0]['value']; ?>
+          <?php if (isset($content['field_newsletter'])): ?>
+            <?php $newsletter_id = $content['field_newsletter']['#items'][0]['entity']->field_id['und'][0]['value']; ?>
             <!-- Start Upaknee -->
             <div id='form_<?php print render($newsletter_id); ?>'></div><script>
               window.__ugv = ( typeof window.__ugv != 'undefined' && window.__ugv instanceof Array ) ? window.__ugv : [];
