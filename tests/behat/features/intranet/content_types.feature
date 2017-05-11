@@ -24,6 +24,5 @@ Feature: Content Types
     Examples:
       | content_type               |
       | Advanced Poll              |
-      | Person Profile             |
       | Place Profile              |
       | Program Initiative Profile |

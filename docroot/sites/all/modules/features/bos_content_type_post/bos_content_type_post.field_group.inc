@@ -120,6 +120,7 @@ function bos_content_type_post_field_group_info() {
       5 => 'field_related_events_notices',
       6 => 'field_related_guides',
       7 => 'field_related_posts',
+      8 => 'field_related_departments',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

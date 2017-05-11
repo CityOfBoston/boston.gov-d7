@@ -42,7 +42,7 @@ $hamburger-hover-filter    : opacity(50%) !default;
   text-transform: none;
   background-color: transparent;
   border: 0;
-  margin: 0;
+  margin: 10px 0 0;
   overflow: visible;
   outline: none;
 
@@ -102,23 +102,15 @@ $hamburger-hover-filter    : opacity(50%) !default;
   }
 
   &__label {
-    position: absolute;
     font-family: $montserrat;
     letter-spacing: 0;
     @include type-layout(10px, 12px);
     text-transform: uppercase;
-    bottom: -10px;
-    left: -5px;
-    right:  -5px;
     text-align: center;
   }
 }
 
 .brg-tr:checked ~ #page {
-  .hb {
-    margin-top: 10px;
-  }
-
   .hb__inner {
     transform: translate3d(0, ($hamburger-layer-spacing + $hamburger-layer-height) * -1, 0) rotate(-45deg);
     transition-delay: 0.32s;

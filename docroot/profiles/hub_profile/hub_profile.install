@@ -356,3 +356,23 @@ function hub_profile_update_7015() {
   );
   module_disable($disabled_modules);
 }
+
+/**
+ * Update for 4/28/17
+ */
+function hub_profile_update_7016() {
+  $enabled_modules = array(
+    'bos_view_related_events',
+  );
+  module_enable($enabled_modules);
+}
+
+/**
+ * Update for 5/3/17
+ */
+function hub_profile_update_7017() {
+  $enabled_modules = array(
+    'bos_content_type_person_profile',
+  );
+  module_enable($enabled_modules);
+}

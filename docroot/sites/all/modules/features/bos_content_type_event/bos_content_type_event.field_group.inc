@@ -115,8 +115,8 @@ function bos_content_type_event_field_group_info() {
       0 => 'field_event_contact',
       1 => 'field_phone_number',
       2 => 'field_email',
-      3 => 'group_event_location',
-      4 => 'group_event_information',
+      3 => 'group_event_information',
+      4 => 'group_event_location',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -243,6 +243,7 @@ function bos_content_type_event_field_group_info() {
       5 => 'field_related_events_notices',
       6 => 'field_related_guides',
       7 => 'field_related_posts',
+      8 => 'field_related_departments',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
