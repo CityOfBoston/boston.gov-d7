@@ -1706,6 +1706,7 @@ function bos_workflow_views_default_views() {
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
+    'change' => 'change',
     'article' => 'article',
     'emergency_alert' => 'emergency_alert',
     'how_to' => 'how_to',
@@ -1723,7 +1724,6 @@ function bos_workflow_views_default_views() {
     'transaction' => 'transaction',
     'metrolist_affordable_housing' => 'metrolist_affordable_housing',
     'advpoll' => 'advpoll',
-    'change' => 'change',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
   $handler->display->display_options['filters']['type']['exposed'] = TRUE;
