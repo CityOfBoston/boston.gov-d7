@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the bos_rss_feeds feature.
+ */
+
+include_once 'bos_rss_feeds.features.inc';
