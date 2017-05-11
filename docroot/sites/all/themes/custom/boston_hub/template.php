@@ -103,6 +103,10 @@ function boston_hub_preprocess_page(array &$variables) {
   }
 
   if (isset($variables['node'])) {
+    if ($variables['node']->type == 'topic_page') {
+      $page_class = 'page';
+    }
+    
     if ($variables['node']->type !== 'landing_page') {
       if ($variables['node']->type !== 'tabbed_content' && $variables['node']->type !== 'how_to') {
         $page_class_alert = 'page page--wa';

@@ -1158,7 +1158,7 @@ function bos_content_type_post_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 10,
+      'weight' => 12,
     ),
   );
 
@@ -1226,7 +1226,7 @@ function bos_content_type_post_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 11,
+      'weight' => 13,
     ),
   );
 
@@ -1294,7 +1294,7 @@ function bos_content_type_post_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 13,
+      'weight' => 15,
     ),
   );
 
@@ -1528,7 +1528,75 @@ function bos_content_type_post_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 14,
+      'weight' => 16,
+    ),
+  );
+
+  // Exported field_instance: 'node-post-field_related_departments'
+  $field_instances['node-post-field_related_departments'] = array(
+    'bundle' => 'post',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 20,
+      ),
+      'featured_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'listing' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'listing_short' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div_div_div',
+    'field_name' => 'field_related_departments',
+    'label' => 'Related departments',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference',
+      'settings' => array(
+        'entityreference_autocreate' => array(
+          'active' => 0,
+          'author' => '',
+          'author_current_user' => 1,
+          'status' => -1,
+        ),
+        'match_operator' => 'CONTAINS',
+        'path' => '',
+        'size' => 60,
+      ),
+      'type' => 'entityreference_autocomplete',
+      'weight' => 9,
     ),
   );
 
@@ -1596,7 +1664,7 @@ function bos_content_type_post_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 9,
+      'weight' => 10,
     ),
   );
 
@@ -1664,7 +1732,7 @@ function bos_content_type_post_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 10,
+      'weight' => 11,
     ),
   );
 
@@ -1732,7 +1800,7 @@ function bos_content_type_post_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 12,
+      'weight' => 14,
     ),
   );
 
@@ -2276,6 +2344,7 @@ function bos_content_type_post_field_default_field_instances() {
   t('Other related content');
   t('Please select the type of content this piece of content can be filtered by.  NOTE:  This is currently used for the Hub.');
   t('Published Date');
+  t('Related departments');
   t('Related events/notices');
   t('Related guides');
   t('Related people');

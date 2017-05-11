@@ -51,7 +51,7 @@ function bos_related_content_migration_action(&$entity, $context) {
       // Make sure we actually matched a node.
       if ($first_match_nid) {
         // Double check that we're updating the corrent bundles.
-        if ($entity->type == 'event' || $entity->type == 'public_notice') {
+        if ($entity->type == 'event' || $entity->type == 'public_notice' || $entity->type == 'post') {
           // Add converted value from the old field to the new field.
           $entity->field_related_departments[$entity->language][]['target_id'] = $first_match_nid;
         }

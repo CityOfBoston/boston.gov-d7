@@ -149,6 +149,13 @@ function bos_view_upcoming_events_views_default_views() {
     'show_repeat_rule' => 'show',
   );
   $handler->display->display_options['fields']['field_public_notice_date']['field_api_classes'] = TRUE;
+  /* Field: Content: Nid */
+  $handler->display->display_options['fields']['nid']['id'] = 'nid';
+  $handler->display->display_options['fields']['nid']['table'] = 'node';
+  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid']['relationship'] = 'field_featured_item_target_id';
+  $handler->display->display_options['fields']['nid']['label'] = '';
+  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
   /* Sort criterion: Content: Date -  start date (field_public_notice_date) */
   $handler->display->display_options['sorts']['field_public_notice_date_value']['id'] = 'field_public_notice_date_value';
   $handler->display->display_options['sorts']['field_public_notice_date_value']['table'] = 'field_data_field_public_notice_date';
@@ -211,6 +218,12 @@ function bos_view_upcoming_events_views_default_views() {
   $handler->display->display_options['filters']['field_city_sponsored_value']['value'] = array(
     1 => '1',
   );
+  /* Filter criterion: Content: Nid */
+  $handler->display->display_options['filters']['nid']['id'] = 'nid';
+  $handler->display->display_options['filters']['nid']['table'] = 'node';
+  $handler->display->display_options['filters']['nid']['field'] = 'nid';
+  $handler->display->display_options['filters']['nid']['relationship'] = 'field_featured_item_target_id';
+  $handler->display->display_options['filters']['nid']['operator'] = 'empty';
 
   /* Display: Upcoming Events */
   $handler = $view->new_display('block', 'Upcoming Events', 'most_recent');
@@ -230,6 +243,15 @@ function bos_view_upcoming_events_views_default_views() {
   $handler->display->display_options['empty']['area']['content'] = 'There are no upcoming events available at this time.';
   $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
   $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Entity Reference: Referencing entity */
+  $handler->display->display_options['relationships']['reverse_field_featured_item_paragraphs_item_1']['id'] = 'reverse_field_featured_item_paragraphs_item_1';
+  $handler->display->display_options['relationships']['reverse_field_featured_item_paragraphs_item_1']['table'] = 'node';
+  $handler->display->display_options['relationships']['reverse_field_featured_item_paragraphs_item_1']['field'] = 'reverse_field_featured_item_paragraphs_item';
+  /* Relationship: Entity Reference: Referenced Entity */
+  $handler->display->display_options['relationships']['field_featured_item_target_id']['id'] = 'field_featured_item_target_id';
+  $handler->display->display_options['relationships']['field_featured_item_target_id']['table'] = 'field_data_field_featured_item';
+  $handler->display->display_options['relationships']['field_featured_item_target_id']['field'] = 'field_featured_item_target_id';
+  $handler->display->display_options['relationships']['field_featured_item_target_id']['relationship'] = 'reverse_field_featured_item_paragraphs_item_1';
   $handler->display->display_options['defaults']['sorts'] = FALSE;
   /* Sort criterion: Content: Event Dates -  start date (field_event_dates) */
   $handler->display->display_options['sorts']['field_event_dates_value']['id'] = 'field_event_dates_value';
