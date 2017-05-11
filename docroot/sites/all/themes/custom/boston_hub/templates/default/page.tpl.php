@@ -66,7 +66,7 @@
             <div class="dd" aria-expanded="false">
               <label class="dd__trigger user-menu-trigger" for="dd__menu__box">
                 <span id="menu-link" aria-haspopup="true" aria-owns="menu-translation">
-                  <div class="avatar-wrapper" style="background-image: url(//cob-avatars.herokuapp.com/photos/<?php print base64_encode($avatar_email); ?>)">User Menu</div>
+                  <div class="avatar-wrapper" style="background-image: url(<?php print $asset_url ?>/images/hub/icons/avatar.svg)">User Menu</div>
                 </span>
               </label>
               <div class="dd__menu menu-user" id="menu-user" role="group" aria-labelledby="menu-link">

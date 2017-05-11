@@ -2,9 +2,10 @@
 
 ## Prereqs
 * Composer 1.1.2 [See documentation here](https://getcomposer.org/doc/00-intro.md#installation-linux-unix-osx)
-* NVM 0.31 - `curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.0/install.sh | bash`
-* node 5.4.0 - `source ~/.bashrc; nvm install 5.4.0; nvm use 5.4.0`
+* NVM - `curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.0/install.sh | bash`
+* node (at least version 5.4.0) - `source ~/.bashrc; nvm install 5.4.0; nvm use 5.4.0`
 * Acquia Dev Desktop - we currently use Dev Desktop as our lamp stack. In the future, we'll have a VM to make this easier.
+* For gulp-image, you'll need libjpeg or libpng. Take a look at [gulp-image documentation](https://www.npmjs.com/package/gulp-image) for installation help.
 
 ## Initial repo setup
 * Fork the repository to your local github account.
