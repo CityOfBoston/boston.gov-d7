@@ -19,20 +19,20 @@
             <div class="fs-c m-b300">
               <div class="txt">
                 <label for="email" class="txt-l txt-l--mt000">Your email address</label>
-                <input id="email" type="text" value="" placeholder="email@address.com" class="txt-f txt-f--sm">
+                <input id="email" name="email" type="text" value="hello@matthewcrist.com" placeholder="email@address.com" class="txt-f txt-f--sm">
               </div>
               <div class="txt">
                 <label for="phone_number" class="txt-l txt-l--w txt-l--mt000">Your phone number</label>
-                <input id="phone_number" type="text" value="" placeholder="Phone number" class="txt-f txt-f--sm">
+                <input id="phone_number" name="phone_number" type="text" value="857-225-2197" placeholder="Phone number" class="txt-f txt-f--sm">
               </div>
             </div>
             <div class="fs-c fs-c--i">
               <label class="cb">
-                <input id="checkbox-call" name="call" type="checkbox" value="public_notices" class="cb-f" checked>
+                <input id="checkbox-call" name="call" type="checkbox" value="1" class="cb-f" checked>
                 <span class="cb-l cb-l--sans">Call me</span>
               </label>
               <label class="cb">
-                <input id="checkbox-text" name="text" type="checkbox" value="public_notices" class="cb-f">
+                <input id="checkbox-text" name="text" type="checkbox" value="1" class="cb-f">
                 <span class="cb-l cb-l--sans">Text me</span>
               </label>
             </div>
@@ -41,17 +41,17 @@
             <div class="fs-c fs-c--i m-b300">
               <div class="txt g--6">
                 <label for="first_name" class="txt-l txt-l--mt000">First name</label>
-                <input id="first_name" type="text" value="" placeholder="First name" class="txt-f txt-f--sm">
+                <input id="first_name" name="first_name" type="text" value="" placeholder="First name" class="txt-f txt-f--sm">
               </div>
               <div class="txt g--6">
                 <label for="last_name" class="txt-l txt-l--mt000">Last name</label>
-                <input id="last_name" type="text" value="" placeholder="Last name" class="txt-f txt-f--sm">
+                <input id="last_name" name="last_name" type="text" value="" placeholder="Last name" class="txt-f txt-f--sm">
               </div>
             </div>
             <div class="fs-c m-b300">
               <div class="txt">
                 <label for="zip_code" class="txt-l txt-l--w txt-l--mt000">Your phone number</label>
-                <input id="zip_code" type="text" value="" placeholder="Zip code" class="txt-f txt-f--sm" size="10">
+                <input id="zip_code" name="zip_code" type="text" value="" placeholder="Zip code" class="txt-f txt-f--sm" size="10">
               </div>
             </div>
             <div class="fs-c m-b300">
@@ -68,7 +68,7 @@
             </div>
             <div class="fs-c fs-c--i fs-c--c">
               <label class="cb">
-                <input id="tdd" name="checkbox-call" type="checkbox" value="tdd" class="cb-f">
+                <input id="tdd" name="tdd" type="checkbox" value="1" class="cb-f">
                 <span class="cb-l cb-l--sans">TDD/TDY Device - Tone Delivery</span>
               </label>
               <div class="m-lAAA m-t300 m-t300--mo">
@@ -95,6 +95,19 @@
       ev.preventDefault();
 
       var isValid = validateForm();
+
+      if (isValid) {
+        var data = form.serialize();
+
+        jQuery.ajax({
+          url: form.attr('action'),
+          method: 'post',
+          data: data,
+          success: function (data) {
+            console.info(data);
+          }
+        });
+      }
     }
 
     function validateForm() {
@@ -105,6 +118,8 @@
         triggerError(phone_number, "Please enter a valid phone number or email", 'txt-f--err');
         return false;
       }
+
+      return true;
     }
 
     function resetForm() {

@@ -602,6 +602,10 @@ function boston_preprocess_node(array &$variables, $hook) {
   }
 }
 
+function boston_preprocess_paragraphs_item_bos_signup_emergency_alerts(&$variables) {
+  $variables['emergency_alerts_url'] = variable_get('emergency_alerts_url', 'https://www.boston.gov');
+}
+
 function boston_preprocess_paragraphs_item_grid_of_cards(&$variables) {
   $theme = bos_core_field_get_first_item('paragraphs_item', $variables['paragraphs_item'], 'field_component_theme')['value'];
 
