@@ -123,29 +123,40 @@
         <?php endif; ?>
         <?php if (isset($header_image)): ?>
           <?php if (!empty($node) && ($node->type !== 'tabbed_content' && $node->type !== 'how_to')): ?>
-            <style>
-              .hro {
-                background-image: url(<?php print $small_image ?>);
-              }
-              @media screen and (min-width: 768px) {
+            <?php if ($node->type !== 'topic_page'): ?>
+              <style>
                 .hro {
-                  background-image: url(<?php print $medium_image ?>);
+                  background-image: url(<?php print $small_image ?>);
                 }
-              }
-              @media screen and (min-width: 1024px) {
-                .hro {
-                  background-image: url(<?php print $large_image ?>);
+
+                @media screen and (min-width: 768px) {
+                  .hro {
+                    background-image: url(<?php print $medium_image ?>);
+                  }
                 }
-              }
-              @media screen and (min-width: 1200px) {
-                .hro {
-                  background-image: url(<?php print $xlarge_image ?>);
+
+                @media screen and (min-width: 1024px) {
+                  .hro {
+                    background-image: url(<?php print $large_image ?>);
+                  }
                 }
-              }
-            </style>
-            <div class="b b--fw">
-              <div class="hro hro--pt hro--pb"></div>
-            </div>
+
+                @media screen and (min-width: 1200px) {
+                  .hro {
+                    background-image: url(<?php print $xlarge_image ?>);
+                  }
+                }
+              </style>
+              <div class="b b--fw">
+                <div class="hro hro--pt hro--pb"></div>
+              </div>
+            <?php else: ?>
+              <div class="hero-image fullwidth">
+                <div class="hero-image-wrapper <?php print $hero_classes; ?>">
+                  <?php print render($background_image); ?>
+                </div>
+              </div>
+            <?php endif; ?>
           <?php endif; ?>
           <?php if (!empty($node) && ($node->type !== 'tabbed_content' && $node->type !== 'how_to')): ?>
             <?php if ($breadcrumb): ?>

@@ -377,6 +377,7 @@ function boston_preprocess_page(array &$variables) {
       $medium_image = image_style_url('rep_wide_2000x700custom_boston_tablet_2x', $uri);
       $small_image = image_style_url('rep_wide_2000x700custom_boston_mobile_2x', $uri);
 
+      $variables['background_image'] = $background_image;
       $variables['header_image'] = $has_hero;
       $variables['xlarge_image'] = $xlarge_image;
       $variables['large_image'] = $large_image;
@@ -445,6 +446,10 @@ function boston_preprocess_page(array &$variables) {
 
   if (isset($variables['node'])) {
     $target_id = $variables['node']->nid;
+
+    if ($variables['node']->type == 'topic_page') {
+      $page_class = 'page';
+    }
 
     if ($variables['node']->type !== 'landing_page') {
       if ($variables['node']->type !== 'tabbed_content' && $variables['node']->type !== 'how_to') {
