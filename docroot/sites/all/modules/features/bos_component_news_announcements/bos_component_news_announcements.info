@@ -23,4 +23,4 @@ features[field_instance][] = paragraphs_item-news_announcements-field_list
 features[field_instance][] = paragraphs_item-news_announcements-field_short_title
 features[paragraphs][] = news_announcements
 features[variable][] = field_bundle_settings_paragraphs_item__news_announcements
-mtime = 1480263901
+mtime = 1493904233

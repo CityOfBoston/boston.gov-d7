@@ -27,6 +27,7 @@ function bos_component_upcoming_events_field_group_info() {
       1 => 'field_featured_item',
       2 => 'field_link',
       3 => 'field_list',
+      4 => 'field_short_title',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

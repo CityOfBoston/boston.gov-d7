@@ -234,7 +234,7 @@ function bos_component_fyi_field_default_field_instances() {
       'module' => 'paragraphs',
       'settings' => array(),
       'type' => 'paragraphs_embed',
-      'weight' => 4,
+      'weight' => 5,
     ),
   );
 
@@ -281,7 +281,7 @@ function bos_component_fyi_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 0,
+      'weight' => 4,
     ),
   );
 

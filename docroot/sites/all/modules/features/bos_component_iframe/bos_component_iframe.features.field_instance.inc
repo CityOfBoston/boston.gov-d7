@@ -103,7 +103,7 @@ function bos_component_iframe_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 4,
+      'weight' => 5,
     ),
   );
 
@@ -147,7 +147,7 @@ function bos_component_iframe_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 6,
+      'weight' => 7,
     ),
   );
 
@@ -194,7 +194,7 @@ function bos_component_iframe_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 0,
+      'weight' => 4,
     ),
   );
 
@@ -241,7 +241,7 @@ function bos_component_iframe_field_default_field_instances() {
         'size' => 100,
       ),
       'type' => 'text_textfield',
-      'weight' => 5,
+      'weight' => 6,
     ),
   );
 
