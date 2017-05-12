@@ -99,10 +99,10 @@ function bos_workflow_default_page_manager_handlers() {
   $display->content['new-437ff1a6-0ab4-4b0f-afcb-94a97f469568'] = $pane;
   $display->panels['left'][1] = 'new-437ff1a6-0ab4-4b0f-afcb-94a97f469568';
   $pane = new stdClass();
-  $pane->pid = 'new-2ee3f1b9-e8a5-41a4-a12c-24f1e2f33ec2';
+  $pane->pid = 'new-a41bd46c-61ff-4923-af0a-793ec276b8fb';
   $pane->panel = 'right';
   $pane->type = 'block';
-  $pane->subtype = 'views-bos_change_log-block_1';
+  $pane->subtype = 'views-change_log-block';
   $pane->shown = TRUE;
   $pane->access = array();
   $pane->configuration = array(
@@ -118,9 +118,9 @@ function bos_workflow_default_page_manager_handlers() {
   $pane->extras = array();
   $pane->position = 0;
   $pane->locks = array();
-  $pane->uuid = '2ee3f1b9-e8a5-41a4-a12c-24f1e2f33ec2';
-  $display->content['new-2ee3f1b9-e8a5-41a4-a12c-24f1e2f33ec2'] = $pane;
-  $display->panels['right'][0] = 'new-2ee3f1b9-e8a5-41a4-a12c-24f1e2f33ec2';
+  $pane->uuid = 'a41bd46c-61ff-4923-af0a-793ec276b8fb';
+  $display->content['new-a41bd46c-61ff-4923-af0a-793ec276b8fb'] = $pane;
+  $display->panels['right'][0] = 'new-a41bd46c-61ff-4923-af0a-793ec276b8fb';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
