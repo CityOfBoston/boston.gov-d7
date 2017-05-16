@@ -595,3 +595,13 @@ function bos_profile_update_7022() {
   );
   module_enable($enabled_modules);
 }
+
+/**
+ * Update for 5/16/17
+ */
+function bos_profile_update_7023() {
+  $enabled_modules = array(
+    'bos_signup_alerts',
+  );
+  module_enable($enabled_modules);
+}

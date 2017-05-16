@@ -9,11 +9,16 @@
 	    <?php endif; ?>
     </div>
     <div class="g m-t500">
-      <div class="g--7">
-        <div class="t--intro m-b300"><?php print render($content['field_intro_text']); ?></div>
-        <div><?php print render($content['field_description']); ?></div>
+      <div class="g--6">
+        <div id="alert_content" class="m-b500">
+          <div class="t--intro m-b300"><?php print render($content['field_intro_text']); ?></div>
+          <div><?php print render($content['field_description']); ?></div>
+        </div>
+        <div id="alert_success" class="m-b500">
+          <div class="t--intro" style="display: none">You have been subscribed to the City of Boston's emergency alerts</div>
+        </div>
       </div>
-      <div class="g--5">
+      <div class="g--6">
         <form id="bosAlertForm" action="<?php print $emergency_alerts_url ?>" method="post">
           <div class="fs">
             <div class="fs-c m-b300">
@@ -38,41 +43,28 @@
             </div>
             <div class="t--subinfo t--w m-t100">Message &amp; data rates may apply</div>
             <hr class="hr hr--sq" />
-            <div class="fs-c fs-c--i m-b300">
-              <div class="txt g--6">
+            <div class="fs-c m-b300">
+              <div class="txt">
                 <label for="first_name" class="txt-l txt-l--mt000">First name</label>
-                <input id="first_name" name="first_name" type="text" value="" placeholder="First name" class="txt-f txt-f--sm">
+                <input id="first_name" name="first_name" type="text" value="Matthew" placeholder="First name" class="txt-f txt-f--sm">
               </div>
-              <div class="txt g--6">
+            </div>
+            <div class="fs-c m-b300">
+              <div class="txt">
                 <label for="last_name" class="txt-l txt-l--mt000">Last name</label>
                 <input id="last_name" name="last_name" type="text" value="" placeholder="Last name" class="txt-f txt-f--sm">
               </div>
             </div>
             <div class="fs-c m-b300">
               <div class="txt">
-                <label for="zip_code" class="txt-l txt-l--w txt-l--mt000">Your phone number</label>
-                <input id="zip_code" name="zip_code" type="text" value="" placeholder="Zip code" class="txt-f txt-f--sm" size="10">
+                <label for="zip_code" class="txt-l txt-l--w txt-l--mt000">Zip code</label>
+                <input id="zip_code" name="zip" type="text" value="02119" placeholder="Zip code" class="txt-f txt-f--sm" size="10">
               </div>
             </div>
-            <div class="fs-c m-b300">
-              <div class="sel">
-                <label for="language" class="sel-l sel-l--mt000">Choose a language</label>
-                <div class="sel-c sel-c--fw">
-                  <select name="language" id="language" class="sel-f sel-f--sm">
-                    <option value="en">English</option>
-                    <option value="es">Spanish</option>
-                    <option value="cn">Chinese</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-            <div class="fs-c fs-c--i fs-c--c">
-              <label class="cb">
-                <input id="tdd" name="tdd" type="checkbox" value="1" class="cb-f">
-                <span class="cb-l cb-l--sans">TDD/TDY Device - Tone Delivery</span>
-              </label>
+            <div id="message" class="m-b300" style="display: none"></div>
+            <div id="button" class="fs-c fs-c--i fs-c--c">
               <div class="m-lAAA m-t300 m-t300--mo">
-                <button type="submit" class="btn btn--700">Sign Up</button>
+                <button id="alert_submit" type="submit" class="btn btn--700">Sign Up</button>
               </div>
             </div>
           </div>
@@ -87,8 +79,12 @@
   var BostonEmergencyAlerts = (function () {
     var form = jQuery('#bosAlertForm');
     var email,
+        button,
         phone_number,
+        first_name,
+        last_name,
         call,
+        zip,
         text;
 
     function handleAlertSignup(ev) {
@@ -99,15 +95,36 @@
       if (isValid) {
         var data = form.serialize();
 
+        button.attr('disabled', true).html('loading');
+
         jQuery.ajax({
           url: form.attr('action'),
           method: 'post',
           data: data,
-          success: function (data) {
-            console.info(data);
-          }
+          success: handleSuccess,
+          error: function (req, err) {
+            button.attr('disabled', false);
+
+            if (req.responseJSON && req.responseJSON.errors) {
+              jQuery('#message').append('<div class="t--subinfo t--err m-t100">' + req.responseJSON.errors + '</div>').show();
+            }
+          },
         });
       }
+    }
+
+    function handleSuccess(data) {
+      triggerSuccess(email, data.contact.email);
+      triggerSuccess(phone_number, data.contact.phone_number);
+      triggerSuccess(first_name, data.contact.first_name);
+      triggerSuccess(last_name, data.contact.last_name);
+      triggerSuccess(zip, data.contact.zip);
+      triggerSuccess(call, data.contact.call ? 'Yes' : 'No');
+      triggerSuccess(text, data.contact.text ? 'Yes' : 'No');
+      form.find('#message, #button').remove();
+      form.find('.t--subinfo').remove();
+      jQuery('#alert_content').remove();
+      jQuery('#alert_success .t--intro').show();
     }
 
     function validateForm() {
@@ -119,6 +136,12 @@
         return false;
       }
 
+      if (first_name.val() == '' && last_name.val() == '') {
+        triggerError(first_name, "Please enter your first or last name", 'txt-f--err');
+        triggerError(last_name, "Please enter your first or last name", 'txt-f--err');
+        return false;
+      }
+
       return true;
     }
 
@@ -126,6 +149,24 @@
       jQuery('.t--err').remove();
       jQuery('.txt-l').css({color: ''});
       jQuery('.txt-f').css({borderColor: ''});
+    }
+
+    function triggerSuccess(el, msg) {
+      var parent = el.parent();
+
+      if (msg) {
+        parent.find('input').remove();
+        parent.append('<div class="t--info t--w" style="text-transform: none">' + msg + '</div>');
+
+        if (parent.hasClass('cb')) {
+          parent.css({'display': 'block'});
+          parent.find('.cb-l').css({'margin-left': 0});
+        }
+
+        zip.parents('.m-b300').removeClass('m-b300');
+      } else {
+        parent.remove();
+      }
     }
 
     function triggerError(el, msg, className) {
@@ -140,8 +181,12 @@
     function start() {
       email = jQuery('#email');
       phone_number = jQuery('#phone_number');
+      first_name = jQuery('#first_name');
+      last_name = jQuery('#last_name');
       call = jQuery('#checkbox-call');
       text = jQuery('#checkbox-text');
+      zip = jQuery('#zip_code');
+      button = jQuery('#alert_submit');
       form.submit(handleAlertSignup)
     }
 
