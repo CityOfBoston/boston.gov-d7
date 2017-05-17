@@ -10,7 +10,7 @@
 function bos_content_type_topic_page_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-topic_page-field_components'.
+  // Exported field_instance: 'node-topic_page-field_components'
   $field_instances['node-topic_page-field_components'] = array(
     'bundle' => 'topic_page',
     'default_value' => NULL,
@@ -144,6 +144,7 @@ function bos_content_type_topic_page_field_default_field_instances() {
         'list' => 'list',
         'message_for_the_day' => -1,
         'news_announcements' => 'news_announcements',
+        'newsletter' => 'newsletter',
         'photo' => 'photo',
         'quote' => -1,
         'recollect_widget' => -1,
@@ -168,15 +169,15 @@ function bos_content_type_topic_page_field_default_field_instances() {
         '3_column_w_image' => -96,
         'bos311' => -95,
         'cabinet' => -94,
-        'card' => -43,
-        'city_score_dashboard' => -56,
+        'card' => -42,
+        'city_score_dashboard' => -55,
         'custom_hours_text' => -87,
         'daily_hours' => -86,
-        'discussion_topic' => -42,
+        'discussion_topic' => -41,
         'document' => -90,
         'drawer' => -75,
         'drawers' => -92,
-        'election_results' => -55,
+        'election_results' => -54,
         'external_link' => -93,
         'featured_item' => -88,
         'featured_topics' => -89,
@@ -202,25 +203,26 @@ function bos_content_type_topic_page_field_default_field_instances() {
         'list' => -60,
         'message_for_the_day' => -74,
         'news_announcements' => -59,
-        'photo' => -58,
-        'quote' => -57,
-        'recollect_widget' => -48,
-        'script_embed' => -47,
-        'seamless_doc' => -46,
+        'newsletter' => -58,
+        'photo' => -57,
+        'quote' => -56,
+        'recollect_widget' => -47,
+        'script_embed' => -46,
+        'seamless_doc' => -45,
         'sidebar_item' => -80,
         'sidebar_item_w_icon' => -79,
         'social_media_links' => -77,
         'social_networking' => -76,
-        'status_override' => -44,
-        'tabbed_content_tab' => -41,
-        'text' => -54,
-        'text_one_column' => -53,
-        'text_three_column' => -51,
-        'text_two_column' => -52,
-        'transaction_grid' => -50,
-        'upcoming_events' => -49,
+        'status_override' => -43,
+        'tabbed_content_tab' => -40,
+        'text' => -53,
+        'text_one_column' => -52,
+        'text_three_column' => -50,
+        'text_two_column' => -51,
+        'transaction_grid' => -49,
+        'upcoming_events' => -48,
         'user_action' => -73,
-        'video' => -45,
+        'video' => -44,
       ),
       'default_edit_mode' => 'open',
       'title' => 'Component',
@@ -236,7 +238,7 @@ function bos_content_type_topic_page_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-topic_page-field_contacts'.
+  // Exported field_instance: 'node-topic_page-field_contacts'
   $field_instances['node-topic_page-field_contacts'] = array(
     'bundle' => 'topic_page',
     'default_value' => NULL,
@@ -353,7 +355,7 @@ function bos_content_type_topic_page_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-topic_page-field_intro_image'.
+  // Exported field_instance: 'node-topic_page-field_intro_image'
   $field_instances['node-topic_page-field_intro_image'] = array(
     'bundle' => 'topic_page',
     'deleted' => 0,
@@ -496,7 +498,7 @@ function bos_content_type_topic_page_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-topic_page-field_intro_text'.
+  // Exported field_instance: 'node-topic_page-field_intro_text'
   $field_instances['node-topic_page-field_intro_text'] = array(
     'bundle' => 'topic_page',
     'default_value' => NULL,
@@ -604,7 +606,7 @@ function bos_content_type_topic_page_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-topic_page-field_published_date'.
+  // Exported field_instance: 'node-topic_page-field_published_date'
   $field_instances['node-topic_page-field_published_date'] = array(
     'bundle' => 'topic_page',
     'deleted' => 0,
@@ -728,7 +730,7 @@ function bos_content_type_topic_page_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-topic_page-field_thumbnail'.
+  // Exported field_instance: 'node-topic_page-field_thumbnail'
   $field_instances['node-topic_page-field_thumbnail'] = array(
     'bundle' => 'topic_page',
     'deleted' => 0,
@@ -853,7 +855,7 @@ function bos_content_type_topic_page_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-topic_page-field_topic_category'.
+  // Exported field_instance: 'node-topic_page-field_topic_category'
   $field_instances['node-topic_page-field_topic_category'] = array(
     'bundle' => 'topic_page',
     'default_value' => NULL,
@@ -910,7 +912,7 @@ function bos_content_type_topic_page_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-topic_page-field_type_of_content'.
+  // Exported field_instance: 'node-topic_page-field_type_of_content'
   $field_instances['node-topic_page-field_type_of_content'] = array(
     'bundle' => 'topic_page',
     'default_value' => NULL,
@@ -964,7 +966,7 @@ function bos_content_type_topic_page_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-topic_page-field_updated_date'.
+  // Exported field_instance: 'node-topic_page-field_updated_date'
   $field_instances['node-topic_page-field_updated_date'] = array(
     'bundle' => 'topic_page',
     'deleted' => 0,

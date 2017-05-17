@@ -10,7 +10,7 @@
 function bos_content_type_article_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-article-body'.
+  // Exported field_instance: 'node-article-body'
   $field_instances['node-article-body'] = array(
     'bundle' => 'article',
     'default_value' => NULL,
@@ -123,7 +123,7 @@ function bos_content_type_article_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-article-field_components'.
+  // Exported field_instance: 'node-article-field_components'
   $field_instances['node-article-field_components'] = array(
     'bundle' => 'article',
     'default_value' => NULL,
@@ -230,15 +230,15 @@ function bos_content_type_article_field_default_field_instances() {
         'discussion_topic' => -1,
         'document' => -1,
         'drawer' => -1,
-        'drawers' => -1,
+        'drawers' => 'drawers',
         'election_results' => -1,
         'external_link' => -1,
         'featured_item' => -1,
-        'featured_topics' => -1,
+        'featured_topics' => 'featured_topics',
         'feedback' => 'feedback',
         'fyi' => 'fyi',
         'gol_list_links' => -1,
-        'grid_of_cards' => -1,
+        'grid_of_cards' => 'grid_of_cards',
         'grid_of_people' => 'grid_of_people',
         'grid_of_places' => 'grid_of_places',
         'grid_of_programs_initiatives' => 'grid_of_programs_initiatives',
@@ -257,10 +257,10 @@ function bos_content_type_article_field_default_field_instances() {
         'list' => 'list',
         'message_for_the_day' => -1,
         'news_announcements' => 'news_announcements',
+        'newsletter' => 'newsletter',
         'photo' => 'photo',
         'quote' => -1,
         'recollect_widget' => -1,
-        'reusable_component' => -1,
         'script_embed' => -1,
         'seamless_doc' => -1,
         'sidebar_item' => -1,
@@ -282,11 +282,11 @@ function bos_content_type_article_field_default_field_instances() {
         '3_column_w_image' => -96,
         'bos311' => -95,
         'cabinet' => -94,
-        'card' => -43,
+        'card' => -42,
         'city_score_dashboard' => -69,
         'custom_hours_text' => -81,
         'daily_hours' => -80,
-        'discussion_topic' => -42,
+        'discussion_topic' => -41,
         'document' => -89,
         'drawer' => -74,
         'drawers' => -86,
@@ -316,10 +316,10 @@ function bos_content_type_article_field_default_field_instances() {
         'list' => -53,
         'message_for_the_day' => -73,
         'news_announcements' => -52,
-        'photo' => -51,
+        'newsletter' => -51,
+        'photo' => -50,
         'quote' => -71,
         'recollect_widget' => -68,
-        'reusable_component' => 42,
         'script_embed' => -67,
         'seamless_doc' => -66,
         'sidebar_item' => -91,
@@ -327,15 +327,15 @@ function bos_content_type_article_field_default_field_instances() {
         'social_media_links' => -92,
         'social_networking' => -93,
         'status_override' => -64,
-        'tabbed_content_tab' => -41,
-        'text' => -50,
-        'text_one_column' => -49,
-        'text_three_column' => -47,
-        'text_two_column' => -48,
-        'transaction_grid' => -46,
-        'upcoming_events' => -45,
+        'tabbed_content_tab' => -40,
+        'text' => -49,
+        'text_one_column' => -48,
+        'text_three_column' => -46,
+        'text_two_column' => -47,
+        'transaction_grid' => -45,
+        'upcoming_events' => -44,
         'user_action' => -72,
-        'video' => -44,
+        'video' => -43,
       ),
       'default_edit_mode' => 'open',
       'title' => 'Component',
@@ -351,7 +351,7 @@ function bos_content_type_article_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-article-field_contact'.
+  // Exported field_instance: 'node-article-field_contact'
   $field_instances['node-article-field_contact'] = array(
     'bundle' => 'article',
     'default_value' => NULL,
@@ -468,7 +468,7 @@ function bos_content_type_article_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-article-field_intro_text'.
+  // Exported field_instance: 'node-article-field_intro_text'
   $field_instances['node-article-field_intro_text'] = array(
     'bundle' => 'article',
     'default_value' => NULL,
@@ -576,7 +576,7 @@ function bos_content_type_article_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-article-field_published_date'.
+  // Exported field_instance: 'node-article-field_published_date'
   $field_instances['node-article-field_published_date'] = array(
     'bundle' => 'article',
     'deleted' => 0,
@@ -700,7 +700,7 @@ function bos_content_type_article_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-article-field_sidebar_components'.
+  // Exported field_instance: 'node-article-field_sidebar_components'
   $field_instances['node-article-field_sidebar_components'] = array(
     'bundle' => 'article',
     'default_value' => NULL,
@@ -711,7 +711,7 @@ function bos_content_type_article_field_default_field_instances() {
         'label' => 'above',
         'module' => 'paragraphs',
         'settings' => array(
-          'view_mode' => 'full',
+          'view_mode' => 'sidebar',
         ),
         'type' => 'paragraphs_view',
         'weight' => 6,
@@ -738,67 +738,121 @@ function bos_content_type_article_field_default_field_instances() {
       'add_mode' => 'button',
       'allowed_bundles' => array(
         '3_column_w_image' => -1,
+        'bos311' => -1,
+        'cabinet' => -1,
+        'card' => -1,
+        'city_score_dashboard' => -1,
         'custom_hours_text' => -1,
         'daily_hours' => -1,
+        'discussion_topic' => -1,
         'document' => -1,
+        'drawer' => -1,
+        'drawers' => -1,
+        'election_results' => -1,
         'external_link' => -1,
         'featured_item' => -1,
         'featured_topics' => -1,
         'feedback' => -1,
+        'fyi' => -1,
         'gol_list_links' => -1,
+        'grid_of_cards' => -1,
+        'grid_of_people' => -1,
         'grid_of_places' => -1,
         'grid_of_programs_initiatives' => -1,
+        'grid_of_quotes' => -1,
+        'grid_of_topics' => -1,
         'group_of_links_grid' => -1,
         'group_of_links_list' => -1,
+        'group_of_links_mini_grid' => -1,
         'header_text' => -1,
         'hero_image' => -1,
         'how_to_contact_step' => -1,
         'how_to_tab' => -1,
         'how_to_text_step' => -1,
+        'iframe' => -1,
         'internal_link' => -1,
         'list' => -1,
+        'message_for_the_day' => -1,
+        'news_announcements' => -1,
+        'newsletter' => 'newsletter',
         'photo' => -1,
+        'quote' => -1,
+        'recollect_widget' => -1,
+        'script_embed' => -1,
+        'seamless_doc' => -1,
         'sidebar_item' => 'sidebar_item',
         'sidebar_item_w_icon' => 'sidebar_item_w_icon',
         'social_media_links' => 'social_media_links',
         'social_networking' => -1,
+        'status_override' => -1,
+        'tabbed_content_tab' => -1,
         'text' => -1,
         'text_one_column' => -1,
         'text_three_column' => -1,
         'text_two_column' => -1,
         'transaction_grid' => -1,
+        'upcoming_events' => -1,
+        'user_action' => -1,
+        'video' => -1,
       ),
       'bundle_weights' => array(
         '3_column_w_image' => 2,
+        'bos311' => 34,
+        'cabinet' => 35,
+        'card' => 36,
+        'city_score_dashboard' => 37,
         'custom_hours_text' => 3,
         'daily_hours' => 4,
+        'discussion_topic' => 40,
         'document' => 5,
+        'drawer' => 42,
+        'drawers' => 43,
+        'election_results' => 44,
         'external_link' => 6,
         'featured_item' => 7,
         'featured_topics' => 8,
         'feedback' => 9,
+        'fyi' => 49,
         'gol_list_links' => 10,
+        'grid_of_cards' => 51,
+        'grid_of_people' => 52,
         'grid_of_places' => 11,
         'grid_of_programs_initiatives' => 12,
+        'grid_of_quotes' => 55,
+        'grid_of_topics' => 56,
         'group_of_links_grid' => 13,
         'group_of_links_list' => 14,
+        'group_of_links_mini_grid' => 59,
         'header_text' => 15,
         'hero_image' => 16,
         'how_to_contact_step' => 17,
         'how_to_tab' => 18,
         'how_to_text_step' => 19,
+        'iframe' => 65,
         'internal_link' => 20,
         'list' => 21,
+        'message_for_the_day' => 68,
+        'news_announcements' => 70,
+        'newsletter' => 69,
         'photo' => 22,
+        'quote' => 72,
+        'recollect_widget' => 73,
+        'script_embed' => 74,
+        'seamless_doc' => 75,
         'sidebar_item' => 23,
         'sidebar_item_w_icon' => 24,
         'social_media_links' => 25,
         'social_networking' => 26,
+        'status_override' => 80,
+        'tabbed_content_tab' => 81,
         'text' => 27,
         'text_one_column' => 28,
         'text_three_column' => 29,
         'text_two_column' => 30,
         'transaction_grid' => 31,
+        'upcoming_events' => 87,
+        'user_action' => 88,
+        'video' => 89,
       ),
       'default_edit_mode' => 'open',
       'title' => 'Paragraph',
@@ -814,7 +868,7 @@ function bos_content_type_article_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-article-field_type_of_content'.
+  // Exported field_instance: 'node-article-field_type_of_content'
   $field_instances['node-article-field_type_of_content'] = array(
     'bundle' => 'article',
     'default_value' => NULL,
@@ -823,10 +877,7 @@ function bos_content_type_article_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
+        'settings' => array(),
         'type' => 'hidden',
         'weight' => 7,
       ),
@@ -853,7 +904,7 @@ function bos_content_type_article_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-article-field_updated_date'.
+  // Exported field_instance: 'node-article-field_updated_date'
   $field_instances['node-article-field_updated_date'] = array(
     'bundle' => 'article',
     'deleted' => 0,

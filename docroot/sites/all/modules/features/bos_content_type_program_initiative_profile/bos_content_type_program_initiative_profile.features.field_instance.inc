@@ -10,7 +10,7 @@
 function bos_content_type_program_initiative_profile_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-program_initiative_profile-body'.
+  // Exported field_instance: 'node-program_initiative_profile-body'
   $field_instances['node-program_initiative_profile-body'] = array(
     'bundle' => 'program_initiative_profile',
     'default_value' => NULL,
@@ -129,8 +129,7 @@ function bos_content_type_program_initiative_profile_field_default_field_instanc
     ),
   );
 
-  // Exported field_instance:
-  // 'node-program_initiative_profile-field_components'.
+  // Exported field_instance: 'node-program_initiative_profile-field_components'
   $field_instances['node-program_initiative_profile-field_components'] = array(
     'bundle' => 'program_initiative_profile',
     'default_value' => NULL,
@@ -270,6 +269,7 @@ function bos_content_type_program_initiative_profile_field_default_field_instanc
         'list' => 'list',
         'message_for_the_day' => -1,
         'news_announcements' => 'news_announcements',
+        'newsletter' => 'newsletter',
         'photo' => 'photo',
         'quote' => -1,
         'recollect_widget' => -1,
@@ -294,15 +294,15 @@ function bos_content_type_program_initiative_profile_field_default_field_instanc
         '3_column_w_image' => -96,
         'bos311' => -95,
         'cabinet' => -94,
-        'card' => -43,
+        'card' => -42,
         'city_score_dashboard' => -93,
         'custom_hours_text' => -92,
         'daily_hours' => -91,
-        'discussion_topic' => -42,
+        'discussion_topic' => -41,
         'document' => -90,
         'drawer' => -73,
         'drawers' => -86,
-        'election_results' => -53,
+        'election_results' => -52,
         'external_link' => -88,
         'featured_item' => -89,
         'featured_topics' => -78,
@@ -328,25 +328,26 @@ function bos_content_type_program_initiative_profile_field_default_field_instanc
         'list' => -59,
         'message_for_the_day' => -72,
         'news_announcements' => -58,
-        'photo' => -57,
-        'quote' => -56,
-        'recollect_widget' => -46,
-        'script_embed' => -45,
-        'seamless_doc' => -44,
+        'newsletter' => -57,
+        'photo' => -56,
+        'quote' => -55,
+        'recollect_widget' => -45,
+        'script_embed' => -44,
+        'seamless_doc' => -43,
         'sidebar_item' => -81,
         'sidebar_item_w_icon' => -80,
         'social_media_links' => -79,
         'social_networking' => -77,
-        'status_override' => -55,
-        'tabbed_content_tab' => -41,
-        'text' => -54,
-        'text_one_column' => -52,
-        'text_three_column' => -50,
-        'text_two_column' => -51,
-        'transaction_grid' => -49,
-        'upcoming_events' => -48,
+        'status_override' => -54,
+        'tabbed_content_tab' => -40,
+        'text' => -53,
+        'text_one_column' => -51,
+        'text_three_column' => -49,
+        'text_two_column' => -50,
+        'transaction_grid' => -48,
+        'upcoming_events' => -47,
         'user_action' => -71,
-        'video' => -47,
+        'video' => -46,
       ),
       'default_edit_mode' => 'open',
       'title' => 'Paragraph',
@@ -362,7 +363,7 @@ function bos_content_type_program_initiative_profile_field_default_field_instanc
     ),
   );
 
-  // Exported field_instance: 'node-program_initiative_profile-field_contacts'.
+  // Exported field_instance: 'node-program_initiative_profile-field_contacts'
   $field_instances['node-program_initiative_profile-field_contacts'] = array(
     'bundle' => 'program_initiative_profile',
     'default_value' => NULL,
@@ -485,8 +486,7 @@ function bos_content_type_program_initiative_profile_field_default_field_instanc
     ),
   );
 
-  // Exported field_instance:
-  // 'node-program_initiative_profile-field_intro_image'.
+  // Exported field_instance: 'node-program_initiative_profile-field_intro_image'
   $field_instances['node-program_initiative_profile-field_intro_image'] = array(
     'bundle' => 'program_initiative_profile',
     'deleted' => 0,
@@ -641,8 +641,7 @@ function bos_content_type_program_initiative_profile_field_default_field_instanc
     ),
   );
 
-  // Exported field_instance:
-  // 'node-program_initiative_profile-field_intro_text'.
+  // Exported field_instance: 'node-program_initiative_profile-field_intro_text'
   $field_instances['node-program_initiative_profile-field_intro_text'] = array(
     'bundle' => 'program_initiative_profile',
     'default_value' => NULL,
@@ -788,8 +787,7 @@ function bos_content_type_program_initiative_profile_field_default_field_instanc
     ),
   );
 
-  // Exported field_instance:
-  // 'node-program_initiative_profile-field_program_logo'.
+  // Exported field_instance: 'node-program_initiative_profile-field_program_logo'
   $field_instances['node-program_initiative_profile-field_program_logo'] = array(
     'bundle' => 'program_initiative_profile',
     'deleted' => 0,
@@ -924,8 +922,7 @@ function bos_content_type_program_initiative_profile_field_default_field_instanc
     ),
   );
 
-  // Exported field_instance:
-  // 'node-program_initiative_profile-field_program_type'.
+  // Exported field_instance: 'node-program_initiative_profile-field_program_type'
   $field_instances['node-program_initiative_profile-field_program_type'] = array(
     'bundle' => 'program_initiative_profile',
     'default_value' => NULL,
@@ -1041,8 +1038,7 @@ function bos_content_type_program_initiative_profile_field_default_field_instanc
     ),
   );
 
-  // Exported field_instance:
-  // 'node-program_initiative_profile-field_published_date'.
+  // Exported field_instance: 'node-program_initiative_profile-field_published_date'
   $field_instances['node-program_initiative_profile-field_published_date'] = array(
     'bundle' => 'program_initiative_profile',
     'deleted' => 0,
@@ -1172,8 +1168,7 @@ function bos_content_type_program_initiative_profile_field_default_field_instanc
     ),
   );
 
-  // Exported field_instance:
-  // 'node-program_initiative_profile-field_sidebar_components'.
+  // Exported field_instance: 'node-program_initiative_profile-field_sidebar_components'
   $field_instances['node-program_initiative_profile-field_sidebar_components'] = array(
     'bundle' => 'program_initiative_profile',
     'default_value' => NULL,
@@ -1202,7 +1197,7 @@ function bos_content_type_program_initiative_profile_field_default_field_instanc
         'label' => 'hidden',
         'module' => 'paragraphs',
         'settings' => array(
-          'view_mode' => 'full',
+          'view_mode' => 'sidebar',
         ),
         'type' => 'paragraphs_view',
         'weight' => 8,
@@ -1277,59 +1272,121 @@ function bos_content_type_program_initiative_profile_field_default_field_instanc
       'add_mode' => 'select',
       'allowed_bundles' => array(
         '3_column_w_image' => -1,
+        'bos311' => -1,
+        'cabinet' => -1,
+        'card' => -1,
+        'city_score_dashboard' => -1,
         'custom_hours_text' => -1,
         'daily_hours' => -1,
+        'discussion_topic' => -1,
         'document' => -1,
+        'drawer' => -1,
+        'drawers' => -1,
+        'election_results' => -1,
         'external_link' => -1,
         'featured_item' => -1,
         'featured_topics' => -1,
         'feedback' => -1,
+        'fyi' => -1,
+        'gol_list_links' => -1,
+        'grid_of_cards' => -1,
+        'grid_of_people' => -1,
+        'grid_of_places' => -1,
+        'grid_of_programs_initiatives' => -1,
+        'grid_of_quotes' => -1,
+        'grid_of_topics' => -1,
         'group_of_links_grid' => -1,
+        'group_of_links_list' => -1,
+        'group_of_links_mini_grid' => -1,
         'header_text' => -1,
         'hero_image' => -1,
         'how_to_contact_step' => -1,
         'how_to_tab' => -1,
         'how_to_text_step' => -1,
+        'iframe' => -1,
         'internal_link' => -1,
         'list' => -1,
+        'message_for_the_day' => -1,
+        'news_announcements' => -1,
+        'newsletter' => 'newsletter',
         'photo' => -1,
+        'quote' => -1,
+        'recollect_widget' => -1,
+        'script_embed' => -1,
+        'seamless_doc' => -1,
         'sidebar_item' => 'sidebar_item',
         'sidebar_item_w_icon' => 'sidebar_item_w_icon',
         'social_media_links' => 'social_media_links',
         'social_networking' => -1,
+        'status_override' => -1,
+        'tabbed_content_tab' => -1,
         'text' => -1,
         'text_one_column' => -1,
         'text_three_column' => -1,
         'text_two_column' => -1,
         'transaction_grid' => -1,
+        'upcoming_events' => -1,
+        'user_action' => -1,
+        'video' => -1,
       ),
       'bundle_weights' => array(
         '3_column_w_image' => 2,
+        'bos311' => 30,
+        'cabinet' => 31,
+        'card' => 32,
+        'city_score_dashboard' => 33,
         'custom_hours_text' => 3,
         'daily_hours' => 4,
+        'discussion_topic' => 36,
         'document' => 5,
+        'drawer' => 38,
+        'drawers' => 39,
+        'election_results' => 40,
         'external_link' => 6,
         'featured_item' => 7,
         'featured_topics' => 8,
         'feedback' => 9,
+        'fyi' => 45,
+        'gol_list_links' => 46,
+        'grid_of_cards' => 47,
+        'grid_of_people' => 48,
+        'grid_of_places' => 49,
+        'grid_of_programs_initiatives' => 50,
+        'grid_of_quotes' => 51,
+        'grid_of_topics' => 52,
         'group_of_links_grid' => 10,
+        'group_of_links_list' => 54,
+        'group_of_links_mini_grid' => 55,
         'header_text' => 11,
         'hero_image' => 12,
         'how_to_contact_step' => 13,
         'how_to_tab' => 14,
         'how_to_text_step' => 15,
+        'iframe' => 61,
         'internal_link' => 16,
         'list' => 17,
+        'message_for_the_day' => 64,
+        'news_announcements' => 66,
+        'newsletter' => 65,
         'photo' => 18,
+        'quote' => 68,
+        'recollect_widget' => 69,
+        'script_embed' => 70,
+        'seamless_doc' => 71,
         'sidebar_item' => 19,
         'sidebar_item_w_icon' => 20,
         'social_media_links' => 21,
         'social_networking' => 22,
+        'status_override' => 76,
+        'tabbed_content_tab' => 77,
         'text' => 23,
         'text_one_column' => 24,
         'text_three_column' => 25,
         'text_two_column' => 26,
         'transaction_grid' => 27,
+        'upcoming_events' => 83,
+        'user_action' => 84,
+        'video' => 85,
       ),
       'default_edit_mode' => 'open',
       'title' => 'Paragraph',
@@ -1345,8 +1402,7 @@ function bos_content_type_program_initiative_profile_field_default_field_instanc
     ),
   );
 
-  // Exported field_instance:
-  // 'node-program_initiative_profile-field_type_of_content'.
+  // Exported field_instance: 'node-program_initiative_profile-field_type_of_content'
   $field_instances['node-program_initiative_profile-field_type_of_content'] = array(
     'bundle' => 'program_initiative_profile',
     'default_value' => NULL,
@@ -1388,8 +1444,7 @@ function bos_content_type_program_initiative_profile_field_default_field_instanc
     ),
   );
 
-  // Exported field_instance:
-  // 'node-program_initiative_profile-field_updated_date'.
+  // Exported field_instance: 'node-program_initiative_profile-field_updated_date'
   $field_instances['node-program_initiative_profile-field_updated_date'] = array(
     'bundle' => 'program_initiative_profile',
     'deleted' => 0,
