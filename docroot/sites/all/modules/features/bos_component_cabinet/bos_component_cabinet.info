@@ -15,5 +15,7 @@ features[field_group][] = group_details|paragraphs_item|cabinet|form
 features[field_instance][] = paragraphs_item-cabinet-field_contacts
 features[field_instance][] = paragraphs_item-cabinet-field_description
 features[field_instance][] = paragraphs_item-cabinet-field_person
+features[field_instance][] = paragraphs_item-cabinet-field_short_title
 features[field_instance][] = paragraphs_item-cabinet-field_title
 features[paragraphs][] = cabinet
+mtime = 1480263901
