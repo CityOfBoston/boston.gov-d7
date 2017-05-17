@@ -26,9 +26,10 @@ function bos_signup_alerts_field_group_info() {
       0 => 'field_component_theme',
       1 => 'field_component_title',
       2 => 'field_contact',
-      3 => 'field_short_title',
+      3 => 'field_description',
       4 => 'field_intro_text',
-      5 => 'field_description',
+      5 => 'field_short_title',
+      6 => 'field_icon',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

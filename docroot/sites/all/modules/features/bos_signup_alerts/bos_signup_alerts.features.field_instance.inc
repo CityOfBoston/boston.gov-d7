@@ -105,7 +105,7 @@ function bos_signup_alerts_field_default_field_instances() {
     'bundle' => 'bos_signup_emergency_alerts',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'This displays on the section heading and links to the department.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -186,7 +186,72 @@ function bos_signup_alerts_field_default_field_instances() {
         'show_token_tree' => 0,
       ),
       'type' => 'text_textarea',
-      'weight' => 6,
+      'weight' => 7,
+    ),
+  );
+
+  // Exported field_instance: 'paragraphs_item-bos_signup_emergency_alerts-field_icon'
+  $field_instances['paragraphs_item-bos_signup_emergency_alerts-field_icon'] = array(
+    'bundle' => 'bos_signup_emergency_alerts',
+    'deleted' => 0,
+    'description' => 'This will display as the icon in the component. If using the default theme, the icon should be white. Otherwise, a charles blue icon will work. ',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'image',
+        'settings' => array(
+          'image_link' => '',
+          'image_style' => '',
+        ),
+        'type' => 'image',
+        'weight' => 6,
+      ),
+      'paragraphs_editor_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'paragraphs_item',
+    'fences_wrapper' => 'div_div_div',
+    'field_name' => 'field_icon',
+    'label' => 'Icon',
+    'required' => 1,
+    'settings' => array(
+      'alt_field' => 0,
+      'default_image' => 0,
+      'file_directory' => '',
+      'file_extensions' => 'svg',
+      'max_filesize' => '',
+      'max_resolution' => '',
+      'min_resolution' => '',
+      'title_field' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'media',
+      'settings' => array(
+        'allowed_schemes' => array(
+          'public' => 'public',
+        ),
+        'allowed_types' => array(
+          'audio' => 0,
+          'document' => 0,
+          'image' => 'image',
+          'video' => 0,
+        ),
+        'browser_plugins' => array(
+          'boston_media_browser_tabs--boston_media' => 0,
+          'boston_media_browser_tabs--icons' => 'boston_media_browser_tabs--icons',
+          'media_default--media_browser_1' => 0,
+          'media_default--media_browser_my_files' => 0,
+          'upload' => 0,
+        ),
+      ),
+      'type' => 'media_generic',
+      'weight' => 4,
     ),
   );
 
@@ -233,7 +298,7 @@ function bos_signup_alerts_field_default_field_instances() {
         'show_token_tree' => 0,
       ),
       'type' => 'text_textarea',
-      'weight' => 5,
+      'weight' => 6,
     ),
   );
 
@@ -280,7 +345,7 @@ function bos_signup_alerts_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 4,
+      'weight' => 5,
     ),
   );
 
@@ -289,8 +354,11 @@ function bos_signup_alerts_field_default_field_instances() {
   t('Component Theme');
   t('Contact');
   t('Description');
+  t('Icon');
   t('Intro Text');
   t('Short Title');
+  t('This displays on the section heading and links to the department.');
+  t('This will display as the icon in the component. If using the default theme, the icon should be white. Otherwise, a charles blue icon will work. ');
   t('Title');
 
   return $field_instances;
