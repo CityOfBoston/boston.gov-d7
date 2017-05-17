@@ -89,6 +89,9 @@ function bos_core_entity_info_alter(&$info) {
         'fyi' => array(
           'label' => t('FYI'),
         ),
+        'sidebar' => array(
+          'label' => t('Sidebar'),
+        ),
       ),
     ),
     'taxonomy_term' => array(

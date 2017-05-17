@@ -1,22 +1,22 @@
 <?php
 /**
  * @file
- * bos_content_type_topic_page.features.field_base.inc
+ * bos_component_newsletter.features.field_base.inc
  */
 
 /**
  * Implements hook_field_default_field_bases().
  */
-function bos_content_type_topic_page_field_default_field_bases() {
+function bos_component_newsletter_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'field_topic_category'
-  $field_bases['field_topic_category'] = array(
+  // Exported field_base: 'field_newsletter'
+  $field_bases['field_newsletter'] = array(
     'active' => 1,
-    'cardinality' => -1,
+    'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_topic_category',
+    'field_name' => 'field_newsletter',
     'foreign keys' => array(
       'taxonomy_term_data' => array(
         'columns' => array(
@@ -37,14 +37,14 @@ function bos_content_type_topic_page_field_default_field_bases() {
       'handler_settings' => array(
         'behaviors' => array(
           'views-select-list' => array(
-            'status' => 1,
+            'status' => 0,
           ),
         ),
         'sort' => array(
           'type' => 'none',
         ),
         'target_bundles' => array(
-          'topic_category' => 'topic_category',
+          'newsletters' => 'newsletters',
         ),
       ),
       'target_type' => 'taxonomy_term',

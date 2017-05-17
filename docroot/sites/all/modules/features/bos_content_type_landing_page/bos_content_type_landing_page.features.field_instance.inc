@@ -10,7 +10,7 @@
 function bos_content_type_landing_page_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-landing_page-field_components'.
+  // Exported field_instance: 'node-landing_page-field_components'
   $field_instances['node-landing_page-field_components'] = array(
     'bundle' => 'landing_page',
     'default_value' => NULL,
@@ -144,6 +144,7 @@ function bos_content_type_landing_page_field_default_field_instances() {
         'list' => 'list',
         'message_for_the_day' => -1,
         'news_announcements' => 'news_announcements',
+        'newsletter' => 'newsletter',
         'photo' => 'photo',
         'quote' => -1,
         'recollect_widget' => -1,
@@ -168,11 +169,11 @@ function bos_content_type_landing_page_field_default_field_instances() {
         '3_column_w_image' => -96,
         'bos311' => -95,
         'cabinet' => -94,
-        'card' => -43,
+        'card' => -42,
         'city_score_dashboard' => -62,
         'custom_hours_text' => -85,
         'daily_hours' => -84,
-        'discussion_topic' => -42,
+        'discussion_topic' => -41,
         'document' => -91,
         'drawer' => -75,
         'drawers' => -89,
@@ -202,25 +203,26 @@ function bos_content_type_landing_page_field_default_field_instances() {
         'list' => -58,
         'message_for_the_day' => -74,
         'news_announcements' => -57,
-        'photo' => -56,
-        'quote' => -55,
-        'recollect_widget' => -54,
-        'script_embed' => -53,
-        'seamless_doc' => -52,
+        'newsletter' => -56,
+        'photo' => -55,
+        'quote' => -54,
+        'recollect_widget' => -53,
+        'script_embed' => -52,
+        'seamless_doc' => -51,
         'sidebar_item' => -77,
         'sidebar_item_w_icon' => -76,
         'social_media_links' => -93,
         'social_networking' => -92,
-        'status_override' => -51,
-        'tabbed_content_tab' => -41,
-        'text' => -50,
-        'text_one_column' => -49,
-        'text_three_column' => -47,
-        'text_two_column' => -48,
-        'transaction_grid' => -46,
-        'upcoming_events' => -45,
+        'status_override' => -50,
+        'tabbed_content_tab' => -40,
+        'text' => -49,
+        'text_one_column' => -48,
+        'text_three_column' => -46,
+        'text_two_column' => -47,
+        'transaction_grid' => -45,
+        'upcoming_events' => -44,
         'user_action' => -73,
-        'video' => -44,
+        'video' => -43,
       ),
       'default_edit_mode' => 'open',
       'title' => 'Component',
@@ -236,7 +238,7 @@ function bos_content_type_landing_page_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-landing_page-field_contacts'.
+  // Exported field_instance: 'node-landing_page-field_contacts'
   $field_instances['node-landing_page-field_contacts'] = array(
     'bundle' => 'landing_page',
     'default_value' => NULL,
@@ -349,7 +351,7 @@ function bos_content_type_landing_page_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-landing_page-field_published_date'.
+  // Exported field_instance: 'node-landing_page-field_published_date'
   $field_instances['node-landing_page-field_published_date'] = array(
     'bundle' => 'landing_page',
     'deleted' => 0,
@@ -392,7 +394,7 @@ function bos_content_type_landing_page_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-landing_page-field_type_of_content'.
+  // Exported field_instance: 'node-landing_page-field_type_of_content'
   $field_instances['node-landing_page-field_type_of_content'] = array(
     'bundle' => 'landing_page',
     'default_value' => NULL,
@@ -428,7 +430,7 @@ function bos_content_type_landing_page_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-landing_page-field_updated_date'.
+  // Exported field_instance: 'node-landing_page-field_updated_date'
   $field_instances['node-landing_page-field_updated_date'] = array(
     'bundle' => 'landing_page',
     'deleted' => 0,
