@@ -175,7 +175,7 @@ function bos_signup_alerts_field_default_field_instances() {
         'enable' => 0,
         'profile' => '',
       ),
-      'text_processing' => 0,
+      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -197,13 +197,14 @@ function bos_signup_alerts_field_default_field_instances() {
     'description' => 'This will display as the icon in the component. If using the default theme, the icon should be white. Otherwise, a charles blue icon will work. ',
     'display' => array(
       'default' => array(
-        'label' => 'above',
-        'module' => 'image',
+        'label' => 'hidden',
+        'module' => 'image_url_formatter',
         'settings' => array(
           'image_link' => '',
           'image_style' => '',
+          'url_type' => 0,
         ),
-        'type' => 'image',
+        'type' => 'image_url',
         'weight' => 6,
       ),
       'paragraphs_editor_preview' => array(
@@ -214,7 +215,7 @@ function bos_signup_alerts_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'paragraphs_item',
-    'fences_wrapper' => 'div_div_div',
+    'fences_wrapper' => 'no_wrapper',
     'field_name' => 'field_icon',
     'label' => 'Icon',
     'required' => 1,
@@ -247,7 +248,7 @@ function bos_signup_alerts_field_default_field_instances() {
           'boston_media_browser_tabs--icons' => 'boston_media_browser_tabs--icons',
           'media_default--media_browser_1' => 0,
           'media_default--media_browser_my_files' => 0,
-          'upload' => 0,
+          'upload' => 'upload',
         ),
       ),
       'type' => 'media_generic',

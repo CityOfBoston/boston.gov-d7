@@ -1,3 +1,30 @@
+<?php
+/**
+ * @file
+ * Default theme implementation for a single paragraph item.
+ *
+ * Available variables:
+ * - $content: An array of content items. Use render($content) to print them
+ *   all, or print a subset such as render($content['field_example']). Use
+ *   hide($content['field_example']) to temporarily suppress the printing of a
+ *   given element.
+ * - $classes: String of classes that can be used to style contextually through
+ *   CSS. It can be manipulated through the variable $classes_array from
+ *   preprocess functions. By default the following classes are available, where
+ *   the parts enclosed by {} are replaced by the appropriate values:
+ *   - entity
+ *   - entity-paragraphs-item
+ *   - paragraphs-item-{bundle}
+ *
+ * Other variables:
+ * - $classes_array: Array of html class attribute values. It is flattened into
+ *   a string within the variable $classes.
+ *
+ * @see template_preprocess()
+ * @see template_preprocess_entity()
+ * @see template_process()
+ */
+?>
 <div class="b b--<?php print $component_theme; ?> b--fw">
   <div class="b-c">
   	<div class="sh <?php print $section_header_theme; ?>">
@@ -9,16 +36,23 @@
 	    <?php endif; ?>
     </div>
     <div class="g m-t500">
-      <div class="g--6">
-        <div id="alert_content" class="m-b500">
-          <div class="t--intro m-b300"><?php print render($content['field_intro_text']); ?></div>
-          <div><?php print render($content['field_description']); ?></div>
-        </div>
-        <div id="alert_success" class="m-b500">
-          <div class="t--intro" style="display: none">You have been subscribed to the City of Boston's emergency alerts</div>
+      <div class="g--7">
+        <div class="p-r500">
+          <div id="alert_content" class="m-b500">
+            <div class="t--intro m-b300"><?php print render($content['field_intro_text']); ?></div>
+            <div><?php print render($content['field_description']); ?></div>
+          </div>
+          <div id="alert_success" class="m-b500 p-t400">
+            <div class="di di--c di--c--w di--c--l fl--l m-r400">
+              <div class="di-a">
+                <img src="<?php print render($content['field_icon']); ?>" role="presentation" />
+              </div>
+            </div>
+            <div class="t--intro m-t300" style="display: none">You have been subscribed to the City of Boston's emergency alerts</div>
+          </div>
         </div>
       </div>
-      <div class="g--6">
+      <div class="g--5">
         <form id="bosAlertForm" action="<?php print $emergency_alerts_url ?>" method="post">
           <div class="fs">
             <div class="fs-c m-b300">
@@ -63,7 +97,7 @@
             </div>
             <div id="message" class="m-b300" style="display: none"></div>
             <div id="button" class="fs-c fs-c--i fs-c--c">
-              <div class="m-lAAA m-t300 m-t300--mo">
+              <div class="m-lAAA m-t400 m-t300--mo">
                 <button id="alert_submit" type="submit" class="btn btn--700">Sign Up</button>
               </div>
             </div>

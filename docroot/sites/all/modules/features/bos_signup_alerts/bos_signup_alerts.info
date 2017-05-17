@@ -20,4 +20,4 @@ features[field_instance][] = paragraphs_item-bos_signup_emergency_alerts-field_i
 features[field_instance][] = paragraphs_item-bos_signup_emergency_alerts-field_intro_text
 features[field_instance][] = paragraphs_item-bos_signup_emergency_alerts-field_short_title
 features[paragraphs][] = bos_signup_emergency_alerts
-mtime = 1494942986
+mtime = 1495032255
