@@ -25,60 +25,58 @@
  * @see template_process()
  */
 ?>
-<div class="b b--fw b--g">
-  <div class="b-c clearfix">
-    <div class="<?php print $classes; ?>"<?php print $attributes; ?>>
-      <div class="content"<?php print $content_attributes; ?>>
-        <div class="sh">
-          <?php if (isset($content['field_component_title'])): ?>
-            <?php print render($content['field_component_title']); ?>
-          <?php endif; ?>
-        </div>
-        <div class="intro-text supporting-text mobile-1-col tablet-1-col desktop-2-col">
-          <?php if (isset($content['field_description'])): ?>
-            <?php print render($content['field_description']); ?>
-          <?php endif; ?>
-        </div>
-        <div class="mobile-1-col tablet-1-col desktop-2-col">
-          <?php if (isset($content['field_newsletter'])): ?>
-            <?php $newsletter_id = $content['field_newsletter']['#items'][0]['entity']->field_id['und'][0]['value']; ?>
-            <!-- Start Upaknee -->
-            <div id='form_<?php print render($newsletter_id); ?>'></div><script>
-              window.__ugv = ( typeof window.__ugv != 'undefined' && window.__ugv instanceof Array ) ? window.__ugv : [];
-              var def = {
-                i: '<?php print render($newsletter_id); ?>',
-                s: 'https://widgets.upaknee.com/',
-                f: 'forms/api/',
-                c: 485644,
-                l: 4173778,
-                t: 'd',
-                a: 0,
-                d: ['form_<?php print render($newsletter_id); ?>']
-              };
-              window.__ugv.push(def);
-            </script>
-            <script>
-              (function () {
-                var w = window;
-                var d = document;
-                function l() {
-                  var s = d.createElement('script');
-                  s.type = 'text/javascript';
-                  s.async = true;
-                  s.src = def['s']+def['f']+'upakneeForm.js';
-                  var x = d.getElementsByTagName('script')[0];
-                  x.parentNode.insertBefore(s, x);
+<div class="b b--fw b--<?php print $component_theme; ?>">
+  <div class="b-c">
+    <div class="sh m-b300 <?php print $section_header_theme; ?>">
+      <?php if (isset($content['field_component_title'])): ?>
+        <?php print render($content['field_component_title']); ?>
+      <?php endif; ?>
+    </div>
+    <div class="g">
+      <div class="g--6">
+        <?php if (isset($content['field_description'])): ?>
+          <div class="t--intro"><?php print render($content['field_description']); ?></div>
+        <?php endif; ?>
+      </div>
+      <div class="g--6">
+        <?php if (isset($content['field_newsletter'])): ?>
+          <?php $newsletter_id = $content['field_newsletter']['#items'][0]['entity']->field_id['und'][0]['value']; ?>
+          <!-- Start Upaknee -->
+          <div id='form_<?php print render($newsletter_id); ?>'></div><script>
+            window.__ugv = ( typeof window.__ugv != 'undefined' && window.__ugv instanceof Array ) ? window.__ugv : [];
+            var def = {
+              i: '<?php print render($newsletter_id); ?>',
+              s: 'https://widgets.upaknee.com/',
+              f: 'forms/api/',
+              c: 485644,
+              l: 4173778,
+              t: 'd',
+              a: 0,
+              d: ['form_<?php print render($newsletter_id); ?>']
+            };
+            window.__ugv.push(def);
+          </script>
+          <script>
+            (function () {
+              var w = window;
+              var d = document;
+              function l() {
+                var s = d.createElement('script');
+                s.type = 'text/javascript';
+                s.async = true;
+                s.src = def['s']+def['f']+'upakneeForm.js';
+                var x = d.getElementsByTagName('script')[0];
+                x.parentNode.insertBefore(s, x);
+              }
+              if (w.attachEvent) {
+                w.attachEvent('onload', l);
+                } else {
+                  w.addEventListener('load', l, false);
                 }
-                if (w.attachEvent) {
-                  w.attachEvent('onload', l);
-                  } else {
-                    w.addEventListener('load', l, false);
-                  }
-              })()
-            </script>
-            <!-- End Upaknee -->
-          <?php endif; ?>
-        </div>
+            })()
+          </script>
+          <!-- End Upaknee -->
+        <?php endif; ?>
       </div>
     </div>
   </div>

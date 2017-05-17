@@ -10,6 +10,50 @@
 function bos_component_newsletter_field_default_field_instances() {
   $field_instances = array();
 
+  // Exported field_instance: 'paragraphs_item-newsletter-field_component_theme'
+  $field_instances['paragraphs_item-newsletter-field_component_theme'] = array(
+    'bundle' => 'newsletter',
+    'default_value' => array(
+      0 => array(
+        'value' => 'g',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 5,
+      ),
+      'paragraphs_editor_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'paragraphs_item',
+    'fences_wrapper' => 'no_wrapper',
+    'field_name' => 'field_component_theme',
+    'label' => 'Component Theme',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
+      'type' => 'options_select',
+      'weight' => 3,
+    ),
+  );
+
   // Exported field_instance: 'paragraphs_item-newsletter-field_component_title'
   $field_instances['paragraphs_item-newsletter-field_component_title'] = array(
     'bundle' => 'newsletter',
@@ -119,7 +163,7 @@ function bos_component_newsletter_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 3,
+      'weight' => 4,
     ),
   );
 
@@ -198,7 +242,7 @@ function bos_component_newsletter_field_default_field_instances() {
         'show_token_tree' => 0,
       ),
       'type' => 'text_textarea',
-      'weight' => 4,
+      'weight' => 5,
     ),
   );
 
@@ -240,7 +284,7 @@ function bos_component_newsletter_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 5,
+      'weight' => 6,
     ),
   );
 
@@ -304,6 +348,7 @@ function bos_component_newsletter_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Component Theme');
   t('Contact');
   t('Description');
   t('Email List');
