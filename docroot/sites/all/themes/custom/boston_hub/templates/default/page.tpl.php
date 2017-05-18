@@ -34,10 +34,10 @@
 
       <label for="brg-tr" class="nav-trigger" type="button" aria-label="Menu" aria-controls="navigation" aria-expanded="false">
         <div class="hb">
-          <span class="hb__box">
-            <span class="hb__inner"></span>
-          </span>
-          <span class="hb__label">Menu</span>
+          <div class="hb__box">
+            <div class="hb__inner"></div>
+          </div>
+          <div class="hb__label">Menu</div>
         </div>
       </label>
 
