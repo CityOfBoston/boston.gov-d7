@@ -82,6 +82,11 @@
                     </a>
                   </li>
                   <li>
+                    <a href="<?php print $security_questions_path; ?>" title="Security questions">
+                      Security questions
+                    </a>
+                  </li>
+                  <li>
                     <a href="<?php print $logout_path; ?>" title="log out">
                       Log Out
                     </a>
