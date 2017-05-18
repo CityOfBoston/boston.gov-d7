@@ -48,6 +48,16 @@ function bos_related_content_migration_action(&$entity, $context) {
         break;
       }
 
+      // Add Women's Advancement manually
+      if ($referenced_tid == "536") {
+        $first_match_nid = '71';
+      }
+
+      // Add 311 manually
+      if ($referenced_tid == "16") {
+        $first_match_nid = '521';
+      }
+
       // Make sure we actually matched a node.
       if ($first_match_nid) {
         // Double check that we're updating the corrent bundles.
