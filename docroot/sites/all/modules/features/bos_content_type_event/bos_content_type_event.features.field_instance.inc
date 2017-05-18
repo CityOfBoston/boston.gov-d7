@@ -525,6 +525,7 @@ function bos_content_type_event_field_default_field_instances() {
       'allowed_bundles' => array(
         '3_column_w_image' => '3_column_w_image',
         'bos311' => 'bos311',
+        'bos_signup_emergency_alerts' => 'bos_signup_emergency_alerts',
         'cabinet' => 'cabinet',
         'card' => -1,
         'city_score_dashboard' => -1,
@@ -584,6 +585,7 @@ function bos_content_type_event_field_default_field_instances() {
       'bundle_weights' => array(
         '3_column_w_image' => -96,
         'bos311' => -95,
+        'bos_signup_emergency_alerts' => 4,
         'cabinet' => -94,
         'card' => -42,
         'city_score_dashboard' => -62,
@@ -810,7 +812,7 @@ function bos_content_type_event_field_default_field_instances() {
       ),
     ),
     'deleted' => 0,
-    'description' => 'Enter the cost, with a $ or FREE',
+    'description' => 'Enter cost as dollars. For example $55.00. Leave blank if event is free.',
     'display' => array(
       'article' => array(
         'label' => 'above',
@@ -3599,7 +3601,7 @@ function bos_content_type_event_field_default_field_instances() {
   t('Details Link');
   t('Downloads');
   t('Enter an external link for details of this event');
-  t('Enter the cost, with a $ or FREE');
+  t('Enter cost as dollars. For example $55.00. Leave blank if event is free.');
   t('Event Dates');
   t('Event Type');
   t('Event not sponsored by the City');
