@@ -18,24 +18,24 @@ function paragraph_reference_manager_admin() {
       $field_info = field_info_field($field_name);
       $type = $field_info['type'];
       $name = $field_info['field_name'];
+      $label = $value['label'];
       // Select only the fields that are paragraph reference.
       if ($type == 'paragraphs') {
-        //$entity_ref_fields .= " $name <br />";
         $entity_ref[$name][] = $bundle;
+        $entity_ref[$name]['bundle'][] = $bundle;
+        $entity_ref[$name]['label'] = $label;
       }
     }
   }
-  foreach ($entity_ref as $field => $content_types) {
-    //echo 'field is ' . $field . '<br />';
-    //echo 'content type is ' . $content_types . '<br /><br />';
+  foreach ($entity_ref as $field => $field_info) {
     $form_field_key = 'paragraph_reference_manager' . $field;
     $form[$form_field_key] = array(
       '#type' => 'fieldset',
-      '#title' => $field,//t(),
+      '#title' => $field_info['label'] . " ($field)",//t(),
       '#collapsible' => TRUE,
       '#collapsed' => TRUE,
     );
-    foreach ($content_types as $content_type) {
+    foreach ($field_info['bundle'] as $content_type) {
       $form[$form_field_key][$content_type] = array(
         '#type' => 'checkbox',
         '#title' => $content_type,
@@ -43,6 +43,5 @@ function paragraph_reference_manager_admin() {
       );
     }
   }
-  //return $entity_ref_fields;
   return system_settings_form($form);
 }
