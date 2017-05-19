@@ -21,7 +21,7 @@ function paragraph_reference_manager_admin() {
       $label = $value['label'];
       // Select only the fields that are paragraph reference.
       if ($type == 'paragraphs') {
-        $entity_ref[$name][] = $bundle;
+        // Create array with information needed to create form.
         $entity_ref[$name]['bundle'][] = $bundle;
         $entity_ref[$name]['label'] = $label;
       }
@@ -38,7 +38,7 @@ function paragraph_reference_manager_admin() {
     foreach ($field_info['bundle'] as $content_type) {
       $form[$form_field_key][$content_type] = array(
         '#type' => 'checkbox',
-        '#title' => $content_type,
+        '#title' => $bundle_info[$content_type]['label'] . " ($content_type)",
         '#default_value' => 0,
       );
     }
