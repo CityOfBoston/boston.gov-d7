@@ -25,10 +25,24 @@ function paragraph_reference_manager_admin() {
       }
     }
   }
-  foreach ($entity_ref as $field => $content_type) {
-    echo 'field is ' . $field . '<br />';
-    echo 'content type is ' . $content_type . '<br /><br />';
+  foreach ($entity_ref as $field => $content_types) {
+    //echo 'field is ' . $field . '<br />';
+    //echo 'content type is ' . $content_types . '<br /><br />';
+    $form_field_key = 'paragraph_reference_manager' . $field;
+    $form[$form_field_key] = array(
+      '#type' => 'fieldset',
+      '#title' => $field,//t(),
+      '#collapsible' => TRUE,
+      '#collapsed' => TRUE,
+    );
+    foreach ($content_types as $content_type) {
+      $form[$form_field_key][$content_type] = array(
+        '#type' => 'checkbox',
+        '#title' => $content_type,
+        '#default_value' => 0,
+      );
+    }
   }
   //return $entity_ref_fields;
-  return 'test';
+  return system_settings_form($form);
 }
