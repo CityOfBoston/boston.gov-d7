@@ -12,7 +12,7 @@ function paragraph_reference_manager_menu() {
   $items = array();
   $items['admin/structure/paragraphs/%/manage-references'] = array(
     'title' => 'Manage References',
-    'page callback' => 'paragraph_reference_manager_admin',
+    'page callback' => array('paragraph_reference_manager_admin'),
     'access arguments' => array('administer paragraphs bundles'),
     'weight' => 3,
     'type' => MENU_LOCAL_TASK,
