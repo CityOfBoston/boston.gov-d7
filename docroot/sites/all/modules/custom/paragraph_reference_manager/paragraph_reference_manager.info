@@ -1,0 +1,6 @@
+name = Paragraph Reference Manager
+description = Configure which entityreference fields a paragraph is allowed in at source instead of destination.
+package = Paragraphs
+core = 7.x
+
+files[] = paragraph_reference_manager.admin.inc
