@@ -15,17 +15,24 @@ function paragraph_reference_manager_admin() {
     // Get all the fields for the current content type.
     $fields_info = field_info_instances('node', $bundle);
     foreach ($fields_info as $field_name => $value) {
-      $field_info = field_info_field($field_name);
-      $type = $field_info['type'];
-      $name = $field_info['field_name'];
+      //$field_info = field_info_field($field_name);
+      //$type = $field_info['type'];
+      $type = $value['widget']['type'];
+      //$name = $field_info['field_name'];
+      $name = $field_name;
       $label = $value['label'];
       // Select only the fields that are paragraph reference.
-      if ($type == 'paragraphs') {
+      //if ($type == 'paragraphs') {
+      if ($type == 'paragraphs_embed') {
         // Create array with information needed to create form.
         $entity_ref[$name]['bundle'][] = $bundle;
         $entity_ref[$name]['label'] = $label;
       }
     }
+  }
+  if (!isset($entity_ref)) {
+    drupal_set_message('There are no paragraph reference fields on any of your content types.', 'warning');
+    return;
   }
   foreach ($entity_ref as $field => $field_info) {
     $form_field_key = 'paragraph_reference_manager' . $field;
