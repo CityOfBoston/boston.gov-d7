@@ -34,10 +34,10 @@
 
       <label for="brg-tr" class="nav-trigger" type="button" aria-label="Menu" aria-controls="navigation" aria-expanded="false">
         <div class="hb">
-          <span class="hb__box">
-            <span class="hb__inner"></span>
-          </span>
-          <span class="hb__label">Menu</span>
+          <div class="hb__box">
+            <div class="hb__inner"></div>
+          </div>
+          <div class="hb__label">Menu</div>
         </div>
       </label>
 
@@ -79,6 +79,11 @@
                   <li>
                     <a href="<?php print $change_password_path; ?>" title="Change password">
                       Change password
+                    </a>
+                  </li>
+                  <li>
+                    <a href="<?php print $security_questions_path; ?>" title="Security questions">
+                      Security questions
                     </a>
                   </li>
                   <li>
