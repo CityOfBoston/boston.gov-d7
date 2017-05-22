@@ -43,7 +43,7 @@
             <div><?php print render($content['field_description']); ?></div>
           </div>
           <div id="alert_success" class="m-b500 p-t400">
-            <div class="di di--c di--c--w di--c--l fl--l m-r400">
+            <div class="di di--c<?php if ($component_theme === 'b'): ?> di--c--w<?php endif; ?> di--c--l fl--l m-r400">
               <div class="di-a">
                 <img src="<?php print render($content['field_icon']); ?>" role="presentation" />
               </div>
@@ -75,7 +75,7 @@
                 <span class="cb-l cb-l--sans">Text me</span>
               </label>
             </div>
-            <div class="t--subinfo t--w m-t100">Message &amp; data rates may apply</div>
+            <div class="t--subinfo<?php if ($component_theme === 'b'): ?> t--w<?php endif; ?> m-t100">Message &amp; data rates may apply</div>
             <hr class="hr hr--sq" />
             <div class="fs-c m-b300">
               <div class="txt">
