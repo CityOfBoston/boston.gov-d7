@@ -43,7 +43,7 @@
             <div><?php print render($content['field_description']); ?></div>
           </div>
           <div id="alert_success" class="m-b500 p-t400">
-            <div class="di di--c di--c--w di--c--l fl--l m-r400">
+            <div class="di di--c<?php if ($component_theme === 'b'): ?> di--c--w<?php endif; ?> di--c--l fl--l m-r400">
               <div class="di-a">
                 <img src="<?php print render($content['field_icon']); ?>" role="presentation" />
               </div>
@@ -58,11 +58,11 @@
             <div class="fs-c m-b300">
               <div class="txt">
                 <label for="email" class="txt-l txt-l--mt000">Your email address</label>
-                <input id="email" name="email" type="text" value="hello@matthewcrist.com" placeholder="email@address.com" class="txt-f txt-f--sm">
+                <input id="email" name="email" type="text" value="" placeholder="email@address.com" class="txt-f txt-f--sm">
               </div>
               <div class="txt">
                 <label for="phone_number" class="txt-l txt-l--w txt-l--mt000">Your phone number</label>
-                <input id="phone_number" name="phone_number" type="text" value="857-225-2197" placeholder="Phone number" class="txt-f txt-f--sm">
+                <input id="phone_number" name="phone_number" type="text" value="" placeholder="Phone number" class="txt-f txt-f--sm">
               </div>
             </div>
             <div class="fs-c fs-c--i">
@@ -75,12 +75,12 @@
                 <span class="cb-l cb-l--sans">Text me</span>
               </label>
             </div>
-            <div class="t--subinfo t--w m-t100">Message &amp; data rates may apply</div>
+            <div class="t--subinfo<?php if ($component_theme === 'b'): ?> t--w<?php endif; ?> m-t100">Message &amp; data rates may apply</div>
             <hr class="hr hr--sq" />
             <div class="fs-c m-b300">
               <div class="txt">
                 <label for="first_name" class="txt-l txt-l--mt000">First name</label>
-                <input id="first_name" name="first_name" type="text" value="Matthew" placeholder="First name" class="txt-f txt-f--sm">
+                <input id="first_name" name="first_name" type="text" value="" placeholder="First name" class="txt-f txt-f--sm">
               </div>
             </div>
             <div class="fs-c m-b300">
@@ -92,7 +92,7 @@
             <div class="fs-c m-b300">
               <div class="txt">
                 <label for="zip_code" class="txt-l txt-l--w txt-l--mt000">Zip code</label>
-                <input id="zip_code" name="zip" type="text" value="02119" placeholder="Zip code" class="txt-f txt-f--sm" size="10">
+                <input id="zip_code" name="zip" type="text" value="" placeholder="Zip code" class="txt-f txt-f--sm" size="10">
               </div>
             </div>
             <div id="message" class="m-b300" style="display: none"></div>
@@ -137,10 +137,12 @@
           data: data,
           success: handleSuccess,
           error: function (req, err) {
-            button.attr('disabled', false);
+            button.attr('disabled', false).html('Sign Up');
 
             if (req.responseJSON && req.responseJSON.errors) {
               jQuery('#message').append('<div class="t--subinfo t--err m-t100">' + req.responseJSON.errors + '</div>').show();
+            } else {
+              jQuery('#message').append('<div class="t--subinfo t--err m-t100">There was an error. Please try again or email <a href="mailto:feedback@boston.gov">feedback@boston.gov</a>.</div>').show();
             }
           },
         });
@@ -162,21 +164,23 @@
     }
 
     function validateForm() {
+      var valid = true;
+
       resetForm();
 
       if (email.val() == '' && phone_number.val() == '') {
         triggerError(email, "Please enter a valid email or phone number", 'txt-f--err');
         triggerError(phone_number, "Please enter a valid phone number or email", 'txt-f--err');
-        return false;
+        valid = false;
       }
 
       if (first_name.val() == '' && last_name.val() == '') {
         triggerError(first_name, "Please enter your first or last name", 'txt-f--err');
         triggerError(last_name, "Please enter your first or last name", 'txt-f--err');
-        return false;
+        valid = false;
       }
 
-      return true;
+      return valid;
     }
 
     function resetForm() {

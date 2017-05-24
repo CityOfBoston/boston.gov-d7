@@ -585,13 +585,13 @@ function bos_content_type_event_field_default_field_instances() {
       'bundle_weights' => array(
         '3_column_w_image' => -96,
         'bos311' => -95,
-        'bos_signup_emergency_alerts' => 4,
+        'bos_signup_emergency_alerts' => -49,
         'cabinet' => -94,
-        'card' => -42,
+        'card' => -41,
         'city_score_dashboard' => -62,
         'custom_hours_text' => -87,
         'daily_hours' => -86,
-        'discussion_topic' => -41,
+        'discussion_topic' => -40,
         'document' => -93,
         'drawer' => -75,
         'drawers' => -90,
@@ -632,15 +632,15 @@ function bos_content_type_event_field_default_field_instances() {
         'social_media_links' => -77,
         'social_networking' => -76,
         'status_override' => -50,
-        'tabbed_content_tab' => -40,
-        'text' => -49,
-        'text_one_column' => -48,
-        'text_three_column' => -46,
-        'text_two_column' => -47,
-        'transaction_grid' => -45,
-        'upcoming_events' => -44,
+        'tabbed_content_tab' => -39,
+        'text' => -48,
+        'text_one_column' => -47,
+        'text_three_column' => -45,
+        'text_two_column' => -46,
+        'transaction_grid' => -44,
+        'upcoming_events' => -43,
         'user_action' => -73,
-        'video' => -43,
+        'video' => -42,
       ),
       'default_edit_mode' => 'open',
       'title' => 'Component',
@@ -812,7 +812,7 @@ function bos_content_type_event_field_default_field_instances() {
       ),
     ),
     'deleted' => 0,
-    'description' => 'Enter cost as dollars. For example $55.00. Leave blank if event is free.',
+    'description' => 'Enter the cost, with a $ or FREE',
     'display' => array(
       'article' => array(
         'label' => 'above',
@@ -3601,7 +3601,7 @@ function bos_content_type_event_field_default_field_instances() {
   t('Details Link');
   t('Downloads');
   t('Enter an external link for details of this event');
-  t('Enter cost as dollars. For example $55.00. Leave blank if event is free.');
+  t('Enter the cost, with a $ or FREE');
   t('Event Dates');
   t('Event Type');
   t('Event not sponsored by the City');

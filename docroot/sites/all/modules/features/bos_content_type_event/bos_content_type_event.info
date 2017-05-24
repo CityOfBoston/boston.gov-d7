@@ -23,6 +23,8 @@ dependencies[] = strongarm
 dependencies[] = taxonomy
 dependencies[] = text
 dependencies[] = title
+<<<<<<< HEAD
+mtime = 1495198942
 features[ctools][] = field_group:field_group:1
 features[ctools][] = strongarm:strongarm:1
 features[features_api][] = api:2
@@ -93,4 +95,4 @@ features[variable][] = node_submitted_event
 features[variable][] = pathauto_node_event_pattern
 features[variable][] = workbench_scheduler_event
 features[variable][] = xmlsitemap_settings_node_event
-mtime = 1495048696
+mtime = 1495203622

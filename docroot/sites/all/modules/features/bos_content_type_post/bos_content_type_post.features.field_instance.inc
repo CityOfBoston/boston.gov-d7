@@ -231,6 +231,7 @@ function bos_content_type_post_field_default_field_instances() {
       'allowed_bundles' => array(
         '3_column_w_image' => '3_column_w_image',
         'bos311' => 'bos311',
+        'bos_signup_emergency_alerts' => 'bos_signup_emergency_alerts',
         'cabinet' => 'cabinet',
         'card' => -1,
         'city_score_dashboard' => -1,
@@ -290,16 +291,17 @@ function bos_content_type_post_field_default_field_instances() {
       'bundle_weights' => array(
         '3_column_w_image' => -96,
         'bos311' => -95,
+        'bos_signup_emergency_alerts' => -50,
         'cabinet' => -94,
-        'card' => -42,
+        'card' => -41,
         'city_score_dashboard' => -62,
         'custom_hours_text' => -87,
         'daily_hours' => -86,
-        'discussion_topic' => -41,
+        'discussion_topic' => -40,
         'document' => -93,
         'drawer' => -75,
         'drawers' => -91,
-        'election_results' => -47,
+        'election_results' => -46,
         'external_link' => -92,
         'featured_item' => -90,
         'featured_topics' => -88,
@@ -336,15 +338,15 @@ function bos_content_type_post_field_default_field_instances() {
         'social_media_links' => -77,
         'social_networking' => -76,
         'status_override' => -51,
-        'tabbed_content_tab' => -40,
-        'text' => -50,
-        'text_one_column' => -49,
-        'text_three_column' => -46,
-        'text_two_column' => -48,
-        'transaction_grid' => -45,
-        'upcoming_events' => -44,
+        'tabbed_content_tab' => -39,
+        'text' => -49,
+        'text_one_column' => -48,
+        'text_three_column' => -45,
+        'text_two_column' => -47,
+        'transaction_grid' => -44,
+        'upcoming_events' => -43,
         'user_action' => -73,
-        'video' => -43,
+        'video' => -42,
       ),
       'default_edit_mode' => 'open',
       'title' => 'Component',
@@ -899,6 +901,7 @@ function bos_content_type_post_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-post-field_news_tags'
   $field_instances['node-post-field_news_tags'] = array(
     'bundle' => 'post',
     'default_value' => NULL,
@@ -2270,7 +2273,6 @@ function bos_content_type_post_field_default_field_instances() {
   t('Intro Image');
   t('Intro Text');
   t('List all departments related to this post.');
-  t('Neighborhoods');
   t('News Tags');
   t('Other related content');
   t('Please select the type of content this piece of content can be filtered by.  NOTE:  This is currently used for the Hub.');
