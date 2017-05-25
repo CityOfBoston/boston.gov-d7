@@ -10,7 +10,7 @@
 function bos_content_type_listing_page_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-listing_page-field_components'.
+  // Exported field_instance: 'node-listing_page-field_components'
   $field_instances['node-listing_page-field_components'] = array(
     'bundle' => 'listing_page',
     'default_value' => NULL,
@@ -109,6 +109,7 @@ function bos_content_type_listing_page_field_default_field_instances() {
       'allowed_bundles' => array(
         '3_column_w_image' => '3_column_w_image',
         'bos311' => 'bos311',
+        'bos_signup_emergency_alerts' => 'bos_signup_emergency_alerts',
         'cabinet' => 'cabinet',
         'card' => -1,
         'city_score_dashboard' => -1,
@@ -144,6 +145,7 @@ function bos_content_type_listing_page_field_default_field_instances() {
         'list' => 'list',
         'message_for_the_day' => -1,
         'news_announcements' => 'news_announcements',
+        'newsletter' => 'newsletter',
         'photo' => 'photo',
         'quote' => -1,
         'recollect_widget' => -1,
@@ -167,12 +169,13 @@ function bos_content_type_listing_page_field_default_field_instances() {
       'bundle_weights' => array(
         '3_column_w_image' => -96,
         'bos311' => -95,
+        'bos_signup_emergency_alerts' => -49,
         'cabinet' => -94,
-        'card' => -43,
+        'card' => -41,
         'city_score_dashboard' => -62,
         'custom_hours_text' => -87,
         'daily_hours' => -86,
-        'discussion_topic' => -42,
+        'discussion_topic' => -40,
         'document' => -93,
         'drawer' => -75,
         'drawers' => -91,
@@ -202,25 +205,26 @@ function bos_content_type_listing_page_field_default_field_instances() {
         'list' => -58,
         'message_for_the_day' => -74,
         'news_announcements' => -57,
-        'photo' => -56,
-        'quote' => -55,
-        'recollect_widget' => -54,
-        'script_embed' => -53,
-        'seamless_doc' => -52,
+        'newsletter' => -56,
+        'photo' => -55,
+        'quote' => -54,
+        'recollect_widget' => -53,
+        'script_embed' => -52,
+        'seamless_doc' => -51,
         'sidebar_item' => -80,
         'sidebar_item_w_icon' => -79,
         'social_media_links' => -77,
         'social_networking' => -76,
-        'status_override' => -51,
-        'tabbed_content_tab' => -41,
-        'text' => -50,
-        'text_one_column' => -49,
-        'text_three_column' => -47,
-        'text_two_column' => -48,
-        'transaction_grid' => -46,
-        'upcoming_events' => -45,
+        'status_override' => -50,
+        'tabbed_content_tab' => -39,
+        'text' => -48,
+        'text_one_column' => -47,
+        'text_three_column' => -45,
+        'text_two_column' => -46,
+        'transaction_grid' => -44,
+        'upcoming_events' => -43,
         'user_action' => -73,
-        'video' => -44,
+        'video' => -42,
       ),
       'default_edit_mode' => 'open',
       'title' => 'Component',
@@ -236,7 +240,7 @@ function bos_content_type_listing_page_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-listing_page-field_header_component'.
+  // Exported field_instance: 'node-listing_page-field_header_component'
   $field_instances['node-listing_page-field_header_component'] = array(
     'bundle' => 'listing_page',
     'default_value' => NULL,
@@ -382,7 +386,7 @@ function bos_content_type_listing_page_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-listing_page-field_intro_image'.
+  // Exported field_instance: 'node-listing_page-field_intro_image'
   $field_instances['node-listing_page-field_intro_image'] = array(
     'bundle' => 'listing_page',
     'deleted' => 0,
@@ -522,7 +526,7 @@ function bos_content_type_listing_page_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-listing_page-field_published_date'.
+  // Exported field_instance: 'node-listing_page-field_published_date'
   $field_instances['node-listing_page-field_published_date'] = array(
     'bundle' => 'listing_page',
     'deleted' => 0,
@@ -655,7 +659,7 @@ function bos_content_type_listing_page_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-listing_page-field_updated_date'.
+  // Exported field_instance: 'node-listing_page-field_updated_date'
   $field_instances['node-listing_page-field_updated_date'] = array(
     'bundle' => 'listing_page',
     'deleted' => 0,

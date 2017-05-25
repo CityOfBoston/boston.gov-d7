@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the bos_signup_alerts feature.
+ */
+
+include_once 'bos_signup_alerts.features.inc';

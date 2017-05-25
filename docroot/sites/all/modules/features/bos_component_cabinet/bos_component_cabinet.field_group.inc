@@ -55,6 +55,7 @@ function bos_component_cabinet_field_group_info() {
       0 => 'field_description',
       1 => 'field_person',
       2 => 'field_title',
+      3 => 'field_short_title',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
