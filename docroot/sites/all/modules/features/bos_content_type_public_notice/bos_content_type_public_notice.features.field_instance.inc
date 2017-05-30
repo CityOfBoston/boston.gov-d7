@@ -341,77 +341,6 @@ function bos_content_type_public_notice_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-public_notice-field_contacts'
-  $field_instances['node-public_notice-field_contacts'] = array(
-    'bundle' => 'public_notice',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'List all departments related to this public notice.',
-    'display' => array(
-      'default' => array(
-        'label' => 'hidden',
-        'module' => 'entityreference',
-        'settings' => array(
-          'links' => 0,
-          'view_mode' => 'department_listing',
-        ),
-        'type' => 'entityreference_entity_view',
-        'weight' => 12,
-      ),
-      'featured_item' => array(
-        'label' => 'hidden',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 12,
-      ),
-      'listing' => array(
-        'label' => 'hidden',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 12,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'fences_wrapper' => 'no_wrapper',
-    'field_name' => 'field_contacts',
-    'label' => 'All related departments',
-    'required' => 1,
-    'settings' => array(
-      'behaviors' => array(
-        'taxonomy-index' => array(
-          'status' => TRUE,
-        ),
-      ),
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'entityreference',
-      'settings' => array(
-        'entityreference_autocreate' => array(
-          'active' => 0,
-          'author' => '',
-          'author_current_user' => 1,
-          'status' => -1,
-        ),
-        'match_operator' => 'CONTAINS',
-        'path' => '',
-        'size' => 60,
-      ),
-      'type' => 'entityreference_autocomplete',
-      'weight' => 16,
-    ),
-  );
-
   // Exported field_instance: 'node-public_notice-field_drawer'
   $field_instances['node-public_notice-field_drawer'] = array(
     'bundle' => 'public_notice',
@@ -1966,7 +1895,6 @@ function bos_content_type_public_notice_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('A sentence describing the purpose of the meeting.');
-  t('All related departments');
   t('Are any cemeteries, parks, historic districts, or community centers relevant for this public notice?');
   t('Body');
   t('Canceled');
@@ -1984,7 +1912,6 @@ function bos_content_type_public_notice_field_default_field_instances() {
   t('Intro Text');
   t('Is there public testimony?');
   t('Is this meeting happening at City Hall?');
-  t('List all departments related to this public notice.');
   t('Location');
   t('Other related content');
   t('Please attach filed posting here.');

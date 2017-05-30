@@ -484,80 +484,6 @@ function bos_content_type_event_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-event-field_contacts'
-  $field_instances['node-event-field_contacts'] = array(
-    'bundle' => 'event',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'List all departments related to this event.',
-    'display' => array(
-      'calendar_listing' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 10,
-      ),
-      'default' => array(
-        'label' => 'hidden',
-        'module' => 'entityreference',
-        'settings' => array(
-          'links' => 0,
-          'view_mode' => 'department_listing',
-        ),
-        'type' => 'entityreference_entity_view',
-        'weight' => 20,
-      ),
-      'featured_item' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'listing' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'listing_short' => array(
-        'label' => 'hidden',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 27,
-      ),
-    ),
-    'entity_type' => 'node',
-    'fences_wrapper' => 'no_wrapper',
-    'field_name' => 'field_contacts',
-    'label' => 'All related departments',
-    'required' => 1,
-    'settings' => array(
-      'behaviors' => array(
-        'taxonomy-index' => array(
-          'status' => TRUE,
-        ),
-      ),
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'entityreference',
-      'settings' => array(
-        'entityreference_autocreate' => array(
-          'active' => 0,
-          'author' => '',
-          'author_current_user' => 1,
-          'status' => -1,
-        ),
-        'match_operator' => 'CONTAINS',
-        'path' => '',
-        'size' => 60,
-      ),
-      'type' => 'entityreference_autocomplete',
-      'weight' => 9,
-    ),
-  );
-
   // Exported field_instance: 'node-event-field_cost'
   $field_instances['node-event-field_cost'] = array(
     'bundle' => 'event',
@@ -3146,7 +3072,6 @@ function bos_content_type_event_field_default_field_instances() {
   t('A phone number for constituents to call to get more info about this event.');
   t('Add an intro image to the page. It will display at the very top of the page, slightly above the content. It will also be used as the thumbnail if no thumbnail is entered.');
   t('Add download resources here.');
-  t('All related departments');
   t('An email address for constituents to reach out about the event.');
   t('Are any cemeteries, parks, historic districts, or community centers relevant for this event?');
   t('Body');
@@ -3166,7 +3091,6 @@ function bos_content_type_event_field_default_field_instances() {
   t('Featured');
   t('Intro Image');
   t('Is this event happening at City Hall?');
-  t('List all departments related to this event.');
   t('Location');
   t('Neighborhood');
   t('Other related content');
