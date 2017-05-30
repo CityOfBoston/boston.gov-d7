@@ -616,3 +616,14 @@ function bos_profile_update_7024() {
   );
   module_enable($enabled_modules);
 }
+
+/**
+ * Update for 5/24/17
+ */
+function bos_profile_update_7025() {
+  $enabled_modules = array(
+    'paragraphs_reference_manager',
+    'bos_field_instances',
+  );
+  module_enable($enabled_modules);
+}

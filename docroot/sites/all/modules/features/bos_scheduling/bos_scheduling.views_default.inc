@@ -83,15 +83,25 @@ function bos_scheduling_views_default_views() {
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['relationship'] = 'nid';
   $handler->display->display_options['filters']['type']['value'] = array(
+    'change' => 'change',
     'article' => 'article',
     'department_profile' => 'department_profile',
+    'emergency_alert' => 'emergency_alert',
     'how_to' => 'how_to',
     'landing_page' => 'landing_page',
     'listing_page' => 'listing_page',
+    'person_profile' => 'person_profile',
+    'place_profile' => 'place_profile',
+    'program_initiative_profile' => 'program_initiative_profile',
+    'public_notice' => 'public_notice',
     'script_page' => 'script_page',
-    'topic_page' => 'topic_page',
-    'application' => 'application',
+    'site_alert' => 'site_alert',
+    'status_item' => 'status_item',
     'tabbed_content' => 'tabbed_content',
+    'topic_page' => 'topic_page',
+    'transaction' => 'transaction',
+    'metrolist_affordable_housing' => 'metrolist_affordable_housing',
+    'advpoll' => 'advpoll',
   );
   /* Filter criterion: Workbench Scheduler: Completed */
   $handler->display->display_options['filters']['completed']['id'] = 'completed';
@@ -175,15 +185,25 @@ function bos_scheduling_views_default_views() {
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['relationship'] = 'nid';
   $handler->display->display_options['filters']['type']['value'] = array(
+    'change' => 'change',
     'article' => 'article',
     'department_profile' => 'department_profile',
+    'emergency_alert' => 'emergency_alert',
     'how_to' => 'how_to',
     'landing_page' => 'landing_page',
     'listing_page' => 'listing_page',
+    'person_profile' => 'person_profile',
+    'place_profile' => 'place_profile',
+    'program_initiative_profile' => 'program_initiative_profile',
+    'public_notice' => 'public_notice',
     'script_page' => 'script_page',
-    'topic_page' => 'topic_page',
-    'application' => 'application',
+    'site_alert' => 'site_alert',
+    'status_item' => 'status_item',
     'tabbed_content' => 'tabbed_content',
+    'topic_page' => 'topic_page',
+    'transaction' => 'transaction',
+    'metrolist_affordable_housing' => 'metrolist_affordable_housing',
+    'advpoll' => 'advpoll',
   );
   /* Filter criterion: Workbench Scheduler: Completed */
   $handler->display->display_options['filters']['completed']['id'] = 'completed';

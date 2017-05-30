@@ -238,6 +238,8 @@ projects:
     # Issue Link https://www.drupal.org/node/2603424
     # Resolves issue with nested paragraphs & Workbench.
     - https://www.drupal.org/files/issues/paragraphs-nested_paragraphs_workbench_moderation-2603424-02.patch
+  paragraphs_reference_manager:
+    version: 1.x-dev
   phone:
     version: 1.0-beta1
   phpexcel:

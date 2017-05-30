@@ -266,188 +266,6 @@ function bos_content_type_public_notice_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-public_notice-field_components'
-  $field_instances['node-public_notice-field_components'] = array(
-    'bundle' => 'public_notice',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'hidden',
-        'module' => 'paragraphs',
-        'settings' => array(
-          'view_mode' => 'full',
-        ),
-        'type' => 'paragraphs_view',
-        'weight' => 15,
-      ),
-      'featured_item' => array(
-        'label' => 'hidden',
-        'module' => 'paragraphs',
-        'settings' => array(
-          'view_mode' => 'full',
-        ),
-        'type' => 'paragraphs_view',
-        'weight' => 15,
-      ),
-      'listing' => array(
-        'label' => 'hidden',
-        'module' => 'paragraphs',
-        'settings' => array(
-          'view_mode' => 'full',
-        ),
-        'type' => 'paragraphs_view',
-        'weight' => 15,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'fences_wrapper' => 'no_wrapper',
-    'field_name' => 'field_components',
-    'label' => 'Components',
-    'required' => 0,
-    'settings' => array(
-      'add_mode' => 'select',
-      'allowed_bundles' => array(
-        '3_column_w_image' => '3_column_w_image',
-        'bos311' => 'bos311',
-        'bos_signup_emergency_alerts' => 'bos_signup_emergency_alerts',
-        'cabinet' => 'cabinet',
-        'card' => -1,
-        'city_score_dashboard' => -1,
-        'custom_hours_text' => -1,
-        'daily_hours' => -1,
-        'discussion_topic' => -1,
-        'document' => -1,
-        'drawer' => -1,
-        'drawers' => 'drawers',
-        'election_results' => -1,
-        'external_link' => -1,
-        'featured_item' => -1,
-        'featured_topics' => 'featured_topics',
-        'feedback' => 'feedback',
-        'fyi' => 'fyi',
-        'gol_list_links' => -1,
-        'grid_of_cards' => 'grid_of_cards',
-        'grid_of_people' => 'grid_of_people',
-        'grid_of_places' => 'grid_of_places',
-        'grid_of_programs_initiatives' => 'grid_of_programs_initiatives',
-        'grid_of_quotes' => 'grid_of_quotes',
-        'grid_of_topics' => 'grid_of_topics',
-        'group_of_links_grid' => 'group_of_links_grid',
-        'group_of_links_list' => 'group_of_links_list',
-        'group_of_links_mini_grid' => 'group_of_links_mini_grid',
-        'header_text' => -1,
-        'hero_image' => 'hero_image',
-        'how_to_contact_step' => -1,
-        'how_to_tab' => -1,
-        'how_to_text_step' => -1,
-        'iframe' => 'iframe',
-        'internal_link' => -1,
-        'list' => 'list',
-        'message_for_the_day' => -1,
-        'news_announcements' => 'news_announcements',
-        'newsletter' => 'newsletter',
-        'photo' => 'photo',
-        'quote' => -1,
-        'recollect_widget' => -1,
-        'script_embed' => -1,
-        'seamless_doc' => -1,
-        'sidebar_item' => -1,
-        'sidebar_item_w_icon' => -1,
-        'social_media_links' => -1,
-        'social_networking' => -1,
-        'status_override' => -1,
-        'tabbed_content_tab' => -1,
-        'text' => 'text',
-        'text_one_column' => -1,
-        'text_three_column' => -1,
-        'text_two_column' => -1,
-        'transaction_grid' => 'transaction_grid',
-        'upcoming_events' => 'upcoming_events',
-        'user_action' => -1,
-        'video' => 'video',
-      ),
-      'bundle_weights' => array(
-        '3_column_w_image' => 2,
-        'bos311' => 3,
-        'bos_signup_emergency_alerts' => 48,
-        'cabinet' => 4,
-        'card' => 57,
-        'city_score_dashboard' => 5,
-        'custom_hours_text' => 6,
-        'daily_hours' => 7,
-        'discussion_topic' => 58,
-        'document' => 8,
-        'drawer' => 9,
-        'drawers' => 10,
-        'election_results' => 11,
-        'external_link' => 12,
-        'featured_item' => 13,
-        'featured_topics' => 14,
-        'feedback' => 15,
-        'fyi' => 16,
-        'gol_list_links' => 17,
-        'grid_of_cards' => 18,
-        'grid_of_people' => 19,
-        'grid_of_places' => 20,
-        'grid_of_programs_initiatives' => 21,
-        'grid_of_quotes' => 22,
-        'grid_of_topics' => 23,
-        'group_of_links_grid' => 24,
-        'group_of_links_list' => 25,
-        'group_of_links_mini_grid' => 26,
-        'header_text' => 27,
-        'hero_image' => 28,
-        'how_to_contact_step' => 29,
-        'how_to_tab' => 30,
-        'how_to_text_step' => 31,
-        'iframe' => 32,
-        'internal_link' => 33,
-        'list' => 34,
-        'message_for_the_day' => 35,
-        'news_announcements' => 36,
-        'newsletter' => 37,
-        'photo' => 38,
-        'quote' => 39,
-        'recollect_widget' => 40,
-        'script_embed' => 41,
-        'seamless_doc' => 42,
-        'sidebar_item' => 43,
-        'sidebar_item_w_icon' => 44,
-        'social_media_links' => 45,
-        'social_networking' => 46,
-        'status_override' => 47,
-        'tabbed_content_tab' => 59,
-        'text' => 49,
-        'text_one_column' => 50,
-        'text_three_column' => 51,
-        'text_two_column' => 52,
-        'transaction_grid' => 53,
-        'upcoming_events' => 54,
-        'user_action' => 55,
-        'video' => 56,
-      ),
-      'default_edit_mode' => 'closed',
-      'title' => 'Component',
-      'title_multiple' => 'Components',
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'paragraphs',
-      'settings' => array(),
-      'type' => 'paragraphs_embed',
-      'weight' => 15,
-    ),
-  );
-
   // Exported field_instance: 'node-public_notice-field_contact'
   $field_instances['node-public_notice-field_contact'] = array(
     'bundle' => 'public_notice',
@@ -520,77 +338,6 @@ function bos_content_type_public_notice_field_default_field_instances() {
       ),
       'type' => 'entityreference_autocomplete',
       'weight' => 1,
-    ),
-  );
-
-  // Exported field_instance: 'node-public_notice-field_contacts'
-  $field_instances['node-public_notice-field_contacts'] = array(
-    'bundle' => 'public_notice',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'List all departments related to this public notice.',
-    'display' => array(
-      'default' => array(
-        'label' => 'hidden',
-        'module' => 'entityreference',
-        'settings' => array(
-          'links' => 0,
-          'view_mode' => 'department_listing',
-        ),
-        'type' => 'entityreference_entity_view',
-        'weight' => 12,
-      ),
-      'featured_item' => array(
-        'label' => 'hidden',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 12,
-      ),
-      'listing' => array(
-        'label' => 'hidden',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 12,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'fences_wrapper' => 'no_wrapper',
-    'field_name' => 'field_contacts',
-    'label' => 'All related departments',
-    'required' => 1,
-    'settings' => array(
-      'behaviors' => array(
-        'taxonomy-index' => array(
-          'status' => TRUE,
-        ),
-      ),
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'entityreference',
-      'settings' => array(
-        'entityreference_autocreate' => array(
-          'active' => 0,
-          'author' => '',
-          'author_current_user' => 1,
-          'status' => -1,
-        ),
-        'match_operator' => 'CONTAINS',
-        'path' => '',
-        'size' => 60,
-      ),
-      'type' => 'entityreference_autocomplete',
-      'weight' => 16,
     ),
   );
 
@@ -2148,13 +1895,11 @@ function bos_content_type_public_notice_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('A sentence describing the purpose of the meeting.');
-  t('All related departments');
   t('Are any cemeteries, parks, historic districts, or community centers relevant for this public notice?');
   t('Body');
   t('Canceled');
   t('Cancellation Reason');
   t('Check this box if the meeting is happening at City Hall, or on City Hall plaza');
-  t('Components');
   t('Contact Email');
   t('Contact Phone Number');
   t('Date');
@@ -2167,7 +1912,6 @@ function bos_content_type_public_notice_field_default_field_instances() {
   t('Intro Text');
   t('Is there public testimony?');
   t('Is this meeting happening at City Hall?');
-  t('List all departments related to this public notice.');
   t('Location');
   t('Other related content');
   t('Please attach filed posting here.');
