@@ -10,13 +10,14 @@
 function bos_content_type_how_to_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'field_how_to_steps'.
+  // Exported field_base: 'field_how_to_steps'
   $field_bases['field_how_to_steps'] = array(
     'active' => 1,
     'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_how_to_steps',
+    'foreign keys' => array(),
     'indexes' => array(),
     'locked' => 0,
     'module' => 'paragraphs',
@@ -25,13 +26,14 @@ function bos_content_type_how_to_field_default_field_bases() {
     'type' => 'paragraphs',
   );
 
-  // Exported field_base: 'field_how_to_tabs'.
+  // Exported field_base: 'field_how_to_tabs'
   $field_bases['field_how_to_tabs'] = array(
     'active' => 1,
     'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_how_to_tabs',
+    'foreign keys' => array(),
     'indexes' => array(),
     'locked' => 0,
     'module' => 'paragraphs',
@@ -40,13 +42,21 @@ function bos_content_type_how_to_field_default_field_bases() {
     'type' => 'paragraphs',
   );
 
-  // Exported field_base: 'field_how_to_title'.
+  // Exported field_base: 'field_how_to_title'
   $field_bases['field_how_to_title'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_how_to_title',
+    'foreign keys' => array(
+      'format' => array(
+        'columns' => array(
+          'format' => 'format',
+        ),
+        'table' => 'filter_format',
+      ),
+    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -61,13 +71,21 @@ function bos_content_type_how_to_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_keep_in_mind'.
+  // Exported field_base: 'field_keep_in_mind'
   $field_bases['field_keep_in_mind'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_keep_in_mind',
+    'foreign keys' => array(
+      'format' => array(
+        'columns' => array(
+          'format' => 'format',
+        ),
+        'table' => 'filter_format',
+      ),
+    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -80,13 +98,21 @@ function bos_content_type_how_to_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_step_details'.
+  // Exported field_base: 'field_step_details'
   $field_bases['field_step_details'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_step_details',
+    'foreign keys' => array(
+      'format' => array(
+        'columns' => array(
+          'format' => 'format',
+        ),
+        'table' => 'filter_format',
+      ),
+    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',

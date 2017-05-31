@@ -10,7 +10,7 @@
 function bos_content_type_place_profile_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-place_profile-body'.
+  // Exported field_instance: 'node-place_profile-body'
   $field_instances['node-place_profile-body'] = array(
     'bundle' => 'place_profile',
     'default_value' => NULL,
@@ -136,7 +136,7 @@ function bos_content_type_place_profile_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-place_profile-field_additional_information'.
+  // Exported field_instance: 'node-place_profile-field_additional_information'
   $field_instances['node-place_profile-field_additional_information'] = array(
     'bundle' => 'place_profile',
     'default_value' => NULL,
@@ -257,7 +257,7 @@ function bos_content_type_place_profile_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-place_profile-field_address'.
+  // Exported field_instance: 'node-place_profile-field_address'
   $field_instances['node-place_profile-field_address'] = array(
     'bundle' => 'place_profile',
     'default_value' => NULL,
@@ -399,240 +399,7 @@ function bos_content_type_place_profile_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-place_profile-field_components'.
-  $field_instances['node-place_profile-field_components'] = array(
-    'bundle' => 'place_profile',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'Optionally, add additional components to this page.',
-    'display' => array(
-      'article' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'calendar_listing' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'contact' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'hidden',
-        'module' => 'paragraphs',
-        'settings' => array(
-          'view_mode' => 'full',
-        ),
-        'type' => 'paragraphs_view',
-        'weight' => 13,
-      ),
-      'department_listing' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'featured_item' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'featured_topics' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'full' => array(
-        'label' => 'hidden',
-        'module' => 'paragraphs',
-        'settings' => array(
-          'view_mode' => 'full',
-        ),
-        'type' => 'paragraphs_view',
-        'weight' => 13,
-      ),
-      'grid_item' => array(
-        'label' => 'hidden',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 10,
-      ),
-      'listing' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 11,
-      ),
-      'listing_long' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'poll_stub' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'popup_icon' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'published_by' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'fences_wrapper' => 'no_wrapper',
-    'field_name' => 'field_components',
-    'label' => 'Components',
-    'required' => 0,
-    'settings' => array(
-      'add_mode' => 'select',
-      'allowed_bundles' => array(
-        '3_column_w_image' => '3_column_w_image',
-        'bos311' => 'bos311',
-        'cabinet' => 'cabinet',
-        'city_score_dashboard' => -1,
-        'custom_hours_text' => -1,
-        'daily_hours' => -1,
-        'document' => -1,
-        'drawer' => -1,
-        'drawers' => 'drawers',
-        'election_results' => -1,
-        'external_link' => -1,
-        'featured_item' => -1,
-        'featured_topics' => 'featured_topics',
-        'feedback' => 'feedback',
-        'fyi' => 'fyi',
-        'gol_list_links' => -1,
-        'grid_of_people' => 'grid_of_people',
-        'grid_of_places' => 'grid_of_places',
-        'grid_of_programs_initiatives' => 'grid_of_programs_initiatives',
-        'grid_of_quotes' => 'grid_of_quotes',
-        'grid_of_topics' => 'grid_of_topics',
-        'group_of_links_grid' => 'group_of_links_grid',
-        'group_of_links_list' => 'group_of_links_list',
-        'group_of_links_mini_grid' => 'group_of_links_mini_grid',
-        'header_text' => -1,
-        'hero_image' => 'hero_image',
-        'how_to_contact_step' => -1,
-        'how_to_tab' => -1,
-        'how_to_text_step' => -1,
-        'iframe' => 'iframe',
-        'internal_link' => -1,
-        'list' => 'list',
-        'message_for_the_day' => -1,
-        'news_announcements' => 'news_announcements',
-        'photo' => 'photo',
-        'quote' => -1,
-        'recollect_widget' => -1,
-        'script_embed' => -1,
-        'seamless_doc' => -1,
-        'sidebar_item' => -1,
-        'sidebar_item_w_icon' => -1,
-        'social_media_links' => -1,
-        'social_networking' => -1,
-        'status_override' => -1,
-        'text' => 'text',
-        'text_one_column' => -1,
-        'text_three_column' => -1,
-        'text_two_column' => -1,
-        'transaction_grid' => 'transaction_grid',
-        'upcoming_events' => 'upcoming_events',
-        'user_action' => -1,
-        'video' => 'video',
-      ),
-      'bundle_weights' => array(
-        '3_column_w_image' => -96,
-        'bos311' => -92,
-        'cabinet' => -88,
-        'city_score_dashboard' => 40,
-        'custom_hours_text' => -55,
-        'daily_hours' => -54,
-        'document' => -81,
-        'drawer' => -45,
-        'drawers' => -68,
-        'election_results' => 46,
-        'external_link' => -74,
-        'featured_item' => -78,
-        'featured_topics' => -56,
-        'feedback' => -52,
-        'fyi' => -48,
-        'gol_list_links' => -53,
-        'grid_of_people' => -40,
-        'grid_of_places' => -36,
-        'grid_of_programs_initiatives' => -32,
-        'grid_of_quotes' => -22,
-        'grid_of_topics' => -28,
-        'group_of_links_grid' => -24,
-        'group_of_links_list' => -20,
-        'group_of_links_mini_grid' => -16,
-        'header_text' => -67,
-        'hero_image' => -8,
-        'how_to_contact_step' => -52,
-        'how_to_tab' => -51,
-        'how_to_text_step' => -50,
-        'iframe' => 8,
-        'internal_link' => 16,
-        'list' => 20,
-        'message_for_the_day' => -44,
-        'news_announcements' => 28,
-        'photo' => 32,
-        'quote' => 35,
-        'recollect_widget' => 73,
-        'script_embed' => 74,
-        'seamless_doc' => 75,
-        'sidebar_item' => -49,
-        'sidebar_item_w_icon' => -48,
-        'social_media_links' => -47,
-        'social_networking' => -46,
-        'status_override' => 80,
-        'text' => 52,
-        'text_one_column' => 56,
-        'text_three_column' => 64,
-        'text_two_column' => 60,
-        'transaction_grid' => 68,
-        'upcoming_events' => '',
-        'user_action' => -43,
-        'video' => 76,
-      ),
-      'default_edit_mode' => 'open',
-      'title' => 'Component',
-      'title_multiple' => 'Components',
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'paragraphs',
-      'settings' => array(),
-      'type' => 'paragraphs_embed',
-      'weight' => 11,
-    ),
-  );
-
-  // Exported field_instance: 'node-place_profile-field_contact'.
+  // Exported field_instance: 'node-place_profile-field_contact'
   $field_instances['node-place_profile-field_contact'] = array(
     'bundle' => 'place_profile',
     'default_value' => NULL,
@@ -764,7 +531,7 @@ function bos_content_type_place_profile_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-place_profile-field_did_you_know'.
+  // Exported field_instance: 'node-place_profile-field_did_you_know'
   $field_instances['node-place_profile-field_did_you_know'] = array(
     'bundle' => 'place_profile',
     'default_value' => NULL,
@@ -885,7 +652,7 @@ function bos_content_type_place_profile_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-place_profile-field_features'.
+  // Exported field_instance: 'node-place_profile-field_features'
   $field_instances['node-place_profile-field_features'] = array(
     'bundle' => 'place_profile',
     'default_value' => NULL,
@@ -943,7 +710,7 @@ function bos_content_type_place_profile_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-place_profile-field_intro_image'.
+  // Exported field_instance: 'node-place_profile-field_intro_image'
   $field_instances['node-place_profile-field_intro_image'] = array(
     'bundle' => 'place_profile',
     'deleted' => 0,
@@ -1119,7 +886,7 @@ function bos_content_type_place_profile_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-place_profile-field_intro_text'.
+  // Exported field_instance: 'node-place_profile-field_intro_text'
   $field_instances['node-place_profile-field_intro_text'] = array(
     'bundle' => 'place_profile',
     'default_value' => NULL,
@@ -1282,7 +1049,7 @@ function bos_content_type_place_profile_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-place_profile-field_links'.
+  // Exported field_instance: 'node-place_profile-field_links'
   $field_instances['node-place_profile-field_links'] = array(
     'bundle' => 'place_profile',
     'default_value' => NULL,
@@ -1463,7 +1230,7 @@ function bos_content_type_place_profile_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-place_profile-field_operation_hours'.
+  // Exported field_instance: 'node-place_profile-field_operation_hours'
   $field_instances['node-place_profile-field_operation_hours'] = array(
     'bundle' => 'place_profile',
     'default_value' => NULL,
@@ -1644,7 +1411,7 @@ function bos_content_type_place_profile_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-place_profile-field_phone_number'.
+  // Exported field_instance: 'node-place_profile-field_phone_number'
   $field_instances['node-place_profile-field_phone_number'] = array(
     'bundle' => 'place_profile',
     'default_value' => NULL,
@@ -1765,7 +1532,7 @@ function bos_content_type_place_profile_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-place_profile-field_place_neighborhood'.
+  // Exported field_instance: 'node-place_profile-field_place_neighborhood'
   $field_instances['node-place_profile-field_place_neighborhood'] = array(
     'bundle' => 'place_profile',
     'default_value' => array(
@@ -1809,7 +1576,7 @@ function bos_content_type_place_profile_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-place_profile-field_place_type'.
+  // Exported field_instance: 'node-place_profile-field_place_type'
   $field_instances['node-place_profile-field_place_type'] = array(
     'bundle' => 'place_profile',
     'default_value' => NULL,
@@ -1937,7 +1704,7 @@ function bos_content_type_place_profile_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-place_profile-field_published_date'.
+  // Exported field_instance: 'node-place_profile-field_published_date'
   $field_instances['node-place_profile-field_published_date'] = array(
     'bundle' => 'place_profile',
     'deleted' => 0,
@@ -2082,178 +1849,7 @@ function bos_content_type_place_profile_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-place_profile-field_sidebar_components'.
-  $field_instances['node-place_profile-field_sidebar_components'] = array(
-    'bundle' => 'place_profile',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'Add additional items to your right sidebar with a Title/text field.',
-    'display' => array(
-      'article' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'calendar_listing' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'contact' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'hidden',
-        'module' => 'paragraphs',
-        'settings' => array(
-          'view_mode' => 'full',
-        ),
-        'type' => 'paragraphs_view',
-        'weight' => 14,
-      ),
-      'department_listing' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'featured_item' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'featured_topics' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'full' => array(
-        'label' => 'hidden',
-        'module' => 'paragraphs',
-        'settings' => array(
-          'view_mode' => 'full',
-        ),
-        'type' => 'paragraphs_view',
-        'weight' => 14,
-      ),
-      'grid_item' => array(
-        'label' => 'hidden',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 11,
-      ),
-      'listing' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 9,
-      ),
-      'listing_long' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'poll_stub' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'popup_icon' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'published_by' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'fences_wrapper' => 'no_wrapper',
-    'field_name' => 'field_sidebar_components',
-    'label' => 'Sidebar Components',
-    'required' => 0,
-    'settings' => array(
-      'add_mode' => 'select',
-      'allowed_bundles' => array(
-        '3_column_w_image' => -1,
-        'document' => -1,
-        'external_link' => -1,
-        'featured_item' => -1,
-        'featured_topics' => -1,
-        'feedback' => -1,
-        'group_of_links_grid' => -1,
-        'header_text' => -1,
-        'hero_image' => -1,
-        'internal_link' => -1,
-        'list' => -1,
-        'photo' => -1,
-        'sidebar_item' => 'sidebar_item',
-        'sidebar_item_w_icon' => 'sidebar_item_w_icon',
-        'social_media_links' => 'social_media_links',
-        'social_networking' => -1,
-        'text' => -1,
-        'text_one_column' => -1,
-        'text_three_column' => -1,
-        'text_two_column' => -1,
-        'transaction_grid' => -1,
-      ),
-      'bundle_weights' => array(
-        '3_column_w_image' => 2,
-        'document' => 3,
-        'external_link' => 4,
-        'featured_item' => 5,
-        'featured_topics' => 6,
-        'feedback' => 7,
-        'group_of_links_grid' => 8,
-        'header_text' => 9,
-        'hero_image' => 10,
-        'internal_link' => 11,
-        'list' => 12,
-        'photo' => 14,
-        'sidebar_item' => 15,
-        'sidebar_item_w_icon' => 16,
-        'social_media_links' => 17,
-        'social_networking' => 18,
-        'text' => 19,
-        'text_one_column' => 20,
-        'text_three_column' => 21,
-        'text_two_column' => 22,
-        'transaction_grid' => 23,
-      ),
-      'default_edit_mode' => 'open',
-      'title' => 'Paragraph',
-      'title_multiple' => 'Paragraphs',
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'paragraphs',
-      'settings' => array(),
-      'type' => 'paragraphs_embed',
-      'weight' => 34,
-    ),
-  );
-
-  // Exported field_instance: 'node-place_profile-field_single_neighborhood'.
+  // Exported field_instance: 'node-place_profile-field_single_neighborhood'
   $field_instances['node-place_profile-field_single_neighborhood'] = array(
     'bundle' => 'place_profile',
     'default_value' => NULL,
@@ -2318,7 +1914,7 @@ function bos_content_type_place_profile_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-place_profile-field_updated_date'.
+  // Exported field_instance: 'node-place_profile-field_updated_date'
   $field_instances['node-place_profile-field_updated_date'] = array(
     'bundle' => 'place_profile',
     'deleted' => 0,
@@ -2465,11 +2061,9 @@ function bos_content_type_place_profile_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Add additional items to your right sidebar with a Title/text field.');
   t('Additional Information');
   t('Address');
   t('Body');
-  t('Components');
   t('Contact');
   t('Did you know');
   t('Features');
@@ -2477,7 +2071,6 @@ function bos_content_type_place_profile_field_default_field_instances() {
   t('Intro Text');
   t('Neighborhood');
   t('Operation Hours');
-  t('Optionally, add additional components to this page.');
   t('Phone Number');
   t('Place Type');
   t('Please provide a fact that can be pulled onto the page. ex. "Franklin park is part of a 7-mile stretch of parks called the Emerald Necklace"');
@@ -2494,7 +2087,6 @@ function bos_content_type_place_profile_field_default_field_instances() {
   t('Published Date');
   t('Resources');
   t('Select place features.');
-  t('Sidebar Components');
   t('The hero image that is displayed at the top of the page.');
   t('Updated Date');
   t('Use this field to provide users with resources about this place. These resources can be internal links, external links or documents.');

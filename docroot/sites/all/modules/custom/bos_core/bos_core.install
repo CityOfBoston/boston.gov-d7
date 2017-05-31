@@ -576,3 +576,33 @@ function bos_core_update_7033() {
   );
   module_enable($enabled_modules);
 }
+
+/**
+ * Updates for deleting all the fields.
+ */
+function bos_core_update_7034() {
+  $deleted_field_instances = array(
+    'node' => array(
+      'post' => array(
+        'field_multiple_neighborhoods',
+        'field_contacts',
+      ),
+      'event' => array(
+        'field_contacts',
+      ),
+      'public_notice' => array(
+        'field_contacts',
+      ),
+    ),
+  );
+
+  // Remove field instances.
+  foreach ($deleted_field_instances as $entity_type => $bundles) {
+    foreach ($bundles as $bundle_id => $bundle_fields) {
+      foreach ($bundle_fields as $field) {
+        $instance = field_info_instance($entity_type, $field, $bundle_id);
+        field_delete_instance($instance);
+      }
+    }
+  }
+}
