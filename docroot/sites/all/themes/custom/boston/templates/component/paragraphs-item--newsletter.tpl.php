@@ -33,49 +33,31 @@
       <?php endif; ?>
     </div>
     <div class="g">
-      <div class="g--6">
-        <?php if (isset($content['field_description'])): ?>
+      <?php if (isset($content['field_description'])): ?>
+        <div class="g--6">
           <div class="t--intro"><?php print render($content['field_description']); ?></div>
-        <?php endif; ?>
-      </div>
-      <div class="g--6">
+        </div>
+      <?php endif; ?>
+      <div class="g--<?php if (isset($content['field_description'])): ?>6<?php else: ?>12<?php endif; ?>">
         <?php if (isset($content['field_newsletter'])): ?>
           <?php $newsletter_id = $content['field_newsletter']['#items'][0]['entity']->field_id['und'][0]['value']; ?>
-          <!-- Start Upaknee -->
-          <div id='form_<?php print render($newsletter_id); ?>'></div><script>
-            window.__ugv = ( typeof window.__ugv != 'undefined' && window.__ugv instanceof Array ) ? window.__ugv : [];
-            var def = {
-              i: '<?php print render($newsletter_id); ?>',
-              s: 'https://widgets.upaknee.com/',
-              f: 'forms/api/',
-              c: 485644,
-              l: 4173778,
-              t: 'd',
-              a: 0,
-              d: ['form_<?php print render($newsletter_id); ?>']
-            };
-            window.__ugv.push(def);
-          </script>
-          <script>
-            (function () {
-              var w = window;
-              var d = document;
-              function l() {
-                var s = d.createElement('script');
-                s.type = 'text/javascript';
-                s.async = true;
-                s.src = def['s']+def['f']+'upakneeForm.js';
-                var x = d.getElementsByTagName('script')[0];
-                x.parentNode.insertBefore(s, x);
-              }
-              if (w.attachEvent) {
-                w.attachEvent('onload', l);
-                } else {
-                  w.addEventListener('load', l, false);
-                }
-            })()
-          </script>
-          <!-- End Upaknee -->
+          <form action="<?php print $newsletter_url ?>" method="GET" class="bos-newsletter">
+            <div class="fs">
+              <div class="fs-c fs-c--i">
+                <div class="txt">
+                  <label for="subscriber[email]" class="txt-l">Your Email Address</label>
+                  <input name="subscriber[email]" type="email" value="a@a.com" placeholder="Email address" class="txt-f txt-f--sm bos-newsletter-email">
+                </div>
+                <div class="txt">
+                  <label for="subscriber[zipcode]" class="txt-l">Zip Code</label>
+                  <input name="subscriber[zipcode]" type="text" value="" placeholder="Zip Code" class="txt-f txt-f--sm" size="10">
+                </div>
+              </div>
+              <div class="bc bc--r">
+                <button type="submit" class="btn btn--700">Sign Up</button>
+              </div>
+            </div>
+          </form>
         <?php endif; ?>
       </div>
     </div>

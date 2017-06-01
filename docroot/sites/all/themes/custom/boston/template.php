@@ -607,6 +607,10 @@ function boston_preprocess_node(array &$variables, $hook) {
   }
 }
 
+function boston_preprocess_paragraphs_item_newsletter(&$variables) {
+  $variables['newsletter_url'] = variable_get('newsletter_url', 'https://www.boston.gov');
+}
+
 function boston_preprocess_paragraphs_item_bos_signup_emergency_alerts(&$variables) {
   $variables['emergency_alerts_url'] = variable_get('emergency_alerts_url', 'https://www.boston.gov');
 }
