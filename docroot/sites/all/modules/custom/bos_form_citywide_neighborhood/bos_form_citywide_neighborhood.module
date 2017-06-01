@@ -1,0 +1,23 @@
+<?php
+
+/**
+ * @file
+ * Adds "citywide" option to field_multiple_neighborhoods.
+ */
+
+/**
+ * Implements form_alter().
+ */
+function bos_form_citywide_neighborhood_form_alter(&$form, &$form_state, $form_id) {
+  if (($form_id == "event_node_form") || ($form_id == "post_node_form") || ($form_id == "notice_node_form")) {
+    $form['field_multiple_neighborhoods'][LANGUAGE_NONE]['#options']['citywide'] = 'Citywide';
+    //$form['field_multiple_neighborhoods'][LANGUAGE_NONE]['#states'] = array(
+    $form['field_multiple_neighborhoods'][LANGUAGE_NONE][251]['#states'] = array(
+      //'disabled' => array(
+      'checked' => array(
+        //':input[name="field_multiple_neighborhoods[und][citywide]"]' => array('checked' => TRUE),
+        ':input[name="field_phone_number[und][0][value]"]' => array('filled' => TRUE),
+      ),
+    );
+  }
+}
