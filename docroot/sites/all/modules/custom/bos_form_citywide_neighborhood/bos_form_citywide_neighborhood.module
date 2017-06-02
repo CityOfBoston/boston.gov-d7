@@ -15,6 +15,7 @@ function bos_form_citywide_neighborhood_form_alter(&$form, &$form_state, $form_i
     $form['field_multiple_neighborhoods'][LANGUAGE_NONE]['#options']['citywide'] = 'Citywide';
     // Set the weight so the 'Citywide' option appears at the top of the list.
     $form['field_multiple_neighborhoods'][LANGUAGE_NONE]['citywide']['#weight'] = -99;
+    $default_options = $form['field_multiple_neighborhoods'][LANGUAGE_NONE]['#options'];
     // Loop through every Neighborhood checkbox.
     foreach ($form['field_multiple_neighborhoods'][LANGUAGE_NONE]['#options'] as $tid => $name) {
       // Set a state that checks all checkbox is 'Citywide' is checked.
@@ -24,5 +25,35 @@ function bos_form_citywide_neighborhood_form_alter(&$form, &$form_state, $form_i
         ),
       );
     }
+    $form['field_multiple_neighborhoods'][LANGUAGE_NONE]['#options'] = $default_options;
   }
+}
+
+/**
+ * Implements hook_page_build().
+ */
+function bos_form_citywide_neighborhood_page_build(&$page) {
+  if ($node = menu_get_object()) {
+    $nid = $node->nid;
+  }
+  $bundle = $page['content']['system_main']['nodes'][26385]['#bundle'];
+  if ($bundle && $nid && ($bundle == 'event' || $bundle == 'post' || $bundle == 'notice')) {
+    $neighborhoods = $page['content']['system_main']['nodes'][$nid]['field_multiple_neighborhoods'];
+    foreach ($neighborhoods as $key => $neighborhood) {
+      if (is_numeric($key)) {
+        unset($page['content']['system_main']['nodes'][$nid]['field_multiple_neighborhoods'][$key]);
+        //$page['content']['system_main']['nodes'][$nid]['field_multiple_neighborhoods'][$key]['#markup'] = '';
+      }
+    }
+    $page['content']['system_main']['nodes'][$nid]['field_multiple_neighborhoods'][0]['#markup'] = 'Citywide';
+  }
+}
+
+/**
+ * Implements hook_page_alter().
+ */
+function bos_form_citywide_neighborhood_page_alter(&$page) {
+  $test = $page;
+  $test2 = $page['content']['system_main']['nodes'][26385]['field_multiple_neighborhoods'];
+  $beacon_hill = $page['content']['system_main']['nodes'][26385]['field_multiple_neighborhoods'][3];
 }
