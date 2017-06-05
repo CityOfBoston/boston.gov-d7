@@ -11,16 +11,24 @@
 function bos_form_citywide_neighborhood_form_alter(&$form, &$form_state, $form_id) {
   // Make sure we're on an Event, Post, or Public Notice form.
   if (($form_id == "event_node_form") || ($form_id == "post_node_form") || ($form_id == "notice_node_form")) {
-    // Create a new checkbox call 'Citywide'.
-    $form['field_multiple_neighborhoods'][LANGUAGE_NONE]['#options']['citywide'] = 'Citywide';
-    // Set the weight so the 'Citywide' option appears at the top of the list.
-    $form['field_multiple_neighborhoods'][LANGUAGE_NONE]['citywide']['#weight'] = -99;
+    $test = $form['field_multiple_neighborhoods'];
     // Loop through every Neighborhood checkbox.
+    foreach ($form['field_multiple_neighborhoods'][LANGUAGE_NONE]['#options'] as $tid => $name) {
+      if ($name == 'Citywide') {
+        // Set the weight so the 'Citywide' option appears at top of the list.
+        $form['field_multiple_neighborhoods'][LANGUAGE_NONE][$tid]['#weight'] = -99;
+        // Get the Term ID for the citywide taxonomy term.
+        $citywide_tid = $tid;
+        // Get "name" attr for Citywide checkbox used to tick other checkboxes.
+        $citywide_input = "field_multiple_neighborhoods[und][$citywide_tid]";
+      }
+    }
+    // Loop through every Neighborhood checkbox again.
     foreach ($form['field_multiple_neighborhoods'][LANGUAGE_NONE]['#options'] as $tid => $name) {
       // Set a state for all checkbox based on 'Citywide' value.
       $form['field_multiple_neighborhoods'][LANGUAGE_NONE][$tid]['#states'] = array(
         'checked' => array(
-          ':input[name="field_multiple_neighborhoods[und][citywide]"]' => array('checked' => TRUE),
+          ':input[name="' . $citywide_input . '"]' => array('checked' => TRUE),
         ),
       );
     }
@@ -40,13 +48,28 @@ function bos_form_citywide_neighborhood_page_build(&$page) {
   $bundle = $page['content']['system_main']['nodes'][$nid]['#bundle'];
   // Make sure we only run this code on certain content types.
   if ($bundle == 'event' || $bundle == 'post' || $bundle == 'notice') {
-    if (FALSE) { // Needs to look for 'citywide value'
-      $neighborhoods = $page['content']['system_main']['nodes'][$nid]['field_multiple_neighborhoods'];
+    // Get details about field_multiple_neighborhoods for current node.
+    $neighborhoods = $page['content']['system_main']['nodes'][$nid]['field_multiple_neighborhoods'];
+    // Assume 'Citywide' is not set by default.
+    $is_citywide = FALSE;
+    // Loop through all attributes for this field.
+    foreach ($neighborhoods as $key => $neighborhood) {
+      // Check if 'Citywide' has been saved for node.
+      if (is_numeric($key) && $neighborhood['#markup'] == 'Citywide') {
+        // 'Citywide' is found.
+        $is_citywide = TRUE;
+      }
+    }
+    // Remove other neighborhoods from display if 'Citywide' was found.
+    if ($is_citywide) {
       foreach ($neighborhoods as $key => $neighborhood) {
+        // Make sure you're not running logic on attributes that aren't terms.
         if (is_numeric($key)) {
+          // Remove term so it does not display.
           unset($page['content']['system_main']['nodes'][$nid]['field_multiple_neighborhoods'][$key]);
         }
       }
+      // Re-add the 'Citywide' markup so it is the only neighborhood displayed.
       $page['content']['system_main']['nodes'][$nid]['field_multiple_neighborhoods'][0]['#markup'] = 'Citywide';
     }
   }
