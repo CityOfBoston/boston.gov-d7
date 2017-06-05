@@ -15,17 +15,15 @@ function bos_form_citywide_neighborhood_form_alter(&$form, &$form_state, $form_i
     $form['field_multiple_neighborhoods'][LANGUAGE_NONE]['#options']['citywide'] = 'Citywide';
     // Set the weight so the 'Citywide' option appears at the top of the list.
     $form['field_multiple_neighborhoods'][LANGUAGE_NONE]['citywide']['#weight'] = -99;
-    $default_options = $form['field_multiple_neighborhoods'][LANGUAGE_NONE]['#options'];
     // Loop through every Neighborhood checkbox.
     foreach ($form['field_multiple_neighborhoods'][LANGUAGE_NONE]['#options'] as $tid => $name) {
-      // Set a state that checks all checkbox is 'Citywide' is checked.
+      // Set a state for all checkbox based on 'Citywide' value.
       $form['field_multiple_neighborhoods'][LANGUAGE_NONE][$tid]['#states'] = array(
         'checked' => array(
           ':input[name="field_multiple_neighborhoods[und][citywide]"]' => array('checked' => TRUE),
         ),
       );
     }
-    $form['field_multiple_neighborhoods'][LANGUAGE_NONE]['#options'] = $default_options;
   }
 }
 
@@ -33,27 +31,23 @@ function bos_form_citywide_neighborhood_form_alter(&$form, &$form_state, $form_i
  * Implements hook_page_build().
  */
 function bos_form_citywide_neighborhood_page_build(&$page) {
+  // Load the node we're on.
   if ($node = menu_get_object()) {
+    // Get the node ID.
     $nid = $node->nid;
   }
-  $bundle = $page['content']['system_main']['nodes'][26385]['#bundle'];
-  if ($bundle && $nid && ($bundle == 'event' || $bundle == 'post' || $bundle == 'notice')) {
-    $neighborhoods = $page['content']['system_main']['nodes'][$nid]['field_multiple_neighborhoods'];
-    foreach ($neighborhoods as $key => $neighborhood) {
-      if (is_numeric($key)) {
-        unset($page['content']['system_main']['nodes'][$nid]['field_multiple_neighborhoods'][$key]);
-        //$page['content']['system_main']['nodes'][$nid]['field_multiple_neighborhoods'][$key]['#markup'] = '';
+  // Get the content type.
+  $bundle = $page['content']['system_main']['nodes'][$nid]['#bundle'];
+  // Make sure we only run this code on certain content types.
+  if ($bundle == 'event' || $bundle == 'post' || $bundle == 'notice') {
+    if (FALSE) { // Needs to look for 'citywide value'
+      $neighborhoods = $page['content']['system_main']['nodes'][$nid]['field_multiple_neighborhoods'];
+      foreach ($neighborhoods as $key => $neighborhood) {
+        if (is_numeric($key)) {
+          unset($page['content']['system_main']['nodes'][$nid]['field_multiple_neighborhoods'][$key]);
+        }
       }
+      $page['content']['system_main']['nodes'][$nid]['field_multiple_neighborhoods'][0]['#markup'] = 'Citywide';
     }
-    $page['content']['system_main']['nodes'][$nid]['field_multiple_neighborhoods'][0]['#markup'] = 'Citywide';
   }
-}
-
-/**
- * Implements hook_page_alter().
- */
-function bos_form_citywide_neighborhood_page_alter(&$page) {
-  $test = $page;
-  $test2 = $page['content']['system_main']['nodes'][26385]['field_multiple_neighborhoods'];
-  $beacon_hill = $page['content']['system_main']['nodes'][26385]['field_multiple_neighborhoods'][3];
 }
