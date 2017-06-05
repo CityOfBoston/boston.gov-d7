@@ -11,7 +11,10 @@
 function bos_form_citywide_neighborhood_form_alter(&$form, &$form_state, $form_id) {
   // Make sure we're on an Event, Post, or Public Notice form.
   if (($form_id == "event_node_form") || ($form_id == "post_node_form") || ($form_id == "notice_node_form")) {
-    $test = $form['field_multiple_neighborhoods'];
+    //foreach ($form['field_multiple_neighborhoods']['und']['#entity']->field_multiple_neighborhoods['und'] as $option) {
+    //  $enabled_tid = $option['target_id'];
+    //}
+    $enabled_tids = $form['field_multiple_neighborhoods'][LANGUAGE_NONE]['#entity']->field_multiple_neighborhoods['und'];
     // Loop through every Neighborhood checkbox.
     foreach ($form['field_multiple_neighborhoods'][LANGUAGE_NONE]['#options'] as $tid => $name) {
       if ($name == 'Citywide') {
@@ -29,6 +32,9 @@ function bos_form_citywide_neighborhood_form_alter(&$form, &$form_state, $form_i
       $form['field_multiple_neighborhoods'][LANGUAGE_NONE][$tid]['#states'] = array(
         'checked' => array(
           ':input[name="' . $citywide_input . '"]' => array('checked' => TRUE),
+        ),
+        'unchecked' => array(
+          ':input[name="field_multiple_neighborhoods[und][' . $tid . ']"]' => array('checked' => FALSE),
         ),
       );
     }
