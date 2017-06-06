@@ -46,7 +46,7 @@
               <div class="fs-c fs-c--i">
                 <div class="txt">
                   <label for="subscriber[email]" class="txt-l">Your Email Address</label>
-                  <input name="subscriber[email]" type="email" value="a@a.com" placeholder="Email address" class="txt-f txt-f--sm bos-newsletter-email">
+                  <input name="subscriber[email]" type="email" value="" placeholder="Email address" class="txt-f txt-f--sm bos-newsletter-email">
                 </div>
                 <div class="txt">
                   <label for="subscriber[zipcode]" class="txt-l">Zip Code</label>
