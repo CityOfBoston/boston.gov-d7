@@ -46,8 +46,5 @@
 ?>
 
 <?php foreach ($items as $delta => $item): ?>
-  <?php
-    $item["#element"]["attributes"]["class"] = 'g--4 g--4--sl lwa lwa--w';
-    print theme('link_formatter_link_default', $item);
-  ?>
+  <a href="<?php print $item["#element"]["url"] ?>" class="g--4 g--4--sl"><div class="lwa lwa--w"><?php print $item["#element"]["title"] ?></div></a>
 <?php endforeach; ?>
