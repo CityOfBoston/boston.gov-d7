@@ -346,7 +346,6 @@ function boston_hub_menu_local_tasks_alter(&$data, $router_item, $root_path) {
   if ($user && !in_array('administrator', array_values($user->roles))) {
     foreach ($data['tabs'][0]['output'] as $key => $value) {
       // Remove 'View' link if it exists.
-      //if ($value['#link']['page_callback'] == 'user_view_page') {
       if ($value['#link']['path'] == 'user/%/view') {
         unset($data['tabs'][0]['output'][$key]);
       }
