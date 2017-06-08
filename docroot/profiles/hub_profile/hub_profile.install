@@ -376,3 +376,15 @@ function hub_profile_update_7017() {
   );
   module_enable($enabled_modules);
 }
+
+/**
+ * Update for 4/27/17
+ */
+function hub_profile_update_7018() {
+  $enabled_modules = array(
+    'bos_view_related_events',
+    'bos_related_content_migration_view',
+    'bos_related_content_migration',
+  );
+  module_enable($enabled_modules);
+}

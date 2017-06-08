@@ -25,4 +25,4 @@ features[field_instance][] = paragraphs_item-newsletter-field_description
 features[field_instance][] = paragraphs_item-newsletter-field_newsletter
 features[field_instance][] = paragraphs_item-newsletter-field_short_title
 features[paragraphs][] = newsletter
-mtime = 1495043274
+mtime = 1496934001
