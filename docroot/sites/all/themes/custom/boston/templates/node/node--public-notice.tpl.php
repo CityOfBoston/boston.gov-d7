@@ -115,7 +115,9 @@ hide($content['links']);
       <?php if (isset($content['field_drawer'])): ?>
         <h2 class="header-border-bottom">Discussion Topics</h2>
         <div class="body">
-          <?php print render($content['field_drawer']); ?>
+          <ol>
+            <?php print render($content['field_drawer']); ?>
+          </ol>
         </div>
       <?php endif; ?>
       <?php if (isset($content['field_details_link'])): ?>
