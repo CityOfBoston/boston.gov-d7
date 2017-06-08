@@ -53,7 +53,7 @@
                 </div>
                 <div class="txt">
                   <label for="subscriber[zipcode]" class="txt-l">Zip Code</label>
-                  <input name="subscriber[zipcode]" type="text" value="" placeholder="Zip Code" class="txt-f txt-f--sm" size="10">
+                  <input name="subscriber[zipcode]" type="text" value="" placeholder="Zip Code" class="txt-f txt-f--sm bos-newsletter-zip" size="18">
                 </div>
               </div>
               <div class="bc bc--r">
