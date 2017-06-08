@@ -220,7 +220,6 @@ function _bos_core_get_components() {
     'iframe',
     'list',
     'news_announcements',
-    'newsletter',
     'upcoming_events',
     'photo',
     'text',
@@ -235,6 +234,7 @@ function _bos_core_get_components() {
     'grid_of_people',
     'cabinet',
     'bos311',
+    'newsletter',
   ];
   $profile_components['hub_profile'] = [
     'user_action',

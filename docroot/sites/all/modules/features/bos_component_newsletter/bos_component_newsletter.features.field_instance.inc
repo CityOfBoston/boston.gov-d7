@@ -121,7 +121,7 @@ function bos_component_newsletter_field_default_field_instances() {
     'bundle' => 'newsletter',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => ' This isn\'t used on the sidebar version of the newsletter component.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -274,7 +274,7 @@ function bos_component_newsletter_field_default_field_instances() {
     'fences_wrapper' => 'div_div_div',
     'field_name' => 'field_newsletter',
     'label' => 'Email List',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
@@ -294,7 +294,7 @@ function bos_component_newsletter_field_default_field_instances() {
     'bundle' => 'newsletter',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'The short title is used to populate the in-page navigation. Please keep it short: one to three words is ideal. Example can be found on boston.gov/winter/.',
+    'description' => 'The short title is used to populate the in-page navigation. Please keep it short: one to three words is ideal. Example can be found on boston.gov/winter/. This isn\'t used on the sidebar version of the newsletter component.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -349,12 +349,13 @@ function bos_component_newsletter_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t(' This isn\'t used on the sidebar version of the newsletter component.');
   t('Component Theme');
   t('Contact');
   t('Description');
   t('Email List');
   t('Short Title');
-  t('The short title is used to populate the in-page navigation. Please keep it short: one to three words is ideal. Example can be found on boston.gov/winter/.');
+  t('The short title is used to populate the in-page navigation. Please keep it short: one to three words is ideal. Example can be found on boston.gov/winter/. This isn\'t used on the sidebar version of the newsletter component.');
   t('This is the title. It\'s a short description of the signup widget. 20-character max.');
   t('Title');
 
