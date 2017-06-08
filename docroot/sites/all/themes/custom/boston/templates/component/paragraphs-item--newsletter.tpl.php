@@ -31,6 +31,9 @@
       <?php if (isset($content['field_component_title'])): ?>
         <?php print render($content['field_component_title']); ?>
       <?php endif; ?>
+      <?php if (isset($content['field_contact'])): ?>
+        <?php print render($content['field_contact']); ?>
+      <?php endif; ?>
     </div>
     <div class="g">
       <?php if (isset($content['field_description'])): ?>

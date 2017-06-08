@@ -220,6 +220,7 @@ function _bos_core_get_components() {
     'iframe',
     'list',
     'news_announcements',
+    'newsletter',
     'upcoming_events',
     'photo',
     'text',
