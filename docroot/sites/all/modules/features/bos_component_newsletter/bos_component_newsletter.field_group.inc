@@ -23,12 +23,12 @@ function bos_component_newsletter_field_group_info() {
     'label' => 'Newsletter',
     'weight' => '0',
     'children' => array(
-      0 => 'field_component_title',
-      1 => 'field_contact',
-      2 => 'field_description',
-      3 => 'field_newsletter',
-      4 => 'field_short_title',
-      5 => 'field_component_theme',
+      0 => 'field_component_theme',
+      1 => 'field_component_title',
+      2 => 'field_contact',
+      3 => 'field_description',
+      4 => 'field_newsletter',
+      5 => 'field_short_title',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
