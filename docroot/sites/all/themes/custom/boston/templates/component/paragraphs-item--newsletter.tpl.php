@@ -44,7 +44,7 @@
       <div class="g--<?php if (isset($content['field_description'])): ?>6<?php else: ?>12<?php endif; ?>">
         <?php if (isset($content['field_newsletter'])): ?>
           <?php $newsletter_id = $content['field_newsletter']['#items'][0]['entity']->field_id['und'][0]['value']; ?>
-          <form action="<?php print $newsletter_url ?>" method="GET" class="bos-newsletter">
+          <form action="<?php print $newsletter_url ?>" method="GET" class="bos-newsletter" novalidate>
             <div class="fs">
               <div class="fs-c fs-c--i">
                 <div class="txt">
