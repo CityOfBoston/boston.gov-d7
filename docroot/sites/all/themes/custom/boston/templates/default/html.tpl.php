@@ -53,5 +53,43 @@
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=<?php echo $google_tag_manager_id ?>&noscript=true"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <?php } ?>
+  <script id="contactFormTemplate" type="text/x-template">
+    <div class="md">
+      <div class="md-c">
+        <button class="md-cb">Close</button>
+        <div class="mb-b p-a300 p-a600--xl">
+          <div class="sh m-b500">
+            <div class="sh-title">Contact the City&nbsp;of&nbsp;Boston</div>
+          </div>
+          <div class="t--info m-b500">Our site is live, but not completed. We'll always be adding to and improving on it and need your ideas and to make Boston.gov easier to understand and more delightful to use.</div>
+          <form class="https://www.boston.gov" action="https://www.boston.gov" method="GET">
+            <div class="fs">
+              <div class="fs-c">
+                <div class="txt m-b300">
+                  <label for="text" class="txt-l txt-l--mt000">First Name</label>
+                  <input id="text" type="text" value="" placeholder="Zip Code" class="txt-f txt-f--sm" size="10">
+                </div>
+                <div class="txt m-b300">
+                  <label for="text" class="txt-l txt-l--mt000">Email Address</label>
+                  <input id="text" type="text" value="" placeholder="Email address" class="txt-f txt-f--sm">
+                </div>
+                <div class="txt m-b300">
+                  <label for="text" class="txt-l txt-l--mt000">Subject</label>
+                  <input id="text" type="text" value="" placeholder="Zip Code" class="txt-f txt-f--sm" size="10">
+                </div>
+                <div class="txt m-b300">
+                  <label for="text" class="txt-l txt-l--mt000">Message</label>
+                  <textarea id="text" type="text" value="" placeholder="Zip Code" class="txt-f txt-f--sm" rows="10"></textarea>
+                </div>
+              </div>
+              <div class="bc bc--r p-t500">
+                <button type="submit" class="btn btn--700">Sign Up</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </script>
 </body>
 </html>
