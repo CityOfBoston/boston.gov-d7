@@ -627,3 +627,13 @@ function bos_profile_update_7025() {
   );
   module_enable($enabled_modules);
 }
+
+/**
+ * Update for 6/5/17
+ */
+function bos_profile_update_7026() {
+  $enabled_modules = array(
+    'bos_form_citywide_neighborhood',
+  );
+  module_enable($enabled_modules);
+}

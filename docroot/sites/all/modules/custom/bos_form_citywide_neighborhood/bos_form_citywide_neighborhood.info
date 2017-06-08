@@ -1,0 +1,4 @@
+name = Boston Form Citywide Neighborhood
+description = Adds a "citywide" option to field_multiple_neighborhoods.
+package = Boston Custom
+core = 7.x
