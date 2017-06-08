@@ -19,7 +19,7 @@ function bos_component_newsletter_ctools_plugin_api($module = NULL, $api = NULL)
 function bos_component_newsletter_paragraphs_info() {
   $items = array(
     'newsletter' => array(
-      'name' => 'Newsletter',
+      'name' => 'Newsletter Signup',
       'bundle' => 'newsletter',
       'locked' => '1',
     ),
