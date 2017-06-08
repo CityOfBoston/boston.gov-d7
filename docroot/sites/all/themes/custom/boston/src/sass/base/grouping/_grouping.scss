@@ -221,7 +221,7 @@ article {
  }
 
   // Replaces list number with styled element
-  ol li:before {
+  ol > li:before {
     border: 3px solid;
     border-radius: 100%;
     counter-increment: section;
@@ -245,10 +245,6 @@ article {
     background: url("../img/ul-bullet.svg") no-repeat left 14px transparent;
     background-size: 10px;
     @include margin(0 0 .75 0);
-    // Override pseudo class so nested bullets don't pick up number style.
-    &:before{
-      display: none;
-    }
   }
 
   .paragraphs-item-3-column-w-image ul li {
