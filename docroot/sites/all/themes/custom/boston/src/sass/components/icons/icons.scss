@@ -15,76 +15,82 @@
     background-position: left 5px;
   }
 }
+.detail-item__left > .icon {
+  border: 3px solid;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+}
 // Add any and all icons for sidebars here.
 .icon-email {
   @extend %icon-common;
   background-image: url("../img/icon-email.svg");
-  background-size: 35px 23px;
-  width: 35px;
-  height: 23px;
+  //background-size: 35px 23px;
+  //width: 35px;
+  //height: 23px;
 }
 .icon-location {
   @extend %icon-common;
   background-image: url("../img/icon-location.svg");
-  background-size: 29px 37px;
-  width: 29px;
-  height: 37px;
+  //background-size: 29px 37px;
+  //width: 29px;
+  //height: 37px;
 }
 .icon-phone {
   @extend %icon-common;
   background-image: url("../img/icon-phone.svg");
-  background-size: 25px 37px;
-  width: 25px;
-  height: 37px;
+  //background-size: 25px 37px;
+  //width: 25px;
+  //height: 37px;
 }
 .icon-time {
   @extend %icon-common;
   background-image: url("../img/icon-time.svg");
-  background-size: 35px 35px;
-  width: 35px;
-  height: 35px;
+  //background-size: 35px 35px;
+  //width: 35px;
+  //height: 35px;
 }
 .icon-payment {
   @extend %icon-common;
   background-image: url("../img/icon-payment.svg");
-  background-size: 35px 35px;
-  width: 35px;
-  height: 35px;
+  //background-size: 35px 35px;
+  //width: 35px;
+  //height: 35px;
 }
 .icon-download {
   @extend %icon-common;
   background-image: url("../img/icon-download.svg");
-  background-size: 35px 35px;
-  width: 35px;
-  height: 35px;
+  //background-size: 35px 35px;
+  //width: 35px;
+  //height: 35px;
 }
 .icon-alert {
   @extend %icon-common;
   background-image: url("../img/icon-alert.svg");
-  background-size: 35px 35px;
-  width: 35px;
-  height: 35px;
+  //background-size: 35px 35px;
+  //width: 35px;
+  //height: 35px;
 }
 .icon-form {
   @extend %icon-common;
   background-image: url("../img/icon-form.svg");
-  background-size: 35px 35px;
-  width: 35px;
-  height: 35px;
+  //background-size: 35px 35px;
+  //width: 35px;
+  //height: 35px;
 }
 .icon-event {
   @extend %icon-common;
   background-image: url("../img/icon-event.svg");
-  background-size: 35px 35px;
-  width: 35px;
-  height: 35px;
+  //background-size: 35px 35px;
+  //width: 35px;
+  //height: 35px;
 }
 .icon-document {
   @extend %icon-common;
   background-image: url("../img/icon-doc.svg");
-  background-size: 35px 35px;
-  width: 35px;
-  height: 35px;
+  //background-size: 35px 35px;
+  //width: 35px;
+  //height: 35px;
 }
 
 .icon-social {
