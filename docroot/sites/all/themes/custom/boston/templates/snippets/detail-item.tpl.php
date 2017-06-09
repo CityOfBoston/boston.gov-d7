@@ -20,7 +20,7 @@ $detail_classes = explode(' ', $classes['detail']);
 $use_left = FALSE;
 $left_content = NULL;
 if (!empty($classes['icon'])) {
-  $left_content = "<div class=\"{$classes['icon']}\"></div>";
+  $left_content = "<div class=\"icon {$classes['icon']}\"></div>";
 }
 elseif (isset($label) && in_array('detail-item--secondary', $detail_classes)) {
   $left_content = "<div>$label</div>";
