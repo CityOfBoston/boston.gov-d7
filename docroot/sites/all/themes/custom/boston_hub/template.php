@@ -60,7 +60,7 @@ function boston_hub_preprocess_page(array &$variables) {
     $variables['profile_path'] = base_path() . 'my-profile';
     $variables['logout_path'] = base_path() . 'user/logout';
     $variables['security_questions_path'] = 'https://oimprd.cityofboston.gov/admin/faces/pages/pwdmgmt.jspx?action=setchallenges&backUrl=';
-    $variables['change_password_path'] = 'https://oimprd.cityofboston.gov/admin/faces/pages/pwdmgmt.jspx?backUrl=https%3A%2F%2Foif.cityofboston.gov%2Ffed%2Fidp%2Finitiatesso%3Fproviderid%3Dthehubprod';
+    $variables['change_password_path'] = 'https://oimprd.cityofboston.gov/admin/faces/pages/pwdmgmt.jspx?action=setchallenges&backUrl=https://oif.cityofboston.gov%2Ffed%2Fidp%2Finitiatesso%3Fproviderid%3Dthehubprod';
   }
 
   $current_path = current_path();
@@ -337,14 +337,23 @@ function boston_hub_preprocess_entity(&$variables, $hook) {
 }
 
 /**
- * Hides user menu
- *
+ * Implements hook_menu_local_tasks_alter().
  */
 function boston_hub_menu_local_tasks_alter(&$data, $router_item, $root_path) {
   global $user;
 
+  // Hides View/Edit links on user pages for non-admins.
   if ($user && !in_array('administrator', array_values($user->roles))) {
-    unset($data['tabs']);
+    foreach ($data['tabs'][0]['output'] as $key => $value) {
+      // Remove 'View' link if it exists.
+      if ($value['#link']['path'] == 'user/%/view') {
+        unset($data['tabs'][0]['output'][$key]);
+      }
+      // Remove 'Edit' link if it exists.
+      if ($value['#link']['path'] == 'user/%/edit') {
+        unset($data['tabs'][0]['output'][$key]);
+      }
+    }
   }
 }
 
