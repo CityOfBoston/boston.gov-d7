@@ -221,7 +221,7 @@ article {
  }
 
   // Replaces list number with styled element
-  ol li:before {
+  ol > li:before {
     border: 3px solid;
     border-radius: 100%;
     counter-increment: section;

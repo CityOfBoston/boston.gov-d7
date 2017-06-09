@@ -13,7 +13,11 @@
       var content  = el.siblings('.dr__content');
 
       el.toggleClass('dr__header--active');
-      isActive ? content.slideUp().attr('aria-hidden', true) : content.slideDown().attr('aria-hidden', false);
+      if (isActive) {
+        content.slideUp().attr('aria-hidden', true);
+      } else {
+        content.slideDown().attr('aria-hidden', false);
+      }
     });
   }
 
