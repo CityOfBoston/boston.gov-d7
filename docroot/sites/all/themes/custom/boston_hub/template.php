@@ -337,14 +337,23 @@ function boston_hub_preprocess_entity(&$variables, $hook) {
 }
 
 /**
- * Hides user menu
- *
+ * Implements hook_menu_local_tasks_alter().
  */
 function boston_hub_menu_local_tasks_alter(&$data, $router_item, $root_path) {
   global $user;
 
+  // Hides View/Edit links on user pages for non-admins.
   if ($user && !in_array('administrator', array_values($user->roles))) {
-    unset($data['tabs']);
+    foreach ($data['tabs'][0]['output'] as $key => $value) {
+      // Remove 'View' link if it exists.
+      if ($value['#link']['path'] == 'user/%/view') {
+        unset($data['tabs'][0]['output'][$key]);
+      }
+      // Remove 'Edit' link if it exists.
+      if ($value['#link']['path'] == 'user/%/edit') {
+        unset($data['tabs'][0]['output'][$key]);
+      }
+    }
   }
 }
 
