@@ -475,6 +475,16 @@ function boston_preprocess_page(array &$variables) {
   $variables['target_id'] = $target_id;
   $variables['page_class'] = $page_class;
   $variables['page_class_alert'] = $page_class_alert;
+
+  // Conditionally load JS if Maps component is found.
+  $paragraphs = $variables['page']['content']['system_main']['nodes'][26891]['field_components'][0]['entity']['paragraphs_item'];
+  if (isset($paragraphs)) {
+    foreach ($paragraphs as $paragraph_id => $paragraph) {
+      if ($paragraph['#bundle'] == 'map') {
+        drupal_add_js(drupal_get_path('theme', 'boston') . '/src/js/bos_mapbox.js');
+      }
+    }
+  }
 }
 
 /**
