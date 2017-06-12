@@ -637,3 +637,16 @@ function bos_profile_update_7026() {
   );
   module_enable($enabled_modules);
 }
+
+/**
+ * Update for 6/12/17
+ */
+function bos_profile_update_7027() {
+  $enabled_modules = array(
+    'bos_vocabulary_maps_basemap',
+    'bos_vocabulary_maps_esri_feed',
+    'bos_component_map',
+    'bos_component_map_pin',
+  );
+  module_enable($enabled_modules);
+}
