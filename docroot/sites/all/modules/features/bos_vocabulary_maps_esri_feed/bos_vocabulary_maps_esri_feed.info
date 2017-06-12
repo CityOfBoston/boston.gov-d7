@@ -1,0 +1,17 @@
+name = Boston Vocabulary Maps: ESRI Feed
+description = Defines ESRI feed URLs
+core = 7.x
+package = Features
+version = 7.x-1.0
+project = bos_vocabulary_maps_esri_feed
+dependencies[] = ctools
+dependencies[] = features
+dependencies[] = strongarm
+dependencies[] = taxonomy
+dependencies[] = text
+features[ctools][] = strongarm:strongarm:1
+features[features_api][] = api:2
+features[field_base][] = field_esri_feed_url
+features[field_instance][] = taxonomy_term-maps_esri_feed-field_esri_feed_url
+features[taxonomy][] = maps_esri_feed
+features[variable][] = xmlsitemap_settings_taxonomy_term_maps_esri_feed
