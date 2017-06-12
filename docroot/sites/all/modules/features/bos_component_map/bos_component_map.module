@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Boston Component Map feature.
+ */
+
+include_once 'bos_component_map.features.inc';
