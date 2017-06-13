@@ -25,7 +25,7 @@
       })*/
       var user_loc = L.marker(e.latlng).addTo(map)
         .bindPopup('<p class="title">You are here.</p>').openPopup();
-      var radius_circle = L.circle(e.latlng, radius, {color:'#091F2F',opacity:1,fillOpacity:.2}).addTo(map);
+      var radius_circle = L.circle(e.latlng, radius, {color:'#091F2F',opacity:1,fillOpacity:0.2}).addTo(map);
       }
       map.on('locationfound', onLocationFound);
       // add mapbox basemap
@@ -65,18 +65,18 @@
       // get current time of day as string value
       function GetTimeIndex(time) {
         if (time >= '07:00:00' && time <= '10:30:00') {
-          return "Breakfast"
+          return "Breakfast";
         } else if (time <= '15:00:00')  {
-          return "Lunch"
+          return "Lunch";
         } else if (time <= '20:00:00') {
-          return "Dinner"
+          return "Dinner";
         } else {
-          return "Any"
+          return "Any";
         }}
       // get current time of day
-      var t = GetTimeIndex(d.toTimeString().replace(/.*(\d{2}:\d{2}:\d{2}).*/, "$1"))
-      console.log(d.toTimeString().replace(/.*(\d{2}:\d{2}:\d{2}).*/, "$1"))
-      console.log(t)
+      var t = GetTimeIndex(d.toTimeString().replace(/.*(\d{2}:\d{2}:\d{2}).*/, "$1"));
+      console.log(d.toTimeString().replace(/.*(\d{2}:\d{2}:\d{2}).*/, "$1"));
+      console.log(t);
       var time = document.getElementById('time');
       var times = ["Any", "Breakfast", "Lunch", "Dinner"];
       time.selectedIndex = times.indexOf(t);
@@ -90,14 +90,14 @@
       })
         .where("1=1")
         .returnGeometry(false)
-        .fields(['Truck'])
+        .fields(['Truck']);
       trucksQuery.params.returnDistinctValues = true;
       // run query and build options list from it
       trucksQuery.run(function (err, res, raw) {
         for (i=1; i<res.features.length; i++) {
           var option = document.createElement("option");
-          option.text = res.features[i].properties.Truck
-          option.value = "Truck = '" + res.features[i].properties.Truck + "'"
+          option.text = res.features[i].properties.Truck;
+          option.value = "Truck = '" + res.features[i].properties.Truck + "'";
           var select = document.getElementById("truck");
           select.appendChild(option);
         }
