@@ -484,10 +484,13 @@ function boston_preprocess_page(array &$variables) {
     foreach ($paragraphs as $paragraph_id => $paragraph) {
       if ($paragraph['#bundle'] == 'map') {
         // Leaflet.
+        drupal_add_css('https://unpkg.com/leaflet@1.0.3/dist/leaflet.css', 'external');
         drupal_add_js('https://unpkg.com/leaflet@1.0.3/dist/leaflet-src.js', 'external');
         // ESRI Leaflet.
         drupal_add_js('https://unpkg.com/esri-leaflet@2.0.8', 'external');
         // Cluster.
+        drupal_add_css('https://unpkg.com/leaflet.markercluster@1.0.4/dist/MarkerCluster.Default.css', 'external');
+        drupal_add_css('https://unpkg.com/leaflet.markercluster@1.0.4/dist/MarkerCluster.css', 'external');
         drupal_add_js('https://unpkg.com/leaflet.markercluster@1.0.4/dist/leaflet.markercluster.js', 'external');
         // Custom.
         drupal_add_js(drupal_get_path('theme', 'boston') . '/src/js/bos_mapbox.js');
