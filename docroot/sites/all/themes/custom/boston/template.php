@@ -496,6 +496,7 @@ function boston_preprocess_page(array &$variables) {
         // Custom.
         drupal_add_css(drupal_get_path('theme', 'boston') . '/temp_map.css');
         drupal_add_js(drupal_get_path('theme', 'boston') . '/src/js/bos_mapbox.js');
+        drupal_add_js(array('variableName' => 'value'), 'setting');
       }
     }
   }
