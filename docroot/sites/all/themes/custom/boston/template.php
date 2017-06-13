@@ -478,6 +478,53 @@ function boston_preprocess_page(array &$variables) {
 
   // Add the canvas for the map.
   $variables['page']['content']['system_main']['nodes'][$nid]['body'][0]['#markup'] .= '<div id="map"></div>';
+  $variables['page']['content']['system_main']['nodes'][$nid]['body'][0]['#markup'] .=
+    '<div class="co">
+    <input id="collapsible" type="checkbox" class="co-f d-n" aria-hidden=true>
+    <label for="collapsible" class="co-t">Filter Trucks</label>
+    <div class="co-b">
+
+      <div class="queries">
+        <div id="query1" class="query leaflet-control-button leaflet-bar">
+          <label>
+            Day of week:
+            <select id="day">
+              <option value=\'1=1\'>Any</option>
+              <option value="Day = \'Monday\'">Monday</option>
+              <option value="Day = \'Tuesday\'">Tuesday</option>
+              <option value="Day = \'Wednesday\'" selected="selected">Wednesday</option>
+              <option value="Day = \'Thursday\'">Thursday</option>
+              <option value="Day = \'Friday\'">Friday</option>
+              <option value="Day = \'Saturday\'">Saturday</option>
+              <option value="Day = \'Sunday\'">Sunday</option>
+            </select>
+          </label>
+        </div>
+
+        <div id="query2" class="query leaflet-bar">
+          <label>
+            Time of day:
+            <select id="time">
+              <option value=\'1=1\'>Any</option>
+              <option value="Time = \'Breakfast\'">Breakfast</option>
+              <option value="Time = \'Lunch\'">Lunch</option>
+              <option value="Time = \'Dinner\'">Dinner</option>
+            </select>
+          </label>
+        </div>
+
+        <div id="query3" class="query leaflet-bar">
+          <label>
+            Food truck:
+            <select id="truck">
+            <option value=\'1=1\' selected="selected">Any</option>
+            </select>
+          </label>
+        </div>
+      </div>
+
+    </div>
+    </div>';
   // Conditionally load JS if Maps component is found.
   $paragraphs = $variables['page']['content']['system_main']['nodes'][$nid]['field_components'][0]['entity']['paragraphs_item'];
   if (isset($paragraphs)) {
@@ -492,6 +539,7 @@ function boston_preprocess_page(array &$variables) {
         drupal_add_css('https://unpkg.com/leaflet.markercluster@1.0.4/dist/MarkerCluster.Default.css', 'external');
         drupal_add_css('https://unpkg.com/leaflet.markercluster@1.0.4/dist/MarkerCluster.css', 'external');
         drupal_add_js('https://unpkg.com/leaflet.markercluster@1.0.4/dist/leaflet.markercluster.js', 'external');
+        drupal_add_js('https://unpkg.com/esri-leaflet-cluster@2.0.0', 'external');
         // Custom.
         drupal_add_css(drupal_get_path('theme', 'boston') . '/temp_map.css');
         drupal_add_js(drupal_get_path('theme', 'boston') . '/src/js/bos_mapbox.js');
