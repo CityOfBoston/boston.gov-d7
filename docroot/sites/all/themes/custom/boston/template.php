@@ -134,6 +134,9 @@ function boston_preprocess_html(array &$variables, $hook) {
   $variables['asset_name'] = $GLOBALS['theme'] == 'boston_hub' ? 'hub' : 'public';
   $variables['google_tag_manager_id'] = variable_get('google_tag_manager_id', FALSE);
 
+  // Adds variable to connect to contact form
+  $variables['contact_url'] = variable_get('contact_url', 'https://www.boston.gov');
+
   // Add variables and paths needed for HTML5 and responsive support.
   $variables['base_path'] = base_path();
   $variables['path_to_boston'] = drupal_get_path('theme', $GLOBALS['theme']);

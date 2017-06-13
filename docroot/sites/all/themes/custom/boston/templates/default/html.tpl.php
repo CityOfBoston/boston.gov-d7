@@ -59,34 +59,39 @@
         <button class="md-cb">Close</button>
         <div class="mb-b p-a300 p-a600--xl">
           <div class="sh m-b500">
-            <div class="sh-title">Contact the City&nbsp;of&nbsp;Boston</div>
+            <div class="sh-title">Contact Us</div>
           </div>
-          <div class="t--info m-b500">Our site is live, but not completed. We'll always be adding to and improving on it and need your ideas and to make Boston.gov easier to understand and more delightful to use.</div>
-          <form class="https://www.boston.gov" action="https://www.boston.gov" method="GET">
-            <div class="fs">
-              <div class="fs-c">
-                <div class="txt m-b300">
-                  <label for="text" class="txt-l txt-l--mt000">First Name</label>
-                  <input id="text" type="text" value="" placeholder="Zip Code" class="txt-f txt-f--sm" size="10">
+          <div>
+            <div id="contactMessage" class="t--info m-b500">Have a question, or just need help? You can send an email through the form below.</div>
+            <form id="contactForm" action="<?php print $contact_url; ?>" method="POST">
+              <input id="contactFormToAddress" name="email[to_address]" type="hidden" value="">
+              <input id="contactFormURL" name="email[url]" type="hidden" value="">
+              <input id="contactFormBrowser" name="email[browser]" type="hidden" value="">
+              <div class="fs">
+                <div class="fs-c">
+                  <div class="txt m-b300">
+                    <label for="email[name]" class="txt-l txt-l--mt000">Full Name</label>
+                    <input name="email[name]" type="text" class="txt-f txt-f--sm bos-contact-name" size="10" value="Matthew Crist">
+                  </div>
+                  <div class="txt m-b300">
+                    <label for="email[from_address]" class="txt-l txt-l--mt000">Email Address</label>
+                    <input name="email[from_address]" type="text" placeholder="email@address.com" class="txt-f txt-f--sm bos-contact-email" value="e@example.com">
+                  </div>
+                  <div class="txt m-b300">
+                    <label for="email[subject]" class="txt-l txt-l--mt000">Subject</label>
+                    <input name="email[subject]" type="text" class="txt-f txt-f--sm bos-contact-subject" size="10" value="This is subject line">
+                  </div>
+                  <div class="txt m-b300">
+                    <label for="email[message]" class="txt-l txt-l--mt000">Message</label>
+                    <textarea name="email[message]" type="text" class="txt-f txt-f--sm bos-contact-message" rows="10">This is the message</textarea>
+                  </div>
                 </div>
-                <div class="txt m-b300">
-                  <label for="text" class="txt-l txt-l--mt000">Email Address</label>
-                  <input id="text" type="text" value="" placeholder="Email address" class="txt-f txt-f--sm">
-                </div>
-                <div class="txt m-b300">
-                  <label for="text" class="txt-l txt-l--mt000">Subject</label>
-                  <input id="text" type="text" value="" placeholder="Zip Code" class="txt-f txt-f--sm" size="10">
-                </div>
-                <div class="txt m-b300">
-                  <label for="text" class="txt-l txt-l--mt000">Message</label>
-                  <textarea id="text" type="text" value="" placeholder="Zip Code" class="txt-f txt-f--sm" rows="10"></textarea>
+                <div class="bc bc--r p-t500">
+                  <button type="submit" class="btn btn--700">Send Message</button>
                 </div>
               </div>
-              <div class="bc bc--r p-t500">
-                <button type="submit" class="btn btn--700">Sign Up</button>
-              </div>
-            </div>
-          </form>
+            </form>
+          </div>
         </div>
       </div>
     </div>
