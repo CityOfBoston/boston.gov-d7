@@ -496,7 +496,9 @@ function boston_preprocess_page(array &$variables) {
         // Custom.
         drupal_add_css(drupal_get_path('theme', 'boston') . '/temp_map.css');
         drupal_add_js(drupal_get_path('theme', 'boston') . '/src/js/bos_mapbox.js');
-        drupal_add_js(array('variableName' => 'value'), 'setting');
+        $test = $variables;
+        $field_esri_feed_url = $variables['page']['content']['system_main']['nodes'][$nid]['field_components'][0]['entity']['paragraphs_item'][123872]['#entity']->field_map['und'][0]['entity']->field_esri_feed_url['und'][0]['value'];
+        drupal_add_js(array('esri' => $field_esri_feed_url), 'setting');
       }
     }
   }

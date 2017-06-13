@@ -9,7 +9,7 @@
   Drupal.behaviors.exampleModule = {
     attach: function (context, settings) {
 
-      alert(Drupal.settings.variableName);
+      alert(Drupal.settings.esri);
       var map = L.map('map', {zoomControl: false}).setView([42.357004, -71.062309], 14);
       //add zoom control to top right
       L.control.zoom({
