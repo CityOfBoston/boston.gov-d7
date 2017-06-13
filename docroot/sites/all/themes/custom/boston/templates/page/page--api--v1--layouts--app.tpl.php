@@ -27,7 +27,7 @@
         <span class="brg-t"><span class="a11y--h">Toggle </span>Menu</span>
       </div>
     </label>
-    <div class="lo">
+    <div class="lo lo--abs">
       <a href="https://www.boston.gov" class="lo-l">
         <img src="<?php print $asset_url ?>/images/public/logo.svg" alt="City of Boston" class="lo-i" />
         <span class="lo-t">Mayor Martin J. Walsh</span>
