@@ -9,14 +9,12 @@
   Drupal.behaviors.exampleModule = {
     attach: function (context, settings) {
 
-      console.log(Drupal.settings.esri);
       var esriUrl = Drupal.settings.esri;
-      console.log(Drupal.settings.type);
       var mapType = Drupal.settings.type;
-      console.log(Drupal.settings.basemap);
       var basemapUrl = Drupal.settings.basemap;
+
       var map = L.map('map', {zoomControl: false}).setView([42.357004, -71.062309], 14);
-      //add zoom control to top right
+      //add zoom control to bottom right
       L.control.zoom({
         position:'bottomright'
       }).addTo(map);
@@ -30,13 +28,12 @@
       }
       map.on('locationfound', onLocationFound);
       // add mapbox basemap
-      //L.tileLayer('https://api.mapbox.com/styles/v1/cityofboston/cj1hyqwt2001s2so0hjacals3/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiY2l0eW9mYm9zdG9uIiwiYSI6ImNqMTd1dDdqZTA1c2UyeHFzNGhrN2g0bHYifQ.SZ8J0aXwDHt4sCmZ9rQO2A').addTo(map);
       L.tileLayer(basemapUrl).addTo(map);
       // add food trucks layer
       var food_trucks = L.esri.Cluster.featureLayer({
-        //url: 'https://services.arcgis.com/sFnw0xNflSi8J0uh/arcgis/rest/services/food_trucks_schedule/FeatureServer/0',
         url: esriUrl,
       }).addTo(map);
+      // Create popups for pin markers
       food_trucks.bindPopup(function (layer) {
         return L.Util.template('<a class="title" href={Link} target="_blank"><b>{Truck}</b></a><p class="times">{Time}: {Hours}<br>Day: {Day}<br><br>{Title}</p><p class="content">{Loc}<br><br>Managed by: {Management}</p>', layer.feature.properties);
       });
