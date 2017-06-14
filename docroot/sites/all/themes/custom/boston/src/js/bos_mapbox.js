@@ -9,8 +9,16 @@
   Drupal.behaviors.exampleModule = {
     attach: function (context, settings) {
 
+      // Set ESRI Feed URL.
       var esriUrl = Drupal.settings.esri;
+      /*
+       * Set Map Options.
+       * 0 == Static
+       * 1 == Scroll
+       * 2 == Zoom
+       */
       var mapType = Drupal.settings.type;
+      // Set Basemap URL.
       var basemapUrl = Drupal.settings.basemap;
 
       var map = L.map('map', {zoomControl: false}).setView([42.357004, -71.062309], 14);
