@@ -476,35 +476,31 @@ function boston_preprocess_page(array &$variables) {
   $variables['page_class'] = $page_class;
   $variables['page_class_alert'] = $page_class_alert;
 
-  // Add the canvas for the map.
-  //$variables['page']['content']['system_main']['nodes'][$nid]['body'][0]['#markup'] .= '<div id="map-wrapper"><div id="map"></div></div>';
-  //$variables['page']['content']['system_main']['nodes'][$nid]['field_components'][0]['#markup'] .= '<div id="map-wrapper"><div id="map"></div></div>';
-  //$variables['page']['content']['system_main']['nodes'][$nid]['field_components'][0]['entity']['paragraphs_item'][123872]['field_component_title']['#object']->field_component_title['und'][0]['value'] = '<div id="map-wrapper"><div id="map"></div></div>'; 
-  //$variables['page']['content']['system_main']['nodes'][$nid]['field_components'][0]['#markup'] .= '<h2 class="sh-title">adsfgTest Map</h2>';
-  //$variables['page']['content']['system_main']['nodes'][$nid]['field_components'][0]['#markup'] .= '<div id="map-wrapper"><div id="map"></div></div>';
-
   // Conditionally load JS if Maps component is found.
   $paragraphs = $variables['page']['content']['system_main']['nodes'][$nid]['field_components'][0]['entity']['paragraphs_item'];
+  // Check if there are any paragraphs referenced in field_components.
   if (isset($paragraphs)) {
+    // Loop through all paragraphs referenced in field_components.
     foreach ($paragraphs as $paragraph_id => $paragraph) {
+      // Check if the current paragraph is a map component.
       if ($paragraph['#bundle'] == 'map') {
-        $variables['page']['content']['system_main']['nodes'][$nid]['field_components'][0]['entity']['paragraphs_item'][$paragraph_id][]['#markup'] = '<h2 class="sh-title">adsfgTest Map</h2>';
+        // Add the canvas for the map.
         $variables['page']['content']['system_main']['nodes'][$nid]['field_components'][0]['entity']['paragraphs_item'][$paragraph_id][]['#markup'] = '<div id="map-wrapper"><div id="map"></div></div>';
-        // Leaflet.
+        // Add Leaflet stylesheet and javascript.
         drupal_add_css('https://unpkg.com/leaflet@1.0.3/dist/leaflet.css', 'external');
         drupal_add_js('https://unpkg.com/leaflet@1.0.3/dist/leaflet-src.js', 'external');
-        // ESRI Leaflet.
+        // Add ESRI Leaflet javascript.
         drupal_add_js('https://unpkg.com/esri-leaflet@2.0.8', 'external');
-        // Cluster.
+        // Add Cluster stylesheets and javascript libs.
         drupal_add_css('https://unpkg.com/leaflet.markercluster@1.0.4/dist/MarkerCluster.Default.css', 'external');
         drupal_add_css('https://unpkg.com/leaflet.markercluster@1.0.4/dist/MarkerCluster.css', 'external');
         drupal_add_js('https://unpkg.com/leaflet.markercluster@1.0.4/dist/leaflet.markercluster.js', 'external');
         drupal_add_js('https://unpkg.com/esri-leaflet-cluster@2.0.0', 'external');
-        // Custom.
+        // Add custom stylesheet and javascript.
         drupal_add_css(drupal_get_path('theme', 'boston') . '/temp_map.css');
         drupal_add_js(drupal_get_path('theme', 'boston') . '/src/js/bos_mapbox.js');
-        $component_paragraphs = $variables['page']['content']['system_main']['nodes'][$nid]['field_components'][0]['entity']['paragraphs_item'];
-        foreach ($component_paragraphs as $id => $paragraph) {
+        //$component_paragraphs = $variables['page']['content']['system_main']['nodes'][$nid]['field_components'][0]['entity']['paragraphs_item'];
+        //foreach ($component_paragraphs as $id => $paragraph) {
           $field_esri_feed_url = $paragraph['#entity']->field_map['und'][0]['entity']->field_esri_feed_url['und'][0]['value'];
           /*
            * Set Map Options.
@@ -514,7 +510,7 @@ function boston_preprocess_page(array &$variables) {
            */
           $field_map_options = $paragraph['#entity']->field_map_options['und'][0]['value'];
           $field_basemap_url = $paragraph['#entity']->field_map_type['und'][0]['entity']->field_basemap_url_['und'][0]['value'];
-        }
+        //}
         drupal_add_js(
           array(
             'esri' => $field_esri_feed_url,
