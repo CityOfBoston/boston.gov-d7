@@ -11,6 +11,7 @@
 
       // Set ESRI Feed URL.
       var esriUrl = Drupal.settings.esri;
+      console.log(esriUrl);
       /*
        * Set Map Options.
        * 0 == Static
@@ -37,10 +38,13 @@
       map.on('locationfound', onLocationFound);
       // add mapbox basemap
       L.tileLayer(basemapUrl).addTo(map);
-      // add food trucks layer
-      var food_trucks = L.esri.Cluster.featureLayer({
-        url: esriUrl,
-      }).addTo(map);
+      // add layer for ESRI feed(s)
+      esriUrl.forEach(function(feedUrl) {
+        var food_trucks = L.esri.Cluster.featureLayer({
+          //url: esriUrl,
+          url: feedUrl.value,
+        }).addTo(map);
+      });
       // Create popups for pin markers
       food_trucks.bindPopup(function (layer) {
         return L.Util.template('<a class="title" href={Link} target="_blank"><b>{Truck}</b></a><p class="times">{Time}: {Hours}<br>Day: {Day}<br><br>{Title}</p><p class="content">{Loc}<br><br>Managed by: {Management}</p>', layer.feature.properties);
