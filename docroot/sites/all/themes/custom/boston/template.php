@@ -477,12 +477,19 @@ function boston_preprocess_page(array &$variables) {
   $variables['page_class_alert'] = $page_class_alert;
 
   // Add the canvas for the map.
-  $variables['page']['content']['system_main']['nodes'][$nid]['body'][0]['#markup'] .= '<div id="map"></div>';
+  //$variables['page']['content']['system_main']['nodes'][$nid]['body'][0]['#markup'] .= '<div id="map-wrapper"><div id="map"></div></div>';
+  //$variables['page']['content']['system_main']['nodes'][$nid]['field_components'][0]['#markup'] .= '<div id="map-wrapper"><div id="map"></div></div>';
+  //$variables['page']['content']['system_main']['nodes'][$nid]['field_components'][0]['entity']['paragraphs_item'][123872]['field_component_title']['#object']->field_component_title['und'][0]['value'] = '<div id="map-wrapper"><div id="map"></div></div>'; 
+  //$variables['page']['content']['system_main']['nodes'][$nid]['field_components'][0]['#markup'] .= '<h2 class="sh-title">adsfgTest Map</h2>';
+  //$variables['page']['content']['system_main']['nodes'][$nid]['field_components'][0]['#markup'] .= '<div id="map-wrapper"><div id="map"></div></div>';
+
   // Conditionally load JS if Maps component is found.
   $paragraphs = $variables['page']['content']['system_main']['nodes'][$nid]['field_components'][0]['entity']['paragraphs_item'];
   if (isset($paragraphs)) {
     foreach ($paragraphs as $paragraph_id => $paragraph) {
       if ($paragraph['#bundle'] == 'map') {
+        $variables['page']['content']['system_main']['nodes'][$nid]['field_components'][0]['entity']['paragraphs_item'][$paragraph_id][]['#markup'] = '<h2 class="sh-title">adsfgTest Map</h2>';
+        $variables['page']['content']['system_main']['nodes'][$nid]['field_components'][0]['entity']['paragraphs_item'][$paragraph_id][]['#markup'] = '<div id="map-wrapper"><div id="map"></div></div>';
         // Leaflet.
         drupal_add_css('https://unpkg.com/leaflet@1.0.3/dist/leaflet.css', 'external');
         drupal_add_js('https://unpkg.com/leaflet@1.0.3/dist/leaflet-src.js', 'external');
