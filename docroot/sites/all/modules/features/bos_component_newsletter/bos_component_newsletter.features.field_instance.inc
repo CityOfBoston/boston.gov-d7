@@ -63,7 +63,7 @@ function bos_component_newsletter_field_default_field_instances() {
       ),
     ),
     'deleted' => 0,
-    'description' => 'This is the title. It\'s a short description of the signup widget. 20-character max.',
+    'description' => 'This is a short (20 character) description of the signup widget. Use it for a brief call to action.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -121,15 +121,16 @@ function bos_component_newsletter_field_default_field_instances() {
     'bundle' => 'newsletter',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'This won\'t appear in the sidebar version of this component.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
         'module' => 'entityreference',
         'settings' => array(
-          'link' => FALSE,
+          'links' => 1,
+          'view_mode' => 'contact',
         ),
-        'type' => 'entityreference_label',
+        'type' => 'entityreference_entity_view',
         'weight' => 2,
       ),
       'paragraphs_editor_preview' => array(
@@ -273,7 +274,7 @@ function bos_component_newsletter_field_default_field_instances() {
     'fences_wrapper' => 'div_div_div',
     'field_name' => 'field_newsletter',
     'label' => 'Email List',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
@@ -293,7 +294,7 @@ function bos_component_newsletter_field_default_field_instances() {
     'bundle' => 'newsletter',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'The short title is used to populate the in-page navigation. Please keep it short: one to three words is ideal. Example can be found on boston.gov/winter/.',
+    'description' => 'This is where you name in-page navigation. It isn\'t used on the sidebar version. Please keep it short: one to three words is ideal. Example can be found on boston.gov/winter/.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -353,8 +354,9 @@ function bos_component_newsletter_field_default_field_instances() {
   t('Description');
   t('Email List');
   t('Short Title');
-  t('The short title is used to populate the in-page navigation. Please keep it short: one to three words is ideal. Example can be found on boston.gov/winter/.');
-  t('This is the title. It\'s a short description of the signup widget. 20-character max.');
+  t('This is a short (20 character) description of the signup widget. Use it for a brief call to action.');
+  t('This is where you name in-page navigation. It isn\'t used on the sidebar version. Please keep it short: one to three words is ideal. Example can be found on boston.gov/winter/.');
+  t('This won\'t appear in the sidebar version of this component.');
   t('Title');
 
   return $field_instances;

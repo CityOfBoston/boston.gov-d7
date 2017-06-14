@@ -31,6 +31,9 @@
       <?php if (isset($content['field_component_title'])): ?>
         <?php print render($content['field_component_title']); ?>
       <?php endif; ?>
+      <?php if (isset($content['field_contact'])): ?>
+        <?php print render($content['field_contact']); ?>
+      <?php endif; ?>
     </div>
     <div class="g">
       <?php if (isset($content['field_description'])): ?>
@@ -41,7 +44,7 @@
       <div class="g--<?php if (isset($content['field_description'])): ?>6<?php else: ?>12<?php endif; ?>">
         <?php if (isset($content['field_newsletter'])): ?>
           <?php $newsletter_id = $content['field_newsletter']['#items'][0]['entity']->field_id['und'][0]['value']; ?>
-          <form action="<?php print $newsletter_url ?>" method="GET" class="bos-newsletter">
+          <form action="<?php print $newsletter_url ?>" method="GET" class="bos-newsletter" novalidate>
             <div class="fs">
               <div class="fs-c fs-c--i">
                 <div class="txt">
@@ -50,7 +53,7 @@
                 </div>
                 <div class="txt">
                   <label for="subscriber[zipcode]" class="txt-l">Zip Code</label>
-                  <input name="subscriber[zipcode]" type="text" value="" placeholder="Zip Code" class="txt-f txt-f--sm" size="10">
+                  <input name="subscriber[zipcode]" type="text" value="" placeholder="Zip Code" class="txt-f txt-f--sm bos-newsletter-zip" size="18">
                 </div>
               </div>
               <div class="bc bc--r">
