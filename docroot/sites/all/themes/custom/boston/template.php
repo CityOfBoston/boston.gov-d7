@@ -500,7 +500,6 @@ function boston_preprocess_page(array &$variables) {
         drupal_add_css(drupal_get_path('theme', 'boston') . '/temp_map.css');
         drupal_add_js(drupal_get_path('theme', 'boston') . '/src/js/bos_mapbox.js');
         // Set variables to pass to javascript.
-        //$field_esri_feed_url = $paragraph['#entity']->field_map['und'][0]['entity']->field_esri_feed_url['und'][0]['value'];
         foreach ($paragraph['#entity']->field_map['und'][0]['entity']->field_esri_feed_url['und'] as $key => $feed_url) {
           $field_esri_feed_url[] = $feed_url;
         }

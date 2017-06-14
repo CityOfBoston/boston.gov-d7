@@ -41,7 +41,6 @@
       // add layer for ESRI feed(s)
       esriUrl.forEach(function(feedUrl) {
         var food_trucks = L.esri.Cluster.featureLayer({
-          //url: esriUrl,
           url: feedUrl.value,
         }).addTo(map);
       });

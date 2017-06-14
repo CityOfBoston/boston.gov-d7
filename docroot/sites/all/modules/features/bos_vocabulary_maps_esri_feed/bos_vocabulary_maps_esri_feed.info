@@ -15,3 +15,4 @@ features[field_base][] = field_esri_feed_url
 features[field_instance][] = taxonomy_term-maps_esri_feed-field_esri_feed_url
 features[taxonomy][] = maps_esri_feed
 features[variable][] = xmlsitemap_settings_taxonomy_term_maps_esri_feed
+mtime = 1497288937
