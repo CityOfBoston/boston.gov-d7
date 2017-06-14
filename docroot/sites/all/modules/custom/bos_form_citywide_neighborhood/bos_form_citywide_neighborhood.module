@@ -9,8 +9,8 @@
  * Implements form_alter().
  */
 function bos_form_citywide_neighborhood_form_alter(&$form, &$form_state, $form_id) {
-  // Make sure we're on an Event, Post, or Public Notice form.
-  if (($form_id == "event_node_form") || ($form_id == "post_node_form") || ($form_id == "notice_node_form")) {
+  // Make sure we're on an Event or Public Notice form.
+  if (($form_id == "event_node_form") || ($form_id == "public_notice_node_form")) {
     // Loop through every Neighborhood checkbox.
     foreach ($form['field_multiple_neighborhoods'][LANGUAGE_NONE]['#options'] as $tid => $name) {
       if ($name == 'Citywide') {
@@ -51,7 +51,7 @@ function bos_form_citywide_neighborhood_page_build(&$page) {
   // Get the content type.
   $bundle = $page['content']['system_main']['nodes'][$nid]['#bundle'];
   // Make sure we only run this code on certain content types.
-  if ($bundle == 'event' || $bundle == 'post' || $bundle == 'notice') {
+  if ($bundle == 'event' || $bundle == 'notice') {
     // Get details about field_multiple_neighborhoods for current node.
     $neighborhoods = $page['content']['system_main']['nodes'][$nid]['field_multiple_neighborhoods'];
     // Assume 'Citywide' is not set by default.
