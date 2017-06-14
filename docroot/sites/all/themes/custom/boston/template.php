@@ -499,8 +499,22 @@ function boston_preprocess_page(array &$variables) {
         $component_paragraphs = $variables['page']['content']['system_main']['nodes'][$nid]['field_components'][0]['entity']['paragraphs_item'];
         foreach ($component_paragraphs as $id => $paragraph) {
           $field_esri_feed_url = $paragraph['#entity']->field_map['und'][0]['entity']->field_esri_feed_url['und'][0]['value'];
+          /*
+           * Set Map Options.
+           * 0 = Static
+           * 1 = Scroll
+           * 2 = Zoom
+           */
+          $field_map_options = $paragraph['#entity']->field_map_options['und'][0]['value'];
+          $field_basemap_url = $paragraph['#entity']->field_map_type['und'][0]['entity']->field_basemap_url_['und'][0]['value'];
         }
-        drupal_add_js(array('esri' => $field_esri_feed_url), 'setting');
+        drupal_add_js(
+          array(
+            'esri' => $field_esri_feed_url,
+            'type' => $field_map_options,
+            'basemap' => $field_basemap_url,
+          ), 'setting'
+        );
       }
     }
   }
