@@ -681,6 +681,18 @@ function boston_preprocess_paragraphs_item_how_to_contact_step(&$variables) {
   $GLOBALS['how_to_step_count']++;
 }
 
+function boston_preprocess_paragraphs_item_photo(&$variables) {
+  $GLOBALS['photo_component_id'] = rand();
+  $variables['photo_id'] = $GLOBALS['photo_component_id'];
+}
+
+function boston_preprocess_field_field_image(&$variables) {
+  if(isset($GLOBALS['photo_component_id'])) {
+    $variables['photo_id'] = $GLOBALS['photo_component_id'];
+    unset($GLOBALS['photo_component_id']);
+  }
+}
+
 /**
  * Check whether a group_of_links_* paragraph has an empty left region.
  */

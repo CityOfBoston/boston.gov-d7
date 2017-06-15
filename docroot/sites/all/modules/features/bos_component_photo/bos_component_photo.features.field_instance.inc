@@ -197,7 +197,7 @@ function bos_component_photo_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'paragraphs',
         'settings' => array(
-          'view_mode' => 'full',
+          'view_mode' => 'button_link',
         ),
         'type' => 'paragraphs_view',
         'weight' => 3,
