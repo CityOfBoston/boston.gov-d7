@@ -647,6 +647,7 @@ function bos_profile_update_7027() {
     'bos_vocabulary_maps_esri_feed',
     'bos_component_map',
     'bos_component_map_pin',
+    'bos_component_map_coordinates',
   );
   module_enable($enabled_modules);
 }
