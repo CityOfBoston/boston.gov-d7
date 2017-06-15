@@ -505,10 +505,17 @@ function boston_preprocess_page(array &$variables) {
         $field_basemap_url = $paragraph['#entity']->field_map_type['und'][0]['entity']->field_basemap_url_['und'][0]['value'];
         // Set default lat, long, and zoom values from ESRI taxonomy.
         $map_coordinates_esri_paragraph_id = $paragraph['#entity']->field_map['und'][0]['entity']->field_map_default_coordinates['und'][0]['value'];
-        $map_coordinates_esri_paragraph = entity_load('paragraphs_item', array($map_coordinates_esri_paragraph_id));
-        $esri_field_map_latitude = $map_coordinates_esri_paragraph[$map_coordinates_esri_paragraph_id]->field_map_latitude['und'][0]['value'];
-        $esri_field_map_longitude = $map_coordinates_esri_paragraph[$map_coordinates_esri_paragraph_id]->field_map_longitude['und'][0]['value'];
-        $esri_field_map_zoom = $map_coordinates_esri_paragraph[$map_coordinates_esri_paragraph_id]->field_map_zoom['und'][0]['value'];
+        if ($map_coordinates_esri_paragraph_id) {
+          $map_coordinates_esri_paragraph = entity_load('paragraphs_item', array($map_coordinates_esri_paragraph_id));
+          $esri_field_map_latitude = $map_coordinates_esri_paragraph[$map_coordinates_esri_paragraph_id]->field_map_latitude['und'][0]['value'];
+          $esri_field_map_longitude = $map_coordinates_esri_paragraph[$map_coordinates_esri_paragraph_id]->field_map_longitude['und'][0]['value'];
+          $esri_field_map_zoom = $map_coordinates_esri_paragraph[$map_coordinates_esri_paragraph_id]->field_map_zoom['und'][0]['value'];
+        }
+        else {
+          $esri_field_map_latitude = NULL;
+          $esri_field_map_longitude = NULL;
+          $esri_field_map_zoom = NULL;
+        }
         // Set default lat, long, and zoom overrides for the main Map component.
         $map_coordinates_paragraph_id = $paragraph['#entity']->field_map_default_coordinates['und'][0]['value'];
         if ($map_coordinates_paragraph_id) {

@@ -17,13 +17,13 @@
       // Set Basemap URL.
       var basemapUrl = Drupal.settings.basemap;
       // Set Latitude to component value if it exists, if not set to ESRI Lat, if nothing exists set hardcoded value.
-      var esriLat = Drupal.settings.componentLat ? Drupal.settings.componentLat : Drupal.settings.esriLat ? Drupal.settings.esriLat : 42.357004;
+      var latitude = Drupal.settings.componentLat ? Drupal.settings.componentLat : Drupal.settings.esriLat ? Drupal.settings.esriLat : 42.357004;
       // Set Longitude to component value if it exists, if not set to ESRI Lat, if nothing exists set hardcoded value.
-      var esriLong = Drupal.settings.componentLong ? Drupal.settings.componentLong : Drupal.settings.esriLong ? Drupal.settings.esriLong : -71.062309;
+      var longitude = Drupal.settings.componentLong ? Drupal.settings.componentLong : Drupal.settings.esriLong ? Drupal.settings.esriLong : -71.062309;
       // Set Zoom to component value if it exists, if not set to ESRI Lat, if nothing exists set hardcoded value.
-      var esriZoom = Drupal.settings.componentZoom ? Drupal.settings.componentZoom : Drupal.settings.esriZoom ? Drupal.settings.esriZoom : 14;
+      var zoom = Drupal.settings.componentZoom ? Drupal.settings.componentZoom : Drupal.settings.esriZoom ? Drupal.settings.esriZoom : 14;
 
-      var map = L.map('map', {zoomControl: false}).setView([esriLat, esriLong], esriZoom);
+      var map = L.map('map', {zoomControl: false}).setView([latitude, longitude], zoom);
       //add zoom control to bottom right
       L.control.zoom({
         position:'bottomright'
