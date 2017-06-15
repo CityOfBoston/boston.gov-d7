@@ -42,6 +42,7 @@
       esriUrl.forEach(function(feedUrl) {
         var food_trucks = L.esri.Cluster.featureLayer({
           url: feedUrl.value,
+          style: { "color": "red" }
         }).addTo(map);
       });
       // Create popups for pin markers

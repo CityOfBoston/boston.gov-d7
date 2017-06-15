@@ -485,7 +485,7 @@ function boston_preprocess_page(array &$variables) {
       // Check if the current paragraph is a map component.
       if ($paragraph['#bundle'] == 'map') {
         // Add the canvas for the map.
-        $variables['page']['content']['system_main']['nodes'][$nid]['field_components'][0]['entity']['paragraphs_item'][$paragraph_id][]['#markup'] = '<div id="map-wrapper"><div id="map"></div></div>';
+        //$variables['page']['content']['system_main']['nodes'][$nid]['field_components'][0]['entity']['paragraphs_item'][$paragraph_id][]['#markup'] = '<div id="map-wrapper"><div id="map"></div></div>';
         // Add Leaflet stylesheet and javascript.
         drupal_add_css('https://unpkg.com/leaflet@1.0.3/dist/leaflet.css', 'external');
         drupal_add_js('https://unpkg.com/leaflet@1.0.3/dist/leaflet-src.js', 'external');

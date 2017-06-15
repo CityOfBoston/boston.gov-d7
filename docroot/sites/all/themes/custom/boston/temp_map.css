@@ -5,7 +5,7 @@
 }
 .co {position: relative; z-index: 1000;}
 body { margin:0; padding:0; }
-#map { position: absolute; top:0; bottom:0; right:0; left:0; }
+#map { position: absolute; top:0; bottom:0; right:0; left:0; z-index:0; }
 .leaflet-popup {
 	width: 250px;
 	height: auto;
