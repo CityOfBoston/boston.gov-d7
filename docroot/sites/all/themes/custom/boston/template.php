@@ -484,8 +484,6 @@ function boston_preprocess_page(array &$variables) {
     foreach ($paragraphs as $paragraph_id => $paragraph) {
       // Check if the current paragraph is a map component.
       if ($paragraph['#bundle'] == 'map') {
-        // Add the canvas for the map.
-        //$variables['page']['content']['system_main']['nodes'][$nid]['field_components'][0]['entity']['paragraphs_item'][$paragraph_id][]['#markup'] = '<div id="map-wrapper"><div id="map"></div></div>';
         // Add Leaflet stylesheet and javascript.
         drupal_add_css('https://unpkg.com/leaflet@1.0.3/dist/leaflet.css', 'external');
         drupal_add_js('https://unpkg.com/leaflet@1.0.3/dist/leaflet-src.js', 'external');
@@ -505,12 +503,22 @@ function boston_preprocess_page(array &$variables) {
         }
         $field_map_options = $paragraph['#entity']->field_map_options['und'][0]['value'];
         $field_basemap_url = $paragraph['#entity']->field_map_type['und'][0]['entity']->field_basemap_url_['und'][0]['value'];
+        // Set default lat, long, and zoom values from ESRI taxonomy.
+        $map_coordinates_paragraph_id = $paragraph['#entity']->field_map['und'][0]['entity']->field_map_default_coordinates['und'][0]['value'];
+        $map_coordinates_paragraph = entity_load('paragraphs_item', array($map_coordinates_paragraph_id));
+        $esri_field_map_latitude = $map_coordinates_paragraph[$map_coordinates_paragraph_id]->field_map_latitude['und'][0]['value'];
+        $esri_field_map_longitude = $map_coordinates_paragraph[$map_coordinates_paragraph_id]->field_map_longitude['und'][0]['value'];
+        $esri_field_map_zoom = $map_coordinates_paragraph[$map_coordinates_paragraph_id]->field_map_zoom['und'][0]['value'];
+
         // Pass variables to javascript to configure the map.
         drupal_add_js(
           array(
             'esri' => $field_esri_feed_url,
             'type' => $field_map_options,
             'basemap' => $field_basemap_url,
+            'esriLat' => $esri_field_map_latitude,
+            'esriLong' => $esri_field_map_longitude,
+            'esriZoom' => $esri_field_map_zoom,
           ), 'setting'
         );
       }

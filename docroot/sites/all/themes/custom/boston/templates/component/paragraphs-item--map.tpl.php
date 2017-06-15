@@ -31,7 +31,9 @@
       <div class="sh">
         <?php print render($content['field_component_title']); ?>
         <?php if (isset($content['field_contact'])): ?>
-          <?php print render($content['field_contact']); ?>
+          <div class="sh-contact">
+            <?php print render($content['field_contact']); ?>
+          </div>
         <?php endif; ?>
       </div>
     <?php endif; ?>

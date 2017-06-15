@@ -12,15 +12,17 @@
       // Set ESRI Feed URL.
       var esriUrl = Drupal.settings.esri;
       console.log(esriUrl);
-      /*
-       * Set Map Options.
-       * 0 == Static
-       * 1 == Scroll
-       * 2 == Zoom
-       */
+      // Set Map Options (0 = Static, 1 = Scroll, 2 = Zoom).
       var mapType = Drupal.settings.type;
       // Set Basemap URL.
       var basemapUrl = Drupal.settings.basemap;
+      // Set ESRI Latitude default.
+      var esriLat = Drupal.settings.esriLat;
+      // Set ESRI Longitude default.
+      var esriLong = Drupal.settings.esriLong;
+      // Set ESRI Zoom default.
+      var esriZoom = Drupal.settings.esriZoom;
+      console.log('lat is: ' + esriLat + ', long is: ' + esriLong + ', zoom is: ' + esriZoom);
 
       var map = L.map('map', {zoomControl: false}).setView([42.357004, -71.062309], 14);
       //add zoom control to bottom right
@@ -41,8 +43,7 @@
       // add layer for ESRI feed(s)
       esriUrl.forEach(function(feedUrl) {
         var food_trucks = L.esri.Cluster.featureLayer({
-          url: feedUrl.value,
-          style: { "color": "red" }
+          url: feedUrl.value
         }).addTo(map);
       });
       // Create popups for pin markers
