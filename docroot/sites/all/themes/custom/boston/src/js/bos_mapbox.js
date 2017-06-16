@@ -27,12 +27,12 @@
 
       // Apply default coordinates and zoom level.
       var map = L.map('map', {zoomControl: false}).setView([latitude, longitude], zoom);
-      //add zoom control to bottom right
+      // Add zoom control to bottom right.
       L.control.zoom({
         position:'bottomright'
       }).addTo(map);
 
-      // find user location
+      // Find user location.
       map.locate({setView: true, maxZoom: 18});
       function onLocationFound(e) {
         var radius = e.accuracy / 2;
@@ -40,40 +40,28 @@
         var radius_circle = L.circle(e.latlng, radius, {color:'#091F2F',opacity:1,fillOpacity:0.2}).addTo(map);
       }
       map.on('locationfound', onLocationFound);
-      // add mapbox basemap
+      // Add mapbox basemap.
       L.tileLayer(basemapUrl).addTo(map);
-      // add layer for ESRI feed(s)
+      // Set the legend position.
       var legend = L.control({position: 'topleft'});
       var div = L.DomUtil.create('div', 'info legend');
+      // Add layer for ESRI feed(s) and add item for legend.
       feeds.forEach(function(feed) {
         var food_trucks = L.esri.featureLayer({
           url: feed.url,
+          // Set line style.
           style: {
             "color": feed.color,
             "weight": 3
           }
         }).addTo(map);
+        // Add item to legend.
         div.innerHTML +='<i style="background:' + feed.color + '"></i> ' + (feed.title + '<br>');
       });
+      // Add "div" variable created in loop to legend.
       legend.onAdd = function (map) { return div; };
+      // Add legend to map.
       legend.addTo(map);
-      // add legend
-/*
-      var legend = L.control({position: 'topleft'});
-      legend.onAdd = function (map) {
-        var div = L.DomUtil.create('div', 'info legend');
-        categories = ["Boston Parking Restrictions", "Boston Street Closures", "Marathon Route", "City Boundary"];
-        colors = ["#091F2F", "#FB4D42", "#1c83df", "#184b71"];
-        styles = ["style1"];
-        for (var i = 0; i < categories.length; i++) {
-          div.innerHTML +=
-          '<i style="background:' + colors[i] + '"></i> ' +
-          (categories[i] + '<br>');
-        }
-        return div;
-      };
-      legend.addTo(map);
-*/
 /*
       esriUrl.forEach(function(feedUrl) {
         var food_trucks = L.esri.Cluster.featureLayer({
