@@ -43,6 +43,8 @@
       // add mapbox basemap
       L.tileLayer(basemapUrl).addTo(map);
       // add layer for ESRI feed(s)
+      var legend = L.control({position: 'topleft'});
+      var div = L.DomUtil.create('div', 'info legend');
       feeds.forEach(function(feed) {
         var food_trucks = L.esri.featureLayer({
           url: feed.url,
@@ -51,8 +53,12 @@
             "weight": 3
           }
         }).addTo(map);
+        div.innerHTML +='<i style="background:' + feed.color + '"></i> ' + (feed.title + '<br>');
       });
+      legend.onAdd = function (map) { return div; };
+      legend.addTo(map);
       // add legend
+/*
       var legend = L.control({position: 'topleft'});
       legend.onAdd = function (map) {
         var div = L.DomUtil.create('div', 'info legend');
@@ -67,6 +73,7 @@
         return div;
       };
       legend.addTo(map);
+*/
 /*
       esriUrl.forEach(function(feedUrl) {
         var food_trucks = L.esri.Cluster.featureLayer({
