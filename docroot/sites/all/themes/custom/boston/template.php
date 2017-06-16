@@ -507,11 +507,13 @@ function boston_preprocess_page(array &$variables) {
           $title = $entity[$pid]->field_title['und'][0]['value'];
           $url = $entity[$pid]->field_url['und'][0]['value'];
           $color = $entity[$pid]->field_color['und'][0]['value'];
+          $cluster = $entity[$pid]->field_map_cluster['und'][0]['value'];
           // Create a render array that holds title, url, & color for feed.
           $feeds[] = array(
             'title' => $title,
             'url' => $url,
             'color' => $color,
+            'cluster' => $cluster,
           );
         }
         foreach ($paragraph['#entity']->field_map['und'][0]['entity']->field_esri_feed_url['und'] as $key => $feed_url) {
@@ -526,6 +528,7 @@ function boston_preprocess_page(array &$variables) {
           $esri_field_map_latitude = $map_coordinates_esri_paragraph[$map_coordinates_esri_paragraph_id]->field_map_latitude['und'][0]['value'];
           $esri_field_map_longitude = $map_coordinates_esri_paragraph[$map_coordinates_esri_paragraph_id]->field_map_longitude['und'][0]['value'];
           $esri_field_map_zoom = $map_coordinates_esri_paragraph[$map_coordinates_esri_paragraph_id]->field_map_zoom['und'][0]['value'];
+          //$esri_field_map_cluser = $map_coordinates_esri_paragraph[$map_coordinates_esri_paragraph_id]->field_map_cluster['und'][0]['value'];
         }
         else {
           $esri_field_map_latitude = NULL;
@@ -556,6 +559,7 @@ function boston_preprocess_page(array &$variables) {
             'esriLat' => $esri_field_map_latitude,
             'esriLong' => $esri_field_map_longitude,
             'esriZoom' => $esri_field_map_zoom,
+            //'esriCluster' => $esri_field_map_cluster,
             'componentLat' => $field_map_latitude,
             'componentLong' => $field_map_longitude,
             'componentZoom' => $field_map_zoom,

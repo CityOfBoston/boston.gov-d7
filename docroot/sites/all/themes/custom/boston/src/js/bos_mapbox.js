@@ -24,6 +24,7 @@
       var longitude = Drupal.settings.componentLong ? Drupal.settings.componentLong : Drupal.settings.esriLong ? Drupal.settings.esriLong : -71.062309;
       // Set Zoom to component value if it exists, if not set to ESRI Lat, if nothing exists set hardcoded value.
       var zoom = Drupal.settings.componentZoom ? Drupal.settings.componentZoom : Drupal.settings.esriZoom ? Drupal.settings.esriZoom : 14;
+      //var cluster = Drupal.settings.esriCluster;
 
       // Apply default coordinates and zoom level.
       var map = L.map('map', {zoomControl: false}).setView([latitude, longitude], zoom);
@@ -47,14 +48,25 @@
       var div = L.DomUtil.create('div', 'info legend');
       // Add layer for ESRI feed(s) and add item for legend.
       feeds.forEach(function(feed) {
-        var food_trucks = L.esri.featureLayer({
-          url: feed.url,
-          // Set line style.
-          style: {
-            "color": feed.color,
-            "weight": 3
-          }
-        }).addTo(map);
+        if (feed.cluster) {
+          var food_trucks = L.esri.Cluster.featureLayer({
+            url: feed.url,
+            // Set line style.
+            style: {
+              "color": feed.color,
+              "weight": 3
+            }
+          }).addTo(map);
+        } else {
+          var food_trucks = L.esri.featureLayer({
+            url: feed.url,
+            // Set line style.
+            style: {
+              "color": feed.color,
+              "weight": 3
+            }
+          }).addTo(map);
+        }
         // Add item to legend.
         div.innerHTML +='<i style="background:' + feed.color + '"></i> ' + (feed.title + '<br>');
       });
