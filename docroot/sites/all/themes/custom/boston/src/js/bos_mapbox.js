@@ -31,6 +31,7 @@
       }).addTo(map);
 
       // Find user location.
+      /*
       map.locate({setView: true, maxZoom: 18});
       function onLocationFound(e) {
         var radius = e.accuracy / 2;
@@ -38,6 +39,7 @@
         var radius_circle = L.circle(e.latlng, radius, {color:'#091F2F',opacity:1,fillOpacity:0.2}).addTo(map);
       }
       map.on('locationfound', onLocationFound);
+      */
       // Add mapbox basemap.
       L.tileLayer(basemapUrl).addTo(map);
       // Set the legend position.
