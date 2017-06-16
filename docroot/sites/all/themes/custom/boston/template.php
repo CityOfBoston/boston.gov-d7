@@ -498,6 +498,22 @@ function boston_preprocess_page(array &$variables) {
         drupal_add_css(drupal_get_path('theme', 'boston') . '/temp_map.css');
         drupal_add_js(drupal_get_path('theme', 'boston') . '/src/js/bos_mapbox.js');
         // Set variables to pass to javascript.
+        // Collect ESRI feed info: title, url, color.
+        foreach ($paragraph['#entity']->field_map['und'][0]['entity']->field_map_esri_feed['und'] as $ids) {
+          // Get the paragraph ID.
+          $pid = $ids['value'];
+          // Load the referenced map_esri_feed paragraph.
+          $entity = entity_load('paragraphs_item', array($pid));
+          $title = $entity[$pid]->field_title['und'][0]['value'];
+          $url = $entity[$pid]->field_url['und'][0]['value'];
+          $color = $entity[$pid]->field_color['und'][0]['value'];
+          // Create a render array that holds title, url, & color for feed.
+          $feeds[] = array(
+            'title' => $title,
+            'url' => $url,
+            'color' => $color,
+          );
+        }
         foreach ($paragraph['#entity']->field_map['und'][0]['entity']->field_esri_feed_url['und'] as $key => $feed_url) {
           $field_esri_feed_url[] = $feed_url;
         }
@@ -534,6 +550,7 @@ function boston_preprocess_page(array &$variables) {
         drupal_add_js(
           array(
             'esri' => $field_esri_feed_url,
+            'feeds' => $feeds,
             'type' => $field_map_options,
             'basemap' => $field_basemap_url,
             'esriLat' => $esri_field_map_latitude,

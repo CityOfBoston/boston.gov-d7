@@ -9,9 +9,11 @@
   Drupal.behaviors.exampleModule = {
     attach: function (context, settings) {
 
+      // Set ESRI Feed title, url, and color info.
+      var feeds = Drupal.settings.feeds;
+      console.log(feeds);
       // Set ESRI Feed URL.
       var esriUrl = Drupal.settings.esri;
-      console.log(esriUrl);
       // Set Map Options (0 = Static, 1 = Scroll, 2 = Zoom).
       var mapType = Drupal.settings.type;
       // Set Basemap URL.
