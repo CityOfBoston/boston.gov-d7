@@ -47,7 +47,7 @@
 $email = $items[0]['#markup'];
 $detail_item_variables = array(
   'label' => NULL,
-  'body' => "<a href=mailto:$email>$email</a>",
+  'body' => "<a href='mailto:$email' title='Have a question, or just need help? You can send an email to $email through the form below.'>$email</a>",
   'classes' => array(
     'detail' => 'detail-item--middle',
     'icon' => 'icon-email',

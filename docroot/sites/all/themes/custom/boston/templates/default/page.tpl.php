@@ -148,7 +148,6 @@
 
     </div>
   </div>
-  <?php print render($page['modal']); ?>
   <?php print render($page['footer']); ?>
 </div>
 

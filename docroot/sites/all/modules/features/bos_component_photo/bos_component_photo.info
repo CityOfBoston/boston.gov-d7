@@ -26,5 +26,5 @@ features[field_instance][] = paragraphs_item-photo-field_photo_credit
 features[field_instance][] = paragraphs_item-photo-field_short_title
 features[paragraphs][] = photo
 features[picture_mapping][] = wide_2000x800
-mtime = 1480263901
+mtime = 1495558873
 project path = sites/all/modules/features
