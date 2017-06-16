@@ -45,9 +45,9 @@
       var div = L.DomUtil.create('div', 'info legend');
       // Add layer for ESRI feed(s) and add item for legend.
       feeds.forEach(function(feed) {
-        var food_trucks;
+        var singleLayer;
         if (feed.cluster) {
-          food_trucks = L.esri.Cluster.featureLayer({
+          singleLayer = L.esri.Cluster.featureLayer({
             url: feed.url,
             // Set line style.
             style: {
@@ -55,8 +55,23 @@
               "weight": 3
             }
           }).addTo(map);
+          // Create popups for pin markers
+          singleLayer.bindPopup(function (layer) {
+            return L.Util.template(
+              '<a class="title" href={Link} target="_blank">' +
+                '<b>{Truck}</b>' +
+              '</a>' +
+              '<p class="times">' +
+                '{Time}: {Hours}<br>' +
+                'Day: {Day}<br><br>{Title}' +
+              '</p>' +
+              '<p class="content">' +
+                '{Loc}<br><br>' +
+                'Managed by: {Management}' +
+              '</p>', layer.feature.properties);
+          });
         } else {
-          food_trucks = L.esri.featureLayer({
+          singleLayer = L.esri.featureLayer({
             url: feed.url,
             // Set line style.
             style: {
@@ -72,10 +87,6 @@
       legend.onAdd = function (map) { return div; };
       // Add legend to map.
       legend.addTo(map);
-      // Create popups for pin markers
-      food_trucks.bindPopup(function (layer) {
-        return L.Util.template('<a class="title" href={Link} target="_blank"><b>{Truck}</b></a><p class="times">{Time}: {Hours}<br>Day: {Day}<br><br>{Title}</p><p class="content">{Loc}<br><br>Managed by: {Management}</p>', layer.feature.properties);
-      });
 
     }
   };
