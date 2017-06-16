@@ -72,7 +72,6 @@ function bos_component_map_field_default_field_bases() {
       'allowed_values' => array(
         0 => 'Static',
         1 => 'Zoomable',
-        2 => 'Scrollable',
       ),
       'allowed_values_function' => '',
     ),
