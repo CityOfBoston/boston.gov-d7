@@ -25,6 +25,7 @@
       // Set Zoom to component value if it exists, if not set to ESRI Lat, if nothing exists set hardcoded value.
       var zoom = Drupal.settings.componentZoom ? Drupal.settings.componentZoom : Drupal.settings.esriZoom ? Drupal.settings.esriZoom : 14;
 
+      // Apply default coordinates and zoom level.
       var map = L.map('map', {zoomControl: false}).setView([latitude, longitude], zoom);
       //add zoom control to bottom right
       L.control.zoom({
@@ -42,11 +43,22 @@
       // add mapbox basemap
       L.tileLayer(basemapUrl).addTo(map);
       // add layer for ESRI feed(s)
+      feeds.forEach(function(feed) {
+        var food_trucks = L.esri.featureLayer({
+          url: feed.url,
+          style: {
+            "color": feed.color,
+            "weight": 3
+          }
+        }).addTo(map);
+      });
+/*
       esriUrl.forEach(function(feedUrl) {
         var food_trucks = L.esri.Cluster.featureLayer({
           url: feedUrl.value
         }).addTo(map);
       });
+*/
       // Create popups for pin markers
       food_trucks.bindPopup(function (layer) {
         return L.Util.template('<a class="title" href={Link} target="_blank"><b>{Truck}</b></a><p class="times">{Time}: {Hours}<br>Day: {Day}<br><br>{Title}</p><p class="content">{Loc}<br><br>Managed by: {Management}</p>', layer.feature.properties);
