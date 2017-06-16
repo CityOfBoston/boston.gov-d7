@@ -11,9 +11,6 @@
 
       // Set ESRI Feed title, url, and color info.
       var feeds = Drupal.settings.feeds;
-      console.log(feeds);
-      // Set ESRI Feed URL.
-      var esriUrl = Drupal.settings.esri;
       // Set Map Options (0 = Static, 1 = Scroll, 2 = Zoom).
       var mapType = Drupal.settings.type;
       // Set Basemap URL.
@@ -48,8 +45,9 @@
       var div = L.DomUtil.create('div', 'info legend');
       // Add layer for ESRI feed(s) and add item for legend.
       feeds.forEach(function(feed) {
+        var food_trucks;
         if (feed.cluster) {
-          var food_trucks = L.esri.Cluster.featureLayer({
+          food_trucks = L.esri.Cluster.featureLayer({
             url: feed.url,
             // Set line style.
             style: {
@@ -58,7 +56,7 @@
             }
           }).addTo(map);
         } else {
-          var food_trucks = L.esri.featureLayer({
+          food_trucks = L.esri.featureLayer({
             url: feed.url,
             // Set line style.
             style: {
@@ -74,13 +72,6 @@
       legend.onAdd = function (map) { return div; };
       // Add legend to map.
       legend.addTo(map);
-/*
-      esriUrl.forEach(function(feedUrl) {
-        var food_trucks = L.esri.Cluster.featureLayer({
-          url: feedUrl.value
-        }).addTo(map);
-      });
-*/
       // Create popups for pin markers
       food_trucks.bindPopup(function (layer) {
         return L.Util.template('<a class="title" href={Link} target="_blank"><b>{Truck}</b></a><p class="times">{Time}: {Hours}<br>Day: {Day}<br><br>{Title}</p><p class="content">{Loc}<br><br>Managed by: {Management}</p>', layer.feature.properties);

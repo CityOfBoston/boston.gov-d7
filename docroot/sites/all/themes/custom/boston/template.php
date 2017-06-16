@@ -516,9 +516,6 @@ function boston_preprocess_page(array &$variables) {
             'cluster' => $cluster,
           );
         }
-        foreach ($paragraph['#entity']->field_map['und'][0]['entity']->field_esri_feed_url['und'] as $key => $feed_url) {
-          $field_esri_feed_url[] = $feed_url;
-        }
         $field_map_options = $paragraph['#entity']->field_map_options['und'][0]['value'];
         $field_basemap_url = $paragraph['#entity']->field_map_type['und'][0]['entity']->field_basemap_url_['und'][0]['value'];
         // Set default lat, long, and zoom values from ESRI taxonomy.
@@ -528,7 +525,6 @@ function boston_preprocess_page(array &$variables) {
           $esri_field_map_latitude = $map_coordinates_esri_paragraph[$map_coordinates_esri_paragraph_id]->field_map_latitude['und'][0]['value'];
           $esri_field_map_longitude = $map_coordinates_esri_paragraph[$map_coordinates_esri_paragraph_id]->field_map_longitude['und'][0]['value'];
           $esri_field_map_zoom = $map_coordinates_esri_paragraph[$map_coordinates_esri_paragraph_id]->field_map_zoom['und'][0]['value'];
-          //$esri_field_map_cluser = $map_coordinates_esri_paragraph[$map_coordinates_esri_paragraph_id]->field_map_cluster['und'][0]['value'];
         }
         else {
           $esri_field_map_latitude = NULL;
@@ -552,14 +548,12 @@ function boston_preprocess_page(array &$variables) {
         // Pass variables to javascript to configure the map.
         drupal_add_js(
           array(
-            'esri' => $field_esri_feed_url,
             'feeds' => $feeds,
             'type' => $field_map_options,
             'basemap' => $field_basemap_url,
             'esriLat' => $esri_field_map_latitude,
             'esriLong' => $esri_field_map_longitude,
             'esriZoom' => $esri_field_map_zoom,
-            //'esriCluster' => $esri_field_map_cluster,
             'componentLat' => $field_map_latitude,
             'componentLong' => $field_map_longitude,
             'componentZoom' => $field_map_zoom,
