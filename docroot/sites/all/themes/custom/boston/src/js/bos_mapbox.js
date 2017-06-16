@@ -46,7 +46,7 @@
       // Add layer for ESRI feed(s) and add item for legend.
       feeds.forEach(function(feed) {
         var singleLayer;
-        if (feed.cluster) {
+        if (feed.cluster == 1) {
           singleLayer = L.esri.Cluster.featureLayer({
             url: feed.url,
             // Set line style.
