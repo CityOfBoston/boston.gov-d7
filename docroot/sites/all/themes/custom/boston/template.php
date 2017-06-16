@@ -549,7 +549,7 @@ function boston_preprocess_page(array &$variables) {
         drupal_add_js(
           array(
             'feeds' => $feeds,
-            'type' => $field_map_options,
+            'options' => $field_map_options,
             'basemap' => $field_basemap_url,
             'esriLat' => $esri_field_map_latitude,
             'esriLong' => $esri_field_map_longitude,

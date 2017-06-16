@@ -11,8 +11,8 @@
 
       // Set ESRI Feed title, url, and color info.
       var feeds = Drupal.settings.feeds;
-      // Set Map Options (0 = Static, 1 = Scroll, 2 = Zoom).
-      var mapType = Drupal.settings.type;
+      // Set Map Options (0 = Static, 1 = Zoom).
+      var mapOptions = Drupal.settings.options;
       // Set Basemap URL.
       var basemapUrl = Drupal.settings.basemap;
       // Set Latitude to component value if it exists, if not set to ESRI Lat, if nothing exists set hardcoded value.
@@ -29,6 +29,11 @@
       L.control.zoom({
         position:'bottomright'
       }).addTo(map);
+
+      if (mapOptions === '0') {
+        // Disable map zoom when using scroll.
+        map.scrollWheelZoom.disable();
+      }
 
       // Find user location.
       /*
