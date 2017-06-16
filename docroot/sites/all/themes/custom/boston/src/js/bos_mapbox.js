@@ -52,6 +52,21 @@
           }
         }).addTo(map);
       });
+      // add legend
+      var legend = L.control({position: 'topleft'});
+      legend.onAdd = function (map) {
+        var div = L.DomUtil.create('div', 'info legend');
+        categories = ["Boston Parking Restrictions", "Boston Street Closures", "Marathon Route", "City Boundary"];
+        colors = ["#091F2F", "#FB4D42", "#1c83df", "#184b71"];
+        styles = ["style1"];
+        for (var i = 0; i < categories.length; i++) {
+          div.innerHTML +=
+          '<i style="background:' + colors[i] + '"></i> ' +
+          (categories[i] + '<br>');
+        }
+        return div;
+      };
+      legend.addTo(map);
 /*
       esriUrl.forEach(function(feedUrl) {
         var food_trucks = L.esri.Cluster.featureLayer({
