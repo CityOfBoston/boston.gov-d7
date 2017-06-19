@@ -10,6 +10,53 @@
 function bos_component_map_esri_feed_field_default_field_instances() {
   $field_instances = array();
 
+  // Exported field_instance: 'paragraphs_item-map_esri_feed-field_additional_information'
+  $field_instances['paragraphs_item-map_esri_feed-field_additional_information'] = array(
+    'bundle' => 'map_esri_feed',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 4,
+      ),
+      'paragraphs_editor_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'paragraphs_item',
+    'fences_wrapper' => 'div_div_div',
+    'field_name' => 'field_additional_information',
+    'label' => 'Pin Popup HTML',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+        'show_token_tree' => 0,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 7,
+    ),
+  );
+
   // Exported field_instance: 'paragraphs_item-map_esri_feed-field_color'
   $field_instances['paragraphs_item-map_esri_feed-field_color'] = array(
     'bundle' => 'map_esri_feed',
@@ -199,6 +246,7 @@ function bos_component_map_esri_feed_field_default_field_instances() {
   // Included for use with string extractors like potx.
   t('Cluster');
   t('Color');
+  t('Pin Popup HTML');
   t('Title');
   t('URL');
 
