@@ -45,6 +45,11 @@
       }
       map.on('locationfound', onLocationFound);
       */
+
+      L.marker([50.5, 30.5]).addTo(map);
+      L.marker([40.5, 30.5]).addTo(map);
+      L.marker([42, -70]).addTo(map);
+
       // Add mapbox basemap.
       L.tileLayer(basemapUrl).addTo(map);
       // Set the legend position.
