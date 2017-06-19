@@ -546,6 +546,21 @@ function boston_preprocess_page(array &$variables) {
           $field_map_longitude = NULL;
           $field_map_zoom = NULL;
         }
+        // Get custom dropped pins from Maps component.
+        $map_pins_paragraph_id = $paragraph['#entity']->field_map_point_of_interest['und'][0]['value'];
+        if ($map_pins_paragraph_id) {
+          $map_pins_paragraph = entity_load('paragraphs_item', array($map_pins_paragraph_id));
+          $field_custom_pin_name = $map_pins_paragraph[$map_pins_paragraph_id]->field_pin_name['und'][0]['value'];
+          $field_custom_pin_desc = $map_pins_paragraph[$map_pins_paragraph_id]->field_description['und'][0]['value'];
+          $field_custom_pin_latitude = $map_pins_paragraph[$map_pins_paragraph_id]->field_map_latitude['und'][0]['value'];
+          $field_custom_pin_longitude = $map_pins_paragraph[$map_pins_paragraph_id]->field_map_longitude['und'][0]['value'];
+        }
+        else {
+          $field_custom_pin_name = NULL;
+          $field_custom_pin_desc = NULL;
+          $field_custom_pin_latitude = NULL;
+          $field_custom_pin_longitude = NULL;
+        }
 
         // Pass variables to javascript to configure the map.
         drupal_add_js(
