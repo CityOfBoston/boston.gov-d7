@@ -57,8 +57,8 @@ function bos_component_map_pin_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-map_pin-field_pin_latitude'
-  $field_instances['paragraphs_item-map_pin-field_pin_latitude'] = array(
+  // Exported field_instance: 'paragraphs_item-map_pin-field_map_latitude'
+  $field_instances['paragraphs_item-map_pin-field_map_latitude'] = array(
     'bundle' => 'map_pin',
     'default_value' => NULL,
     'deleted' => 0,
@@ -69,7 +69,7 @@ function bos_component_map_pin_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 0,
+        'weight' => 4,
       ),
       'paragraphs_editor_preview' => array(
         'label' => 'above',
@@ -80,7 +80,7 @@ function bos_component_map_pin_field_default_field_instances() {
     ),
     'entity_type' => 'paragraphs_item',
     'fences_wrapper' => 'div_div_div',
-    'field_name' => 'field_pin_latitude',
+    'field_name' => 'field_map_latitude',
     'label' => 'Latitude',
     'required' => 1,
     'settings' => array(
@@ -100,12 +100,12 @@ function bos_component_map_pin_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 2,
+      'weight' => 3,
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-map_pin-field_pin_longitude'
-  $field_instances['paragraphs_item-map_pin-field_pin_longitude'] = array(
+  // Exported field_instance: 'paragraphs_item-map_pin-field_map_longitude'
+  $field_instances['paragraphs_item-map_pin-field_map_longitude'] = array(
     'bundle' => 'map_pin',
     'default_value' => NULL,
     'deleted' => 0,
@@ -116,7 +116,7 @@ function bos_component_map_pin_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 1,
+        'weight' => 5,
       ),
       'paragraphs_editor_preview' => array(
         'label' => 'above',
@@ -127,9 +127,9 @@ function bos_component_map_pin_field_default_field_instances() {
     ),
     'entity_type' => 'paragraphs_item',
     'fences_wrapper' => 'div_div_div',
-    'field_name' => 'field_pin_longitude',
+    'field_name' => 'field_map_longitude',
     'label' => 'Longitude',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'linkit' => array(
         'button_text' => 'Search',
@@ -147,7 +147,7 @@ function bos_component_map_pin_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 3,
+      'weight' => 5,
     ),
   );
 
