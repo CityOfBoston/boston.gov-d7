@@ -64,35 +64,7 @@
           }).addTo(map);
           // Create popups for pin markers
           singleLayer.bindPopup(function (layer) {
-            return L.Util.template(
-              // Farmers market
-              '<p class="title">' +
-                '<b>{Name}</b>' +
-              '</p>' +
-              '<p class="times">' +
-                '{F6}<br>' +
-                '{Start}<br>' +
-                'Day: {Day_}<br><br>' +
-                '{Address}' +
-              '</p>' +
-              '<p class="content">' +
-                '{Location}<br><br>' +
-                'Open: Year-round' +
-              '</p>', layer.feature.properties);
-/*
-              // Food Trucks
-              '<a class="title" href={Link} target="_blank">' +
-                '<b>{Truck}</b>' +
-              '</a>' +
-              '<p class="times">' +
-                '{Time}: {Hours}<br>' +
-                'Day: {Day}<br><br>{Title}' +
-              '</p>' +
-              '<p class="content">' +
-                '{Loc}<br><br>' +
-                'Managed by: {Management}' +
-              '</p>', layer.feature.properties);
-*/
+            return L.Util.template(feed.popup, layer.feature.properties);
           });
         } else {
           singleLayer = L.esri.featureLayer({

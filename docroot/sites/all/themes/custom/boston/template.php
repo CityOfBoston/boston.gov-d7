@@ -508,12 +508,14 @@ function boston_preprocess_page(array &$variables) {
           $url = $entity[$pid]->field_url['und'][0]['value'];
           $color = $entity[$pid]->field_color['und'][0]['value'];
           $cluster = $entity[$pid]->field_map_cluster['und'][0]['value'];
+          $popup = $entity[$pid]->field_additional_information['und'][0]['value'];
           // Create a render array that holds title, url, & color for feed.
           $feeds[] = array(
             'title' => $title,
             'url' => $url,
             'color' => $color,
             'cluster' => $cluster,
+            'popup' => $popup,
           );
         }
         $field_map_options = $paragraph['#entity']->field_map_options['und'][0]['value'];
