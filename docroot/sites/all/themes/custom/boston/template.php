@@ -494,8 +494,7 @@ function boston_preprocess_page(array &$variables) {
         drupal_add_css('https://unpkg.com/leaflet.markercluster@1.0.4/dist/MarkerCluster.css', 'external');
         drupal_add_js('https://unpkg.com/leaflet.markercluster@1.0.4/dist/leaflet.markercluster.js', 'external');
         drupal_add_js('https://unpkg.com/esri-leaflet-cluster@2.0.0', 'external');
-        // Add custom stylesheet and javascript.
-        drupal_add_css(drupal_get_path('theme', 'boston') . '/temp_map.css');
+        // Add custom javascript.
         drupal_add_js(drupal_get_path('theme', 'boston') . '/src/js/bos_mapbox.js');
         // Set variables to pass to javascript.
         // Collect ESRI feed info: title, url, color.
