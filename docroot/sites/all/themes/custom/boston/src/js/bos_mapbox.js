@@ -60,29 +60,24 @@
       // Add layer for ESRI feed(s) and add item for legend.
       feeds.forEach(function(feed) {
         var singleLayer;
+        var base;
         if (feed.cluster == 1) {
-          singleLayer = L.esri.Cluster.featureLayer({
-            url: feed.url,
-            // Set line style.
-            style: {
-              "color": feed.color,
-              "weight": 3
-            }
-          }).addTo(map);
-          // Create popups for pin markers
-          singleLayer.bindPopup(function (layer) {
-            return L.Util.template(feed.popup, layer.feature.properties);
-          });
+          base = L.esri.Cluster;
         } else {
-          singleLayer = L.esri.featureLayer({
-            url: feed.url,
-            // Set line style.
-            style: {
-              "color": feed.color,
-              "weight": 3
-            }
-          }).addTo(map);
+          base = L.esri;
         }
+        singleLayer = base.featureLayer({
+          url: feed.url,
+          // Set line style.
+          style: {
+            "color": feed.color,
+            "weight": 3
+          }
+        }).addTo(map);
+        // Create popups for pin markers
+        singleLayer.bindPopup(function (layer) {
+          return L.Util.template(feed.popup, layer.feature.properties);
+        });
         // Add item to legend.
         div.innerHTML +='<i style="background:' + feed.color + '"></i> ' + (feed.title + '<br>');
       });
