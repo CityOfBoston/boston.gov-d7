@@ -536,7 +536,6 @@ function boston_preprocess_page(array &$variables) {
         $field_map_zoom = $map_coordinates_paragraph[$map_coordinates_pid]->field_map_zoom['und'][0]['value'];
 
         // Get custom dropped pins from Maps component.
-        //$paragraph['field_map_point_of_interest'][0]['entity']['paragraphs_item'][123871]['field_map_latitude'][0]['#markup']
         foreach ($paragraph['#entity']->field_map_point_of_interest['und'] as $ids) {
           $map_pins_pid = $ids['value'];
           $map_pins_paragraph = $map_pins_pid ? entity_load('paragraphs_item', array($map_pins_pid)) : NULL;
@@ -553,7 +552,6 @@ function boston_preprocess_page(array &$variables) {
             'long' => $field_custom_pin_longitude,
           );
         }
-        //$map_pins_pid = $paragraph['#entity']->field_map_point_of_interest['und'][0]['value'];
 
         // Pass variables to javascript to configure the map.
         drupal_add_js(

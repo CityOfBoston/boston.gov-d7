@@ -37,19 +37,19 @@
         map.scrollWheelZoom.disable();
       }
 
-      // Find user location.
-      /*
-      map.locate({setView: true, maxZoom: 18});
-      function onLocationFound(e) {
-        var radius = e.accuracy / 2;
-        var user_loc = L.marker(e.latlng).addTo(map).bindPopup('<p class="title">You are here.</p>').openPopup();
-        var radius_circle = L.circle(e.latlng, radius, {color:'#091F2F',opacity:1,fillOpacity:0.2}).addTo(map);
-      }
-      map.on('locationfound', onLocationFound);
-      */
-
+      // Add custom pins created in Map component.
       points.forEach(function(point) {
-        L.marker([point.lat, point.long]).addTo(map);
+        var customPin = L.marker([point.lat, point.long]).addTo(map);
+        customPin.bindPopup(
+          '<a class="title" href="' + point.url + '" target="_blank">' +
+            '<b>' +
+              point.name +
+            '</b>' +
+          '</a>' +
+          '<p class="times">' +
+            point.desc +
+          '</p>'
+        ).openPopup();
       });
 
       // Add mapbox basemap.
@@ -59,14 +59,15 @@
       var div = L.DomUtil.create('div', 'info legend');
       // Add layer for ESRI feed(s) and add item for legend.
       feeds.forEach(function(feed) {
-        var singleLayer;
-        var base;
+        var layerObj;
+        var baseObj;
+        // Check if pins should be clustered.
         if (feed.cluster == 1) {
-          base = L.esri.Cluster;
+          baseObj = L.esri.Cluster;
         } else {
-          base = L.esri;
+          baseObj = L.esri;
         }
-        singleLayer = base.featureLayer({
+        layerObj = baseObj.featureLayer({
           url: feed.url,
           // Set line style.
           style: {
@@ -75,7 +76,7 @@
           }
         }).addTo(map);
         // Create popups for pin markers
-        singleLayer.bindPopup(function (layer) {
+        layerObj.bindPopup(function (layer) {
           return L.Util.template(feed.popup, layer.feature.properties);
         });
         // Add item to legend.
