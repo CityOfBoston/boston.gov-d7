@@ -49,7 +49,7 @@
           '<p class="times">' +
             point.desc +
           '</p>'
-        ).openPopup();
+        );
       });
 
       // Add mapbox basemap.
