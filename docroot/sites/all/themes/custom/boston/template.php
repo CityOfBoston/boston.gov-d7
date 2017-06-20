@@ -523,27 +523,21 @@ function boston_preprocess_page(array &$variables) {
 
         // Set default lat, long, and zoom values from ESRI taxonomy.
         $map_coordinates_esri_pid = $paragraph['#entity']->field_map['und'][0]['entity']->field_map_default_coordinates['und'][0]['value'];
-        if ($map_coordinates_esri_pid) {
-          $map_coordinates_esri_paragraph = entity_load('paragraphs_item', array($map_coordinates_esri_pid));
-        }
+        $map_coordinates_esri_paragraph = $map_coordinates_esri_pid ? entity_load('paragraphs_item', array($map_coordinates_esri_pid)) : NULL;
         $esri_field_map_latitude = $map_coordinates_esri_paragraph[$map_coordinates_esri_pid]->field_map_latitude['und'][0]['value'];
         $esri_field_map_longitude = $map_coordinates_esri_paragraph[$map_coordinates_esri_pid]->field_map_longitude['und'][0]['value'];
         $esri_field_map_zoom = $map_coordinates_esri_paragraph[$map_coordinates_esri_pid]->field_map_zoom['und'][0]['value'];
 
         // Set default lat, long, and zoom overrides for the main Map component.
         $map_coordinates_pid = $paragraph['#entity']->field_map_default_coordinates['und'][0]['value'];
-        if ($map_coordinates_pid) {
-          $map_coordinates_paragraph = entity_load('paragraphs_item', array($map_coordinates_pid));
-        }
+        $map_coordinates_paragraph = $map_coordinates_pid ? entity_load('paragraphs_item', array($map_coordinates_pid)) : NULL;
         $field_map_latitude = $map_coordinates_paragraph[$map_coordinates_pid]->field_map_latitude['und'][0]['value'];
         $field_map_longitude = $map_coordinates_paragraph[$map_coordinates_pid]->field_map_longitude['und'][0]['value'];
         $field_map_zoom = $map_coordinates_paragraph[$map_coordinates_pid]->field_map_zoom['und'][0]['value'];
 
         // Get custom dropped pins from Maps component.
         $map_pins_pid = $paragraph['#entity']->field_map_point_of_interest['und'][0]['value'];
-        if ($map_pins_pid) {
-          $map_pins_paragraph = entity_load('paragraphs_item', array($map_pins_pid));
-        }
+        $map_pins_paragraph = $map_pins_pid ? entity_load('paragraphs_item', array($map_pins_pid)) : NULL;
         $field_custom_pin_name = $map_pins_paragraph[$map_pins_pid]->field_pin_name['und'][0]['value'];
         $field_custom_pin_desc = $map_pins_paragraph[$map_pins_pid]->field_description['und'][0]['value'];
         $field_custom_pin_latitude = $map_pins_paragraph[$map_pins_pid]->field_map_latitude['und'][0]['value'];
