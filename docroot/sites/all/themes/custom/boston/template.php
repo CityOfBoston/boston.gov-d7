@@ -520,47 +520,34 @@ function boston_preprocess_page(array &$variables) {
         }
         $field_map_options = $paragraph['#entity']->field_map_options['und'][0]['value'];
         $field_basemap_url = $paragraph['#entity']->field_map_type['und'][0]['entity']->field_basemap_url_['und'][0]['value'];
+
         // Set default lat, long, and zoom values from ESRI taxonomy.
         $map_coordinates_esri_paragraph_id = $paragraph['#entity']->field_map['und'][0]['entity']->field_map_default_coordinates['und'][0]['value'];
         if ($map_coordinates_esri_paragraph_id) {
           $map_coordinates_esri_paragraph = entity_load('paragraphs_item', array($map_coordinates_esri_paragraph_id));
-          $esri_field_map_latitude = $map_coordinates_esri_paragraph[$map_coordinates_esri_paragraph_id]->field_map_latitude['und'][0]['value'];
-          $esri_field_map_longitude = $map_coordinates_esri_paragraph[$map_coordinates_esri_paragraph_id]->field_map_longitude['und'][0]['value'];
-          $esri_field_map_zoom = $map_coordinates_esri_paragraph[$map_coordinates_esri_paragraph_id]->field_map_zoom['und'][0]['value'];
         }
-        else {
-          $esri_field_map_latitude = NULL;
-          $esri_field_map_longitude = NULL;
-          $esri_field_map_zoom = NULL;
-        }
+        $esri_field_map_latitude = $map_coordinates_esri_paragraph[$map_coordinates_esri_paragraph_id]->field_map_latitude['und'][0]['value'] ?: NULL;
+        $esri_field_map_longitude = $map_coordinates_esri_paragraph[$map_coordinates_esri_paragraph_id]->field_map_longitude['und'][0]['value'] ?: NULL;
+        $esri_field_map_zoom = $map_coordinates_esri_paragraph[$map_coordinates_esri_paragraph_id]->field_map_zoom['und'][0]['value'] ?: NULL;
+
         // Set default lat, long, and zoom overrides for the main Map component.
         $map_coordinates_paragraph_id = $paragraph['#entity']->field_map_default_coordinates['und'][0]['value'];
         if ($map_coordinates_paragraph_id) {
           $map_coordinates_paragraph = entity_load('paragraphs_item', array($map_coordinates_paragraph_id));
-          $field_map_latitude = $map_coordinates_paragraph[$map_coordinates_paragraph_id]->field_map_latitude['und'][0]['value'];
-          $field_map_longitude = $map_coordinates_paragraph[$map_coordinates_paragraph_id]->field_map_longitude['und'][0]['value'];
-          $field_map_zoom = $map_coordinates_paragraph[$map_coordinates_paragraph_id]->field_map_zoom['und'][0]['value'];
         }
-        else {
-          $field_map_latitude = NULL;
-          $field_map_longitude = NULL;
-          $field_map_zoom = NULL;
-        }
+        $field_map_latitude = $map_coordinates_paragraph[$map_coordinates_paragraph_id]->field_map_latitude['und'][0]['value'] ?: NULL;
+        $field_map_longitude = $map_coordinates_paragraph[$map_coordinates_paragraph_id]->field_map_longitude['und'][0]['value'] ?: NULL;
+        $field_map_zoom = $map_coordinates_paragraph[$map_coordinates_paragraph_id]->field_map_zoom['und'][0]['value'] ?: NULL;
+
         // Get custom dropped pins from Maps component.
         $map_pins_paragraph_id = $paragraph['#entity']->field_map_point_of_interest['und'][0]['value'];
         if ($map_pins_paragraph_id) {
           $map_pins_paragraph = entity_load('paragraphs_item', array($map_pins_paragraph_id));
-          $field_custom_pin_name = $map_pins_paragraph[$map_pins_paragraph_id]->field_pin_name['und'][0]['value'];
-          $field_custom_pin_desc = $map_pins_paragraph[$map_pins_paragraph_id]->field_description['und'][0]['value'];
-          $field_custom_pin_latitude = $map_pins_paragraph[$map_pins_paragraph_id]->field_map_latitude['und'][0]['value'];
-          $field_custom_pin_longitude = $map_pins_paragraph[$map_pins_paragraph_id]->field_map_longitude['und'][0]['value'];
         }
-        else {
-          $field_custom_pin_name = NULL;
-          $field_custom_pin_desc = NULL;
-          $field_custom_pin_latitude = NULL;
-          $field_custom_pin_longitude = NULL;
-        }
+        $field_custom_pin_name = $map_pins_paragraph[$map_pins_paragraph_id]->field_pin_name['und'][0]['value'] ?: NULL;
+        $field_custom_pin_desc = $map_pins_paragraph[$map_pins_paragraph_id]->field_description['und'][0]['value'] ?: NULL;
+        $field_custom_pin_latitude = $map_pins_paragraph[$map_pins_paragraph_id]->field_map_latitude['und'][0]['value'] ?: NULL;
+        $field_custom_pin_longitude = $map_pins_paragraph[$map_pins_paragraph_id]->field_map_longitude['und'][0]['value'] ?: NULL;
 
         // Pass variables to javascript to configure the map.
         drupal_add_js(
