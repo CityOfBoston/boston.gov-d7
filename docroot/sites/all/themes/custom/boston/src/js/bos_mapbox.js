@@ -13,7 +13,6 @@
       var feeds = Drupal.settings.feeds;
       // Set Custom Pins title, desc, latitude and longitude info.
       var points = Drupal.settings.points;
-      console.log(points);
       // Set Map Options (0 = Static, 1 = Zoom).
       var mapOptions = Drupal.settings.options;
       // Set Basemap URL.
@@ -49,9 +48,9 @@
       map.on('locationfound', onLocationFound);
       */
 
-      L.marker([50.5, 30.5]).addTo(map);
-      L.marker([40.5, 30.5]).addTo(map);
-      L.marker([42, -70]).addTo(map);
+      points.forEach(function(point) {
+        L.marker([point.lat, point.long]).addTo(map);
+      });
 
       // Add mapbox basemap.
       L.tileLayer(basemapUrl).addTo(map);
