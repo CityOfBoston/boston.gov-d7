@@ -37,6 +37,7 @@
         <?php endif; ?>
       </div>
     <?php endif; ?>
+    <div class="js-hide">You must enable javascript in your browser settings in order to see map.</div>
     <div id="map-wrapper"><div id="map"></div></div>
   </div>
 </div>
