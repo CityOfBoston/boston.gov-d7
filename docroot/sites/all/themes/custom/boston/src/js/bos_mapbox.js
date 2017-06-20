@@ -11,6 +11,9 @@
 
       // Set ESRI Feed title, url, and color info.
       var feeds = Drupal.settings.feeds;
+      // Set Custom Pins title, desc, latitude and longitude info.
+      var points = Drupal.settings.points;
+      console.log(points);
       // Set Map Options (0 = Static, 1 = Zoom).
       var mapOptions = Drupal.settings.options;
       // Set Basemap URL.
