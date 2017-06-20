@@ -25,33 +25,29 @@
  * @see template_process()
  */
 
-// Hide this now to print later.
-hide($content['group_photo_details']);
+ // Hide this now to print later.
+ hide($content['group_photo_details']);
+ $has_caption = isset($content['group_photo_details']['field_component_title'])||isset($content['group_photo_details']['field_photo_caption'])||isset($content['group_photo_details']['field_photo_credit'])||isset($content['group_photo_details']['field_link']);
 ?>
-<div class="<?php print $classes; ?>"<?php print $attributes; ?>>
-  <div class="content"<?php print $content_attributes; ?>>
-    <?php print render($content); ?>
-    <?php if (isset($content['group_photo_details']['field_component_title'])||isset($content['group_photo_details']['field_photo_caption'])||isset($content['group_photo_details']['field_photo_credit'])||isset($content['group_photo_details']['field_link'])): ?>
-    <div class="photo-details">
-      <?php if (isset($content['group_photo_details']['field_component_title'])): ?>
-        <?php print render($content['group_photo_details']['field_component_title']); ?>
-      <?php endif; ?>
-      <?php if (isset($content['group_photo_details']['field_photo_caption'])): ?>
-        <div class="photo-caption-wrapper">
-          <?php print render($content['group_photo_details']['field_photo_caption']); ?>
-        </div>
-      <?php endif; ?>
-      <?php if (isset($content['group_photo_details']['field_photo_credit'])): ?>
-        <div class="photo-credit-wrapper">
-          <?php print render($content['group_photo_details']['field_photo_credit']); ?>
-        </div>
-      <?php endif; ?>
-      <?php if (isset($content['group_photo_details']['field_link'])): ?>
-        <div class="call-to-action">
+
+<div class="b b--fw">
+  <div class="ph<?php if ($has_caption): ?> ph--wc<?php endif; ?>">
+    <div class="ph-p ph-p--<?php print $photo_id; ?>"><?php print render($content['field_image']); ?></div>
+    <?php if ($has_caption): ?>
+      <div class="ph-c p-a600">
+        <?php if (isset($content['group_photo_details']['field_component_title'])): ?>
+          <div class="h2 tt-u m-b200"><?php print render($content['group_photo_details']['field_component_title']); ?></div>
+        <?php endif; ?>
+        <?php if (isset($content['group_photo_details']['field_photo_caption'])): ?>
+          <div class="t--info m-b200"><?php print render($content['group_photo_details']['field_photo_caption']); ?></div>
+        <?php endif; ?>
+        <?php if (isset($content['group_photo_details']['field_photo_credit'])): ?>
+          <div class="t--info<?php if (isset($content['group_photo_details']['field_link'])): ?> m-b200<?php endif; ?>"><?php print render($content['group_photo_details']['field_photo_credit']); ?></div>
+        <?php endif; ?>
+        <?php if (isset($content['group_photo_details']['field_link'])): ?>
           <?php print render($content['group_photo_details']['field_link']); ?>
-        </div>
-      <?php endif; ?>
-    </div>
-  <?php endif; ?>
+        <?php endif; ?>
+      </div>
+    <?php endif; ?>
   </div>
 </div>
