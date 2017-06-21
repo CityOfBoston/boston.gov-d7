@@ -538,21 +538,26 @@ function boston_preprocess_page(array &$variables) {
         $field_map_zoom = $map_coordinates_paragraph[$map_coordinates_pid]->field_map_zoom['und'][0]['value'];
 
         // Get custom dropped pins from Maps component.
-        foreach ($paragraph['#entity']->field_map_point_of_interest['und'] as $ids) {
-          $map_pins_pid = $ids['value'];
-          $map_pins_paragraph = $map_pins_pid ? entity_load('paragraphs_item', array($map_pins_pid)) : NULL;
-          $field_custom_pin_name = $map_pins_paragraph[$map_pins_pid]->field_pin_name['und'][0]['title'];
-          $field_custom_pin_url = $map_pins_paragraph[$map_pins_pid]->field_pin_name['und'][0]['url'];
-          $field_custom_pin_desc = $map_pins_paragraph[$map_pins_pid]->field_description['und'][0]['value'];
-          $field_custom_pin_latitude = $map_pins_paragraph[$map_pins_pid]->field_map_latitude['und'][0]['value'];
-          $field_custom_pin_longitude = $map_pins_paragraph[$map_pins_pid]->field_map_longitude['und'][0]['value'];
-          $points[] = array(
-            'name' => $field_custom_pin_name,
-            'url' => $field_custom_pin_url,
-            'desc' => $field_custom_pin_desc,
-            'lat' => $field_custom_pin_latitude,
-            'long' => $field_custom_pin_longitude,
-          );
+        if ($paragraph['#entity']->field_map_point_of_interest['und']) {
+          foreach ($paragraph['#entity']->field_map_point_of_interest['und'] as $ids) {
+            $map_pins_pid = $ids['value'];
+            $map_pins_paragraph = $map_pins_pid ? entity_load('paragraphs_item', array($map_pins_pid)) : NULL;
+            $field_custom_pin_name = $map_pins_paragraph[$map_pins_pid]->field_pin_name['und'][0]['title'];
+            $field_custom_pin_url = $map_pins_paragraph[$map_pins_pid]->field_pin_name['und'][0]['url'];
+            $field_custom_pin_desc = $map_pins_paragraph[$map_pins_pid]->field_description['und'][0]['value'];
+            $field_custom_pin_latitude = $map_pins_paragraph[$map_pins_pid]->field_map_latitude['und'][0]['value'];
+            $field_custom_pin_longitude = $map_pins_paragraph[$map_pins_pid]->field_map_longitude['und'][0]['value'];
+            $points[] = array(
+              'name' => $field_custom_pin_name,
+              'url' => $field_custom_pin_url,
+              'desc' => $field_custom_pin_desc,
+              'lat' => $field_custom_pin_latitude,
+              'long' => $field_custom_pin_longitude,
+            );
+          }
+        }
+        else {
+          $points = array();
         }
 
         // Pass variables to javascript to configure the map.
