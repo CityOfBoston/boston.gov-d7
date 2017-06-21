@@ -87,6 +87,21 @@
       // Add legend to map.
       legend.addTo(map);
 
+      if ($(window).width() < 960) {
+        // Disable map zoom when using scroll.
+        map.scrollWheelZoom.disable();
+        // Create a button to re-enable zoom.
+        var mobileButton = L.control({position: 'bottomleft'});
+        var buttonHTML = L.DomUtil.create('div', 'info legend');
+        buttonHTML.innerHTML = '<div class="button enable-zoom">Enable Zoom</div>';
+        mobileButton.onAdd = function (map) { return buttonHTML; };
+        mobileButton.addTo(map);
+      }
+      $('.enable-zoom').click(function() {
+        // Re-enable zoom when user clicks button.
+        map.scrollWheelZoom.enable();
+      });
+
     }
   };
 }(jQuery));
