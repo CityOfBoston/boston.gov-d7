@@ -98,8 +98,17 @@
         mobileButton.addTo(map);
       }
       $('.enable-zoom').click(function() {
-        // Re-enable zoom when user clicks button.
-        map.scrollWheelZoom.enable();
+        if ($(this).text() == 'Enable Zoom') {
+          // Re-enable zoom when user clicks button.
+          map.scrollWheelZoom.enable();
+          // Adjust the button text.
+          $(this).text('Disable Zoom');
+        } else {
+          // Disable zoom when user clicks button.
+          map.scrollWheelZoom.disable();
+          // Adjust the button text.
+          $(this).text('Enable Zoom');
+        }
       });
 
     }
