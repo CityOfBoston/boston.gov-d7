@@ -1,52 +1,37 @@
 <?php
-
 /**
  * @file
- * Default template implementation to display the value of a field.
- *
- * This file is not used and is here as a starting point for customization only.
- *
- * @see theme_field()
- *
- * Available variables:
- * - $items: An array of field values. Use render() to output them.
- * - $label: The item label.
- * - $label_hidden: Whether the label display is set to 'hidden'.
- * - $classes: String of classes that can be used to style contextually through
- *   CSS. It can be manipulated through the variable $classes_array from
- *   preprocess functions. The default values can be one or more of the
- *   following:
- *   - field: The current template type, i.e., "theming hook".
- *   - field-name-[field_name]: The current field name. For example, if the
- *     field name is "field_description" it would result in
- *     "field-name-field-description".
- *   - field-type-[field_type]: The current field type. For example, if the
- *     field type is "text" it would result in "field-type-text".
- *   - field-label-[label_display]: The current label position. For example, if
- *     the label position is "above" it would result in "field-label-above".
- *
- * Other variables:
- * - $element['#object']: The entity to which the field is attached.
- * - $element['#view_mode']: View mode, e.g. 'full', 'teaser'...
- * - $element['#field_name']: The field name.
- * - $element['#field_type']: The field type.
- * - $element['#field_language']: The field language.
- * - $element['#field_translatable']: Whether the field is translatable or not.
- * - $element['#label_display']: Position of label display, inline, above, or
- *   hidden.
- * - $field_name_css: The css-compatible field name.
- * - $field_type_css: The css-compatible field type.
- * - $classes_array: Array of html class attribute values. It is flattened
- *   into a string within the variable $classes.
- *
- * @see template_preprocess_field()
- * @see theme_field()
- *
- * @ingroup themeable
+ * Default implementation of field intro text on tabbed content nodes.
  */
+ $image_uri = $items[0]['#item']['uri'];
+ $xlarge_image = image_style_url('rep_wide_2000x700custom_boston_desktop_2x', $image_uri);
+ $large_image = image_style_url('rep_wide_2000x700custom_boston_desktop_1x', $image_uri);
+ $medium_image = image_style_url('rep_wide_2000x700custom_boston_tablet_2x', $image_uri);
+ $small_image = image_style_url('rep_wide_2000x700custom_boston_mobile_2x', $image_uri);
 ?>
 
-<?php foreach ($items as $delta => $item): ?>
-  <div class="photo-wrapper" <?php print $item_attributes[$delta]; ?>><?php print render($item); ?>
-  </div>
-<?php endforeach; ?>
+<style>
+  @media screen and (max-width: 767px) {
+    .ph-p--<?php print $photo_id; ?> {
+      background-image: url(<?php print $small_image ?>);
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    .ph-p--<?php print $photo_id; ?> {
+      background-image: url(<?php print $medium_image ?>);
+    }
+  }
+
+  @media screen and (min-width: 1024px) {
+    .ph-p--<?php print $photo_id; ?> {
+      background-image: url(<?php print $large_image ?>);
+    }
+  }
+
+  @media screen and (min-width: 1200px) {
+    .ph-p--<?php print $photo_id; ?> {
+      background-image: url(<?php print $xlarge_image ?>);
+    }
+  }
+</style>
