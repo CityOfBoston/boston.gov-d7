@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Boston Component Map Pin feature.
+ */
+
+include_once 'bos_component_map_pin.features.inc';

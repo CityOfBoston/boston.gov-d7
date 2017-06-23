@@ -26,7 +26,7 @@ svg {
 
   // Responsive images
   max-width: 100%;
-  height: auto;
+  //height: auto;
   @if support-legacy-browser(ie, '8') {
     // Correct IE 8 not scaling image height when resized.
     width: auto;
