@@ -1,0 +1,17 @@
+name = Boston Vocabulary Maps: Basemap
+description = Defines Mapbox basemap URLs
+core = 7.x
+package = Features
+version = 7.x-1.0
+project = bos_vocabulary_maps_basemap
+dependencies[] = ctools
+dependencies[] = features
+dependencies[] = strongarm
+dependencies[] = taxonomy
+dependencies[] = text
+features[ctools][] = strongarm:strongarm:1
+features[features_api][] = api:2
+features[field_base][] = field_basemap_url_
+features[field_instance][] = taxonomy_term-maps_basemap-field_basemap_url_
+features[taxonomy][] = maps_basemap
+features[variable][] = xmlsitemap_settings_taxonomy_term_maps_basemap
