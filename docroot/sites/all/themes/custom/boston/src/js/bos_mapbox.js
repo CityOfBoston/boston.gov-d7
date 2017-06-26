@@ -84,18 +84,19 @@
         legend.addTo(map);
       }
 
-      // Create button to enable zoom.
-      var interactiveMode = L.control({position: 'topright'});
-      var buttonHTML = L.DomUtil.create('div', 'info legend');
-      buttonHTML.innerHTML = '<div class="button map-zoom"></div>';
-      interactiveMode.onAdd = function (map) { return buttonHTML; };
-      interactiveMode.addTo(map);
       if (mapOptions === '0') {
         // Disable map zoom when using scroll.
         map.scrollWheelZoom.disable();
-        $('.map-zoom').text('Interactive Map');
       } else {
-        $('.map-zoom').text('X');
+        // Disable map zoom when using scroll.
+        map.scrollWheelZoom.disable();
+        // Create button to enable zoom.
+        var interactiveMode = L.control({position: 'topright'});
+        var buttonHTML = L.DomUtil.create('div', 'info legend');
+        buttonHTML.innerHTML = '<div class="button map-zoom"></div>';
+        interactiveMode.onAdd = function (map) { return buttonHTML; };
+        interactiveMode.addTo(map);
+        $('.map-zoom').text('Interactive Map');
       }
       $('.map-zoom').click(function() {
         if ($(this).text() == 'Interactive Map') {
