@@ -178,7 +178,7 @@ function bos_component_map_field_default_field_instances() {
     'fences_wrapper' => 'div_div_div',
     'field_name' => 'field_map',
     'label' => 'Map',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
