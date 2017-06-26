@@ -28,4 +28,4 @@ features[field_instance][] = paragraphs_item-map-field_map_point_of_interest
 features[field_instance][] = paragraphs_item-map-field_map_type
 features[field_instance][] = paragraphs_item-map-field_short_title
 features[paragraphs][] = map
-mtime = 1497644073
+mtime = 1498504989
