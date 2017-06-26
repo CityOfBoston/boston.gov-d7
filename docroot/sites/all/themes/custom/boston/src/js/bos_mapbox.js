@@ -32,11 +32,6 @@
         position:'bottomright'
       }).addTo(map);
 
-      if (mapOptions === '0') {
-        // Disable map zoom when using scroll.
-        map.scrollWheelZoom.disable();
-      }
-
       // Add custom pins created in Map component.
       points.forEach(function(point) {
         var customPin = L.marker([point.lat, point.long]).addTo(map);
@@ -58,44 +53,53 @@
       var legend = L.control({position: 'topleft'});
       var div = L.DomUtil.create('div', 'info legend');
       // Add layer for ESRI feed(s) and add item for legend.
-      feeds.forEach(function(feed) {
-        var layerObj;
-        var baseObj;
-        // Check if pins should be clustered.
-        if (feed.cluster == 1) {
-          baseObj = L.esri.Cluster;
-        } else {
-          baseObj = L.esri;
-        }
-        layerObj = baseObj.featureLayer({
-          url: feed.url,
-          // Set line style.
-          style: {
-            "color": feed.color,
-            "weight": 3
+      if (feeds) {
+        feeds.forEach(function(feed) {
+          var layerObj;
+          var baseObj;
+          // Check if pins should be clustered.
+          if (feed.cluster == 1) {
+            baseObj = L.esri.Cluster;
+          } else {
+            baseObj = L.esri;
           }
-        }).addTo(map);
-        // Create popups for pin markers
-        layerObj.bindPopup(function (layer) {
-          return L.Util.template(feed.popup, layer.feature.properties);
+          layerObj = baseObj.featureLayer({
+            url: feed.url,
+            // Set line style.
+            style: {
+              "color": feed.color,
+              "weight": 3
+            }
+          }).addTo(map);
+          // Create popups for pin markers
+          layerObj.bindPopup(function (layer) {
+            return L.Util.template(feed.popup, layer.feature.properties);
+          });
+          // Add item to legend.
+          div.innerHTML +='<i style="background:' + feed.color + '"></i> ' + (feed.title + '<br>');
         });
-        // Add item to legend.
-        div.innerHTML +='<i style="background:' + feed.color + '"></i> ' + (feed.title + '<br>');
-      });
-      // Add "div" variable created in loop to legend.
-      legend.onAdd = function (map) { return div; };
-      // Add legend to map.
-      legend.addTo(map);
+        // Add "div" variable created in loop to legend.
+        legend.onAdd = function (map) { return div; };
+        // Add legend to map.
+        legend.addTo(map);
+      }
 
-      if ($(window).width() < 960) {
+      // Create button to enable zoom.
+      var interactiveOn = L.control({position: 'topright'});
+      var onButtonHTML = L.DomUtil.create('div', 'info legend');
+      onButtonHTML.innerHTML = '<div class="button enable-zoom">Enable Zoom</div>';
+      interactiveOn.onAdd = function (map) { return onButtonHTML; };
+      interactiveOn.addTo(map);
+      // Create button to disable zoom.
+      var interactiveOff = L.control({position: 'topright'});
+      var offButtonHTML = L.DomUtil.create('div', 'info legend');
+      offButtonHTML.innerHTML = '<div class="button disable-zoom">X</div>';
+      interactiveOff.onAdd = function (map) { return offButtonHTML; };
+      interactiveOff.addTo(map);
+      if (mapOptions === '0') {
         // Disable map zoom when using scroll.
         map.scrollWheelZoom.disable();
-        // Create a button to re-enable zoom.
-        var mobileButton = L.control({position: 'bottomleft'});
-        var buttonHTML = L.DomUtil.create('div', 'info legend');
-        buttonHTML.innerHTML = '<div class="button enable-zoom">Enable Zoom</div>';
-        mobileButton.onAdd = function (map) { return buttonHTML; };
-        mobileButton.addTo(map);
+      } else {
       }
       $('.enable-zoom').click(function() {
         if ($(this).text() == 'Enable Zoom') {
