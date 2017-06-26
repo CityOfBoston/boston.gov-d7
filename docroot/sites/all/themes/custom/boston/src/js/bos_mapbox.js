@@ -85,33 +85,29 @@
       }
 
       // Create button to enable zoom.
-      var interactiveOn = L.control({position: 'topright'});
-      var onButtonHTML = L.DomUtil.create('div', 'info legend');
-      onButtonHTML.innerHTML = '<div class="button enable-zoom">Enable Zoom</div>';
-      interactiveOn.onAdd = function (map) { return onButtonHTML; };
-      interactiveOn.addTo(map);
-      // Create button to disable zoom.
-      var interactiveOff = L.control({position: 'topright'});
-      var offButtonHTML = L.DomUtil.create('div', 'info legend');
-      offButtonHTML.innerHTML = '<div class="button disable-zoom">X</div>';
-      interactiveOff.onAdd = function (map) { return offButtonHTML; };
-      interactiveOff.addTo(map);
+      var interactiveMode = L.control({position: 'topright'});
+      var buttonHTML = L.DomUtil.create('div', 'info legend');
+      buttonHTML.innerHTML = '<div class="button map-zoom"></div>';
+      interactiveMode.onAdd = function (map) { return buttonHTML; };
+      interactiveMode.addTo(map);
       if (mapOptions === '0') {
         // Disable map zoom when using scroll.
         map.scrollWheelZoom.disable();
+        $('.map-zoom').text('Interactive Map');
       } else {
+        $('.map-zoom').text('X');
       }
-      $('.enable-zoom').click(function() {
-        if ($(this).text() == 'Enable Zoom') {
+      $('.map-zoom').click(function() {
+        if ($(this).text() == 'Interactive Map') {
           // Re-enable zoom when user clicks button.
           map.scrollWheelZoom.enable();
           // Adjust the button text.
-          $(this).text('Disable Zoom');
+          $(this).text('X');
         } else {
           // Disable zoom when user clicks button.
           map.scrollWheelZoom.disable();
           // Adjust the button text.
-          $(this).text('Enable Zoom');
+          $(this).text('Interactive Map');
         }
       });
 
