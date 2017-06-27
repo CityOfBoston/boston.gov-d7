@@ -32,11 +32,6 @@
         position:'bottomright'
       }).addTo(map);
 
-      if (mapOptions === '0') {
-        // Disable map zoom when using scroll.
-        map.scrollWheelZoom.disable();
-      }
-
       // Add custom pins created in Map component.
       points.forEach(function(point) {
         var customPin = L.marker([point.lat, point.long]).addTo(map);
@@ -58,56 +53,62 @@
       var legend = L.control({position: 'topleft'});
       var div = L.DomUtil.create('div', 'info legend');
       // Add layer for ESRI feed(s) and add item for legend.
-      feeds.forEach(function(feed) {
-        var layerObj;
-        var baseObj;
-        // Check if pins should be clustered.
-        if (feed.cluster == 1) {
-          baseObj = L.esri.Cluster;
-        } else {
-          baseObj = L.esri;
-        }
-        layerObj = baseObj.featureLayer({
-          url: feed.url,
-          // Set line style.
-          style: {
-            "color": feed.color,
-            "weight": 3
+      if (feeds) {
+        feeds.forEach(function(feed) {
+          var layerObj;
+          var baseObj;
+          // Check if pins should be clustered.
+          if (feed.cluster == 1) {
+            baseObj = L.esri.Cluster;
+          } else {
+            baseObj = L.esri;
           }
-        }).addTo(map);
-        // Create popups for pin markers
-        layerObj.bindPopup(function (layer) {
-          return L.Util.template(feed.popup, layer.feature.properties);
+          layerObj = baseObj.featureLayer({
+            url: feed.url,
+            // Set line style.
+            style: {
+              "color": feed.color,
+              "weight": 3
+            }
+          }).addTo(map);
+          // Create popups for pin markers
+          layerObj.bindPopup(function (layer) {
+            return L.Util.template(feed.popup, layer.feature.properties);
+          });
+          // Add item to legend.
+          div.innerHTML +='<i style="background:' + feed.color + '"></i> ' + (feed.title + '<br>');
         });
-        // Add item to legend.
-        div.innerHTML +='<i style="background:' + feed.color + '"></i> ' + (feed.title + '<br>');
-      });
-      // Add "div" variable created in loop to legend.
-      legend.onAdd = function (map) { return div; };
-      // Add legend to map.
-      legend.addTo(map);
+        // Add "div" variable created in loop to legend.
+        legend.onAdd = function (map) { return div; };
+        // Add legend to map.
+        legend.addTo(map);
+      }
 
-      if ($(window).width() < 960) {
+      if (mapOptions === '0') {
         // Disable map zoom when using scroll.
         map.scrollWheelZoom.disable();
-        // Create a button to re-enable zoom.
-        var mobileButton = L.control({position: 'bottomleft'});
+      } else {
+        // Disable map zoom when using scroll.
+        map.scrollWheelZoom.disable();
+        // Create button to enable zoom.
+        var interactiveMode = L.control({position: 'topright'});
         var buttonHTML = L.DomUtil.create('div', 'info legend');
-        buttonHTML.innerHTML = '<div class="button enable-zoom">Enable Zoom</div>';
-        mobileButton.onAdd = function (map) { return buttonHTML; };
-        mobileButton.addTo(map);
+        buttonHTML.innerHTML = '<div class="button map-zoom"></div>';
+        interactiveMode.onAdd = function (map) { return buttonHTML; };
+        interactiveMode.addTo(map);
+        $('.map-zoom').text('Interactive Map');
       }
-      $('.enable-zoom').click(function() {
-        if ($(this).text() == 'Enable Zoom') {
+      $('.map-zoom').click(function() {
+        if ($(this).text() == 'Interactive Map') {
           // Re-enable zoom when user clicks button.
           map.scrollWheelZoom.enable();
           // Adjust the button text.
-          $(this).text('Disable Zoom');
+          $(this).text('X');
         } else {
           // Disable zoom when user clicks button.
           map.scrollWheelZoom.disable();
           // Adjust the button text.
-          $(this).text('Enable Zoom');
+          $(this).text('Interactive Map');
         }
       });
 
