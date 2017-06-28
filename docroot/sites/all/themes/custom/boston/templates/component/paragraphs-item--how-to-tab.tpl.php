@@ -29,7 +29,7 @@ $title = $content['field_how_to_title'][0]['#markup'];
 $title_id = drupal_clean_css_identifier(drupal_html_class($title));
 ?>
 
-<div class="tab-p tab-p-<?php print $how_to_tabs_count ?>" id="<?php print $title_id; ?>" <?php print $content_attributes; ?>>
+<div class="tab-p tab-p-<?php print $how_to_tabs_count ?>" id="<?php print $title_id; ?>_content" <?php print $content_attributes; ?>>
   <?php if (isset($content['field_how_to_steps'])): ?>
     <?php print render($content['field_how_to_steps']); ?>
   <?php endif; ?>
