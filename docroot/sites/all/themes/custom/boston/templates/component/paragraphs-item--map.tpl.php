@@ -24,29 +24,33 @@
  * @see template_preprocess_entity()
  * @see template_process()
  */
+
+ $show_title = $content['field_map_options']['#items'][0]['value'] === '1';
+
+ if (!$show_title) {
+   $show_title = !empty($content['field_hide_title_bar']) && !$content['field_hide_title_bar']['#items'][0]['value'];
+ }
 ?>
-<div class="<?php print $classes; ?>"<?php print $attributes; ?>>
+<div class="b b--fw">
   <div class="content"<?php print $content_attributes; ?>>
-    <?php if (!empty($content['field_hide_title_bar']) && !$content['field_hide_title_bar']['#items'][0]['value']): ?>
-      <div class="sh">
-        <?php print render($content['field_component_title']); ?>
-        <?php if (isset($content['field_contact'])): ?>
-          <div class="sh-contact">
-            <?php print render($content['field_contact']); ?>
+    <div class="mp">
+      <?php if ($show_title): ?>
+        <div class="mp-h">
+          <div class="mp-h-i">
+            <div class="mp-t"><?php print render($content['field_component_title']); ?></div>
+            <div class="mp-st"><?php print render($content['field_extra_info']); ?></div>
+            <button class="btn">View Map</button>
           </div>
-        <?php endif; ?>
-      </div>
-    <?php endif; ?>
-    <div class="js-hide">You must enable javascript in your browser settings in order to see map.</div>
-    <div id="map-wrapper"><div id="map"></div></div>
+        </div>
+      <?php endif; ?>
+      <div id="map"></div>
+    </div>
   </div>
 </div>
+
+
+
 <style>
-#map-wrapper {
-  position: relative;
-  width: 100%;
-  height: 500px;
-}
 .co {position: relative; z-index: 1000;}
 body { margin:0; padding:0; }
 #map { position: absolute; top:0; bottom:0; right:0; left:0; z-index:0; }

@@ -90,13 +90,9 @@
       } else {
         // Disable map zoom when using scroll.
         map.scrollWheelZoom.disable();
-        // Create button to enable zoom.
-        var interactiveMode = L.control({position: 'topright'});
         var buttonHTML = L.DomUtil.create('div', 'info legend');
-        buttonHTML.innerHTML = '<div class="button map-zoom"></div>';
         interactiveMode.onAdd = function (map) { return buttonHTML; };
         interactiveMode.addTo(map);
-        $('.map-zoom').text('Interactive Map');
       }
       $('.map-zoom').click(function() {
         if ($(this).text() == 'Interactive Map') {
@@ -107,8 +103,6 @@
         } else {
           // Disable zoom when user clicks button.
           map.scrollWheelZoom.disable();
-          // Adjust the button text.
-          $(this).text('Interactive Map');
         }
       });
 
