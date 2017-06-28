@@ -35,17 +35,17 @@ function boston_breadcrumb(array $variables) {
 
   // Determine if we are to display the breadcrumb.
   if ($variables['display_breadcrumb'] && !empty($variables['breadcrumb'])) {
-    $variables['title_attributes_array']['class'][] = 'breadcrumb__title';
-    $separator = '<span class="breadcrumb__separator">' . $variables['breadcrumb_separator'] . '</span>';
+    $variables['title_attributes_array']['class'][] = 'bc-t';
+    $separator = '<span class="bc-s">' . $variables['breadcrumb_separator'] . '</span>';
     // Build the breadcrumb trail.
-    $output = '<nav class="breadcrumb" role="navigation">';
-    $output .= '<h2' . drupal_attributes($variables['title_attributes_array']) . '>' . $variables['title'] . '</h2>';
-    $output .= '<ol class="breadcrumb__list"><li class="breadcrumb__item">';
-    $output .= implode($separator . '</li><li class="breadcrumb__item">', $variables['breadcrumb']);
+    $output = '<nav class="bc" role="navigation">';
+    $output .= '<div class="a11y--hidden">' . drupal_attributes($variables['title_attributes_array']) . '>' . $variables['title'] . '</div>';
+    $output .= '<ul class="bc-l"><li class="bc-l-i">';
+    $output .= implode($separator . '</li><li class="bc-l-i">', $variables['breadcrumb']);
     if ($variables['display_trailing_separator']) {
       $output .= $separator;
     }
-    $output .= '</li></ol></nav>';
+    $output .= '</li></ul></nav>';
   }
 
   return $output;

@@ -137,7 +137,7 @@
           <?php endif; ?>
           <?php if (!empty($node) && ($node->type !== 'tabbed_content' && $node->type !== 'how_to')): ?>
             <?php if ($breadcrumb): ?>
-              <div id="breadcrumb" class="breadcrumb-wrapper with-hero" data-swiftype-index="false"><?php print $breadcrumb; ?></div>
+              <div<?php if (isset($header_image)): ?> class="bc--wh"<?php endif; ?> data-swiftype-index="false"><?php print $breadcrumb; ?></div>
             <?php endif; ?>
           <?php endif; ?>
         <?php endif; ?>
