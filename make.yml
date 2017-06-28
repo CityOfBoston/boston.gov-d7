@@ -170,7 +170,7 @@ projects:
   masquerade:
     version: 1.0-rc7
   media:
-    version: 2.8
+    version: 2.0-beta1
   memcache:
     version: 1.5
   menu_target:
