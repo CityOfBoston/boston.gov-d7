@@ -88,7 +88,7 @@ function bos_component_map_field_default_field_instances() {
     'fences_wrapper' => 'div_div_div',
     'field_name' => 'field_contact',
     'label' => 'Contact',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
@@ -97,7 +97,12 @@ function bos_component_map_field_default_field_instances() {
       'module' => 'entityreference',
       'settings' => array(
         'apply_chosen' => '',
-        'entityreference_autocreate' => 0,
+        'entityreference_autocreate' => array(
+          'active' => 0,
+          'author' => '',
+          'author_current_user' => 1,
+          'status' => -1,
+        ),
         'match_operator' => 'CONTAINS',
         'path' => '',
         'size' => 60,
@@ -178,7 +183,7 @@ function bos_component_map_field_default_field_instances() {
     'fences_wrapper' => 'div_div_div',
     'field_name' => 'field_map',
     'label' => 'Map',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
@@ -644,7 +649,7 @@ function bos_component_map_field_default_field_instances() {
     'fences_wrapper' => 'div_div_div',
     'field_name' => 'field_short_title',
     'label' => 'Short Title',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'linkit' => array(
         'button_text' => 'Search',

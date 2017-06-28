@@ -501,24 +501,26 @@ function boston_preprocess_page(array &$variables) {
         drupal_add_js(drupal_get_path('theme', 'boston') . '/src/js/bos_mapbox.js');
         // Set variables to pass to javascript.
         // Collect ESRI feed info: title, url, color.
-        foreach ($paragraph['#entity']->field_map['und'][0]['entity']->field_map_esri_feed['und'] as $ids) {
-          // Get the paragraph ID.
-          $pid = $ids['value'];
-          // Load the referenced map_esri_feed paragraph.
-          $entity = entity_load('paragraphs_item', array($pid));
-          $title = $entity[$pid]->field_title['und'][0]['value'];
-          $url = $entity[$pid]->field_url['und'][0]['value'];
-          $color = $entity[$pid]->field_color['und'][0]['value'];
-          $cluster = $entity[$pid]->field_map_cluster['und'][0]['value'];
-          $popup = $entity[$pid]->field_additional_information['und'][0]['value'];
-          // Create a render array that holds title, url, & color for feed.
-          $feeds[] = array(
-            'title' => $title,
-            'url' => $url,
-            'color' => $color,
-            'cluster' => $cluster,
-            'popup' => $popup,
-          );
+        if ($paragraph['#entity']->field_map['und'][0]['entity']->field_map_esri_feed['und']) {
+          foreach ($paragraph['#entity']->field_map['und'][0]['entity']->field_map_esri_feed['und'] as $ids) {
+            // Get the paragraph ID.
+            $pid = $ids['value'];
+            // Load the referenced map_esri_feed paragraph.
+            $entity = entity_load('paragraphs_item', array($pid));
+            $title = $entity[$pid]->field_title['und'][0]['value'];
+            $url = $entity[$pid]->field_url['und'][0]['value'];
+            $color = $entity[$pid]->field_color['und'][0]['value'];
+            $cluster = $entity[$pid]->field_map_cluster['und'][0]['value'];
+            $popup = $entity[$pid]->field_additional_information['und'][0]['value'];
+            // Create a render array that holds title, url, & color for feed.
+            $feeds[] = array(
+              'title' => $title,
+              'url' => $url,
+              'color' => $color,
+              'cluster' => $cluster,
+              'popup' => $popup,
+            );
+          }
         }
         $field_map_options = $paragraph['#entity']->field_map_options['und'][0]['value'];
         $field_basemap_url = $paragraph['#entity']->field_map_type['und'][0]['entity']->field_basemap_url_['und'][0]['value'];
