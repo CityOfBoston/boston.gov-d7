@@ -652,3 +652,13 @@ function bos_profile_update_7027() {
   );
   module_enable($enabled_modules);
 }
+
+/**
+ * Update for 6/28/17
+ */
+function bos_profile_update_7028() {
+  $enabled_modules = array(
+    'bos_view_upcoming_events_featured_event_filter',
+  );
+  module_enable($enabled_modules);
+}
