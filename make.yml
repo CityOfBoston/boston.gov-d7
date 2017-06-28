@@ -127,7 +127,7 @@ projects:
   field_group:
     version: 1.5
   file_entity:
-    version: 2.0-beta2
+    version: 2.2
   honeypot:
     version: 1.21
   genpass:
@@ -171,10 +171,6 @@ projects:
     version: 1.0-rc7
   media:
     version: 2.0-beta1
-    patch:
-      # Issue link https://www.drupal.org/node/2534724
-      # Stops the media browser from spawning two modals when clicking Browse.
-      - https://www.drupal.org/files/issues/media-browser_opens_twice-2534724-53.patch
   memcache:
     version: 1.5
   menu_target:
@@ -186,7 +182,7 @@ projects:
   menu_block:
     version: 2.7
   office_hours:
-    version: 1.4
+    version: 1.7
   paranoia:
     version: 1.5
   password_policy:
@@ -208,7 +204,7 @@ projects:
   salesforce_term_ref:
     version: 1.x-dev
   services:
-    version: 3.14
+    version: 3.19
   services_api_key_auth:
     version: 1.1
     patch:
