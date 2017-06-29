@@ -47,7 +47,7 @@
               '</b>' +
             '</a>' +
             '<p class="times">' +
-              point[j].desc +
+              points[j].desc +
             '</p>'
           );
         //});
