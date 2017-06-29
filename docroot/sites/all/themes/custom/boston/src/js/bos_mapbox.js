@@ -12,10 +12,9 @@
       // Get array of map objects from Drupal.
       var maps = Drupal.settings.maps;
       console.log(maps);
-      //maps.forEach(function(dmap) {
       for (i = 0; i < maps.length; i++) {
         // Set ESRI Feed title, url, and color info.
-        var feeds = map[i].feeds;
+        var feeds = maps[i].feeds;
         // Set Custom Pins title, desc, latitude and longitude info.
         var points = maps[i].points;
         // Set Map Options (0 = Static, 1 = Zoom).
@@ -80,9 +79,7 @@
               }
             }).addTo(map);
             // Create popups for pin markers
-            layerObj.bindPopup(function (layer) {
-              return L.Util.template(feed.popup, layer.feature.properties);
-            });
+            layerObj.bindPopup(createPopup(layer, feeds[k].popup));
             // Add item to legend.
             div.innerHTML +='<i style="background:' + feeds[k].color + '"></i> ' + (feeds[k].title + '<br>');
           //});
@@ -115,6 +112,9 @@
           map.scrollWheelZoom.disable();
         }
       });
+      function createPopup (layer, popup) {
+        return L.Util.template(popup, layer.feature.properties);
+      }
 
     }
   };
