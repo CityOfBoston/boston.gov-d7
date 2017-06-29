@@ -587,16 +587,16 @@ function boston_preprocess_page(array &$variables) {
           $map_obj->componentLong = $field_map_longitude;
           $map_obj->componentZoom = $field_map_zoom;
           $maps[] = $map_obj;
-          // Pass variables to javascript to configure the map.
-          drupal_add_js(
-            array(
-              'maps' => $maps,
-            ), 'setting'
-          );
         }
       }
     }
   }
+  // Pass variables to javascript to configure the map.
+  drupal_add_js(
+    array(
+      'maps' => $maps,
+    ), 'setting'
+  );
 }
 
 /**
