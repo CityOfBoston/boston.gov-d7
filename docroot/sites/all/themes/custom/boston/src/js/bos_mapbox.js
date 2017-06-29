@@ -9,6 +9,9 @@
   Drupal.behaviors.exampleModule = {
     attach: function (context, settings) {
 
+      // Get array of map objects from Drupal.
+      var maps = Drupal.settings.maps;
+      console.log(maps);
       // Set ESRI Feed title, url, and color info.
       var feeds = Drupal.settings.feeds;
       // Set Custom Pins title, desc, latitude and longitude info.

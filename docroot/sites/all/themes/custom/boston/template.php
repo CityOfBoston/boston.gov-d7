@@ -480,8 +480,14 @@ function boston_preprocess_page(array &$variables) {
   $variables['page_class_alert'] = $page_class_alert;
 
   // Conditionally load JS if Maps component is found.
-  $paragraphs = $variables['page']['content']['system_main']['nodes'][$nid]['field_components'][0]['entity']['paragraphs_item'];
+  //$paragraphs = $variables['page']['content']['system_main']['nodes'][$nid]['field_components'][0]['entity']['paragraphs_item'];
+  $field_components = $variables['page']['content']['system_main']['nodes'][$nid]['field_components'];
   // Check if there are any paragraphs referenced in field_components.
+  //if (isset($paragraphs)) {
+  foreach ($field_components as $field_component_id => $field_component) {
+    if (is_numeric($field_component_id)) {
+      $paragraphs = $field_component['entity']['paragraphs_item'];
+    }
   if (isset($paragraphs)) {
     // Loop through all paragraphs referenced in field_components.
     foreach ($paragraphs as $paragraph_id => $paragraph) {
@@ -562,9 +568,29 @@ function boston_preprocess_page(array &$variables) {
           $points = array();
         }
 
+        // Create maps array that contains objects for each map.
+        $map_obj = new StdClass();
+        $map_obj->feeds = $feeds;
+        $map_obj->points = $points;
+        $map_obj->options = $field_map_options;
+        $map_obj->basemap = $field_basemap_url;
+        $map_obj->esriLat = $esri_field_map_latitude;
+        $map_obj->esriLong = $esri_field_map_longitude;
+        $map_obj->esriZoom = $esri_field_map_zoom;
+        $map_obj->componentLat = $field_map_latitude;
+        $map_obj->componentLong = $field_map_longitude;
+        $map_obj->componentZoom = $field_map_zoom;
+        $maps[] = $map_obj;
         // Pass variables to javascript to configure the map.
         drupal_add_js(
           array(
+            'maps' => $maps,
+          ), 'setting'
+        );
+/*
+        drupal_add_js(
+          array(
+            'maps' => $maps,
             'feeds' => $feeds,
             'points' => $points,
             'options' => $field_map_options,
@@ -577,8 +603,10 @@ function boston_preprocess_page(array &$variables) {
             'componentZoom' => $field_map_zoom,
           ), 'setting'
         );
+*/
       }
     }
+  }
   }
 }
 
