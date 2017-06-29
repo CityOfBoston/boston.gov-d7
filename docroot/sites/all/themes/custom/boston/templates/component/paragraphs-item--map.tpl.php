@@ -43,7 +43,7 @@
           </div>
         </div>
       <?php endif; ?>
-      <div id="map"></div>
+      <!-- <div id="map1" class="map"></div> MAP CANVAS IS CREATED IN PREPROCESS-->
     </div>
   </div>
 </div>
@@ -53,7 +53,7 @@
 <style>
 .co {position: relative; z-index: 1000;}
 body { margin:0; padding:0; }
-#map { position: absolute; top:0; bottom:0; right:0; left:0; z-index:0; }
+.map { position: absolute; top:0; bottom:0; right:0; left:0; z-index:0; }
 .leaflet-popup {
 	width: 250px;
 	height: auto;

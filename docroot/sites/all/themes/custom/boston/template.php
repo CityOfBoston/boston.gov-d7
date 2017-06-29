@@ -498,6 +498,15 @@ function boston_preprocess_page(array &$variables) {
       foreach ($paragraphs as $paragraph_id => $paragraph) {
         // Check if the current paragraph is a map component.
         if ($paragraph['#bundle'] == 'map') {
+          // Create canvas for each map.
+          $map_id = "map--$paragraph_id";
+          $variables['content']['map_id'] = $map_id;
+          //$canvas = '<div id="' . $map_id .'" class="map"></div>';
+          $test = $variables;
+          //$variables['page']['content']['system_main']['nodes'][$nid]['field_components'][0]['entity']['paragraphs_item'][$paragraph_id][]['#markup'] .= $canvas;
+          //$variables['page']['content']['system_main']['nodes'][$nid]['body'][0]['#markup'] .= $canvas;
+          //$variables['page']['content']['system_main']['nodes'][$nid]['field_components'][0]['entity']['paragraphs_item'][$paragraph_id]['field_map'][0]['#markup'] .= $canvas; // Currently says 'Food Trucks'.
+          $variables['page']['content']['system_main']['nodes'][$nid]['field_components'][0]['entity']['paragraphs_item'][$paragraph_id][]['#markup'] .= $canvas;
           // Conditionally load JS if Maps component is found.
           // Add Leaflet stylesheet and javascript.
           drupal_add_css('https://unpkg.com/leaflet@1.0.3/dist/leaflet.css', 'external');
@@ -576,6 +585,7 @@ function boston_preprocess_page(array &$variables) {
 
           // Create maps array that contains objects for each map.
           $map_obj = new StdClass();
+          $map_obj->mapID = $map_id;
           $map_obj->feeds = $feeds;
           $map_obj->points = $points;
           $map_obj->options = $field_map_options;

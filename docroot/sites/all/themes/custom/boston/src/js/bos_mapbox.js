@@ -13,6 +13,8 @@
       var maps = Drupal.settings.maps;
       console.log(maps);
       for (i = 0; i < maps.length; i++) {
+        // Set the Map ID used to create a unique canvas for each map.
+        var mapID = maps[i].mapID;
         // Set ESRI Feed title, url, and color info.
         var feeds = maps[i].feeds;
         // Set Custom Pins title, desc, latitude and longitude info.
@@ -29,7 +31,8 @@
         var zoom = maps[i].componentZoom ? maps[i].componentZoom : maps[i].esriZoom ? maps[i].esriZoom : 14;
 
         // Apply default coordinates and zoom level.
-        var map = L.map('map', {zoomControl: false}).setView([latitude, longitude], zoom);
+        //var map = L.map('map1', {zoomControl: false}).setView([latitude, longitude], zoom);
+        var map = L.map(mapID, {zoomControl: false}).setView([latitude, longitude], zoom);
         // Add zoom control to bottom right.
         L.control.zoom({
           position:'bottomright'
@@ -79,7 +82,10 @@
               }
             }).addTo(map);
             // Create popups for pin markers
-            layerObj.bindPopup(createPopup(layer, feeds[k].popup));
+            //layerObj.bindPopup(createPopup(feeds[k].popup));
+            layerObj.bindPopup(function (layer) {
+              return L.Util.template(feeds[k].popup, layer.feature.properties);
+            });
             // Add item to legend.
             div.innerHTML +='<i style="background:' + feeds[k].color + '"></i> ' + (feeds[k].title + '<br>');
           //});
@@ -112,8 +118,9 @@
           map.scrollWheelZoom.disable();
         }
       });
-      function createPopup (layer, popup) {
-        return L.Util.template(popup, layer.feature.properties);
+      function createPopup (popup) {
+        //return L.Util.template(popup, layer.feature.properties);
+        return L.Util.template(popup);
       }
 
     }
