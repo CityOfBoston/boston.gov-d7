@@ -44,6 +44,7 @@
         </div>
       <?php endif; ?>
       <!-- <div id="map1" class="map"></div> MAP CANVAS IS CREATED IN PREPROCESS-->
+      <?php print render($content['map_canvas']) ?>
     </div>
   </div>
 </div>
