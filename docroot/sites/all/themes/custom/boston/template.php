@@ -519,6 +519,7 @@ function boston_preprocess_page(array &$variables) {
           drupal_add_js(drupal_get_path('theme', 'boston') . '/src/js/bos_mapbox.js');
           // Set variables to pass to javascript.
           // Collect ESRI feed info: title, url, color.
+          $feeds = array();
           if ($paragraph['#entity']->field_map['und'][0]['entity']->field_map_esri_feed['und']) {
             foreach ($paragraph['#entity']->field_map['und'][0]['entity']->field_map_esri_feed['und'] as $ids) {
               // Get the paragraph ID.
@@ -539,9 +540,6 @@ function boston_preprocess_page(array &$variables) {
                 'popup' => $popup,
               );
             }
-          }
-          else {
-            $feeds = array();
           }
           $field_map_options = $paragraph['#entity']->field_map_options['und'][0]['value'];
           $field_basemap_url = $paragraph['#entity']->field_map_type['und'][0]['entity']->field_basemap_url_['und'][0]['value'];
