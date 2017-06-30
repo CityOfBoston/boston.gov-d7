@@ -36,7 +36,7 @@
       points.forEach(function(point) {
         var customPin = L.marker([point.lat, point.long]).addTo(map);
         customPin.bindPopup(
-          '<a class="title" href="' + point.url + '" target="_blank">' +
+          '<a class="title" href="' + point.url + '">' +
             '<b>' +
               point.name +
             '</b>' +

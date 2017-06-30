@@ -67,7 +67,7 @@
   var CityScore = (function( window, undefined ) {
     var numberDisplay = document.querySelector('.cs--chartAmount--value');
     var numberContainer = document.querySelector('.cs--chartAmount');
-    var dateContainer = document.querySelector('.bc-lu');
+    var dateContainer = document.querySelector('.brc-lu');
     var dateDisplay = document.querySelector('.date-display-single');
     var todaysScore = false;
 

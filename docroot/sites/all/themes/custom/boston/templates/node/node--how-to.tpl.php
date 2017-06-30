@@ -69,7 +69,7 @@ foreach($content['field_how_to_tabs'] as $key => $array){
 
 <article class="<?php print $classes; ?> clearfix node-<?php print $node->nid; ?> tab-pc p-t500"<?php print $attributes; ?>>
   <?php if (isset($content['field_updated_date'])): ?>
-    <div class="bc-lu">
+    <div class="brc-lu">
       Last updated:<?php print render($content['field_updated_date']); ?>
     </div>
   <?php endif; ?>
