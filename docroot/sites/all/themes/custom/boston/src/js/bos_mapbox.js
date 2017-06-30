@@ -77,14 +77,9 @@
             }
           }).addTo(map);
           // Create popups for pin markers
-          //layerObj.bindPopup(createPopup(feeds[k].popup));
           popupVal = feeds[k].popup;
-          layerObj.bindPopup(createPopup);
-          //createPopup(layerObj, feeds[k].popup);
-          //layerObj.bindPopup(function (layer) {
-          //  return L.Util.template(feeds[k].popup, layer.feature.properties);
-          //});
-          //layerObj.bindPopup(L.Util.template(feeds[k].popup, layer.feature.properties));
+          //layerObj.bindPopup(createPopup);
+          layerObj.bindPopup(createPopup(popupVal));
           // Add item to legend.
           div.innerHTML +='<i style="background:' + feeds[k].color + '"></i> ' + (feeds[k].title + '<br>');
         }
@@ -117,10 +112,8 @@
         }
       });
 */
-      function createPopup (layer) {
-        //return L.Util.template('<h1>hi</h1>', layer.feature.properties);
-        return L.Util.template(popupVal, layer.feature.properties);
-        //return L.Util.template(popup);
+      function createPopup (p) {
+        return function (layer) { return L.Util.template(p, layer.feature.properties); }
       }
 
     }
