@@ -498,10 +498,11 @@ function boston_preprocess_page(array &$variables) {
       foreach ($paragraphs as $paragraph_id => $paragraph) {
         // Check if the current paragraph is a map component.
         if ($paragraph['#bundle'] == 'map') {
-          // Create canvas for each map.
+          // Create a unique ID for each canvas.
           $map_id = "map--$paragraph_id";
+          // Create canvas for each map.
           $canvas = '<div id="' . $map_id . '" class="map"></div>';
-          //$variables['page']['content']['system_main']['nodes'][$nid]['field_components'][0]['entity']['paragraphs_item'][$paragraph_id]['map_canvas'] = $canvas;
+          // Allow canvas variable to be used in paragraphs-item--map.tpl.php.
           $variables['page']['content']['system_main']['nodes'][$nid]['field_components'][$field_component_id]['entity']['paragraphs_item'][$paragraph_id]['map_canvas'] = $canvas;
           // Conditionally load JS if Maps component is found.
           // Add Leaflet stylesheet and javascript.
@@ -549,7 +550,7 @@ function boston_preprocess_page(array &$variables) {
           $esri_field_map_longitude = $map_coordinates_esri_paragraph[$map_coordinates_esri_pid]->field_map_longitude['und'][0]['value'];
           $esri_field_map_zoom = $map_coordinates_esri_paragraph[$map_coordinates_esri_pid]->field_map_zoom['und'][0]['value'];
 
-          // Set default lat, long, and zoom overrides for the main Map component.
+          // Set default lat, long, & zoom overrides for the main Map component.
           $map_coordinates_pid = $paragraph['#entity']->field_map_default_coordinates['und'][0]['value'];
           $map_coordinates_paragraph = $map_coordinates_pid ? entity_load('paragraphs_item', array($map_coordinates_pid)) : NULL;
           $field_map_latitude = $map_coordinates_paragraph[$map_coordinates_pid]->field_map_latitude['und'][0]['value'];
@@ -603,7 +604,6 @@ function boston_preprocess_page(array &$variables) {
       'maps' => $maps,
     ), 'setting'
   );
-  $test = $variables;
 }
 
 /**
