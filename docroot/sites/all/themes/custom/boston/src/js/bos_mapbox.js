@@ -77,18 +77,17 @@
             }
           }).addTo(map);
           // Create popups for pin markers
-          popupVal = feeds[k].popup;
-          //layerObj.bindPopup(createPopup);
-          layerObj.bindPopup(createPopup(popupVal));
+          layerObj.bindPopup(createPopup(feeds[k].popup));
           // Add item to legend.
-          div.innerHTML +='<i style="background:' + feeds[k].color + '"></i> ' + (feeds[k].title + '<br>');
+          div.innerHTML += '<i style="background:' + feeds[k].color + '"></i> ' + feeds[k].title + '<br>';
         }
         // Add "div" variable created in loop to legend.
-        legend.onAdd = function (map) { return div; };
+        //legend.onAdd = function (map) { return div; };
+        legend.onAdd = createLegend(div);
         // Add legend to map.
         legend.addTo(map);
-}/*
 
+}/*
         if (mapOptions === '0') {
           // Disable map zoom when using scroll.
           map.scrollWheelZoom.disable();
@@ -112,8 +111,12 @@
         }
       });
 */
+
       function createPopup (p) {
-        return function (layer) { return L.Util.template(p, layer.feature.properties); }
+        return function (layer) { return L.Util.template(p, layer.feature.properties); };
+      }
+      function createLegend(d) {
+        return function (map) { return d; };
       }
 
     }
