@@ -39,9 +39,7 @@
         }).addTo(map);
 
         // Add custom pins created in Map component.
-        //points.forEach(function(point) {
         for (j = 0; j < points.length; j++) {
-          //var customPin = L.marker([point.lat, point.long]).addTo(map);
           var customPin = L.marker([points[j].lat, points[j].long]).addTo(map);
           customPin.bindPopup(
             '<a class="title" href="' + points[j].url + '" target="_blank">' +
@@ -53,7 +51,6 @@
               points[j].desc +
             '</p>'
           );
-        //});
         }
 
         // Add mapbox basemap.
@@ -62,40 +59,40 @@
         var legend = L.control({position: 'topleft'});
         var div = L.DomUtil.create('div', 'info legend');
         // Add layer for ESRI feed(s) and add item for legend.
-}/*
-        if (feeds) {
-          //feeds.forEach(function(feed) {
-          for (k = 0; k < feeds.length; k++) {
-            var layerObj;
-            var baseObj;
-            // Check if pins should be clustered.
-            if (feeds[k].cluster == 1) {
-              baseObj = L.esri.Cluster;
-            } else {
-              baseObj = L.esri;
-            }
-            layerObj = baseObj.featureLayer({
-              url: feeds[k].url,
-              // Set line style.
-              style: {
-                "color": feeds[k].color,
-                "weight": 3
-              }
-            }).addTo(map);
-            // Create popups for pin markers
-            //layerObj.bindPopup(createPopup(feeds[k].popup));
-            layerObj.bindPopup(function (layer) {
-              return L.Util.template(feeds[k].popup, layer.feature.properties);
-            });
-            // Add item to legend.
-            div.innerHTML +='<i style="background:' + feeds[k].color + '"></i> ' + (feeds[k].title + '<br>');
-          //});
+        for (k = 0; k < feeds.length; k++) {
+          var layerObj;
+          var baseObj;
+          // Check if pins should be clustered.
+          if (feeds[k].cluster == 1) {
+            baseObj = L.esri.Cluster;
+          } else {
+            baseObj = L.esri;
           }
-          // Add "div" variable created in loop to legend.
-          legend.onAdd = function (map) { return div; };
-          // Add legend to map.
-          legend.addTo(map);
+          layerObj = baseObj.featureLayer({
+            url: feeds[k].url,
+            // Set line style.
+            style: {
+              "color": feeds[k].color,
+              "weight": 3
+            }
+          }).addTo(map);
+          // Create popups for pin markers
+          //layerObj.bindPopup(createPopup(feeds[k].popup));
+          popupVal = feeds[k].popup;
+          layerObj.bindPopup(createPopup);
+          //createPopup(layerObj, feeds[k].popup);
+          //layerObj.bindPopup(function (layer) {
+          //  return L.Util.template(feeds[k].popup, layer.feature.properties);
+          //});
+          //layerObj.bindPopup(L.Util.template(feeds[k].popup, layer.feature.properties));
+          // Add item to legend.
+          div.innerHTML +='<i style="background:' + feeds[k].color + '"></i> ' + (feeds[k].title + '<br>');
         }
+        // Add "div" variable created in loop to legend.
+        legend.onAdd = function (map) { return div; };
+        // Add legend to map.
+        legend.addTo(map);
+}/*
 
         if (mapOptions === '0') {
           // Disable map zoom when using scroll.
@@ -119,11 +116,12 @@
           map.scrollWheelZoom.disable();
         }
       });
-      function createPopup (popup) {
-        //return L.Util.template(popup, layer.feature.properties);
-        return L.Util.template(popup);
-      }
 */
+      function createPopup (layer) {
+        //return L.Util.template('<h1>hi</h1>', layer.feature.properties);
+        return L.Util.template(popupVal, layer.feature.properties);
+        //return L.Util.template(popup);
+      }
 
     }
   };
