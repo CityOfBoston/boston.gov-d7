@@ -540,6 +540,9 @@ function boston_preprocess_page(array &$variables) {
               );
             }
           }
+          else {
+            $feeds = NULL;
+          }
           $field_map_options = $paragraph['#entity']->field_map_options['und'][0]['value'];
           $field_basemap_url = $paragraph['#entity']->field_map_type['und'][0]['entity']->field_basemap_url_['und'][0]['value'];
 
