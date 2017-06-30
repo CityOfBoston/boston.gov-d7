@@ -501,8 +501,8 @@ function boston_preprocess_page(array &$variables) {
           // Create canvas for each map.
           $map_id = "map--$paragraph_id";
           $canvas = '<div id="' . $map_id . '" class="map"></div>';
-          //$variables['page']['content']['system_main']['nodes'][$nid]['field_components'][0]['entity']['paragraphs_item'][$paragraph_id]['map_canvas'][0]['#markup'] = $canvas;
-          $variables['page']['content']['system_main']['nodes'][$nid]['field_components'][0]['entity']['paragraphs_item'][$paragraph_id]['map_canvas'] = $canvas;
+          //$variables['page']['content']['system_main']['nodes'][$nid]['field_components'][0]['entity']['paragraphs_item'][$paragraph_id]['map_canvas'] = $canvas;
+          $variables['page']['content']['system_main']['nodes'][$nid]['field_components'][$field_component_id]['entity']['paragraphs_item'][$paragraph_id]['map_canvas'] = $canvas;
           // Conditionally load JS if Maps component is found.
           // Add Leaflet stylesheet and javascript.
           drupal_add_css('https://unpkg.com/leaflet@1.0.3/dist/leaflet.css', 'external');
@@ -603,6 +603,7 @@ function boston_preprocess_page(array &$variables) {
       'maps' => $maps,
     ), 'setting'
   );
+  $test = $variables;
 }
 
 /**
