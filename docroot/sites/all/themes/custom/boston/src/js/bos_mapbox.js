@@ -62,6 +62,7 @@
         var legend = L.control({position: 'topleft'});
         var div = L.DomUtil.create('div', 'info legend');
         // Add layer for ESRI feed(s) and add item for legend.
+}/*
         if (feeds) {
           //feeds.forEach(function(feed) {
           for (k = 0; k < feeds.length; k++) {
@@ -122,6 +123,7 @@
         //return L.Util.template(popup, layer.feature.properties);
         return L.Util.template(popup);
       }
+*/
 
     }
   };
