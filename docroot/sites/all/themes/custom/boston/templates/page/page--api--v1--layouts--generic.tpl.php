@@ -39,6 +39,8 @@
         <div class="lo lo--abs">
           <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" class="lo-l">
             <img src="<?php print $asset_url ?>/images/<?php print $asset_name ?>/logo.svg?<?php print $cache_buster ?>" alt="<?php print $site_name; ?>" class="lo-i" />
+		  </a>
+		  <a href="https://www.boston.gov/departments/mayors-office" class="lo-l">
             <span class="lo-t">Mayor Martin J. Walsh</span>
           </a>
         </div>

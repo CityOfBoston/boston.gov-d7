@@ -30,8 +30,10 @@
     <div class="lo lo--abs">
       <a href="https://www.boston.gov" class="lo-l">
         <img src="<?php print $asset_url ?>/images/public/logo.svg" alt="City of Boston" class="lo-i" />
-        <span class="lo-t">Mayor Martin J. Walsh</span>
       </a>
+	  <a href="https://www.boston.gov/departments/mayors-office" class="lo-l">
+		<span class="lo-t">Mayor Martin J. Walsh</span>
+	  </a>
     </div>
     <nav class="nv-h">
       <ul class="nv-h-l">
