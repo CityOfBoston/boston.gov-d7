@@ -31,7 +31,6 @@
         var zoom = maps[i].componentZoom ? maps[i].componentZoom : maps[i].esriZoom ? maps[i].esriZoom : 14;
 
         // Apply default coordinates and zoom level.
-        //var map = L.map('map1', {zoomControl: false}).setView([latitude, longitude], zoom);
         var map = L.map(mapID, {zoomControl: false}).setView([latitude, longitude], zoom);
         // Add zoom control to bottom right.
         L.control.zoom({
@@ -55,22 +54,19 @@
 
         // Add mapbox basemap.
         L.tileLayer(basemapUrl).addTo(map);
+
         // Set the legend position.
         var legend = L.control({position: 'topleft'});
         var div = L.DomUtil.create('div', 'info legend');
+
         // Add layer for ESRI feed(s) and add item for legend.
         for (k = 0; k < feeds.length; k++) {
           var layerObj;
           var baseObj;
           // Check if pins should be clustered.
-          if (feeds[k].cluster == 1) {
-            baseObj = L.esri.Cluster;
-          } else {
-            baseObj = L.esri;
-          }
+          baseObj = (feeds[k].cluster == 1) ? L.esri.Cluster : L.esri;
           layerObj = baseObj.featureLayer({
             url: feeds[k].url,
-            // Set line style.
             style: {
               "color": feeds[k].color,
               "weight": 3
@@ -81,13 +77,23 @@
           // Add item to legend.
           div.innerHTML += '<i style="background:' + feeds[k].color + '"></i> ' + feeds[k].title + '<br>';
         }
+
         // Add "div" variable created in loop to legend.
-        //legend.onAdd = function (map) { return div; };
         legend.onAdd = createLegend(div);
         // Add legend to map.
         legend.addTo(map);
 
-}/*
+      }
+
+      function createPopup (p) {
+        return function (layer) { return L.Util.template(p, layer.feature.properties); };
+      }
+
+      function createLegend(d) {
+        return function (map) { return d; };
+      }
+
+      /*
         if (mapOptions === '0') {
           // Disable map zoom when using scroll.
           map.scrollWheelZoom.disable();
@@ -110,14 +116,7 @@
           map.scrollWheelZoom.disable();
         }
       });
-*/
-
-      function createPopup (p) {
-        return function (layer) { return L.Util.template(p, layer.feature.properties); };
-      }
-      function createLegend(d) {
-        return function (map) { return d; };
-      }
+      */
 
     }
   };
