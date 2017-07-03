@@ -11,7 +11,6 @@
 
       // Get array of map objects from Drupal.
       var maps = Drupal.settings.maps;
-      console.log(maps);
       for (i = 0; i < maps.length; i++) {
         // Set the Map ID used to create a unique canvas for each map.
         var mapID = maps[i].mapID;
@@ -61,8 +60,6 @@
 
         // Add layer for ESRI feed(s) and add item for legend.
         for (k = 0; k < feeds.length; k++) {
-          var layerObj;
-          var baseObj;
           // Check if pins should be clustered.
           baseObj = (feeds[k].cluster == 1) ? L.esri.Cluster : L.esri;
           layerObj = baseObj.featureLayer({
