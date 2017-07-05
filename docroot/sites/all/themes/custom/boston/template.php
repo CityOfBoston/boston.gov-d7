@@ -764,8 +764,16 @@ function boston_preprocess_paragraphs_item_map(&$variables) {
     }
   }
 
-  // Create maps array that contains objects for each map.
-  //$map_obj = new StdClass();
+  // Create a unique ID for each canvas.
+  $map_id = $variables['elements']['#entity']->item_id;
+
+  // Create canvas for each map.
+  $canvas = '<div id="' . $map_id . '" class="map"></div>';
+
+  // Allow canvas variable to be used in paragraphs-item--map.tpl.php.
+  $variables['content']['map_canvas'] = $canvas;
+
+  // Create JSON object that contains values for map.
   $map_values = json_encode(array(
     'mapID' => $map_id,
     'feeds' => $feeds,
@@ -779,30 +787,9 @@ function boston_preprocess_paragraphs_item_map(&$variables) {
     'componentLong' => $field_map_longitude,
     'componentZoom' => $field_map_zoom,
   ));
-  /*
-  $map_obj->mapID = $map_id;
-  $map_obj->feeds = $feeds;
-  $map_obj->points = $points;
-  $map_obj->options = $field_map_options;
-  $map_obj->basemap = $field_basemap_url;
-  $map_obj->esriLat = $esri_field_map_latitude;
-  $map_obj->esriLong = $esri_field_map_longitude;
-  $map_obj->esriZoom = $esri_field_map_zoom;
-  $map_obj->componentLat = $field_map_latitude;
-  $map_obj->componentLong = $field_map_longitude;
-  $map_obj->componentZoom = $field_map_zoom;
-  */
-  //$variables['content']['map_object'] = $map_obj;
+
+  // Make map values available in paragraphs-item--map.tpl.php.
   $variables['content']['map_object'] = $map_values;
-
-  // Create a unique ID for each canvas.
-  $map_id = $variables['elements']['#entity']->item_id;
-
-  // Create canvas for each map.
-  $canvas = '<div id="' . $map_id . '" class="map"></div>';
-
-  // Allow canvas variable to be used in paragraphs-item--map.tpl.php.
-  $variables['content']['map_canvas'] = $canvas;
 
 }
 
