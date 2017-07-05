@@ -123,12 +123,13 @@ function bos_content_type_person_profile_field_default_field_instances() {
         'available_countries' => array(
           'US' => 'US',
         ),
-        'default_country' => 'US',
+        'default_country' => '',
         'format_handlers' => array(
           'address' => 'address',
           'address-hide-postal-code' => 0,
           'address-hide-street' => 0,
           'address-hide-country' => 0,
+          'thoroughfare-textarea' => 0,
           'organisation' => 0,
           'name-full' => 0,
           'name-oneline' => 0,
