@@ -37,12 +37,12 @@
       </label>
       <?php if ($site_name): ?>
         <div class="lo lo--abs">
-          <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" class="lo-l">
-            <img src="<?php print $asset_url ?>/images/<?php print $asset_name ?>/logo.svg?<?php print $cache_buster ?>" alt="<?php print $site_name; ?>" class="lo-i" />
-		  </a>
-		  <a href="https://www.boston.gov/departments/mayors-office" class="lo-l">
-            <span class="lo-t">Mayor Martin J. Walsh</span>
-          </a>
+          <div class="lo-l">
+            <a href="https://www.boston.gov" class="lo-l">
+              <img src="<?php print $asset_url ?>/images/public/logo.svg" alt="City of Boston" class="lo-i" />
+            </a>
+            <span class="lo-t"><a href="https://www.boston.gov/mayor">Mayor Martin J. Walsh</a></span>
+          </div>
         </div>
       <?php endif; ?>
       <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" class="s">
