@@ -52,7 +52,8 @@
 <script>
   // Get array of map objects from Drupal.
   //var maps = Drupal.settings.maps;
-  var maps = document.getElementById('<?php print render($content["map_id"]) ?>').getAttribute('obj-data');
+  //var maps = document.getElementById('<?php print render($content["map_id"]) ?>').getAttribute('obj-data');
+  var maps = '<?php print render($content["map_object"]) ?>';
   console.log(maps);
   for (i = 0; i < maps.length; i++) {
     // Set the Map ID used to create a unique canvas for each map.

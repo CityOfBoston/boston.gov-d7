@@ -697,8 +697,6 @@ function boston_preprocess_paragraphs_item_map(&$variables) {
   drupal_add_css('https://unpkg.com/leaflet.markercluster@1.0.4/dist/MarkerCluster.css', 'external');
   drupal_add_js('https://unpkg.com/leaflet.markercluster@1.0.4/dist/leaflet.markercluster.js', 'external');
   drupal_add_js('https://unpkg.com/esri-leaflet-cluster@2.0.0', 'external');
-  // Add custom javascript.
-  //drupal_add_js(drupal_get_path('theme', 'boston') . '/src/js/bos_mapbox.js');
 
   // Set variables to pass to javascript.
   // Collect ESRI feed info: title, url, color.
@@ -724,7 +722,11 @@ function boston_preprocess_paragraphs_item_map(&$variables) {
       );
     }
   }
+
+  // Set whether the map is static or interactive (zoomable).
   $field_map_options = $variables['paragraphs_item']->field_map_options['und'][0]['value'];
+
+  // Set the selected basemap.
   $field_basemap_url = $variables['paragraphs_item']->field_map_type['und'][0]['entity']->field_basemap_url_['und'][0]['value'];
 
   // Set default lat, long, and zoom values from ESRI taxonomy.
@@ -763,7 +765,21 @@ function boston_preprocess_paragraphs_item_map(&$variables) {
   }
 
   // Create maps array that contains objects for each map.
-  $map_obj = new StdClass();
+  //$map_obj = new StdClass();
+  $map_values = json_encode(array(
+    'mapID' => $map_id,
+    'feeds' => $feeds,
+    'points' => $points,
+    'options' => $field_map_options,
+    'basemap' => $field_basemap_url,
+    'esriLat' => $esri_field_map_latitude,
+    'esriLong' => $esri_field_map_longitude,
+    'esriZoom' => $esri_field_map_zoom,
+    'componentLat' => $field_map_latitude,
+    'componentLong' => $field_map_longitude,
+    'componentZoom' => $field_map_zoom,
+  ));
+  /*
   $map_obj->mapID = $map_id;
   $map_obj->feeds = $feeds;
   $map_obj->points = $points;
@@ -775,27 +791,19 @@ function boston_preprocess_paragraphs_item_map(&$variables) {
   $map_obj->componentLat = $field_map_latitude;
   $map_obj->componentLong = $field_map_longitude;
   $map_obj->componentZoom = $field_map_zoom;
-  $maps[] = $map_obj;
-  $variables['content']['map_objects'] = $maps;
+  */
+  //$variables['content']['map_object'] = $map_obj;
+  $variables['content']['map_object'] = $map_values;
 
   // Create a unique ID for each canvas.
   $map_id = $variables['elements']['#entity']->item_id;
 
   // Create canvas for each map.
-  $canvas = '<div id="' . $map_id . '" class="map" obj-data="' . $maps . '"></div>';
+  $canvas = '<div id="' . $map_id . '" class="map"></div>';
 
   // Allow canvas variable to be used in paragraphs-item--map.tpl.php.
   $variables['content']['map_canvas'] = $canvas;
-  $variables['content']['map_id'] = $map_id;
 
-  // Pass variables to javascript to configure the map.
-  /*
-  drupal_add_js(
-    array(
-      'maps' => $maps,
-    ), 'setting'
-  );
-  */
 }
 
 function boston_preprocess_field_field_image(&$variables) {
