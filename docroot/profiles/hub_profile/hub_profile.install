@@ -394,6 +394,7 @@ function hub_profile_update_7018() {
  */
 function hub_profile_update_7019() {
   $enabled_modules = array(
+    'bos_vocabulary_program_type',
     'bos_content_type_program_initiative_profile',
   );
   module_enable($enabled_modules);
