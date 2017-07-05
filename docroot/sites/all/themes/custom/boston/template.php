@@ -689,15 +689,6 @@ function boston_preprocess_paragraphs_item_photo(&$variables) {
 
 function boston_preprocess_paragraphs_item_map(&$variables) {
 
-  // Create a unique ID for each canvas.
-  $map_id = $variables['elements']['#entity']->item_id;
-
-  // Create canvas for each map.
-  $canvas = '<div id="' . $map_id . '" class="map"></div>';
-
-  // Allow canvas variable to be used in paragraphs-item--map.tpl.php.
-  $variables['content']['map_canvas'] = $canvas;
-
   // Conditionally load JS if Maps component is found.
   drupal_add_css('https://unpkg.com/leaflet@1.0.3/dist/leaflet.css', 'external');
   drupal_add_js('https://unpkg.com/leaflet@1.0.3/dist/leaflet-src.js', 'external');
@@ -707,7 +698,7 @@ function boston_preprocess_paragraphs_item_map(&$variables) {
   drupal_add_js('https://unpkg.com/leaflet.markercluster@1.0.4/dist/leaflet.markercluster.js', 'external');
   drupal_add_js('https://unpkg.com/esri-leaflet-cluster@2.0.0', 'external');
   // Add custom javascript.
-  drupal_add_js(drupal_get_path('theme', 'boston') . '/src/js/bos_mapbox.js');
+  //drupal_add_js(drupal_get_path('theme', 'boston') . '/src/js/bos_mapbox.js');
 
   // Set variables to pass to javascript.
   // Collect ESRI feed info: title, url, color.
@@ -785,13 +776,26 @@ function boston_preprocess_paragraphs_item_map(&$variables) {
   $map_obj->componentLong = $field_map_longitude;
   $map_obj->componentZoom = $field_map_zoom;
   $maps[] = $map_obj;
+  $variables['content']['map_objects'] = $maps;
+
+  // Create a unique ID for each canvas.
+  $map_id = $variables['elements']['#entity']->item_id;
+
+  // Create canvas for each map.
+  $canvas = '<div id="' . $map_id . '" class="map" obj-data="' . $maps . '"></div>';
+
+  // Allow canvas variable to be used in paragraphs-item--map.tpl.php.
+  $variables['content']['map_canvas'] = $canvas;
+  $variables['content']['map_id'] = $map_id;
 
   // Pass variables to javascript to configure the map.
+  /*
   drupal_add_js(
     array(
       'maps' => $maps,
     ), 'setting'
   );
+  */
 }
 
 function boston_preprocess_field_field_image(&$variables) {
