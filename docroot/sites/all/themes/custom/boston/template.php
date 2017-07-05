@@ -689,7 +689,7 @@ function boston_preprocess_paragraphs_item_photo(&$variables) {
 
 function boston_preprocess_paragraphs_item_map(&$variables) {
 
-  // Conditionally load JS if Maps component is found.
+  // Load Map libraries.
   drupal_add_css('https://unpkg.com/leaflet@1.0.3/dist/leaflet.css', 'external');
   drupal_add_js('https://unpkg.com/leaflet@1.0.3/dist/leaflet-src.js', 'external');
   drupal_add_js('https://unpkg.com/esri-leaflet@2.0.8', 'external');
@@ -698,8 +698,7 @@ function boston_preprocess_paragraphs_item_map(&$variables) {
   drupal_add_js('https://unpkg.com/leaflet.markercluster@1.0.4/dist/leaflet.markercluster.js', 'external');
   drupal_add_js('https://unpkg.com/esri-leaflet-cluster@2.0.0', 'external');
 
-  // Set variables to pass to javascript.
-  // Collect ESRI feed info: title, url, color.
+  // Get ESRI feed info: title, url, color.
   $feeds = array();
   if ($variables['paragraphs_item']->field_map['und'][0]['entity']->field_map_esri_feed['und']) {
     foreach ($variables['paragraphs_item']->field_map['und'][0]['entity']->field_map_esri_feed['und'] as $ids) {
@@ -723,20 +722,20 @@ function boston_preprocess_paragraphs_item_map(&$variables) {
     }
   }
 
-  // Set whether the map is static or interactive (zoomable).
+  // Get whether the map is static or interactive (zoomable).
   $field_map_options = $variables['paragraphs_item']->field_map_options['und'][0]['value'];
 
-  // Set the selected basemap.
+  // Get the selected basemap.
   $field_basemap_url = $variables['paragraphs_item']->field_map_type['und'][0]['entity']->field_basemap_url_['und'][0]['value'];
 
-  // Set default lat, long, and zoom values from ESRI taxonomy.
+  // Get default lat, long, and zoom values from ESRI taxonomy.
   $map_coordinates_esri_pid = $variables['paragraphs_item']->field_map['und'][0]['entity']->field_map_default_coordinates['und'][0]['value'];
   $map_coordinates_esri_paragraph = $map_coordinates_esri_pid ? entity_load('paragraphs_item', array($map_coordinates_esri_pid)) : NULL;
   $esri_field_map_latitude = $map_coordinates_esri_paragraph[$map_coordinates_esri_pid]->field_map_latitude['und'][0]['value'];
   $esri_field_map_longitude = $map_coordinates_esri_paragraph[$map_coordinates_esri_pid]->field_map_longitude['und'][0]['value'];
   $esri_field_map_zoom = $map_coordinates_esri_paragraph[$map_coordinates_esri_pid]->field_map_zoom['und'][0]['value'];
 
-  // Set default lat, long, & zoom overrides for the main Map component.
+  // Get default lat, long, & zoom overrides for the main Map component.
   $map_coordinates_pid = $variables['paragraphs_item']->field_map_default_coordinates['und'][0]['value'];
   $map_coordinates_paragraph = $map_coordinates_pid ? entity_load('paragraphs_item', array($map_coordinates_pid)) : NULL;
   $field_map_latitude = $map_coordinates_paragraph[$map_coordinates_pid]->field_map_latitude['und'][0]['value'];
@@ -765,7 +764,7 @@ function boston_preprocess_paragraphs_item_map(&$variables) {
   }
 
   // Create a unique ID for each canvas.
-  $map_id = $variables['elements']['#entity']->item_id;
+  $map_id = "map--" . $variables['elements']['#entity']->item_id;
 
   // Create canvas for each map.
   $canvas = '<div id="' . $map_id . '" class="map"></div>';
