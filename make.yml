@@ -68,13 +68,13 @@ projects:
   api_tokens:
     version: 1.4
   background_image_formatter:
-    version: 1.3
+    version: 1.4
   better_exposed_filters :
       version : 3.4
   breakpoints:
-    version: 1.3
+    version: 1.4
   chosen:
-    version: 2.0-beta5
+    version: 2.1
   content_access:
     version: 1.2-beta2
   context:
@@ -117,7 +117,7 @@ projects:
   facetapi:
     version: 1.5
   features:
-    version: 2.10
+    version: '2.10'
   features_extra:
     version: 1.0
   fences:
@@ -307,7 +307,7 @@ projects:
   xmlsitemap:
     version: 2.3
   ape:
-    version : 1.1
+    version : 1.2
   metatag:
     version : 1.21
   xautoload:
