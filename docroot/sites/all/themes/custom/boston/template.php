@@ -690,13 +690,41 @@ function boston_preprocess_paragraphs_item_photo(&$variables) {
 function boston_preprocess_paragraphs_item_map(&$variables) {
 
   // Load Map libraries.
-  drupal_add_css('https://unpkg.com/leaflet@1.0.3/dist/leaflet.css', 'external');
-  drupal_add_js('https://unpkg.com/leaflet@1.0.3/dist/leaflet-src.js', 'external');
-  drupal_add_js('https://unpkg.com/esri-leaflet@2.0.8', 'external');
-  drupal_add_css('https://unpkg.com/leaflet.markercluster@1.0.4/dist/MarkerCluster.Default.css', 'external');
-  drupal_add_css('https://unpkg.com/leaflet.markercluster@1.0.4/dist/MarkerCluster.css', 'external');
-  drupal_add_js('https://unpkg.com/leaflet.markercluster@1.0.4/dist/leaflet.markercluster.js', 'external');
-  drupal_add_js('https://unpkg.com/esri-leaflet-cluster@2.0.0', 'external');
+  drupal_add_css('https://unpkg.com/leaflet@1.0.3/dist/leaflet.css', array(
+    'type' => 'external',
+    'scope' => 'header',
+    'weight' => -7,
+  ));
+  drupal_add_js('https://unpkg.com/leaflet@1.0.3/dist/leaflet-src.js', array(
+    'type' => 'external',
+    'scope' => 'header',
+    'weight' => -6,
+  ));
+  drupal_add_js('https://unpkg.com/esri-leaflet@2.0.8', array(
+    'type' => 'external',
+    'scope' => 'header',
+    'weight' => -5,
+  ));
+  drupal_add_css('https://unpkg.com/leaflet.markercluster@1.0.4/dist/MarkerCluster.Default.css', array(
+    'type' => 'external',
+    'scope' => 'header',
+    'weight' => -4,
+  ));
+  drupal_add_css('https://unpkg.com/leaflet.markercluster@1.0.4/dist/MarkerCluster.css', array(
+    'type' => 'external',
+    'scope' => 'header',
+    'weight' => -3,
+  ));
+  drupal_add_js('https://unpkg.com/leaflet.markercluster@1.0.4/dist/leaflet.markercluster.js', array(
+    'type' => 'external',
+    'scope' => 'header',
+    'weight' => -2,
+  ));
+  drupal_add_js('https://unpkg.com/esri-leaflet-cluster@2.0.0', array(
+    'type' => 'external',
+    'scope' => 'header',
+    'weight' => -1,
+  ));
 
   // Get ESRI feed info: title, url, color.
   $feeds = array();
