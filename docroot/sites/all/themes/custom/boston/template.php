@@ -712,9 +712,7 @@ function boston_preprocess_paragraphs_item_map(&$variables) {
   // Set variables to pass to javascript.
   // Collect ESRI feed info: title, url, color.
   $feeds = array();
-  //if ($paragraph['#entity']->field_map['und'][0]['entity']->field_map_esri_feed['und']) {
   if ($variables['paragraphs_item']->field_map['und'][0]['entity']->field_map_esri_feed['und']) {
-    //foreach ($paragraph['#entity']->field_map['und'][0]['entity']->field_map_esri_feed['und'] as $ids) {
     foreach ($variables['paragraphs_item']->field_map['und'][0]['entity']->field_map_esri_feed['und'] as $ids) {
       // Get the paragraph ID.
       $pid = $ids['value'];
@@ -735,13 +733,10 @@ function boston_preprocess_paragraphs_item_map(&$variables) {
       );
     }
   }
-  //$field_map_options = $paragraph['#entity']->field_map_options['und'][0]['value'];
   $field_map_options = $variables['paragraphs_item']->field_map_options['und'][0]['value'];
-  //$field_basemap_url = $paragraph['#entity']->field_map_type['und'][0]['entity']->field_basemap_url_['und'][0]['value'];
   $field_basemap_url = $variables['paragraphs_item']->field_map_type['und'][0]['entity']->field_basemap_url_['und'][0]['value'];
 
   // Set default lat, long, and zoom values from ESRI taxonomy.
-  //$map_coordinates_esri_pid = $paragraph['#entity']->field_map['und'][0]['entity']->field_map_default_coordinates['und'][0]['value'];
   $map_coordinates_esri_pid = $variables['paragraphs_item']->field_map['und'][0]['entity']->field_map_default_coordinates['und'][0]['value'];
   $map_coordinates_esri_paragraph = $map_coordinates_esri_pid ? entity_load('paragraphs_item', array($map_coordinates_esri_pid)) : NULL;
   $esri_field_map_latitude = $map_coordinates_esri_paragraph[$map_coordinates_esri_pid]->field_map_latitude['und'][0]['value'];
@@ -749,7 +744,6 @@ function boston_preprocess_paragraphs_item_map(&$variables) {
   $esri_field_map_zoom = $map_coordinates_esri_paragraph[$map_coordinates_esri_pid]->field_map_zoom['und'][0]['value'];
 
   // Set default lat, long, & zoom overrides for the main Map component.
-  //$map_coordinates_pid = $paragraph['#entity']->field_map_default_coordinates['und'][0]['value'];
   $map_coordinates_pid = $variables['paragraphs_item']->field_map_default_coordinates['und'][0]['value'];
   $map_coordinates_paragraph = $map_coordinates_pid ? entity_load('paragraphs_item', array($map_coordinates_pid)) : NULL;
   $field_map_latitude = $map_coordinates_paragraph[$map_coordinates_pid]->field_map_latitude['und'][0]['value'];
@@ -757,9 +751,8 @@ function boston_preprocess_paragraphs_item_map(&$variables) {
   $field_map_zoom = $map_coordinates_paragraph[$map_coordinates_pid]->field_map_zoom['und'][0]['value'];
 
   // Get custom dropped pins from Maps component.
-  //if ($paragraph['#entity']->field_map_point_of_interest['und']) {
+  $points = array();
   if ($variables['paragraphs_item']->field_map_point_of_interest['und']) {
-    //foreach ($paragraph['#entity']->field_map_point_of_interest['und'] as $ids) {
     foreach ($variables['paragraphs_item']->field_map_point_of_interest['und'] as $ids) {
       $map_pins_pid = $ids['value'];
       $map_pins_paragraph = $map_pins_pid ? entity_load('paragraphs_item', array($map_pins_pid)) : NULL;
@@ -777,9 +770,6 @@ function boston_preprocess_paragraphs_item_map(&$variables) {
       );
     }
   }
-  else {
-    $points = array();
-  }
 
   // Create maps array that contains objects for each map.
   $map_obj = new StdClass();
@@ -795,6 +785,7 @@ function boston_preprocess_paragraphs_item_map(&$variables) {
   $map_obj->componentLong = $field_map_longitude;
   $map_obj->componentZoom = $field_map_zoom;
   $maps[] = $map_obj;
+
   // Pass variables to javascript to configure the map.
   drupal_add_js(
     array(
