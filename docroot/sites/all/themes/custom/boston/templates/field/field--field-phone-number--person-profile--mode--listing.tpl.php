@@ -3,12 +3,6 @@
  * @file
  * Phone number field template.
  */
-$detail_item_variables = array(
-  'label' => NULL,
-  'body' => render($items),
-  'classes' => array(
-    'detail' => 'detail-item--middle',
-    'body' => 'detail-item__body--secondary',
-  ),
-);
-print theme('detail_item', $detail_item_variables);
+$phone = $items[0]['#markup'];
+?>
+<a href="tel:<?php print $phone ?>" class="d-b bg--cb cdp-a ta-c p-a300 t--upper t--sans t--w t--ob--h t--s100"><?php print $phone ?></a>
