@@ -54,39 +54,28 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
   // Get array of map objects from Drupal.
   var mapJSON = '<?php print render($content["map_object"]) ?>';
-
   // Convert JSON into javascript object.
   var mapObj = JSON.parse(mapJSON);
-  //console.log(mapObj);
 
   // Set the Map ID used to create a unique canvas for each map.
   var mapID = mapObj.mapID;
-  //console.log(mapID);
   // Set ESRI Feed title, url, and color info.
   var feeds = mapObj.feeds;
-  //console.log(feeds);
   // Set Custom Pins title, desc, latitude and longitude info.
   var points = mapObj.points;
-  //console.log(points);
   // Set Map Options (0 = Static, 1 = Zoom).
   var mapOptions = mapObj.options;
-  //console.log(mapOptions);
   // Set Basemap URL.
   var basemapUrl = mapObj.basemap;
-  //console.log(basemapUrl);
   // Set Latitude to component value if it exists, if not set to ESRI Lat, if nothing exists set hardcoded value.
   var latitude = mapObj.componentLat ? mapObj.componentLat : mapObj.esriLat ? mapObj.esriLat : 42.357004;
-  //console.log(latitude);
   // Set Longitude to component value if it exists, if not set to ESRI Lat, if nothing exists set hardcoded value.
   var longitude = mapObj.componentLong ? mapObj.componentLong : mapObj.esriLong ? mapObj.esriLong : -71.062309;
-  //console.log(longitude);
   // Set Zoom to component value if it exists, if not set to ESRI Lat, if nothing exists set hardcoded value.
   var zoom = mapObj.componentZoom ? mapObj.componentZoom : mapObj.esriZoom ? mapObj.esriZoom : 14;
-  //console.log(zoom);
 
   // Apply default coordinates and zoom level.
   var map = L.map(mapID, {zoomControl: false}).setView([latitude, longitude], zoom);
-  console.log(L);
   // Add zoom control to bottom right.
   L.control.zoom({
     position:'bottomright'
@@ -117,10 +106,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
   // Add layer for ESRI feed(s) and add item for legend.
   for (k = 0; k < feeds.length; k++) {
     // Check if pins should be clustered.
-    //baseObj = (feeds[k].cluster == 1) ? L.esri.Cluster : L.esri;
-    //layerObj = baseObj.featureLayer({
-    console.log(L.esri);
-    layerObj = L.esri.featureLayer({
+    baseObj = (feeds[k].cluster == 1) ? L.esri.Cluster : L.esri;
+    layerObj = baseObj.featureLayer({
       url: feeds[k].url,
       style: {
         "color": feeds[k].color,
