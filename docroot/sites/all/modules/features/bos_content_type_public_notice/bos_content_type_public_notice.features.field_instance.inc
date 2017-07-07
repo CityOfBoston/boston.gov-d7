@@ -1780,7 +1780,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
     'label' => 'Time public testimony begins',
     'required' => 0,
     'settings' => array(
-      'default_value' => 'now',
+      'default_value' => 'blank',
       'default_value2' => 'same',
       'default_value_code' => '',
       'default_value_code2' => '',
@@ -1791,7 +1791,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
       'module' => 'date',
       'settings' => array(
         'increment' => 1,
-        'input_format' => 'g:i:sa',
+        'input_format' => 'site-wide',
         'input_format_custom' => '',
         'label_position' => 'above',
         'no_fieldset' => 0,

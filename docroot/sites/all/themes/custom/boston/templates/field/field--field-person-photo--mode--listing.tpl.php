@@ -45,11 +45,9 @@
  * @ingroup themeable
  */
 
-$email = $items[0]['#markup'];
-
-if ($email) {
-  $email = strtolower($email);
-}
+$image_uri = $items[0]['#item']['uri'];
+$image = image_style_url('medium_square', $image_uri);
+$alt_text = $items[0]['#item']['field_file_image_alt_text']['und'][0]['safe_value'];
 ?>
 
-<a href='mailto:<?php print $email; ?>' class='d-b bg--cb cdp-a ta-c p-a300 t--upper t--sans t--w t--ob--h t--s100'>Send an email<span class='a11y--hidden'> to <?php print $email; ?></span></a>
+<img src="<?php print $image ?>" class="cdp-i" alt="<?php print $alt_text ?>" />

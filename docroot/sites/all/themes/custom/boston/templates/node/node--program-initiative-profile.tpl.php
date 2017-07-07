@@ -87,7 +87,7 @@ $has_sidebar = isset($content['field_sidebar_components']) || isset($content['fi
 ?>
 <article id="node-<?php print $node->nid; ?>" class="relative-free-article clearfix">
   <?php if (isset($content['field_updated_date'])): ?>
-    <div class="breadcrumb-last-updated breadcrumb-last-updated--hack">
+    <div class="brc-lu brc-lu--hack">
       Last updated: <?php print render($content['field_updated_date']); ?>
     </div>
   <?php endif; ?>

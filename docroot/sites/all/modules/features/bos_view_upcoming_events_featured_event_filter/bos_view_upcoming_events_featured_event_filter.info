@@ -1,0 +1,12 @@
+name = Boston View Upcoming Events - Featured Event Filter
+description = Used as an option limit for field_featured_item entity reference field used in upcoming_events paragraph/component
+core = 7.x
+package = Features
+version = 7.x-1.0
+project = bos_view_upcoming_events_featured_event_filter
+dependencies[] = entityreference
+dependencies[] = views
+features[ctools][] = views:views_default:3.0
+features[features_api][] = api:2
+features[views_view][] = upcoming_events_featured_event_filter
+features_exclude[dependencies][ctools] = ctools

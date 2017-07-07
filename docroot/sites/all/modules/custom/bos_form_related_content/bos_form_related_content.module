@@ -59,6 +59,8 @@ function bos_form_related_content_form_alter(&$form, &$form_state, $form_id) {
         }
       }
     }
+    // Sort the neighborhood associative array alphabetically by value.
+    asort($neighborhoods);
     // Add quick pick checkbox options for neighborhoods.
     $form['field_neighborhood_quick_pick'] = array(
       '#title' => t('Neighborhoods'),
