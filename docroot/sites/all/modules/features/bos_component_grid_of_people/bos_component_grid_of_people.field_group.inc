@@ -26,6 +26,7 @@ function bos_component_grid_of_people_field_group_info() {
       0 => 'field_component_title',
       1 => 'field_contact',
       2 => 'field_short_title',
+      3 => 'field_component_theme',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

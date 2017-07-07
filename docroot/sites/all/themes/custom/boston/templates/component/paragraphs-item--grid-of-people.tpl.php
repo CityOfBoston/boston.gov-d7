@@ -25,9 +25,9 @@
  * @see template_process()
  */
 ?>
-<div class="<?php print $classes; ?>"<?php print $attributes; ?>>
-  <div class="content"<?php print $content_attributes; ?>>
-    <div class="sh">
+<div class="b b--<?php print $component_theme; ?> b--fw">
+  <div class="b-c">
+    <div class="sh m--b000 <?php print $section_header_theme; ?>">
       <?php if (isset($content['field_component_title'])): ?>
         <?php print render($content['field_component_title']); ?>
       <?php endif; ?>
@@ -38,7 +38,7 @@
         <?php print render($content['field_contact']); ?>
       <?php endif; ?>
     </div>
-    <div class="section-grid-of-people">
+    <div class="g">
       <?php print render($content['field_people']); ?>
     </div>
   </div>
