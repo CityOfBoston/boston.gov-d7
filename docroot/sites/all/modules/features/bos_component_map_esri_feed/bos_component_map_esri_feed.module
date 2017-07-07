@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Boston Component Map ESRI Feed feature.
+ */
+
+include_once 'bos_component_map_esri_feed.features.inc';

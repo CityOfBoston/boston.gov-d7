@@ -1,0 +1,17 @@
+name = Boston Component Map Coordinates
+description = Sets the default Latitude, Longitude, and Zoom value of a map.
+core = 7.x
+package = Features
+version = 7.x-1.0
+project = bos_component_map_coordinates
+dependencies[] = features
+dependencies[] = paragraphs
+dependencies[] = text
+features[features_api][] = api:2
+features[field_base][] = field_map_latitude
+features[field_base][] = field_map_longitude
+features[field_base][] = field_map_zoom
+features[field_instance][] = paragraphs_item-map_coordinates-field_map_latitude
+features[field_instance][] = paragraphs_item-map_coordinates-field_map_longitude
+features[field_instance][] = paragraphs_item-map_coordinates-field_map_zoom
+features[paragraphs][] = map_coordinates

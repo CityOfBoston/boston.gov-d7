@@ -478,6 +478,108 @@ function boston_preprocess_page(array &$variables) {
   $variables['target_id'] = $target_id;
   $variables['page_class'] = $page_class;
   $variables['page_class_alert'] = $page_class_alert;
+
+  // Conditionally load JS if Maps component is found.
+  $paragraphs = $variables['page']['content']['system_main']['nodes'][$nid]['field_components'][0]['entity']['paragraphs_item'];
+  // Check if there are any paragraphs referenced in field_components.
+  if (isset($paragraphs)) {
+    // Loop through all paragraphs referenced in field_components.
+    foreach ($paragraphs as $paragraph_id => $paragraph) {
+      // Check if the current paragraph is a map component.
+      if ($paragraph['#bundle'] == 'map') {
+        // Add Leaflet stylesheet and javascript.
+        drupal_add_css('https://unpkg.com/leaflet@1.0.3/dist/leaflet.css', 'external');
+        drupal_add_js('https://unpkg.com/leaflet@1.0.3/dist/leaflet-src.js', 'external');
+        // Add ESRI Leaflet javascript.
+        drupal_add_js('https://unpkg.com/esri-leaflet@2.0.8', 'external');
+        // Add Cluster stylesheets and javascript libs.
+        drupal_add_css('https://unpkg.com/leaflet.markercluster@1.0.4/dist/MarkerCluster.Default.css', 'external');
+        drupal_add_css('https://unpkg.com/leaflet.markercluster@1.0.4/dist/MarkerCluster.css', 'external');
+        drupal_add_js('https://unpkg.com/leaflet.markercluster@1.0.4/dist/leaflet.markercluster.js', 'external');
+        drupal_add_js('https://unpkg.com/esri-leaflet-cluster@2.0.0', 'external');
+        // Add custom javascript.
+        drupal_add_js(drupal_get_path('theme', 'boston') . '/src/js/bos_mapbox.js');
+        // Set variables to pass to javascript.
+        // Collect ESRI feed info: title, url, color.
+        if ($paragraph['#entity']->field_map['und'][0]['entity']->field_map_esri_feed['und']) {
+          foreach ($paragraph['#entity']->field_map['und'][0]['entity']->field_map_esri_feed['und'] as $ids) {
+            // Get the paragraph ID.
+            $pid = $ids['value'];
+            // Load the referenced map_esri_feed paragraph.
+            $entity = entity_load('paragraphs_item', array($pid));
+            $title = $entity[$pid]->field_title['und'][0]['value'];
+            $url = $entity[$pid]->field_url['und'][0]['value'];
+            $color = $entity[$pid]->field_color['und'][0]['value'];
+            $cluster = $entity[$pid]->field_map_cluster['und'][0]['value'];
+            $popup = $entity[$pid]->field_additional_information['und'][0]['value'];
+            // Create a render array that holds title, url, & color for feed.
+            $feeds[] = array(
+              'title' => $title,
+              'url' => $url,
+              'color' => $color,
+              'cluster' => $cluster,
+              'popup' => $popup,
+            );
+          }
+        }
+        $field_map_options = $paragraph['#entity']->field_map_options['und'][0]['value'];
+        $field_basemap_url = $paragraph['#entity']->field_map_type['und'][0]['entity']->field_basemap_url_['und'][0]['value'];
+
+        // Set default lat, long, and zoom values from ESRI taxonomy.
+        $map_coordinates_esri_pid = $paragraph['#entity']->field_map['und'][0]['entity']->field_map_default_coordinates['und'][0]['value'];
+        $map_coordinates_esri_paragraph = $map_coordinates_esri_pid ? entity_load('paragraphs_item', array($map_coordinates_esri_pid)) : NULL;
+        $esri_field_map_latitude = $map_coordinates_esri_paragraph[$map_coordinates_esri_pid]->field_map_latitude['und'][0]['value'];
+        $esri_field_map_longitude = $map_coordinates_esri_paragraph[$map_coordinates_esri_pid]->field_map_longitude['und'][0]['value'];
+        $esri_field_map_zoom = $map_coordinates_esri_paragraph[$map_coordinates_esri_pid]->field_map_zoom['und'][0]['value'];
+
+        // Set default lat, long, and zoom overrides for the main Map component.
+        $map_coordinates_pid = $paragraph['#entity']->field_map_default_coordinates['und'][0]['value'];
+        $map_coordinates_paragraph = $map_coordinates_pid ? entity_load('paragraphs_item', array($map_coordinates_pid)) : NULL;
+        $field_map_latitude = $map_coordinates_paragraph[$map_coordinates_pid]->field_map_latitude['und'][0]['value'];
+        $field_map_longitude = $map_coordinates_paragraph[$map_coordinates_pid]->field_map_longitude['und'][0]['value'];
+        $field_map_zoom = $map_coordinates_paragraph[$map_coordinates_pid]->field_map_zoom['und'][0]['value'];
+
+        // Get custom dropped pins from Maps component.
+        if ($paragraph['#entity']->field_map_point_of_interest['und']) {
+          foreach ($paragraph['#entity']->field_map_point_of_interest['und'] as $ids) {
+            $map_pins_pid = $ids['value'];
+            $map_pins_paragraph = $map_pins_pid ? entity_load('paragraphs_item', array($map_pins_pid)) : NULL;
+            $field_custom_pin_name = $map_pins_paragraph[$map_pins_pid]->field_pin_name['und'][0]['title'];
+            $field_custom_pin_url = $map_pins_paragraph[$map_pins_pid]->field_pin_name['und'][0]['url'];
+            $field_custom_pin_desc = $map_pins_paragraph[$map_pins_pid]->field_description['und'][0]['value'];
+            $field_custom_pin_latitude = $map_pins_paragraph[$map_pins_pid]->field_map_latitude['und'][0]['value'];
+            $field_custom_pin_longitude = $map_pins_paragraph[$map_pins_pid]->field_map_longitude['und'][0]['value'];
+            $points[] = array(
+              'name' => $field_custom_pin_name,
+              'url' => $field_custom_pin_url,
+              'desc' => $field_custom_pin_desc,
+              'lat' => $field_custom_pin_latitude,
+              'long' => $field_custom_pin_longitude,
+            );
+          }
+        }
+        else {
+          $points = array();
+        }
+
+        // Pass variables to javascript to configure the map.
+        drupal_add_js(
+          array(
+            'feeds' => $feeds,
+            'points' => $points,
+            'options' => $field_map_options,
+            'basemap' => $field_basemap_url,
+            'esriLat' => $esri_field_map_latitude,
+            'esriLong' => $esri_field_map_longitude,
+            'esriZoom' => $esri_field_map_zoom,
+            'componentLat' => $field_map_latitude,
+            'componentLong' => $field_map_longitude,
+            'componentZoom' => $field_map_zoom,
+          ), 'setting'
+        );
+      }
+    }
+  }
 }
 
 /**

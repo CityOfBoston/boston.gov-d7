@@ -44,7 +44,7 @@ function bos_settings_breadcrumbs_strongarm() {
   $strongarm->name = 'crumbs_override_theme_breadcrumb';
   $strongarm->value = array(
     'theme_breadcrumb' => 'theme_breadcrumb',
-    'boston_breadcrumb' => 'boston_breadcrumb',
+    'boston_breadcrumb' => 0,
   );
   $export['crumbs_override_theme_breadcrumb'] = $strongarm;
 

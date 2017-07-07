@@ -50,14 +50,6 @@ $email = $items[0]['#markup'];
 if ($email) {
   $email = strtolower($email);
 }
-
-$detail_item_variables = array(
-  'label' => NULL,
-  'body' => "<a href='mailto:$email'>Send an email<span class='a11y--hidden'> to $email</span></a>",
-  'classes' => array(
-    'detail' => 'detail-item--middle',
-    'body' => 'detail-item__body--secondary',
-  ),
-);
-print theme('detail_item', $detail_item_variables);
 ?>
+
+<a href='mailto:<?php print $email; ?>' class='d-b bg--cb cdp-a ta-c p-a300 t--upper t--sans t--w t--ob--h t--s100'>Send an email<span class='a11y--hidden'> to <?php print $email; ?></span></a>
