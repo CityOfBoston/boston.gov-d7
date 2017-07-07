@@ -81,29 +81,7 @@
   }
 }
 
-// .with-hero state for breadcrumb
-.breadcrumb-wrapper.with-hero {
-  @include respond-to(xl) {
-    margin-top: -150px;
-    padding-bottom: 1px;
-  }
-}
-
 .node-type-program-initiative-profile {
-  .breadcrumb-wrapper.with-hero {
-    @include respond-to(xl) {
-      margin-top: -150px;
-      padding-bottom: 100px;
-      margin-bottom: -100px;
-    }
-  }
-
-  .breadcrumb-last-updated--hack {
-    margin-top: -42px;
-    position: relative;
-    z-index: 20;
-  }
-
   .title {
     position: relative;
     z-index: 20;
