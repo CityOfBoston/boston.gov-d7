@@ -650,7 +650,6 @@ function bos_profile_update_7027() {
     'bos_component_map_coordinates',
     'bos_component_map_esri_feed',
   );
-  module_enable($enabled_modules);
 }
 
 /**
@@ -661,4 +660,20 @@ function bos_profile_update_7028() {
     'bos_view_upcoming_events_featured_event_filter',
   );
   module_enable($enabled_modules);
+}
+
+/**
+ * Update for 7/7/17
+ */
+function bos_profile_update_7029() {
+  module_enable($enabled_modules);
+  $vocab = taxonomy_vocabulary_machine_name_load('maps_basemap');
+  $term = (object) array(
+    'name' => 'Standard',
+    'machine_name' => 'standard',
+    'description' => 'The default basemap for Boston.gov.',
+    'vid' => $vocab->vid,
+  );
+  $term->field_basemap_url_[LANGUAGE_NONE][0]['value'] = 'https://api.mapbox.com/styles/v1/cityofboston/cj1hyqwt2001s2so0hjacals3/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiY2l0eW9mYm9zdG9uIiwiYSI6ImNqMTd1dDdqZTA1c2UyeHFzNGhrN2g0bHYifQ.SZ8J0aXwDHt4sCmZ9rQO2A';
+  taxonomy_term_save($term);
 }
