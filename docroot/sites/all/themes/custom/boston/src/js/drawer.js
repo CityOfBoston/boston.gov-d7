@@ -48,16 +48,20 @@
     });
   }
 
-  // Expand drawers when user searchs page with CTRL+F
+  // Expand drawers when user searchs page with CTRL+f
+  var expanded;
   $(document).on("keydown", function (e) {
-    if (e.keyCode == 70 && e.ctrlKey) {
+    if (e.keyCode == 70 && e.ctrlKey && !expanded) {
       $('.dr-h').click();
-      //$('.dr-tr').attr('checked', true);
-      console.log("Search!");
+      expanded = true;
     }
-    if (e.keyCode == 27) {
-      //$('.dr-tr').attr('checked', false);
+    if (e.keyCode == 27 && expanded) {
+      $('.dr-tr').attr('checked', false);
+      expanded = false;
     }
+  });
+  $('label.dr-h').click(function() {
+    expanded = false;
   });
 
 })(jQuery, Drupal, this, this.document);
