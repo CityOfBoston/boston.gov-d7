@@ -51,9 +51,12 @@
   // Expand drawers when user searchs page with CTRL+F
   $(document).on("keydown", function (e) {
     if (e.keyCode == 70 && e.ctrlKey) {
-      //$('.drawer-trigger').toggleClass('active').next('.drawer').toggleClass('active').slideDown(400);
-      //$('.dr-tr').prop('checked', true);
-      $('.dr-tr').attr('checked', true);
+      $('.dr-h').click();
+      //$('.dr-tr').attr('checked', true);
+      console.log("Search!");
+    }
+    if (e.keyCode == 27) {
+      //$('.dr-tr').attr('checked', false);
     }
   });
 
