@@ -48,4 +48,13 @@
     });
   }
 
+  // Expand drawers when user searchs page with CTRL+F
+  $(document).on("keydown", function (e) {
+    if (e.keyCode == 70 && e.ctrlKey) {
+      //$('.drawer-trigger').toggleClass('active').next('.drawer').toggleClass('active').slideDown(400);
+      //$('.dr-tr').prop('checked', true);
+      $('.dr-tr').attr('checked', true);
+    }
+  });
+
 })(jQuery, Drupal, this, this.document);
