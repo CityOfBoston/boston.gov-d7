@@ -800,6 +800,8 @@ function boston_preprocess_paragraphs_item_map(&$variables) {
   // Allow canvas variable to be used in paragraphs-item--map.tpl.php.
   $variables['content']['map_canvas'] = $canvas;
 
+  $variables['content']['map_id'] = $map_id;
+
   // Create JSON object that contains values for map.
   $map_values = json_encode(array(
     'mapID' => $map_id,
