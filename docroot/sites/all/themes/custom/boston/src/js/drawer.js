@@ -48,4 +48,46 @@
     });
   }
 
+  // Expand drawers so users can search within them easily.
+  $(document).on("keydown", function (e) {
+    // Check for CTRL+f input.
+    if (e.keyCode == 70 && e.ctrlKey) {
+      // Loop through each label that controls a hidden checkbox.
+      $('.dr-h').each(function() {
+        // Only execute on drawers that are closed.
+        if (!$(this).hasClass('expanded')) {
+          // Simulate a click on the drawer label to open it.
+          $(this).click();
+          // Add a class so we know this drawer is now open.
+          $(this).addClass('expanded');
+        }
+      });
+    }
+    // Check for ESC input.
+    if (e.keyCode == 27) {
+      // Loop through each label that controls a hidden checkbox.
+      $('.dr-h').each(function() {
+        // Only execute on drawers that are open.
+        if ($(this).hasClass('expanded')) {
+          // Simulate a click on the drawer label to close it.
+          $(this).click();
+          // Remove a class so we know this drawer is now closed.
+          $(this).removeClass('expanded');
+        }
+      });
+    }
+  });
+  // Check for clicks outside of browser search.
+  $('.dr-h').click(function() {
+    // Check if the clicked drawer is already open.
+    if ($(this).hasClass('expanded')) {
+      // Remove the class so we know this drawer was closed manually.
+      $(this).removeClass('expanded');
+    // If the drawer is closed already.
+    } else {
+      // Add a class so we know if was just opened.
+      $(this).addClass('expanded');
+    }
+  });
+
 })(jQuery, Drupal, this, this.document);
