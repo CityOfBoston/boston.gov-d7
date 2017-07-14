@@ -25,4 +25,3 @@ Feature: Content Types
       | content_type               |
       | Advanced Poll              |
       | Place Profile              |
-      | Program Initiative Profile |
