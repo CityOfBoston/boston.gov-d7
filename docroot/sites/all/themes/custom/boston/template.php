@@ -819,7 +819,6 @@ function boston_preprocess_paragraphs_item_map(&$variables) {
 
   // Make map values available in paragraphs-item--map.tpl.php.
   $variables['content']['map_object'] = $map_values;
-
 }
 
 function boston_preprocess_field_field_image(&$variables) {
