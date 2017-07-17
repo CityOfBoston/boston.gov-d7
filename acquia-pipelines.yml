@@ -20,7 +20,7 @@ events:
             - 'composer install --prefer-source'
             - 'yarn install'
             - 'scripts/make/apply-crispus.sh'
-            - './ci-task.sh setup:build:all'
+            - './ci-task.sh deploy:artifact:build'
       -
         sync:
           type: script
