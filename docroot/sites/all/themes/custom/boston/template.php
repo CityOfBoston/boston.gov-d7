@@ -1997,6 +1997,11 @@ function boston_preprocess_views_view(&$variables) {
         $query_str['facet[]'] = 'post';
         break;
 
+      case 'calendar':
+        $query_str['query'] = $variables['view']->exposed_raw_input['title'];
+        $query_str['facet[]'] = 'event';
+        break;
+
       default:
         break;
     }
