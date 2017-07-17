@@ -1991,24 +1991,21 @@ function boston_preprocess_views_view(&$variables) {
     $query_str = array(
       'utf8' => '✓',
     );
+    $query_str['query'] = $variables['view']->exposed_raw_input['title'];
     switch ($variables['view']->name) {
       case 'bos_news_landing':
-        $query_str['query'] = $variables['view']->exposed_raw_input['title'];
         $query_str['facet[]'] = 'post';
         break;
 
       case 'calendar':
-        $query_str['query'] = $variables['view']->exposed_raw_input['title'];
         $query_str['facet[]'] = 'event';
         break;
 
       case 'topic_landing_page':
-        $query_str['query'] = $variables['view']->exposed_raw_input['title'];
         $query_str['facet[]'] = 'topic_page';
         break;
 
       case 'transactions':
-        $query_str['query'] = $variables['view']->exposed_raw_input['title'];
         break;
 
       default:
