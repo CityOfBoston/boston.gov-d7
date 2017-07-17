@@ -18,3 +18,4 @@ events:
             - composer install --prefer-source
             - yarn install
             - scripts/make/apply-crispus.sh
+            - ./task.sh -Dbehat.run-server=true build:test
