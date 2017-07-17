@@ -1,4 +1,6 @@
 version: 1.0.0
+services:
+  - mysql
 events:
   build:
     steps:
@@ -7,8 +9,7 @@ events:
           script:
             - nvm install 5.6.0
             - nvm use 5.6.0
-            - composer selfupdate
-            - mysql -e 'CREATE DATABASE drupal;'
             - curl -o- -L https://yarnpkg.com/install.sh | bash
             - export PATH=$HOME/.yarn/bin:$PATH
             - composer install --prefer-source
+            - mysql -e 'CREATE DATABASE drupal;'
