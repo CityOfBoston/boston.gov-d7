@@ -2007,6 +2007,10 @@ function boston_preprocess_views_view(&$variables) {
         $query_str['facet[]'] = 'topic_page';
         break;
 
+      case 'transactions':
+        $query_str['query'] = $variables['view']->exposed_raw_input['title'];
+        break;
+
       default:
         break;
     }
