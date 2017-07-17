@@ -1983,6 +1983,14 @@ function boston_preprocess_views_view(&$variables) {
   if (function_exists($preprocess)) {
     $preprocess($variables);
   }
+
+  // Create redirects to search.boston.gov for no results.
+  $redirect_views = array(
+    'bos_news_landing',
+  );
+  $test = $variables;
+  if (in_array($variables['view']->name, $redirect_views) && $variables['empty'] == 'search.boston.gov') {
+  }
 }
 
 /**
