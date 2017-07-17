@@ -1,0 +1,8 @@
+version: 1.0.0
+events:
+  build:
+    steps:
+      - build:
+          type: script
+          script:
+            - ./task.sh validate:all
