@@ -12,4 +12,3 @@ events:
             - curl -o- -L https://yarnpkg.com/install.sh | bash
             - export PATH=$HOME/.yarn/bin:$PATH
             - composer install --prefer-source
-            - mysql -u root -proot 'CREATE DATABASE drupal;'
