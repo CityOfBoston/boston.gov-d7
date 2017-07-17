@@ -20,6 +20,7 @@ events:
             - 'composer install --prefer-source'
             - 'yarn install'
             - 'scripts/make/apply-crispus.sh'
+            - 'if $TESTVAR == 'hub'; then ./hub-task.sh setup:build:all; else ./task.sh setup:build:all; fi'
             - './task.sh setup:build:all'
       -
         sync:
