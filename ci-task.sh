@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 if [ ${PIPELINE_CLOUD_SITE} = "boston" ]; then
   DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
   if [ ! -f ${DIR}/vendor/bin/phing ]; then
