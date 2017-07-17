@@ -19,8 +19,8 @@ events:
           script:
             - 'composer install --prefer-source'
             - 'yarn install'
-            - 'scripts/make/apply-crispus.sh'
             - './ci-task.sh deploy:artifact:build'
+            - 'scripts/make/apply-crispus.sh'
       -
         sync:
           type: script
