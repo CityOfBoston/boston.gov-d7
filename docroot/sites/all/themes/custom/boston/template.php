@@ -2002,6 +2002,11 @@ function boston_preprocess_views_view(&$variables) {
         $query_str['facet[]'] = 'event';
         break;
 
+      case 'topic_landing_page':
+        $query_str['query'] = $variables['view']->exposed_raw_input['title'];
+        $query_str['facet[]'] = 'topic_page';
+        break;
+
       default:
         break;
     }
