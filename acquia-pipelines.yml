@@ -5,4 +5,10 @@ events:
       - build:
           type: script
           script:
-            - ./task.sh validate:all
+            - nvm install 5.6.0
+            - nvm use 5.6.0
+            - composer selfupdate
+            - mysql -e 'CREATE DATABASE drupal;'
+            - curl -o- -L https://yarnpkg.com/install.sh | bash
+            - export PATH=$HOME/.yarn/bin:$PATH
+            - composer install --prefer-source
