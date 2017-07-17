@@ -1985,11 +1985,25 @@ function boston_preprocess_views_view(&$variables) {
   }
 
   // Create redirects to search.boston.gov for no results.
-  $redirect_views = array(
-    'bos_news_landing',
-  );
-  $test = $variables;
-  if (in_array($variables['view']->name, $redirect_views) && $variables['empty'] == 'search.boston.gov') {
+  if ($variables['empty'] == 'redirect') {
+    $test = $variables;
+    $path = 'https://search.boston.gov';
+    $query_str = array(
+      'utf8' => '✓',
+      'query' => 'test',
+    );
+    switch ($variables['view']->name) {
+      case 'bos_news_landing':
+        $query_str['facet[]'] = 'post';
+        break;
+
+      default:
+        break;
+    }
+    drupal_goto($path, array(
+      "query" => $query_str,
+      "external" => TRUE,
+    ));
   }
 }
 
