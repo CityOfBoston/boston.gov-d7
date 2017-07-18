@@ -1,0 +1,32 @@
+version: 1.0.0
+services:
+  - mysql
+events:
+  build:
+    steps:
+      -
+        setup:
+          type: script
+          script:
+            - 'nvm install 5.6.0'
+            - 'nvm use 5.6.0'
+            - 'curl -o- -L https://yarnpkg.com/install.sh | bash'
+            - 'export PATH=$HOME/.yarn/bin:$PATH'
+            - 'mysql -u root -proot -e "CREATE DATABASE drupal"'
+      -
+        build:
+          type: script
+          script:
+            - 'composer install --prefer-source'
+            - 'yarn install'
+            - './ci-task.sh deploy:artifact:build'
+            - 'scripts/make/apply-crispus.sh'
+      -
+        sync:
+          type: script
+          script:
+            - './task.sh local:sync'
+
+ssh-keys:
+  digital:
+    secure: 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
