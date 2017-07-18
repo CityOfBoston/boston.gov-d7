@@ -60,9 +60,9 @@
 <div class="department-list-link"><a href="<?php print $departments_link; ?>" title="Go to Deparment List">Browse a department list</a></div>
 <div class="search-results-wrapper">
   <div class="container">
-      <div class="employee-directory-results">
+      <div class="employee-directory-results b b--fw b--g">
         <div class="container">
-          <ol class="search-results <?php print $module; ?>-results">
+          <ol class="search-results <?php print $module; ?>-results g">
             <?php print $search_results; ?>
           </ol>
           <?php print $pager; ?>
