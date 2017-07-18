@@ -53,48 +53,50 @@
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=<?php echo $google_tag_manager_id ?>&noscript=true"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <?php } ?>
-  <script id="contactFormTemplate" type="text/x-template">
-    <div class="md">
-      <div class="md-c">
-        <button class="md-cb">Close</button>
-        <div class="mb-b p-a300 p-a600--xl">
-          <div class="sh m-b500">
-            <div class="sh-title">Contact Us</div>
-          </div>
-          <div>
-            <div id="contactMessage" class="t--info m-b500">Have a question, or just need help? You can send an email through the form below.</div>
-            <form id="contactForm" action="<?php print $contact_url; ?>" method="POST">
-              <input id="contactFormToAddress" name="email[to_address]" type="hidden" value="">
-              <input id="contactFormURL" name="email[url]" type="hidden" value="">
-              <input id="contactFormBrowser" name="email[browser]" type="hidden" value="">
-              <div class="fs">
-                <div class="fs-c">
-                  <div class="txt m-b300">
-                    <label for="email[name]" class="txt-l txt-l--mt000">Full Name</label>
-                    <input name="email[name]" type="text" class="txt-f txt-f--sm bos-contact-name" size="10" value="">
+  <?php if ($asset_name !== 'hub'): ?>
+    <script id="contactFormTemplate" type="text/x-template">
+      <div class="md">
+        <div class="md-c">
+          <button class="md-cb">Close</button>
+          <div class="mb-b p-a300 p-a600--xl">
+            <div class="sh m-b500">
+              <div class="sh-title">Contact Us</div>
+            </div>
+            <div>
+              <div id="contactMessage" class="t--info m-b500">Have a question, or just need help? You can send an email through the form below.</div>
+              <form id="contactForm" action="<?php print $contact_url; ?>" method="POST">
+                <input id="contactFormToAddress" name="email[to_address]" type="hidden" value="">
+                <input id="contactFormURL" name="email[url]" type="hidden" value="">
+                <input id="contactFormBrowser" name="email[browser]" type="hidden" value="">
+                <div class="fs">
+                  <div class="fs-c">
+                    <div class="txt m-b300">
+                      <label for="email[name]" class="txt-l txt-l--mt000">Full Name</label>
+                      <input name="email[name]" type="text" class="txt-f txt-f--sm bos-contact-name" size="10" value="">
+                    </div>
+                    <div class="txt m-b300">
+                      <label for="email[from_address]" class="txt-l txt-l--mt000">Email Address</label>
+                      <input name="email[from_address]" type="text" placeholder="email@address.com" class="txt-f txt-f--sm bos-contact-email" value="">
+                    </div>
+                    <div class="txt m-b300">
+                      <label for="email[subject]" class="txt-l txt-l--mt000">Subject</label>
+                      <input name="email[subject]" type="text" class="txt-f txt-f--sm bos-contact-subject" size="10" value="">
+                    </div>
+                    <div class="txt m-b300">
+                      <label for="email[message]" class="txt-l txt-l--mt000">Message</label>
+                      <textarea name="email[message]" type="text" class="txt-f txt-f--sm bos-contact-message" rows="10"></textarea>
+                    </div>
                   </div>
-                  <div class="txt m-b300">
-                    <label for="email[from_address]" class="txt-l txt-l--mt000">Email Address</label>
-                    <input name="email[from_address]" type="text" placeholder="email@address.com" class="txt-f txt-f--sm bos-contact-email" value="">
-                  </div>
-                  <div class="txt m-b300">
-                    <label for="email[subject]" class="txt-l txt-l--mt000">Subject</label>
-                    <input name="email[subject]" type="text" class="txt-f txt-f--sm bos-contact-subject" size="10" value="">
-                  </div>
-                  <div class="txt m-b300">
-                    <label for="email[message]" class="txt-l txt-l--mt000">Message</label>
-                    <textarea name="email[message]" type="text" class="txt-f txt-f--sm bos-contact-message" rows="10"></textarea>
+                  <div class="bc bc--r p-t500">
+                    <button type="submit" class="btn btn--700">Send Message</button>
                   </div>
                 </div>
-                <div class="bc bc--r p-t500">
-                  <button type="submit" class="btn btn--700">Send Message</button>
-                </div>
-              </div>
-            </form>
+              </form>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </script>
+    </script>
+  <?php endif; ?>
 </body>
 </html>
