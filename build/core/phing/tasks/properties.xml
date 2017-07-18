@@ -14,19 +14,11 @@
      will be run. -->
   <property name="multisite.name" value="default" />
 
+  <echo message="${docroot}/sites/${multisite.name}/settings/local.settings.php" />
+
   <!-- Extract PHP variable values from local.settings.php. -->
   <property name="local.settings.file" value="${docroot}/sites/${multisite.name}/settings/local.settings.php" />
-  <if>
-    <not>
-      <available file="${docroot}/sites/${multisite.name}/settings/local.settings.php" />
-    </not>
-    <then>
-      <copy file="${docroot}/sites/${multisite.name}/settings/default.local.settings.php" tofile="${local.settings.file}" overwrite="false" verbose="true"/>
-    </then>
-    <else>
-      <echo message="local.settings.php already exists, ignoring." />
-    </else>
-  </if>
+  <copy file="${docroot}/sites/${multisite.name}/settings/default.local.settings.php" tofile="${local.settings.file}" overwrite="true" verbose="true"/>
 
   <echo>Executing commands against multisite "${multisite.name}"</echo>
   <echo>Building the db from is set to "${project.build_db_from}"</echo>
