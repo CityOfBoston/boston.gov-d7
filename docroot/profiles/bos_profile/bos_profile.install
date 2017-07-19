@@ -650,6 +650,8 @@ function bos_profile_update_7027() {
     'bos_component_map_coordinates',
     'bos_component_map_esri_feed',
   );
+
+  module_enable($enabled_modules);
 }
 
 /**
