@@ -193,8 +193,8 @@ function bos_core_form_node_form_alter(&$form, &$form_state) {
     // actually is.
     $field_name = isset($form['field_components']) ? 'field_components' : 'field_tabbed_content';
     foreach ($form[$field_name][LANGUAGE_NONE] as $index => &$component) {
-      if (is_array($component) && isset($component['field_component_title'])) {
-        $component_title = $component['field_component_title'][LANGUAGE_NONE][0]['value']['#default_value'];
+      if (is_array($component) && isset($component['field_component_title']) || isset($component['field_title'])) {
+        $component_title = $component['field_component_title'][LANGUAGE_NONE][0]['value']['#default_value'] ?: $component['field_title'][LANGUAGE_NONE][0]['value']['#default_value'];
         $component['paragraph_bundle_title']['info']['#markup'] .= '<br><strong>' . $component_title . '</strong>';
       }
     }
