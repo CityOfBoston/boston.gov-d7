@@ -10,21 +10,13 @@
 function bos_component_map_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'field_map'
+  // Exported field_base: 'field_map'.
   $field_bases['field_map'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_map',
-    'foreign keys' => array(
-      'taxonomy_term_data' => array(
-        'columns' => array(
-          'target_id' => 'tid',
-        ),
-        'table' => 'taxonomy_term_data',
-      ),
-    ),
     'indexes' => array(
       'target_id' => array(
         0 => 'target_id',
@@ -53,14 +45,13 @@ function bos_component_map_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_map_options'
+  // Exported field_base: 'field_map_options'.
   $field_bases['field_map_options'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_map_options',
-    'foreign keys' => array(),
     'indexes' => array(
       'value' => array(
         0 => 'value',
@@ -79,14 +70,13 @@ function bos_component_map_field_default_field_bases() {
     'type' => 'list_text',
   );
 
-  // Exported field_base: 'field_map_point_of_interest'
+  // Exported field_base: 'field_map_point_of_interest'.
   $field_bases['field_map_point_of_interest'] = array(
     'active' => 1,
     'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_map_point_of_interest',
-    'foreign keys' => array(),
     'indexes' => array(),
     'locked' => 0,
     'module' => 'paragraphs',
@@ -95,21 +85,13 @@ function bos_component_map_field_default_field_bases() {
     'type' => 'paragraphs',
   );
 
-  // Exported field_base: 'field_map_type'
+  // Exported field_base: 'field_map_type'.
   $field_bases['field_map_type'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_map_type',
-    'foreign keys' => array(
-      'taxonomy_term_data' => array(
-        'columns' => array(
-          'target_id' => 'tid',
-        ),
-        'table' => 'taxonomy_term_data',
-      ),
-    ),
     'indexes' => array(
       'target_id' => array(
         0 => 'target_id',
