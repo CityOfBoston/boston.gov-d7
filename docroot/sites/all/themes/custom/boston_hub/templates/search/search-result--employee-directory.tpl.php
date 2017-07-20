@@ -64,42 +64,14 @@
  * @ingroup themeable
  */
 ?>
-<article class="<?php print $classes; ?> node-<?php print $node->nid; ?> mobile-1-col tablet-2-col desktop-4-col xxl-desktop-5-col"<?php print $attributes; ?>>
-  <div class="person-profile-listing-info-wrapper">
-    <div class="column">
-      <a href="<?php print $url; ?>" title="Go to <?php print $user_display_name; ?>'s profile">
-        <div class="person-highlight-area">
-          <div class="person-text-data">
-            <div class="person-name-and-title">
-              <div class="person-profile-display-name">
-                <?php print $user_display_name; ?>
-              </div>
-              <?php if (isset($user_position_title)): ?>
-                <div class="person-profile-position-title-list">
-                  <?php print $user_position_title; ?>
-                </div>
-              <?php endif; ?>
-            </div>
-          </div>
-        </div>
-      </a>
-      <div class="person-preferred-contact">
-        <div class="detail-list-item person-profile-email">
-          <div class="field-content">
-            <?php
-            $detail_item_variables = array(
-              'label' => NULL,
-              'body' => "<a href=mailto:$user_work_email>Send an email<span class='a11y--hidden'> to $user_display_name</span></a>",
-              'classes' => array(
-                'detail' => 'detail-item--middle',
-                'body' => 'detail-item__body--secondary',
-              ),
-            );
-            print theme('detail_item', $detail_item_variables);
-            ?>
-          </div>
-        </div>
-      </div>
+<article class="cdp m-t500 g--1 g--3--sl" <?php print $attributes; ?>>
+  <a href="<?php print $url; ?>" class="cdp-l d-b p-a300">
+    <div>
+      <div class="cdp-t t--sans t--upper"><?php print $user_display_name; ?></div>
+      <?php if (isset($user_position_title)): ?>
+        <div class="cdp-st t--subinfo t--g300"><?php print $user_position_title; ?></div>
+      <?php endif; ?>
     </div>
-  </div>
+  </a>
+  <a href="mailto:<?php print $user_work_email ?>" class="d-b bg--cb cdp-a ta-c p-a300 t--upper t--sans t--w t--ob--h t--s100">Send an email<span class='a11y--hidden'> to <?php print $user_display_name; ?></span></a>
 </article>

@@ -10,7 +10,7 @@
 function bos_component_map_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'paragraphs_item-map-field_component_title'
+  // Exported field_instance: 'paragraphs_item-map-field_component_title'.
   $field_instances['paragraphs_item-map-field_component_title'] = array(
     'bundle' => 'map',
     'default_value' => NULL,
@@ -61,7 +61,7 @@ function bos_component_map_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-map-field_contact'
+  // Exported field_instance: 'paragraphs_item-map-field_contact'.
   $field_instances['paragraphs_item-map-field_contact'] = array(
     'bundle' => 'map',
     'default_value' => NULL,
@@ -112,7 +112,54 @@ function bos_component_map_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-map-field_hide_title_bar'
+  // Exported field_instance: 'paragraphs_item-map-field_extra_info'.
+  $field_instances['paragraphs_item-map-field_extra_info'] = array(
+    'bundle' => 'map',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 9,
+      ),
+      'paragraphs_editor_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'paragraphs_item',
+    'fences_wrapper' => 'div_div_div',
+    'field_name' => 'field_extra_info',
+    'label' => 'Description',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'show_token_tree' => 0,
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 2,
+    ),
+  );
+
+  // Exported field_instance: 'paragraphs_item-map-field_hide_title_bar'.
   $field_instances['paragraphs_item-map-field_hide_title_bar'] = array(
     'bundle' => 'map',
     'default_value' => array(
@@ -156,7 +203,7 @@ function bos_component_map_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-map-field_map'
+  // Exported field_instance: 'paragraphs_item-map-field_map'.
   $field_instances['paragraphs_item-map-field_map'] = array(
     'bundle' => 'map',
     'default_value' => NULL,
@@ -198,7 +245,8 @@ function bos_component_map_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-map-field_map_default_coordinates'
+  // Exported field_instance:
+  // 'paragraphs_item-map-field_map_default_coordinates'.
   $field_instances['paragraphs_item-map-field_map_default_coordinates'] = array(
     'bundle' => 'map',
     'default_value' => NULL,
@@ -368,7 +416,7 @@ function bos_component_map_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-map-field_map_options'
+  // Exported field_instance: 'paragraphs_item-map-field_map_options'.
   $field_instances['paragraphs_item-map-field_map_options'] = array(
     'bundle' => 'map',
     'default_value' => array(
@@ -410,7 +458,7 @@ function bos_component_map_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-map-field_map_point_of_interest'
+  // Exported field_instance: 'paragraphs_item-map-field_map_point_of_interest'.
   $field_instances['paragraphs_item-map-field_map_point_of_interest'] = array(
     'bundle' => 'map',
     'default_value' => NULL,
@@ -578,7 +626,7 @@ function bos_component_map_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-map-field_map_type'
+  // Exported field_instance: 'paragraphs_item-map-field_map_type'.
   $field_instances['paragraphs_item-map-field_map_type'] = array(
     'bundle' => 'map',
     'default_value' => NULL,
@@ -620,7 +668,7 @@ function bos_component_map_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-map-field_short_title'
+  // Exported field_instance: 'paragraphs_item-map-field_short_title'.
   $field_instances['paragraphs_item-map-field_short_title'] = array(
     'bundle' => 'map',
     'default_value' => NULL,
@@ -674,6 +722,7 @@ function bos_component_map_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Contact');
+  t('Description');
   t('Hide Title Bar');
   t('Map');
   t('Map Default Coordinates Override');
