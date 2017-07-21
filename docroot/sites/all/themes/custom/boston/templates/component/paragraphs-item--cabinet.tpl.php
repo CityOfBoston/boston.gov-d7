@@ -25,25 +25,27 @@
  * @see template_process()
  */
 ?>
-<div class="<?php print $classes; ?>"<?php print $attributes; ?>>
-  <div class="content cabinet"<?php print $content_attributes; ?>>
-    <?php print render($content['field_person']); ?>
-    <div class="cabinet-right-wrapper">
-      <div class="cabinet-center">
-        <div class="cabinet-title">
-          <h3><?php print render($content['field_title']); ?></h3>
-        </div>
-        <div class="cabinet-description">
-          <?php print render($content['field_description']); ?>
-        </div>
+<div class="b b--fw">
+  <div class="b-c">
+    <div class="g">
+      <div class="g--3">
+        <?php print render($content['field_person']); ?>
       </div>
-      <div class="cabinet-contacts">
-        <?php if (!empty($content['field_contacts'])): ?>
-          <h5>Departments, Boards, & Agencies</h5>
-          <?php print $cabinet_contacts; ?>
-        <?php else: ?>
-            &nbsp;
-        <?php endif; ?>
+      <div class="g--9">
+        <div class="g">
+          <div class="g--8">
+            <h3 class="t--intro m-t000 m-b200"><?php print render($content['field_title']); ?></h3>
+            <?php print render($content['field_description']); ?>
+          </div>
+          <div class="g--4">
+            <?php if (!empty($content['field_contacts'])): ?>
+              <h5 class="m-t000 m-b200">Departments, Boards, &amp; Agencies</h5>
+              <?php print $cabinet_contacts; ?>
+            <?php else: ?>
+                &nbsp;
+            <?php endif; ?>
+          </div>
+        </div>
       </div>
     </div>
   </div>

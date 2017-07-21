@@ -18,10 +18,15 @@ function bos_component_cabinet_preprocess_entity(&$variables, $hook) {
       $title = '';
       $type = 'ul';
       $attributes = array(
-        'class' => 'cabinet-contacts-listing secondary-list',
+        'class' => 'ul t--upper t--sans',
       );
       foreach ($variables['elements']['field_contacts']['#items'] as $key => $contact_items) {
-        $items[] = $variables['elements']['field_contacts'][$key]['#markup'];
+        $item = array(
+          'data' => $variables['elements']['field_contacts'][$key]['#markup'],
+          'class' => array('t--s100 lh--200')
+        );
+
+        $items[] = $item;
       }
       $cabinet_contacts = theme_item_list(array(
         'items' => $items,
