@@ -23,11 +23,12 @@ function bos_component_cabinet_preprocess_entity(&$variables, $hook) {
       foreach ($variables['elements']['field_contacts']['#items'] as $key => $contact_items) {
         $item = array(
           'data' => $variables['elements']['field_contacts'][$key]['#markup'],
-          'class' => array('t--s100 lh--200')
+          'class' => array('t--s100 lh--200'),
         );
 
         $items[] = $item;
       }
+
       $cabinet_contacts = theme_item_list(array(
         'items' => $items,
         'title' => $title,
