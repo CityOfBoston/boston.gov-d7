@@ -2,5 +2,6 @@
   &.view-places-listing,
   &.view-program-initiatives-listing {
     background-color: color(section-bg);
+    overflow: hidden;
   }
 }
