@@ -10,7 +10,7 @@
 function bos_content_type_person_profile_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-person_profile-field_address'
+  // Exported field_instance: 'node-person_profile-field_address'.
   $field_instances['node-person_profile-field_address'] = array(
     'bundle' => 'person_profile',
     'default_value' => NULL,
@@ -52,6 +52,12 @@ function bos_content_type_person_profile_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'embed' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 8,
       ),
       'featured_item' => array(
         'label' => 'above',
@@ -141,7 +147,7 @@ function bos_content_type_person_profile_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-person_profile-field_contact'
+  // Exported field_instance: 'node-person_profile-field_contact'.
   $field_instances['node-person_profile-field_contact'] = array(
     'bundle' => 'person_profile',
     'default_value' => NULL,
@@ -180,6 +186,12 @@ function bos_content_type_person_profile_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'embed' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 5,
       ),
       'featured_item' => array(
         'label' => 'above',
@@ -263,7 +275,7 @@ function bos_content_type_person_profile_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-person_profile-field_description'
+  // Exported field_instance: 'node-person_profile-field_description'.
   $field_instances['node-person_profile-field_description'] = array(
     'bundle' => 'person_profile',
     'default_value' => NULL,
@@ -300,6 +312,12 @@ function bos_content_type_person_profile_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'embed' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 10,
       ),
       'featured_item' => array(
         'label' => 'above',
@@ -377,7 +395,7 @@ function bos_content_type_person_profile_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-person_profile-field_email'
+  // Exported field_instance: 'node-person_profile-field_email'.
   $field_instances['node-person_profile-field_email'] = array(
     'bundle' => 'person_profile',
     'default_value' => NULL,
@@ -414,6 +432,13 @@ function bos_content_type_person_profile_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'embed' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 4,
       ),
       'featured_item' => array(
         'label' => 'above',
@@ -492,7 +517,7 @@ function bos_content_type_person_profile_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-person_profile-field_first_name'
+  // Exported field_instance: 'node-person_profile-field_first_name'.
   $field_instances['node-person_profile-field_first_name'] = array(
     'bundle' => 'person_profile',
     'default_value' => NULL,
@@ -529,6 +554,12 @@ function bos_content_type_person_profile_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'embed' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 13,
       ),
       'featured_item' => array(
         'label' => 'above',
@@ -606,7 +637,7 @@ function bos_content_type_person_profile_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-person_profile-field_last_name'
+  // Exported field_instance: 'node-person_profile-field_last_name'.
   $field_instances['node-person_profile-field_last_name'] = array(
     'bundle' => 'person_profile',
     'default_value' => NULL,
@@ -643,6 +674,12 @@ function bos_content_type_person_profile_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'embed' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 12,
       ),
       'featured_item' => array(
         'label' => 'above',
@@ -720,7 +757,7 @@ function bos_content_type_person_profile_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-person_profile-field_person_photo'
+  // Exported field_instance: 'node-person_profile-field_person_photo'.
   $field_instances['node-person_profile-field_person_photo'] = array(
     'bundle' => 'person_profile',
     'deleted' => 0,
@@ -758,6 +795,16 @@ function bos_content_type_person_profile_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'embed' => array(
+        'label' => 'hidden',
+        'module' => 'image',
+        'settings' => array(
+          'image_link' => '',
+          'image_style' => 'medium_square',
+        ),
+        'type' => 'image',
         'weight' => 0,
       ),
       'featured_item' => array(
@@ -859,7 +906,7 @@ function bos_content_type_person_profile_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-person_profile-field_phone_number'
+  // Exported field_instance: 'node-person_profile-field_phone_number'.
   $field_instances['node-person_profile-field_phone_number'] = array(
     'bundle' => 'person_profile',
     'default_value' => NULL,
@@ -896,6 +943,13 @@ function bos_content_type_person_profile_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'embed' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 3,
       ),
       'featured_item' => array(
         'label' => 'above',
@@ -974,7 +1028,7 @@ function bos_content_type_person_profile_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-person_profile-field_political_party'
+  // Exported field_instance: 'node-person_profile-field_political_party'.
   $field_instances['node-person_profile-field_political_party'] = array(
     'bundle' => 'person_profile',
     'default_value' => NULL,
@@ -1013,6 +1067,12 @@ function bos_content_type_person_profile_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'embed' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 11,
       ),
       'featured_item' => array(
         'label' => 'above',
@@ -1093,7 +1153,7 @@ function bos_content_type_person_profile_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-person_profile-field_position_title'
+  // Exported field_instance: 'node-person_profile-field_position_title'.
   $field_instances['node-person_profile-field_position_title'] = array(
     'bundle' => 'person_profile',
     'default_value' => NULL,
@@ -1130,6 +1190,13 @@ function bos_content_type_person_profile_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'embed' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 1,
       ),
       'featured_item' => array(
         'label' => 'above',
@@ -1208,7 +1275,7 @@ function bos_content_type_person_profile_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-person_profile-field_preferred_contact'
+  // Exported field_instance: 'node-person_profile-field_preferred_contact'.
   $field_instances['node-person_profile-field_preferred_contact'] = array(
     'bundle' => 'person_profile',
     'default_value' => array(
@@ -1248,6 +1315,13 @@ function bos_content_type_person_profile_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'embed' => array(
+        'label' => 'hidden',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 2,
       ),
       'featured_item' => array(
         'label' => 'above',
@@ -1322,7 +1396,7 @@ function bos_content_type_person_profile_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-person_profile-field_profile_type'
+  // Exported field_instance: 'node-person_profile-field_profile_type'.
   $field_instances['node-person_profile-field_profile_type'] = array(
     'bundle' => 'person_profile',
     'default_value' => NULL,
@@ -1358,6 +1432,12 @@ function bos_content_type_person_profile_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'embed' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 14,
       ),
       'featured_item' => array(
         'label' => 'above',
@@ -1441,7 +1521,7 @@ function bos_content_type_person_profile_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-person_profile-field_year_elected'
+  // Exported field_instance: 'node-person_profile-field_year_elected'.
   $field_instances['node-person_profile-field_year_elected'] = array(
     'bundle' => 'person_profile',
     'default_value' => NULL,
@@ -1478,6 +1558,12 @@ function bos_content_type_person_profile_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'embed' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 6,
       ),
       'featured_item' => array(
         'label' => 'above',

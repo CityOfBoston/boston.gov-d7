@@ -24,20 +24,24 @@
  * @see template_preprocess_entity()
  * @see template_process()
  */
+
+ $has_chief = isset($content['field_person']);
 ?>
 <div class="b b--fw">
-  <div class="b-c">
+  <div class="b-c b-c--wtb">
     <div class="g">
-      <div class="g--3">
-        <?php print render($content['field_person']); ?>
-      </div>
-      <div class="g--9">
+      <?php if ($has_chief): ?>
+        <div class="g--3">
+          <?php print render($content['field_person']); ?>
+        </div>
+      <?php endif; ?>
+      <div class="g--<?php if ($has_chief): ?>9<?php else: ?>12<?php endif; ?>">
         <div class="g">
-          <div class="g--8">
+          <div class="g--12 g--8--xl p-t500--mo">
             <h3 class="t--intro m-t000 m-b200"><?php print render($content['field_title']); ?></h3>
             <?php print render($content['field_description']); ?>
           </div>
-          <div class="g--4">
+          <div class="g--12 g--4--xl">
             <?php if (!empty($content['field_contacts'])): ?>
               <h5 class="m-t000 m-b200">Departments, Boards, &amp; Agencies</h5>
               <?php print $cabinet_contacts; ?>

@@ -169,7 +169,7 @@ function bos_component_cabinet_field_default_field_instances() {
     'fences_wrapper' => 'no_wrapper',
     'field_name' => 'field_person',
     'label' => 'Cabinet Chief',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
@@ -177,7 +177,12 @@ function bos_component_cabinet_field_default_field_instances() {
       'active' => 1,
       'module' => 'entityreference',
       'settings' => array(
-        'entityreference_autocreate' => 0,
+        'entityreference_autocreate' => array(
+          'active' => 0,
+          'author' => '',
+          'author_current_user' => 1,
+          'status' => -1,
+        ),
         'match_operator' => 'CONTAINS',
         'path' => '',
         'size' => 60,
