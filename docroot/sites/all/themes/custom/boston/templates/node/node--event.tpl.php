@@ -104,7 +104,10 @@ hide($content['links']);
       <?php endif; ?>
       <?php if (isset($content['field_details_link'])): ?>
         <div class="external-link external-link--inline">
-          <a class="button" href="<?php print render($content['field_details_link']); ?>">Event website<span class="a11y--hidden"> for <?php print $title; ?></span></a>
+          <a class="button" href="<?php print render($field_details_link[0]['url']); ?>">
+            <?php print render($field_details_link[0]['title']); ?>
+            <span class="a11y--hidden"> for <?php print $title; ?></span>
+          </a>
         </div>
       <?php endif; ?>
     </div>
