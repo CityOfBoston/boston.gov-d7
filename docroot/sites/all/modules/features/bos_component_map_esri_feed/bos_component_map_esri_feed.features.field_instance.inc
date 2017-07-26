@@ -10,7 +10,8 @@
 function bos_component_map_esri_feed_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'paragraphs_item-map_esri_feed-field_additional_information'
+  // Exported field_instance:
+  // 'paragraphs_item-map_esri_feed-field_additional_information'.
   $field_instances['paragraphs_item-map_esri_feed-field_additional_information'] = array(
     'bundle' => 'map_esri_feed',
     'default_value' => NULL,
@@ -57,7 +58,7 @@ function bos_component_map_esri_feed_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-map_esri_feed-field_color'
+  // Exported field_instance: 'paragraphs_item-map_esri_feed-field_color'.
   $field_instances['paragraphs_item-map_esri_feed-field_color'] = array(
     'bundle' => 'map_esri_feed',
     'default_value' => NULL,
@@ -104,7 +105,7 @@ function bos_component_map_esri_feed_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-map_esri_feed-field_map_cluster'
+  // Exported field_instance: 'paragraphs_item-map_esri_feed-field_map_cluster'.
   $field_instances['paragraphs_item-map_esri_feed-field_map_cluster'] = array(
     'bundle' => 'map_esri_feed',
     'default_value' => array(
@@ -148,7 +149,7 @@ function bos_component_map_esri_feed_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-map_esri_feed-field_title'
+  // Exported field_instance: 'paragraphs_item-map_esri_feed-field_title'.
   $field_instances['paragraphs_item-map_esri_feed-field_title'] = array(
     'bundle' => 'map_esri_feed',
     'default_value' => NULL,
@@ -195,7 +196,7 @@ function bos_component_map_esri_feed_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-map_esri_feed-field_url'
+  // Exported field_instance: 'paragraphs_item-map_esri_feed-field_url'.
   $field_instances['paragraphs_item-map_esri_feed-field_url'] = array(
     'bundle' => 'map_esri_feed',
     'default_value' => NULL,
