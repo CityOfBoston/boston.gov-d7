@@ -24,26 +24,32 @@
  * @see template_preprocess_entity()
  * @see template_process()
  */
+
+ $has_chief = isset($content['field_person']);
 ?>
-<div class="<?php print $classes; ?>"<?php print $attributes; ?>>
-  <div class="content cabinet"<?php print $content_attributes; ?>>
-    <?php print render($content['field_person']); ?>
-    <div class="cabinet-right-wrapper">
-      <div class="cabinet-center">
-        <div class="cabinet-title">
-          <h3><?php print render($content['field_title']); ?></h3>
+<div class="b b--fw">
+  <div class="b-c b-c--wtb">
+    <div class="g">
+      <?php if ($has_chief): ?>
+        <div class="g--3">
+          <?php print render($content['field_person']); ?>
         </div>
-        <div class="cabinet-description">
-          <?php print render($content['field_description']); ?>
+      <?php endif; ?>
+      <div class="g--<?php if ($has_chief): ?>9<?php else: ?>12<?php endif; ?>">
+        <div class="g">
+          <div class="g--12 g--8--xl p-t500--mo">
+            <h3 class="t--intro m-t000 m-b200"><?php print render($content['field_title']); ?></h3>
+            <?php print render($content['field_description']); ?>
+          </div>
+          <div class="g--12 g--4--xl">
+            <?php if (!empty($content['field_contacts'])): ?>
+              <h5 class="m-t000 m-b200">Departments, Boards, &amp; Agencies</h5>
+              <?php print $cabinet_contacts; ?>
+            <?php else: ?>
+                &nbsp;
+            <?php endif; ?>
+          </div>
         </div>
-      </div>
-      <div class="cabinet-contacts">
-        <?php if (!empty($content['field_contacts'])): ?>
-          <h5>Departments, Boards, & Agencies</h5>
-          <?php print $cabinet_contacts; ?>
-        <?php else: ?>
-            &nbsp;
-        <?php endif; ?>
       </div>
     </div>
   </div>

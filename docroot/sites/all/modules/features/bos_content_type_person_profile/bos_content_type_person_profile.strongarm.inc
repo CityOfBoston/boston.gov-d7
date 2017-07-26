@@ -128,6 +128,9 @@ function bos_content_type_person_profile_strongarm() {
       'ical' => array(
         'custom_settings' => FALSE,
       ),
+      'embed' => array(
+        'custom_settings' => TRUE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(

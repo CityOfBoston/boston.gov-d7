@@ -10,7 +10,7 @@
 function bos_component_cabinet_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'paragraphs_item-cabinet-field_contacts'
+  // Exported field_instance: 'paragraphs_item-cabinet-field_contacts'.
   $field_instances['paragraphs_item-cabinet-field_contacts'] = array(
     'bundle' => 'cabinet',
     'default_value' => NULL,
@@ -70,7 +70,7 @@ function bos_component_cabinet_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-cabinet-field_description'
+  // Exported field_instance: 'paragraphs_item-cabinet-field_description'.
   $field_instances['paragraphs_item-cabinet-field_description'] = array(
     'bundle' => 'cabinet',
     'default_value' => NULL,
@@ -125,7 +125,7 @@ function bos_component_cabinet_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-cabinet-field_person'
+  // Exported field_instance: 'paragraphs_item-cabinet-field_person'.
   $field_instances['paragraphs_item-cabinet-field_person'] = array(
     'bundle' => 'cabinet',
     'default_value' => NULL,
@@ -137,7 +137,7 @@ function bos_component_cabinet_field_default_field_instances() {
         'module' => 'entityreference',
         'settings' => array(
           'links' => 1,
-          'view_mode' => 'listing',
+          'view_mode' => 'embed',
         ),
         'type' => 'entityreference_entity_view',
         'weight' => 1,
@@ -169,7 +169,7 @@ function bos_component_cabinet_field_default_field_instances() {
     'fences_wrapper' => 'no_wrapper',
     'field_name' => 'field_person',
     'label' => 'Cabinet Chief',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
@@ -177,7 +177,12 @@ function bos_component_cabinet_field_default_field_instances() {
       'active' => 1,
       'module' => 'entityreference',
       'settings' => array(
-        'entityreference_autocreate' => 0,
+        'entityreference_autocreate' => array(
+          'active' => 0,
+          'author' => '',
+          'author_current_user' => 1,
+          'status' => -1,
+        ),
         'match_operator' => 'CONTAINS',
         'path' => '',
         'size' => 60,
@@ -187,7 +192,7 @@ function bos_component_cabinet_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-cabinet-field_short_title'
+  // Exported field_instance: 'paragraphs_item-cabinet-field_short_title'.
   $field_instances['paragraphs_item-cabinet-field_short_title'] = array(
     'bundle' => 'cabinet',
     'default_value' => NULL,
@@ -234,7 +239,7 @@ function bos_component_cabinet_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-cabinet-field_title'
+  // Exported field_instance: 'paragraphs_item-cabinet-field_title'.
   $field_instances['paragraphs_item-cabinet-field_title'] = array(
     'bundle' => 'cabinet',
     'default_value' => NULL,

@@ -42,6 +42,9 @@ function bos_core_entity_info_alter(&$info) {
         'department_listing' => array(
           'label' => t('Department Listing'),
         ),
+        'embed' => array(
+          'label' => t('Embed'),
+        ),
         'featured_item' => array(
           'label' => t('Featured Item'),
         ),
