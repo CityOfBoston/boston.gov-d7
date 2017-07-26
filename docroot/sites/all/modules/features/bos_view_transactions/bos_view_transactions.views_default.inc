@@ -65,7 +65,7 @@ function bos_view_transactions_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'transaction' => 'transaction',
   );
-  /* Filter criterion: Content: Sticky (field_sticky) */
+  /* Filter criterion: Field: Async? (field_sticky) */
   $handler->display->display_options['filters']['field_sticky_value']['id'] = 'field_sticky_value';
   $handler->display->display_options['filters']['field_sticky_value']['table'] = 'field_data_field_sticky';
   $handler->display->display_options['filters']['field_sticky_value']['field'] = 'field_sticky_value';
@@ -82,6 +82,14 @@ function bos_view_transactions_views_default_views() {
   $handler->display->display_options['header']['area']['field'] = 'area';
   $handler->display->display_options['header']['area']['content'] = '[boston:main-transactions-header]';
   $handler->display->display_options['header']['area']['format'] = 'filtered_html';
+  $handler->display->display_options['defaults']['empty'] = FALSE;
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = 'redirect';
+  $handler->display->display_options['empty']['area']['format'] = 'script_source_url';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
@@ -98,7 +106,7 @@ function bos_view_transactions_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'transaction' => 'transaction',
   );
-  /* Filter criterion: Content: Sticky (field_sticky) */
+  /* Filter criterion: Field: Async? (field_sticky) */
   $handler->display->display_options['filters']['field_sticky_value']['id'] = 'field_sticky_value';
   $handler->display->display_options['filters']['field_sticky_value']['table'] = 'field_data_field_sticky';
   $handler->display->display_options['filters']['field_sticky_value']['field'] = 'field_sticky_value';
@@ -152,7 +160,6 @@ function bos_view_transactions_views_default_views() {
   $handler->display->display_options['arguments']['null']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['null']['summary_options']['items_per_page'] = '25';
   $handler->display->display_options['arguments']['null']['specify_validation'] = TRUE;
-  $handler->display->display_options['arguments']['null']['validate']['type'] = 'first_page';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
@@ -169,7 +176,7 @@ function bos_view_transactions_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'transaction' => 'transaction',
   );
-  /* Filter criterion: Content: Sticky (field_sticky) */
+  /* Filter criterion: Field: Async? (field_sticky) */
   $handler->display->display_options['filters']['field_sticky_value']['id'] = 'field_sticky_value';
   $handler->display->display_options['filters']['field_sticky_value']['table'] = 'field_data_field_sticky';
   $handler->display->display_options['filters']['field_sticky_value']['field'] = 'field_sticky_value';

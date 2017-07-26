@@ -2016,6 +2016,46 @@ function boston_preprocess_views_view(&$variables) {
   if (function_exists($preprocess)) {
     $preprocess($variables);
   }
+
+  // Create redirects to search.boston.gov for no results.
+  if ($variables['empty'] == 'redirect') {
+    // Define base_url for redirect.
+    $path = 'https://search.boston.gov';
+    // Create query string to populate search bar with user input.
+    $query_str = array(
+      'utf8' => '✓',
+      'query' => $variables['view']->exposed_raw_input['title'],
+    );
+    // Check for the machine of the view that originate the search.
+    switch ($variables['view']->name) {
+      // If /news then add post filter.
+      case 'bos_news_landing':
+        $query_str['facet[]'] = 'post';
+        break;
+
+      // If /events then add event filter.
+      case 'calendar':
+        $query_str['facet[]'] = 'event';
+        break;
+
+      // If /guides then add topic_page filter.
+      case 'topic_landing_page':
+        $query_str['facet[]'] = 'topic_page';
+        break;
+
+      // If /pay-and-apply then add transactions filter.
+      case 'transactions':
+        break;
+
+      default:
+        break;
+    }
+    // Redirect to the base_url and pass parameters built above.
+    drupal_goto($path, array(
+      "query" => $query_str,
+      "external" => TRUE,
+    ));
+  }
 }
 
 /**
