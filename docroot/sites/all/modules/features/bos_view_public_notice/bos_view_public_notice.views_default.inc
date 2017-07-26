@@ -146,8 +146,6 @@ function bos_view_public_notice_views_default_views() {
     'any_label' => NULL,
     'filter_rewrite_values' => NULL,
   );
-  $handler->display->display_options['exposed_form']['options']['input_required'] = 0;
-  $handler->display->display_options['exposed_form']['options']['text_input_required_format'] = 'filtered_html';
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '10';
   $handler->display->display_options['style_plugin'] = 'default';
@@ -234,6 +232,22 @@ function bos_view_public_notice_views_default_views() {
 
   /* Display: Landing */
   $handler = $view->new_display('page', 'Landing', 'landing');
+  $handler->display->display_options['defaults']['empty'] = FALSE;
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = '<div class="intro-text supporting-text">Thomas Paine noted "These are the times that try men\'s souls." Well this is a time to try another search.</div>
+
+<form accept-charset="UTF-8" action="//search.boston.gov" method="get" class="sf">
+    <input name="utf8" type="hidden" value="✓">
+    <div class="sf-i">
+        <input type="text" name="query" id="q" placeholder="Search…" class="sf-i-f" autocomplete="off">
+        <button class="sf-i-b">Search</button>
+    </div>
+</form>';
+  $handler->display->display_options['empty']['area']['format'] = 'full_html';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
