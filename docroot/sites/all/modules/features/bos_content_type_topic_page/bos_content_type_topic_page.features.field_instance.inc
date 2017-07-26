@@ -10,7 +10,7 @@
 function bos_content_type_topic_page_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-topic_page-field_contacts'
+  // Exported field_instance: 'node-topic_page-field_contacts'.
   $field_instances['node-topic_page-field_contacts'] = array(
     'bundle' => 'topic_page',
     'default_value' => NULL,
@@ -127,7 +127,7 @@ function bos_content_type_topic_page_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-topic_page-field_intro_image'
+  // Exported field_instance: 'node-topic_page-field_intro_image'.
   $field_instances['node-topic_page-field_intro_image'] = array(
     'bundle' => 'topic_page',
     'deleted' => 0,
@@ -270,7 +270,7 @@ function bos_content_type_topic_page_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-topic_page-field_intro_text'
+  // Exported field_instance: 'node-topic_page-field_intro_text'.
   $field_instances['node-topic_page-field_intro_text'] = array(
     'bundle' => 'topic_page',
     'default_value' => NULL,
@@ -378,7 +378,7 @@ function bos_content_type_topic_page_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-topic_page-field_published_date'
+  // Exported field_instance: 'node-topic_page-field_published_date'.
   $field_instances['node-topic_page-field_published_date'] = array(
     'bundle' => 'topic_page',
     'deleted' => 0,
@@ -502,7 +502,7 @@ function bos_content_type_topic_page_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-topic_page-field_thumbnail'
+  // Exported field_instance: 'node-topic_page-field_thumbnail'.
   $field_instances['node-topic_page-field_thumbnail'] = array(
     'bundle' => 'topic_page',
     'deleted' => 0,
@@ -627,7 +627,7 @@ function bos_content_type_topic_page_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-topic_page-field_topic_category'
+  // Exported field_instance: 'node-topic_page-field_topic_category'.
   $field_instances['node-topic_page-field_topic_category'] = array(
     'bundle' => 'topic_page',
     'default_value' => NULL,
@@ -684,7 +684,7 @@ function bos_content_type_topic_page_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-topic_page-field_type_of_content'
+  // Exported field_instance: 'node-topic_page-field_type_of_content'.
   $field_instances['node-topic_page-field_type_of_content'] = array(
     'bundle' => 'topic_page',
     'default_value' => NULL,
@@ -738,7 +738,7 @@ function bos_content_type_topic_page_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-topic_page-field_updated_date'
+  // Exported field_instance: 'node-topic_page-field_updated_date'.
   $field_instances['node-topic_page-field_updated_date'] = array(
     'bundle' => 'topic_page',
     'deleted' => 0,

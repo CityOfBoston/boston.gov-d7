@@ -10,7 +10,7 @@
 function bos_field_instances_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-article-field_components'
+  // Exported field_instance: 'node-article-field_components'.
   $field_instances['node-article-field_components'] = array(
     'bundle' => 'article',
     'default_value' => NULL,
@@ -143,7 +143,7 @@ function bos_field_instances_field_default_field_instances() {
         'iframe' => 'iframe',
         'internal_link' => -1,
         'list' => 'list',
-        'map' => 'map',
+        'map' => -1,
         'message_for_the_day' => -1,
         'news_announcements' => 'news_announcements',
         'newsletter' => 'newsletter',
@@ -242,7 +242,7 @@ function bos_field_instances_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-article-field_sidebar_components'
+  // Exported field_instance: 'node-article-field_sidebar_components'.
   $field_instances['node-article-field_sidebar_components'] = array(
     'bundle' => 'article',
     'default_value' => NULL,
@@ -411,7 +411,7 @@ function bos_field_instances_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-department_profile-field_components'
+  // Exported field_instance: 'node-department_profile-field_components'.
   $field_instances['node-department_profile-field_components'] = array(
     'bundle' => 'department_profile',
     'default_value' => NULL,
@@ -559,7 +559,7 @@ function bos_field_instances_field_default_field_instances() {
         'iframe' => 'iframe',
         'internal_link' => -1,
         'list' => 'list',
-        'map' => 'map',
+        'map' => -1,
         'message_for_the_day' => -1,
         'news_announcements' => 'news_announcements',
         'newsletter' => 'newsletter',
@@ -658,7 +658,8 @@ function bos_field_instances_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-department_profile-field_sidebar_components'
+  // Exported field_instance:
+  // 'node-department_profile-field_sidebar_components'.
   $field_instances['node-department_profile-field_sidebar_components'] = array(
     'bundle' => 'department_profile',
     'default_value' => NULL,
@@ -902,7 +903,7 @@ function bos_field_instances_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-event-field_components'
+  // Exported field_instance: 'node-event-field_components'.
   $field_instances['node-event-field_components'] = array(
     'bundle' => 'event',
     'default_value' => NULL,
@@ -1050,7 +1051,7 @@ function bos_field_instances_field_default_field_instances() {
         'iframe' => 'iframe',
         'internal_link' => -1,
         'list' => 'list',
-        'map' => 'map',
+        'map' => -1,
         'message_for_the_day' => -1,
         'news_announcements' => 'news_announcements',
         'newsletter' => 'newsletter',
@@ -1149,7 +1150,7 @@ function bos_field_instances_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-event-field_sidebar_components'
+  // Exported field_instance: 'node-event-field_sidebar_components'.
   $field_instances['node-event-field_sidebar_components'] = array(
     'bundle' => 'event',
     'default_value' => NULL,
@@ -1345,7 +1346,7 @@ function bos_field_instances_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-how_to-field_components'
+  // Exported field_instance: 'node-how_to-field_components'.
   $field_instances['node-how_to-field_components'] = array(
     'bundle' => 'how_to',
     'default_value' => NULL,
@@ -1478,7 +1479,7 @@ function bos_field_instances_field_default_field_instances() {
         'iframe' => 'iframe',
         'internal_link' => -1,
         'list' => 'list',
-        'map' => 'map',
+        'map' => -1,
         'message_for_the_day' => -1,
         'news_announcements' => 'news_announcements',
         'newsletter' => 'newsletter',
@@ -1577,7 +1578,7 @@ function bos_field_instances_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-how_to-field_sidebar_components'
+  // Exported field_instance: 'node-how_to-field_sidebar_components'.
   $field_instances['node-how_to-field_sidebar_components'] = array(
     'bundle' => 'how_to',
     'default_value' => NULL,
@@ -1746,7 +1747,7 @@ function bos_field_instances_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-landing_page-field_components'
+  // Exported field_instance: 'node-landing_page-field_components'.
   $field_instances['node-landing_page-field_components'] = array(
     'bundle' => 'landing_page',
     'default_value' => NULL,
@@ -1879,7 +1880,7 @@ function bos_field_instances_field_default_field_instances() {
         'iframe' => 'iframe',
         'internal_link' => -1,
         'list' => 'list',
-        'map' => 'map',
+        'map' => -1,
         'message_for_the_day' => -1,
         'news_announcements' => 'news_announcements',
         'newsletter' => 'newsletter',
@@ -1978,7 +1979,7 @@ function bos_field_instances_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-listing_page-field_components'
+  // Exported field_instance: 'node-listing_page-field_components'.
   $field_instances['node-listing_page-field_components'] = array(
     'bundle' => 'listing_page',
     'default_value' => NULL,
@@ -2111,7 +2112,7 @@ function bos_field_instances_field_default_field_instances() {
         'iframe' => 'iframe',
         'internal_link' => -1,
         'list' => 'list',
-        'map' => 'map',
+        'map' => -1,
         'message_for_the_day' => -1,
         'news_announcements' => 'news_announcements',
         'newsletter' => 'newsletter',
@@ -2210,7 +2211,7 @@ function bos_field_instances_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-person_profile-field_components'
+  // Exported field_instance: 'node-person_profile-field_components'.
   $field_instances['node-person_profile-field_components'] = array(
     'bundle' => 'person_profile',
     'default_value' => NULL,
@@ -2245,6 +2246,12 @@ function bos_field_instances_field_default_field_instances() {
         'weight' => 14,
       ),
       'department_listing' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'embed' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -2349,7 +2356,7 @@ function bos_field_instances_field_default_field_instances() {
         'iframe' => 'iframe',
         'internal_link' => -1,
         'list' => 'list',
-        'map' => 'map',
+        'map' => -1,
         'message_for_the_day' => -1,
         'news_announcements' => 'news_announcements',
         'newsletter' => 'newsletter',
@@ -2448,7 +2455,7 @@ function bos_field_instances_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-person_profile-field_sidebar_components'
+  // Exported field_instance: 'node-person_profile-field_sidebar_components'.
   $field_instances['node-person_profile-field_sidebar_components'] = array(
     'bundle' => 'person_profile',
     'default_value' => NULL,
@@ -2463,6 +2470,12 @@ function bos_field_instances_field_default_field_instances() {
         ),
         'type' => 'paragraphs_view',
         'weight' => 15,
+      ),
+      'embed' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'listing' => array(
         'label' => 'above',
@@ -2623,7 +2636,7 @@ function bos_field_instances_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-place_profile-field_components'
+  // Exported field_instance: 'node-place_profile-field_components'.
   $field_instances['node-place_profile-field_components'] = array(
     'bundle' => 'place_profile',
     'default_value' => NULL,
@@ -2771,7 +2784,7 @@ function bos_field_instances_field_default_field_instances() {
         'iframe' => 'iframe',
         'internal_link' => -1,
         'list' => 'list',
-        'map' => 'map',
+        'map' => -1,
         'message_for_the_day' => -1,
         'news_announcements' => 'news_announcements',
         'newsletter' => 'newsletter',
@@ -2870,7 +2883,7 @@ function bos_field_instances_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-place_profile-field_sidebar_components'
+  // Exported field_instance: 'node-place_profile-field_sidebar_components'.
   $field_instances['node-place_profile-field_sidebar_components'] = array(
     'bundle' => 'place_profile',
     'default_value' => NULL,
@@ -3114,7 +3127,7 @@ function bos_field_instances_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-post-field_components'
+  // Exported field_instance: 'node-post-field_components'.
   $field_instances['node-post-field_components'] = array(
     'bundle' => 'post',
     'default_value' => NULL,
@@ -3253,7 +3266,7 @@ function bos_field_instances_field_default_field_instances() {
         'iframe' => 'iframe',
         'internal_link' => -1,
         'list' => 'list',
-        'map' => 'map',
+        'map' => -1,
         'message_for_the_day' => -1,
         'news_announcements' => 'news_announcements',
         'newsletter' => 'newsletter',
@@ -3352,7 +3365,7 @@ function bos_field_instances_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-post-field_sidebar_components'
+  // Exported field_instance: 'node-post-field_sidebar_components'.
   $field_instances['node-post-field_sidebar_components'] = array(
     'bundle' => 'post',
     'default_value' => NULL,
@@ -3539,7 +3552,8 @@ function bos_field_instances_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-program_initiative_profile-field_components'
+  // Exported field_instance:
+  // 'node-program_initiative_profile-field_components'.
   $field_instances['node-program_initiative_profile-field_components'] = array(
     'bundle' => 'program_initiative_profile',
     'default_value' => NULL,
@@ -3678,7 +3692,7 @@ function bos_field_instances_field_default_field_instances() {
         'iframe' => 'iframe',
         'internal_link' => -1,
         'list' => 'list',
-        'map' => 'map',
+        'map' => -1,
         'message_for_the_day' => -1,
         'news_announcements' => 'news_announcements',
         'newsletter' => 'newsletter',
@@ -3777,7 +3791,8 @@ function bos_field_instances_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-program_initiative_profile-field_sidebar_components'
+  // Exported field_instance:
+  // 'node-program_initiative_profile-field_sidebar_components'.
   $field_instances['node-program_initiative_profile-field_sidebar_components'] = array(
     'bundle' => 'program_initiative_profile',
     'default_value' => NULL,
@@ -4012,7 +4027,7 @@ function bos_field_instances_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-public_notice-field_components'
+  // Exported field_instance: 'node-public_notice-field_components'.
   $field_instances['node-public_notice-field_components'] = array(
     'bundle' => 'public_notice',
     'default_value' => NULL,
@@ -4097,7 +4112,7 @@ function bos_field_instances_field_default_field_instances() {
         'iframe' => 'iframe',
         'internal_link' => -1,
         'list' => 'list',
-        'map' => 'map',
+        'map' => -1,
         'message_for_the_day' => -1,
         'news_announcements' => 'news_announcements',
         'newsletter' => 'newsletter',
@@ -4196,7 +4211,7 @@ function bos_field_instances_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-script_page-field_components'
+  // Exported field_instance: 'node-script_page-field_components'.
   $field_instances['node-script_page-field_components'] = array(
     'bundle' => 'script_page',
     'default_value' => NULL,
@@ -4266,7 +4281,7 @@ function bos_field_instances_field_default_field_instances() {
         'iframe' => 'iframe',
         'internal_link' => -1,
         'list' => 'list',
-        'map' => 'map',
+        'map' => -1,
         'message_for_the_day' => -1,
         'news_announcements' => 'news_announcements',
         'newsletter' => 'newsletter',
@@ -4364,7 +4379,7 @@ function bos_field_instances_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-script_page-field_sidebar_components'
+  // Exported field_instance: 'node-script_page-field_sidebar_components'.
   $field_instances['node-script_page-field_sidebar_components'] = array(
     'bundle' => 'script_page',
     'default_value' => NULL,
@@ -4530,7 +4545,7 @@ function bos_field_instances_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-topic_page-field_components'
+  // Exported field_instance: 'node-topic_page-field_components'.
   $field_instances['node-topic_page-field_components'] = array(
     'bundle' => 'topic_page',
     'default_value' => NULL,
@@ -4663,7 +4678,7 @@ function bos_field_instances_field_default_field_instances() {
         'iframe' => 'iframe',
         'internal_link' => -1,
         'list' => 'list',
-        'map' => 'map',
+        'map' => -1,
         'message_for_the_day' => -1,
         'news_announcements' => 'news_announcements',
         'newsletter' => 'newsletter',

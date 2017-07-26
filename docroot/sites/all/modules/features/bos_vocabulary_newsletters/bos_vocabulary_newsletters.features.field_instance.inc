@@ -10,7 +10,7 @@
 function bos_vocabulary_newsletters_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'taxonomy_term-newsletters-field_id'
+  // Exported field_instance: 'taxonomy_term-newsletters-field_id'.
   $field_instances['taxonomy_term-newsletters-field_id'] = array(
     'bundle' => 'newsletters',
     'default_value' => NULL,

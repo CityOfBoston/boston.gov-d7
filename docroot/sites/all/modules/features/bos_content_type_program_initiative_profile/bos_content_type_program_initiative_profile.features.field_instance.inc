@@ -10,7 +10,7 @@
 function bos_content_type_program_initiative_profile_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-program_initiative_profile-body'
+  // Exported field_instance: 'node-program_initiative_profile-body'.
   $field_instances['node-program_initiative_profile-body'] = array(
     'bundle' => 'program_initiative_profile',
     'default_value' => NULL,
@@ -129,7 +129,7 @@ function bos_content_type_program_initiative_profile_field_default_field_instanc
     ),
   );
 
-  // Exported field_instance: 'node-program_initiative_profile-field_contacts'
+  // Exported field_instance: 'node-program_initiative_profile-field_contacts'.
   $field_instances['node-program_initiative_profile-field_contacts'] = array(
     'bundle' => 'program_initiative_profile',
     'default_value' => NULL,
@@ -252,7 +252,8 @@ function bos_content_type_program_initiative_profile_field_default_field_instanc
     ),
   );
 
-  // Exported field_instance: 'node-program_initiative_profile-field_intro_image'
+  // Exported field_instance:
+  // 'node-program_initiative_profile-field_intro_image'.
   $field_instances['node-program_initiative_profile-field_intro_image'] = array(
     'bundle' => 'program_initiative_profile',
     'deleted' => 0,
@@ -407,7 +408,8 @@ function bos_content_type_program_initiative_profile_field_default_field_instanc
     ),
   );
 
-  // Exported field_instance: 'node-program_initiative_profile-field_intro_text'
+  // Exported field_instance:
+  // 'node-program_initiative_profile-field_intro_text'.
   $field_instances['node-program_initiative_profile-field_intro_text'] = array(
     'bundle' => 'program_initiative_profile',
     'default_value' => NULL,
@@ -553,7 +555,8 @@ function bos_content_type_program_initiative_profile_field_default_field_instanc
     ),
   );
 
-  // Exported field_instance: 'node-program_initiative_profile-field_program_logo'
+  // Exported field_instance:
+  // 'node-program_initiative_profile-field_program_logo'.
   $field_instances['node-program_initiative_profile-field_program_logo'] = array(
     'bundle' => 'program_initiative_profile',
     'deleted' => 0,
@@ -688,7 +691,8 @@ function bos_content_type_program_initiative_profile_field_default_field_instanc
     ),
   );
 
-  // Exported field_instance: 'node-program_initiative_profile-field_program_type'
+  // Exported field_instance:
+  // 'node-program_initiative_profile-field_program_type'.
   $field_instances['node-program_initiative_profile-field_program_type'] = array(
     'bundle' => 'program_initiative_profile',
     'default_value' => NULL,
@@ -804,7 +808,8 @@ function bos_content_type_program_initiative_profile_field_default_field_instanc
     ),
   );
 
-  // Exported field_instance: 'node-program_initiative_profile-field_published_date'
+  // Exported field_instance:
+  // 'node-program_initiative_profile-field_published_date'.
   $field_instances['node-program_initiative_profile-field_published_date'] = array(
     'bundle' => 'program_initiative_profile',
     'deleted' => 0,
@@ -934,7 +939,8 @@ function bos_content_type_program_initiative_profile_field_default_field_instanc
     ),
   );
 
-  // Exported field_instance: 'node-program_initiative_profile-field_type_of_content'
+  // Exported field_instance:
+  // 'node-program_initiative_profile-field_type_of_content'.
   $field_instances['node-program_initiative_profile-field_type_of_content'] = array(
     'bundle' => 'program_initiative_profile',
     'default_value' => NULL,
@@ -976,7 +982,8 @@ function bos_content_type_program_initiative_profile_field_default_field_instanc
     ),
   );
 
-  // Exported field_instance: 'node-program_initiative_profile-field_updated_date'
+  // Exported field_instance:
+  // 'node-program_initiative_profile-field_updated_date'.
   $field_instances['node-program_initiative_profile-field_updated_date'] = array(
     'bundle' => 'program_initiative_profile',
     'deleted' => 0,

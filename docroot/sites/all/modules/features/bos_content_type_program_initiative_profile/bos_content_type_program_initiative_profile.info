@@ -53,5 +53,4 @@ features[variable][] = node_submitted_program_initiative_profile
 features[variable][] = pathauto_node_program_initiative_profile_pattern
 features_exclude[field_instance][node-program_initiative_profile-field_components] = node-program_initiative_profile-field_components
 features_exclude[field_instance][node-program_initiative_profile-field_sidebar_components] = node-program_initiative_profile-field_sidebar_components
-mtime = 1495652915
 project path = sites/all/modules/features
