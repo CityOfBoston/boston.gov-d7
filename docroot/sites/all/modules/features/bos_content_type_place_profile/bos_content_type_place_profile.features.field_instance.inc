@@ -10,7 +10,7 @@
 function bos_content_type_place_profile_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-place_profile-body'
+  // Exported field_instance: 'node-place_profile-body'.
   $field_instances['node-place_profile-body'] = array(
     'bundle' => 'place_profile',
     'default_value' => NULL,
@@ -136,7 +136,7 @@ function bos_content_type_place_profile_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-place_profile-field_additional_information'
+  // Exported field_instance: 'node-place_profile-field_additional_information'.
   $field_instances['node-place_profile-field_additional_information'] = array(
     'bundle' => 'place_profile',
     'default_value' => NULL,
@@ -257,7 +257,7 @@ function bos_content_type_place_profile_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-place_profile-field_address'
+  // Exported field_instance: 'node-place_profile-field_address'.
   $field_instances['node-place_profile-field_address'] = array(
     'bundle' => 'place_profile',
     'default_value' => NULL,
@@ -399,7 +399,7 @@ function bos_content_type_place_profile_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-place_profile-field_contact'
+  // Exported field_instance: 'node-place_profile-field_contact'.
   $field_instances['node-place_profile-field_contact'] = array(
     'bundle' => 'place_profile',
     'default_value' => NULL,
@@ -531,7 +531,7 @@ function bos_content_type_place_profile_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-place_profile-field_did_you_know'
+  // Exported field_instance: 'node-place_profile-field_did_you_know'.
   $field_instances['node-place_profile-field_did_you_know'] = array(
     'bundle' => 'place_profile',
     'default_value' => NULL,
@@ -652,7 +652,7 @@ function bos_content_type_place_profile_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-place_profile-field_features'
+  // Exported field_instance: 'node-place_profile-field_features'.
   $field_instances['node-place_profile-field_features'] = array(
     'bundle' => 'place_profile',
     'default_value' => NULL,
@@ -710,7 +710,7 @@ function bos_content_type_place_profile_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-place_profile-field_intro_image'
+  // Exported field_instance: 'node-place_profile-field_intro_image'.
   $field_instances['node-place_profile-field_intro_image'] = array(
     'bundle' => 'place_profile',
     'deleted' => 0,
@@ -886,7 +886,7 @@ function bos_content_type_place_profile_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-place_profile-field_intro_text'
+  // Exported field_instance: 'node-place_profile-field_intro_text'.
   $field_instances['node-place_profile-field_intro_text'] = array(
     'bundle' => 'place_profile',
     'default_value' => NULL,
@@ -1049,7 +1049,7 @@ function bos_content_type_place_profile_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-place_profile-field_links'
+  // Exported field_instance: 'node-place_profile-field_links'.
   $field_instances['node-place_profile-field_links'] = array(
     'bundle' => 'place_profile',
     'default_value' => NULL,
@@ -1230,7 +1230,7 @@ function bos_content_type_place_profile_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-place_profile-field_operation_hours'
+  // Exported field_instance: 'node-place_profile-field_operation_hours'.
   $field_instances['node-place_profile-field_operation_hours'] = array(
     'bundle' => 'place_profile',
     'default_value' => NULL,
@@ -1411,7 +1411,7 @@ function bos_content_type_place_profile_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-place_profile-field_phone_number'
+  // Exported field_instance: 'node-place_profile-field_phone_number'.
   $field_instances['node-place_profile-field_phone_number'] = array(
     'bundle' => 'place_profile',
     'default_value' => NULL,
@@ -1532,7 +1532,7 @@ function bos_content_type_place_profile_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-place_profile-field_place_neighborhood'
+  // Exported field_instance: 'node-place_profile-field_place_neighborhood'.
   $field_instances['node-place_profile-field_place_neighborhood'] = array(
     'bundle' => 'place_profile',
     'default_value' => array(
@@ -1576,7 +1576,7 @@ function bos_content_type_place_profile_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-place_profile-field_place_type'
+  // Exported field_instance: 'node-place_profile-field_place_type'.
   $field_instances['node-place_profile-field_place_type'] = array(
     'bundle' => 'place_profile',
     'default_value' => NULL,
@@ -1704,7 +1704,7 @@ function bos_content_type_place_profile_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-place_profile-field_published_date'
+  // Exported field_instance: 'node-place_profile-field_published_date'.
   $field_instances['node-place_profile-field_published_date'] = array(
     'bundle' => 'place_profile',
     'deleted' => 0,
@@ -1849,7 +1849,7 @@ function bos_content_type_place_profile_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-place_profile-field_single_neighborhood'
+  // Exported field_instance: 'node-place_profile-field_single_neighborhood'.
   $field_instances['node-place_profile-field_single_neighborhood'] = array(
     'bundle' => 'place_profile',
     'default_value' => NULL,
@@ -1914,7 +1914,7 @@ function bos_content_type_place_profile_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-place_profile-field_updated_date'
+  // Exported field_instance: 'node-place_profile-field_updated_date'.
   $field_instances['node-place_profile-field_updated_date'] = array(
     'bundle' => 'place_profile',
     'deleted' => 0,
