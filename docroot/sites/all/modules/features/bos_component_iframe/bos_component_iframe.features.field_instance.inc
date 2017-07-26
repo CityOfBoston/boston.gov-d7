@@ -10,7 +10,7 @@
 function bos_component_iframe_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'paragraphs_item-iframe-field_component_title'
+  // Exported field_instance: 'paragraphs_item-iframe-field_component_title'.
   $field_instances['paragraphs_item-iframe-field_component_title'] = array(
     'bundle' => 'iframe',
     'default_value' => NULL,
@@ -57,7 +57,7 @@ function bos_component_iframe_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-iframe-field_contact'
+  // Exported field_instance: 'paragraphs_item-iframe-field_contact'.
   $field_instances['paragraphs_item-iframe-field_contact'] = array(
     'bundle' => 'iframe',
     'default_value' => NULL,
@@ -107,7 +107,7 @@ function bos_component_iframe_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-iframe-field_iframe_size'
+  // Exported field_instance: 'paragraphs_item-iframe-field_iframe_size'.
   $field_instances['paragraphs_item-iframe-field_iframe_size'] = array(
     'bundle' => 'iframe',
     'default_value' => array(
@@ -151,7 +151,7 @@ function bos_component_iframe_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-iframe-field_short_title'
+  // Exported field_instance: 'paragraphs_item-iframe-field_short_title'.
   $field_instances['paragraphs_item-iframe-field_short_title'] = array(
     'bundle' => 'iframe',
     'default_value' => NULL,
@@ -198,7 +198,7 @@ function bos_component_iframe_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-iframe-field_source_url'
+  // Exported field_instance: 'paragraphs_item-iframe-field_source_url'.
   $field_instances['paragraphs_item-iframe-field_source_url'] = array(
     'bundle' => 'iframe',
     'default_value' => NULL,
