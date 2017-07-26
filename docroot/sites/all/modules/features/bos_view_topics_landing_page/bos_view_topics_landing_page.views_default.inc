@@ -98,8 +98,6 @@ function bos_view_topics_landing_page_views_default_views() {
     'any_label' => NULL,
     'filter_rewrite_values' => NULL,
   );
-  $handler->display->display_options['exposed_form']['options']['input_required'] = 0;
-  $handler->display->display_options['exposed_form']['options']['text_input_required_format'] = 'filtered_html';
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '9';
   $handler->display->display_options['pager']['options']['offset'] = '0';
@@ -108,6 +106,23 @@ function bos_view_topics_landing_page_views_default_views() {
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'entity';
   $handler->display->display_options['row_options']['view_mode'] = 'listing_long';
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = '<div class="intro-text supporting-text">Thomas Paine noted "These are the times that try men\'s souls." Well this is a time to try another search.</div>
+
+<div class="g--6 fl--l"">
+    <form accept-charset="UTF-8" action="//search.boston.gov" method="get" class="sf">
+        <input name="utf8" type="hidden" value="✓">
+        <div class="sf-i">
+            <input type="text" name="query" id="q" placeholder="Search…" class="sf-i-f" autocomplete="off">
+            <button class="sf-i-b">Search</button>
+        </div>
+    </form>
+</div>';
+  $handler->display->display_options['empty']['area']['format'] = 'full_html';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
