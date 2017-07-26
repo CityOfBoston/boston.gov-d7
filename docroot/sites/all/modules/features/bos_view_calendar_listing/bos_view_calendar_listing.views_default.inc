@@ -496,7 +496,7 @@ function bos_view_calendar_listing_views_default_views() {
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
   $handler->display->display_options['empty']['area']['content'] = '<div class="intro-text supporting-text">Thomas Paine noted "These are the times that try men\'s souls." Well this is a time to try another search.</div>
 
-<div class="g--6">
+<div class="g--6 fl--l">
 <form accept-charset="UTF-8" action="//search.boston.gov" method="get" class="sf">
     <input name="utf8" type="hidden" value="✓">
     <div class="sf-i">
