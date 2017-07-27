@@ -10,7 +10,8 @@
 function bos_component_map_coordinates_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'paragraphs_item-map_coordinates-field_map_latitude'
+  // Exported field_instance:
+  // 'paragraphs_item-map_coordinates-field_map_latitude'.
   $field_instances['paragraphs_item-map_coordinates-field_map_latitude'] = array(
     'bundle' => 'map_coordinates',
     'default_value' => NULL,
@@ -57,7 +58,8 @@ function bos_component_map_coordinates_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-map_coordinates-field_map_longitude'
+  // Exported field_instance:
+  // 'paragraphs_item-map_coordinates-field_map_longitude'.
   $field_instances['paragraphs_item-map_coordinates-field_map_longitude'] = array(
     'bundle' => 'map_coordinates',
     'default_value' => NULL,
@@ -104,7 +106,7 @@ function bos_component_map_coordinates_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-map_coordinates-field_map_zoom'
+  // Exported field_instance: 'paragraphs_item-map_coordinates-field_map_zoom'.
   $field_instances['paragraphs_item-map_coordinates-field_map_zoom'] = array(
     'bundle' => 'map_coordinates',
     'default_value' => NULL,

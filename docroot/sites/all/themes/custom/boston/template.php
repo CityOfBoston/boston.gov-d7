@@ -776,9 +776,9 @@ function boston_preprocess_paragraphs_item_map(&$variables) {
     foreach ($variables['paragraphs_item']->field_map_point_of_interest['und'] as $ids) {
       $map_pins_pid = $ids['value'];
       $map_pins_paragraph = $map_pins_pid ? entity_load('paragraphs_item', array($map_pins_pid)) : NULL;
-      $field_custom_pin_name = $map_pins_paragraph[$map_pins_pid]->field_pin_name['und'][0]['title'];
+      $field_custom_pin_name = htmlentities($map_pins_paragraph[$map_pins_pid]->field_pin_name['und'][0]['title'], ENT_QUOTES);
       $field_custom_pin_url = $map_pins_paragraph[$map_pins_pid]->field_pin_name['und'][0]['url'];
-      $field_custom_pin_desc = $map_pins_paragraph[$map_pins_pid]->field_description['und'][0]['value'];
+      $field_custom_pin_desc = htmlentities($map_pins_paragraph[$map_pins_pid]->field_description['und'][0]['value'], ENT_QUOTES);
       $field_custom_pin_latitude = $map_pins_paragraph[$map_pins_pid]->field_map_latitude['und'][0]['value'];
       $field_custom_pin_longitude = $map_pins_paragraph[$map_pins_pid]->field_map_longitude['und'][0]['value'];
       $points[] = array(

@@ -293,8 +293,6 @@ function bos_view_calendar_listing_views_default_views() {
     'any_label' => NULL,
     'filter_rewrite_values' => NULL,
   );
-  $handler->display->display_options['exposed_form']['options']['input_required'] = 0;
-  $handler->display->display_options['exposed_form']['options']['text_input_required_format'] = 'filtered_html';
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '30';
   $handler->display->display_options['pager']['options']['offset'] = '0';
@@ -344,7 +342,7 @@ function bos_view_calendar_listing_views_default_views() {
   $handler->display->display_options['fields']['rendered_entity']['display'] = 'view';
   $handler->display->display_options['fields']['rendered_entity']['view_mode'] = 'calendar_listing';
   $handler->display->display_options['fields']['rendered_entity']['bypass_access'] = 0;
-  /* Field: Field: Live Stream */
+  /* Field: : field_live_stream */
   $handler->display->display_options['fields']['field_live_stream']['id'] = 'field_live_stream';
   $handler->display->display_options['fields']['field_live_stream']['table'] = 'field_data_field_live_stream';
   $handler->display->display_options['fields']['field_live_stream']['field'] = 'field_live_stream';
@@ -352,7 +350,7 @@ function bos_view_calendar_listing_views_default_views() {
   $handler->display->display_options['fields']['field_live_stream']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_live_stream']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_live_stream']['element_default_classes'] = FALSE;
-  /* Sort criterion: Field: Event Dates -  start date (field_event_dates) */
+  /* Sort criterion: Content: Event Dates -  start date (field_event_dates) */
   $handler->display->display_options['sorts']['field_event_dates_value']['id'] = 'field_event_dates_value';
   $handler->display->display_options['sorts']['field_event_dates_value']['table'] = 'field_data_field_event_dates';
   $handler->display->display_options['sorts']['field_event_dates_value']['field'] = 'field_event_dates_value';
@@ -371,7 +369,7 @@ function bos_view_calendar_listing_views_default_views() {
     'event' => 'event',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Field: Event Dates -  start date (field_event_dates) */
+  /* Filter criterion: Content: Event Dates -  start date (field_event_dates) */
   $handler->display->display_options['filters']['field_event_dates_value']['id'] = 'field_event_dates_value';
   $handler->display->display_options['filters']['field_event_dates_value']['table'] = 'field_data_field_event_dates';
   $handler->display->display_options['filters']['field_event_dates_value']['field'] = 'field_event_dates_value';
@@ -396,7 +394,7 @@ function bos_view_calendar_listing_views_default_views() {
   $handler->display->display_options['filters']['field_event_dates_value']['form_type'] = 'date_popup';
   $handler->display->display_options['filters']['field_event_dates_value']['default_date'] = 'now';
   $handler->display->display_options['filters']['field_event_dates_value']['year_range'] = '-0:+10';
-  /* Filter criterion: Field: Event Dates - end date (field_event_dates:value2) */
+  /* Filter criterion: Content: Event Dates - end date (field_event_dates:value2) */
   $handler->display->display_options['filters']['field_event_dates_value2']['id'] = 'field_event_dates_value2';
   $handler->display->display_options['filters']['field_event_dates_value2']['table'] = 'field_data_field_event_dates';
   $handler->display->display_options['filters']['field_event_dates_value2']['field'] = 'field_event_dates_value2';

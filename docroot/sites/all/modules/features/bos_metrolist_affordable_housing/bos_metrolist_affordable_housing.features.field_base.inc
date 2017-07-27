@@ -10,21 +10,13 @@
 function bos_metrolist_affordable_housing_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'field_mah_address'
+  // Exported field_base: 'field_mah_address'.
   $field_bases['field_mah_address'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_mah_address',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -39,21 +31,13 @@ function bos_metrolist_affordable_housing_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_mah_contact'
+  // Exported field_base: 'field_mah_contact'.
   $field_bases['field_mah_contact'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_mah_contact',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -68,21 +52,13 @@ function bos_metrolist_affordable_housing_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_mah_email'
+  // Exported field_base: 'field_mah_email'.
   $field_bases['field_mah_email'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_mah_email',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -97,21 +73,13 @@ function bos_metrolist_affordable_housing_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_mah_household_income_limit'
+  // Exported field_base: 'field_mah_household_income_limit'.
   $field_bases['field_mah_household_income_limit'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_mah_household_income_limit',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -126,14 +94,13 @@ function bos_metrolist_affordable_housing_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_mah_lottery_deadline'
+  // Exported field_base: 'field_mah_lottery_deadline'.
   $field_bases['field_mah_lottery_deadline'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_mah_lottery_deadline',
-    'foreign keys' => array(),
     'indexes' => array(),
     'locked' => 0,
     'module' => 'date',
@@ -157,21 +124,13 @@ function bos_metrolist_affordable_housing_field_default_field_bases() {
     'type' => 'datetime',
   );
 
-  // Exported field_base: 'field_mah_lottery_indicator'
+  // Exported field_base: 'field_mah_lottery_indicator'.
   $field_bases['field_mah_lottery_indicator'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_mah_lottery_indicator',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -186,21 +145,13 @@ function bos_metrolist_affordable_housing_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_mah_lottery_type'
+  // Exported field_base: 'field_mah_lottery_type'.
   $field_bases['field_mah_lottery_type'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_mah_lottery_type',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -215,14 +166,13 @@ function bos_metrolist_affordable_housing_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_mah_lottery_url'
+  // Exported field_base: 'field_mah_lottery_url'.
   $field_bases['field_mah_lottery_url'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_mah_lottery_url',
-    'foreign keys' => array(),
     'indexes' => array(),
     'locked' => 0,
     'module' => 'link',
@@ -245,21 +195,13 @@ function bos_metrolist_affordable_housing_field_default_field_bases() {
     'type' => 'link_field',
   );
 
-  // Exported field_base: 'field_mah_neighborhood'
+  // Exported field_base: 'field_mah_neighborhood'.
   $field_bases['field_mah_neighborhood'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_mah_neighborhood',
-    'foreign keys' => array(
-      'taxonomy_term_data' => array(
-        'columns' => array(
-          'target_id' => 'tid',
-        ),
-        'table' => 'taxonomy_term_data',
-      ),
-    ),
     'indexes' => array(
       'target_id' => array(
         0 => 'target_id',
@@ -289,14 +231,13 @@ function bos_metrolist_affordable_housing_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_mah_not_active'
+  // Exported field_base: 'field_mah_not_active'.
   $field_bases['field_mah_not_active'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_mah_not_active',
-    'foreign keys' => array(),
     'indexes' => array(
       'value' => array(
         0 => 'value',
@@ -315,21 +256,13 @@ function bos_metrolist_affordable_housing_field_default_field_bases() {
     'type' => 'list_boolean',
   );
 
-  // Exported field_base: 'field_mah_outer_location'
+  // Exported field_base: 'field_mah_outer_location'.
   $field_bases['field_mah_outer_location'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_mah_outer_location',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -344,21 +277,13 @@ function bos_metrolist_affordable_housing_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_mah_phone'
+  // Exported field_base: 'field_mah_phone'.
   $field_bases['field_mah_phone'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_mah_phone',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -373,14 +298,13 @@ function bos_metrolist_affordable_housing_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_mah_publish_to_metrolist'
+  // Exported field_base: 'field_mah_publish_to_metrolist'.
   $field_bases['field_mah_publish_to_metrolist'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_mah_publish_to_metrolist',
-    'foreign keys' => array(),
     'indexes' => array(
       'value' => array(
         0 => 'value',
@@ -399,21 +323,13 @@ function bos_metrolist_affordable_housing_field_default_field_bases() {
     'type' => 'list_boolean',
   );
 
-  // Exported field_base: 'field_mah_zipcode'
+  // Exported field_base: 'field_mah_zipcode'.
   $field_bases['field_mah_zipcode'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_mah_zipcode',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',

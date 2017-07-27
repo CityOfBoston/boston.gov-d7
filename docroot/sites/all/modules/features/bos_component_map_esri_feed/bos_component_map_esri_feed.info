@@ -18,4 +18,3 @@ features[field_instance][] = paragraphs_item-map_esri_feed-field_map_cluster
 features[field_instance][] = paragraphs_item-map_esri_feed-field_title
 features[field_instance][] = paragraphs_item-map_esri_feed-field_url
 features[paragraphs][] = map_esri_feed
-mtime = 1497631764

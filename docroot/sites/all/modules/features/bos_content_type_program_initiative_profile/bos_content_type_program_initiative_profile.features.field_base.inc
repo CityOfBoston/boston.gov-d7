@@ -10,21 +10,13 @@
 function bos_content_type_program_initiative_profile_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'field_program_logo'
+  // Exported field_base: 'field_program_logo'.
   $field_bases['field_program_logo'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_program_logo',
-    'foreign keys' => array(
-      'fid' => array(
-        'columns' => array(
-          'fid' => 'fid',
-        ),
-        'table' => 'file_managed',
-      ),
-    ),
     'indexes' => array(
       'fid' => array(
         0 => 'fid',
@@ -40,21 +32,13 @@ function bos_content_type_program_initiative_profile_field_default_field_bases()
     'type' => 'image',
   );
 
-  // Exported field_base: 'field_program_type'
+  // Exported field_base: 'field_program_type'.
   $field_bases['field_program_type'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_program_type',
-    'foreign keys' => array(
-      'taxonomy_term_data' => array(
-        'columns' => array(
-          'target_id' => 'tid',
-        ),
-        'table' => 'taxonomy_term_data',
-      ),
-    ),
     'indexes' => array(
       'target_id' => array(
         0 => 'target_id',

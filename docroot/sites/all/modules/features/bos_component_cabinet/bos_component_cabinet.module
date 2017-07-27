@@ -14,17 +14,30 @@ function bos_component_cabinet_preprocess_entity(&$variables, $hook) {
       $variables['paragraphs_item']->bundle == 'cabinet') {
     // For Cabinet, convert the list of contacts to be a UL.
     if (!empty($variables['elements']['field_contacts'])) {
-      $items = array();
       $title = '';
       $type = 'ul';
       $attributes = array(
-        'class' => 'cabinet-contacts-listing secondary-list',
+        'class' => 'ul t--upper t--sans',
       );
-      foreach ($variables['elements']['field_contacts']['#items'] as $key => $contact_items) {
-        $items[] = $variables['elements']['field_contacts'][$key]['#markup'];
+
+      $contacts = field_get_items('paragraphs_item', $variables['paragraphs_item'], 'field_contacts');
+      $contact_items = array();
+
+      foreach ($contacts as $key => $contact) {
+        $name = $contact["entity"]->name;
+        $id = $contact["entity"]->field_department_profile["und"][0]["target_id"];
+
+        if (isset($name) && isset($id)) {
+          $url = drupal_get_path_alias("node/${id}");
+          $contact_items[] = array(
+            'data' => "<a href='/${url}'>${name}</a>",
+            'class' => array('t--s100 lh--200'),
+          );
+        }
       }
+
       $cabinet_contacts = theme_item_list(array(
-        'items' => $items,
+        'items' => $contact_items,
         'title' => $title,
         'type' => $type,
         'attributes' => $attributes,

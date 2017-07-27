@@ -10,7 +10,7 @@
 function bos_metrolist_affordable_housing_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-metrolist_affordable_housing-body'
+  // Exported field_instance: 'node-metrolist_affordable_housing-body'.
   $field_instances['node-metrolist_affordable_housing-body'] = array(
     'bundle' => 'metrolist_affordable_housing',
     'default_value' => NULL,
@@ -55,7 +55,8 @@ function bos_metrolist_affordable_housing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-metrolist_affordable_housing-field_mah_address'
+  // Exported field_instance:
+  // 'node-metrolist_affordable_housing-field_mah_address'.
   $field_instances['node-metrolist_affordable_housing-field_mah_address'] = array(
     'bundle' => 'metrolist_affordable_housing',
     'default_value' => NULL,
@@ -102,7 +103,8 @@ function bos_metrolist_affordable_housing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-metrolist_affordable_housing-field_mah_contact'
+  // Exported field_instance:
+  // 'node-metrolist_affordable_housing-field_mah_contact'.
   $field_instances['node-metrolist_affordable_housing-field_mah_contact'] = array(
     'bundle' => 'metrolist_affordable_housing',
     'default_value' => NULL,
@@ -149,7 +151,8 @@ function bos_metrolist_affordable_housing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-metrolist_affordable_housing-field_mah_email'
+  // Exported field_instance:
+  // 'node-metrolist_affordable_housing-field_mah_email'.
   $field_instances['node-metrolist_affordable_housing-field_mah_email'] = array(
     'bundle' => 'metrolist_affordable_housing',
     'default_value' => NULL,
@@ -196,7 +199,8 @@ function bos_metrolist_affordable_housing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-metrolist_affordable_housing-field_mah_household_income_limit'
+  // Exported field_instance:
+  // 'node-metrolist_affordable_housing-field_mah_household_income_limit'.
   $field_instances['node-metrolist_affordable_housing-field_mah_household_income_limit'] = array(
     'bundle' => 'metrolist_affordable_housing',
     'default_value' => NULL,
@@ -243,7 +247,8 @@ function bos_metrolist_affordable_housing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-metrolist_affordable_housing-field_mah_lottery_deadline'
+  // Exported field_instance:
+  // 'node-metrolist_affordable_housing-field_mah_lottery_deadline'.
   $field_instances['node-metrolist_affordable_housing-field_mah_lottery_deadline'] = array(
     'bundle' => 'metrolist_affordable_housing',
     'deleted' => 0,
@@ -301,7 +306,8 @@ function bos_metrolist_affordable_housing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-metrolist_affordable_housing-field_mah_lottery_indicator'
+  // Exported field_instance:
+  // 'node-metrolist_affordable_housing-field_mah_lottery_indicator'.
   $field_instances['node-metrolist_affordable_housing-field_mah_lottery_indicator'] = array(
     'bundle' => 'metrolist_affordable_housing',
     'default_value' => NULL,
@@ -348,7 +354,8 @@ function bos_metrolist_affordable_housing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-metrolist_affordable_housing-field_mah_lottery_type'
+  // Exported field_instance:
+  // 'node-metrolist_affordable_housing-field_mah_lottery_type'.
   $field_instances['node-metrolist_affordable_housing-field_mah_lottery_type'] = array(
     'bundle' => 'metrolist_affordable_housing',
     'default_value' => NULL,
@@ -395,7 +402,8 @@ function bos_metrolist_affordable_housing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-metrolist_affordable_housing-field_mah_lottery_url'
+  // Exported field_instance:
+  // 'node-metrolist_affordable_housing-field_mah_lottery_url'.
   $field_instances['node-metrolist_affordable_housing-field_mah_lottery_url'] = array(
     'bundle' => 'metrolist_affordable_housing',
     'default_value' => NULL,
@@ -458,7 +466,8 @@ function bos_metrolist_affordable_housing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-metrolist_affordable_housing-field_mah_neighborhood'
+  // Exported field_instance:
+  // 'node-metrolist_affordable_housing-field_mah_neighborhood'.
   $field_instances['node-metrolist_affordable_housing-field_mah_neighborhood'] = array(
     'bundle' => 'metrolist_affordable_housing',
     'default_value' => NULL,
@@ -503,7 +512,8 @@ function bos_metrolist_affordable_housing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-metrolist_affordable_housing-field_mah_not_active'
+  // Exported field_instance:
+  // 'node-metrolist_affordable_housing-field_mah_not_active'.
   $field_instances['node-metrolist_affordable_housing-field_mah_not_active'] = array(
     'bundle' => 'metrolist_affordable_housing',
     'default_value' => array(
@@ -547,7 +557,8 @@ function bos_metrolist_affordable_housing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-metrolist_affordable_housing-field_mah_outer_location'
+  // Exported field_instance:
+  // 'node-metrolist_affordable_housing-field_mah_outer_location'.
   $field_instances['node-metrolist_affordable_housing-field_mah_outer_location'] = array(
     'bundle' => 'metrolist_affordable_housing',
     'default_value' => NULL,
@@ -594,7 +605,8 @@ function bos_metrolist_affordable_housing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-metrolist_affordable_housing-field_mah_phone'
+  // Exported field_instance:
+  // 'node-metrolist_affordable_housing-field_mah_phone'.
   $field_instances['node-metrolist_affordable_housing-field_mah_phone'] = array(
     'bundle' => 'metrolist_affordable_housing',
     'default_value' => NULL,
@@ -641,7 +653,8 @@ function bos_metrolist_affordable_housing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-metrolist_affordable_housing-field_mah_publish_to_metrolist'
+  // Exported field_instance:
+  // 'node-metrolist_affordable_housing-field_mah_publish_to_metrolist'.
   $field_instances['node-metrolist_affordable_housing-field_mah_publish_to_metrolist'] = array(
     'bundle' => 'metrolist_affordable_housing',
     'default_value' => array(
@@ -685,7 +698,8 @@ function bos_metrolist_affordable_housing_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-metrolist_affordable_housing-field_mah_zipcode'
+  // Exported field_instance:
+  // 'node-metrolist_affordable_housing-field_mah_zipcode'.
   $field_instances['node-metrolist_affordable_housing-field_mah_zipcode'] = array(
     'bundle' => 'metrolist_affordable_housing',
     'default_value' => NULL,

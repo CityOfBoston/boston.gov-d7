@@ -10,21 +10,13 @@
 function bos_content_type_place_profile_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'field_did_you_know'
+  // Exported field_base: 'field_did_you_know'.
   $field_bases['field_did_you_know'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_did_you_know',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -37,21 +29,13 @@ function bos_content_type_place_profile_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_features'
+  // Exported field_base: 'field_features'.
   $field_bases['field_features'] = array(
     'active' => 1,
     'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_features',
-    'foreign keys' => array(
-      'taxonomy_term_data' => array(
-        'columns' => array(
-          'target_id' => 'tid',
-        ),
-        'table' => 'taxonomy_term_data',
-      ),
-    ),
     'indexes' => array(
       'target_id' => array(
         0 => 'target_id',
@@ -82,14 +66,13 @@ function bos_content_type_place_profile_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_place_neighborhood'
+  // Exported field_base: 'field_place_neighborhood'.
   $field_bases['field_place_neighborhood'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_place_neighborhood',
-    'foreign keys' => array(),
     'indexes' => array(
       'value' => array(
         0 => 'value',
@@ -108,21 +91,13 @@ function bos_content_type_place_profile_field_default_field_bases() {
     'type' => 'list_boolean',
   );
 
-  // Exported field_base: 'field_place_type'
+  // Exported field_base: 'field_place_type'.
   $field_bases['field_place_type'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_place_type',
-    'foreign keys' => array(
-      'taxonomy_term_data' => array(
-        'columns' => array(
-          'target_id' => 'tid',
-        ),
-        'table' => 'taxonomy_term_data',
-      ),
-    ),
     'indexes' => array(
       'target_id' => array(
         0 => 'target_id',
