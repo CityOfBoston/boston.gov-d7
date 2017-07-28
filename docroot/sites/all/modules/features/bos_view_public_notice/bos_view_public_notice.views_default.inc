@@ -152,6 +152,22 @@ function bos_view_public_notice_views_default_views() {
   $handler->display->display_options['row_plugin'] = 'node';
   $handler->display->display_options['row_options']['view_mode'] = 'listing';
   $handler->display->display_options['row_options']['links'] = FALSE;
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = '<h2>No Public Notices Found</h2>
+<div class="intro-text supporting-text">Thomas Paine noted "These are the times that try men\'s souls." Well this is a time to try another search.</div>
+<form accept-charset="UTF-8" action="//search.boston.gov" method="get" class="sf sf--md">
+    <input name="utf8" type="hidden" value="✓">
+    <input name="facet[]" type="hidden" value="public_notice">
+    <div class="sf-i">
+        <input type="text" name="query" id="q" placeholder="Search…" class="sf-i-f" autocomplete="off">
+        <button class="sf-i-b">Search</button>
+    </div>
+</form>';
+  $handler->display->display_options['empty']['area']['format'] = 'full_html';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -238,10 +254,11 @@ function bos_view_public_notice_views_default_views() {
   $handler->display->display_options['empty']['area']['table'] = 'views';
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
-  $handler->display->display_options['empty']['area']['content'] = '<div class="intro-text supporting-text">Thomas Paine noted "These are the times that try men\'s souls." Well this is a time to try another search.</div>
-
-<form accept-charset="UTF-8" action="//search.boston.gov" method="get" class="sf">
+  $handler->display->display_options['empty']['area']['content'] = '<h2>No Public Notices Found</h2>
+<div class="intro-text supporting-text">Thomas Paine noted "These are the times that try men\'s souls." Well this is a time to try another search.</div>
+<form accept-charset="UTF-8" action="//search.boston.gov" method="get" class="sf sf--md">
     <input name="utf8" type="hidden" value="✓">
+    <input name="facet[]" type="hidden" value="public_notice">
     <div class="sf-i">
         <input type="text" name="query" id="q" placeholder="Search…" class="sf-i-f" autocomplete="off">
         <button class="sf-i-b">Search</button>
