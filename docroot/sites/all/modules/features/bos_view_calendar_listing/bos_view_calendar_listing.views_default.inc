@@ -342,14 +342,6 @@ function bos_view_calendar_listing_views_default_views() {
   $handler->display->display_options['fields']['rendered_entity']['display'] = 'view';
   $handler->display->display_options['fields']['rendered_entity']['view_mode'] = 'calendar_listing';
   $handler->display->display_options['fields']['rendered_entity']['bypass_access'] = 0;
-  /* Field: : field_live_stream */
-  $handler->display->display_options['fields']['field_live_stream']['id'] = 'field_live_stream';
-  $handler->display->display_options['fields']['field_live_stream']['table'] = 'field_data_field_live_stream';
-  $handler->display->display_options['fields']['field_live_stream']['field'] = 'field_live_stream';
-  $handler->display->display_options['fields']['field_live_stream']['label'] = '';
-  $handler->display->display_options['fields']['field_live_stream']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_live_stream']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_live_stream']['element_default_classes'] = FALSE;
   /* Sort criterion: Content: Event Dates -  start date (field_event_dates) */
   $handler->display->display_options['sorts']['field_event_dates_value']['id'] = 'field_event_dates_value';
   $handler->display->display_options['sorts']['field_event_dates_value']['table'] = 'field_data_field_event_dates';
@@ -496,6 +488,23 @@ function bos_view_calendar_listing_views_default_views() {
 
   /* Display: Listing */
   $handler = $view->new_display('page', 'Listing', 'listing');
+  $handler->display->display_options['defaults']['empty'] = FALSE;
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = '<h2 class="m-t000">No Events Found</h2>
+<div class="intro-text supporting-text">Thomas Paine noted "These are the times that try men\'s souls." Well this is a time to try another search</div>
+<form accept-charset="UTF-8" action="https://search.boston.gov" method="get" class="sf sf--md">
+    <input name="utf8" type="hidden" value="✓">
+    <input name="facet[]" type="hidden" value="event">
+    <div class="sf-i">
+        <input type="text" name="query" id="q" placeholder="Search…" class="sf-i-f" autocomplete="off">
+        <button class="sf-i-b">Search</button>
+    </div>
+</form>';
+  $handler->display->display_options['empty']['area']['format'] = 'full_html';
   $handler->display->display_options['path'] = 'view-page/calendar';
 
   /* Display: Feed */
