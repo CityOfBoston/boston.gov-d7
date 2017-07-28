@@ -10,7 +10,7 @@
 function bos_vocabulary_maps_basemap_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'taxonomy_term-maps_basemap-field_basemap_url_'
+  // Exported field_instance: 'taxonomy_term-maps_basemap-field_basemap_url_'.
   $field_instances['taxonomy_term-maps_basemap-field_basemap_url_'] = array(
     'bundle' => 'maps_basemap',
     'default_value' => NULL,

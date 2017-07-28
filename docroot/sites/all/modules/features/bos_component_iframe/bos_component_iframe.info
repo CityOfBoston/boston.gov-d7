@@ -17,4 +17,3 @@ features[field_instance][] = paragraphs_item-iframe-field_iframe_size
 features[field_instance][] = paragraphs_item-iframe-field_short_title
 features[field_instance][] = paragraphs_item-iframe-field_source_url
 features[paragraphs][] = iframe
-mtime = 1493904233

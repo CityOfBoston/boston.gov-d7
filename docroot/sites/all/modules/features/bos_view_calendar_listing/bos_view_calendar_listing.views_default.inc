@@ -494,17 +494,16 @@ function bos_view_calendar_listing_views_default_views() {
   $handler->display->display_options['empty']['area']['table'] = 'views';
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
-  $handler->display->display_options['empty']['area']['content'] = '<div class="intro-text supporting-text">Thomas Paine noted "These are the times that try men\'s souls." Well this is a time to try another search.</div>
-
-<div class="g--6 fl--l">
-<form accept-charset="UTF-8" action="//search.boston.gov" method="get" class="sf">
+  $handler->display->display_options['empty']['area']['content'] = '<h2 class="m-t000">No Events Found</h2>
+<div class="intro-text supporting-text">Thomas Paine noted "These are the times that try men\'s souls." Well this is a time to try another search</div>
+<form accept-charset="UTF-8" action="https://search.boston.gov" method="get" class="sf sf--md">
     <input name="utf8" type="hidden" value="✓">
+    <input name="facet[]" type="hidden" value="event">
     <div class="sf-i">
         <input type="text" name="query" id="q" placeholder="Search…" class="sf-i-f" autocomplete="off">
         <button class="sf-i-b">Search</button>
     </div>
-</form>
-</div>';
+</form>';
   $handler->display->display_options['empty']['area']['format'] = 'full_html';
   $handler->display->display_options['path'] = 'view-page/calendar';
 

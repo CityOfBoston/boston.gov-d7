@@ -10,7 +10,8 @@
 function bos_component_newsletter_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'paragraphs_item-newsletter-field_component_theme'
+  // Exported field_instance:
+  // 'paragraphs_item-newsletter-field_component_theme'.
   $field_instances['paragraphs_item-newsletter-field_component_theme'] = array(
     'bundle' => 'newsletter',
     'default_value' => array(
@@ -54,7 +55,8 @@ function bos_component_newsletter_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-newsletter-field_component_title'
+  // Exported field_instance:
+  // 'paragraphs_item-newsletter-field_component_title'.
   $field_instances['paragraphs_item-newsletter-field_component_title'] = array(
     'bundle' => 'newsletter',
     'default_value' => array(
@@ -116,7 +118,7 @@ function bos_component_newsletter_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-newsletter-field_contact'
+  // Exported field_instance: 'paragraphs_item-newsletter-field_contact'.
   $field_instances['paragraphs_item-newsletter-field_contact'] = array(
     'bundle' => 'newsletter',
     'default_value' => NULL,
@@ -168,7 +170,7 @@ function bos_component_newsletter_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-newsletter-field_description'
+  // Exported field_instance: 'paragraphs_item-newsletter-field_description'.
   $field_instances['paragraphs_item-newsletter-field_description'] = array(
     'bundle' => 'newsletter',
     'default_value' => NULL,
@@ -247,7 +249,7 @@ function bos_component_newsletter_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-newsletter-field_newsletter'
+  // Exported field_instance: 'paragraphs_item-newsletter-field_newsletter'.
   $field_instances['paragraphs_item-newsletter-field_newsletter'] = array(
     'bundle' => 'newsletter',
     'default_value' => NULL,
@@ -289,7 +291,7 @@ function bos_component_newsletter_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-newsletter-field_short_title'
+  // Exported field_instance: 'paragraphs_item-newsletter-field_short_title'.
   $field_instances['paragraphs_item-newsletter-field_short_title'] = array(
     'bundle' => 'newsletter',
     'default_value' => NULL,
