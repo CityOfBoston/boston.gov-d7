@@ -74,5 +74,4 @@ features[variable][] = pathauto_node_how_to_pattern
 features[variable][] = xmlsitemap_settings_node_how_to
 features_exclude[field_instance][node-how_to-field_components] = node-how_to-field_components
 features_exclude[field_instance][node-how_to-field_sidebar_components] = node-how_to-field_sidebar_components
-mtime = 1495652915
 packages = Boston

@@ -28,13 +28,14 @@ function bos_component_featured_topics_field_group_info() {
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'label' => 'Featured Guides List',
       'instance_settings' => array(
-        'description' => '',
-        'classes' => 'group-featured-topics-list field-group-fieldset',
         'required_fields' => 1,
         'id' => '',
+        'classes' => 'group-featured-topics-list field-group-fieldset',
+        'description' => '',
       ),
+      'formatter' => 'collapsed',
     ),
   );
   $field_groups['group_featured_topics_list|paragraphs_item|featured_topics|form'] = $field_group;

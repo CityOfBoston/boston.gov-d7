@@ -46,6 +46,7 @@
   .views-exposed-widget.views-submit-button {
     float: none;
     text-align: right;
+    margin-right: 5px;
     margin-top: -65px;
     @include respond-to(xl) {
       margin-top: -50px;

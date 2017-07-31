@@ -276,6 +276,8 @@ projects:
     version: 1.x-dev
   viewfield:
     version: 2.0
+    patch:
+      - https://www.drupal.org/files/issues/viewfield-empty-views-477244-56.patch
   votingapi:
     version: 2.12
   workbench:
