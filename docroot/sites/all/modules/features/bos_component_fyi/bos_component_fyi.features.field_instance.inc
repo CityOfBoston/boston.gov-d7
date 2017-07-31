@@ -10,7 +10,7 @@
 function bos_component_fyi_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'paragraphs_item-fyi-field_extra_info'
+  // Exported field_instance: 'paragraphs_item-fyi-field_extra_info'.
   $field_instances['paragraphs_item-fyi-field_extra_info'] = array(
     'bundle' => 'fyi',
     'default_value' => NULL,
@@ -57,7 +57,7 @@ function bos_component_fyi_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-fyi-field_icon'
+  // Exported field_instance: 'paragraphs_item-fyi-field_icon'.
   $field_instances['paragraphs_item-fyi-field_icon'] = array(
     'bundle' => 'fyi',
     'deleted' => 0,
@@ -122,7 +122,7 @@ function bos_component_fyi_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-fyi-field_link'
+  // Exported field_instance: 'paragraphs_item-fyi-field_link'.
   $field_instances['paragraphs_item-fyi-field_link'] = array(
     'bundle' => 'fyi',
     'default_value' => NULL,
@@ -238,7 +238,7 @@ function bos_component_fyi_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-fyi-field_short_title'
+  // Exported field_instance: 'paragraphs_item-fyi-field_short_title'.
   $field_instances['paragraphs_item-fyi-field_short_title'] = array(
     'bundle' => 'fyi',
     'default_value' => NULL,
@@ -285,7 +285,7 @@ function bos_component_fyi_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-fyi-field_title'
+  // Exported field_instance: 'paragraphs_item-fyi-field_title'.
   $field_instances['paragraphs_item-fyi-field_title'] = array(
     'bundle' => 'fyi',
     'default_value' => NULL,
