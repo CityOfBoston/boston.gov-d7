@@ -10,7 +10,7 @@
 function bos_grid_of_cards_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'paragraphs_item-card-field_link'
+  // Exported field_instance: 'paragraphs_item-card-field_link'.
   $field_instances['paragraphs_item-card-field_link'] = array(
     'bundle' => 'card',
     'default_value' => NULL,
@@ -170,7 +170,7 @@ function bos_grid_of_cards_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-card-field_short_description'
+  // Exported field_instance: 'paragraphs_item-card-field_short_description'.
   $field_instances['paragraphs_item-card-field_short_description'] = array(
     'bundle' => 'card',
     'default_value' => NULL,
@@ -219,7 +219,7 @@ function bos_grid_of_cards_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-card-field_subheader'
+  // Exported field_instance: 'paragraphs_item-card-field_subheader'.
   $field_instances['paragraphs_item-card-field_subheader'] = array(
     'bundle' => 'card',
     'default_value' => NULL,
@@ -268,7 +268,7 @@ function bos_grid_of_cards_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-card-field_thumbnail'
+  // Exported field_instance: 'paragraphs_item-card-field_thumbnail'.
   $field_instances['paragraphs_item-card-field_thumbnail'] = array(
     'bundle' => 'card',
     'deleted' => 0,
@@ -334,7 +334,7 @@ function bos_grid_of_cards_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-card-field_title'
+  // Exported field_instance: 'paragraphs_item-card-field_title'.
   $field_instances['paragraphs_item-card-field_title'] = array(
     'bundle' => 'card',
     'default_value' => NULL,
@@ -383,7 +383,8 @@ function bos_grid_of_cards_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-grid_of_cards-field_component_theme'
+  // Exported field_instance:
+  // 'paragraphs_item-grid_of_cards-field_component_theme'.
   $field_instances['paragraphs_item-grid_of_cards-field_component_theme'] = array(
     'bundle' => 'grid_of_cards',
     'default_value' => array(
@@ -427,7 +428,8 @@ function bos_grid_of_cards_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-grid_of_cards-field_component_title'
+  // Exported field_instance:
+  // 'paragraphs_item-grid_of_cards-field_component_title'.
   $field_instances['paragraphs_item-grid_of_cards-field_component_title'] = array(
     'bundle' => 'grid_of_cards',
     'default_value' => NULL,
@@ -474,7 +476,7 @@ function bos_grid_of_cards_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-grid_of_cards-field_contact'
+  // Exported field_instance: 'paragraphs_item-grid_of_cards-field_contact'.
   $field_instances['paragraphs_item-grid_of_cards-field_contact'] = array(
     'bundle' => 'grid_of_cards',
     'default_value' => NULL,
@@ -517,7 +519,7 @@ function bos_grid_of_cards_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-grid_of_cards-field_drawer'
+  // Exported field_instance: 'paragraphs_item-grid_of_cards-field_drawer'.
   $field_instances['paragraphs_item-grid_of_cards-field_drawer'] = array(
     'bundle' => 'grid_of_cards',
     'default_value' => NULL,
@@ -677,7 +679,7 @@ function bos_grid_of_cards_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-grid_of_cards-field_short_title'
+  // Exported field_instance: 'paragraphs_item-grid_of_cards-field_short_title'.
   $field_instances['paragraphs_item-grid_of_cards-field_short_title'] = array(
     'bundle' => 'grid_of_cards',
     'default_value' => NULL,
