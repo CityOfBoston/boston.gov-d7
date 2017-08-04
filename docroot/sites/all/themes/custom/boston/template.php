@@ -2044,15 +2044,17 @@ function boston_preprocess_views_view_status_displays(&$variables) {
     $call_to_action_id = bos_core_field_get_first_item('node', $emergency, 'field_link')['value'];
     if ($call_to_action_id) {
       $call_to_action = paragraphs_item_load($call_to_action_id);
-      $view = entity_view('paragraphs_item', array($call_to_action));
+      $view = entity_view('paragraphs_item', array($call_to_action), $block_theme == 'dark-blue' ? 'button_link' : 'button_link_dark');
       $html = render($view);
       $call_to_action = $html;
     }
 
-    $variables['header'] = "<div class='container'><div class='last-updated emergency'>LAST UPDATED: " . $last_updated . "</div>" .
-      "<div class='strikethrough strikethrough--middle'><h2 class='emergency-title emergency'>" . $title . "</h2></div>" .
-      "<div class='description emergency'>" . $description . "</div>" .
-      "<div class='call-to-action emergency'>" . $call_to_action . "</div></div><div class='emergency-header-tail'></div>";
+    $txt_theme = $block_theme == 'dark-blue' ? 'ob' : 'cb';
+    $str_theme = $block_theme == 'dark-blue' ? 'b' : 'r';
+
+    $variables['header'] = "<div class='b b--fw b--" . $str_theme . " b--cc b--wt m-b500'><div class='b-c'><div class='t--upper t--sans lh--000 t--" . $txt_theme . "'>Last updated: " . $last_updated . "</div>" .
+      "<div class='str str--" . $str_theme . " m-v300'><div class='str-c'><div class='str-t'>" . $title . "</div></div></div>" .
+      "<div class='t--sans t--" . $txt_theme . " lh--000 m-b500'>" . $description . "</div>" . $call_to_action . "</div></div>";
   }
   else {
     // Normally this would go in the theme to make the preprocess function more
@@ -2071,13 +2073,15 @@ function boston_preprocess_views_view_status_displays(&$variables) {
       if (!empty($result)) {
         $term = taxonomy_term_load(key($result['taxonomy_term']));
         $date = format_date($timestamp, 'status');
-        $variables['header'] = '<div class="strikethrough strikethrough--middle">';
-        $variables['header'] .= '<h2 class="date-label">' . $term->name;
-        $variables['header'] .= '<span class="date-day-holiday-subtitle">' . $date . '</span></h2>';
-        $variables['header'] .= '</div>';
+        $variables['header'] = "<div class='b b--fw'><div class='b-c b-c--nbp'>";
+        $variables['header'] .= "<div class='str'><div class='str-c'>";
+        $variables['header'] .= "<div class='str-t str-t--r m-b100'>" . $term->name . "</div>";
+        $variables['header'] .= "<div class='str-st'>" . $date . "</div>";
+        $variables['header'] .= '</div></div>';
+        $variables['header'] .= '</div></div>';
       }
       else {
-        $variables['header'] = '<div class="strikethrough"><h2 class="date-day-title">' . format_date($timestamp, 'status') . '</h2></div>';
+        $variables['header'] = "<div class='b b--fw'><div class='b-c b-c--nbp'><div class='str'><div class='str-c'><div class='str-t'>" . format_date($timestamp, 'status') . "</div></div></div></div></div>";
       }
     }
   }
