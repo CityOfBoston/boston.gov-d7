@@ -1220,6 +1220,18 @@ function boston_preprocess_paragraphs_item_message_for_the_day(&$variables) {
   $variables['content']['field_icon'] = field_view_field('node', $status_item, 'field_icon', 'full');
   $variables['icon'] = file_get_contents(drupal_realpath(trim(render($variables['content']['field_icon'][0]))));
   $variables['icon'] = filter_xss($variables['icon'], explode(' ', BOS_CORE_SVG_ELEMENTS));
+
+  $link_id = bos_core_field_get_first_item('paragraphs_item', $variables['paragraphs_item'], 'field_link')['value'];
+
+  if ($link_id) {
+    // Load the link references
+    $link = paragraphs_item_load($link_id);
+
+    // Return the url
+    $url = bos_core_field_get_link_url($link);
+  }
+
+  $variables['card_url'] = $url;
 }
 
 /**

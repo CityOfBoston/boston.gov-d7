@@ -28,12 +28,14 @@
  */
 ?>
 <div class="b b--fw">
-  <div id="statusHeader">
+  <div id="statusHeader" class="m-b600">
     <?php print $header; ?>
   </div>
   <?php if ($rows): ?>
-    <div class="b-c b-c--nbp">
-      <?php print $rows; ?>
+    <div class="b-c b-c--ntp b-c--nbp">
+      <div class="p-b300">
+        <?php print $rows; ?>
+      </div>
     </div>
   <?php elseif ($empty): ?>
     <div class="view-empty">
