@@ -10,7 +10,8 @@
 function bos_component_featured_topics_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'paragraphs_item-featured_topics-field_short_title'
+  // Exported field_instance:
+  // 'paragraphs_item-featured_topics-field_short_title'.
   $field_instances['paragraphs_item-featured_topics-field_short_title'] = array(
     'bundle' => 'featured_topics',
     'default_value' => NULL,
@@ -57,7 +58,7 @@ function bos_component_featured_topics_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-featured_topics-field_topics'
+  // Exported field_instance: 'paragraphs_item-featured_topics-field_topics'.
   $field_instances['paragraphs_item-featured_topics-field_topics'] = array(
     'bundle' => 'featured_topics',
     'default_value' => array(
