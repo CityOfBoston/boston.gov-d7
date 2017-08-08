@@ -27,13 +27,14 @@ function bos_grid_of_cards_field_group_info() {
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'label' => 'Cards',
       'instance_settings' => array(
-        'description' => '',
-        'classes' => '',
         'required_fields' => 1,
         'id' => '',
+        'classes' => '',
+        'description' => '',
       ),
+      'formatter' => 'collapsed',
     ),
   );
   $field_groups['group_cards|paragraphs_item|grid_of_cards|form'] = $field_group;
@@ -48,22 +49,23 @@ function bos_grid_of_cards_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => 'Info',
+    'label' => 'Component',
     'weight' => '0',
     'children' => array(
-      0 => 'field_contact',
-      1 => 'field_short_title',
-      2 => 'field_component_title',
+      0 => 'field_component_title',
+      1 => 'field_contact',
+      2 => 'field_short_title',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'label' => 'Component',
       'instance_settings' => array(
-        'description' => '',
-        'classes' => '',
         'required_fields' => 1,
         'id' => '',
+        'classes' => '',
+        'description' => '',
       ),
+      'formatter' => 'collapsed',
     ),
   );
   $field_groups['group_info|paragraphs_item|grid_of_cards|form'] = $field_group;
@@ -85,13 +87,14 @@ function bos_grid_of_cards_field_group_info() {
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'label' => 'Theme',
       'instance_settings' => array(
-        'description' => '',
-        'classes' => 'group-theme field-group-fieldset',
         'required_fields' => 1,
         'id' => '',
+        'classes' => 'group-theme field-group-fieldset',
+        'description' => '',
       ),
+      'formatter' => 'collapsed',
     ),
   );
   $field_groups['group_theme|paragraphs_item|grid_of_cards|form'] = $field_group;
@@ -99,7 +102,7 @@ function bos_grid_of_cards_field_group_info() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Cards');
-  t('Info');
+  t('Component');
   t('Theme');
 
   return $field_groups;

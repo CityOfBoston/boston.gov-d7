@@ -14,4 +14,3 @@ features[field_group][] = group_featured_topics_list|paragraphs_item|featured_to
 features[field_instance][] = paragraphs_item-featured_topics-field_short_title
 features[field_instance][] = paragraphs_item-featured_topics-field_topics
 features[paragraphs][] = featured_topics
-mtime = 1493904233

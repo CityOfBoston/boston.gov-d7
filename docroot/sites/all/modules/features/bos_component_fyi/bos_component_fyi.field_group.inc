@@ -31,13 +31,14 @@ function bos_component_fyi_field_group_info() {
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'label' => 'FYI Info',
       'instance_settings' => array(
-        'description' => '',
-        'classes' => 'group-fyi-info field-group-fieldset',
         'required_fields' => 1,
         'id' => '',
+        'classes' => 'group-fyi-info field-group-fieldset',
+        'description' => '',
       ),
+      'formatter' => 'collapsed',
     ),
   );
   $field_groups['group_fyi_info|paragraphs_item|fyi|form'] = $field_group;

@@ -10,7 +10,8 @@
 function bos_component_grid_of_quotes_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'paragraphs_item-grid_of_quotes-field_component_title'
+  // Exported field_instance:
+  // 'paragraphs_item-grid_of_quotes-field_component_title'.
   $field_instances['paragraphs_item-grid_of_quotes-field_component_title'] = array(
     'bundle' => 'grid_of_quotes',
     'default_value' => NULL,
@@ -57,7 +58,8 @@ function bos_component_grid_of_quotes_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-grid_of_quotes-field_grid_of_quotes'
+  // Exported field_instance:
+  // 'paragraphs_item-grid_of_quotes-field_grid_of_quotes'.
   $field_instances['paragraphs_item-grid_of_quotes-field_grid_of_quotes'] = array(
     'bundle' => 'grid_of_quotes',
     'default_value' => NULL,
@@ -195,7 +197,8 @@ function bos_component_grid_of_quotes_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-grid_of_quotes-field_short_title'
+  // Exported field_instance:
+  // 'paragraphs_item-grid_of_quotes-field_short_title'.
   $field_instances['paragraphs_item-grid_of_quotes-field_short_title'] = array(
     'bundle' => 'grid_of_quotes',
     'default_value' => NULL,

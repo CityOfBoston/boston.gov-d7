@@ -60,7 +60,7 @@ function boston_hub_preprocess_page(array &$variables) {
     $variables['profile_path'] = base_path() . 'my-profile';
     $variables['logout_path'] = base_path() . 'user/logout';
     $variables['security_questions_path'] = 'https://oimprd.cityofboston.gov/admin/faces/pages/pwdmgmt.jspx?action=setchallenges&backUrl=https://oif.cityofboston.gov%2Ffed%2Fidp%2Finitiatesso%3Fproviderid%3Dthehubprod';
-    $variables['change_password_path'] = 'https://oimprd.cityofboston.gov/admin/faces/pages/pwdmgmt.jspx?backUrl=https%3A%2F%2Foif.cityofboston.gov%2Ffed%2Fidp%2Finitiatesso%3Fproviderid%3Dthehubprod';
+    $variables['change_password_path'] = 'https://oimprd.cityofboston.gov/admin/faces/pages/pwdmgmt.jspx?action=changepassword&backUrl=';
   }
 
   $current_path = current_path();
@@ -107,7 +107,7 @@ function boston_hub_preprocess_page(array &$variables) {
     if ($variables['node']->type == 'topic_page') {
       $page_class = 'page';
     }
-    
+
     if ($variables['node']->type !== 'landing_page') {
       if ($variables['node']->type !== 'tabbed_content' && $variables['node']->type !== 'how_to') {
         $page_class_alert = 'page page--wa';
