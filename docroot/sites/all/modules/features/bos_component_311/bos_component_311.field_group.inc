@@ -29,13 +29,14 @@ function bos_component_311_field_group_info() {
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'label' => '311 Info',
       'instance_settings' => array(
-        'description' => '',
-        'classes' => 'group-311-info field-group-fieldset',
         'required_fields' => 1,
         'id' => '',
+        'classes' => 'group-311-info field-group-fieldset',
+        'description' => '',
       ),
+      'formatter' => 'collapsed',
     ),
   );
   $field_groups['group_311_info|paragraphs_item|bos311|form'] = $field_group;
