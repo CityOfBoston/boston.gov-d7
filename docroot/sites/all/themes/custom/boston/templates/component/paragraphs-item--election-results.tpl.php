@@ -32,6 +32,48 @@
   </div>
 </div>
 
+<style>
+  .table-results table td {
+    color: #091F2F;
+  }
+
+  .table-results .sh-title {
+    word-break: break-all;
+  }
+
+  .table-results table tr td:first-child {
+    font-style: italic;
+    font-weight: bold;
+    width: 40%;
+    padding-left: 0;
+    padding-right: 0;
+    word-break: break-all;
+  }
+
+  .table-results table tr td {
+    padding: 0.45rem 0.5rem;
+    font-size: 16px;
+    width: 20%;
+    line-height: 1.2;
+  }
+
+  .table-results table tr td:last-child {
+    padding-right: 0;
+  }
+
+  .table-results table .table-total td {
+    border-bottom: 1px solid #e2e2e2;
+    padding-top: 0.75rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .table-results hr {
+    margin: 0.5rem 0;
+    background: none;
+    border-top: 1px dotted #e2e2e2;
+  }
+</style>
+
 <script>
   function ready(fn) {
     if (document.readyState != 'loading'){
@@ -63,6 +105,70 @@
     var container = document.getElementById('resultsContainer');
     var sourceLink = document.getElementById('sourceLink');
 
+    function removeBR() {
+      for (var i = 0; i < container.childNodes.length; i++) {
+        if (container.childNodes[i].nodeName == 'BR') {
+          container.removeChild(container.childNodes[i]);
+        }
+      }
+    }
+
+    function tagTables() {
+      for (var i = 0; i < container.childNodes.length; i++) {
+        if (container.childNodes[i].nodeName == 'TABLE') {
+          if (i > 1) {
+            container.childNodes[i].className = 'table-results table-' + i;
+          }
+        }
+      }
+
+      var tablesToClean = document.querySelectorAll('#resultsContainer > table:not(.table-results)');
+      for (var i = 0; i < tablesToClean.length; i++) {
+        container.removeChild(tablesToClean[i]);
+      }
+    }
+
+    function fixHeader() {
+      var sections = document.querySelectorAll('.table-results table tr:first-child');
+      for (var i = 0; i < sections.length; i++) {
+        var block = sections[i];
+
+        for (var j = 0; j < block.childNodes.length; j++) {
+          if (block.childNodes[j].nodeName == 'TD' || block.childNodes[j].nodeName == 'TH') {
+            if (j === 1) {
+              block.childNodes[j].colSpan = 4;
+              block.childNodes[j].style.width = '100%'
+
+              var title = block.childNodes[j].innerHTML;
+              block.childNodes[j].innerHTML = "<div class='sh' style='margin-bottom: 0'><div class='sh-title'>" + title + "</div></div>";
+            } else {
+              block.removeChild(block.childNodes[j]);
+            }
+          }
+        }
+      }
+    }
+
+    function setTotalBar() {
+      var totals = document.querySelectorAll('.table-results table tr:nth-child(2)');
+      var totalTD = document.querySelectorAll('.table-results table tr:nth-child(2) td:last-child');
+
+      for (var i = 0; i < totals.length; i++) {
+        totals[i].className = 'table-total';
+      }
+
+      for (var i = 0; i < totalTD.length; i++) {
+        totalTD[i].colSpan = 2;
+      }
+    }
+
+    function cleanupResults() {
+      removeBR();
+      tagTables();
+      fixHeader();
+      setTotalBar();
+    }
+
     function fetchResults() {
       var request = createCORSRequest('GET', sourceLink.href);
 
@@ -70,7 +176,7 @@
         if (request.status >= 200 && request.status < 400) {
           var resp = request.responseText;
           container.innerHTML = resp;
-          console.log('LOADED!');
+          cleanupResults();
         } else {
           console.log('There was an error loading the results.')
         }
@@ -95,102 +201,3 @@
 
   ready(ElectionResults.init);
 </script>
-
-<style>
-#resultsContainer > br {
-  display: none;
-}
-
-#resultsContainer table {
-  width: 100%;
-  margin: 0;
-  max-width: 100%;
-}
-
-@media screen and (min-width: 768px) {
-  #resultsContainer table {
-    max-width: 63%;
-  }
-}
-
-#resultsContainer > table:nth-child(1) {
-  border: none;
-}
-
-#resultsContainer > table:nth-child(1) table > tbody > tr > td {
-  display: block;
-  width: 100%;
-  padding: 0;
-}
-
-#resultsContainer > table:nth-child(1) table > tbody > tr > td:nth-child(1) {
-  display: none;
-}
-
-#resultsContainer > table:nth-child(1) table {
-  margin: 0;
-  border: none;
-}
-
-#resultsContainer > table:nth-child(1) table > tbody > tr > td:nth-child(3):before {
-  content: 'Last updated: ';
-}
-
-#resultsContainer > table:nth-child(1) table > tbody > tr > td:nth-child(3) br {
-  display: none;
-}
-
-#resultsContainer > table:nth-child(3) {
-  border: none;
-}
-
-#resultsContainer > table:nth-child(3) td {
-  display: block;
-  width: 100%;
-}
-
-#resultsContainer table h4 {
-  margin: 0;
-}
-
-#resultsContainer table td {
-  text-align: left;
-}
-
-#resultsContainer table {
-  border: 5px solid #f3f3f3;
-  margin-bottom: 35px;
-}
-
-#resultsContainer table table {
-  border: none;
-  width: 100%;
-  max-width: 100%;
-  margin: 0;
-}
-
-#resultsContainer table table hr {
-  margin: 15px 0;
-}
-
-
-#resultsContainer table table td, #resultsContainer table table th {
-  padding: 0.5em;
-  word-break: break-all;
-  font-size: 0.66em;
-  line-height: 1.2;
-}
-
-@media screen and (min-width: 768px) {
-  #resultsContainer table table td, #resultsContainer table table th {
-    font-size: 0.75em;
-    padding: 1em;
-  }
-}
-
-@media screen and (min-width: 900px) {
-  #resultsContainer table table td, #resultsContainer table table th {
-    font-size: 1em;
-  }
-}
-</style>
