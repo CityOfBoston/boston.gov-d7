@@ -28,13 +28,14 @@ function bos_component_grid_of_quotes_field_group_info() {
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'label' => 'Basic Information',
       'instance_settings' => array(
-        'description' => '',
-        'classes' => 'group-basic-information field-group-fieldset',
         'required_fields' => 1,
         'id' => '',
+        'classes' => 'group-basic-information field-group-fieldset',
+        'description' => '',
       ),
+      'formatter' => 'collapsed',
     ),
   );
   $field_groups['group_basic_information|paragraphs_item|grid_of_quotes|form'] = $field_group;
@@ -56,13 +57,14 @@ function bos_component_grid_of_quotes_field_group_info() {
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'label' => 'Details',
       'instance_settings' => array(
-        'description' => '',
-        'classes' => 'group-details field-group-fieldset',
         'required_fields' => 1,
         'id' => '',
+        'classes' => 'group-details field-group-fieldset',
+        'description' => '',
       ),
+      'formatter' => 'collapsed',
     ),
   );
   $field_groups['group_details|paragraphs_item|grid_of_quotes|form'] = $field_group;
