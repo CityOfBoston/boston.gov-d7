@@ -1,7 +1,7 @@
 <project name="setup" default="setup:build:all">
 
   <target name="setup" description="Install dependencies, builds docroot, installs Drupal."
-          depends="setup:build:all, setup:git-hooks, setup:behat, setup:drupal:install">
+          depends="setup:build:all, setup:git-hooks, setup:behat, setup:drupal:install, setup:robots:install">
 
     <echo>For a full list of available Phing targets, run:</echo>
     <echo>./task.sh -l</echo>
@@ -44,6 +44,10 @@
       <option name="no-gitinfofile"/>
       <option name="contrib-destination">sites/all</option>
     </drush>
+  </target>
+
+  <target name="setup:robots:install" description="Copies robots.txt file">
+    <copy file="${core.phing.dir}/../files/${multisite.name}.robots.txt" tofile="${docroot}/robots.txt"/>
   </target>
 
   <target name="setup:drupal:install" description="Installs a specific Drupal site.">
