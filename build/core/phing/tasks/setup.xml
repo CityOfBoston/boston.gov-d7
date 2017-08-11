@@ -47,7 +47,7 @@
   </target>
 
   <target name="setup:robots:install" description="Copies robots.txt file">
-    <copy file="${core.phing.dir}/../files/${multisite.name}.robots.txt" tofile="${docroot}/robots.txt"/>
+    <copy file="${core.phing.dir}/../files/${multisite.name}.robots.txt" tofile="${docroot}/robots.txt" overwrite="true"/>
   </target>
 
   <target name="setup:drupal:install" description="Installs a specific Drupal site.">
