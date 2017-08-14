@@ -27,27 +27,25 @@
  */
 ?>
 
-<?php if(!empty($content['field_link'])): ?>
-  <div class="status-item linked <?php print $classes; ?>"<?php print $attributes; ?>>
-<?php else: ?>
-  <div class="status-item <?php print $classes; ?>"<?php print $attributes; ?>>
-<?php endif; ?>
-  <div class="status-icon-wrapper">
-    <?php print $icon; ?>
-  <?php if ($use_alert): ?>
-    <svg class="alert" width="28px" height="28px" viewBox="-1187 1989 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-      <title>Alert</title>
-      <desc>A red exclamation point in a cirlce.</desc>
-      <circle class="svg-stroke-hover" stroke="#FB4D42" stroke-width="3" fill="#FFFFFF" fill-rule="evenodd" cx="-1175" cy="2001" r="10.5"></circle>
-      <path d="M-1175,2008.2 C-1175.4,2008.2 -1175.8,2008.1 -1176.1,2007.8 C-1176.4,2007.5 -1176.5,2007.2 -1176.5,2006.8 C-1176.5,2006.4 -1176.4,2006 -1176.1,2005.8 C-1175.8,2005.5 -1175.5,2005.4 -1175,2005.4 C-1174.6,2005.4 -1174.2,2005.5 -1174,2005.8 C-1173.8,2006.1 -1173.6,2006.4 -1173.6,2006.8 C-1173.6,2007.2 -1173.7,2007.6 -1174,2007.8 C-1174.3,2008 -1174.6,2008.2 -1175,2008.2 L-1175,2008.2 Z M-1176.4,1993.8 L-1173.6,1993.8 L-1173.6,1996.4 L-1174.2,2003.6 L-1175.8,2003.6 L-1176.4,1996.4 L-1176.4,1993.8 L-1176.4,1993.8 Z" class="svg-fill-hover" stroke="none" fill="#FB4D42" fill-rule="evenodd"></path>
-    </svg>
+<div class="cds g--24">
+  <?php if(!empty($card_url)): ?>
+    <a href="<?php print $card_url; ?>" class="cds-l d-b m-b500">
+  <?php else: ?>
+    <div class="cds-l d-b m-b500">
   <?php endif; ?>
+    <div class="cds-ic m-b500--l">
+      <?php print $icon; ?>
+    <?php if ($use_alert): ?>
+      <svg class="cds-ia" width="28" height="28" viewBox="-1187 1989 24 24" xmlns="http://www.w3.org/2000/svg"><title>Alert</title><desc>A red exclamation point in a cirlce.</desc><circle class="svg-stroke-hover" stroke="#FB4D42" stroke-width="3" fill="#FFF" fill-rule="evenodd" cx="-1175" cy="2001" r="10.5"/><path d="M-1175 2008.2c-.4 0-.8-.1-1.1-.4-.3-.3-.4-.6-.4-1s.1-.8.4-1c.3-.3.6-.4 1.1-.4.4 0 .8.1 1 .4.2.3.4.6.4 1s-.1.8-.4 1c-.3.2-.6.4-1 .4zm-1.4-14.4h2.8v2.6l-.6 7.2h-1.6l-.6-7.2v-2.6z" class="svg-fill-hover" fill="#FB4D42" fill-rule="evenodd"/></svg>
+    <?php endif; ?>
+    </div>
+    <div class="cds-c">
+    <div class="cds-t t--upper t--sans m-b300"><?php print render($content['field_title']); ?></div>
+    <div class="cds-d t--subinfo"><?php print render($content['field_message']); ?></div>
+    </div>
+  <?php if(!empty($card_url)): ?>
+    </a>
+  <?php else: ?>
   </div>
-  <div class="status-text-wrapper">
-  <h3 class="status-message-title"><?php print render($content['field_title']); ?></h3>
-  <div class="status-message-body"><?php print render($content['field_message']); ?></div>
-  </div>
-  <?php if(isset($content['field_link'])): ?>
-    <?php print render($content['field_link']); ?>
   <?php endif; ?>
 </div>

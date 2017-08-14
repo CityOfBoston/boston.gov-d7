@@ -7,10 +7,8 @@
  * @ingroup views_templates
  */
 ?>
-<div class="grid-wrapper">
-    <?php foreach ($rows as $id => $row): ?>
-      <div class="status-item-wrapper desktop-5-col tablet-3-col mobile-1-col">
-      <?php print $row; ?>
-      </div>
-    <?php endforeach; ?>
+<div class="g g--hc">
+  <?php foreach ($rows as $id => $row): ?>
+    <?php print $row; ?>
+  <?php endforeach; ?>
 </div>

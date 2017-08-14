@@ -27,22 +27,19 @@
  * @ingroup views_templates
  */
 ?>
-<div class="<?php print $classes; ?>">
-
-  <div class="heading-wrapper">
-    <div class="strikethrough-wrapper">
-      <?php print $header; ?>
-    </div>
+<div class="b b--fw">
+  <div id="statusHeader" class="m-b600">
+    <?php print $header; ?>
   </div>
-
   <?php if ($rows): ?>
-    <div class="view-content">
-      <?php print $rows; ?>
+    <div class="b-c b-c--ntp b-c--nbp">
+      <div class="p-b300">
+        <?php print $rows; ?>
+      </div>
     </div>
   <?php elseif ($empty): ?>
     <div class="view-empty">
       <?php print $empty; ?>
     </div>
   <?php endif; ?>
-
 </div><?php /* class view */ ?>

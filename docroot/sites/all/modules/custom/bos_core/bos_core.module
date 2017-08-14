@@ -83,6 +83,9 @@ function bos_core_entity_info_alter(&$info) {
         'button_link' => array(
           'label' => t('Link as a button'),
         ),
+        'button_link_dark' => array(
+          'label' => t('Link as a dark button'),
+        ),
         'ribbon_link' => array(
           'label' => t('Link with Ribbon'),
         ),

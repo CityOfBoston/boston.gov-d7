@@ -103,15 +103,3 @@
   margin-left: 1.5em;
   margin-bottom: -5px;
 }
-
-.call-to-action {
-  a {
-    @extend .button;
-    margin-bottom: 2.5em;
-  }
-  .download-link a,
-  .external-link a {
-    padding-right: 40px;
-    background-position-x: calc(100% - 10px);
-  }
-}
