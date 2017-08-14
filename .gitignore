@@ -22,7 +22,8 @@ docroot/profiles/contrib
 /docroot/themes
 # Ignore drupal core files
 docroot/**/*.txt
-!docroot/robots.txt
+!docroot/default.robots.txt
+!docroot/hub.robots.txt
 /docroot/.gitignore
 /docroot/authorize.php
 /docroot/cron.php

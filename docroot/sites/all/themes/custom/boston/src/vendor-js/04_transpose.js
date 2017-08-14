@@ -64,16 +64,6 @@
       $this.addClass('responsive-table responsive-table--vertical');
       $this.html(table.html());
     };
-
-    enquire.register("screen and (min-width: 768px)", {
-      match: function() {
-        $('.responsive-table--vertical.transposed').transposeVertical();
-      }
-    })
-    .register("screen and (max-width: 767px)", {
-      match: function() {
-        $('.responsive-table--vertical').transposeHorizontal();
-      }
-    });
+    
   }
 })(jQuery, Drupal, this, this.document);

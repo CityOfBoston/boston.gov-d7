@@ -24,22 +24,13 @@
  * @see template_preprocess_entity()
  * @see template_process()
  */
+$field_title = $content['field_title'][0]['#markup'];
 ?>
-<div class="b b--fw<?php if (isset($content['field_component_theme'])) : ?> b--<?php print trim(render($content['field_component_theme'])); ?><?php endif; ?>">
-  <div class="b-c b-c--ntp b-c--nbp">
-    <?php if (isset($content['field_component_title']) || isset($content['field_contact'])): ?>
-      <div class="sh">
-        <?php if (!empty($content['field_component_title'])) : ?>
-          <?php print render($content['field_component_title']); ?>
-        <?php endif; ?>
-        <?php if (isset($content['field_short_title'])) : ?>
-          <?php print render($content['field_short_title']); ?>
-        <?php endif; ?>
-        <?php if (!empty($content['field_component_title'])) : ?>
-          <?php print render($content['field_contact']); ?>
-        <?php endif; ?>
-      </div>
-    <?php endif; ?>
-    <?php print render($content['field_list']); ?>
-  </div>
-</div>
+
+<a href="<?php print $internal_link_path; ?>" class="btn btn--c">
+<?php if (!empty($field_title)): ?>
+  <?php print $field_title; ?>
+<?php else: ?>
+  <?php print $internal_link_title; ?>
+<?php endif; ?>
+</a>

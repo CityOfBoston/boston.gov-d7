@@ -7,16 +7,42 @@
  *
  * @see https://drupal.org/node/1728164
  */
+
+ $guide_themes = array(
+   'ob',
+   'cb',
+   'r',
+   'cb',
+   'cb',
+   'r',
+   'cb',
+   'ob',
+   'ob',
+   'cb',
+   'r',
+   'cb',
+   'cb',
+   'r',
+   'cb',
+   'ob',
+ );
+
+ if (!isset($GLOBALS["featured_guide_count"])) {
+   $GLOBALS["featured_guide_count"] = 0;
+ } else {
+   $GLOBALS["featured_guide_count"]++;
+ }
+
+ $guide_index = $GLOBALS["featured_guide_count"] + 1;
+ $guide_theme = $guide_themes[$GLOBALS["featured_guide_count"]];
+
 ?>
-<a href="<?php print url("node/{$node->nid}"); ?>">
-<article class="<?php print $classes; ?> clearfix node-<?php print $node->nid; ?>"<?php print $attributes; ?>>
-  <div class="color-background-layer <?php if (empty($content['field_thumbnail'])): ?>transparent<?php endif; ?>">
-    <div class="float-left-xl badge"></div>
-    <div class="float-left-xl title-block">
-      <div class="label">Guide:</div>
-      <h2><?php print $title; ?></h2>
+<a href="<?php print url("node/{$node->nid}"); ?>" class="cdfg cdfg--<?php print $guide_theme ?>" style="background-image: url(<?php print render($content['field_thumbnail']); ?>)">
+  <div class="cdfg-c">
+    <div class="cdfg-i"><span><?php print $guide_index ?></span></div>
+    <div class="cdfg-ic">
+      <div class="cdfg-d">Guide:</div>
+      <div class="cdfg-t"><?php print $title; ?></div>
     </div>
-    <?php print render($content['links']); ?>
   </div>
-</article>
 </a>

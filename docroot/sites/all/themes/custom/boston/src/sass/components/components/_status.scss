@@ -8,102 +8,6 @@
   margin-top: 0;
 }
 
-.emergency .strikethrough-wrapper {
-  @extend .container;
-}
-
-.heading-wrapper {
-  text-align: center;
-  position: relative;
-}
-
-.emergency .heading-wrapper {
-  @include full-width(color(link-secondary));
-  padding-top: 50px;
-  padding-bottom: 5px;
-  margin-bottom: 50px;
-}
-
-.emergency.dark-blue {
-  .heading-wrapper {
-    @include full-width(color(charles-blue));
-  }
-
-  .strikethrough {
-    &:before {
-      border-color: color(freedom-trail-red);
-    }
-  }
-
-  .emergency-title {
-    background-color: color(charles-blue);
-  }
-
-  .last-updated.emergency {
-    color: color(optimistic-blue);
-  }
-
-  .description.emergency {
-    color: color(optimistic-blue);
-  }
-
-  .emergency-header-tail {
-    background-color: color(charles-blue);
-  }
-
-  .call-to-action.emergency a {
-    background-color: color(optimistic-blue);
-    color: color(white);
-
-    &:hover {
-      background-color: color(freedom-trail-red);
-    }
-  }
-}
-
-.strikethrough-wrapper {
-  padding-bottom: 20px;
-
-  .container {
-    padding: 0;
-  }
-}
-
-.strikethrough {
-  position: relative;
-
-  &:before {
-    content: " ";
-    border-top: 5px solid color(charles-blue);
-    display: block;
-    position: absolute;
-    width: 100%;
-    top: 50%;
-  }
-
-  &--middle:before {
-    transform: translateY(-50%);
-  }
-}
-
-.date-label,
-.date-day-title,
-.emergency-title {
-  position: relative;
-  z-index: 2;
-  @include type-layout(20px, 20px);
-  text-align: center;
-  background-color: color(white);
-  display: inline-block;
-  padding-left: 0;
-  padding-right: 0;
-  @include respond-to(m) {
-    @include type-layout(l, 30px);
-    padding-left: 25px;
-    padding-right: 25px;
-  }
-}
-
 .emergency-title {
   background-color: color(link-secondary);
   color: color(text-bg);
@@ -139,28 +43,6 @@
   @include respond-to(m) {
     @include type-layout(m, 28px);
   }
-}
-
-.call-to-action.emergency a {
-  background-color: color(text-bg);
-  color: color(link-secondary);
-
-  &:hover {
-    background-color: color(charles-blue);
-    color: color(white);
-  }
-}
-
-.emergency-header-tail {
-  position: absolute;
-  bottom: -12px;
-  left: calc(50% - 12px);
-  text-align: center;
-  display: block;
-  height: 25px;
-  width: 25px;
-  transform: rotate(45deg);
-  background-color: color(link-secondary);
 }
 
 // These styles add the line between rows for 3 column layouts
