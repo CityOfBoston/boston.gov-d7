@@ -25,10 +25,10 @@
  * @see template_process()
  */
 ?>
-<div class="b b--fw<?php if (isset($content['field_component_theme'])) : ?> b--<?php print trim(render($content['field_component_theme'])); ?><?php endif; ?>">
-  <div class="b-c b-c--ntp b-c--nbp">
+<div class="b b--fw<?php if (isset($component_theme)) : ?> b--<?php print $component_theme; ?><?php endif; ?>">
+  <div class="b-c">
     <?php if (isset($content['field_component_title']) || isset($content['field_contact'])): ?>
-      <div class="sh">
+      <div class="sh <?php print $section_header_theme; ?>">
         <?php if (!empty($content['field_component_title'])) : ?>
           <?php print render($content['field_component_title']); ?>
         <?php endif; ?>

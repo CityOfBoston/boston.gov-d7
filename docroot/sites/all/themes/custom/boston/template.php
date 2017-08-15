@@ -1759,6 +1759,11 @@ function boston_preprocess_paragraphs_item_list(&$variables) {
     $class_name = 'view-' . preg_replace('/[|_]/', '-', $vname[0]['vname']);
     $variables['classes_array'][] = $class_name;
   }
+
+  $theme = bos_core_field_get_first_item('paragraphs_item', $variables['paragraphs_item'], 'field_component_theme')['value'];
+
+  $variables['component_theme'] = $theme;
+  $variables['section_header_theme'] = $theme === 'b' ? 'sh--w' : '';
 }
 
 /**
@@ -2097,7 +2102,7 @@ function boston_preprocess_views_view_status_displays(&$variables) {
       if (!empty($result)) {
         $term = taxonomy_term_load(key($result['taxonomy_term']));
         $date = format_date($timestamp, 'status');
-        $variables['header'] = "<div class='b b--fw'><div class='b-c b-c--nbp'>";
+        $variables['header'] = "<div class='b b--fw'><div class='b-c b-c--ntp b-c--nbp'>";
         $variables['header'] .= "<div class='str'><div class='str-c'>";
         $variables['header'] .= "<div class='str-t str-t--r m-b100'>" . $term->name . "</div>";
         $variables['header'] .= "<div class='str-st'>" . $date . "</div>";
@@ -2105,7 +2110,7 @@ function boston_preprocess_views_view_status_displays(&$variables) {
         $variables['header'] .= '</div></div>';
       }
       else {
-        $variables['header'] = "<div class='b b--fw'><div class='b-c b-c--nbp'><div class='str'><div class='str-c'><div class='str-t'>" . format_date($timestamp, 'status') . "</div></div></div></div></div>";
+        $variables['header'] = "<div class='b b--fw'><div class='b-c b-c--ntp b-c--nbp'><div class='str'><div class='str-c'><div class='str-t'>" . format_date($timestamp, 'status') . "</div></div></div></div></div>";
       }
     }
   }

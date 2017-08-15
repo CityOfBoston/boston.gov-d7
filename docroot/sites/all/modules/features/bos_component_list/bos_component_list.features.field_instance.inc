@@ -10,7 +10,51 @@
 function bos_component_list_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'paragraphs_item-list-field_component_title'
+  // Exported field_instance: 'paragraphs_item-list-field_component_theme'.
+  $field_instances['paragraphs_item-list-field_component_theme'] = array(
+    'bundle' => 'list',
+    'default_value' => array(
+      0 => array(
+        'value' => 'w',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 4,
+      ),
+      'paragraphs_editor_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'paragraphs_item',
+    'fences_wrapper' => 'div_div_div',
+    'field_name' => 'field_component_theme',
+    'label' => 'Component Theme',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
+      'type' => 'options_select',
+      'weight' => 6,
+    ),
+  );
+
+  // Exported field_instance: 'paragraphs_item-list-field_component_title'.
   $field_instances['paragraphs_item-list-field_component_title'] = array(
     'bundle' => 'list',
     'default_value' => NULL,
@@ -58,7 +102,7 @@ function bos_component_list_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-list-field_contact'
+  // Exported field_instance: 'paragraphs_item-list-field_contact'.
   $field_instances['paragraphs_item-list-field_contact'] = array(
     'bundle' => 'list',
     'default_value' => NULL,
@@ -110,7 +154,7 @@ function bos_component_list_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-list-field_list'
+  // Exported field_instance: 'paragraphs_item-list-field_list'.
   $field_instances['paragraphs_item-list-field_list'] = array(
     'bundle' => 'list',
     'default_value' => NULL,
@@ -195,7 +239,7 @@ function bos_component_list_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-list-field_short_title'
+  // Exported field_instance: 'paragraphs_item-list-field_short_title'.
   $field_instances['paragraphs_item-list-field_short_title'] = array(
     'bundle' => 'list',
     'default_value' => NULL,
@@ -245,6 +289,7 @@ function bos_component_list_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Add a list to this component.');
+  t('Component Theme');
   t('Contact');
   t('List');
   t('Short Title');
