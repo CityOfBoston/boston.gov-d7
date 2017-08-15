@@ -2127,7 +2127,7 @@ function boston_preprocess_views_view_status_displays(&$variables) {
         $variables['header'] .= '</div></div>';
       }
       else {
-        $variables['header'] = "<div class='b b--fw'><div class='b-c b-c--ntp'><div class='str'><div class='str-c'><div class='str-t'>" . format_date($timestamp, 'status') . "</div></div></div></div></div>";
+        $variables['header'] = "<div class='b b--fw'><div class='b-c b-c--nbp'><div class='str'><div class='str-c'><div class='str-t'>" . format_date($timestamp, 'status') . "</div></div></div></div></div>";
       }
     }
   }

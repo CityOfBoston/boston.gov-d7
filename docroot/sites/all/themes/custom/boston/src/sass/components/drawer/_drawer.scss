@@ -58,4 +58,13 @@
   .views-exposed-topbar .view-filters .drawer.mobile-only {
     padding: 0;
   }
+
+  table {
+    margin: 0;
+    border: 2px solid color('charles-blue');
+  }
+
+  .pager {
+    padding-top: 1rem;
+  }
 }
