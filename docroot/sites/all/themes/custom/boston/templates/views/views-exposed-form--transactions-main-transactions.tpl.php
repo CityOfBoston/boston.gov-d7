@@ -20,6 +20,6 @@
  */
 ?>
 <div class="sf-i">
-  <input type="text" name="title" id="edit-title"<?php if (!empty($title)): ?> value="<?php print $title ?>"<?php endif; ?> placeholder="Search transactions..." class="sf-i-f" autocomplete="off">
+  <input type="text" name="title" id="edit-title"<?php if (!empty($variables["form"]["title"]["#value"])): ?> value="<?php print $variables["form"]["title"]["#value"] ?>"<?php endif; ?> placeholder="Search transactions..." class="sf-i-f" autocomplete="off">
   <button class="sf-i-b">Search</button>
 </div>
