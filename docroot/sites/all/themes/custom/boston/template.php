@@ -1176,6 +1176,23 @@ function boston_preprocess_node_topic_page(array &$variables) {
 /**
  * Implements hook_preprocess_node_BUNDLE().
  */
+function boston_preprocess_node_transaction(array &$variables) {
+  $link_id = bos_core_field_get_first_item('node', $variables['node'], 'field_link')['value'];
+
+  if ($link_id) {
+    // Load the link references
+    $link = paragraphs_item_load($link_id);
+
+    // Return the url
+    $url = bos_core_field_get_link_url($link);
+  }
+
+  $variables['transaction_url'] = $url;
+}
+
+/**
+ * Implements hook_preprocess_node_BUNDLE().
+ */
 function boston_preprocess_paragraphs_item_message_for_the_day(&$variables) {
   $message = $variables['paragraphs_item'];
   $host = _get_message_host($message);
@@ -1534,12 +1551,12 @@ function boston_form_alter(&$form, $form_state, $form_id) {
         '#value' => t('Submit'),
         '#attributes' => array(
           'class' => array(
-            'bos-search-submit',
+            'sf-i-b',
           ),
         ),
       );
-      $form['title']['#attributes']['class'][] = 'bos-search-field';
-      $form['#attributes']['class'][] = 'bos-search-form bos-search-form--in-page';
+      $form['title']['#attributes']['class'][] = 'sf-i-f';
+      $form['#attributes']['class'][] = 'sf';
       $form['title']['#attributes']['title'] = 'Search';
     }
 
@@ -2102,7 +2119,7 @@ function boston_preprocess_views_view_status_displays(&$variables) {
       if (!empty($result)) {
         $term = taxonomy_term_load(key($result['taxonomy_term']));
         $date = format_date($timestamp, 'status');
-        $variables['header'] = "<div class='b b--fw'><div class='b-c b-c--ntp b-c--nbp'>";
+        $variables['header'] = "<div class='b b--fw'><div class='b-c b-c--nbp'>";
         $variables['header'] .= "<div class='str'><div class='str-c'>";
         $variables['header'] .= "<div class='str-t str-t--r m-b100'>" . $term->name . "</div>";
         $variables['header'] .= "<div class='str-st'>" . $date . "</div>";
@@ -2110,7 +2127,7 @@ function boston_preprocess_views_view_status_displays(&$variables) {
         $variables['header'] .= '</div></div>';
       }
       else {
-        $variables['header'] = "<div class='b b--fw'><div class='b-c b-c--ntp b-c--nbp'><div class='str'><div class='str-c'><div class='str-t'>" . format_date($timestamp, 'status') . "</div></div></div></div></div>";
+        $variables['header'] = "<div class='b b--fw'><div class='b-c b-c--ntp'><div class='str'><div class='str-c'><div class='str-t'>" . format_date($timestamp, 'status') . "</div></div></div></div></div>";
       }
     }
   }

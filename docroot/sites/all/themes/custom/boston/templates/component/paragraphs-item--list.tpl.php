@@ -26,7 +26,7 @@
  */
 ?>
 <div class="b b--fw<?php if (isset($component_theme)) : ?> b--<?php print $component_theme; ?><?php endif; ?>">
-  <div class="b-c">
+  <div class="b-c b-c--ntp b-c--nbp">
     <?php if (isset($content['field_component_title']) || isset($content['field_contact'])): ?>
       <div class="sh <?php print $section_header_theme; ?>">
         <?php if (!empty($content['field_component_title'])) : ?>
