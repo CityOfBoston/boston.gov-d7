@@ -44,10 +44,8 @@
       <div class="links-grid-field-description">
         <?php print render($content['field_description']); ?>
       </div>
-      <?php if (!empty($content['field_link'])): ?>
-        <div class="call-to-action">
-          <?php print render($content['field_link']);?>
-        </div>
+      <?php if (!empty($call_to_action)): ?>
+        <?php print $call_to_action;?>
       <?php endif; ?>
     </div>
 

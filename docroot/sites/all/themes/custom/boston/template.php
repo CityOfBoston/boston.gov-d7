@@ -611,6 +611,16 @@ function boston_preprocess_node(array &$variables, $hook) {
   }
 }
 
+function boston_preprocess_paragraphs_item_news_announcements(&$variables) {
+  // Get the call to action.
+  $variables['call_to_action'] = bos_core_field_get_call_to_action('paragraphs_item', $variables['paragraphs_item'], 'field_link');
+}
+
+function boston_preprocess_paragraphs_item_upcoming_events(&$variables) {
+  // Get the call to action.
+  $variables['call_to_action'] = bos_core_field_get_call_to_action('paragraphs_item', $variables['paragraphs_item'], 'field_link');
+}
+
 function boston_preprocess_paragraphs_item_newsletter(&$variables) {
   $variables['newsletter_url'] = variable_get('newsletter_url', 'https://www.boston.gov');
 }
@@ -856,6 +866,7 @@ function _boston_paragrpahs_item_group_of_links_is_left_region_empty($paragraph)
  */
 function boston_preprocess_paragraphs_item_group_of_links_list(&$variables) {
   $all_fields_empty = _boston_paragrpahs_item_group_of_links_is_left_region_empty($variables['paragraphs_item']);
+  $variables['call_to_action'] = bos_core_field_get_call_to_action('paragraphs_item', $variables['paragraphs_item'], 'field_link');
 
   // Let the template know the status of the left region.
   $variables['left_region_is_empty'] = ($all_fields_empty) ? TRUE : FALSE;
@@ -866,6 +877,7 @@ function boston_preprocess_paragraphs_item_group_of_links_list(&$variables) {
  */
 function boston_preprocess_paragraphs_item_group_of_links_grid(&$variables) {
   $all_fields_empty = _boston_paragrpahs_item_group_of_links_is_left_region_empty($variables['paragraphs_item']);
+  $variables['call_to_action'] = bos_core_field_get_call_to_action('paragraphs_item', $variables['paragraphs_item'], 'field_link');
 
   // Let the template know the status of the left region.
   $variables['left_region_is_empty'] = ($all_fields_empty) ? TRUE : FALSE;
