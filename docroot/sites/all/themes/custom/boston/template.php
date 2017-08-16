@@ -611,6 +611,16 @@ function boston_preprocess_node(array &$variables, $hook) {
   }
 }
 
+function boston_preprocess_paragraphs_item_news_announcements(&$variables) {
+  // Get the call to action.
+  $variables['call_to_action'] = bos_core_field_get_call_to_action('paragraphs_item', $variables['paragraphs_item'], 'field_link');
+}
+
+function boston_preprocess_paragraphs_item_upcoming_events(&$variables) {
+  // Get the call to action.
+  $variables['call_to_action'] = bos_core_field_get_call_to_action('paragraphs_item', $variables['paragraphs_item'], 'field_link');
+}
+
 function boston_preprocess_paragraphs_item_newsletter(&$variables) {
   $variables['newsletter_url'] = variable_get('newsletter_url', 'https://www.boston.gov');
 }
@@ -856,6 +866,7 @@ function _boston_paragrpahs_item_group_of_links_is_left_region_empty($paragraph)
  */
 function boston_preprocess_paragraphs_item_group_of_links_list(&$variables) {
   $all_fields_empty = _boston_paragrpahs_item_group_of_links_is_left_region_empty($variables['paragraphs_item']);
+  $variables['call_to_action'] = bos_core_field_get_call_to_action('paragraphs_item', $variables['paragraphs_item'], 'field_link');
 
   // Let the template know the status of the left region.
   $variables['left_region_is_empty'] = ($all_fields_empty) ? TRUE : FALSE;
@@ -866,6 +877,7 @@ function boston_preprocess_paragraphs_item_group_of_links_list(&$variables) {
  */
 function boston_preprocess_paragraphs_item_group_of_links_grid(&$variables) {
   $all_fields_empty = _boston_paragrpahs_item_group_of_links_is_left_region_empty($variables['paragraphs_item']);
+  $variables['call_to_action'] = bos_core_field_get_call_to_action('paragraphs_item', $variables['paragraphs_item'], 'field_link');
 
   // Let the template know the status of the left region.
   $variables['left_region_is_empty'] = ($all_fields_empty) ? TRUE : FALSE;
@@ -1159,6 +1171,23 @@ function boston_preprocess_node_topic_page(array &$variables) {
       $variables['nav_links'] = $nav_links;
     }
   }
+}
+
+/**
+ * Implements hook_preprocess_node_BUNDLE().
+ */
+function boston_preprocess_node_transaction(array &$variables) {
+  $link_id = bos_core_field_get_first_item('node', $variables['node'], 'field_link')['value'];
+
+  if ($link_id) {
+    // Load the link references
+    $link = paragraphs_item_load($link_id);
+
+    // Return the url
+    $url = bos_core_field_get_link_url($link);
+  }
+
+  $variables['transaction_url'] = $url;
 }
 
 /**
@@ -1522,12 +1551,12 @@ function boston_form_alter(&$form, $form_state, $form_id) {
         '#value' => t('Submit'),
         '#attributes' => array(
           'class' => array(
-            'bos-search-submit',
+            'sf-i-b',
           ),
         ),
       );
-      $form['title']['#attributes']['class'][] = 'bos-search-field';
-      $form['#attributes']['class'][] = 'bos-search-form bos-search-form--in-page';
+      $form['title']['#attributes']['class'][] = 'sf-i-f';
+      $form['#attributes']['class'][] = 'sf';
       $form['title']['#attributes']['title'] = 'Search';
     }
 
@@ -1747,6 +1776,11 @@ function boston_preprocess_paragraphs_item_list(&$variables) {
     $class_name = 'view-' . preg_replace('/[|_]/', '-', $vname[0]['vname']);
     $variables['classes_array'][] = $class_name;
   }
+
+  $theme = bos_core_field_get_first_item('paragraphs_item', $variables['paragraphs_item'], 'field_component_theme')['value'];
+
+  $variables['component_theme'] = isset($theme) ? $theme : 'w';
+  $variables['section_header_theme'] = $theme === 'b' ? 'sh--w' : '';
 }
 
 /**

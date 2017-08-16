@@ -378,6 +378,22 @@ function bos_core_active_emergency() {
 }
 
 /**
+ * Get the call to action HTML.
+ */
+function bos_core_field_get_call_to_action($entity_type, $entity, $field_name) {
+  $call_to_action_id = bos_core_field_get_first_item($entity_type, $entity, $field_name)['value'];
+
+  if ($call_to_action_id) {
+    $call_to_action = paragraphs_item_load($call_to_action_id);
+    $view = entity_view('paragraphs_item', array($call_to_action), 'button_link');
+    $html = render($view);
+    return $html;
+  }
+
+  return NULL;
+}
+
+/**
  * Get the first item from a field.
  */
 function bos_core_field_get_first_item($entity_type, $entity, $field_name) {
