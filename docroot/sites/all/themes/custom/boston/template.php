@@ -1779,7 +1779,7 @@ function boston_preprocess_paragraphs_item_list(&$variables) {
 
   $theme = bos_core_field_get_first_item('paragraphs_item', $variables['paragraphs_item'], 'field_component_theme')['value'];
 
-  $variables['component_theme'] = $theme;
+  $variables['component_theme'] = isset($theme) ? $theme : 'w';
   $variables['section_header_theme'] = $theme === 'b' ? 'sh--w' : '';
 }
 
