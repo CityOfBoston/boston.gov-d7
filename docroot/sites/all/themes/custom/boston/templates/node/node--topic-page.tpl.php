@@ -82,7 +82,7 @@
         <div class="sh">
           <h2 data-short-title="Departments" class="sh-title">Departments You May Need</h2>
         </div>
-        <div class="departments-wrapper">
+        <div class="g">
           <?php print render($content['field_contacts']); ?>
         </div>
         <!-- End .departments-wrapper -->

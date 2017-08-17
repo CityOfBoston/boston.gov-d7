@@ -14,7 +14,7 @@
     <div class="sh">
       <h2 data-short-title="Departments" class="sh-title"><?php print $title; ?>:</h2>
     </div>
-    <div class="departments-wrapper">
+    <div class="g">
       <?php print render($contacts); ?>
     </div>
     <!-- End .departments-wrapper -->
