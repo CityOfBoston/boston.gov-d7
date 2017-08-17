@@ -11,7 +11,7 @@
 ?>
 <section class="b b--g b--fw">
   <div class="b-c">
-    <div class="sh">
+    <div class="sh m-b500">
       <h2 data-short-title="Departments" class="sh-title"><?php print $title; ?>:</h2>
     </div>
     <div class="g">
