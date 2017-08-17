@@ -44,10 +44,8 @@
      <div class="grid-wrapper clearfix">
       <?php print render($content['field_list']); ?>
     </div>
-    <?php if (isset($content['field_link'])): ?>
-      <div class="call-to-action">
-        <?php print render($content['field_link']); ?>
-      </div>
+    <?php if (isset($call_to_action)): ?>
+      <?php print render($call_to_action); ?>
     <?php endif; ?>
   </div>
 </div>

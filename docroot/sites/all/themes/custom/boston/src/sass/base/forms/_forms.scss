@@ -63,21 +63,25 @@ input {
   &::-webkit-input-placeholder {
     color: color(input-placeholder);
     font-style: italic;
+    line-height: 1;
   }
 
   &:-moz-placeholder { /* Firefox 18- */
     color: color(input-placeholder);
     font-style: italic;
+    line-height: 1;
   }
 
   &::-moz-placeholder {  /* Firefox 19+ */
     color: color(input-placeholder);
     font-style: italic;
+    line-height: 1;
   }
 
   &:-ms-input-placeholder {
     color: color(input-placeholder);
     font-style: italic;
+    line-height: 1;
   }
 }
 
