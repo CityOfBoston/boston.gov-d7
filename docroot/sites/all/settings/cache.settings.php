@@ -21,8 +21,8 @@ if (!empty($_ENV['AH_SITE_ENVIRONMENT'])) {
       // setting this to a non-zero value as it impacts the block cache as well.
       $conf['cache_lifetime'] = 0;
 
-      // Set default cache expiration to 6 hrs.
-      $conf['page_cache_maximum_age'] = 21600;
+      // Set default cache expiration to 5 minutes.
+      $conf['page_cache_maximum_age'] = 300;
 
       $conf['block_cache'] = TRUE;
       // Allows Block to be cached on sites with hook_node_grant() implementations
