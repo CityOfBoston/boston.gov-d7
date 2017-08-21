@@ -46,6 +46,6 @@
 ?>
 
 <?php if(isset($short_title)) { ?>
-  <a name="<?php print $short_title_link; ?>" id="<?php print $short_title_link; ?>" data-text="<?php print $short_title ?>" class="subnav-anchor"></a>
+  <a name="<?php print $short_title_link; ?>" data-text="<?php print $short_title ?>" class="subnav-anchor"></a>
 <?php } ?>
 <h2 class="sh-title"><?php print render($items); ?></h2>
