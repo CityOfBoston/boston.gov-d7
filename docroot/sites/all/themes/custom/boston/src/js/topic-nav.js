@@ -91,8 +91,9 @@
         fromTop = fromTop + 100;
 
         var currentItems = scrollItems.filter(function (item) {
-          var items     = document.querySelectorAll(item)[0];
-          var itemTop  = items ? items.getBoundingClientRect().top + fromTop - 100 : 0;
+          var name    = item.replace('#', '');
+          var items   = document.querySelectorAll('[name=' + name + ']')[0];
+          var itemTop = items ? items.getBoundingClientRect().top + fromTop - 100 : 0;
 
           if (fromTop >= itemTop)
             return item;
