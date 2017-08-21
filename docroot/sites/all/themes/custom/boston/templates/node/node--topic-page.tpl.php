@@ -77,12 +77,12 @@
   ?>
 
   <?php if (isset($content['field_contacts'][0])): ?>
-    <section class="contact-departments component-section">
-      <div class="contact-departments-container container">
-        <div class="sh">
+    <section class="b b--fw b--g">
+      <div class="b-c">
+        <div class="sh m-b500">
           <h2 data-short-title="Departments" class="sh-title">Departments You May Need</h2>
         </div>
-        <div class="departments-wrapper">
+        <div class="g">
           <?php print render($content['field_contacts']); ?>
         </div>
         <!-- End .departments-wrapper -->

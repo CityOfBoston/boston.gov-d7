@@ -9,12 +9,12 @@
  * - $contacts: A renderable array for outputting all contacts.
  */
 ?>
-<section class="contact-departments component-section">
-  <div class="contact-departments-container container">
-    <div class="sh">
+<section class="b b--g b--fw">
+  <div class="b-c">
+    <div class="sh m-b500">
       <h2 data-short-title="Departments" class="sh-title"><?php print $title; ?>:</h2>
     </div>
-    <div class="departments-wrapper">
+    <div class="g">
       <?php print render($contacts); ?>
     </div>
     <!-- End .departments-wrapper -->

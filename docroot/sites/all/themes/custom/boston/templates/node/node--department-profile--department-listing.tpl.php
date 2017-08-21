@@ -80,13 +80,17 @@
  * @ingroup themeable
  */
 ?>
-<div id="node-<?php print $node->nid; ?>"
-     class="<?php print $classes; ?> contact-wrapper">
-  <a href="<?php print $node_url; ?>">
-    <div class="icon-container"><?php print render($content['field_icon']); ?></div>
-    <div class="contact-metadata">
-      <div class="title"><?php print $title; ?></div>
-      <div class="phone"><?php print render($content['field_phone_number']); ?></div>
+
+<a href="<?php print $node_url; ?>" class="cdd g--4--xxl g--6 m-b300 m-b500--xxl">
+  <div class="cdd-c">
+    <div class="cdd-ic">
+      <?php print render($content['field_icon']); ?>
     </div>
-  </a>
-</div>
+    <div class="cdd-d">
+      <div class="cdd-d-i">
+        <div class="t--sans t--upper t--cb m-b100 t--s100"><?php print $title; ?></div>
+        <div class="t--subinfo"><?php print render($content['field_phone_number']); ?></div>
+      </div>
+    </div>
+  </div>
+</a>

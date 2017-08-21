@@ -1977,7 +1977,8 @@ function boston_preprocess_field_field_component_title(&$variables) {
 
     if ($short_title !== FALSE) {
       $variables['short_title'] = $short_title[0]['safe_value'];
-      $variables['short_title_link'] = preg_replace('@[^a-z0-9-]+@','-', strtolower($short_title[0]['safe_value']));
+      $short_title_link = preg_replace('@^[0-9\s]+@','', strtolower($short_title[0]['safe_value']));
+      $variables['short_title_link'] = preg_replace('@[^a-z0-9-]+@','-', $short_title_link);
     }
   }
 }
