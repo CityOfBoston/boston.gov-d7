@@ -1,4 +1,5 @@
-.paragraphs-item-text .entity-paragraphs-item {
+.paragraphs-item-text .entity-paragraphs-item,
+.dr-c .entity-paragraphs-item:not(:last-child) {
   @extend .squiggle-border-bottom;
   overflow: auto;
   padding: 50px 0;
