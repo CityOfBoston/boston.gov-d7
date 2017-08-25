@@ -413,6 +413,15 @@ function bos_view_news_announcements_views_default_views() {
   $handler->display->display_options['relationships']['field_related_posts_target_id']['table'] = 'field_data_field_related_posts';
   $handler->display->display_options['relationships']['field_related_posts_target_id']['field'] = 'field_related_posts_target_id';
   $handler->display->display_options['relationships']['field_related_posts_target_id']['required'] = TRUE;
+  /* Relationship: Entity Reference: Referencing entity */
+  $handler->display->display_options['relationships']['reverse_field_featured_post_paragraphs_item']['id'] = 'reverse_field_featured_post_paragraphs_item';
+  $handler->display->display_options['relationships']['reverse_field_featured_post_paragraphs_item']['table'] = 'node';
+  $handler->display->display_options['relationships']['reverse_field_featured_post_paragraphs_item']['field'] = 'reverse_field_featured_post_paragraphs_item';
+  /* Relationship: Entity Reference: Referenced Entity */
+  $handler->display->display_options['relationships']['field_featured_post_target_id']['id'] = 'field_featured_post_target_id';
+  $handler->display->display_options['relationships']['field_featured_post_target_id']['table'] = 'field_data_field_featured_post';
+  $handler->display->display_options['relationships']['field_featured_post_target_id']['field'] = 'field_featured_post_target_id';
+  $handler->display->display_options['relationships']['field_featured_post_target_id']['relationship'] = 'reverse_field_featured_post_paragraphs_item';
   $handler->display->display_options['defaults']['sorts'] = FALSE;
   /* Sort criterion: Content: Published Date (field_published_date) */
   $handler->display->display_options['sorts']['field_published_date_value']['id'] = 'field_published_date_value';
@@ -430,6 +439,28 @@ function bos_view_news_announcements_views_default_views() {
   $handler->display->display_options['arguments']['nid']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['nid']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['nid']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'post' => 'post',
+  );
+  /* Filter criterion: Content: Nid */
+  $handler->display->display_options['filters']['nid']['id'] = 'nid';
+  $handler->display->display_options['filters']['nid']['table'] = 'node';
+  $handler->display->display_options['filters']['nid']['field'] = 'nid';
+  $handler->display->display_options['filters']['nid']['relationship'] = 'field_featured_post_target_id';
+  $handler->display->display_options['filters']['nid']['operator'] = 'empty';
   $export['news_announcements'] = $view;
 
   return $export;
