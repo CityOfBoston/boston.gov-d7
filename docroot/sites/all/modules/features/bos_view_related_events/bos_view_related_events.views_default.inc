@@ -448,6 +448,15 @@ function bos_view_related_events_views_default_views() {
   $handler->display->display_options['relationships']['field_place_target_id']['id'] = 'field_place_target_id';
   $handler->display->display_options['relationships']['field_place_target_id']['table'] = 'field_data_field_place';
   $handler->display->display_options['relationships']['field_place_target_id']['field'] = 'field_place_target_id';
+  /* Relationship: Entity Reference: Referencing entity */
+  $handler->display->display_options['relationships']['reverse_field_featured_item_paragraphs_item']['id'] = 'reverse_field_featured_item_paragraphs_item';
+  $handler->display->display_options['relationships']['reverse_field_featured_item_paragraphs_item']['table'] = 'node';
+  $handler->display->display_options['relationships']['reverse_field_featured_item_paragraphs_item']['field'] = 'reverse_field_featured_item_paragraphs_item';
+  /* Relationship: Entity Reference: Referenced Entity */
+  $handler->display->display_options['relationships']['field_featured_item_target_id']['id'] = 'field_featured_item_target_id';
+  $handler->display->display_options['relationships']['field_featured_item_target_id']['table'] = 'field_data_field_featured_item';
+  $handler->display->display_options['relationships']['field_featured_item_target_id']['field'] = 'field_featured_item_target_id';
+  $handler->display->display_options['relationships']['field_featured_item_target_id']['relationship'] = 'reverse_field_featured_item_paragraphs_item';
   $handler->display->display_options['defaults']['sorts'] = FALSE;
   /* Sort criterion: Content: Event Dates -  start date (field_event_dates) */
   $handler->display->display_options['sorts']['field_event_dates_value']['id'] = 'field_event_dates_value';
