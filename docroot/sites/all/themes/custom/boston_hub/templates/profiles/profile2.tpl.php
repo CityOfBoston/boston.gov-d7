@@ -135,14 +135,14 @@
           <?php if (!empty($content['field_work_phone_number'])) : ?>
             <div class="user-profile-work-phone flex-width-md">
               <label>Phone Number (Office)</label>
-              <div class="field-output"><?php print render($content['field_work_phone_number']); ?></div>
+              <div class="field-output" data-swiftype-name="job-phone"><?php print render($content['field_work_phone_number']); ?></div>
             </div>
           <?php endif ?>
         </div>
         <?php if (!empty($content['field_work_email'])) : ?>
           <div class="user-profile-work-email clearfix">
             <label>Email Address</label>
-            <div class="field-output"><?php print render($content['field_work_email']); ?></div>
+            <div class="field-output" data-swiftype-name="job-email"><?php print render($content['field_work_email']); ?></div>
           </div>
         <?php endif ?>
       <?php endif ?>
