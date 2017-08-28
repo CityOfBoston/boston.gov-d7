@@ -66,16 +66,16 @@
         <?php if (!empty($content['field_display_name'])) : ?>
           <div class="user-profile-header-display-name">
             <?php if($viewing_own) : ?>
-            <h1><?php print $display_name_text; ?></h1>
+            <h1 data-swiftype-name="title"><?php print $display_name_text; ?></h1>
             <?php else: ?>
-            <h1><?php print $display_name_text; ?></h1>
+            <h1 data-swiftype-name="title"><?php print $display_name_text; ?></h1>
             <?php endif; ?>
           </div>
         <?php endif ?>
 
 
             <?php if (!empty($content['field_position_title'])) : ?>
-          <div class="user-profile-header-position-title field-output">
+          <div class="user-profile-header-position-title field-output" data-swiftype-name="job-title">
             <?php print $job_title_text; ?>
           </div>
         <?php endif ?>
@@ -135,14 +135,14 @@
           <?php if (!empty($content['field_work_phone_number'])) : ?>
             <div class="user-profile-work-phone flex-width-md">
               <label>Phone Number (Office)</label>
-              <div class="field-output"><?php print render($content['field_work_phone_number']); ?></div>
+              <div class="field-output" data-swiftype-name="job-phone"><?php print render($content['field_work_phone_number']); ?></div>
             </div>
           <?php endif ?>
         </div>
         <?php if (!empty($content['field_work_email'])) : ?>
           <div class="user-profile-work-email clearfix">
             <label>Email Address</label>
-            <div class="field-output"><?php print render($content['field_work_email']); ?></div>
+            <div class="field-output" data-swiftype-name="job-email"><?php print render($content['field_work_email']); ?></div>
           </div>
         <?php endif ?>
       <?php endif ?>
@@ -155,13 +155,14 @@
         <?php if (!empty($content['field_contact'])) : ?>
           <div class="user-profile-department">
             <label>Department</label>
-            <div class="field-output"><?php print render($content['field_contact']); ?></div>
+            <div class="field-output" data-swiftype-name="job-department-name"><?php print $department_name ?></div>
+            <div data-swiftype-name="job-department-id" class="d-n"><?php print $department_id ?></div>
           </div>
         <?php endif ?>
         <?php if (!empty($content['field_manager'])) : ?>
           <div class="user-profile-manager clearfix">
             <label>Manager</label>
-            <div class="field-output"><?php print $manager_display_name; ?></div>
+            <div class="field-output" data-swiftype-name="job-manager"><?php print $manager_display_name; ?></div>
           </div>
         <?php endif ?>
       </div>
