@@ -4,6 +4,30 @@
  * Contains functions to alter Drupal's markup for the Boston Hub theme.
  */
 
+ /**
+  * Implements hook_preprocess_node().
+  */
+function boston_hub_preprocess_node(array &$variables) {
+  $no_type_needed = array(
+   'listing_page',
+   'landing_page',
+  );
+
+  // some content types aren't special
+  if (isset($variables['node']) && !in_array($variables['node']->type, $no_type_needed)) {
+   $type_element = array(
+     '#tag' => 'meta', // The #tag is the html tag -
+     '#attributes' => array( // Set up an array of attributes inside the tag
+       'class' => 'swiftype',
+       'name' => 'type',
+       'data-type' => 'enum',
+       'content' => $variables['node']->type,
+     ),
+   );
+   drupal_add_html_head($type_element, 'swiftype_type');
+  }
+}
+
 /**
  * Implements hook_preprocess_page().
  */
@@ -364,6 +388,14 @@ function boston_hub_preprocess_entity_profile2(&$variables, $hook) {
   // Get the user we are trying to view.
   $user = user_load($variables['profile2']->uid);
   $user_profile = profile2_load_by_user($user);
+
+  if (!empty($user_profile['main']->field_contact)) {
+    $department = taxonomy_term_load($user_profile['main']->field_contact['und'][0]['target_id']);
+    $variables["department_id"] = $department->field_department_legacy_id['und'][0]['value'];
+    $variables["department_name"] = $department->name;
+
+  }
+
   // Find the user's manager.
   if (!empty($user_profile['main']->field_manager)) {
     $manager_field = user_load($user_profile['main']->field_manager['und'][0]['target_id']);
