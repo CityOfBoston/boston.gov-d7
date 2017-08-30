@@ -232,9 +232,9 @@ function bos_metrolist_affordable_housing_default_salesforce_mapping() {
           "htmlFormatted" : false,
           "idLookup" : false,
           "inlineHelpText" : null,
-          "label" : "Neighborhood",
+          "label" : "Neighborhood (pl)",
           "length" : 255,
-          "name" : "Neighborhood__c",
+          "name" : "Neighborhood_pl__c",
           "nameField" : false,
           "namePointing" : false,
           "nillable" : true,
@@ -278,6 +278,41 @@ function bos_metrolist_affordable_housing_default_salesforce_mapping() {
             {
               "active" : true,
               "defaultValue" : false,
+              "label" : "Boston Central - Chinatown",
+              "validFor" : null,
+              "value" : "Boston Central - Chinatown"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Boston Central - Downtown Crossing",
+              "validFor" : null,
+              "value" : "Boston Central - Downtown Crossing"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Boston Central - Government Center",
+              "validFor" : null,
+              "value" : "Boston Central - Government Center"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Boston Central - North End",
+              "validFor" : null,
+              "value" : "Boston Central - North End"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Boston Central - West End",
+              "validFor" : null,
+              "value" : "Boston Central - West End"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
               "label" : "Brighton",
               "validFor" : null,
               "value" : "Brighton"
@@ -313,6 +348,76 @@ function bos_metrolist_affordable_housing_default_salesforce_mapping() {
             {
               "active" : true,
               "defaultValue" : false,
+              "label" : "Dorchester - Adams Village",
+              "validFor" : null,
+              "value" : "Dorchester - Adams Village"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Dorchester - Bowdoin \\/ Geneva",
+              "validFor" : null,
+              "value" : "Dorchester - Bowdoin \\/ Geneva"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Dorchester - Codman Square",
+              "validFor" : null,
+              "value" : "Dorchester - Codman Square"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Dorchester - Fields Corner",
+              "validFor" : null,
+              "value" : "Dorchester - Fields Corner"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Dorchester - Four Corners",
+              "validFor" : null,
+              "value" : "Dorchester - Four Corners"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Dorchester - Grove Hall",
+              "validFor" : null,
+              "value" : "Dorchester - Grove Hall"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Dorchester - Lower Mills",
+              "validFor" : null,
+              "value" : "Dorchester - Lower Mills"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Dorchester - Savin Hill",
+              "validFor" : null,
+              "value" : "Dorchester - Savin Hill"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Dorchester - St. Mark\\u0027s",
+              "validFor" : null,
+              "value" : "Dorchester - St. Mark\\u0027s"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Dorchester - Uphams Corner",
+              "validFor" : null,
+              "value" : "Dorchester - Uphams Corner"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
               "label" : "East Boston",
               "validFor" : null,
               "value" : "East Boston"
@@ -327,6 +432,13 @@ function bos_metrolist_affordable_housing_default_salesforce_mapping() {
             {
               "active" : true,
               "defaultValue" : false,
+              "label" : "Fenway",
+              "validFor" : null,
+              "value" : "Fenway"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
               "label" : "Hyde Park",
               "validFor" : null,
               "value" : "Hyde Park"
@@ -334,9 +446,51 @@ function bos_metrolist_affordable_housing_default_salesforce_mapping() {
             {
               "active" : true,
               "defaultValue" : false,
+              "label" : "Innovation District - Fort Point",
+              "validFor" : null,
+              "value" : "Innovation District - Fort Point"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Innovation District - Marine Industrial Park",
+              "validFor" : null,
+              "value" : "Innovation District - Marine Industrial Park"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Innovation District - Waterfront",
+              "validFor" : null,
+              "value" : "Innovation District - Waterfront"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
               "label" : "Jamaica Plain",
               "validFor" : null,
               "value" : "Jamaica Plain"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Jamaica Plain - Hyde\\/Jackson",
+              "validFor" : null,
+              "value" : "Jamaica Plain - Hyde\\/Jackson"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Jamaica Plain - JP Centre\\/South",
+              "validFor" : null,
+              "value" : "Jamaica Plain - JP Centre\\/South"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Kenmore",
+              "validFor" : null,
+              "value" : "Kenmore"
             },
             {
               "active" : true,
@@ -362,16 +516,16 @@ function bos_metrolist_affordable_housing_default_salesforce_mapping() {
             {
               "active" : true,
               "defaultValue" : false,
-              "label" : "North End",
+              "label" : "Multiple Locations",
               "validFor" : null,
-              "value" : "North End"
+              "value" : "Multiple Locations"
             },
             {
               "active" : true,
               "defaultValue" : false,
-              "label" : "Outside Boston",
+              "label" : "North End",
               "validFor" : null,
-              "value" : "Outside Boston"
+              "value" : "North End"
             },
             {
               "active" : true,
@@ -390,6 +544,41 @@ function bos_metrolist_affordable_housing_default_salesforce_mapping() {
             {
               "active" : true,
               "defaultValue" : false,
+              "label" : "Roxbury - Dudley Square",
+              "validFor" : null,
+              "value" : "Roxbury - Dudley Square"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Roxbury - Egleston Square",
+              "validFor" : null,
+              "value" : "Roxbury - Egleston Square"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Roxbury - Grove Hall",
+              "validFor" : null,
+              "value" : "Roxbury - Grove Hall"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Roxbury - Mission Hill",
+              "validFor" : null,
+              "value" : "Roxbury - Mission Hill"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Roxbury - Newmarket",
+              "validFor" : null,
+              "value" : "Roxbury - Newmarket"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
               "label" : "South Boston",
               "validFor" : null,
               "value" : "South Boston"
@@ -397,9 +586,23 @@ function bos_metrolist_affordable_housing_default_salesforce_mapping() {
             {
               "active" : true,
               "defaultValue" : false,
-              "label" : "South Easton",
+              "label" : "South Boston - Fort Point",
               "validFor" : null,
-              "value" : "South Easton"
+              "value" : "South Boston - Fort Point"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "South Boston - Marine Industrial Park",
+              "validFor" : null,
+              "value" : "South Boston - Marine Industrial Park"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "South Boston - Waterfront",
+              "validFor" : null,
+              "value" : "South Boston - Waterfront"
             },
             {
               "active" : true,
@@ -407,6 +610,13 @@ function bos_metrolist_affordable_housing_default_salesforce_mapping() {
               "label" : "South End",
               "validFor" : null,
               "value" : "South End"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Uncertain",
+              "validFor" : null,
+              "value" : "Uncertain"
             },
             {
               "active" : true,
@@ -421,6 +631,13 @@ function bos_metrolist_affordable_housing_default_salesforce_mapping() {
               "label" : "West Roxbury",
               "validFor" : null,
               "value" : "West Roxbury"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Outside Boston",
+              "validFor" : null,
+              "value" : "Outside Boston"
             }
           ],
           "precision" : 0,
@@ -1155,6 +1372,13 @@ function bos_metrolist_affordable_housing_default_salesforce_mapping() {
             {
               "active" : true,
               "defaultValue" : false,
+              "label" : "Nantucket",
+              "validFor" : null,
+              "value" : "Nantucket"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
               "label" : "Natick",
               "validFor" : null,
               "value" : "Natick"
@@ -1256,6 +1480,13 @@ function bos_metrolist_affordable_housing_default_salesforce_mapping() {
               "label" : "Randolph",
               "validFor" : null,
               "value" : "Randolph"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Raynham",
+              "validFor" : null,
+              "value" : "Raynham"
             },
             {
               "active" : true,
@@ -1393,6 +1624,13 @@ function bos_metrolist_affordable_housing_default_salesforce_mapping() {
             {
               "active" : true,
               "defaultValue" : false,
+              "label" : "Tewksbury",
+              "validFor" : null,
+              "value" : "Tewksbury"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
               "label" : "Topsfield",
               "validFor" : null,
               "value" : "Topsfield"
@@ -1417,6 +1655,13 @@ function bos_metrolist_affordable_housing_default_salesforce_mapping() {
               "label" : "Waltham",
               "validFor" : null,
               "value" : "Waltham"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Wareham",
+              "validFor" : null,
+              "value" : "Wareham"
             },
             {
               "active" : true,
@@ -1700,7 +1945,7 @@ function bos_metrolist_affordable_housing_default_salesforce_mapping() {
             },
             {
               "active" : true,
-              "defaultValue" : true,
+              "defaultValue" : false,
               "label" : "No answer",
               "validFor" : null,
               "value" : "No answer"
