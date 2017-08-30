@@ -32,266 +32,127 @@ function bos_view_calendar_listing_views_default_views() {
   $handler->display->display_options['exposed_form']['options']['expose_sort_order'] = FALSE;
   $handler->display->display_options['exposed_form']['options']['bef'] = array(
     'general' => array(
+      'input_required' => 0,
+      'text_input_required' => array(
+        'text_input_required' => array(
+          'value' => 'Select any filter and click on Apply to see results',
+          'format' => 'filtered_html',
+        ),
+      ),
       'allow_secondary' => 0,
       'secondary_label' => 'Advanced options',
-      'collapsible_label' => NULL,
-      'combine_rewrite' => NULL,
-      'reset_label' => NULL,
-      'bef_filter_description' => NULL,
-      'any_label' => NULL,
-      'filter_rewrite_values' => NULL,
+      'secondary_collapse_override' => '0',
     ),
     'field_event_dates_value' => array(
       'bef_format' => 'default',
       'more_options' => array(
+        'autosubmit' => 0,
         'is_secondary' => 0,
         'any_label' => '',
         'bef_filter_description' => '',
         'tokens' => array(
           'available' => array(
             0 => 'global_types',
-            'secondary_label' => NULL,
-            'collapsible_label' => NULL,
-            'combine_rewrite' => NULL,
-            'reset_label' => NULL,
-            'bef_filter_description' => NULL,
-            'any_label' => NULL,
-            'filter_rewrite_values' => NULL,
           ),
-          'secondary_label' => NULL,
-          'collapsible_label' => NULL,
-          'combine_rewrite' => NULL,
-          'reset_label' => NULL,
-          'bef_filter_description' => NULL,
-          'any_label' => NULL,
-          'filter_rewrite_values' => NULL,
         ),
         'rewrite' => array(
           'filter_rewrite_values' => '',
-          'secondary_label' => NULL,
-          'collapsible_label' => NULL,
-          'combine_rewrite' => NULL,
-          'reset_label' => NULL,
-          'bef_filter_description' => NULL,
-          'any_label' => NULL,
         ),
-        'secondary_label' => NULL,
-        'collapsible_label' => NULL,
-        'combine_rewrite' => NULL,
-        'reset_label' => NULL,
-        'filter_rewrite_values' => NULL,
+        'datepicker_options' => '',
       ),
-      'secondary_label' => NULL,
-      'collapsible_label' => NULL,
-      'combine_rewrite' => NULL,
-      'reset_label' => NULL,
-      'bef_filter_description' => NULL,
-      'any_label' => NULL,
-      'filter_rewrite_values' => NULL,
     ),
     'field_event_dates_value2' => array(
       'bef_format' => 'default',
       'more_options' => array(
+        'autosubmit' => 0,
         'is_secondary' => 0,
         'any_label' => '',
         'bef_filter_description' => '',
         'tokens' => array(
           'available' => array(
             0 => 'global_types',
-            'secondary_label' => NULL,
-            'collapsible_label' => NULL,
-            'combine_rewrite' => NULL,
-            'reset_label' => NULL,
-            'bef_filter_description' => NULL,
-            'any_label' => NULL,
-            'filter_rewrite_values' => NULL,
           ),
-          'secondary_label' => NULL,
-          'collapsible_label' => NULL,
-          'combine_rewrite' => NULL,
-          'reset_label' => NULL,
-          'bef_filter_description' => NULL,
-          'any_label' => NULL,
-          'filter_rewrite_values' => NULL,
         ),
         'rewrite' => array(
           'filter_rewrite_values' => '',
-          'secondary_label' => NULL,
-          'collapsible_label' => NULL,
-          'combine_rewrite' => NULL,
-          'reset_label' => NULL,
-          'bef_filter_description' => NULL,
-          'any_label' => NULL,
         ),
-        'secondary_label' => NULL,
-        'collapsible_label' => NULL,
-        'combine_rewrite' => NULL,
-        'reset_label' => NULL,
-        'filter_rewrite_values' => NULL,
+        'datepicker_options' => '',
       ),
-      'secondary_label' => NULL,
-      'collapsible_label' => NULL,
-      'combine_rewrite' => NULL,
-      'reset_label' => NULL,
-      'bef_filter_description' => NULL,
-      'any_label' => NULL,
-      'filter_rewrite_values' => NULL,
     ),
     'title' => array(
       'bef_format' => 'default',
       'more_options' => array(
+        'autosubmit' => 0,
         'is_secondary' => 0,
         'any_label' => '',
         'bef_filter_description' => '',
         'tokens' => array(
           'available' => array(
             0 => 'global_types',
-            'secondary_label' => NULL,
-            'collapsible_label' => NULL,
-            'combine_rewrite' => NULL,
-            'reset_label' => NULL,
-            'bef_filter_description' => NULL,
-            'any_label' => NULL,
-            'filter_rewrite_values' => NULL,
           ),
-          'secondary_label' => NULL,
-          'collapsible_label' => NULL,
-          'combine_rewrite' => NULL,
-          'reset_label' => NULL,
-          'bef_filter_description' => NULL,
-          'any_label' => NULL,
-          'filter_rewrite_values' => NULL,
         ),
         'rewrite' => array(
           'filter_rewrite_values' => '',
-          'secondary_label' => NULL,
-          'collapsible_label' => NULL,
-          'combine_rewrite' => NULL,
-          'reset_label' => NULL,
-          'bef_filter_description' => NULL,
-          'any_label' => NULL,
         ),
-        'secondary_label' => NULL,
-        'collapsible_label' => NULL,
-        'combine_rewrite' => NULL,
-        'reset_label' => NULL,
-        'filter_rewrite_values' => NULL,
       ),
-      'secondary_label' => NULL,
-      'collapsible_label' => NULL,
-      'combine_rewrite' => NULL,
-      'reset_label' => NULL,
-      'bef_filter_description' => NULL,
-      'any_label' => NULL,
-      'filter_rewrite_values' => NULL,
     ),
     'field_event_type_target_id' => array(
       'bef_format' => 'bef',
       'more_options' => array(
         'bef_select_all_none' => 0,
         'bef_collapsible' => 0,
+        'autosubmit' => 0,
         'is_secondary' => 0,
         'any_label' => '',
         'bef_filter_description' => '',
         'tokens' => array(
           'available' => array(
             0 => 'global_types',
-            'secondary_label' => NULL,
-            'collapsible_label' => NULL,
-            'combine_rewrite' => NULL,
-            'reset_label' => NULL,
-            'bef_filter_description' => NULL,
-            'any_label' => NULL,
-            'filter_rewrite_values' => NULL,
           ),
-          'secondary_label' => NULL,
-          'collapsible_label' => NULL,
-          'combine_rewrite' => NULL,
-          'reset_label' => NULL,
-          'bef_filter_description' => NULL,
-          'any_label' => NULL,
-          'filter_rewrite_values' => NULL,
         ),
         'rewrite' => array(
           'filter_rewrite_values' => '',
-          'secondary_label' => NULL,
-          'collapsible_label' => NULL,
-          'combine_rewrite' => NULL,
-          'reset_label' => NULL,
-          'bef_filter_description' => NULL,
-          'any_label' => NULL,
         ),
-        'secondary_label' => NULL,
-        'collapsible_label' => NULL,
-        'combine_rewrite' => NULL,
-        'reset_label' => NULL,
-        'filter_rewrite_values' => NULL,
       ),
-      'secondary_label' => NULL,
-      'collapsible_label' => NULL,
-      'combine_rewrite' => NULL,
-      'reset_label' => NULL,
-      'bef_filter_description' => NULL,
-      'any_label' => NULL,
-      'filter_rewrite_values' => NULL,
     ),
     'field_multiple_neighborhoods_target_id' => array(
       'bef_format' => 'bef',
       'more_options' => array(
         'bef_select_all_none' => 0,
         'bef_collapsible' => 0,
+        'autosubmit' => 0,
         'is_secondary' => 0,
         'any_label' => '',
         'bef_filter_description' => '',
         'tokens' => array(
           'available' => array(
             0 => 'global_types',
-            'secondary_label' => NULL,
-            'collapsible_label' => NULL,
-            'combine_rewrite' => NULL,
-            'reset_label' => NULL,
-            'bef_filter_description' => NULL,
-            'any_label' => NULL,
-            'filter_rewrite_values' => NULL,
           ),
-          'secondary_label' => NULL,
-          'collapsible_label' => NULL,
-          'combine_rewrite' => NULL,
-          'reset_label' => NULL,
-          'bef_filter_description' => NULL,
-          'any_label' => NULL,
-          'filter_rewrite_values' => NULL,
         ),
         'rewrite' => array(
           'filter_rewrite_values' => '',
-          'secondary_label' => NULL,
-          'collapsible_label' => NULL,
-          'combine_rewrite' => NULL,
-          'reset_label' => NULL,
-          'bef_filter_description' => NULL,
-          'any_label' => NULL,
         ),
-        'secondary_label' => NULL,
-        'collapsible_label' => NULL,
-        'combine_rewrite' => NULL,
-        'reset_label' => NULL,
-        'filter_rewrite_values' => NULL,
       ),
-      'secondary_label' => NULL,
-      'collapsible_label' => NULL,
-      'combine_rewrite' => NULL,
-      'reset_label' => NULL,
-      'bef_filter_description' => NULL,
-      'any_label' => NULL,
-      'filter_rewrite_values' => NULL,
     ),
-    'secondary_label' => NULL,
-    'collapsible_label' => NULL,
-    'combine_rewrite' => NULL,
-    'reset_label' => NULL,
-    'bef_filter_description' => NULL,
-    'any_label' => NULL,
-    'filter_rewrite_values' => NULL,
+    'field_related_departments_target_id' => array(
+      'bef_format' => 'bef',
+      'more_options' => array(
+        'bef_select_all_none' => 0,
+        'bef_collapsible' => 0,
+        'autosubmit' => 0,
+        'is_secondary' => 0,
+        'any_label' => '',
+        'bef_filter_description' => '',
+        'tokens' => array(
+          'available' => array(
+            0 => 'global_types',
+          ),
+        ),
+        'rewrite' => array(
+          'filter_rewrite_values' => '',
+        ),
+      ),
+    ),
   );
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '30';
@@ -342,6 +203,21 @@ function bos_view_calendar_listing_views_default_views() {
   $handler->display->display_options['fields']['rendered_entity']['display'] = 'view';
   $handler->display->display_options['fields']['rendered_entity']['view_mode'] = 'calendar_listing';
   $handler->display->display_options['fields']['rendered_entity']['bypass_access'] = 0;
+  /* Field: Content: Related departments */
+  $handler->display->display_options['fields']['field_related_departments']['id'] = 'field_related_departments';
+  $handler->display->display_options['fields']['field_related_departments']['table'] = 'field_data_field_related_departments';
+  $handler->display->display_options['fields']['field_related_departments']['field'] = 'field_related_departments';
+  $handler->display->display_options['fields']['field_related_departments']['label'] = '';
+  $handler->display->display_options['fields']['field_related_departments']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_related_departments']['element_type'] = '0';
+  $handler->display->display_options['fields']['field_related_departments']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_related_departments']['element_wrapper_type'] = '0';
+  $handler->display->display_options['fields']['field_related_departments']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_related_departments']['settings'] = array(
+    'link' => 0,
+  );
+  $handler->display->display_options['fields']['field_related_departments']['delta_offset'] = '0';
+  $handler->display->display_options['fields']['field_related_departments']['field_api_classes'] = TRUE;
   /* Sort criterion: Content: Event Dates -  start date (field_event_dates) */
   $handler->display->display_options['sorts']['field_event_dates_value']['id'] = 'field_event_dates_value';
   $handler->display->display_options['sorts']['field_event_dates_value']['table'] = 'field_data_field_event_dates';
@@ -440,6 +316,7 @@ function bos_view_calendar_listing_views_default_views() {
   $handler->display->display_options['filters']['field_event_type_target_id']['id'] = 'field_event_type_target_id';
   $handler->display->display_options['filters']['field_event_type_target_id']['table'] = 'field_data_field_event_type';
   $handler->display->display_options['filters']['field_event_type_target_id']['field'] = 'field_event_type_target_id';
+  $handler->display->display_options['filters']['field_event_type_target_id']['group'] = 1;
   $handler->display->display_options['filters']['field_event_type_target_id']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_event_type_target_id']['expose']['operator_id'] = 'field_event_type_target_id_op';
   $handler->display->display_options['filters']['field_event_type_target_id']['expose']['label'] = 'Event Type';
@@ -461,6 +338,7 @@ function bos_view_calendar_listing_views_default_views() {
   $handler->display->display_options['filters']['field_multiple_neighborhoods_target_id']['id'] = 'field_multiple_neighborhoods_target_id';
   $handler->display->display_options['filters']['field_multiple_neighborhoods_target_id']['table'] = 'field_data_field_multiple_neighborhoods';
   $handler->display->display_options['filters']['field_multiple_neighborhoods_target_id']['field'] = 'field_multiple_neighborhoods_target_id';
+  $handler->display->display_options['filters']['field_multiple_neighborhoods_target_id']['group'] = 1;
   $handler->display->display_options['filters']['field_multiple_neighborhoods_target_id']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_multiple_neighborhoods_target_id']['expose']['operator_id'] = 'field_multiple_neighborhoods_target_id_op';
   $handler->display->display_options['filters']['field_multiple_neighborhoods_target_id']['expose']['operator'] = 'field_multiple_neighborhoods_target_id_op';
@@ -484,6 +362,30 @@ function bos_view_calendar_listing_views_default_views() {
   $handler->display->display_options['filters']['field_city_sponsored_value']['operator'] = 'not';
   $handler->display->display_options['filters']['field_city_sponsored_value']['value'] = array(
     1 => '1',
+  );
+  $handler->display->display_options['filters']['field_city_sponsored_value']['group'] = 1;
+  /* Filter criterion: Content: Related departments (field_related_departments) */
+  $handler->display->display_options['filters']['field_related_departments_target_id']['id'] = 'field_related_departments_target_id';
+  $handler->display->display_options['filters']['field_related_departments_target_id']['table'] = 'field_data_field_related_departments';
+  $handler->display->display_options['filters']['field_related_departments_target_id']['field'] = 'field_related_departments_target_id';
+  $handler->display->display_options['filters']['field_related_departments_target_id']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_related_departments_target_id']['expose']['operator_id'] = 'field_related_departments_target_id_op';
+  $handler->display->display_options['filters']['field_related_departments_target_id']['expose']['operator'] = 'field_related_departments_target_id_op';
+  $handler->display->display_options['filters']['field_related_departments_target_id']['expose']['identifier'] = 'field_related_departments_target_id';
+  $handler->display->display_options['filters']['field_related_departments_target_id']['expose']['multiple'] = TRUE;
+  $handler->display->display_options['filters']['field_related_departments_target_id']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    11 => 0,
+    16 => 0,
+    21 => 0,
+    26 => 0,
+    31 => 0,
+    36 => 0,
+    41 => 0,
+    46 => 0,
+    51 => 0,
+    56 => 0,
   );
 
   /* Display: Listing */
