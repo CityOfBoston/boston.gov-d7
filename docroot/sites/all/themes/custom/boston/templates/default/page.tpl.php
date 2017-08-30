@@ -23,13 +23,12 @@
   <div class="nv-m-c">
     <?php print render($page['navigation']); ?>
   </div>
-  <?php print theme('nav_js'); ?>
 </nav>
 
 <div <?php if (isset($page_class)): ?>class="<?php print $page_class; ?>"<?php endif; ?> id="page">
   <header id="main-menu" class="header" role="banner" data-swiftype-index="false">
     <div class="container">
-      <label tabindex="0" for="brg-tr" class="nav-trigger" type="button" aria-label="Menu" aria-controls="navigation"  aria-expanded="false">
+      <label for="brg-tr" class="nav-trigger" type="button">
         <div class="hb">
           <div class="hb__box">
             <span class="hb__inner"></span>
