@@ -37,6 +37,10 @@ function bos_view_calendar_listing_preprocess_views_exposed_form(&$vars) {
         case 'filter-field_event_type_target_id':
           $vars['widget_groups']['event type'][$id] = $widget;
           break;
+
+        case 'filter-field_related_departments_target_id':
+          $vars['widget_groups']['department'][$id] = $widget;
+          break;
       }
     }
   }
