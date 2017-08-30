@@ -15,8 +15,6 @@ function bos_text_formats_wysiwyg_default_profiles() {
     'format' => 'filtered_html',
     'editor' => 'ckeditor',
     'settings' => array(
-      'theme' => '',
-      'language' => 'en',
       'buttons' => array(
         'default' => array(
           'Bold' => 1,
@@ -65,6 +63,9 @@ function bos_text_formats_wysiwyg_default_profiles() {
         'tabletools' => array(
           'TableTools' => 1,
         ),
+        'mediaBrowser' => array(
+          'mediaBrowser' => 1,
+        ),
         'linkit' => array(
           'linkit' => 1,
         ),
@@ -72,6 +73,8 @@ function bos_text_formats_wysiwyg_default_profiles() {
           'media' => 1,
         ),
       ),
+      'theme' => '',
+      'language' => 'en',
       'toolbarLocation' => 'top',
       'resize_enabled' => 1,
       'default_toolbar_grouping' => 1,
@@ -79,17 +82,21 @@ function bos_text_formats_wysiwyg_default_profiles() {
       'acf_mode' => 0,
       'acf_allowed_content' => '',
       'css_setting' => 'self',
+      'css_theme' => 'boston_admin',
       'css_path' => '/sites/all/themes/custom/boston/dist/css/styles.css',
       'stylesSet' => '',
       'block_formats' => 'p,address,pre,h2,h3,h4,h5,h6,div',
-      'advanced__active_tab' => 'edit-basic',
       'forcePasteAsPlainText' => 0,
+      'pasteFromWordNumberedHeadingToList' => 0,
+      'pasteFromWordPromptCleanup' => 0,
+      'pasteFromWordRemoveFontStyles' => 1,
+      'pasteFromWordRemoveStyles' => 1,
     ),
     'preferences' => array(
-      'add_to_summaries' => 1,
       'default' => 1,
-      'show_toggle' => 1,
       'user_choose' => 0,
+      'show_toggle' => 1,
+      'add_to_summaries' => 1,
       'version' => '4.5.8.c1fc9a9',
     ),
     'name' => 'formatfiltered_html',
@@ -101,8 +108,6 @@ function bos_text_formats_wysiwyg_default_profiles() {
     'format' => 'full_html',
     'editor' => 'ckeditor',
     'settings' => array(
-      'theme' => '',
-      'language' => 'en',
       'buttons' => array(
         'default' => array(
           'Bold' => 1,
@@ -158,6 +163,9 @@ function bos_text_formats_wysiwyg_default_profiles() {
         'tabletools' => array(
           'TableTools' => 1,
         ),
+        'mediaBrowser' => array(
+          'mediaBrowser' => 1,
+        ),
         'linkit' => array(
           'linkit' => 1,
         ),
@@ -165,6 +173,8 @@ function bos_text_formats_wysiwyg_default_profiles() {
           'media' => 1,
         ),
       ),
+      'theme' => '',
+      'language' => 'en',
       'toolbarLocation' => 'top',
       'resize_enabled' => 1,
       'default_toolbar_grouping' => 0,
@@ -172,17 +182,21 @@ function bos_text_formats_wysiwyg_default_profiles() {
       'acf_mode' => 0,
       'acf_allowed_content' => '',
       'css_setting' => 'self',
+      'css_theme' => 'boston_admin',
       'css_path' => '/sites/all/themes/custom/boston/dist/css/styles.css',
       'stylesSet' => '',
       'block_formats' => 'p,address,pre,h2,h3,h4,h5,h6,div',
-      'advanced__active_tab' => 'edit-basic',
       'forcePasteAsPlainText' => 0,
+      'pasteFromWordNumberedHeadingToList' => 0,
+      'pasteFromWordPromptCleanup' => 0,
+      'pasteFromWordRemoveFontStyles' => 1,
+      'pasteFromWordRemoveStyles' => 1,
     ),
     'preferences' => array(
-      'add_to_summaries' => 1,
       'default' => 1,
-      'show_toggle' => 1,
       'user_choose' => 0,
+      'show_toggle' => 1,
+      'add_to_summaries' => 1,
       'version' => '4.5.8.c1fc9a9',
     ),
     'name' => 'formatfull_html',
