@@ -663,3 +663,17 @@ function bos_profile_update_7028() {
   );
   module_enable($enabled_modules);
 }
+
+/**
+ * Update for 8/30/17.
+ */
+function bos_profile_update_7029() {
+  $enabled_modules = array(
+    'ckeditor_media',
+  );
+  module_enable($enabled_modules);
+  $disabled_modules = array(
+    'imce',
+  );
+  module_disable($disabled_modules);
+}

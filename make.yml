@@ -75,6 +75,8 @@ projects:
     version: 1.4
   chosen:
     version: 2.1
+  ckeditor_media:
+    version: 2.0-beta2
   content_access:
     version: 1.2-beta2
   context:
