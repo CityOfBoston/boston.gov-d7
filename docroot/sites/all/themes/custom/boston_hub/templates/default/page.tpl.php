@@ -25,7 +25,6 @@
   <div class="nv-m-c">
     <?php print render($page['navigation']); ?>
   </div>
-  <?php print theme('nav_js'); ?>
 </nav>
 
 <div <?php if ($page_class): ?>class="<?php print $page_class; ?>"<?php endif; ?> id="page">

@@ -22,7 +22,6 @@
   <div class="nv-m-c">
     <?php print render($page['navigation']); ?>
   </div>
-  <?php print theme('nav_js'); ?>
 </nav>
 <div class="page" id="page">
   <header id="main-menu" class="header" role="banner">
