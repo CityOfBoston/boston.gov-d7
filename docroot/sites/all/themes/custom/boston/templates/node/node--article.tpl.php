@@ -115,6 +115,7 @@ hide($content['links']);
         <?php endif; ?>
       </div>
       <?php if (isset($content['field_sidebar_components'])): ?>
+        <hr class="hr--simple" />
         <div class="list-item">
           <?php print render($content['field_sidebar_components']); ?>
         </div>

@@ -152,7 +152,7 @@ hide($content['links']);
         </div>
       <?php endif; ?>
       <div class="list-item">
-        <?php 
+        <?php
           if (isset($content['field_cost'])) {
             print render($content['field_cost']);
           } else {
@@ -194,6 +194,7 @@ hide($content['links']);
         </div>
       <?php endif; ?>
       <?php if (isset($content['field_sidebar_components'])): ?>
+        <hr class="hr--simple" />
         <?php print render($content['field_sidebar_components']); ?>
       <?php endif; ?>
     </div>

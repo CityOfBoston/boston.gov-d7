@@ -1120,7 +1120,7 @@ function boston_preprocess_node_topic_page(array &$variables) {
     $variables['attributes_array']['style'] = implode(';', $styles);
   }
   // Add some custom variables to the topic page template for listing_long.
-  if ($variables['view_mode'] == 'listing_long') {
+  if ($variables['view_mode'] == 'listing_long' || $variables['view_mode'] == 'featured_topics') {
     $lang = $variables['language'];
     $components_field = $variables['field_components'][$lang];
     $num_components = count($components_field);

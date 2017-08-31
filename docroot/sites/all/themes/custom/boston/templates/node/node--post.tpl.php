@@ -118,6 +118,7 @@ hide($content['links']);
     </div>
     <div class="column mobile-100 desktop-33-right">
       <?php if (isset($content['field_sidebar_components'])): ?>
+        <hr class="hr--simple" />
         <?php print render($content['field_sidebar_components']); ?>
       <?php endif; ?>
     </div>

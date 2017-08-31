@@ -101,9 +101,10 @@ foreach($content['field_how_to_tabs'] as $key => $array){
         </div>
         <?php endif; ?>
         <?php if (isset($content['field_sidebar_components'])): ?>
-        <div class="list-item">
-          <?php print render($content['field_sidebar_components']); ?>
-        </div>
+          <hr class="hr--simple" />
+          <div class="list-item">
+            <?php print render($content['field_sidebar_components']); ?>
+          </div>
         <?php endif; ?>
       </div><!-- end .desktop-33-right -->
       <div class="clearfix"></div>

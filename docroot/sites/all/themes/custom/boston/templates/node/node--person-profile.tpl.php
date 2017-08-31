@@ -57,6 +57,7 @@
         </div>
       <?php endif; ?>
       <?php if (isset($content['field_sidebar_components'])): ?>
+        <hr class="hr--simple" />
         <?php print render($content['field_sidebar_components']); ?>
       <?php endif; ?>
     </div>
