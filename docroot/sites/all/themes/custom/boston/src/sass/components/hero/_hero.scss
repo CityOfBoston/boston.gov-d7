@@ -72,6 +72,9 @@
     .desktop-33-right {
       margin-top: 45px;
     }
+    h1 ~ .desktop-33-right {
+      margin-top: 0px;
+    }
   }
 }
 
