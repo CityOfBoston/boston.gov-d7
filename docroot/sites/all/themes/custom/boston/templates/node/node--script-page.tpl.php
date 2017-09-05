@@ -37,7 +37,6 @@ hide($content['links']);
           </div>
         <?php endif; ?>
         <?php if (isset($content['field_sidebar_components'])): ?>
-          <hr class="hr--simple" />
           <div class="list-item foo">
             <?php print render($content['field_sidebar_components']); ?>
           </div>
