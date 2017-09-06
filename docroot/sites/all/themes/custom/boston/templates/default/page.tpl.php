@@ -25,6 +25,7 @@
   </div>
 </nav>
 
+<<<<<<< Updated upstream
 <div <?php if (isset($page_class)): ?>class="<?php print $page_class; ?>"<?php endif; ?> id="page">
   <header id="main-menu" class="header" role="banner" data-swiftype-index="false">
     <div class="container">
@@ -73,6 +74,16 @@
 
       <?php print render($page['header']); ?>
     </div>
+=======
+<div <?php if (isset($page_class)): ?>class="<?php print $page_class; ?> mn"<?php endif; ?> id="page">
+  <input type="checkbox" id="s-tr" class="s-tr" aria-hidden="true">
+  <header id="main-menu" class="h" role="banner" data-swiftype-index="false">
+    <?php print theme('burger'); ?>
+    <?php print theme('logo', $site_info); ?>
+    <?php print theme('seal', $site_info); ?>
+    <?php print theme('secondary_nav', array('secondary_menu' => $secondary_menu)); ?>
+    <?php print theme('search', array('search_form_url' => 'https://search.boston.gov')); ?>
+>>>>>>> Stashed changes
   </header>
 
   <div id="sa" data-target="<?php print $target_id; ?>" data-classes="<?php print $page_class_alert ?>" class="d--n"></div>
