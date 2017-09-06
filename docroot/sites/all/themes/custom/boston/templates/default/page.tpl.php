@@ -25,56 +25,6 @@
   </div>
 </nav>
 
-<<<<<<< Updated upstream
-<div <?php if (isset($page_class)): ?>class="<?php print $page_class; ?>"<?php endif; ?> id="page">
-  <header id="main-menu" class="header" role="banner" data-swiftype-index="false">
-    <div class="container">
-      <label for="brg-tr" class="nav-trigger" type="button">
-        <div class="hb">
-          <div class="hb__box">
-            <span class="hb__inner"></span>
-          </div>
-          <div class="hb__label">Menu</div>
-        </div>
-      </label>
-
-      <?php if ($site_name): ?>
-        <div class="lo lo--abs">
-          <div class="lo-l">
-            <a href="<?php print $front_page; ?>">
-              <img src="<?php print $asset_url ?>/images/<?php print $asset_name ?>/logo.svg?<?php print $cache_buster ?>" alt="<?php print $site_name; ?>" class="lo-i" />
-            </a>
-        		<span class="lo-t"><a href="https://www.boston.gov/mayor">Mayor Martin J. Walsh</a></span>
-          </div>
-        </div>
-      <?php endif; ?>
-
-      <a id="seal" href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" class="s">
-        <img src="<?php print $asset_url ?>/images/<?php print $asset_name ?>/seal.svg?<?php print $cache_buster ?>" alt="City of Boston Seal" class="s-i" />
-      </a>
-
-      <div class="tr">
-        <a href="#" class="tr-link">Translate</a>
-        <ul class="tr-dd">
-          <li><span class="notranslate tr-dd-link tr-dd-link--message">Loading...</span></li>
-          <li><a href="#" class="notranslate tr-dd-link" data-ln="ht">Kreyòl Ayisyen</a></li>
-          <li><a href="#" class="notranslate tr-dd-link" data-ln="pt">Portugese</a></li>
-          <li><a href="#" class="notranslate tr-dd-link" data-ln="es">Español</a></li>
-          <li><a href="#" class="notranslate tr-dd-link" data-ln="vi">Tiếng Việt</a></li>
-          <li><a href="#" class="notranslate tr-dd-link tr-dd-link--hidden" data-ln="en">English</a></li>
-        </ul>
-      </div>
-
-      <?php print theme('links__system_secondary_menu', array(
-        'links' => $secondary_menu,
-        'attributes' => array(
-          'class' => array('header-menu', 'links', 'inline', 'clearfix')
-        ),
-      )); ?>
-
-      <?php print render($page['header']); ?>
-    </div>
-=======
 <div <?php if (isset($page_class)): ?>class="<?php print $page_class; ?> mn"<?php endif; ?> id="page">
   <input type="checkbox" id="s-tr" class="s-tr" aria-hidden="true">
   <header id="main-menu" class="h" role="banner" data-swiftype-index="false">
@@ -83,7 +33,6 @@
     <?php print theme('seal', $site_info); ?>
     <?php print theme('secondary_nav', array('secondary_menu' => $secondary_menu)); ?>
     <?php print theme('search', array('search_form_url' => 'https://search.boston.gov')); ?>
->>>>>>> Stashed changes
   </header>
 
   <div id="sa" data-target="<?php print $target_id; ?>" data-classes="<?php print $page_class_alert ?>" class="d--n"></div>

@@ -30,7 +30,7 @@
             <div class="intro-title">
               <div class="intro-title-wrapper">
                 <div class="topic-title-prefix"><span></span>guide<span></span></div>
-                <h1><?php print render($title); ?></h1>
+                <h1 id="topicTitle"><?php print render($title); ?></h1>
                 <div class="topic-subhead">Last updated <?php print render($content['field_updated_date']);?></div>
               </div>
             </div><!-- End intro-title -->
