@@ -17,7 +17,6 @@
     "gulp-css-globbing": "^0.1.8",
     "gulp-debug": "^2.1.2",
     "gulp-if": "^2.0.1",
-    "gulp-image": "^3.0.0",
     "gulp-jshint": "^2.0.1",
     "gulp-load-plugins": "^1.2.4",
     "gulp-rename": "^1.2.2",
@@ -51,8 +50,5 @@
     "build:boston_hub": "gulp --hub",
     "watch": "gulp watch",
     "serve": "gulp serve"
-  },
-  "dependencies": {
-    "guetzli": "^1.0.1"
   }
 }

@@ -10,10 +10,6 @@ module.exports = function (gulp, plugins, options, util) {
                        options.boston + '/src/img/**/*.{png,jpg,jpeg,gif,svg}',
                        options.images + '/**/*.{png,jpg,jpeg,gif,svg}'
                      ])
-                     .pipe(plugins.debug({title: 'optimized images:'}))
-                     .pipe(plugins.image({
-                        guetzli: true,
-                      }))
                      .pipe(gulp.dest(options.dest + '/img'));
 
     return stream;
