@@ -50,8 +50,6 @@ before_install:
 - mysql -e 'CREATE DATABASE drupal;'
 - mysql -e 'CREATE DATABASE hub;'
 install:
-- curl -o- -L https://yarnpkg.com/install.sh | bash
-- export PATH=$HOME/.yarn/bin:$PATH
 - composer install --prefer-source
 - export PATH=$PATH:$TRAVIS_BUILD_DIR/bin
 before_script:
