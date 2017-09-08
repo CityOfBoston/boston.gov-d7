@@ -2015,12 +2015,11 @@ gulp-if@^2.0.1:
     ternary-stream "^2.0.1"
     through2 "^2.0.1"
 
-gulp-image@^2.8.0:
-  version "2.10.1"
-  resolved "https://registry.yarnpkg.com/gulp-image/-/gulp-image-2.10.1.tgz#f1b94f042fd02e599d8531eb15d953477d44ac20"
+gulp-image@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/gulp-image/-/gulp-image-3.0.0.tgz#49c71c943e96a08690aa04ff5f2b64e7e1a5e211"
   dependencies:
     exec-buffer "^3.2.0"
-    execa "^0.7.0"
     filesize "^3.5.0"
     gifsicle "^3.0.3"
     guetzli "^1.0.1"
@@ -2030,7 +2029,6 @@ gulp-image@^2.8.0:
     is-png "^1.1.0"
     is-svg "^2.1.0"
     jpeg-recompress-bin "^3.0.1"
-    jpegoptim-bin "^3.0.0"
     mozjpeg "^4.1.1"
     optipng-bin "^4.0.0"
     pngquant-bin "^3.1.0"
@@ -2706,14 +2704,6 @@ jpeg-recompress-bin@^3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/jpeg-recompress-bin/-/jpeg-recompress-bin-3.0.1.tgz#46a3e7300ccab795b1b8db27ae802c27a28333a4"
   dependencies:
-    bin-wrapper "^3.0.0"
-    logalot "^2.0.0"
-
-jpegoptim-bin@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/jpegoptim-bin/-/jpegoptim-bin-3.0.0.tgz#9f7a05d83b302bd19913decf339a9dae1bda0c2b"
-  dependencies:
-    bin-build "^2.0.0"
     bin-wrapper "^3.0.0"
     logalot "^2.0.0"
 
