@@ -40,6 +40,7 @@ function boston_hub_preprocess_page(array &$variables) {
     // otherwise set it to the username.
     if ($profile_main->field_display_name) {
       $variables['profile_name'] = field_view_field('profile2', $profile_main, 'field_display_name', 'value')['#items'][0]['safe_value'];
+      $variables['first_name'] = field_view_field('profile2', $profile_main, 'field_first_name', 'value')['#items'][0]['safe_value'];
     }
     else {
       $variables['profile_name'] = $uid->name;

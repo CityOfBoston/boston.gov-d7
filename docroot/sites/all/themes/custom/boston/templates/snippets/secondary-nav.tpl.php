@@ -3,7 +3,7 @@
     <?php if ($logged_in && $GLOBALS['theme'] == 'boston_hub'): ?>
       <li class="nv-h-l-i nv-dd">
         <input type="checkbox" name="nv-dd-tr" id="nv-tr[0]" class="nv-dd-tr">
-        <label class="nv-h-l-a nv-dd-l" for="nv-tr[0]">Hello, User</label>
+        <label class="nv-h-l-a nv-dd-l" for="nv-tr[0]"><?php if ($first_name): ?>Hello, <?php print $first_name ?><?php else: ?>My Account<?php endif; ?></label>
         <ul class="nv-dd-c">
           <li><a href="<?php print $profile_path; ?>" title="Visit my profile" class="nv-dd-c-link">Profile</a></li>
           <li><a href="<?php print $change_password_path; ?>" title="Change password" class="nv-dd-c-link">Change password</a></li>

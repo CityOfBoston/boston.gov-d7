@@ -40,6 +40,7 @@
       'change_password_path' => $change_password_path,
       'security_questions_path' => $security_questions_path,
       'logout_path' => $logout_path,
+      'first_name' => $first_name,
     )); ?>
     <?php print theme('search', array('search_form_url' => 'https://search.boston.gov')); ?>
   </header>
