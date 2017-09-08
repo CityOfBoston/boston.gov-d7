@@ -51,5 +51,8 @@
     "build:boston_hub": "gulp --hub",
     "watch": "gulp watch",
     "serve": "gulp serve"
+  },
+  "dependencies": {
+    "guetzli": "^1.0.1"
   }
 }
