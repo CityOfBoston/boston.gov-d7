@@ -14,7 +14,6 @@
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.0",
     "gulp-concat": "^2.6.0",
-    "gulp-css-globbing": "^0.1.8",
     "gulp-debug": "^2.1.2",
     "gulp-if": "^2.0.1",
     "gulp-jshint": "^2.0.1",
@@ -26,13 +25,7 @@
     "gulp-sourcemaps": "^1.6.0",
     "gulp-uglify": "^1.5.3",
     "gulp-util": "^3.0.7",
-    "jshint": "^2.9.3",
-    "kss": "^2.4.0",
-    "node-sass": "3.4.1",
-    "node-sass-import-once": "1.2.x",
-    "run-sequence": "^1.2.1",
-    "susy": "^2.2.12",
-    "typey": "1.0.0-beta.8"
+    "jshint": "^2.9.3"
   },
   "engines": {
     "node": ">=5.6.0"
