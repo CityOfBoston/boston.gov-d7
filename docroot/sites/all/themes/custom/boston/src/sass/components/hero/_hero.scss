@@ -69,15 +69,12 @@
 .node-type-public-notice .node-public-notice {
   @include respond-to(xl) {
     position: relative;
-    width: 100%;
-    padding: 45px 50px 0;
-    background-color: color(text-bg);
-  }
-  @include respond-to(xxl) {
-    width: calc(100% + 100px);
-    transform: translate(50px, 0);
-    right: 100px;
-
+    .desktop-33-right {
+      margin-top: 45px;
+    }
+    h1 ~ .desktop-33-right {
+      margin-top: 0px;
+    }
   }
 }
 

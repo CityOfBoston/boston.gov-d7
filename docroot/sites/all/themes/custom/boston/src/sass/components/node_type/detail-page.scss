@@ -18,13 +18,6 @@
 
   }
 
-  // Heading 1 .title state with-hero
-
-  .with-hero h1.title,
-  .node-public-notice h1.title {
-    margin-top: 0;
-  }
-
   .sidebar-header {
     @include type-layout(l);
     font-style: italic;
