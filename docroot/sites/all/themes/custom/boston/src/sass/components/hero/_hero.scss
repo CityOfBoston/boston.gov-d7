@@ -1,0 +1,187 @@
+// Hero Image Styles
+
+.hero-image {
+  display: none;
+  top:0;
+  height: 270px;
+  margin-bottom: 20px;
+  overflow: hidden;
+  margin-left: -1px;
+  margin-top: -54px; // Offsets spacing on .page to align hero with header.
+  z-index: 0;
+  @include respond-to(s) {
+    height: 400px;
+  }
+  @include respond-to(m) {
+    height: 460px;
+  }
+  @include respond-to(xl) {
+    display:block;
+    margin-bottom: 0;
+  }
+}
+
+// State: Listing Page / How-To Page / Tabbed Content
+// Styles compensate for overlay title used on listing and how-to pages
+.node-type-listing-page .hero-image,
+.node-type-how-to .hero-image,
+.node-type-tabbed-content .hero-image {
+  display: block;
+}
+
+// State: Topic Hero
+// Styles compensate for intro styles on Topic pages
+.node-type-topic-page .hero-image {
+  display: block;
+  border-bottom: 8px solid color(topic-hero-border);
+  @include respond-to(xl) {
+    margin-bottom: -215px;
+  }
+}
+
+.hero-image-wrapper {
+
+  @include image-overlay;
+
+  &--no-overlay {
+    &:after {
+      background-color: transparent;
+    }
+  }
+
+}
+
+.hero-image img {
+  max-width: none;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%,0);
+
+  @include respond-to(xxxl) {
+  min-width: 100%;
+
+  }
+}
+
+// .with-hero state (currently used on article and breadcrumb-wrapper)
+
+.with-hero,
+.node-type-public-notice .node-public-notice {
+  @include respond-to(xl) {
+    position: relative;
+    .desktop-33-right {
+      margin-top: 45px;
+    }
+    h1 ~ .desktop-33-right {
+      margin-top: 0px;
+    }
+  }
+}
+
+.node-type-program-initiative-profile {
+  .title {
+    position: relative;
+    z-index: 20;
+  }
+}
+
+// Hero Overlay Header (currently used on listing, how-to and tabbed-content pages)
+
+.title-wrapper {
+  position: absolute;
+  top: 66px;
+  left: 0;
+  width: 100%;
+  z-index: 2;
+  height: 177px;
+  margin: 39px 0;
+
+  @include respond-to(s) {
+    height: 307px;
+  }
+
+  @include respond-to(m) {
+    height: 367px;
+  }
+
+  @include respond-to(xl) {
+    height: 232px;
+  }
+
+  .title-inner-wrapper {
+    @extend .container;
+    transform: translateY(-50%);
+    top: 50%;
+    position: relative;
+    text-align: center;
+
+    & p {
+      line-height: 1.44;
+    }
+
+    & p:last-of-type {
+      margin-bottom: 0;
+    }
+
+    & .supporting-text {
+      padding-bottom: 0.25rem;
+    }
+  }
+
+  .intro-text {
+    max-width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    @include respond-to(xl) {
+      max-width: 980px;
+    }
+
+    & p:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+}
+
+h1.title-with-hero {
+  width: 100%;
+  color: white;
+  padding: 0;
+  margin: 0 0 1rem;
+  display: block;
+}
+
+// H1 sizes excluded from Tabbed Content nodes,
+// which use the default H1 styles for the Hub H1s.
+body:not(.node-type-tabbed-content) h1.title-with-hero {
+  @include type-layout(xl, 45px);
+  @include respond-to(m) {
+    @include type-layout(xxl, 75px);
+  }
+}
+
+// Overrides for How To and Tabbed Content Node Types
+.node-type-how-to, .node-type-tabbed-content  {
+
+  .hero-image-wrapper {
+      height: 100%;
+      width: 100%;
+  }
+
+  .hero-image img {
+    background-color: color(how-to-hero-bg);
+    min-height: 100%;
+    min-width: 100%;
+    width: auto;
+    height: 100%;
+    @include respond-to(xxl) {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  .title-wrapper {
+    @include respond-to(xl) {
+      height: 313px;
+    }
+  }
+}
