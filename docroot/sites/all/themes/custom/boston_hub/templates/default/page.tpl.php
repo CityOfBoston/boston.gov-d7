@@ -27,78 +27,22 @@
   </div>
 </nav>
 
-<div <?php if ($page_class): ?>class="<?php print $page_class; ?>"<?php endif; ?> id="page">
-  <header class="header" role="banner">
-    <div class="header-container">
-
-      <label for="brg-tr" class="nav-trigger" type="button" aria-label="Menu" aria-controls="navigation" aria-expanded="false">
-        <div class="hb">
-          <div class="hb__box">
-            <div class="hb__inner"></div>
-          </div>
-          <div class="hb__label">Menu</div>
-        </div>
-      </label>
-
-      <?php if ($site_name): ?>
-        <div class="lo lo--abs">
-          <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" class="lo-l">
-            <img src="<?php print $asset_url ?>/images/<?php print $asset_name ?>/logo.svg?<?php print $cache_buster ?>" alt="<?php print $site_name; ?>" class="lo-i" />
-          </a>
-        </div>
-      <?php endif; ?>
-
-      <a id="seal" href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" class="s">
-        <img src="<?php print $asset_url ?>/images/<?php print $asset_name ?>/seal.svg?<?php print $cache_buster ?>" alt="City of Boston Seal" class="s-i" />
-      </a>
-
-      <div class="header-right">
-        <?php print theme('links__system_secondary_menu', array(
-          'links' => $secondary_menu,
-          'attributes' => array(
-            'class' => array('header-menu', 'links', 'inline', 'clearfix'),
-          ),
-        )); ?>
-        <?php if ($logged_in): ?>
-          <div class="user_info">
-            <input type="checkbox" id="dd__menu__box" class="dd__input">
-            <div class="dd" aria-expanded="false">
-              <label class="dd__trigger user-menu-trigger" for="dd__menu__box">
-                <span id="menu-link" aria-haspopup="true" aria-owns="menu-translation">
-                  <div class="avatar-wrapper" style="background-image: url(<?php print $asset_url ?>/images/hub/icons/avatar.svg)">User Menu</div>
-                </span>
-              </label>
-              <div class="dd__menu menu-user" id="menu-user" role="group" aria-labelledby="menu-link">
-                <ul>
-                  <li>
-                    <a href="<?php print $profile_path; ?>" title="Visit my profile">
-                      My Profile
-                    </a>
-                  </li>
-                  <li>
-                    <a href="<?php print $change_password_path; ?>" title="Change password">
-                      Change password
-                    </a>
-                  </li>
-                  <li>
-                    <a href="<?php print $security_questions_path; ?>" title="Security questions">
-                      Security questions
-                    </a>
-                  </li>
-                  <li>
-                    <a href="<?php print $logout_path; ?>" title="log out">
-                      Log Out
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        <?php endif; ?>
-        <?php print render($page['header']); ?>
-      </div>
-
-    </div>
+<div class="<?php if ($page_class): ?><?php print $page_class; ?> <?php endif; ?>mn" id="page">
+  <input type="checkbox" id="s-tr" class="s-tr" aria-hidden="true">
+  <header id="main-menu" class="h" role="banner" data-swiftype-index="false">
+    <?php print theme('burger'); ?>
+    <?php print theme('logo', $site_info); ?>
+    <?php print theme('seal', $site_info); ?>
+    <?php print theme('secondary_nav', array(
+      'secondary_menu' => $nav_menu,
+      'asset_url' => $asset_url,
+      'profile_path' => $profile_path,
+      'change_password_path' => $change_password_path,
+      'security_questions_path' => $security_questions_path,
+      'logout_path' => $logout_path,
+      'first_name' => $first_name,
+    )); ?>
+    <?php print theme('search', array('search_form_url' => 'https://search.boston.gov')); ?>
   </header>
 
   <div id="sa" data-target="<?php print $target_id; ?>" data-classes="<?php print $page_class_alert ?>" class="d--n"></div>

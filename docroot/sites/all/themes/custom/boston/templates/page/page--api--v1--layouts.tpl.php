@@ -23,49 +23,14 @@
     <?php print render($page['navigation']); ?>
   </div>
 </nav>
-<div class="page" id="page">
-  <header id="main-menu" class="header" role="banner">
-    <div class="container">
-      <label tabindex="0" for="brg-tr" class="nav-trigger" type="button" aria-label="Menu" aria-controls="navigation"  aria-expanded="false">
-        <div class="hb">
-          <span class="hb__box">
-            <span class="hb__inner"></span>
-          </span>
-          <span class="hb__label">Menu</span>
-        </div>
-      </label>
-      <?php if ($site_name): ?>
-        <div class="lo lo--abs">
-          <div class="lo-l">
-            <a href="https://www.boston.gov" class="lo-l">
-              <img src="<?php print $asset_url ?>/images/public/logo.svg" alt="City of Boston" class="lo-i" />
-            </a>
-            <span class="lo-t"><a href="https://www.boston.gov/mayor">Mayor Martin J. Walsh</a></span>
-          </div>
-        </div>
-      <?php endif; ?>
-      <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" class="s">
-        <img src="<?php print $asset_url ?>/images/<?php print $asset_name ?>/seal.svg?<?php print $cache_buster ?>" alt="City of Boston Seal" class="s-i" />
-      </a>
-      <div class="tr">
-        <a href="#" class="tr-link">Translate</a>
-        <ul class="tr-dd">
-          <li><span class="notranslate tr-dd-link tr-dd-link--message">Loading...</span></li>
-          <li><a href="#" class="notranslate tr-dd-link" data-ln="ht">Kreyòl Ayisyen</a></li>
-          <li><a href="#" class="notranslate tr-dd-link" data-ln="pt">Portugese</a></li>
-          <li><a href="#" class="notranslate tr-dd-link" data-ln="es">Español</a></li>
-          <li><a href="#" class="notranslate tr-dd-link" data-ln="vi">Tiếng Việt</a></li>
-          <li><a href="#" class="notranslate tr-dd-link tr-dd-link--hidden" data-ln="en">English</a></li>
-        </ul>
-      </div>
-      <?php print theme('links__system_secondary_menu', array(
-        'links' => $secondary_menu,
-        'attributes' => array(
-          'class' => array('header-menu', 'links', 'inline', 'clearfix')
-        ),
-      )); ?>
-      <?php print render($page['header']); ?>
-    </div>
+<div class="page mn" id="page">
+  <input type="checkbox" id="s-tr" class="s-tr" aria-hidden="true">
+  <header id="main-menu" class="h" role="banner" data-swiftype-index="false">
+    <?php print theme('burger'); ?>
+    <?php print theme('logo', $site_info); ?>
+    <?php print theme('seal', $site_info); ?>
+    <?php print theme('search', array('search_form_url' => 'https://search.boston.gov')); ?>
+    <?php print render($page['header']); ?>
   </header>
   <?php
   /**
