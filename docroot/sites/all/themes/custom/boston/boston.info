@@ -50,9 +50,6 @@ stylesheets[all][] = system.theme.css
 stylesheets[all][] = comment.css
 stylesheets[all][] = node.css
 
-; Then we add our own stylesheet.
-; stylesheets[all][] = dist/css/styles.css
-
 ; If you wish to use conditional stylesheets, you should install the
 ; conditional stylesheets module: https://drupal.org/project/conditional_styles
 ; Alternatively, Thunder adds conditional-comment-included classes to the html
