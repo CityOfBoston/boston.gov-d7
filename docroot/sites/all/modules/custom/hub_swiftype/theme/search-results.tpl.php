@@ -1,4 +1,8 @@
 <?php
+  /**
+   * @file
+   * Library for connecting to Swiftype.
+   */
   $info = $results['body']->info;
   $search_term = $info->page->query;
   $has_results = $info->page->total_result_count > 0;

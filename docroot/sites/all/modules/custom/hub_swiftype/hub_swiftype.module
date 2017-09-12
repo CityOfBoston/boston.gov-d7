@@ -15,7 +15,6 @@ function hub_swiftype_menu() {
 
   // The path that the endpoint will be registered to.
   $items['swiftype'] = array(
-    'title' => 'Search',
     // The name of the function called when the path is accessed.
     'page callback' => 'hub_swiftype_search_page_callback',
     // Set this value to TRUE to allow access to any user.
@@ -47,10 +46,11 @@ function hub_swiftype_search_page_callback() {
         ),
       ),
     ));
-  } else {
+  }
+  else {
     $results = NULL;
   }
-
+  
   return theme('hub_swiftype_search_results', array(
     'results' => $results,
     'range'   => hub_swiftype_page_range($results['body']->info->page),
@@ -61,7 +61,7 @@ function hub_swiftype_search_page_callback() {
 /**
  * Implements hub_swiftype_theme().
  */
-function hub_swiftype_theme(){
+function hub_swiftype_theme() {
   return array(
     'hub_swiftype_search_results' => array(
       'template' => 'theme/search-results',
