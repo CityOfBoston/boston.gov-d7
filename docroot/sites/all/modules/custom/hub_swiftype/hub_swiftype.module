@@ -14,14 +14,14 @@ function hub_swiftype_menu() {
   $items = array();
 
   // The path that the endpoint will be registered to.
-  $items['swiftype'] = array(
+  $items['search'] = array(
+    'title' => 'Search',
     // The name of the function called when the path is accessed.
     'page callback' => 'hub_swiftype_search_page_callback',
     // Set this value to TRUE to allow access to any user.
     'access callback' => TRUE,
     // Declare this as a simple registered path.
     'type' => MENU_CALLBACK,
-    'delivery callback' => 'hub_swiftype_deliver_page',
   );
 
   // Return the $items array to register the path.
@@ -50,7 +50,7 @@ function hub_swiftype_search_page_callback() {
   else {
     $results = NULL;
   }
-  
+
   return theme('hub_swiftype_search_results', array(
     'results' => $results,
     'range'   => hub_swiftype_page_range($results['body']->info->page),
@@ -72,13 +72,6 @@ function hub_swiftype_theme() {
       ),
     ),
   );
-}
-
-/**
- * Implements hub_swiftype_deliver_page().
- */
-function hub_swiftype_deliver_page($page_callback_result) {
-  print render($page_callback_result);
 }
 
 /**

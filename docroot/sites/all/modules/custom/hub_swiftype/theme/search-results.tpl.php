@@ -35,8 +35,8 @@
                   <div class="m-b300">
                     <?php foreach ($facets as $key => $facet) { ?>
                       <?php if (hub_swiftype_facet_type($key)) { ?>
-                        <label class="cb" for="facet_documents">
-                          <input type="checkbox" name="facet[]" id="facet_documents" value="<?php print $key ?>" class="cb-f" <?php if(in_array($key, $selected_facets)) { ?>checked<?php } ?>>
+                        <label class="cb" for="check_<?php print $key ?>">
+                          <input type="checkbox" name="facet[]" id="check_<?php print $key ?>" value="<?php print $key ?>" class="cb-f" <?php if(in_array($key, $selected_facets)) { ?>checked<?php } ?>>
                           <span class="cb-l"><?php print hub_swiftype_facet_type($key) ?> (<?php print $facet ?>)</span>
                         </label>
                       <?php } ?>

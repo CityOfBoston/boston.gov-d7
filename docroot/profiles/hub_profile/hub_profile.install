@@ -407,6 +407,5 @@ function hub_profile_update_7020() {
   $enabled_modules = array(
     'hub_swiftype',
   );
-  module_disable($disabled_modules);
   module_enable($enabled_modules);
 }
