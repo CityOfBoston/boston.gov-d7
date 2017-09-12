@@ -1,31 +1,39 @@
 <?php
 
+/**
+ * @file
+ * Library for connecting to Swiftype
+ */
+
 require 'lib/swiftype.php';
 
 /**
- * @file
- * Defines the towing lookup form for boston.gov.
+ * Implements hub_swiftype_menu().
+ *
  */
-
 function hub_swiftype_menu() {
   $items = array();
 
-  // The path that the endpoint will be registered to
+  // The path that the endpoint will be registered to.
   $items['swiftype'] = array(
     'title' => 'Search',
-    // The name of the function called when the path is accessed
+    // The name of the function called when the path is accessed.
     'page callback' => 'hub_swiftype_search_page_callback',
-    // Set this value to TRUE to allow access to any user
+    // Set this value to TRUE to allow access to any user.
     'access callback' => TRUE,
-    // Declare this as a simple registered path
+    // Declare this as a simple registered path.
     'type' => MENU_CALLBACK,
     'delivery callback' => 'hub_swiftype_deliver_page',
   );
 
-  // Return the $items array to register the path
+  // Return the $items array to register the path.
   return $items;
 }
 
+/**
+ * Implements hub_swiftype_search_page_callback().
+ *
+ */
 function hub_swiftype_search_page_callback() {
   $params = drupal_get_query_parameters();
 
@@ -52,6 +60,10 @@ function hub_swiftype_search_page_callback() {
   ));
 }
 
+/**
+ * Implements hub_swiftype_theme().
+ *
+ */
 function hub_swiftype_theme(){
   return array(
     'hub_swiftype_search_results' => array(
@@ -65,10 +77,18 @@ function hub_swiftype_theme(){
   );
 }
 
+/**
+ * Implements hub_swiftype_deliver_page().
+ *
+ */
 function hub_swiftype_deliver_page($page_callback_result) {
   print render($page_callback_result);
 }
 
+/**
+ * Implements hub_swiftype_page_range().
+ *
+ */
 function hub_swiftype_page_range($info) {
   $start = 1;
   $end = 5;
@@ -85,6 +105,10 @@ function hub_swiftype_page_range($info) {
   return range($start, $end);
 }
 
+/**
+ * Implements hub_swiftype_facet_type().
+ *
+ */
 function hub_swiftype_facet_type($type) {
   $facets = array(
     'department_profile' => 'Departments',
