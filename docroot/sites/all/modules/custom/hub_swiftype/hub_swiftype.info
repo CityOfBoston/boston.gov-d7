@@ -1,0 +1,5 @@
+name = Hub Swiftype
+description = Connects the Hub to Swiftype
+version = 1.0.0
+core = 7.x
+files[] = hub_swiftype.module
