@@ -40,6 +40,7 @@ function boston_hub_preprocess_page(array &$variables) {
     // otherwise set it to the username.
     if ($profile_main->field_display_name) {
       $variables['profile_name'] = field_view_field('profile2', $profile_main, 'field_display_name', 'value')['#items'][0]['safe_value'];
+      $variables['first_name'] = field_view_field('profile2', $profile_main, 'field_first_name', 'value')['#items'][0]['safe_value'];
     }
     else {
       $variables['profile_name'] = $uid->name;
@@ -150,6 +151,18 @@ function boston_hub_preprocess_page(array &$variables) {
 
   $variables['page_class'] = $page_class;
   $variables['page_class_alert'] = $page_class_alert;
+
+  // Only show logged in menu items
+  $nav_menu = array();
+  foreach ($variables['secondary_menu'] as $key => $menu) {
+    if ($variables['logged_in'] && $menu['title'] != 'Log In') {
+      $nav_menu[] = $menu;
+    } else if (!$variables['logged_in'] && $menu['title'] == 'Log In') {
+      $nav_menu[] = $menu;
+    }
+  }
+
+  $variables['nav_menu'] = $nav_menu;
 }
 
 /**

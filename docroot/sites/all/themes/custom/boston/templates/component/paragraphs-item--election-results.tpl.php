@@ -41,6 +41,25 @@
     word-break: break-all;
   }
 
+  .table-1 {
+    font-style: italic;
+    font-weight: bold;
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+    word-break: break-all;
+    margin: 0;
+  }
+
+  .table-1 td {
+    display: block;
+    text-align: left;
+  }
+
+  .table-2 {
+    margin-top: 0;
+  }
+
   .table-results table tr td:first-child {
     font-style: italic;
     font-weight: bold;
@@ -106,17 +125,17 @@
     var sourceLink = document.getElementById('sourceLink');
 
     function removeBR() {
-      for (var i = 0; i < container.childNodes.length; i++) {
-        if (container.childNodes[i].nodeName == 'BR') {
-          container.removeChild(container.childNodes[i]);
-        }
+      var brs = document.querySelectorAll('#resultsContainer br');
+
+      for (var i = 0; i < brs.length; i++) {
+        brs[i].parentNode.removeChild(brs[i]);
       }
     }
 
     function tagTables() {
       for (var i = 0; i < container.childNodes.length; i++) {
         if (container.childNodes[i].nodeName == 'TABLE') {
-          if (i > 1) {
+          if (i > 0) {
             container.childNodes[i].className = 'table-results table-' + i;
           }
         }
@@ -162,8 +181,19 @@
       }
     }
 
+    function setLastUpdated() {
+      var lastUpdated = document.querySelectorAll('#resultsContainer > table:first-child tr:first-child table tr:first-child td:last-child')[0];
+      var dateContainer = document.querySelectorAll('.date-display-single')[0];
+      var lastUpdated = new Date(lastUpdated.innerHTML);
+
+      if (lastUpdated) {
+        dateContainer.innerHTML = lastUpdated.getMonth() + 1 + '/' + lastUpdated.getDay() + '/' + lastUpdated.getFullYear() + ' at ' + lastUpdated.getHours() + ':' + (lastUpdated.getMinutes()<10?'0':'') + lastUpdated.getMinutes();
+      }
+    }
+
     function cleanupResults() {
       removeBR();
+      setLastUpdated();
       tagTables();
       fixHeader();
       setTotalBar();

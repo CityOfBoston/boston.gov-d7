@@ -32,10 +32,8 @@ options.paths = {
   boston: options.default_path,
   dest: theme_path + "/dist",
   ie: theme_path + "/src/ie",
-  images: theme_path + "/src/img",
   scripts: theme_path + "/src/js",
   scripts_vendor: theme_path + "/src/vendor-js",
-  styles: theme_path + "/src/sass",
   theme_path: theme_path
 }
 
@@ -47,45 +45,27 @@ function getTask(task) {
 // Tasks!
 // -----------------------
 
-// Cleanliness is next to godliness
-gulp.task('clean', ['clean:css', 'clean:styleguide']);
-gulp.task('clean:css', getTask('clean_css'));
-gulp.task('clean:styleguide', getTask('clean_styleguide'));
-
 // Javascript tasks
 gulp.task('scripts', getTask('scripts'));
 gulp.task('scripts:iframe', getTask('scripts_iframe'));
 
-// Style tasks
-gulp.task('ie', getTask('ie'));
-gulp.task('styles', ['clean:css'], getTask('styles'));
-gulp.task('styles:production', ['clean:css'], getTask('styles_production'));
-gulp.task('styles:styleguide', ['clean:css'], getTask('styles_styleguide'));
-
-// Build the styleguide
-gulp.task('styleguide', ['clean:styleguide', 'styleguide:markup', 'styles:styleguide'], getTask('styleguide'));
-gulp.task('styleguide:markup', getTask('styleguide_markup'));
-
 // Lint tasks
 gulp.task('lint', ['lint:js']);
 gulp.task('lint:js', getTask('lint_scripts'));
-gulp.task('lint:sass', getTask('lint_sass'));
 
 // Optimize images
 gulp.task('images', getTask('images'));
 
 // Watch tasks
-gulp.task('watch', ['build','watch:ie','watch:js','watch:styles','watch:styleguide']);
+gulp.task('watch', ['build','watch:ie','watch:js']);
 gulp.task('watch:ie', getTask('watch_ie'));
 gulp.task('watch:js', getTask('watch_scripts'));
-gulp.task('watch:styles', getTask('watch_styles'));
-gulp.task('watch:styleguide', getTask('watch_styleguide'));
 
 // Serve
-gulp.task('serve', ['styles', 'styles:styleguide'], getTask('serve'));
+gulp.task('serve', getTask('serve'));
 
 // Build
-gulp.task('build', ['styles:production', 'images', 'styleguide', 'scripts', 'scripts:iframe', 'ie'], function (cb) {
+gulp.task('build', ['images', 'scripts', 'scripts:iframe'], function (cb) {
   // Run linting last, otherwise its output gets lost.
   runSequence(['lint'], cb);
 });
