@@ -25,6 +25,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
   <?php endif; ?>
 
+  <?php print $styles; ?>
   <?php print $scripts; ?>
 
   <!--[if IE 9]>
