@@ -2,14 +2,13 @@
 
 /**
  * @file
- * Library for connecting to Swiftype
+ * Library for connecting to Swiftype.
  */
 
 require 'lib/swiftype.php';
 
 /**
  * Implements hub_swiftype_menu().
- *
  */
 function hub_swiftype_menu() {
   $items = array();
@@ -32,7 +31,6 @@ function hub_swiftype_menu() {
 
 /**
  * Implements hub_swiftype_search_page_callback().
- *
  */
 function hub_swiftype_search_page_callback() {
   $params = drupal_get_query_parameters();
@@ -44,9 +42,9 @@ function hub_swiftype_search_page_callback() {
       'per_page' => 10,
       'page' => $params['page'] ? $params['page'] : 1,
       'facets' => array(
-        'page' => array (
-          'type'
-        )
+        'page' => array(
+          'type',
+        ),
       ),
     ));
   } else {
@@ -62,7 +60,6 @@ function hub_swiftype_search_page_callback() {
 
 /**
  * Implements hub_swiftype_theme().
- *
  */
 function hub_swiftype_theme(){
   return array(
@@ -79,7 +76,6 @@ function hub_swiftype_theme(){
 
 /**
  * Implements hub_swiftype_deliver_page().
- *
  */
 function hub_swiftype_deliver_page($page_callback_result) {
   print render($page_callback_result);
@@ -87,7 +83,6 @@ function hub_swiftype_deliver_page($page_callback_result) {
 
 /**
  * Implements hub_swiftype_page_range().
- *
  */
 function hub_swiftype_page_range($info) {
   $start = 1;
@@ -107,7 +102,6 @@ function hub_swiftype_page_range($info) {
 
 /**
  * Implements hub_swiftype_facet_type().
- *
  */
 function hub_swiftype_facet_type($type) {
   $facets = array(
@@ -118,5 +112,5 @@ function hub_swiftype_facet_type($type) {
     'topic_page' => 'Guides',
   );
 
-  return $facets[$type] ? $facets[$type] : false;
+  return $facets[$type] ? $facets[$type] : FALSE;
 }

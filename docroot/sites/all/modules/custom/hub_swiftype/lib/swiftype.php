@@ -4,6 +4,8 @@
  * Library for connecting to Swiftype
  */
 
+// @codingStandardsIgnoreFile
+
 namespace Swiftype;
 
 class SwiftypeClient
