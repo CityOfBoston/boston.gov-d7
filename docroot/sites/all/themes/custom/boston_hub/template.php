@@ -4,30 +4,6 @@
  * Contains functions to alter Drupal's markup for the Boston Hub theme.
  */
 
- /**
-  * Implements hook_preprocess_node().
-  */
-function boston_hub_preprocess_node(array &$variables) {
-  $no_type_needed = array(
-   'listing_page',
-   'landing_page',
-  );
-
-  // some content types aren't special
-  if (isset($variables['node']) && !in_array($variables['node']->type, $no_type_needed)) {
-   $type_element = array(
-     '#tag' => 'meta', // The #tag is the html tag -
-     '#attributes' => array( // Set up an array of attributes inside the tag
-       'class' => 'swiftype',
-       'name' => 'type',
-       'data-type' => 'enum',
-       'content' => $variables['node']->type,
-     ),
-   );
-   drupal_add_html_head($type_element, 'swiftype_type');
-  }
-}
-
 /**
  * Implements hook_preprocess_page().
  */
@@ -163,6 +139,25 @@ function boston_hub_preprocess_page(array &$variables) {
   }
 
   $variables['nav_menu'] = $nav_menu;
+
+  $no_type_needed = array(
+   'listing_page',
+   'landing_page',
+  );
+
+  // some content types aren't special
+  if (isset($variables['node']) && !in_array($variables['node']->type, $no_type_needed)) {
+   $type_element = array(
+     '#tag' => 'meta', // The #tag is the html tag -
+     '#attributes' => array( // Set up an array of attributes inside the tag
+       'class' => 'swiftype',
+       'name' => 'type',
+       'data-type' => 'enum',
+       'content' => $variables['node']->type,
+     ),
+   );
+   drupal_add_html_head($type_element, 'swiftype_type');
+  }
 }
 
 /**
