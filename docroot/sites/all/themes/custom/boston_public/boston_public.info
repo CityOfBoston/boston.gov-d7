@@ -17,10 +17,6 @@ name        = Boston Public
 description = Read the included README.md on how to create a theme with Thunder.
 core        = 7.x
 
-
-; Then we add our own stylesheet.
-stylesheets[all][] = dist/css/styles.css
-
 ;scripts[] = dist/js/sample.js
 
 regions[header]         = Header

@@ -49,11 +49,23 @@ function boston_theme() {
       'render element' => 'form',
       'template' => 'templates/snippets/user_login',
     ),
-    'nav_js' => array(
-      'template' => 'templates/snippets/nav-js',
-    ),
     'alert_js' => array(
       'template' => 'templates/snippets/alert-js',
+    ),
+    'logo' => array(
+      'template' => 'templates/snippets/logo',
+    ),
+    'burger' => array(
+      'template' => 'templates/snippets/burger',
+    ),
+    'seal' => array(
+      'template' => 'templates/snippets/seal',
+    ),
+    'search' => array(
+      'template' => 'templates/snippets/search',
+    ),
+    'secondary_nav' => array(
+      'template' => 'templates/snippets/secondary-nav',
     ),
     'profile_address' => array(
       'variables' => array(
@@ -479,6 +491,14 @@ function boston_preprocess_page(array &$variables) {
   $variables['page_class'] = $page_class;
   $variables['page_class_alert'] = $page_class_alert;
 
+  $variables['site_info'] = array(
+    'front_page' => $variables['front_page'],
+    'asset_url' => $variables['asset_url'],
+    'asset_name' => $variables['asset_name'],
+    'cache_buster' => $variables['cache_buster'],
+    'site_name' => $variables['site_name'],
+    'hide_logo' => $GLOBALS['theme'] == 'boston_hub',
+  );
 }
 
 /**

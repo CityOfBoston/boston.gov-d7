@@ -4,30 +4,6 @@
  * Contains functions to alter Drupal's markup for the Boston Hub theme.
  */
 
- /**
-  * Implements hook_preprocess_node().
-  */
-function boston_hub_preprocess_node(array &$variables) {
-  $no_type_needed = array(
-   'listing_page',
-   'landing_page',
-  );
-
-  // some content types aren't special
-  if (isset($variables['node']) && !in_array($variables['node']->type, $no_type_needed)) {
-   $type_element = array(
-     '#tag' => 'meta', // The #tag is the html tag -
-     '#attributes' => array( // Set up an array of attributes inside the tag
-       'class' => 'swiftype',
-       'name' => 'type',
-       'data-type' => 'enum',
-       'content' => $variables['node']->type,
-     ),
-   );
-   drupal_add_html_head($type_element, 'swiftype_type');
-  }
-}
-
 /**
  * Implements hook_preprocess_page().
  */
@@ -40,6 +16,7 @@ function boston_hub_preprocess_page(array &$variables) {
     // otherwise set it to the username.
     if ($profile_main->field_display_name) {
       $variables['profile_name'] = field_view_field('profile2', $profile_main, 'field_display_name', 'value')['#items'][0]['safe_value'];
+      $variables['first_name'] = field_view_field('profile2', $profile_main, 'field_first_name', 'value')['#items'][0]['safe_value'];
     }
     else {
       $variables['profile_name'] = $uid->name;
@@ -150,6 +127,37 @@ function boston_hub_preprocess_page(array &$variables) {
 
   $variables['page_class'] = $page_class;
   $variables['page_class_alert'] = $page_class_alert;
+
+  // Only show logged in menu items
+  $nav_menu = array();
+  foreach ($variables['secondary_menu'] as $key => $menu) {
+    if ($variables['logged_in'] && $menu['title'] != 'Log In') {
+      $nav_menu[] = $menu;
+    } else if (!$variables['logged_in'] && $menu['title'] == 'Log In') {
+      $nav_menu[] = $menu;
+    }
+  }
+
+  $variables['nav_menu'] = $nav_menu;
+
+  $no_type_needed = array(
+   'listing_page',
+   'landing_page',
+  );
+
+  // some content types aren't special
+  if (isset($variables['node']) && !in_array($variables['node']->type, $no_type_needed)) {
+   $type_element = array(
+     '#tag' => 'meta', // The #tag is the html tag -
+     '#attributes' => array( // Set up an array of attributes inside the tag
+       'class' => 'swiftype',
+       'name' => 'type',
+       'data-type' => 'enum',
+       'content' => $variables['node']->type,
+     ),
+   );
+   drupal_add_html_head($type_element, 'swiftype_type');
+  }
 }
 
 /**

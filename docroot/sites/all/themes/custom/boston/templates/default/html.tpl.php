@@ -15,6 +15,7 @@
 
   <!--[if !IE]><!-->
 	<link href='<?php print $asset_url ?>/css/<?php print $asset_name ?>.css?<?php print $cache_buster ?>' rel='stylesheet' type='text/css'>
+  <link href='<?php print $asset_url ?>/legacy/<?php print $asset_name ?>.css?<?php print $cache_buster ?>' rel='stylesheet' type='text/css'>
   <!--<![endif]-->
   <!--[if lt IE 10]>
     <link href='<?php print $asset_url ?>/css/ie.css?<?php print $cache_buster ?>' rel='stylesheet' type='text/css'>
@@ -28,7 +29,6 @@
   <?php print $scripts; ?>
 
   <!--[if IE 9]>
-  <link href='<?php print $base_path . path_to_theme(); ?>/dist/ie/shame.css' rel='stylesheet' type='text/css'>
   <script src="<?php print $base_path . path_to_theme(); ?>/dist/ie/flexibility.js"></script>
   <script src="<?php print $base_path . path_to_theme(); ?>/dist/ie/classList.js"></script>
   <script src="<?php print $base_path . path_to_theme(); ?>/dist/ie/cors.js"></script>

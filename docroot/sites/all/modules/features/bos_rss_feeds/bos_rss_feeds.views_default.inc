@@ -304,6 +304,30 @@ function bos_rss_feeds_views_default_views() {
     51 => 0,
     56 => 0,
   );
+  /* Filter criterion: Content: Related departments (field_related_departments) */
+  $handler->display->display_options['filters']['field_related_departments_target_id']['id'] = 'field_related_departments_target_id';
+  $handler->display->display_options['filters']['field_related_departments_target_id']['table'] = 'field_data_field_related_departments';
+  $handler->display->display_options['filters']['field_related_departments_target_id']['field'] = 'field_related_departments_target_id';
+  $handler->display->display_options['filters']['field_related_departments_target_id']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_related_departments_target_id']['expose']['operator_id'] = 'field_related_departments_target_id_op';
+  $handler->display->display_options['filters']['field_related_departments_target_id']['expose']['label'] = 'Related departments (field_related_departments)';
+  $handler->display->display_options['filters']['field_related_departments_target_id']['expose']['operator'] = 'field_related_departments_target_id_op';
+  $handler->display->display_options['filters']['field_related_departments_target_id']['expose']['identifier'] = 'field_related_departments_target_id';
+  $handler->display->display_options['filters']['field_related_departments_target_id']['expose']['multiple'] = TRUE;
+  $handler->display->display_options['filters']['field_related_departments_target_id']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    11 => 0,
+    16 => 0,
+    21 => 0,
+    26 => 0,
+    31 => 0,
+    36 => 0,
+    41 => 0,
+    46 => 0,
+    51 => 0,
+    56 => 0,
+  );
   $handler->display->display_options['path'] = 'rss/events';
   $handler->display->display_options['sitename_title'] = 0;
 
@@ -387,6 +411,30 @@ function bos_rss_feeds_views_default_views() {
   $handler->display->display_options['filters']['field_event_dates_value2']['expose']['operator'] = 'field_event_dates_value2_op';
   $handler->display->display_options['filters']['field_event_dates_value2']['expose']['identifier'] = 'field_event_dates_value2';
   $handler->display->display_options['filters']['field_event_dates_value2']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    11 => 0,
+    16 => 0,
+    21 => 0,
+    26 => 0,
+    31 => 0,
+    36 => 0,
+    41 => 0,
+    46 => 0,
+    51 => 0,
+    56 => 0,
+  );
+  /* Filter criterion: Content: Related departments (field_related_departments) */
+  $handler->display->display_options['filters']['field_related_departments_target_id']['id'] = 'field_related_departments_target_id';
+  $handler->display->display_options['filters']['field_related_departments_target_id']['table'] = 'field_data_field_related_departments';
+  $handler->display->display_options['filters']['field_related_departments_target_id']['field'] = 'field_related_departments_target_id';
+  $handler->display->display_options['filters']['field_related_departments_target_id']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_related_departments_target_id']['expose']['operator_id'] = 'field_related_departments_target_id_op';
+  $handler->display->display_options['filters']['field_related_departments_target_id']['expose']['label'] = 'Related departments (field_related_departments)';
+  $handler->display->display_options['filters']['field_related_departments_target_id']['expose']['operator'] = 'field_related_departments_target_id_op';
+  $handler->display->display_options['filters']['field_related_departments_target_id']['expose']['identifier'] = 'field_related_departments_target_id';
+  $handler->display->display_options['filters']['field_related_departments_target_id']['expose']['multiple'] = TRUE;
+  $handler->display->display_options['filters']['field_related_departments_target_id']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
     11 => 0,
