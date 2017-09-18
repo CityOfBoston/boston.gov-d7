@@ -26,41 +26,43 @@
     <div class="b-c b-c--mh">
       <?php if ($has_results) { ?>
         <div class="g m-t000">
-            <div class="g--3">
-              <div class="co">
-                <input id="collapsible" type="checkbox" class="co-f d-n" aria-hidden="true">
-                <label for="collapsible" class="co-t">Filter</label>
-                <div class="co-b co-b--pl">
-                  <div class="t--intro m-b200">Filter by type</div>
-                  <div class="m-b300">
-                    <?php foreach ($facets as $key => $facet) { ?>
-                      <?php if (hub_swiftype_facet_type($key)) { ?>
-                        <label class="cb" for="check_<?php print $key ?>">
-                          <input type="checkbox" name="facet[]" id="check_<?php print $key ?>" value="<?php print $key ?>" class="cb-f" <?php if(in_array($key, $selected_facets)) { ?>checked<?php } ?>>
-                          <span class="cb-l"><?php print hub_swiftype_facet_type($key) ?> (<?php print $facet ?>)</span>
-                        </label>
+            <?php if ($facets) { ?>
+              <div class="g--3">
+                <div class="co">
+                  <input id="collapsible" type="checkbox" class="co-f d-n" aria-hidden="true">
+                  <label for="collapsible" class="co-t">Filter</label>
+                  <div class="co-b co-b--pl">
+                    <div class="t--intro m-b200">Filter by type</div>
+                    <div class="m-b300">
+                      <?php foreach ($facets as $key => $facet) { ?>
+                        <?php if (hub_swiftype_facet_type($key)) { ?>
+                          <label class="cb" for="check_<?php print $key ?>">
+                            <input type="checkbox" name="facet[]" id="check_<?php print $key ?>" value="<?php print $key ?>" class="cb-f" <?php if(in_array($key, $selected_facets)) { ?>checked<?php } ?>>
+                            <span class="cb-l"><?php print hub_swiftype_facet_type($key) ?> (<?php print $facet ?>)</span>
+                          </label>
+                        <?php } ?>
                       <?php } ?>
-                    <?php } ?>
+                    </div>
+                    <button type="submit" class="btn btn--sb">Apply</button>
+                    <script type="text/javascript">
+                      var reset_button = document.getElementById('resetForm');
+
+                      reset_button.style.display = 'inline-block';
+                      reset_button.addEventListener('click', function (e) {
+                        e.preventDefault()
+
+                        var checks = document.querySelectorAll('input.cb-f');
+                        for (var i = 0; i < checks.length; i++) {
+                          checks[i].checked = false;
+                        }
+
+                        document.getElementById('searchForm').submit();
+                      });
+                    </script>
                   </div>
-                  <button type="submit" class="btn btn--sb">Apply</button>
-                  <script type="text/javascript">
-                    var reset_button = document.getElementById('resetForm');
-
-                    reset_button.style.display = 'inline-block';
-                    reset_button.addEventListener('click', function (e) {
-                      e.preventDefault()
-
-                      var checks = document.querySelectorAll('input.cb-f');
-                      for (var i = 0; i < checks.length; i++) {
-                        checks[i].checked = false;
-                      }
-
-                      document.getElementById('searchForm').submit();
-                    });
-                  </script>
                 </div>
               </div>
-            </div>
+            <?php } ?>
             <div class="g--9">
               <ul class="m-a000 p-a000">
                 <?php foreach ($records as $key => $record) { ?>

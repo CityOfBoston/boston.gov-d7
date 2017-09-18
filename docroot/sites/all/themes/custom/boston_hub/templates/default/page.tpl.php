@@ -42,7 +42,7 @@
       'logout_path' => $logout_path,
       'first_name' => $first_name,
     )); ?>
-    <?php print theme('search', array('search_form_url' => 'https://search.boston.gov')); ?>
+    <?php print theme('search', array('search_form_url' => '/search')); ?>
   </header>
 
   <div id="sa" data-target="<?php print $target_id; ?>" data-classes="<?php print $page_class_alert ?> mn" class="d--n"></div>
