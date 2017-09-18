@@ -35,7 +35,7 @@
     <?php print theme('search', array('search_form_url' => 'https://search.boston.gov')); ?>
   </header>
 
-  <div id="sa" data-target="<?php print $target_id; ?>" data-classes="<?php print $page_class_alert ?>" class="d--n"></div>
+  <div id="sa" data-target="<?php print $target_id; ?>" data-classes="<?php print $page_class_alert ?>  mn" class="d--n"></div>
   <?php print theme('alert_js'); ?>
 
   <div class="main">
