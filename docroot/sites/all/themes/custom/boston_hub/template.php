@@ -68,28 +68,13 @@ function boston_hub_preprocess_page(array &$variables) {
 
   $page_class_alert = $page_class;
 
-  if (!empty($variables['page']['content']['system_main']['search_results'])) {
-    $page_class_alert = 'page page--wa';
-    if (!empty($variables['page']['content']['system_main']['search_results']['#results'])) {
-      drupal_set_title('Search Results');
-      if (!empty($variables['page']['content']['system_main']['suggestions'])) {
-        unset($variables['page']['content']['system_main']['suggestions']);
-      }
-    }
-    else {
-      $search_page = apachesolr_search_page_load('core_search');
-      if ($current_path != $search_page['search_path']) {
-        drupal_set_title(t('Found 0 results'));
-      }
-      else {
-        drupal_set_title(t('Search'));
-      }
-    }
-    // If we are on the employee directory page, change the title.
-    if (strpos($current_path, 'employee-directory') === 0) {
-      drupal_set_title('Employee Search');
-    }
+  // If we are on the employee directory page, change the title.
+  if (strpos($current_path, 'employee-directory') === 0) {
+    drupal_set_title('Employee Search');
   }
+
+  // If on search, don't show page title
+  $variables['hide_page_title'] = strpos($current_path, 'search') === 0;
 
   // If we are on the employee directory page, change the title.
   if (strpos($current_path, 'search') === 0 || strpos($current_path, 'my-profile') === 0 || strpos($current_path, 'user') === 0) {
