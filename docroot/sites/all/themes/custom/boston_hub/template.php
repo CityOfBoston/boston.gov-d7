@@ -386,8 +386,76 @@ function boston_hub_preprocess_entity_profile2(&$variables, $hook) {
     $department = taxonomy_term_load($user_profile['main']->field_contact['und'][0]['target_id']);
     $variables["department_id"] = $department->field_department_legacy_id['und'][0]['value'];
     $variables["department_name"] = $department->name;
-
   }
+
+  $department_name_element = array(
+    '#tag' => 'meta', // The #tag is the html tag -
+    '#attributes' => array( // Set up an array of attributes inside the tag
+      'class' => 'swiftype',
+      'name' => 'department-name',
+      'data-type' => 'string',
+      'content' => $variables["department_name"],
+    ),
+  );
+  drupal_add_html_head($department_name_element, 'swiftype_department_name');
+
+  $department_id_element = array(
+    '#tag' => 'meta', // The #tag is the html tag -
+    '#attributes' => array( // Set up an array of attributes inside the tag
+      'class' => 'swiftype',
+      'name' => 'department-id',
+      'data-type' => 'string',
+      'content' => $variables["department_id"],
+    ),
+  );
+  drupal_add_html_head($department_id_element, 'swiftype_department_id');
+
+  // Meta tags for Swiftype
+  $work_phone_element = array(
+    '#tag' => 'meta', // The #tag is the html tag -
+    '#attributes' => array( // Set up an array of attributes inside the tag
+      'class' => 'swiftype',
+      'name' => 'phone',
+      'data-type' => 'string',
+      'content' => strtolower($user_profile['main']->field_work_phone['und'][0]['value']),
+    ),
+  );
+  drupal_add_html_head($work_phone_element, 'swiftype_work_phone');
+
+  $work_email_element = array(
+    '#tag' => 'meta', // The #tag is the html tag -
+    '#attributes' => array( // Set up an array of attributes inside the tag
+      'class' => 'swiftype',
+      'name' => 'email',
+      'data-type' => 'string',
+      'content' => strtolower($user_profile['main']->field_work_email['und'][0]['value']),
+    ),
+  );
+  drupal_add_html_head($work_email_element, 'swiftype_work_email');
+
+  // Meta tags for Swiftype
+  $type_element = array(
+    '#tag' => 'meta', // The #tag is the html tag -
+    '#attributes' => array( // Set up an array of attributes inside the tag
+      'class' => 'swiftype',
+      'name' => 'type',
+      'data-type' => 'enum',
+      'content' => 'person',
+    ),
+  );
+  drupal_add_html_head($type_element, 'swiftype_type');
+
+  // Meta tags for Swiftype
+  $title_element = array(
+    '#tag' => 'meta', // The #tag is the html tag -
+    '#attributes' => array( // Set up an array of attributes inside the tag
+      'class' => 'swiftype',
+      'name' => 'title',
+      'data-type' => 'string',
+      'content' => $user_profile['main']->field_display_name['und'][0]['value'],
+    ),
+  );
+  drupal_add_html_head($title_element, 'swiftype_title');
 
   // Find the user's manager.
   if (!empty($user_profile['main']->field_manager)) {
