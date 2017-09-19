@@ -24,8 +24,56 @@ function hub_swiftype_menu() {
     'type' => MENU_CALLBACK,
   );
 
+  // The path that the endpoint will be registered to.
+  $items['employees'] = array(
+    'title' => 'Employee Directory',
+    // The name of the function called when the path is accessed.
+    'page callback' => 'hub_swiftype_employee_directory_callback',
+    // Set this value to TRUE to allow access to any user.
+    'access callback' => TRUE,
+    // Declare this as a simple registered path.
+    'type' => MENU_CALLBACK,
+  );
+
   // Return the $items array to register the path.
   return $items;
+}
+
+function hub_swiftype_employee_directory_callback() {
+  $params = drupal_get_query_parameters();
+
+  $client = new \Swiftype\SwiftypeClient(variable_get('swiftype_email'), variable_get('swiftype_password'), variable_get('swiftype_key'));
+  $query = $params['query'] || '';
+
+  $results = $client->search('the-hub', 'page', $query, array(
+    'per_page' => 30,
+    'page' => $params['page'] ? $params['page'] : 1,
+    'facets' => array(
+      'page' => array(
+        'department',
+      ),
+    ),
+    'filters' => array(
+      'page' => array(
+        'type' => 'person'
+      ),
+    ),
+    'fetch_fields' => array(
+      'page' => array(
+        'name',
+        'department-name',
+        'department-id'
+      ),
+    ),
+  ));
+
+  var_dump($results);
+
+  return theme('hub_swiftype_employee_directory', array(
+    'results' => $results,
+    'range'   => hub_swiftype_page_range($results['body']->info->page),
+    'selected_facets' => $params['facet'] ? $params['facet'] : array(),
+  ));
 }
 
 /**
@@ -65,6 +113,14 @@ function hub_swiftype_theme() {
   return array(
     'hub_swiftype_search_results' => array(
       'template' => 'theme/search-results',
+      'variables' => array(
+        'results' => NULL,
+        'range'   => range(1, 5),
+        'selected_facets' => array(),
+      ),
+    ),
+    'hub_swiftype_employee_directory' => array(
+      'template' => 'theme/employee-directory',
       'variables' => array(
         'results' => NULL,
         'range'   => range(1, 5),

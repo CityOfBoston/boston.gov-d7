@@ -74,10 +74,10 @@ function boston_hub_preprocess_page(array &$variables) {
   }
 
   // If on search, don't show page title
-  $variables['hide_page_title'] = strpos($current_path, 'search') === 0 || strpos($current_path, 'swiftype') === 0;
+  $variables['hide_page_title'] = strpos($current_path, 'search') === 0 || strpos($current_path, 'swiftype') === 0 || strpos($current_path, 'employees') === 0;
 
   // If we are on the employee directory page, change the title.
-  if (strpos($current_path, 'swiftype') === 0 || strpos($current_path, 'search') === 0 || strpos($current_path, 'my-profile') === 0 || strpos($current_path, 'user') === 0) {
+  if (strpos($current_path, 'swiftype') === 0 || strpos($current_path, 'search') === 0 || strpos($current_path, 'my-profile') === 0 || strpos($current_path, 'user') === 0 || strpos($current_path, 'employees') === 0) {
     $page_class_alert = 'page page--wa';
   }
 
@@ -458,6 +458,17 @@ function boston_hub_preprocess_entity_profile2(&$variables, $hook) {
     ),
   );
   drupal_add_html_head($title_element, 'swiftype_title');
+
+  $position_element = array(
+    '#tag' => 'meta', // The #tag is the html tag -
+    '#attributes' => array( // Set up an array of attributes inside the tag
+      'class' => 'swiftype',
+      'name' => 'position',
+      'data-type' => 'string',
+      'content' => $user_profile['main']->field_position_title['und'][0]['value'],
+    ),
+  );
+  drupal_add_html_head($position_element, 'swiftype_position');
 
   // Find the user's manager.
   if (!empty($user_profile['main']->field_manager)) {
