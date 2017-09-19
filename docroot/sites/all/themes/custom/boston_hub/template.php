@@ -361,14 +361,16 @@ function boston_hub_menu_local_tasks_alter(&$data, $router_item, $root_path) {
 
   // Hides View/Edit links on user pages for non-admins.
   if ($user && !in_array('administrator', array_values($user->roles))) {
-    foreach ($data['tabs'][0]['output'] as $key => $value) {
-      // Remove 'View' link if it exists.
-      if ($value['#link']['path'] == 'user/%/view') {
-        unset($data['tabs'][0]['output'][$key]);
-      }
-      // Remove 'Edit' link if it exists.
-      if ($value['#link']['path'] == 'user/%/edit') {
-        unset($data['tabs'][0]['output'][$key]);
+    if ($data['tabs'][0]['output']) {
+      foreach ($data['tabs'][0]['output'] as $key => $value) {
+        // Remove 'View' link if it exists.
+        if ($value['#link']['path'] == 'user/%/view') {
+          unset($data['tabs'][0]['output'][$key]);
+        }
+        // Remove 'Edit' link if it exists.
+        if ($value['#link']['path'] == 'user/%/edit') {
+          unset($data['tabs'][0]['output'][$key]);
+        }
       }
     }
   }

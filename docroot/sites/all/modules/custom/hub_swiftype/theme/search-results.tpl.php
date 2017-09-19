@@ -69,7 +69,7 @@
                   <li class="n-li">
                     <a class="n-li-b n-li-b--r n-li-b--fw n-li--in g g--mt0" href="<?php print $record->url ?>">
                       <div class="n-li-t g--8"><?php print $record->title ?></div>
-                      <div class="n-li-ty n-li-ty--r g--44"><?php print $record->type ?></div>
+                      <div class="n-li-ty n-li-ty--r g--44 ta--r"><?php print $record->type ?></div>
                     </a>
                   </li>
                 <?php } ?>
@@ -113,7 +113,7 @@
     <div class="h2 tt-u ta-c p-h300">Can't find what you're looking for?</div>
     <hr class="hr hr--sq m-h300 m-v500">
     <div class="ta-c p-h200 t--intro">
-      Our 311 operators are available 24/7 to help point you in the right direction. Call 311, or 617-635-4500.
+      Please contact Employee Connect via email at <a href="mailto:EMPLOYEECONNECT@BOSTON.GOV">employeeconnect@boston.gov</a>, <a href="/need-something-else">via the web</a>, or via phone at <a href="tel:617-635-3221">617-635-3221</a>.
     </div>
   </div>
 </div>
