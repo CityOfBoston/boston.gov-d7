@@ -9,7 +9,7 @@
   $records = $results['body']->records->page;
   $facets = $info->page->facets->type;
 ?>
-<form id="searchForm" action="/swiftype" accept-charset="UTF-8" method="get">
+<form id="searchForm" action="<?php print $hub_search_url; ?>" accept-charset="UTF-8" method="get">
   <input name="utf8" type="hidden" value="✓">
   <div class="b b--fw">
     <div class="b-c">
@@ -68,8 +68,8 @@
                 <?php foreach ($records as $key => $record) { ?>
                   <li class="n-li">
                     <a class="n-li-b n-li-b--r n-li-b--fw n-li--in g g--mt0" href="<?php print $record->url ?>">
-                      <div class="n-li-t g--8"><?php print $record->title ?></div>
-                      <div class="n-li-ty n-li-ty--r g--44 ta--r"><?php print $record->type ?></div>
+                      <div class="n-li-t g--8"><?php print(/* People title comes back as array */ is_array($record->title) ? $record->title[0] : $record->title) ?></div>
+                      <div class="n-li-ty n-li-ty--r g--44 ta--r"><?php print hub_swiftype_facet_type($record->type) ?></div>
                     </a>
                   </li>
                 <?php } ?>
@@ -78,7 +78,7 @@
                 <ul class="pg">
                   <li class="pg-li">
                     <?php if ($info->page->current_page > 1) { ?>
-                      <a class="pg-li-i pg-li-i--a pg-li-i--link" href="/swiftype?page=<?php print $info->page->current_page - 1 ?>&amp;query=<?php print $search_term ?>&amp;<?php print http_build_query(array('facet' => $selected_facets)) ?>">
+                      <a class="pg-li-i pg-li-i--a pg-li-i--link" href="<?php print $hub_search_url; ?>?page=<?php print $info->page->current_page - 1 ?>&amp;query=<?php print $search_term ?>&amp;<?php print http_build_query(array('facet' => $selected_facets)) ?>">
                         <span class="pg-li-i-h">&lt; previous</span>
                       </a>
                     <?php } else { ?>
@@ -86,13 +86,13 @@
                     <?php } ?>
                   </li>
                   <?php foreach ($range as $number) { ?>
-                    <li class="pg-li"><a class="pg-li-i pg-li-i--link<?php if ($number == $info->page->current_page) { ?> pg-li-i--a<?php } ?>" href="/swiftype?page=<?php print $number ?>&amp;query=<?php print $search_term ?>&amp;<?php print http_build_query(array('facet' => $selected_facets)) ?>"><?php print $number ?></a></li>
+                    <li class="pg-li"><a class="pg-li-i pg-li-i--link<?php if ($number == $info->page->current_page) { ?> pg-li-i--a<?php } ?>" href="<?php print $hub_search_url; ?>?page=<?php print $number ?>&amp;query=<?php print $search_term ?>&amp;<?php print http_build_query(array('facet' => $selected_facets)) ?>"><?php print $number ?></a></li>
                   <?php } ?>
                   <li class="pg-li">
                     <?php if ($info->page->current_page === $info->page->num_pages) { ?>
                       <span class="pg-li-i">next &gt;</span>
                     <?php } else { ?>
-                      <a class="pg-li-i pg-li-i--a pg-li-i--link" href="/swiftype?page=<?php print $info->page->current_page + 1 ?>&amp;query=<?php print $search_term ?>&amp;<?php print http_build_query(array('facet' => $selected_facets)) ?>">
+                      <a class="pg-li-i pg-li-i--a pg-li-i--link" href="<?php print $hub_search_url; ?>?page=<?php print $info->page->current_page + 1 ?>&amp;query=<?php print $search_term ?>&amp;<?php print http_build_query(array('facet' => $selected_facets)) ?>">
                         <span class="pg-li-i-h">next &gt;</span>
                       </a>
                     <?php } ?>
@@ -113,7 +113,7 @@
     <div class="h2 tt-u ta-c p-h300">Can't find what you're looking for?</div>
     <hr class="hr hr--sq m-h300 m-v500">
     <div class="ta-c p-h200 t--intro">
-      Please contact Employee Connect via email at <a href="mailto:EMPLOYEECONNECT@BOSTON.GOV">employeeconnect@boston.gov</a>, <a href="/need-something-else">via the web</a>, or via phone at <a href="tel:617-635-3221">617-635-3221</a>.
+      Please contact Employee Connect via email at <a href="mailto:EMPLOYEECONNECT@BOSTON.GOV">employeeconnect@boston.gov</a>, <a href="/need-something-else">the web</a>, or phone at <a href="tel:617-635-3221">617-635-3221</a>.
     </div>
   </div>
 </div>

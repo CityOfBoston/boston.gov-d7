@@ -43,10 +43,10 @@ function hub_swiftype_employee_directory_callback() {
   $params = drupal_get_query_parameters();
 
   $client = new \Swiftype\SwiftypeClient(variable_get('swiftype_email'), variable_get('swiftype_password'), variable_get('swiftype_key'));
-  $query = $params['query'] || '';
+  $query = $params['query'] ? $params['query'] : '';
 
   $results = $client->search('the-hub', 'page', $query, array(
-    'per_page' => 30,
+    'per_page' => 21,
     'page' => $params['page'] ? $params['page'] : 1,
     'facets' => array(
       'page' => array(
@@ -74,6 +74,7 @@ function hub_swiftype_employee_directory_callback() {
     'results' => $results,
     'range'   => hub_swiftype_page_range($results['body']->info->page),
     'selected_facets' => $params['facet'] ? $params['facet'] : array(),
+    'hub_employee_search_url' => variable_get('hub_employee_search_url'),
   ));
 }
 
@@ -104,6 +105,7 @@ function hub_swiftype_search_page_callback() {
     'results' => $results,
     'range'   => hub_swiftype_page_range($results['body']->info->page),
     'selected_facets' => $params['facet'] ? $params['facet'] : array(),
+    'hub_search_url' => variable_get('hub_search_url'),
   ));
 }
 
@@ -160,6 +162,8 @@ function hub_swiftype_facet_type($type) {
     'article' => 'Articles',
     'how_to' => 'How-Tos',
     'topic_page' => 'Guides',
+    'person' => 'People',
+    'post' => 'News',
   );
 
   return $facets[$type] ? $facets[$type] : FALSE;

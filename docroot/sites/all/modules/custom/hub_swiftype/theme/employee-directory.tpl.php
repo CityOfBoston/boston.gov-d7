@@ -3,13 +3,14 @@
    * @file
    * Library for connecting to Swiftype.
    */
+
   $info = $results['body']->info;
   $search_term = $info->page->query;
   $has_results = $info->page->total_result_count > 0;
   $records = $results['body']->records->page;
   $facets = $info->page->facets->{'department-name'};
 ?>
-<form id="searchForm" action="/swiftype" accept-charset="UTF-8" method="get">
+<form id="searchForm" action="<?php print $hub_employee_search_url; ?>" accept-charset="UTF-8" method="get">
   <input name="utf8" type="hidden" value="✓">
   <div class="b b--fw">
     <div class="b-c">
@@ -26,6 +27,7 @@
     <div class="b-c b-c--mh">
       <?php if ($has_results) { ?>
         <div class="g m-t000">
+          <!--
             <div class="g--3">
               <?php if ($facets) { ?>
                 <div class="co">
@@ -61,10 +63,11 @@
                 </div>
               <?php } ?>
             </div>
-            <div class="g--9">
+          -->
+            <div class="g--12">
               <div class="g">
                 <?php foreach ($records as $key => $record) { ?>
-                  <article class="cdp m-t500 g--1 g--6">
+                  <article class="cdp m-t500 g--1 g--4">
                     <a href="<?php print($record->url) ?>" class="cdp-l d-b p-h100 p-v700">
                       <div>
                         <div class="cdp-t t--sans t--upper"><?php print($record->{'title'}[0]) ?></div>
@@ -79,7 +82,7 @@
                 <ul class="pg">
                   <li class="pg-li">
                     <?php if ($info->page->current_page > 1) { ?>
-                      <a class="pg-li-i pg-li-i--a pg-li-i--link" href="/employees?page=<?php print $info->page->current_page - 1 ?>&amp;query=<?php print $search_term ?>&amp;<?php print http_build_query(array('facet' => $selected_facets)) ?>">
+                      <a class="pg-li-i pg-li-i--a pg-li-i--link" href="<?php print $hub_employee_search_url; ?>?page=<?php print $info->page->current_page - 1 ?>&amp;query=<?php print $search_term ?>&amp;<?php print http_build_query(array('facet' => $selected_facets)) ?>">
                         <span class="pg-li-i-h">&lt; previous</span>
                       </a>
                     <?php } else { ?>
@@ -87,13 +90,13 @@
                     <?php } ?>
                   </li>
                   <?php foreach ($range as $number) { ?>
-                    <li class="pg-li"><a class="pg-li-i pg-li-i--link<?php if ($number == $info->page->current_page) { ?> pg-li-i--a<?php } ?>" href="/employees?page=<?php print $number ?>&amp;query=<?php print $search_term ?>&amp;<?php print http_build_query(array('facet' => $selected_facets)) ?>"><?php print $number ?></a></li>
+                    <li class="pg-li"><a class="pg-li-i pg-li-i--link<?php if ($number == $info->page->current_page) { ?> pg-li-i--a<?php } ?>" href="<?php print $hub_employee_search_url; ?>?page=<?php print $number ?>&amp;query=<?php print $search_term ?>&amp;<?php print http_build_query(array('facet' => $selected_facets)) ?>"><?php print $number ?></a></li>
                   <?php } ?>
                   <li class="pg-li">
                     <?php if ($info->page->current_page === $info->page->num_pages) { ?>
                       <span class="pg-li-i">next &gt;</span>
                     <?php } else { ?>
-                      <a class="pg-li-i pg-li-i--a pg-li-i--link" href="/employees?page=<?php print $info->page->current_page + 1 ?>&amp;query=<?php print $search_term ?>&amp;<?php print http_build_query(array('facet' => $selected_facets)) ?>">
+                      <a class="pg-li-i pg-li-i--a pg-li-i--link" href="<?php print $hub_employee_search_url; ?>?page=<?php print $info->page->current_page + 1 ?>&amp;query=<?php print $search_term ?>&amp;<?php print http_build_query(array('facet' => $selected_facets)) ?>">
                         <span class="pg-li-i-h">next &gt;</span>
                       </a>
                     <?php } ?>
