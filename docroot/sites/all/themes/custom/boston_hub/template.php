@@ -390,6 +390,18 @@ function boston_hub_preprocess_entity_profile2(&$variables, $hook) {
     $variables["department_name"] = $department->name;
   }
 
+  // Meta tags for Swiftype
+  $last_name_element = array(
+    '#tag' => 'meta', // The #tag is the html tag -
+    '#attributes' => array( // Set up an array of attributes inside the tag
+      'class' => 'swiftype',
+      'name' => 'last-name',
+      'data-type' => 'string',
+      'content' => $user_profile['main']->field_last_name['und'][0]['value'],
+    ),
+  );
+  drupal_add_html_head($last_name_element, 'swiftype_last_name');
+
   $department_name_element = array(
     '#tag' => 'meta', // The #tag is the html tag -
     '#attributes' => array( // Set up an array of attributes inside the tag

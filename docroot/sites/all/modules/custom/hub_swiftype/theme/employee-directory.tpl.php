@@ -7,7 +7,7 @@
   $search_term = $info->page->query;
   $has_results = $info->page->total_result_count > 0;
   $records = $results['body']->records->page;
-  $facets = $info->page->facets->type;
+  $facets = $info->page->facets->{'department-name'};
 ?>
 <form id="searchForm" action="/swiftype" accept-charset="UTF-8" method="get">
   <input name="utf8" type="hidden" value="✓">
@@ -32,15 +32,13 @@
                   <input id="collapsible" type="checkbox" class="co-f d-n" aria-hidden="true">
                   <label for="collapsible" class="co-t">Filter</label>
                   <div class="co-b co-b--pl">
-                    <div class="t--intro m-b200">Filter by type</div>
+                    <div class="t--intro m-b200">Filter by Department</div>
                     <div class="m-b300">
                       <?php foreach ($facets as $key => $facet) { ?>
-                        <?php if (hub_swiftype_facet_type($key)) { ?>
-                          <label class="cb" for="check_<?php print $key ?>">
-                            <input type="checkbox" name="facet[]" id="check_<?php print $key ?>" value="<?php print $key ?>" class="cb-f" <?php if(in_array($key, $selected_facets)) { ?>checked<?php } ?>>
-                            <span class="cb-l"><?php print hub_swiftype_facet_type($key) ?> (<?php print $facet ?>)</span>
-                          </label>
-                        <?php } ?>
+                        <label class="cb" for="check_<?php print $key ?>">
+                          <input type="checkbox" name="facet[]" id="check_<?php print $key ?>" value="<?php print $key ?>" class="cb-f" <?php if(in_array($key, $selected_facets)) { ?>checked<?php } ?>>
+                          <span class="cb-l"><?php print $key ?> (<?php print $facet ?>)</span>
+                        </label>
                       <?php } ?>
                     </div>
                     <button type="submit" class="btn btn--sb">Apply</button>
@@ -64,21 +62,24 @@
               <?php } ?>
             </div>
             <div class="g--9">
-              <ul class="m-a000 p-a000">
+              <div class="g">
                 <?php foreach ($records as $key => $record) { ?>
-                  <li class="n-li">
-                    <a class="n-li-b n-li-b--r n-li-b--fw n-li--in g g--mt0" href="<?php print $record->url ?>">
-                      <div class="n-li-t g--8"><?php print $record->title ?></div>
-                      <div class="n-li-ty n-li-ty--r g--44 ta--r"><?php print $record->type ?></div>
+                  <article class="cdp m-t500 g--1 g--6">
+                    <a href="<?php print($record->url) ?>" class="cdp-l d-b p-h100 p-v700">
+                      <div>
+                        <div class="cdp-t t--sans t--upper"><?php print($record->{'title'}[0]) ?></div>
+                        <div class="cdp-st t--subinfo t--g300"><?php print($record->{'department-name'}) ?></div>
+                      </div>
                     </a>
-                  </li>
+                    <a href="mailto:kidani.abadi@boston.gov" class="d-b bg--cb cdp-a ta-c p-a300 t--upper t--sans t--w t--ob--h t--s100">Send an email<span class="a11y--hidden"> to <?php print($record->{'title'}[0]) ?></span></a>
+                  </article>
                 <?php } ?>
-              </ul>
+              </div>
               <?php if ($info->page->num_pages > 1) { ?>
                 <ul class="pg">
                   <li class="pg-li">
                     <?php if ($info->page->current_page > 1) { ?>
-                      <a class="pg-li-i pg-li-i--a pg-li-i--link" href="/swiftype?page=<?php print $info->page->current_page - 1 ?>&amp;query=<?php print $search_term ?>&amp;<?php print http_build_query(array('facet' => $selected_facets)) ?>">
+                      <a class="pg-li-i pg-li-i--a pg-li-i--link" href="/employees?page=<?php print $info->page->current_page - 1 ?>&amp;query=<?php print $search_term ?>&amp;<?php print http_build_query(array('facet' => $selected_facets)) ?>">
                         <span class="pg-li-i-h">&lt; previous</span>
                       </a>
                     <?php } else { ?>
@@ -86,13 +87,13 @@
                     <?php } ?>
                   </li>
                   <?php foreach ($range as $number) { ?>
-                    <li class="pg-li"><a class="pg-li-i pg-li-i--link<?php if ($number == $info->page->current_page) { ?> pg-li-i--a<?php } ?>" href="/swiftype?page=<?php print $number ?>&amp;query=<?php print $search_term ?>&amp;<?php print http_build_query(array('facet' => $selected_facets)) ?>"><?php print $number ?></a></li>
+                    <li class="pg-li"><a class="pg-li-i pg-li-i--link<?php if ($number == $info->page->current_page) { ?> pg-li-i--a<?php } ?>" href="/employees?page=<?php print $number ?>&amp;query=<?php print $search_term ?>&amp;<?php print http_build_query(array('facet' => $selected_facets)) ?>"><?php print $number ?></a></li>
                   <?php } ?>
                   <li class="pg-li">
                     <?php if ($info->page->current_page === $info->page->num_pages) { ?>
                       <span class="pg-li-i">next &gt;</span>
                     <?php } else { ?>
-                      <a class="pg-li-i pg-li-i--a pg-li-i--link" href="/swiftype?page=<?php print $info->page->current_page + 1 ?>&amp;query=<?php print $search_term ?>&amp;<?php print http_build_query(array('facet' => $selected_facets)) ?>">
+                      <a class="pg-li-i pg-li-i--a pg-li-i--link" href="/employees?page=<?php print $info->page->current_page + 1 ?>&amp;query=<?php print $search_term ?>&amp;<?php print http_build_query(array('facet' => $selected_facets)) ?>">
                         <span class="pg-li-i-h">next &gt;</span>
                       </a>
                     <?php } ?>

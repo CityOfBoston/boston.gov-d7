@@ -50,7 +50,7 @@ function hub_swiftype_employee_directory_callback() {
     'page' => $params['page'] ? $params['page'] : 1,
     'facets' => array(
       'page' => array(
-        'department',
+        'department-name',
       ),
     ),
     'filters' => array(
@@ -60,14 +60,15 @@ function hub_swiftype_employee_directory_callback() {
     ),
     'fetch_fields' => array(
       'page' => array(
-        'name',
+        'title',
         'department-name',
-        'department-id'
+        'department-id',
+        'url',
+        'email',
+        'phone',
       ),
     ),
   ));
-
-  var_dump($results);
 
   return theme('hub_swiftype_employee_directory', array(
     'results' => $results,
