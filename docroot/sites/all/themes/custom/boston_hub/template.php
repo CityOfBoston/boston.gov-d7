@@ -74,10 +74,10 @@ function boston_hub_preprocess_page(array &$variables) {
   }
 
   // If on search, don't show page title
-  $variables['hide_page_title'] = strpos($current_path, 'search') === 0 || strpos($current_path, 'swiftype') === 0;
+  $variables['hide_page_title'] = strpos($current_path, 'search') === 0 || strpos($current_path, 'swiftype') === 0 || strpos($current_path, 'employees') === 0;
 
   // If we are on the employee directory page, change the title.
-  if (strpos($current_path, 'swiftype') === 0 || strpos($current_path, 'search') === 0 || strpos($current_path, 'my-profile') === 0 || strpos($current_path, 'user') === 0) {
+  if (strpos($current_path, 'swiftype') === 0 || strpos($current_path, 'search') === 0 || strpos($current_path, 'my-profile') === 0 || strpos($current_path, 'user') === 0 || strpos($current_path, 'employees') === 0) {
     $page_class_alert = 'page page--wa';
   }
 
@@ -361,14 +361,16 @@ function boston_hub_menu_local_tasks_alter(&$data, $router_item, $root_path) {
 
   // Hides View/Edit links on user pages for non-admins.
   if ($user && !in_array('administrator', array_values($user->roles))) {
-    foreach ($data['tabs'][0]['output'] as $key => $value) {
-      // Remove 'View' link if it exists.
-      if ($value['#link']['path'] == 'user/%/view') {
-        unset($data['tabs'][0]['output'][$key]);
-      }
-      // Remove 'Edit' link if it exists.
-      if ($value['#link']['path'] == 'user/%/edit') {
-        unset($data['tabs'][0]['output'][$key]);
+    if ($data['tabs'][0]['output']) {
+      foreach ($data['tabs'][0]['output'] as $key => $value) {
+        // Remove 'View' link if it exists.
+        if ($value['#link']['path'] == 'user/%/view') {
+          unset($data['tabs'][0]['output'][$key]);
+        }
+        // Remove 'Edit' link if it exists.
+        if ($value['#link']['path'] == 'user/%/edit') {
+          unset($data['tabs'][0]['output'][$key]);
+        }
       }
     }
   }
@@ -387,6 +389,18 @@ function boston_hub_preprocess_entity_profile2(&$variables, $hook) {
     $variables["department_id"] = $department->field_department_legacy_id['und'][0]['value'];
     $variables["department_name"] = $department->name;
   }
+
+  // Meta tags for Swiftype
+  $last_name_element = array(
+    '#tag' => 'meta', // The #tag is the html tag -
+    '#attributes' => array( // Set up an array of attributes inside the tag
+      'class' => 'swiftype',
+      'name' => 'last-name',
+      'data-type' => 'string',
+      'content' => $user_profile['main']->field_last_name['und'][0]['value'],
+    ),
+  );
+  drupal_add_html_head($last_name_element, 'swiftype_last_name');
 
   $department_name_element = array(
     '#tag' => 'meta', // The #tag is the html tag -
@@ -456,6 +470,17 @@ function boston_hub_preprocess_entity_profile2(&$variables, $hook) {
     ),
   );
   drupal_add_html_head($title_element, 'swiftype_title');
+
+  $position_element = array(
+    '#tag' => 'meta', // The #tag is the html tag -
+    '#attributes' => array( // Set up an array of attributes inside the tag
+      'class' => 'swiftype',
+      'name' => 'position',
+      'data-type' => 'string',
+      'content' => $user_profile['main']->field_position_title['und'][0]['value'],
+    ),
+  );
+  drupal_add_html_head($position_element, 'swiftype_position');
 
   // Find the user's manager.
   if (!empty($user_profile['main']->field_manager)) {
