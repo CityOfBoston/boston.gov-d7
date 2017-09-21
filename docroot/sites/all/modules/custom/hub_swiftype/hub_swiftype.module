@@ -39,6 +39,9 @@ function hub_swiftype_menu() {
   return $items;
 }
 
+/**
+ * Implements hub_swiftype_employee_directory_callback().
+ */
 function hub_swiftype_employee_directory_callback() {
   $params = drupal_get_query_parameters();
 
@@ -55,7 +58,7 @@ function hub_swiftype_employee_directory_callback() {
     ),
     'filters' => array(
       'page' => array(
-        'type' => 'person'
+        'type' => 'person',
       ),
     ),
     'fetch_fields' => array(
