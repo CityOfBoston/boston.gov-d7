@@ -27,8 +27,8 @@
  * @ingroup views_templates
  */
 ?>
-<div class="b b--fw">
-  <div id="statusHeader" class="m-b600">
+<div id="statusHeader" class="b b--fw">
+  <div class="m-b600">
     <?php print $header; ?>
   </div>
   <?php if ($rows): ?>
