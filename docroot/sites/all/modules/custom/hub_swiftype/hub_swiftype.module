@@ -55,7 +55,8 @@ function hub_swiftype_employee_directory_callback() {
         'department-name' => $params['facet'],
       ),
     );
-  } else {
+  }
+  else {
     $filters = array(
       'page' => array(
         'type' => 'person',
@@ -117,7 +118,8 @@ function hub_swiftype_search_page_callback() {
           'type' => $params['facet'],
         ),
       );
-    } else {
+    }
+    else {
       $filters = NULL;
     }
 
