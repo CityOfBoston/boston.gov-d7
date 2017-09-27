@@ -48,6 +48,22 @@ function hub_swiftype_employee_directory_callback() {
   $client = new \Swiftype\SwiftypeClient(variable_get('swiftype_email'), variable_get('swiftype_password'), variable_get('swiftype_key'));
   $query = $params['query'] ? $params['query'] : '';
 
+  if ($params['facet']) {
+    $filters = array(
+      'page' => array(
+        'type' => 'person',
+        'department-name' => $params['facet'],
+      ),
+    );
+  }
+  else {
+    $filters = array(
+      'page' => array(
+        'type' => 'person',
+      ),
+    );
+  }
+
   $results = $client->search('the-hub', 'page', $query, array(
     'per_page' => 21,
     'page' => $params['page'] ? $params['page'] : 1,
@@ -56,11 +72,7 @@ function hub_swiftype_employee_directory_callback() {
         'department-name',
       ),
     ),
-    'filters' => array(
-      'page' => array(
-        'type' => 'person',
-      ),
-    ),
+    'filters' => $filters,
     'fetch_fields' => array(
       'page' => array(
         'title',
@@ -73,11 +85,21 @@ function hub_swiftype_employee_directory_callback() {
     ),
   ));
 
+  $facets = array();
+  foreach ($results['body']->info->page->facets->{'department-name'} as $key => $value) {
+    if ($key != '_empty_') {
+      $facets[] = $key;
+    }
+  }
+
+  sort($facets);
+
   return theme('hub_swiftype_employee_directory', array(
     'results' => $results,
     'range'   => hub_swiftype_page_range($results['body']->info->page),
     'selected_facets' => $params['facet'] ? $params['facet'] : array(),
     'hub_employee_search_url' => variable_get('hub_employee_search_url'),
+    'facets' => $facets,
   ));
 }
 
@@ -90,9 +112,21 @@ function hub_swiftype_search_page_callback() {
   $client = new \Swiftype\SwiftypeClient(variable_get('swiftype_email'), variable_get('swiftype_password'), variable_get('swiftype_key'));
 
   if ($params['query']) {
+    if ($params['facet']) {
+      $filters = array(
+        'page' => array(
+          'type' => $params['facet'],
+        ),
+      );
+    }
+    else {
+      $filters = NULL;
+    }
+
     $results = $client->search('the-hub', 'page', $params['query'], array(
       'per_page' => 10,
       'page' => $params['page'] ? $params['page'] : 1,
+      'filters' => $filters,
       'facets' => array(
         'page' => array(
           'type',
