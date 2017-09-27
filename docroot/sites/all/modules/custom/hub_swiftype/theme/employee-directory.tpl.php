@@ -32,19 +32,41 @@
                   <div class="mo g--6">
                     <input type="checkbox" name="mo-tr-1" id="mo-tr-1" class="mo-tr a11y--h">
                     <label for="mo-tr-1" class="mo-t">Filter by Department<?php if ($selected_facets) { ?> <em>(<?php print count($selected_facets) ?> Selected)</em><?php } ?></label>
-                    <div class="mo-c p-a300">
+                    <div class="mo-c">
                       <div class="g">
                         <?php foreach ($facets as $key => $facet) { ?>
-                          <label class="cb g--4" for="check_<?php print $key ?>">
-                            <input type="checkbox" name="facet[]" id="check_<?php print $key ?>" value="<?php print $facet ?>" class="cb-f" <?php if(in_array($facet, $selected_facets)) { ?>checked<?php } ?>>
-                            <span class="cb-l"><?php print $facet ?></span>
-                          </label>
+                          <div class="g--4 p-a300">
+                            <label class="cb" for="check_<?php print $key ?>">
+                              <input type="checkbox" name="facet[]" id="check_<?php print $key ?>" value="<?php print $facet ?>" class="cb-f" <?php if(in_array($facet, $selected_facets)) { ?>checked<?php } ?>>
+                              <span class="cb-l"><?php print $facet ?></span>
+                            </label>
+                          </div>
                         <?php } ?>
                       </div>
                     </div>
                   </div>
                 <?php } ?>
                 <button type="submit">Apply</button>
+                <?php if ($selected_facets) { ?>
+                  <button id="resetForm" class="m-l100 btn btn--c" style="margin-left: 6px">Reset</button>
+                <?php } ?>
+                <script type="text/javascript">
+                  var reset_button = document.getElementById('resetForm');
+
+                  reset_button.style.display = 'inline-block';
+
+                  reset_button.addEventListener('click', function (e) {
+                    e.preventDefault()
+
+                    var checks = document.querySelectorAll('input.cb-f');
+
+                    for (var i = 0; i < checks.length; i++) {
+                      checks[i].checked = false;
+                    }
+
+                    document.getElementById('searchForm').submit();
+                  });
+                </script>
               </div>
             </div>
             <div class="g--12">
