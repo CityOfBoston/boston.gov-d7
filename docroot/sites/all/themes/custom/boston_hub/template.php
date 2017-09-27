@@ -396,7 +396,7 @@ function boston_hub_preprocess_entity_profile2(&$variables, $hook) {
     '#attributes' => array( // Set up an array of attributes inside the tag
       'class' => 'swiftype',
       'name' => 'last-name',
-      'data-type' => 'string',
+      'data-type' => 'enum',
       'content' => $user_profile['main']->field_last_name['und'][0]['value'],
     ),
   );

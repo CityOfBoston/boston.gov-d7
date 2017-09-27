@@ -36,7 +36,7 @@
                       <div class="g">
                         <?php foreach ($facets as $key => $facet) { ?>
                           <label class="cb g--4" for="check_<?php print $key ?>">
-                            <input type="checkbox" name="facet[]" id="check_<?php print $key ?>" value="<?php print $facet ?>" class="cb-f" <?php if(in_array($key, $selected_facets)) { ?>checked<?php } ?>>
+                            <input type="checkbox" name="facet[]" id="check_<?php print $key ?>" value="<?php print $facet ?>" class="cb-f" <?php if(in_array($facet, $selected_facets)) { ?>checked<?php } ?>>
                             <span class="cb-l"><?php print $facet ?></span>
                           </label>
                         <?php } ?>
@@ -57,7 +57,7 @@
                         <div class="cdp-st t--subinfo t--g300"><?php print($record->{'department-name'}) ?></div>
                       </div>
                     </a>
-                    <a href="mailto:kidani.abadi@boston.gov" class="d-b bg--cb cdp-a ta-c p-a300 t--upper t--sans t--w t--ob--h t--s100">Send an email<span class="a11y--hidden"> to <?php print($record->{'title'}[0]) ?></span></a>
+                    <a href="mailto:<?php print($record->{'email'}) ?>" class="d-b bg--cb cdp-a ta-c p-a300 t--upper t--sans t--w t--ob--h t--s100">Send an email<span class="a11y--hidden"> to <?php print($record->{'title'}[0]) ?></span></a>
                   </article>
                 <?php } ?>
               </div>

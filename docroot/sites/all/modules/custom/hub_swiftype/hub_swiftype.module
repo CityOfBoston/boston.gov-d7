@@ -83,6 +83,19 @@ function hub_swiftype_employee_directory_callback() {
         'phone',
       ),
     ),
+    'search_fields' => array(
+      'page' => array(
+        'title',
+        'department-name',
+        'last_name^3',
+      ),
+    ),
+    'sort_field' => array(
+      'page' => 'last_name'
+    ),
+    'sort_direction' => array(
+      'page' => 'desc'
+    ),
   ));
 
   $facets = array();
