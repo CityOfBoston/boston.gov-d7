@@ -8,7 +8,6 @@
   $search_term = $info->page->query;
   $has_results = $info->page->total_result_count > 0;
   $records = $results['body']->records->page;
-  $facets = $info->page->facets->{'department-name'};
 ?>
 <form id="searchForm" action="<?php print $hub_employee_search_url; ?>" accept-charset="UTF-8" method="get">
   <input name="utf8" type="hidden" value="✓">
@@ -27,43 +26,27 @@
     <div class="b-c b-c--mh">
       <?php if ($has_results) { ?>
         <div class="g m-t000">
-          <!--
-            <div class="g--3">
-              <?php if ($facets) { ?>
-                <div class="co">
-                  <input id="collapsible" type="checkbox" class="co-f d-n" aria-hidden="true">
-                  <label for="collapsible" class="co-t">Filter</label>
-                  <div class="co-b co-b--pl">
-                    <div class="t--intro m-b200">Filter by Department</div>
-                    <div class="m-b300">
-                      <?php foreach ($facets as $key => $facet) { ?>
-                        <label class="cb" for="check_<?php print $key ?>">
-                          <input type="checkbox" name="facet[]" id="check_<?php print $key ?>" value="<?php print $key ?>" class="cb-f" <?php if(in_array($key, $selected_facets)) { ?>checked<?php } ?>>
-                          <span class="cb-l"><?php print $key ?> (<?php print $facet ?>)</span>
-                        </label>
-                      <?php } ?>
+            <div class="g--12">
+              <div class="g">
+                <?php if ($facets) { ?>
+                  <div class="mo g--6">
+                    <input type="checkbox" name="mo-tr-1" id="mo-tr-1" class="mo-tr a11y--h">
+                    <label for="mo-tr-1" class="mo-t">Filter by Department<?php if ($selected_facets) { ?> <em>(<?php print count($selected_facets) ?> Selected)</em><?php } ?></label>
+                    <div class="mo-c p-a300">
+                      <div class="g">
+                        <?php foreach ($facets as $key => $facet) { ?>
+                          <label class="cb g--4" for="check_<?php print $key ?>">
+                            <input type="checkbox" name="facet[]" id="check_<?php print $key ?>" value="<?php print $facet ?>" class="cb-f" <?php if(in_array($key, $selected_facets)) { ?>checked<?php } ?>>
+                            <span class="cb-l"><?php print $facet ?></span>
+                          </label>
+                        <?php } ?>
+                      </div>
                     </div>
-                    <button type="submit" class="btn btn--sb">Apply</button>
-                    <script type="text/javascript">
-                      var reset_button = document.getElementById('resetForm');
-
-                      reset_button.style.display = 'inline-block';
-                      reset_button.addEventListener('click', function (e) {
-                        e.preventDefault()
-
-                        var checks = document.querySelectorAll('input.cb-f');
-                        for (var i = 0; i < checks.length; i++) {
-                          checks[i].checked = false;
-                        }
-
-                        document.getElementById('searchForm').submit();
-                      });
-                    </script>
                   </div>
-                </div>
-              <?php } ?>
+                <?php } ?>
+                <button type="submit">Apply</button>
+              </div>
             </div>
-          -->
             <div class="g--12">
               <div class="g">
                 <?php foreach ($records as $key => $record) { ?>
