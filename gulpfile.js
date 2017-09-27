@@ -32,6 +32,7 @@ options.paths = {
   boston: options.default_path,
   dest: theme_path + "/dist",
   ie: theme_path + "/src/ie",
+  images: theme_path + "/src/img",
   scripts: theme_path + "/src/js",
   scripts_vendor: theme_path + "/src/vendor-js",
   theme_path: theme_path

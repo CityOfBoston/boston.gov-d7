@@ -7,9 +7,9 @@
 module.exports = function (gulp, plugins, options, util) {
   return function () {
     var stream = gulp.src([
-                       options.images + '/**/*.{png,jpg,jpeg,gif,svg}'
-                     ])
-                     .pipe(gulp.dest(options.dest + '/img'));
+      options.images + '/**/*.{png,jpg,jpeg,gif,svg}'
+    ])
+    .pipe(gulp.dest(options.dest + '/img'));
 
     return stream;
   };
