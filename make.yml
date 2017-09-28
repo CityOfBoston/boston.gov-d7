@@ -308,6 +308,8 @@ projects:
       - https://www.drupal.org/files/issues/wysiwyg_filter-nofollow-on-relative-links-1077900-4.patch
   xmlsitemap:
     version: 2.3
+  profile2_xmlsitemap:
+    version: 1.x-dev
   ape:
     version : 1.2
   metatag:
