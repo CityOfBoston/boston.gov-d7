@@ -91,10 +91,10 @@ function hub_swiftype_employee_directory_callback() {
       ),
     ),
     'sort_field' => array(
-      'page' => 'last_name',
+      'page' => 'last-name',
     ),
     'sort_direction' => array(
-      'page' => 'desc',
+      'page' => 'asc',
     ),
   ));
 
