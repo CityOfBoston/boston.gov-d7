@@ -29,9 +29,9 @@
             <div class="g--12">
               <div class="g">
                 <?php if ($facets) { ?>
-                  <div class="mo g--6">
+                  <div class="mo g--8 m-b300--mo">
                     <input type="checkbox" name="mo-tr-1" id="mo-tr-1" class="mo-tr a11y--h">
-                    <label for="mo-tr-1" class="mo-t">Filter by Department<?php if ($selected_facets) { ?> <em>(<?php print count($selected_facets) ?> Selected)</em><?php } ?></label>
+                    <label for="mo-tr-1" class="mo-t">Filter by Department<?php if ($selected_facets) { ?> <em style="white-space: nowrap">(<?php print count($selected_facets) ?> Selected)</em><?php } ?></label>
                     <div class="mo-c">
                       <div class="g">
                         <?php foreach ($facets as $key => $facet) { ?>
@@ -46,7 +46,7 @@
                     </div>
                   </div>
                 <?php } ?>
-                <button type="submit">Apply</button>
+                <button class="btn">Apply</button>
                 <?php if ($selected_facets) { ?>
                   <button id="resetForm" class="m-l100 btn btn--c" style="margin-left: 6px">Reset</button>
                 <?php } ?>
