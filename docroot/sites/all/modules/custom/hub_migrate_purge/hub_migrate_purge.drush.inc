@@ -71,22 +71,32 @@ function drush_hub_migrate_purge($migration_name) {
   }
   foreach ($employee_data as $id => $data) {
     // Create a new array of all current source IDs from URL.
-    $source_ids[] = $data['EMPLID'];
+    $json_source_ids[] = $data['EMPLID'];
   }
 
-  $delete_nids = array();
+  $uids = array();
+  $pids = array();
   $delete_src = array();
-  foreach ($rows as $db_id => $nid) {
+  foreach ($rows as $db_source_id => $drupal_id) {
     // If the mapped ID from the db is not still in the source.
-    if (!in_array($db_id, $source_ids)) {
+    if (!in_array($db_source_id, $json_source_ids)) {
       // Add the ID to an array.
-      $delete_src[] = $db_id;
-      // Add the corresponding node ID to an array.
-      $delete_nids[] = $nid;
+      $delete_src[] = $db_source_id;
+      if ($migration_name == 'User') {
+        // Add the corresponding User ID to an array.
+        $uids[] = $drupal_id;
+      }
+      if ($migration_name == 'Profile') {
+        // Add the corresponding Profile ID to an array.
+        $pids[] = $drupal_id;
+      }
     }
   }
   // Send notices to terminal to give the user information about orphan records.
-  if (count($delete_src) < 25) {
+  if (count($delete_src) == 0) {
+    drush_set_error('There are no source IDs to remove from map.');
+  }
+  elseif (count($delete_src) < 25) {
     // If there are only a few IDs, specify which ones are being removed.
     drush_set_error('Preparing to remove the following source IDs from map: ' . implode(",", $delete_src));
   }
@@ -94,18 +104,38 @@ function drush_hub_migrate_purge($migration_name) {
     // If there are a lot of IDs just tell user how many will be removed.
     drush_set_error('Preparing to remove ' . count($delete_src) . ' source IDs from map.');
   }
-  if (count($delete_nids) < 25) {
-    // If there are only a few nodes, specify which ones are being deleted.
-    drush_set_error('Preparing to delete the following Nodes: ' . implode(",", $delete_nids));
+  if (count($uids) == 0) {
+    drush_set_error('There are no Users to delete, or you did not run this migration.');
+  }
+  elseif (count($uids) < 25) {
+    // If there are only a few Users, specify which ones are being deleted.
+    drush_set_error('Preparing to delete the following Users: ' . implode(",", $uids));
   }
   else {
-    // If there are a lot of nodes, just tell user how many are being deleted.
-    drush_set_error('Preparing to delete ' . count($delete_nids) . ' Nodes.');
+    // If there are a lot of Users, just specify how many are being deleted.
+    drush_set_error('Preparing to delete ' . count($uids) . ' Users.');
+  }
+  if (count($pids) == 0) {
+    drush_set_error('There are no Profiles to delete, or you did not run this migration.');
+  }
+  elseif (count($pids) < 25) {
+    // If there are only a few Profiles, specify which ones are being deleted.
+    drush_set_error('Preparing to delete the following Profiles: ' . implode(",", $pids));
+  }
+  else {
+    // If there are lots of Profiles, just specify how many are being deleted.
+    drush_set_error('Preparing to delete ' . count($pids) . ' Profiles.');
   }
   // Check if the user actually wants us to delete anything from the db.
   if (!$dry_run) {
-    // Delete the nodes specified.
-    node_delete_multiple($delete_nids);
+    // Delete the users specified.
+    if ($uids) {
+      user_delete_multiple($uids);
+    }
+    // Delete the profiles specified.
+    if ($pids) {
+      profile2_delete_multiple($pids);
+    }
     foreach ($delete_src as $id) {
       // Delete the IDs from the map table for this migration.
       $migration->getMap()->delete(array($id));
