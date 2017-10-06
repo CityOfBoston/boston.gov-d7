@@ -411,9 +411,19 @@ function hub_profile_update_7020() {
 }
 
 /**
- * Update for 10/2/17
+ * Update for 9/27/17
  */
 function hub_profile_update_7021() {
+  $enabled_modules = array(
+    'profile2_xmlsitemap',
+  );
+  module_enable($enabled_modules);
+}
+
+/**
+ * Update for 10/2/17
+ */
+function hub_profile_update_7022() {
   $enabled_modules = array(
     'hub_migrate_purge',
   );

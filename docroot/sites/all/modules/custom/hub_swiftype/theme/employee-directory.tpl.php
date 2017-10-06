@@ -29,22 +29,44 @@
             <div class="g--12">
               <div class="g">
                 <?php if ($facets) { ?>
-                  <div class="mo g--6">
+                  <div class="mo g--8 m-b300--mo">
                     <input type="checkbox" name="mo-tr-1" id="mo-tr-1" class="mo-tr a11y--h">
-                    <label for="mo-tr-1" class="mo-t">Filter by Department<?php if ($selected_facets) { ?> <em>(<?php print count($selected_facets) ?> Selected)</em><?php } ?></label>
-                    <div class="mo-c p-a300">
+                    <label for="mo-tr-1" class="mo-t">Filter by Department<?php if ($selected_facets) { ?> <em style="white-space: nowrap">(<?php print count($selected_facets) ?> Selected)</em><?php } ?></label>
+                    <div class="mo-c">
                       <div class="g">
                         <?php foreach ($facets as $key => $facet) { ?>
-                          <label class="cb g--4" for="check_<?php print $key ?>">
-                            <input type="checkbox" name="facet[]" id="check_<?php print $key ?>" value="<?php print $facet ?>" class="cb-f" <?php if(in_array($key, $selected_facets)) { ?>checked<?php } ?>>
-                            <span class="cb-l"><?php print $facet ?></span>
-                          </label>
+                          <div class="g--4 p-a300">
+                            <label class="cb" for="check_<?php print $key ?>">
+                              <input type="checkbox" name="facet[]" id="check_<?php print $key ?>" value="<?php print $facet ?>" class="cb-f" <?php if(in_array($facet, $selected_facets)) { ?>checked<?php } ?>>
+                              <span class="cb-l"><?php print $facet ?></span>
+                            </label>
+                          </div>
                         <?php } ?>
                       </div>
                     </div>
                   </div>
                 <?php } ?>
-                <button type="submit">Apply</button>
+                <button class="btn">Apply</button>
+                <?php if ($selected_facets) { ?>
+                  <button id="resetForm" class="m-l100 btn btn--c" style="margin-left: 6px">Reset</button>
+                <?php } ?>
+                <script type="text/javascript">
+                  var reset_button = document.getElementById('resetForm');
+
+                  reset_button.style.display = 'inline-block';
+
+                  reset_button.addEventListener('click', function (e) {
+                    e.preventDefault()
+
+                    var checks = document.querySelectorAll('input.cb-f');
+
+                    for (var i = 0; i < checks.length; i++) {
+                      checks[i].checked = false;
+                    }
+
+                    document.getElementById('searchForm').submit();
+                  });
+                </script>
               </div>
             </div>
             <div class="g--12">
@@ -57,7 +79,7 @@
                         <div class="cdp-st t--subinfo t--g300"><?php print($record->{'department-name'}) ?></div>
                       </div>
                     </a>
-                    <a href="mailto:kidani.abadi@boston.gov" class="d-b bg--cb cdp-a ta-c p-a300 t--upper t--sans t--w t--ob--h t--s100">Send an email<span class="a11y--hidden"> to <?php print($record->{'title'}[0]) ?></span></a>
+                    <a href="mailto:<?php print($record->{'email'}) ?>" class="d-b bg--cb cdp-a ta-c p-a300 t--upper t--sans t--w t--ob--h t--s100">Send an email<span class="a11y--hidden"> to <?php print($record->{'title'}[0]) ?></span></a>
                   </article>
                 <?php } ?>
               </div>

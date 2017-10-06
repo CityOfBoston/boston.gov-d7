@@ -6,7 +6,7 @@ The source code for [Boston.gov](https://boston.gov), the official site of the C
 > 
 > — Mayor Martin J. Walsh
 
-There’s a large, civic-minded ecosystem of software developers out there, especially in the Drupal community, and we’re hoping they’re willing to lend a hand and help Boston.gov grow, as well as foster collaboration between multiple organizations to solve common technical hurdles.
+There’s a large, civic-minded ecosystem of software developers out there, especially in the Drupal community, and we’re hoping they’re willing to lend a hand and help Boston.gov grow, as well as foster collaboration between multiple organizations to solve common technical hurdles.    
 
 ## Contributions
 

@@ -14,7 +14,7 @@ function hub_swiftype_menu() {
   $items = array();
 
   // The path that the endpoint will be registered to.
-  $items['swiftype'] = array(
+  $items['search'] = array(
     'title' => 'Search',
     // The name of the function called when the path is accessed.
     'page callback' => 'hub_swiftype_search_page_callback',
@@ -82,6 +82,19 @@ function hub_swiftype_employee_directory_callback() {
         'email',
         'phone',
       ),
+    ),
+    'search_fields' => array(
+      'page' => array(
+        'title',
+        'department-name',
+        'last_name^3',
+      ),
+    ),
+    'sort_field' => array(
+      'page' => 'last-name',
+    ),
+    'sort_direction' => array(
+      'page' => 'asc',
     ),
   ));
 
