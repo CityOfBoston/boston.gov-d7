@@ -1,0 +1,6 @@
+name = Hub Migrate Purge
+description = Custom migrate module that lets you optionally delete destination when source data is removed.
+core = 7.x
+package = Custom
+
+dependencies[] = migrate
