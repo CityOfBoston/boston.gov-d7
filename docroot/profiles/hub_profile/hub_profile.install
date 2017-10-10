@@ -419,3 +419,13 @@ function hub_profile_update_7021() {
   );
   module_enable($enabled_modules);
 }
+
+/**
+ * Update for 10/2/17
+ */
+function hub_profile_update_7022() {
+  $enabled_modules = array(
+    'hub_migrate_purge',
+  );
+  module_enable($enabled_modules);
+}
