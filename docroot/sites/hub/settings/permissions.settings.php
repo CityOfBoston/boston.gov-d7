@@ -22,7 +22,6 @@ function acquia_permissions_map() {
     'anonymous user' => array(
       'access content',
       'access user profiles',
-      'search content',
       'view any main profile',
       'view files',
     ),
@@ -36,7 +35,6 @@ function acquia_permissions_map() {
       'create files',
       'delete own image files',
       'edit own image files',
-      'search content',
       'view any main profile',
       'view files',
       'view own files',
@@ -418,7 +416,6 @@ function acquia_permissions_map() {
       'administer menu',
       'administer permissions',
       'administer profiles',
-      'administer search',
       'administer taxonomy',
       'administer users',
       'create article content',

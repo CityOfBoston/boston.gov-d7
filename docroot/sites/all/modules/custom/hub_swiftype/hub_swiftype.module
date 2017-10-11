@@ -64,6 +64,19 @@ function hub_swiftype_employee_directory_callback() {
     );
   }
 
+  if ($params['query']) {
+    $sort_field = array();
+    $sort_direction = array();
+  }
+  else {
+    $sort_field = array(
+      'page' => 'last-name',
+    );
+    $sort_direction = array(
+      'page' => 'asc',
+    );
+  }
+
   $results = $client->search('the-hub', 'page', $query, array(
     'per_page' => 21,
     'page' => $params['page'] ? $params['page'] : 1,
@@ -87,15 +100,10 @@ function hub_swiftype_employee_directory_callback() {
       'page' => array(
         'title',
         'department-name',
-        'last_name^3',
       ),
     ),
-    'sort_field' => array(
-      'page' => 'last-name',
-    ),
-    'sort_direction' => array(
-      'page' => 'asc',
-    ),
+    'sort_field' => $sort_field,
+    'sort_direction' => $sort_direction,
   ));
 
   $facets = array();
