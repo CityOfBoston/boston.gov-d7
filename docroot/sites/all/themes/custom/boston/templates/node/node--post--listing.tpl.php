@@ -90,7 +90,7 @@ hide($content['links']);
         <?php if (isset($content['field_thumbnail'])): ?>
           <?php print render($content['field_thumbnail']); ?>
         <?php else: ?>
-          <div class="news-item-default-image" style="background-image: url('/<?php print drupal_get_path('theme', $theme) ?>/dist/img/news-default-thumb.svg');">
+          <div class="news-item-default-image" style="background-image: url('<?php print $asset_url ?>/images/<?php print $asset_name ?>/icons/news.svg');">
             <span>Default News image</span>
           </div>
         <?php endif; ?>
