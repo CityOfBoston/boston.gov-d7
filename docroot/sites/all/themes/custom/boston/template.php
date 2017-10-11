@@ -2048,7 +2048,7 @@ function boston_preprocess_paragraphs_item_hero_image(&$variables) {
 function boston_preprocess_paragraphs_item_quote(&$variables) {
 
   if (!isset($variables['field_person_photo'])) {
-    $variables['field_default_person_photo'] = '<img src="/' . drupal_get_path('theme', $GLOBALS['theme']) . '/dist/img/quote-default-image.svg" alt="No picture available">';
+    $variables['field_default_person_photo'] = '<img src="' . $variables['asset_url'] . '/images/global/icons/quote.svg" alt="No picture available">';
   }
   else {
     $variables['field_default_person_photo'] = render($variables['content']['field_person_photo']);
