@@ -672,6 +672,7 @@ function bos_profile_update_7029() {
     'rules',
     'entity_token',
     'slack',
+    'bos_slack',
   );
   module_enable($enabled_modules);
 }
