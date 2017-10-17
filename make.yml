@@ -222,6 +222,8 @@ projects:
     version: 1.2
   shunt:
     version: 1.3
+  slack:
+    version: 1.6
   stage_file_proxy:
     version: 1.7
   strongarm:

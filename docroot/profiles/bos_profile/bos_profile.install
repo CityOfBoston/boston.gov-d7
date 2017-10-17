@@ -663,3 +663,16 @@ function bos_profile_update_7028() {
   );
   module_enable($enabled_modules);
 }
+
+/**
+ * Update for 10/12/17
+ */
+function bos_profile_update_7029() {
+  $enabled_modules = array(
+    'rules',
+    'entity_token',
+    'slack',
+    'bos_slack',
+  );
+  module_enable($enabled_modules);
+}
