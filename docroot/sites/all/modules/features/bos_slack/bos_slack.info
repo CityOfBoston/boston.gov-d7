@@ -1,0 +1,12 @@
+name = Boston Slack
+description = Uses Rules to send messages to a Slack channel when content is set to particular states
+core = 7.x
+package = Features
+version = 7.x-1.0
+dependencies[] = entity
+dependencies[] = rules
+dependencies[] = slack
+dependencies[] = workbench_moderation
+features[features_api][] = api:2
+features[rules_config][] = rules_slack_alert_node_needs_review
+features[rules_config][] = rules_slack_alert_node_published
