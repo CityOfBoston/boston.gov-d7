@@ -1,0 +1,46 @@
+<?php
+
+/**
+ * @file
+ * Migrates field_title data to field_component_title on video paragraph.
+ */
+
+/**
+ * Implements hook_action_info().
+ */
+function bos_video_component_title_migration_action_info() {
+  return array(
+    'bos_video_component_title_migration_action' => array(
+      'type' => 'node',
+      'label' => t('Video Title Mig'),
+      'behavior' => array('changes_property'),
+      'triggers' => array('any'),
+      'configurable' => FALSE,
+    ),
+  );
+}
+
+/**
+ * Action callback for VBO.
+ */
+function bos_video_component_title_migration_action(&$entity, $context) {
+
+  // Loop through referenced entities in old "All related departments" field.
+  foreach ($entity->field_title[$entity->language] as $key => $value) {
+
+    // Check that there is a Term ID for the referenced entity.
+    if (isset($value['target_id'])) {
+
+      // Make sure we actually matched a node.
+      if ($first_match_nid) {
+        // Double check that we're updating the corrent bundles.
+        if ($entity->type == 'event' || $entity->type == 'public_notice' || $entity->type == 'post') {
+          // Add converted value from the old field to the new field.
+          $entity->field_related_departments[$entity->language][]['target_id'] = $first_match_nid;
+        }
+      }
+    }
+  }
+  // Save the updated entity.
+  node_save($entity);
+}
