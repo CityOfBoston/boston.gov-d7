@@ -25,22 +25,32 @@ function bos_video_component_title_migration_action_info() {
  */
 function bos_video_component_title_migration_action(&$entity, $context) {
 
-  // Loop through referenced entities in old "All related departments" field.
-  foreach ($entity->field_title[$entity->language] as $key => $value) {
+  // Loop through paragraphs on the node.
+  foreach ($entity->field_components[$entity->language] as $key => $value) {
 
-    // Check that there is a Term ID for the referenced entity.
-    if (isset($value['target_id'])) {
+    // Check that there is a Paragraph ID for the current component.
+    if (isset($value['value'])) {
 
-      // Make sure we actually matched a node.
-      if ($first_match_nid) {
-        // Double check that we're updating the corrent bundles.
-        if ($entity->type == 'event' || $entity->type == 'public_notice' || $entity->type == 'post') {
-          // Add converted value from the old field to the new field.
-          $entity->field_related_departments[$entity->language][]['target_id'] = $first_match_nid;
-        }
+      // Get the paragraph ID value.
+      $pid = $value['value'];
+
+      // Load the current paragraph to access field values.
+      $paragraph = entity_load('paragraphs_item', array($pid));
+
+      // Make sure we only perform logic on Video components.
+      if ($paragraph[$pid]->bundle == 'video') {
+
+        // Get the title from the old field.
+        $field_title = $paragraph[$pid]->field_title['und'][0]['value'];
+
+        // Set the title on the new field.
+        $paragraph[$pid]->field_component_title['und'][0]['value'] = $field_title;
+        $paragraph[$pid]->field_component_title['und'][0]['format'] = NULL;
+        $paragraph[$pid]->field_component_title['und'][0]['safe_value'] = $field_title;
+
+        // Save the paragraph so changes are committed to db.
+        $paragraph[$pid]->save(TRUE);
       }
     }
   }
-  // Save the updated entity.
-  node_save($entity);
 }
