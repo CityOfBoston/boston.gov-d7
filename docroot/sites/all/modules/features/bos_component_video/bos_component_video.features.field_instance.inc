@@ -10,7 +10,54 @@
 function bos_component_video_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'paragraphs_item-video-field_contact'
+  // Exported field_instance: 'paragraphs_item-video-field_component_title'.
+  $field_instances['paragraphs_item-video-field_component_title'] = array(
+    'bundle' => 'video',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 1,
+      ),
+      'paragraphs_editor_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'paragraphs_item',
+    'fences_wrapper' => 'div_div_div',
+    'field_name' => 'field_component_title',
+    'label' => 'Title',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'show_token_tree' => 0,
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 2,
+    ),
+  );
+
+  // Exported field_instance: 'paragraphs_item-video-field_contact'.
   $field_instances['paragraphs_item-video-field_contact'] = array(
     'bundle' => 'video',
     'default_value' => NULL,
@@ -24,7 +71,7 @@ function bos_component_video_field_default_field_instances() {
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
-        'weight' => 6,
+        'weight' => 5,
       ),
       'paragraphs_editor_preview' => array(
         'label' => 'above',
@@ -56,11 +103,11 @@ function bos_component_video_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 2,
+      'weight' => 3,
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-video-field_extra_info'
+  // Exported field_instance: 'paragraphs_item-video-field_extra_info'.
   $field_instances['paragraphs_item-video-field_extra_info'] = array(
     'bundle' => 'video',
     'default_value' => NULL,
@@ -72,7 +119,7 @@ function bos_component_video_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_plain',
-        'weight' => 4,
+        'weight' => 3,
       ),
       'paragraphs_editor_preview' => array(
         'label' => 'above',
@@ -103,11 +150,11 @@ function bos_component_video_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 4,
+      'weight' => 5,
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-video-field_image'
+  // Exported field_instance: 'paragraphs_item-video-field_image'.
   $field_instances['paragraphs_item-video-field_image'] = array(
     'bundle' => 'video',
     'deleted' => 0,
@@ -122,7 +169,7 @@ function bos_component_video_field_default_field_instances() {
           'url_type' => 0,
         ),
         'type' => 'image_url',
-        'weight' => 5,
+        'weight' => 4,
       ),
       'paragraphs_editor_preview' => array(
         'label' => 'above',
@@ -169,11 +216,11 @@ function bos_component_video_field_default_field_instances() {
         ),
       ),
       'type' => 'media_generic',
-      'weight' => 5,
+      'weight' => 6,
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-video-field_is_channel'
+  // Exported field_instance: 'paragraphs_item-video-field_is_channel'.
   $field_instances['paragraphs_item-video-field_is_channel'] = array(
     'bundle' => 'video',
     'default_value' => NULL,
@@ -185,7 +232,7 @@ function bos_component_video_field_default_field_instances() {
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_key',
-        'weight' => 7,
+        'weight' => 6,
       ),
       'paragraphs_editor_preview' => array(
         'label' => 'above',
@@ -209,11 +256,11 @@ function bos_component_video_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 6,
+      'weight' => 7,
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-video-field_short_title'
+  // Exported field_instance: 'paragraphs_item-video-field_short_title'.
   $field_instances['paragraphs_item-video-field_short_title'] = array(
     'bundle' => 'video',
     'default_value' => NULL,
@@ -225,7 +272,7 @@ function bos_component_video_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 3,
+        'weight' => 2,
       ),
       'paragraphs_editor_preview' => array(
         'label' => 'above',
@@ -256,11 +303,11 @@ function bos_component_video_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 3,
+      'weight' => 4,
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-video-field_title'
+  // Exported field_instance: 'paragraphs_item-video-field_title'.
   $field_instances['paragraphs_item-video-field_title'] = array(
     'bundle' => 'video',
     'default_value' => NULL,
