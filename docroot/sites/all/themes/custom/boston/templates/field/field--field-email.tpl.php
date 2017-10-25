@@ -45,9 +45,10 @@
  * @ingroup themeable
  */
 $email = $items[0]['#markup'];
+$hide_contact_form = $variables["element"]["#object"]->field_hide_contact_form && $variables["element"]["#object"]->field_hide_contact_form["und"][0]["value"] == "1" ? "class='hide-form'" : "";
 $detail_item_variables = array(
   'label' => NULL,
-  'body' => "<a href='mailto:$email' title='Have a question, or just need help? You can send an email to $email through the form below.'>$email</a>",
+  'body' => "<a href='mailto:$email' title='Have a question, or just need help? You can send an email to $email through the form below.' $hide_contact_form>$email</a>",
   'classes' => array(
     'detail' => 'detail-item--middle',
     'icon' => 'icon-email',
