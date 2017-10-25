@@ -1,0 +1,10 @@
+name = Boston View Video Component Title Migration
+description = Migrates data from field_title to field_component_title for all nodes with Video paragraphs referenced in field_component
+core = 7.x
+package = Features
+version = 7.x-1.0
+dependencies[] = views
+features[ctools][] = views:views_default:3.0
+features[features_api][] = api:2
+features[views_view][] = video_component_title_migration
+features_exclude[dependencies][ctools] = ctools
