@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Boston View Video Component Title Migration feature.
+ */
+
+include_once 'bos_view_video_component_title_migration.features.inc';

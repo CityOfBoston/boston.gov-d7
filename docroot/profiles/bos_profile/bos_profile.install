@@ -676,3 +676,14 @@ function bos_profile_update_7029() {
   );
   module_enable($enabled_modules);
 }
+
+/**
+ * Update for 10/20/17
+ */
+function bos_profile_update_7030() {
+  $enabled_modules = array(
+    'bos_video_component_title_migration',
+    'bos_view_video_component_title_migration',
+  );
+  module_enable($enabled_modules);
+}

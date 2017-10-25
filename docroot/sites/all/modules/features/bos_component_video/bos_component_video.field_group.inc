@@ -29,6 +29,7 @@ function bos_component_video_field_group_info() {
       3 => 'field_title',
       4 => 'field_contact',
       5 => 'field_is_channel',
+      6 => 'field_component_title',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
