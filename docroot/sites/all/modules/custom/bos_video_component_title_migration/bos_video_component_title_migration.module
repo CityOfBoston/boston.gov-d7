@@ -1,0 +1,56 @@
+<?php
+
+/**
+ * @file
+ * Migrates field_title data to field_component_title on video paragraph.
+ */
+
+/**
+ * Implements hook_action_info().
+ */
+function bos_video_component_title_migration_action_info() {
+  return array(
+    'bos_video_component_title_migration_action' => array(
+      'type' => 'node',
+      'label' => t('Video Title Mig'),
+      'behavior' => array('changes_property'),
+      'triggers' => array('any'),
+      'configurable' => FALSE,
+    ),
+  );
+}
+
+/**
+ * Action callback for VBO.
+ */
+function bos_video_component_title_migration_action(&$entity, $context) {
+
+  // Loop through paragraphs on the node.
+  foreach ($entity->field_components[$entity->language] as $key => $value) {
+
+    // Check that there is a Paragraph ID for the current component.
+    if (isset($value['value'])) {
+
+      // Get the paragraph ID value.
+      $pid = $value['value'];
+
+      // Load the current paragraph to access field values.
+      $paragraph = entity_load('paragraphs_item', array($pid));
+
+      // Make sure we only perform logic on Video components.
+      if ($paragraph[$pid]->bundle == 'video') {
+
+        // Get the title from the old field.
+        $field_title = $paragraph[$pid]->field_title['und'][0]['value'];
+
+        // Set the title on the new field.
+        $paragraph[$pid]->field_component_title['und'][0]['value'] = $field_title;
+        $paragraph[$pid]->field_component_title['und'][0]['format'] = NULL;
+        $paragraph[$pid]->field_component_title['und'][0]['safe_value'] = $field_title;
+
+        // Save the paragraph so changes are committed to db.
+        $paragraph[$pid]->save(TRUE);
+      }
+    }
+  }
+}

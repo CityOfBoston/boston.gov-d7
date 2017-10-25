@@ -663,3 +663,40 @@ function bos_profile_update_7028() {
   );
   module_enable($enabled_modules);
 }
+
+/**
+ * Update for 10/12/17
+ */
+function bos_profile_update_7029() {
+  $enabled_modules = array(
+    'rules',
+    'entity_token',
+    'slack',
+    'bos_slack',
+  );
+  module_enable($enabled_modules);
+}
+
+/**
+ * Update for 10/20/17
+ */
+function bos_profile_update_7030() {
+  $enabled_modules = array(
+    'bos_video_component_title_migration',
+    'bos_view_video_component_title_migration',
+  );
+  module_enable($enabled_modules);
+}
+
+/**
+ * Update for 10/20/17
+ */
+function bos_profile_update_7031() {
+  $disabled_modules = array(
+    'bos_video_component_title_migration',
+    'bos_view_video_component_title_migration',
+    'bos_related_content_migration',
+    'bos_related_content_migration_view',
+  );
+  module_disable($disabled_modules);
+}

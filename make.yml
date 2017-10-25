@@ -222,6 +222,8 @@ projects:
     version: 1.2
   shunt:
     version: 1.3
+  slack:
+    version: 1.6
   stage_file_proxy:
     version: 1.7
   strongarm:
@@ -254,6 +256,8 @@ projects:
     version: 2.22
   rabbit_hole:
     version: 2.23
+  rules:
+    version: 2.9
   special_menu_items:
     version: 2.0
   simplesamlphp_auth:
