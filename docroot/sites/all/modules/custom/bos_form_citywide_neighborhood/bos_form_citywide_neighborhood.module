@@ -51,7 +51,7 @@ function bos_form_citywide_neighborhood_page_build(&$page) {
   // Get the content type.
   $bundle = $page['content']['system_main']['nodes'][$nid]['#bundle'];
   // Make sure we only run this code on certain content types.
-  if ($bundle == 'event' || $bundle == 'notice') {
+  if ($bundle == 'event' || $bundle == 'public_notice') {
     // Get details about field_multiple_neighborhoods for current node.
     $neighborhoods = $page['content']['system_main']['nodes'][$nid]['field_multiple_neighborhoods'];
     // Assume 'Citywide' is not set by default.
