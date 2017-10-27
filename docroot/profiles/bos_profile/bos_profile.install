@@ -687,3 +687,13 @@ function bos_profile_update_7030() {
   );
   module_enable($enabled_modules);
 }
+
+/**
+ * Update for 10/26/17
+ */
+function bos_profile_update_7031() {
+  $enabled_modules = array(
+    'bos_swiftype',
+  );
+  module_enable($enabled_modules);
+}
