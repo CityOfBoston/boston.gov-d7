@@ -574,6 +574,8 @@ function boston_process_maintenance_page(array &$variables, $hook) {
 function boston_preprocess_node(array &$variables, $hook) {
   // Add theme variable
   $variables['theme'] = variable_get('theme_default', 'boston');
+  $variables['asset_url'] = variable_get('asset_url', 'https://patterns.boston.gov');
+  $variables['asset_name'] = $GLOBALS['theme'] == 'boston_hub' ? 'hub' : 'public';
 
   // Add theme hook suggestions for node.
   $variables['theme_hook_suggestions'][] = 'node__' . $variables['view_mode'];
@@ -629,6 +631,8 @@ function boston_preprocess_node(array &$variables, $hook) {
   if ($variables['type'] == 'listing_page') {
     _boston_listing_page_title($variables);
   }
+
+
 }
 
 function boston_preprocess_paragraphs_item_news_announcements(&$variables) {
@@ -2048,7 +2052,7 @@ function boston_preprocess_paragraphs_item_hero_image(&$variables) {
 function boston_preprocess_paragraphs_item_quote(&$variables) {
 
   if (!isset($variables['field_person_photo'])) {
-    $variables['field_default_person_photo'] = '<img src="/' . drupal_get_path('theme', $GLOBALS['theme']) . '/dist/img/quote-default-image.svg" alt="No picture available">';
+    $variables['field_default_person_photo'] = '<img src="' . $variables['asset_url'] . '/images/global/icons/quote.svg" alt="No picture available">';
   }
   else {
     $variables['field_default_person_photo'] = render($variables['content']['field_person_photo']);

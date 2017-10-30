@@ -111,6 +111,7 @@ function bos_content_type_department_profile_field_group_info() {
       2 => 'field_phone_number',
       3 => 'field_address',
       4 => 'field_department_type',
+      5 => 'field_hide_contact_form',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -137,9 +138,9 @@ function bos_content_type_department_profile_field_group_info() {
     'label' => 'Page Metadata',
     'weight' => '1',
     'children' => array(
-      0 => 'field_type_of_content',
-      1 => 'field_published_date',
-      2 => 'field_updated_date',
+      0 => 'field_published_date',
+      1 => 'field_updated_date',
+      2 => 'field_type_of_content',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

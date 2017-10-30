@@ -10,7 +10,7 @@
 function bos_content_type_department_profile_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-department_profile-body'
+  // Exported field_instance: 'node-department_profile-body'.
   $field_instances['node-department_profile-body'] = array(
     'bundle' => 'department_profile',
     'default_value' => NULL,
@@ -136,7 +136,7 @@ function bos_content_type_department_profile_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-department_profile-field_address'
+  // Exported field_instance: 'node-department_profile-field_address'.
   $field_instances['node-department_profile-field_address'] = array(
     'bundle' => 'department_profile',
     'default_value' => NULL,
@@ -280,11 +280,11 @@ function bos_content_type_department_profile_field_default_field_instances() {
         ),
       ),
       'type' => 'addressfield_standard',
-      'weight' => 13,
+      'weight' => 14,
     ),
   );
 
-  // Exported field_instance: 'node-department_profile-field_department_type'
+  // Exported field_instance: 'node-department_profile-field_department_type'.
   $field_instances['node-department_profile-field_department_type'] = array(
     'bundle' => 'department_profile',
     'default_value' => array(
@@ -403,11 +403,11 @@ function bos_content_type_department_profile_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 14,
+      'weight' => 15,
     ),
   );
 
-  // Exported field_instance: 'node-department_profile-field_email'
+  // Exported field_instance: 'node-department_profile-field_email'.
   $field_instances['node-department_profile-field_email'] = array(
     'bundle' => 'department_profile',
     'default_value' => NULL,
@@ -529,7 +529,81 @@ function bos_content_type_department_profile_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-department_profile-field_icon'
+  // Exported field_instance: 'node-department_profile-field_hide_contact_form'.
+  $field_instances['node-department_profile-field_hide_contact_form'] = array(
+    'bundle' => 'department_profile',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'article' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'contact' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 14,
+      ),
+      'department_listing' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'icon_popup' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'popup_icon' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'published_by' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div_div_div',
+    'field_name' => 'field_hide_contact_form',
+    'label' => 'Hide Contact Form',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 13,
+    ),
+  );
+
+  // Exported field_instance: 'node-department_profile-field_icon'.
   $field_instances['node-department_profile-field_icon'] = array(
     'bundle' => 'department_profile',
     'deleted' => 0,
@@ -685,7 +759,7 @@ function bos_content_type_department_profile_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-department_profile-field_intro_text'
+  // Exported field_instance: 'node-department_profile-field_intro_text'.
   $field_instances['node-department_profile-field_intro_text'] = array(
     'bundle' => 'department_profile',
     'default_value' => NULL,
@@ -806,7 +880,7 @@ function bos_content_type_department_profile_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-department_profile-field_operation_hours'
+  // Exported field_instance: 'node-department_profile-field_operation_hours'.
   $field_instances['node-department_profile-field_operation_hours'] = array(
     'bundle' => 'department_profile',
     'default_value' => NULL,
@@ -983,11 +1057,11 @@ function bos_content_type_department_profile_field_default_field_instances() {
       'module' => 'paragraphs',
       'settings' => array(),
       'type' => 'paragraphs_embed',
-      'weight' => 15,
+      'weight' => 16,
     ),
   );
 
-  // Exported field_instance: 'node-department_profile-field_phone_number'
+  // Exported field_instance: 'node-department_profile-field_phone_number'.
   $field_instances['node-department_profile-field_phone_number'] = array(
     'bundle' => 'department_profile',
     'default_value' => NULL,
@@ -1110,7 +1184,7 @@ function bos_content_type_department_profile_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-department_profile-field_published_date'
+  // Exported field_instance: 'node-department_profile-field_published_date'.
   $field_instances['node-department_profile-field_published_date'] = array(
     'bundle' => 'department_profile',
     'deleted' => 0,
@@ -1198,7 +1272,7 @@ function bos_content_type_department_profile_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-department_profile-field_type_of_content'
+  // Exported field_instance: 'node-department_profile-field_type_of_content'.
   $field_instances['node-department_profile-field_type_of_content'] = array(
     'bundle' => 'department_profile',
     'default_value' => NULL,
@@ -1270,7 +1344,7 @@ function bos_content_type_department_profile_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-department_profile-field_updated_date'
+  // Exported field_instance: 'node-department_profile-field_updated_date'.
   $field_instances['node-department_profile-field_updated_date'] = array(
     'bundle' => 'department_profile',
     'deleted' => 0,
@@ -1366,6 +1440,7 @@ function bos_content_type_department_profile_field_default_field_instances() {
   t('Department Type');
   t('Email');
   t('Enter hours of operation here. You can add more than one set of hours.');
+  t('Hide Contact Form');
   t('Intro Text');
   t('Operation Hours');
   t('Phone Number');
