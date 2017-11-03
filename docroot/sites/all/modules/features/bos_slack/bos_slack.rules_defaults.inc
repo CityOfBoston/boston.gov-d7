@@ -19,7 +19,7 @@ function bos_slack_default_rules_configuration() {
         { "contents_current_state" : { "node" : [ "node" ], "moderation_state" : "needs_review" } }
       ],
       "DO" : [
-        { "slack_send_message" : { "message" : "A Node of type [node:content-type] has been set to \\u0022Needs Review\\u0022 by [site:current-user].\\r\\nNode ID: [node:nid]\\r\\nTitle: [node:title]\\r\\nAuthor: [node:author]\\r\\nURL: [node:url]\\r\\nCreated: [node:created]\\r\\nLast Updated: [node:changed]" } }
+        { "slack_send_message" : { "message" : "A Node of type [node:content-type] has been set to \\u0022Needs Review\\u0022 by [site:current-user].\\r\\nNode ID: [node:nid]\\r\\nTitle: [node:title]\\r\\nAuthor: [node:author]\\r\\nURL: [node:url]\\r\\nCreated: [node:created]\\r\\nLast Updated: [node:changed]\\r\\nRevision Log Message: [node:log]" } }
       ]
     }
   }');
@@ -33,7 +33,7 @@ function bos_slack_default_rules_configuration() {
         { "contents_current_state" : { "node" : [ "node" ], "moderation_state" : "published" } }
       ],
       "DO" : [
-        { "slack_send_message" : { "message" : "A Node of type [node:content-type] has been set to \\u0022Published\\u0022 by [site:current-user].\\r\\nNode ID: [node:nid]\\r\\nTitle: [node:title]\\r\\nAuthor: [node:author]\\r\\nURL: [node:url]\\r\\nCreated: [node:created]\\r\\nLast Updated: [node:changed]" } }
+        { "slack_send_message" : { "message" : "A Node of type [node:content-type] has been set to \\u0022Published\\u0022 by [site:current-user].\\r\\nNode ID: [node:nid]\\r\\nTitle: [node:title]\\r\\nAuthor: [node:author]\\r\\nURL: [node:url]\\r\\nCreated: [node:created]\\r\\nLast Updated: [node:changed]\\r\\nRevision Log Message: [node:log]" } }
       ]
     }
   }');

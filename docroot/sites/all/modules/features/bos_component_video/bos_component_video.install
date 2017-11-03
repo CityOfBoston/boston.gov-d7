@@ -1,0 +1,19 @@
+<?php
+
+/**
+ * @file
+ * Use to make database updates that features won't automatically do.
+ */
+
+/**
+ * Implements hook_update_N().
+ *
+ * Remove old title field instance.
+ */
+function bos_component_video_update_7001() {
+  if ($instance = field_info_instance('paragraphs_item', 'field_title', 'video')) {
+    field_delete_instance($instance);
+  }
+  field_purge_batch(500);
+  features_revert_module('bos_component_video');
+}
