@@ -113,7 +113,6 @@ function bos_metrolist_affordable_housing_strongarm() {
   $strongarm->name = 'node_options_metrolist_affordable_housing';
   $strongarm->value = array(
     0 => 'status',
-    1 => 'promote',
   );
   $export['node_options_metrolist_affordable_housing'] = $strongarm;
 
@@ -130,6 +129,16 @@ function bos_metrolist_affordable_housing_strongarm() {
   $strongarm->name = 'node_submitted_metrolist_affordable_housing';
   $strongarm->value = 1;
   $export['node_submitted_metrolist_affordable_housing'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'xmlsitemap_settings_node_metrolist_affordable_housing';
+  $strongarm->value = array(
+    'status' => '0',
+    'priority' => '0.5',
+  );
+  $export['xmlsitemap_settings_node_metrolist_affordable_housing'] = $strongarm;
 
   return $export;
 }
