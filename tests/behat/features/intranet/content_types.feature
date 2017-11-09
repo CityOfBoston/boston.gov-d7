@@ -17,6 +17,7 @@ Feature: Content Types
       | Post               |
       | Guide              |
       | Tabbed Content     |
+      | Place Profile      |
 
   Scenario Outline: Verify content types do not exist
     Then content type "<content_type>" does not exist
@@ -24,4 +25,3 @@ Feature: Content Types
     Examples:
       | content_type               |
       | Advanced Poll              |
-      | Place Profile              |

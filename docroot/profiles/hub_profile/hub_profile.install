@@ -429,3 +429,14 @@ function hub_profile_update_7022() {
   );
   module_enable($enabled_modules);
 }
+
+/**
+ * Update for 11/7/17
+ */
+function hub_profile_update_7023() {
+  $enabled_modules = array(
+    'paragraphs_reference_manager',
+    'bos_field_instances',
+  );
+  module_enable($enabled_modules);
+}
