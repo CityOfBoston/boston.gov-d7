@@ -169,7 +169,7 @@ function bos_metrolist_affordable_housing_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'rh_node_redirect_metrolist_affordable_housing';
-  $strongarm->value = '/metrolist/affordable-properties?combine=[node:title]';
+  $strongarm->value = '/metrolist/affordable-properties?combine=[node:field_mah_address]';
   $export['rh_node_redirect_metrolist_affordable_housing'] = $strongarm;
 
   $strongarm = new stdClass();
