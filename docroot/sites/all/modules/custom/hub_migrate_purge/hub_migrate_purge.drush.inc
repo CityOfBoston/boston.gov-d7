@@ -114,7 +114,7 @@ function drush_hub_migrate_purge($migration_name) {
       if (count($uids) == 0) {
         drush_log('There are no Users to delete.', 'ok');
       }
-      elseif (count($uids) < 25) {
+      elseif (count($uids) < 100) {
         // If there are only a few Users, specify which ones are being deleted.
         drush_log('Preparing to delete the following users: ' . implode(",", $uids), 'ok');
       }
@@ -127,7 +127,7 @@ function drush_hub_migrate_purge($migration_name) {
       if (count($pids) == 0) {
         drush_log('There are no Profiles to delete.', 'ok');
       }
-      elseif (count($pids) < 25) {
+      elseif (count($pids) < 100) {
         // If there are only a few Profiles, specify which ones to delete.
         drush_log('Preparing to delete the following Profiles: ' . implode(",", $pids), 'ok');
       }
@@ -140,7 +140,22 @@ function drush_hub_migrate_purge($migration_name) {
     if (!$dry_run) {
       // Delete the users specified.
       if ($uids) {
-        user_delete_multiple($uids);
+        foreach ($uids as $uid) {
+          // Actually delete the user and assign content to anonymous.
+          user_cancel(
+            array(
+              'user_cancel_notify' => FALSE,
+              'user_cancel_method' => 'user_cancel_reassign',
+            ),
+            $uid,
+            'user_cancel_reassign'
+          );
+          // The user cancellation process needs to be run in a batch.
+          // https://drupal.stackexchange.com/questions/204394/cannot-disable-user-programmatically-with-user-cancel
+          $batch = &batch_get();
+          $batch['progressive'] = FALSE;
+          batch_process();
+        }
         drush_log('Users have been deleted.', 'ok');
       }
       // Delete the profiles specified.
