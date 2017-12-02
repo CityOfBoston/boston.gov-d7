@@ -141,6 +141,14 @@ class SwiftypeClient
     return $this->delete($this->document_path($engine_id, $document_type_id, $document_id));
   }
 
+  public function log_click($engine_id, $document_type_id, $document_id, $query)
+  {
+    return $this->post($this->click_path($engine_id, $document_type_id, $document_id) . '/analytics/log_clickthrough', array(), array(
+      'q' => $query,
+      'id' => $document_id,
+    ));
+  }
+
   public function destroy_documents($engine_id, $document_type_id, $document_ids = array())
   {
     return $this->post($this->documents_path($engine_id, $document_type_id) . '/bulk_destroy', array(), array(
@@ -202,6 +210,11 @@ class SwiftypeClient
   private function document_types_path($engine_id)
   {
     return $this->engine_path($engine_id) . '/document_types';
+  }
+
+  private function click_path($engine_id, $document_type_id, $document_id)
+  {
+    return $this->document_type_path($engine_id, $document_type_id);
   }
 
   private function document_path($engine_id, $document_type_id, $document_id)
