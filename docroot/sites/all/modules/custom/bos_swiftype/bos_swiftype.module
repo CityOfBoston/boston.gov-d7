@@ -26,7 +26,7 @@ function bos_swiftype_menu() {
   );
 
   // The path that the endpoint will be registered to.
-  $items['search_click'] = array(
+  $items['search/click'] = array(
     'title' => 'Search Click',
     // The name of the function called when the path is accessed.
     'page callback' => 'bos_swiftype_search_click_callback',

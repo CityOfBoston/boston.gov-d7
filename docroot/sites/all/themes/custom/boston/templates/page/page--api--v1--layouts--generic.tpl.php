@@ -30,7 +30,7 @@
     <?php print theme('logo', $site_info); ?>
     <?php print theme('seal', $site_info); ?>
     <?php print theme('secondary_nav', array('secondary_menu' => $secondary_menu)); ?>
-    <?php print theme('search', array('search_form_url' => 'https://search.boston.gov')); ?>
+    <?php print theme('search', array('search_form_url' => '/search')); ?>
   </header>
   <?php
   /**

@@ -211,7 +211,7 @@ function bos_view_news_landing_views_default_views() {
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
   $handler->display->display_options['empty']['area']['content'] = '<h2>No Posts Found</h2>
 <div class="intro-text supporting-text">Thomas Paine noted "These are the times that try men\'s souls." Well this is a time to try another search.</div>
-<form accept-charset="UTF-8" action="//search.boston.gov" method="get" class="sf sf--md">
+<form accept-charset="UTF-8" action="/search" method="get" class="sf sf--md">
     <input name="utf8" type="hidden" value="✓">
     <input name="facet[]" type="hidden" value="post">
     <div class="sf-i">
