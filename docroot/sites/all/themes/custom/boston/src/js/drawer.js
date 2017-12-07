@@ -51,7 +51,7 @@
   // Expand drawers so users can search within them easily.
   $(document).on("keydown", function (e) {
     // Check for CTRL+f input.
-    if (e.keyCode == 70 && e.ctrlKey || e.metaKey) {
+    if (e.keyCode == 70 && (e.ctrlKey || e.metaKey)) {
       // Loop through each label that controls a hidden checkbox.
       $('.dr-h').each(function() {
         // Only execute on drawers that are closed.

@@ -689,9 +689,22 @@ function bos_profile_update_7030() {
 }
 
 /**
- * Update for 10/26/17
+ * Update for 10/20/17
  */
 function bos_profile_update_7031() {
+  $disabled_modules = array(
+    'bos_video_component_title_migration',
+    'bos_view_video_component_title_migration',
+    'bos_related_content_migration',
+    'bos_related_content_migration_view',
+  );
+  module_disable($disabled_modules);
+}
+
+/**
+ * Update for 10/26/17
+ */
+function bos_profile_update_7032() {
   $enabled_modules = array(
     'bos_swiftype',
   );
