@@ -33,7 +33,7 @@
     <div class="vid-c">
       <div class="vid-ci">
         <div class="b-c">
-          <div class="vid-t"><?php print render($content['field_title']) ?></div>
+          <div class="vid-t"><?php print render($content['field_component_title']) ?></div>
           <?php if (isset($content['field_contact'])) : ?>
             <div class="vid-st m-t300">Credit: <?php print_r($field_contact[0]['entity']->name) ?></div>
           <?php endif; ?>

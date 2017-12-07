@@ -1,7 +1,22 @@
 <?php
+
 /**
  * @file
  * Code for the Boston View Upcoming Events feature.
  */
 
 include_once 'bos_view_upcoming_events.features.inc';
+
+/**
+ * Implements hook_views_query_alter().
+ */
+function bos_view_upcoming_events_views_query_alter(&$view, &$query) {
+  if ($view->name == 'upcoming_events' && $view->current_display == 'most_recent') {
+    $query->orderby = array(
+      array(
+        'field' => 'CASE WHEN field_data_field_event_dates.field_event_dates_value THEN field_data_field_event_dates.field_event_dates_value WHEN field_data_field_public_notice_date.field_public_notice_date_value THEN field_data_field_public_notice_date.field_public_notice_date_value ELSE node.created END',
+        'direction' => 'ASC',
+      ),
+    );
+  }
+}

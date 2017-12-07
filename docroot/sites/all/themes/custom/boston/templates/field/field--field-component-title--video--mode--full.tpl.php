@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * Default template implementation to display the value of a field.
@@ -44,16 +43,10 @@
  *
  * @ingroup themeable
  */
-$email = $items[0]['#markup'];
-$hide_contact_form = $variables["element"]["#object"]->field_hide_contact_form && $variables["element"]["#object"]->field_hide_contact_form["und"][0]["value"] == "1" ? "class='hide-form'" : "";
-$detail_item_variables = array(
-  'label' => NULL,
-  'body' => "<a href='mailto:$email' title='Have a question, or just need help? You can send an email to $email through the form below.' $hide_contact_form>$email</a>",
-  'classes' => array(
-    'detail' => 'detail-item--middle',
-    'icon' => 'icon-email',
-    'body' => 'detail-item__body--secondary',
-  ),
-);
-print theme('detail_item', $detail_item_variables);
 ?>
+<?php foreach ($items as $delta => $item): ?>
+  <?php if(isset($short_title)) { ?>
+    <a name="<?php print $short_title_link; ?>" data-text="<?php print $short_title ?>" class="subnav-anchor"></a>
+  <?php } ?>
+  <span><?php print render($item); ?></span>
+<?php endforeach; ?>
