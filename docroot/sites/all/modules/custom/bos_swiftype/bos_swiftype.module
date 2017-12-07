@@ -51,12 +51,13 @@ function bos_swiftype_search_click_callback() {
   try {
     $client = new \Swiftype\SwiftypeClient(variable_get('swiftype_email'), variable_get('swiftype_password'), variable_get('swiftype_key'));
     $results = $client->log_click(variable_get('swiftype_engine'), 'page', $params['id'], $params['query']);
-  } catch (Exception $e) {
-    echo 'Unable to log click: ',  $e->getMessage(), "\n";
+  } 
+  catch (Exception $e) {
+    echo 'Unable to log click: ', $e->getMessage(), "\n";
   }
   
-  header('Location: ' . $url); 
-  exit(); 
+  header('Location: ' . $url);
+  exit();
 }
 
 /**
