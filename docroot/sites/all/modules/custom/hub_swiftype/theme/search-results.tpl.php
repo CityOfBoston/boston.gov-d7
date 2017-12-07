@@ -67,7 +67,7 @@
               <ul class="m-a000 p-a000">
                 <?php foreach ($records as $key => $record) { ?>
                   <li class="n-li">
-                    <a class="n-li-b n-li-b--r n-li-b--fw n-li--in g g--mt0" href="<?php print $record->url ?>">
+                    <a class="n-li-b n-li-b--r n-li-b--fw n-li--in g g--mt0" href="<?php print hub_swiftype_result_url($record, $search_term) ?>">
                       <div class="n-li-t g--8"><?php print(/* People title comes back as array */ is_array($record->title) ? $record->title[0] : $record->title) ?></div>
                       <div class="n-li-ty n-li-ty--r g--44 ta--r"><?php print hub_swiftype_facet_type($record->type) ?></div>
                     </a>
