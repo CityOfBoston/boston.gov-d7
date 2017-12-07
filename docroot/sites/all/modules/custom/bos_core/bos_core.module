@@ -459,3 +459,11 @@ function bos_core_flush_caches() {
   // be cleared.
   return array();
 }
+
+/**
+ * Implements hook_form_ID_alter().
+ */
+function bos_core_form_user_cancel_confirm_form_alter(&$form, &$form_state, $form_id) {
+  // Prevent admins from deleting users without reassigning content.
+  $form['user_cancel_method']['user_cancel_delete']['#disabled'] = TRUE;
+}
