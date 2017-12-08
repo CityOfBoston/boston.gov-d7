@@ -228,6 +228,7 @@ function _bos_core_get_components() {
     'hero_image',
     'iframe',
     'list',
+    'map',
     'news_announcements',
     'upcoming_events',
     'photo',
