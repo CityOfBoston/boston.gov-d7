@@ -32,7 +32,7 @@
     <?php print theme('logo', $site_info); ?>
     <?php print theme('seal', $site_info); ?>
     <?php print theme('secondary_nav', array('secondary_menu' => $secondary_menu)); ?>
-    <?php print theme('search', array('search_form_url' => 'https://search.boston.gov')); ?>
+    <?php print theme('search', array('search_form_url' => '/search')); ?>
   </header>
 
   <div id="sa" data-target="<?php print $target_id; ?>" data-classes="<?php print $page_class_alert ?>  mn" class="d--n"></div>
@@ -49,7 +49,7 @@
           <?php endif; ?>
         <?php endif; ?>
         <?php print render($title_prefix); ?>
-        <?php if ($title): ?>
+        <?php if ($title && !$hide_page_title): ?>
           <h1 class="page-title"><?php print $title; ?></h1>
         <?php endif; ?>
         <?php print render($title_suffix); ?>

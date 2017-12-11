@@ -5,24 +5,14 @@
  * Library for connecting to Swiftype.
  */
 
-require 'lib/swiftype.php';
+$swiftype_api_path = function_exists('libraries_get_path') ? libraries_get_path('swiftype') : 'sites/all/libraries/swiftype/';
+require $swiftype_api_path . 'Swiftype/swiftype.php';
 
 /**
  * Implements hub_swiftype_menu().
  */
 function hub_swiftype_menu() {
   $items = array();
-
-  // The path that the endpoint will be registered to.
-  $items['search'] = array(
-    'title' => 'Search',
-    // The name of the function called when the path is accessed.
-    'page callback' => 'hub_swiftype_search_page_callback',
-    // Set this value to TRUE to allow access to any user.
-    'access callback' => TRUE,
-    // Declare this as a simple registered path.
-    'type' => MENU_CALLBACK,
-  );
 
   // The path that the endpoint will be registered to.
   $items['employees'] = array(
@@ -35,8 +25,50 @@ function hub_swiftype_menu() {
     'type' => MENU_CALLBACK,
   );
 
+  // The path that the endpoint will be registered to.
+  $items['search/click'] = array(
+    'title' => 'Search Click',
+    // The name of the function called when the path is accessed.
+    'page callback' => 'hub_swiftype_search_click_callback',
+    // Set this value to TRUE to allow access to any user.
+    'access callback' => TRUE,
+    // Declare this as a simple registered path.
+    'type' => MENU_CALLBACK,
+  );
+
+  // The path that the endpoint will be registered to.
+  $items['search'] = array(
+    'title' => 'Search',
+    // The name of the function called when the path is accessed.
+    'page callback' => 'hub_swiftype_search_page_callback',
+    // Set this value to TRUE to allow access to any user.
+    'access callback' => TRUE,
+    // Declare this as a simple registered path.
+    'type' => MENU_CALLBACK,
+  );
+
   // Return the $items array to register the path.
   return $items;
+}
+
+/**
+ * Implements bos_swiftype_search_page_callback().
+ */
+function hub_swiftype_search_click_callback() {
+  $params = drupal_get_query_parameters();
+
+  $url = html_entity_decode($params['url']);
+
+  try {
+    $client = new \Swiftype\SwiftypeClient(variable_get('swiftype_email'), variable_get('swiftype_password'), variable_get('swiftype_key'));
+    $results = $client->log_click(variable_get('swiftype_engine'), 'page', $params['id'], $params['query']);
+  }
+  catch (Exception $e) {
+    echo 'Unable to log click: ', $e->getMessage(), "\n";
+  }
+
+  header('Location: ' . $url);
+  exit();
 }
 
 /**
@@ -225,4 +257,17 @@ function hub_swiftype_facet_type($type) {
   );
 
   return $facets[$type] ? $facets[$type] : FALSE;
+}
+
+/**
+ * Implements bos_swiftype_result_url($result).
+ */
+function hub_swiftype_result_url($result, $query) {
+  $query = array(
+    'id' => $result->id,
+    'url' => $result->url,
+    'query' => $query,
+  );
+
+  return "/search/click?" . http_build_query($query, '', '&amp;');
 }

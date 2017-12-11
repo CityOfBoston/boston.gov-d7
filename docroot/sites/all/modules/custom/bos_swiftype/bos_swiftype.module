@@ -1,0 +1,187 @@
+<?php
+
+/**
+ * @file
+ * Library for connecting to Swiftype.
+ */
+
+$swiftype_api_path = function_exists('libraries_get_path') ? libraries_get_path('swiftype') : 'sites/all/libraries/swiftype/';
+require $swiftype_api_path . 'Swiftype/swiftype.php';
+
+/**
+ * Implements bos_swiftype_menu().
+ */
+function bos_swiftype_menu() {
+  $items = array();
+
+  // The path that the endpoint will be registered to.
+  $items['search'] = array(
+    'title' => 'Search',
+    // The name of the function called when the path is accessed.
+    'page callback' => 'bos_swiftype_search_page_callback',
+    // Set this value to TRUE to allow access to any user.
+    'access callback' => TRUE,
+    // Declare this as a simple registered path.
+    'type' => MENU_CALLBACK,
+  );
+
+  // The path that the endpoint will be registered to.
+  $items['search/click'] = array(
+    'title' => 'Search Click',
+    // The name of the function called when the path is accessed.
+    'page callback' => 'bos_swiftype_search_click_callback',
+    // Set this value to TRUE to allow access to any user.
+    'access callback' => TRUE,
+    // Declare this as a simple registered path.
+    'type' => MENU_CALLBACK,
+  );
+
+  // Return the $items array to register the path.
+  return $items;
+}
+
+/**
+ * Implements bos_swiftype_search_page_callback().
+ */
+function bos_swiftype_search_click_callback() {
+  $params = drupal_get_query_parameters();
+
+  $url = html_entity_decode($params['url']);
+
+  try {
+    $client = new \Swiftype\SwiftypeClient(variable_get('swiftype_email'), variable_get('swiftype_password'), variable_get('swiftype_key'));
+    $results = $client->log_click(variable_get('swiftype_engine'), 'page', $params['id'], $params['query']);
+  }
+  catch (Exception $e) {
+    echo 'Unable to log click: ', $e->getMessage(), "\n";
+  }
+
+  header('Location: ' . $url);
+  exit();
+}
+
+/**
+ * Implements bos_swiftype_search_page_callback().
+ */
+function bos_swiftype_search_page_callback() {
+  $params = drupal_get_query_parameters();
+
+  $client = new \Swiftype\SwiftypeClient(variable_get('swiftype_email'), variable_get('swiftype_password'), variable_get('swiftype_key'));
+
+  if ($params['query']) {
+    if ($params['facet']) {
+      $filters = array(
+        'page' => array(
+          'type' => $params['facet'],
+        ),
+      );
+    }
+    else {
+      $filters = NULL;
+    }
+
+    $results = $client->search(variable_get('swiftype_engine'), 'page', $params['query'], array(
+      'per_page' => 10,
+      'page' => $params['page'] ? $params['page'] : 1,
+      'filters' => $filters,
+      'facets' => array(
+        'page' => array(
+          'type',
+        ),
+      ),
+    ));
+  }
+  else {
+    $results = NULL;
+  }
+
+  return theme('bos_swiftype_search_results', array(
+    'results' => $results,
+    'range'   => bos_swiftype_page_range($results['body']->info->page),
+    'selected_facets' => $params['facet'] ? $params['facet'] : array(),
+    'bos_search_url' => variable_get('bos_search_url'),
+  ));
+}
+
+/**
+ * Implements bos_swiftype_theme().
+ */
+function bos_swiftype_theme() {
+  return array(
+    'bos_swiftype_search_results' => array(
+      'template' => 'theme/search-results',
+      'variables' => array(
+        'results' => NULL,
+        'range'   => range(1, 5),
+        'selected_facets' => array(),
+      ),
+    ),
+    'bos_swiftype_employee_directory' => array(
+      'template' => 'theme/employee-directory',
+      'variables' => array(
+        'results' => NULL,
+        'range'   => range(1, 5),
+        'selected_facets' => array(),
+      ),
+    ),
+  );
+}
+
+/**
+ * Implements bos_swiftype_page_range().
+ */
+function bos_swiftype_page_range($info) {
+  $start = 1;
+  $end = 5;
+
+  if ($info->current_page > 5) {
+    $start = $info->current_page - 2;
+    $end = $info->current_page + 2;
+  }
+
+  if ($info->num_pages < 5) {
+    $end = $info->num_pages;
+  }
+
+  return range($start, $end);
+}
+
+/**
+ * Implements bos_swiftype_facet_type().
+ */
+function bos_swiftype_facet_type($type) {
+  $facets = array(
+    'article' => 'Articles',
+    'department_profile' => 'Departments',
+    'documents' => 'Documents',
+    'event' => 'Events',
+    'how_to' => 'How-Tos',
+    'post' => 'News',
+    'person_profile' => 'People',
+    'program_initiative_profile' => 'Programs',
+    'public_notice' => 'Public Notices',
+    'topic_page' => 'Guides',
+  );
+
+  return $facets[$type] ? $facets[$type] : FALSE;
+}
+
+/**
+ * Implements bos_swiftype_clean_result($result).
+ */
+function bos_swiftype_clean_result($result) {
+  return str_replace(' | Boston.gov', '', $result);
+}
+
+/**
+ * Implements bos_swiftype_result_url($result).
+ */
+function bos_swiftype_result_url($result, $query) {
+  $query = array(
+    'id' => $result->id,
+    'url' => $result->url,
+    'query' => $query,
+  );
+
+  return "/search/click?" . http_build_query($query, '', '&amp;');
+}
