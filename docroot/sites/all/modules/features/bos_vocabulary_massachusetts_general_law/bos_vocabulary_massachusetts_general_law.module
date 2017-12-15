@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Boston Vocabulary Massachusetts General Law feature.
+ */
+
+include_once 'bos_vocabulary_massachusetts_general_law.features.inc';
