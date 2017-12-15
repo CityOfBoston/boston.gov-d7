@@ -181,16 +181,6 @@
       }
     }
 
-    function setLastUpdated() {
-      var lastUpdated = document.querySelectorAll('#resultsContainer > table:first-child tr:first-child table tr:first-child td:last-child')[0];
-      var dateContainer = document.querySelectorAll('.date-display-single')[0];
-      var lastUpdated = new Date(lastUpdated.innerHTML);
-
-      if (lastUpdated) {
-        dateContainer.innerHTML = lastUpdated.getMonth() + 1 + '/' + lastUpdated.getDay() + '/' + lastUpdated.getFullYear() + ' at ' + lastUpdated.getHours() + ':' + (lastUpdated.getMinutes()<10?'0':'') + lastUpdated.getMinutes();
-      }
-    }
-
     function cleanupResults() {
       removeBR();
       setLastUpdated();
