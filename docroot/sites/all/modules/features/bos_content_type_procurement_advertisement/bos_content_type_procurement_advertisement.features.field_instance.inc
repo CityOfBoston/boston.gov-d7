@@ -569,7 +569,11 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
   // Exported field_instance: 'node-procurement_advertisement-field_intro_text'.
   $field_instances['node-procurement_advertisement-field_intro_text'] = array(
     'bundle' => 'procurement_advertisement',
-    'default_value' => NULL,
+    'default_value' => array(
+      0 => array(
+        'value' => 'Advertisement - City of Boston',
+      ),
+    ),
     'deleted' => 0,
     'description' => '',
     'display' => array(
