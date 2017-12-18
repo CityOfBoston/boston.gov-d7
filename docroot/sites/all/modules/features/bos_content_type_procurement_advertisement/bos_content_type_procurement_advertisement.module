@@ -5,3 +5,26 @@
  */
 
 include_once 'bos_content_type_procurement_advertisement.features.inc';
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function bos_content_type_procurement_advertisement_form_procurement_advertisement_node_form_alter(&$form, &$form_state, $form_id) {
+
+  // Only add defaults when creating a new Procurement Advertisement.
+  if (isset($form['field_details_link']['und'][0]['#default_value']['title']) && $form['field_details_link']['und'][0]['#default_value']['title'] == 'Replaced by bos_content_type_procurement_advertisement feature') {
+
+    $form['field_details_link']['und'][0]['#default_value']['title'] = 'Procurement Department';
+    $form['field_details_link']['und'][0]['#default_value']['url'] = 'Boston.gov/procurement';
+
+    $form['field_details_link']['und'][1]['#default_value']['title'] = 'Govdeals';
+    $form['field_details_link']['und'][1]['#default_value']['url'] = 'www.govdeals.com';
+
+    // Expand 3rd value by assigning defaults from already visible link.
+    $form['field_details_link']['und'][2] = $form['field_details_link']['und'][1];
+    $form['field_details_link']['und'][2]['#default_value']['title'] = 'Commbuys';
+    $form['field_details_link']['und'][2]['#default_value']['url'] = 'www.commbuys.com/bso';
+
+  }
+
+}
