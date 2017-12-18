@@ -455,8 +455,8 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
     'bundle' => 'procurement_advertisement',
     'default_value' => array(
       0 => array(
-        'title' => 'Procurement Department',
-        'url' => 'Boston.gov/procurement',
+        'title' => 'Replaced by bos_content_type_procurement_advertisement feature',
+        'url' => '<front>',
       ),
     ),
     'deleted' => 0,
