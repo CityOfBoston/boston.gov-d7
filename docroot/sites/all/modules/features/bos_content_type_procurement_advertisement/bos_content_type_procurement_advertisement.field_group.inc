@@ -96,6 +96,7 @@ function bos_content_type_procurement_advertisement_field_group_info() {
       3 => 'field_unspsc',
       4 => 'field_details_link',
       5 => 'field_contact',
+      6 => 'field_date_range',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
