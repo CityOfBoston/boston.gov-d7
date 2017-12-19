@@ -1628,6 +1628,53 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
       'module' => 'number',
       'settings' => array(),
       'type' => 'number',
+      'weight' => 12,
+    ),
+  );
+
+  // Exported field_instance: 'node-procurement_advertisement-field_url'.
+  $field_instances['node-procurement_advertisement-field_url'] = array(
+    'bundle' => 'procurement_advertisement',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 31,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div_div_div',
+    'field_name' => 'field_url',
+    'label' => 'Supplier Portal Link',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'show_token_tree' => 0,
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
       'weight' => 11,
     ),
   );
@@ -1661,6 +1708,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
   t('Related places');
   t('Related posts');
   t('Related programs / initiatives');
+  t('Supplier Portal Link');
   t('UNSPSC');
 
   return $field_instances;
