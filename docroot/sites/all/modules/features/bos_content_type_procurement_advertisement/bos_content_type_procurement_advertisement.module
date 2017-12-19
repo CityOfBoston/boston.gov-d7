@@ -27,4 +27,30 @@ function bos_content_type_procurement_advertisement_form_procurement_advertiseme
 
   }
 
+  // Only show Contract Length field if Multi-year option is selected.
+  $form['field_contract_length']['#states'] = array(
+    'visible' => array(
+      ':input[name="field_multi_year_contract[und]"]' => array('checked' => TRUE),
+    ),
+    // TO-DO need to actually validate to make required.
+    // https://drupal.stackexchange.com/questions/14173/how-to-make-a-form-required-with-states
+    'required' => array(
+      ':input[name="field_multi_year_contract[und]"]' => array('checked' => TRUE),
+    ),
+  );
+  //$bid_type_tid = $form_state['build_info']['args'][0]->field_bid_type['und'][0]['target_id'];
+  //$bid_type_term = taxonomy_term_load($bid_type_tid);
+  //$bid_type_term_name = $bid_type_term->name;
+  $terms = taxonomy_get_term_by_name('Electronic');
+  foreach ($terms as $term) {
+    $electronic_tid = $term->tid;
+  }
+  $form['field_url']['#states'] = array(
+    'visible' => array(
+      //':input[name="field_bid_type[und]"]' => array('value' => taxonomy_get_term_by_name('Electronic')),
+      //':input[name="field_bid_type[und]"]' => array('value' => '2286'),
+      ':input[name="field_bid_type[und]"]' => array('value' => $electronic_tid),
+    ),
+  );
+
 }
