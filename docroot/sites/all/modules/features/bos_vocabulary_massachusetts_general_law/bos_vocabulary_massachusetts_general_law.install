@@ -1,0 +1,33 @@
+<?php
+
+/**
+ * @file
+ * Creates base taxonomy terms used for Massachusetts General Law vocabulary.
+ */
+
+/**
+ * Implements hook_update_N().
+ */
+function bos_vocabulary_massachusetts_general_law_update_7001() {
+
+  // Set default massachusetts_general_law terms.
+  $ma_law_terms = [
+    'Chapter 7C',
+    'Chapter 30B',
+    'Chapter 30/39M',
+    'Chapter 149',
+    'Chapter 25A Section 11C & 11I',
+    'Chapter 30B Section 1(b)(33)',
+    'Chapter 25A Section 14',
+    'Chapter 7C Section 44',
+    'Chapter 7C Section 44-57',
+  ];
+  $vocabulary = taxonomy_vocabulary_machine_name_load('massachusetts_general_law');
+  foreach ($ma_law_terms as $term) {
+    $newterm = new stdClass();
+    $newterm->name = $term;
+    $newterm->vid = $vocabulary->vid;
+    taxonomy_term_save($newterm);
+  }
+
+}

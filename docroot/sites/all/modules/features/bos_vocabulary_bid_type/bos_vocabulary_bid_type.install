@@ -1,0 +1,22 @@
+<?php
+
+/**
+ * @file
+ * Creates base taxonomy terms used for Bid Type vocabulary.
+ */
+
+/**
+ * Implements hook_update_N().
+ */
+function bos_vocabulary_bid_type_update_7001() {
+
+  // Set default bid_type terms.
+  $bid_type_terms = ['Electronic', 'Paper'];
+  $vocabulary = taxonomy_vocabulary_machine_name_load('bid_type');
+  foreach ($bid_type_terms as $term) {
+    $newterm = new stdClass();
+    $newterm->name = $term;
+    $newterm->vid = $vocabulary->vid;
+    taxonomy_term_save($newterm);
+  }
+}
