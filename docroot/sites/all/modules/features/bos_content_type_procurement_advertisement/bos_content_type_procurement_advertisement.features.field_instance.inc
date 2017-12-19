@@ -35,19 +35,26 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
       ),
     ),
     'entity_type' => 'node',
+    'fences_wrapper' => 'div_div_div',
     'field_name' => 'body',
     'label' => 'Body',
-    'required' => FALSE,
+    'required' => 1,
     'settings' => array(
-      'display_summary' => TRUE,
+      'display_summary' => 1,
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
       'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
+      'active' => 1,
       'module' => 'text',
       'settings' => array(
         'rows' => 20,
-        'show_token_tree' => FALSE,
+        'show_token_tree' => 0,
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
@@ -108,7 +115,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
         ),
       ),
       'type' => 'addressfield_standard',
-      'weight' => 14,
+      'weight' => 15,
     ),
   );
 
@@ -502,7 +509,55 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 13,
+      'weight' => 7,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'node-procurement_advertisement-field_contract_length'.
+  $field_instances['node-procurement_advertisement-field_contract_length'] = array(
+    'bundle' => 'procurement_advertisement',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'number',
+        'settings' => array(
+          'decimal_separator' => '.',
+          'prefix_suffix' => TRUE,
+          'scale' => 0,
+          'thousand_separator' => '',
+        ),
+        'type' => 'number_integer',
+        'weight' => 30,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div_div_div',
+    'field_name' => 'field_contract_length',
+    'label' => 'Contract Length',
+    'required' => 0,
+    'settings' => array(
+      'max' => '',
+      'min' => 0,
+      'prefix' => '',
+      'suffix' => 'years',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'number',
+      'settings' => array(),
+      'type' => 'number',
+      'weight' => 9,
     ),
   );
 
@@ -561,6 +616,53 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
       ),
       'type' => 'date_popup',
       'weight' => 7,
+    ),
+  );
+
+  // Exported field_instance: 'node-procurement_advertisement-field_department'.
+  $field_instances['node-procurement_advertisement-field_department'] = array(
+    'bundle' => 'procurement_advertisement',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 28,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div_div_div',
+    'field_name' => 'field_department',
+    'label' => 'Department',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'show_token_tree' => 0,
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 14,
     ),
   );
 
@@ -676,7 +778,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 15,
+      'weight' => 16,
     ),
   );
 
@@ -832,6 +934,51 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
       ),
       'type' => 'entityreference_autocomplete',
       'weight' => 4,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'node-procurement_advertisement-field_multi_year_contract'.
+  $field_instances['node-procurement_advertisement-field_multi_year_contract'] = array(
+    'bundle' => 'procurement_advertisement',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 29,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div_div_div',
+    'field_name' => 'field_multi_year_contract',
+    'label' => 'Multi-year Contract',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 8,
     ),
   );
 
@@ -1022,7 +1169,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 16,
+      'weight' => 17,
     ),
   );
 
@@ -1494,11 +1641,13 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
   t('Body');
   t('Contact Email');
   t('Contact Phone Number');
+  t('Contract Length');
   t('Department');
   t('Event/Project Number');
   t('Intro Text');
   t('Location');
   t('Massachusetts General Law');
+  t('Multi-year Contract');
   t('Offering');
   t('Other related content');
   t('Period Open');

@@ -28,7 +28,10 @@ function bos_content_type_procurement_advertisement_field_group_info() {
       2 => 'field_ma_general_law',
       3 => 'field_offering',
       4 => 'field_intro_text',
-      5 => 'title',
+      5 => 'field_contact',
+      6 => 'field_multi_year_contract',
+      7 => 'field_contract_length',
+      8 => 'title',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -53,12 +56,12 @@ function bos_content_type_procurement_advertisement_field_group_info() {
   $field_group->parent_name = 'group_sidebar';
   $field_group->data = array(
     'label' => 'Contact',
-    'weight' => '12',
+    'weight' => '13',
     'children' => array(
-      0 => 'field_contact',
-      1 => 'field_address',
-      2 => 'field_phone_number',
-      3 => 'field_email',
+      0 => 'field_address',
+      1 => 'field_phone_number',
+      2 => 'field_email',
+      3 => 'field_department',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
