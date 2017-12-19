@@ -394,8 +394,8 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
         'video' => 64,
       ),
       'default_edit_mode' => 'open',
-      'title' => 'Paragraph',
-      'title_multiple' => 'Paragraphs',
+      'title' => 'Bid',
+      'title_multiple' => 'Bids',
       'user_register_form' => FALSE,
     ),
     'widget' => array(

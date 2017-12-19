@@ -78,7 +78,7 @@ function bos_content_type_procurement_advertisement_field_default_field_bases() 
   // Exported field_base: 'field_bid'.
   $field_bases['field_bid'] = array(
     'active' => 1,
-    'cardinality' => 1,
+    'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_bid',
