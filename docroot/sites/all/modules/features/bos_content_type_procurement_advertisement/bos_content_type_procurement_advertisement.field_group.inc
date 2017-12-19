@@ -45,6 +45,37 @@ function bos_content_type_procurement_advertisement_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_contact|node|procurement_advertisement|form';
+  $field_group->group_name = 'group_contact';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'procurement_advertisement';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_sidebar';
+  $field_group->data = array(
+    'label' => 'Contact',
+    'weight' => '12',
+    'children' => array(
+      0 => 'field_contact',
+      1 => 'field_address',
+      2 => 'field_phone_number',
+      3 => 'field_email',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-contact field-group-fieldset',
+        'required_fields' => 1,
+        'id' => '',
+      ),
+    ),
+  );
+  $field_groups['group_contact|node|procurement_advertisement|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_related|node|procurement_advertisement|form';
   $field_group->group_name = 'group_related';
   $field_group->entity_type = 'node';
@@ -95,8 +126,8 @@ function bos_content_type_procurement_advertisement_field_group_info() {
       2 => 'field_event_project_number',
       3 => 'field_unspsc',
       4 => 'field_details_link',
-      5 => 'field_contact',
-      6 => 'field_date_range',
+      5 => 'field_date_range',
+      6 => 'group_contact',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -141,6 +172,7 @@ function bos_content_type_procurement_advertisement_field_group_info() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Basic Information');
+  t('Contact');
   t('Related Items');
   t('Sidebar');
   t('Submissions');
