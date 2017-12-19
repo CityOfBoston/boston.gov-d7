@@ -11,19 +11,21 @@ function bos_content_type_procurement_advertisement_update_7001() {
 
   // Set default bid_type terms.
   $bid_type_terms = ['Electronic', 'Paper'];
+  $vocabulary = taxonomy_vocabulary_machine_name_load('bid_type');
   foreach ($bid_type_terms as $term) {
     $newterm = new stdClass();
     $newterm->name = $term;
-    $newterm->vid = 'bid_type';
+    $newterm->vid = $vocabulary->vid;
     taxonomy_term_save($newterm);
   }
 
   // Set default bid_offering terms.
   $bid_offering_terms = ['Services', 'Supplies'];
+  $vocabulary = taxonomy_vocabulary_machine_name_load('bid_offering');
   foreach ($bid_offering_terms as $term) {
     $newterm = new stdClass();
     $newterm->name = $term;
-    $newterm->vid = 'bid_offering';
+    $newterm->vid = $vocabulary->vid;
     taxonomy_term_save($newterm);
   }
 
@@ -39,10 +41,11 @@ function bos_content_type_procurement_advertisement_update_7001() {
     'Chapter 7C Section 44',
     'Chapter 7C Section 44-57',
   ];
+  $vocabulary = taxonomy_vocabulary_machine_name_load('massachusetts_general_law');
   foreach ($ma_law_terms as $term) {
     $newterm = new stdClass();
     $newterm->name = $term;
-    $newterm->vid = 'massachusetts_general_law';
+    $newterm->vid = $vocabulary->vid;
     taxonomy_term_save($newterm);
   }
 
@@ -54,10 +57,11 @@ function bos_content_type_procurement_advertisement_update_7001() {
     'Request for Proposals',
     'Request for Qualifications',
   ];
+  $vocabulary = taxonomy_vocabulary_machine_name_load('procurement_type');
   foreach ($procurement_type_terms as $term) {
     $newterm = new stdClass();
     $newterm->name = $term;
-    $newterm->vid = 'procurement_type';
+    $newterm->vid = $vocabulary->vid;
     taxonomy_term_save($newterm);
   }
 }
