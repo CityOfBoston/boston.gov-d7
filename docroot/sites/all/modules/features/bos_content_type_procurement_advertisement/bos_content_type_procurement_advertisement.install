@@ -1,0 +1,63 @@
+<?php
+
+/**
+ * @file creates base taxonomy terms used for Procurement.
+ */
+
+/**
+ * Implements hook_update_N().
+ */
+function bos_content_type_procurement_advertisement_update_7001() {
+
+  // Set default bid_type terms.
+  $bid_type_terms = ['Electronic', 'Paper'];
+  foreach ($bid_type_terms as $term) {
+    $newterm = new stdClass();
+    $newterm->name = $term;
+    $newterm->vid = 'bid_type';
+    taxonomy_term_save($newterm);
+  }
+
+  // Set default bid_offering terms.
+  $bid_offering_terms = ['Services', 'Supplies'];
+  foreach ($bid_offering_terms as $term) {
+    $newterm = new stdClass();
+    $newterm->name = $term;
+    $newterm->vid = 'bid_offering';
+    taxonomy_term_save($newterm);
+  }
+
+  // Set default massachusetts_general_law terms.
+  $ma_law_terms = [
+    'Chapter 7C',
+    'Chapter 30B',
+    'Chapter 30/39M',
+    'Chapter 149',
+    'Chapter 25A Section 11C & 11I',
+    'Chapter 30B Section 1(b)(33)',
+    'Chapter 25A Section 14',
+    'Chapter 7C Section 44',
+    'Chapter 7C Section 44-57',
+  ];
+  foreach ($ma_law_terms as $term) {
+    $newterm = new stdClass();
+    $newterm->name = $term;
+    $newterm->vid = 'massachusetts_general_law';
+    taxonomy_term_save($newterm);
+  }
+
+  // Set default procurement_type terms.
+  $procurement_type_terms = [
+    'Invitation for Bids',
+    'Notice to Contractors',
+    'Request for Information',
+    'Request for Proposals',
+    'Request for Qualifications',
+  ];
+  foreach ($procurement_type_terms as $term) {
+    $newterm = new stdClass();
+    $newterm->name = $term;
+    $newterm->vid = 'procurement_type';
+    taxonomy_term_save($newterm);
+  }
+}
