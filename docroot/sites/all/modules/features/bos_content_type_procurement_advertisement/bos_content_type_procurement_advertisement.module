@@ -1,7 +1,57 @@
 <?php
+
 /**
  * @file
  * Code for the Boston Content Type Procurement Advertisement feature.
  */
 
 include_once 'bos_content_type_procurement_advertisement.features.inc';
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function bos_content_type_procurement_advertisement_form_procurement_advertisement_node_form_alter(&$form, &$form_state, $form_id) {
+
+  // Only add defaults when creating a new Procurement Advertisement.
+  if (isset($form['field_details_link']['und'][0]['#default_value']['title']) && $form['field_details_link']['und'][0]['#default_value']['title'] == 'Replaced by bos_content_type_procurement_advertisement feature') {
+
+    $form['field_details_link']['und'][0]['#default_value']['title'] = 'Procurement Department';
+    $form['field_details_link']['und'][0]['#default_value']['url'] = 'Boston.gov/procurement';
+
+    $form['field_details_link']['und'][1]['#default_value']['title'] = 'Govdeals';
+    $form['field_details_link']['und'][1]['#default_value']['url'] = 'www.govdeals.com';
+
+    // Expand 3rd value by assigning defaults from already visible link.
+    $form['field_details_link']['und'][2] = $form['field_details_link']['und'][1];
+    $form['field_details_link']['und'][2]['#default_value']['title'] = 'Commbuys';
+    $form['field_details_link']['und'][2]['#default_value']['url'] = 'www.commbuys.com/bso';
+
+  }
+
+  // Only show Contract Length field if Multi-year option is selected.
+  $form['field_contract_length']['#states'] = array(
+    'visible' => array(
+      ':input[name="field_multi_year_contract[und]"]' => array('checked' => TRUE),
+    ),
+    // TO-DO need to actually validate to make required.
+    // https://drupal.stackexchange.com/questions/14173/how-to-make-a-form-required-with-states
+    'required' => array(
+      ':input[name="field_multi_year_contract[und]"]' => array('checked' => TRUE),
+    ),
+  );
+
+  // Only show Supplier Portal Link if the Bid Type is set to Electronic.
+  // Since Term ID might differ between environments, we'll look it up here.
+  $terms = taxonomy_get_term_by_name('Electronic', 'bid_type');
+  // Get the actual TID from the term object.
+  foreach ($terms as $term) {
+    // Assign TID to variable to be used in #state.
+    $electronic_tid = $term->tid;
+  }
+  $form['field_url']['#states'] = array(
+    'visible' => array(
+      ':input[name="field_bid_type[und]"]' => array('value' => $electronic_tid),
+    ),
+  );
+
+}

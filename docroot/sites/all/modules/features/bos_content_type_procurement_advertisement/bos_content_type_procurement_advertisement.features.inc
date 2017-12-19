@@ -26,7 +26,7 @@ function bos_content_type_procurement_advertisement_node_info() {
       'base' => 'node_content',
       'description' => '',
       'has_title' => '1',
-      'title_label' => t('Title'),
+      'title_label' => t('Project name'),
       'help' => '',
     ),
   );

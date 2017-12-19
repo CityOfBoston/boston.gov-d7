@@ -35,23 +35,87 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
       ),
     ),
     'entity_type' => 'node',
+    'fences_wrapper' => 'div_div_div',
     'field_name' => 'body',
     'label' => 'Body',
-    'required' => FALSE,
+    'required' => 1,
     'settings' => array(
-      'display_summary' => TRUE,
+      'display_summary' => 1,
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
       'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
+      'active' => 1,
       'module' => 'text',
       'settings' => array(
         'rows' => 20,
-        'show_token_tree' => FALSE,
+        'show_token_tree' => 0,
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
       'weight' => 3,
+    ),
+  );
+
+  // Exported field_instance: 'node-procurement_advertisement-field_address'.
+  $field_instances['node-procurement_advertisement-field_address'] = array(
+    'bundle' => 'procurement_advertisement',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'addressfield',
+        'settings' => array(
+          'format_handlers' => array(
+            0 => 'address',
+          ),
+          'use_widget_handlers' => 1,
+        ),
+        'type' => 'addressfield_default',
+        'weight' => 25,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div_div_div',
+    'field_name' => 'field_address',
+    'label' => 'Location',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'addressfield',
+      'settings' => array(
+        'available_countries' => array(),
+        'default_country' => 'site_default',
+        'format_handlers' => array(
+          'address' => 'address',
+          'address-hide-postal-code' => 0,
+          'address-hide-street' => 0,
+          'address-hide-country' => 0,
+          'thoroughfare-textarea' => 0,
+          'organisation' => 0,
+          'name-full' => 0,
+          'name-oneline' => 0,
+          'address-optional' => 0,
+        ),
+      ),
+      'type' => 'addressfield_standard',
+      'weight' => 15,
     ),
   );
 
@@ -109,7 +173,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
         'year_range' => '-3:+3',
       ),
       'type' => 'date_popup',
-      'weight' => 8,
+      'weight' => 62,
     ),
   );
 
@@ -165,7 +229,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 7,
+      'weight' => 8,
     ),
   );
 
@@ -330,8 +394,8 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
         'video' => 64,
       ),
       'default_edit_mode' => 'open',
-      'title' => 'Paragraph',
-      'title_multiple' => 'Paragraphs',
+      'title' => 'Bid',
+      'title_multiple' => 'Bids',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -339,7 +403,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
       'module' => 'paragraphs',
       'settings' => array(),
       'type' => 'paragraphs_embed',
-      'weight' => 9,
+      'weight' => 63,
     ),
   );
 
@@ -386,7 +450,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 9,
+      'weight' => 10,
     ),
   );
 
@@ -445,7 +509,160 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 11,
+      'weight' => 7,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'node-procurement_advertisement-field_contract_length'.
+  $field_instances['node-procurement_advertisement-field_contract_length'] = array(
+    'bundle' => 'procurement_advertisement',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'number',
+        'settings' => array(
+          'decimal_separator' => '.',
+          'prefix_suffix' => TRUE,
+          'scale' => 0,
+          'thousand_separator' => '',
+        ),
+        'type' => 'number_integer',
+        'weight' => 30,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div_div_div',
+    'field_name' => 'field_contract_length',
+    'label' => 'Contract Length',
+    'required' => 0,
+    'settings' => array(
+      'max' => '',
+      'min' => 0,
+      'prefix' => '',
+      'suffix' => 'years',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'number',
+      'settings' => array(),
+      'type' => 'number',
+      'weight' => 9,
+    ),
+  );
+
+  // Exported field_instance: 'node-procurement_advertisement-field_date_range'.
+  $field_instances['node-procurement_advertisement-field_date_range'] = array(
+    'bundle' => 'procurement_advertisement',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'date',
+        'settings' => array(
+          'format_type' => 'long',
+          'fromto' => 'both',
+          'multiple_from' => '',
+          'multiple_number' => '',
+          'multiple_to' => '',
+          'show_remaining_days' => FALSE,
+          'show_repeat_rule' => 'show',
+        ),
+        'type' => 'date_default',
+        'weight' => 24,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div_div_div',
+    'field_name' => 'field_date_range',
+    'label' => 'Period Open',
+    'required' => 0,
+    'settings' => array(
+      'default_value' => 'now',
+      'default_value2' => 'same',
+      'default_value_code' => '',
+      'default_value_code2' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'date',
+      'settings' => array(
+        'increment' => 15,
+        'input_format' => 'm/d/Y - g:i:sa',
+        'input_format_custom' => '',
+        'label_position' => 'above',
+        'no_fieldset' => 0,
+        'repeat_collapsed' => 0,
+        'text_parts' => array(),
+        'year_range' => '-3:+3',
+      ),
+      'type' => 'date_popup',
+      'weight' => 7,
+    ),
+  );
+
+  // Exported field_instance: 'node-procurement_advertisement-field_department'.
+  $field_instances['node-procurement_advertisement-field_department'] = array(
+    'bundle' => 'procurement_advertisement',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 28,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div_div_div',
+    'field_name' => 'field_department',
+    'label' => 'Department',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'show_token_tree' => 0,
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 14,
     ),
   );
 
@@ -455,8 +672,8 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
     'bundle' => 'procurement_advertisement',
     'default_value' => array(
       0 => array(
-        'title' => 'Procurement Department',
-        'url' => 'Boston.gov/procurement',
+        'title' => 'Replaced by bos_content_type_procurement_advertisement feature',
+        'url' => '<front>',
       ),
     ),
     'deleted' => 0,
@@ -514,7 +731,54 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 13,
+      'weight' => 14,
+    ),
+  );
+
+  // Exported field_instance: 'node-procurement_advertisement-field_email'.
+  $field_instances['node-procurement_advertisement-field_email'] = array(
+    'bundle' => 'procurement_advertisement',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 27,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div_div_div',
+    'field_name' => 'field_email',
+    'label' => 'Contact Email',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'show_token_tree' => 0,
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 16,
     ),
   );
 
@@ -562,14 +826,18 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 8,
+      'weight' => 9,
     ),
   );
 
   // Exported field_instance: 'node-procurement_advertisement-field_intro_text'.
   $field_instances['node-procurement_advertisement-field_intro_text'] = array(
     'bundle' => 'procurement_advertisement',
-    'default_value' => NULL,
+    'default_value' => array(
+      0 => array(
+        'value' => 'Advertisement - City of Boston',
+      ),
+    ),
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -666,6 +934,51 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
       ),
       'type' => 'entityreference_autocomplete',
       'weight' => 4,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'node-procurement_advertisement-field_multi_year_contract'.
+  $field_instances['node-procurement_advertisement-field_multi_year_contract'] = array(
+    'bundle' => 'procurement_advertisement',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 29,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div_div_div',
+    'field_name' => 'field_multi_year_contract',
+    'label' => 'Multi-year Contract',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 8,
     ),
   );
 
@@ -809,6 +1122,54 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
       ),
       'type' => 'entityreference_autocomplete',
       'weight' => 54,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'node-procurement_advertisement-field_phone_number'.
+  $field_instances['node-procurement_advertisement-field_phone_number'] = array(
+    'bundle' => 'procurement_advertisement',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 26,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div_div_div',
+    'field_name' => 'field_phone_number',
+    'label' => 'Contact Phone Number',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'show_token_tree' => 0,
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 17,
     ),
   );
 
@@ -1267,7 +1628,54 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
       'module' => 'number',
       'settings' => array(),
       'type' => 'number',
-      'weight' => 10,
+      'weight' => 12,
+    ),
+  );
+
+  // Exported field_instance: 'node-procurement_advertisement-field_url'.
+  $field_instances['node-procurement_advertisement-field_url'] = array(
+    'bundle' => 'procurement_advertisement',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 31,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div_div_div',
+    'field_name' => 'field_url',
+    'label' => 'Supplier Portal Link',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'show_token_tree' => 0,
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 11,
     ),
   );
 
@@ -1278,12 +1686,18 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
   t('Bid');
   t('Bid Type');
   t('Body');
+  t('Contact Email');
+  t('Contact Phone Number');
+  t('Contract Length');
   t('Department');
   t('Event/Project Number');
   t('Intro Text');
+  t('Location');
   t('Massachusetts General Law');
+  t('Multi-year Contract');
   t('Offering');
   t('Other related content');
+  t('Period Open');
   t('Procurement');
   t('Related Links');
   t('Related Neighborhoods');
@@ -1294,6 +1708,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
   t('Related places');
   t('Related posts');
   t('Related programs / initiatives');
+  t('Supplier Portal Link');
   t('UNSPSC');
 
   return $field_instances;

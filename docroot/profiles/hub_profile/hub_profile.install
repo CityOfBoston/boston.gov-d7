@@ -440,3 +440,18 @@ function hub_profile_update_7023() {
   );
   module_enable($enabled_modules);
 }
+
+/**
+ * Update for 12/19/17
+ */
+function hub_profile_update_7024() {
+  $enabled_modules = array(
+    'bos_content_type_procurement_advertisement',
+    'bos_component_bid',
+    'bos_vocabulary_bid_offering',
+    'bos_vocabulary_bid_type',
+    'bos_vocabulary_massachusetts_general_law',
+    'bos_vocabulary_procurement_type',
+  );
+  module_enable($enabled_modules);
+}
