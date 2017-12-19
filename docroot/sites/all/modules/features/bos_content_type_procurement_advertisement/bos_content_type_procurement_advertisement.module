@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Code for the Boston Content Type Procurement Advertisement feature.
@@ -38,17 +39,17 @@ function bos_content_type_procurement_advertisement_form_procurement_advertiseme
       ':input[name="field_multi_year_contract[und]"]' => array('checked' => TRUE),
     ),
   );
-  //$bid_type_tid = $form_state['build_info']['args'][0]->field_bid_type['und'][0]['target_id'];
-  //$bid_type_term = taxonomy_term_load($bid_type_tid);
-  //$bid_type_term_name = $bid_type_term->name;
-  $terms = taxonomy_get_term_by_name('Electronic');
+
+  // Only show Supplier Portal Link if the Bid Type is set to Electronic.
+  // Since Term ID might differ between environments, we'll look it up here.
+  $terms = taxonomy_get_term_by_name('Electronic', 'bid_type');
+  // Get the actual TID from the term object.
   foreach ($terms as $term) {
+    // Assign TID to variable to be used in #state.
     $electronic_tid = $term->tid;
   }
   $form['field_url']['#states'] = array(
     'visible' => array(
-      //':input[name="field_bid_type[und]"]' => array('value' => taxonomy_get_term_by_name('Electronic')),
-      //':input[name="field_bid_type[und]"]' => array('value' => '2286'),
       ':input[name="field_bid_type[und]"]' => array('value' => $electronic_tid),
     ),
   );
