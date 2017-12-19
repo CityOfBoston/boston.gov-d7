@@ -40,7 +40,6 @@ function bos_content_type_procurement_advertisement_form_procurement_advertiseme
     ),
   );
 
-  // Only show Supplier Portal Link if the Bid Type is set to Electronic.
   // Since Term ID might differ between environments, we'll look it up here.
   $terms = taxonomy_get_term_by_name('Electronic', 'bid_type');
   // Get the actual TID from the term object.
@@ -48,9 +47,28 @@ function bos_content_type_procurement_advertisement_form_procurement_advertiseme
     // Assign TID to variable to be used in #state.
     $electronic_tid = $term->tid;
   }
+  // Only show Supplier Portal Link if the Bid Type is set to Electronic.
   $form['field_url']['#states'] = array(
     'visible' => array(
       ':input[name="field_bid_type[und]"]' => array('value' => $electronic_tid),
+    ),
+  );
+  $terms = taxonomy_get_term_by_name('Paper', 'bid_type');
+  // Get the actual TID from the term object.
+  foreach ($terms as $term) {
+    // Assign TID to variable to be used in #state.
+    $paper_tid = $term->tid;
+  }
+  // Only show Document field if the Bid Type is set to Paper.
+  $form['field_document']['#states'] = array(
+    'visible' => array(
+      ':input[name="field_bid_type[und]"]' => array('value' => $paper_tid),
+    ),
+  );
+  // Only show Delivery Address field if the Bid Type is set to Paper.
+  $form['field_delivery_address']['#states'] = array(
+    'visible' => array(
+      ':input[name="field_bid_type[und]"]' => array('value' => $paper_tid),
     ),
   );
 
