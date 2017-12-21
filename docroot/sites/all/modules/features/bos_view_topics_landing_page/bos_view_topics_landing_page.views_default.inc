@@ -114,7 +114,7 @@ function bos_view_topics_landing_page_views_default_views() {
   $handler->display->display_options['empty']['area']['content'] = '<div class="intro-text supporting-text">Thomas Paine noted "These are the times that try men\'s souls." Well this is a time to try another search.</div>
 
 <div class="g--6 fl--l"">
-    <form accept-charset="UTF-8" action="//search.boston.gov" method="get" class="sf">
+    <form accept-charset="UTF-8" action="/search" method="get" class="sf">
         <input name="utf8" type="hidden" value="✓">
         <div class="sf-i">
             <input type="text" name="query" id="q" placeholder="Search…" class="sf-i-f" autocomplete="off">

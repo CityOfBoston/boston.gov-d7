@@ -189,7 +189,7 @@ function walk_recursive_remove(array $array, callable $callback) {
 }
 
 /**
- * Implements hook_form_alter().
+ * Implements hook_form_ID_alter().
  */
 function bos_core_form_node_form_alter(&$form, &$form_state) {
   if (isset($form['field_components']) || isset($form['field_tabbed_content'])) {
@@ -228,6 +228,7 @@ function _bos_core_get_components() {
     'hero_image',
     'iframe',
     'list',
+    'map',
     'news_announcements',
     'upcoming_events',
     'photo',
@@ -458,4 +459,14 @@ function bos_core_flush_caches() {
   // Return an empty array since bos_core provides no cache tables that need to
   // be cleared.
   return array();
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function bos_core_form_alter(&$form, &$form_state, $form_id) {
+  if ($form['#id'] == 'views-form-admin-views-user-system-1' || $form['#id'] == 'user-cancel-confirm-form') {
+    // Prevent admins from deleting users without reassigning content.
+    $form['user_cancel_method']['user_cancel_delete']['#disabled'] = TRUE;
+  }
 }

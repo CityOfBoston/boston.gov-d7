@@ -28,7 +28,7 @@ function bos_blocks_block_view($delta) {
 <button class="drawer-close-button search-close-button" title="Close Search"></button>
 <div class="slide-down-body">
   <span class="element-invisible slide-down-id">search</span>
-  <form accept-charset="UTF-8" action="//search.boston.gov" id="search_form" method="get">
+  <form accept-charset="UTF-8" action="/search" id="search_form" method="get">
     <input name="utf8" type="hidden" value="&#x2713;" />
     <label for="query" class="hidden">Search</label>
     <input autocomplete="off" class="usagov-search-autocomplete" placeholder="Search..." id="query" name="query" type="text" />

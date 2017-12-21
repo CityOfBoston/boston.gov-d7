@@ -350,3 +350,9 @@ libraries:
       url: "https://github.com/PHPOffice/PHPExcel.git"
     directory_name: "PHPExcel"
     type: "library"
+  swiftype:
+    download:
+      type: "git"
+      url: "https://github.com/CityOfBoston/swiftype-php.git"
+    directory_name: "swiftype"
+    type: "library"

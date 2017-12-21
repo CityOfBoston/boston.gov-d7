@@ -43,5 +43,8 @@
     "build:boston_hub": "gulp --hub",
     "watch": "gulp watch",
     "serve": "gulp serve"
+  },
+  "dependencies": {
+    "run-sequence": "^2.2.0"
   }
 }
