@@ -115,7 +115,7 @@ hide($content['links']);
         <?php endif; ?>
       </div>
       <?php if (isset($content['field_sidebar_components'])): ?>
-        <div class="list-item">
+        <div class="list-item-wrapper">
           <?php print render($content['field_sidebar_components']); ?>
         </div>
       <?php endif; ?>
