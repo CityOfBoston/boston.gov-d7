@@ -56,7 +56,7 @@ function bos_content_type_procurement_advertisement_field_group_info() {
   $field_group->parent_name = 'group_sidebar';
   $field_group->data = array(
     'label' => 'Contact',
-    'weight' => '13',
+    'weight' => '15',
     'children' => array(
       0 => 'field_address',
       1 => 'field_phone_number',
@@ -131,7 +131,9 @@ function bos_content_type_procurement_advertisement_field_group_info() {
       4 => 'field_details_link',
       5 => 'field_date_range',
       6 => 'field_url',
-      7 => 'group_contact',
+      7 => 'field_delivery_address',
+      8 => 'field_document',
+      9 => 'group_contact',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

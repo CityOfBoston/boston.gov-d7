@@ -170,6 +170,21 @@ function bos_content_type_procurement_advertisement_field_default_field_bases() 
     'type' => 'datetime',
   );
 
+  // Exported field_base: 'field_delivery_address'.
+  $field_bases['field_delivery_address'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_delivery_address',
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'addressfield',
+    'settings' => array(),
+    'translatable' => 0,
+    'type' => 'addressfield',
+  );
+
   // Exported field_base: 'field_department'.
   $field_bases['field_department'] = array(
     'active' => 1,

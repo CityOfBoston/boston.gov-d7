@@ -619,6 +619,64 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
     ),
   );
 
+  // Exported field_instance:
+  // 'node-procurement_advertisement-field_delivery_address'.
+  $field_instances['node-procurement_advertisement-field_delivery_address'] = array(
+    'bundle' => 'procurement_advertisement',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'addressfield',
+        'settings' => array(
+          'format_handlers' => array(
+            0 => 'address',
+          ),
+          'use_widget_handlers' => 1,
+        ),
+        'type' => 'addressfield_default',
+        'weight' => 32,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div_div_div',
+    'field_name' => 'field_delivery_address',
+    'label' => 'Delivery Address',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'addressfield',
+      'settings' => array(
+        'available_countries' => array(),
+        'default_country' => 'US',
+        'format_handlers' => array(
+          'address' => 'address',
+          'address-hide-postal-code' => 0,
+          'address-hide-street' => 0,
+          'address-hide-country' => 0,
+          'thoroughfare-textarea' => 0,
+          'organisation' => 0,
+          'name-full' => 0,
+          'name-oneline' => 0,
+          'address-optional' => 0,
+        ),
+      ),
+      'type' => 'addressfield_standard',
+      'weight' => 13,
+    ),
+  );
+
   // Exported field_instance: 'node-procurement_advertisement-field_department'.
   $field_instances['node-procurement_advertisement-field_department'] = array(
     'bundle' => 'procurement_advertisement',
@@ -731,7 +789,65 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 14,
+      'weight' => 16,
+    ),
+  );
+
+  // Exported field_instance: 'node-procurement_advertisement-field_document'.
+  $field_instances['node-procurement_advertisement-field_document'] = array(
+    'bundle' => 'procurement_advertisement',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'file',
+        'settings' => array(),
+        'type' => 'file_default',
+        'weight' => 33,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div_div_div',
+    'field_name' => 'field_document',
+    'label' => 'Document',
+    'required' => 0,
+    'settings' => array(
+      'description_field' => 0,
+      'file_directory' => '',
+      'file_extensions' => 'txt',
+      'max_filesize' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'media',
+      'settings' => array(
+        'allowed_schemes' => array(
+          'public' => 'public',
+        ),
+        'allowed_types' => array(
+          'audio' => 0,
+          'document' => 0,
+          'image' => 'image',
+          'video' => 0,
+        ),
+        'browser_plugins' => array(
+          'boston_media_browser_tabs--boston_media' => 0,
+          'boston_media_browser_tabs--icons' => 0,
+          'media_default--media_browser_1' => 0,
+          'media_default--media_browser_my_files' => 0,
+          'upload' => 0,
+        ),
+      ),
+      'type' => 'media_generic',
+      'weight' => 12,
     ),
   );
 
@@ -1628,7 +1744,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
       'module' => 'number',
       'settings' => array(),
       'type' => 'number',
-      'weight' => 12,
+      'weight' => 14,
     ),
   );
 
@@ -1689,7 +1805,9 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
   t('Contact Email');
   t('Contact Phone Number');
   t('Contract Length');
+  t('Delivery Address');
   t('Department');
+  t('Document');
   t('Event/Project Number');
   t('Intro Text');
   t('Location');
