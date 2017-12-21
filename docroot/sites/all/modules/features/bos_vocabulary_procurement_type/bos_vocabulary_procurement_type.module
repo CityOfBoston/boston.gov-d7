@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Boston Vocabulary Procurement Type feature.
+ */
+
+include_once 'bos_vocabulary_procurement_type.features.inc';

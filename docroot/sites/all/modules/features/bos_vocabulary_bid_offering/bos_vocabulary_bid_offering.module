@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Boston Vocabulary Bid Offering feature.
+ */
+
+include_once 'bos_vocabulary_bid_offering.features.inc';
