@@ -702,9 +702,19 @@ function bos_profile_update_7031() {
 }
 
 /**
- * Update for 12/19/17
+ * Update for 10/26/17
  */
 function bos_profile_update_7032() {
+  $enabled_modules = array(
+    'bos_swiftype',
+  );
+  module_enable($enabled_modules);
+}
+
+/**
+ * Update for 12/19/17
+ */
+function bos_profile_update_7033() {
   $enabled_modules = array(
     'bos_content_type_procurement_advertisement',
     'bos_component_bid',
