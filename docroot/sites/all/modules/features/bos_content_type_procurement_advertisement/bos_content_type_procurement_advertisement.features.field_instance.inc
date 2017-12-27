@@ -70,7 +70,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'addressfield',
         'settings' => array(
           'format_handlers' => array(
@@ -186,7 +186,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'entityreference',
         'settings' => array(
           'link' => FALSE,
@@ -415,7 +415,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'entityreference',
         'settings' => array(
           'link' => FALSE,
@@ -685,10 +685,10 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'text_plain',
         'weight' => 28,
       ),
       'teaser' => array(
@@ -738,7 +738,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'link',
         'settings' => array(),
         'type' => 'link_default',
@@ -859,10 +859,10 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'text_plain',
         'weight' => 27,
       ),
       'teaser' => array(
@@ -907,7 +907,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
@@ -1006,12 +1006,13 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'entityreference',
         'settings' => array(
-          'link' => FALSE,
+          'links' => TRUE,
+          'view_mode' => 'default',
         ),
-        'type' => 'entityreference_label',
+        'type' => 'entityreference_entity_view',
         'weight' => 2,
       ),
       'teaser' => array(
@@ -1152,7 +1153,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'entityreference',
         'settings' => array(
           'link' => FALSE,
@@ -1250,10 +1251,10 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'text_plain',
         'weight' => 26,
       ),
       'teaser' => array(
@@ -1348,7 +1349,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'entityreference',
         'settings' => array(
           'link' => FALSE,
@@ -1709,7 +1710,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'number',
         'settings' => array(
           'decimal_separator' => '.',

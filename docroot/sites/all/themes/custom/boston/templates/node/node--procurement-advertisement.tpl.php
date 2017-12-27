@@ -95,92 +95,77 @@ hide($content['links']);
         <?php print render($content['field_intro_text']); ?>
       <?php endif; ?>
       <?php if (isset($content['body'])): ?>
-        <div class="body">
+        <div class="body">  
           <?php print render($content['body']); ?>
         </div>
       <?php endif; ?>
     </div>
     <div class="column sidebar mobile-100 desktop-33-right">
-      <!-- DATE OUTPUT PLACEHOLDER -->
-      <div class="event-date-wrapper">
-        <div class="event-date sidebar-header"><?php print render($content['field_public_notice_date']); ?></div>
+      <div class="p-t500">
+        <ul class="dl">
+          <li class="dl-i">
+            <?php if ($is_closed) { ?>
+              <div class="t--intro">Closed</div>
+            <?php } else { ?>
+              <div class="t--intro">Due: <?php print $due_date ?></div>
+            <?php } ?>
+          </li>
+          <li class="dl-i">
+            <span class="t--sans t--upper t--cb t--s100"><?php print render($content['field_procurement']) ?></span>
+          </li>
+          <li class="dl-i">
+            <span class="dl-t">Posted</span>
+            <span class="dl-d"><?php print $start_date ?></span>
+          </li>
+          <li class="dl-i">
+            <span class="dl-t">Close<?php if ($is_closed) { ?>d<?php } else { ?>s<?php } ?></span>
+            <span class="dl-d"><?php print $end_date ?></span>
+          </li>
+          <li class="dl-i">
+            <span class="dl-t">Awarded by</span>
+            <span class="dl-d"><?php print render($content['field_awarding_authority']) ?></span>
+          </li>
+          <li class="dl-i">
+            <span class="dl-t">Project Number</span>
+            <span class="dl-d"><?php print render($content['field_event_project_number']) ?></span>
+          </li>
+          <li class="dl-i">
+            <span class="t--sans t--upper t--cb t--s100"><?php print render($content['field_bid_type']) ?></span>
+          </li>
+          <li class="dl-i">
+            <span class="dl-t">UNSPSC</span>
+            <span class="dl-d"><?php print render($content['field_unspsc']) ?></span>
+          </li>
+          <li class="dl-i">
+            <div>Questions about this page? Contact:</div>
+            <div><?php print render($content['field_department']) ?></div>
+            <div><?php print render($content['field_address']) ?></div>
+            <div><?php print render($content['field_email']) ?></div>
+            <div><?php print render($content['field_phone_number']) ?></div>
+          </li>
+          <li class="dl-i">
+            <div>Related Links</div>
+            <div><?php print render($content['field_details_link']) ?></div>
+          </li>
+        </ul>
       </div>
-      <div class="list-item event-time-wrapper">
-        <?php
-        $date_vars = array(
-          'label' => $time_range,
-          'classes' => array(
-            'icon' => 'icon-time',
-            'body' => 'detail-item__body--tertiary',
-          ),
-        );
-        if (isset($repeat_rule)) {
-          $date_vars['body'] = $repeat_rule;
-        }
-        else {
-          $date_vars['classes']['detail'] = 'detail-item--middle';
-        }
-        print theme('detail_item', $date_vars);
-        ?>
-      </div>
-      <?php if (isset($content['field_address'])): ?>
-        <div class="list-item">
-          <?php print render($content['field_address']); ?>
-        </div>
-      <?php endif; ?>
-      <?php if (isset($content['field_email'])): ?>
-        <div class="list-item">
-          <?php print render($content['field_email']); ?>
-        </div>
-      <?php endif; ?>
-      <?php if (isset($content['field_phone_number'])): ?>
-        <div class="list-item">
-          <?php print render($content['field_phone_number']); ?>
-        </div>
-      <?php endif; ?>
-      <?php if (isset($content['field_event_contact'])): ?>
-        <div class="list-item">
-          <?php print render($content['field_event_contact']); ?>
-        </div>
-      <?php endif; ?>
-      <?php if (isset($content['field_multiple_neighborhoods'])): ?>
-        <div class="list-item">
-          <?php print render($content['field_multiple_neighborhoods']); ?>
-        </div>
-      <?php endif; ?>
-      <?php if (isset($content['field_event_type'])): ?>
-        <div class="list-item">
-          <?php print render($content['field_event_type']); ?>
-        </div>
-      <?php endif; ?>
-      <?php if (isset($notice_date_long)): ?>
-        <div class="list-item">
-          <div class="detail-item detail-item--secondary">
-            <div class="detail-item__left">
-              <div>Posted:</div>
-            </div>
-            <div class="detail-item__content">
-              <div class="detail-item__body detail-item__body--secondary"><?php print $notice_date_short; ?></div>
-            </div>
-          </div>
-        </div>
-      <?php endif; ?>
-      <?php if (isset($content['field_links'])): ?>
-        <div class="list-item">
-          <?php print render($content['field_links']); ?>
-        </div>
-      <?php endif; ?>
       <?php if (isset($content['field_sidebar_components'])): ?>
         <?php print render($content['field_sidebar_components']); ?>
       <?php endif; ?>
     </div>
   </div>
-  <?php if (isset($content['field_components'])): ?>
-  <div class="department-components desktop-100" <?php print $content_attributes; ?>>
-    <?php print render($content['field_components']); ?>
-  </div>
+  <?php if (isset($content['field_components']) || isset($content['field_ma_general_law'])): ?>
+    <div class="department-components desktop-100" <?php print $content_attributes; ?>>
+      <?php if (isset($content['field_ma_general_law'])): ?>
+        <?php print render($content['field_ma_general_law']) ?>
+      </div>
+      <?php endif; ?>
+      <?php if (isset($content['field_components'])): ?>
+        <?php print render($content['field_components']); ?>
+      <?php endif; ?>
+    </div>
   <?php endif; ?>
-    <?php if (isset($content['field_contacts'])): ?>
-      <?php print theme('page_contacts', array('title' => "Who's Involved", 'contacts' => $content['field_contacts'])); ?>
-    <?php endif; ?>
+  <?php if (isset($content['field_contacts'])): ?>
+    <?php print theme('page_contacts', array('title' => "Who's Involved", 'contacts' => $content['field_contacts'])); ?>
+  <?php endif; ?>
 </article>

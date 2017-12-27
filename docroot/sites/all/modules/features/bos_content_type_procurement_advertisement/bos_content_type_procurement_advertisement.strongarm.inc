@@ -64,7 +64,68 @@ function bos_content_type_procurement_advertisement_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'field_bundle_settings_node__procurement_advertisement';
   $strongarm->value = array(
-    'view_modes' => array(),
+    'view_modes' => array(
+      'teaser' => array(
+        'custom_settings' => TRUE,
+      ),
+      'full' => array(
+        'custom_settings' => FALSE,
+      ),
+      'rss' => array(
+        'custom_settings' => FALSE,
+      ),
+      'article' => array(
+        'custom_settings' => FALSE,
+      ),
+      'calendar_listing' => array(
+        'custom_settings' => FALSE,
+      ),
+      'contact' => array(
+        'custom_settings' => FALSE,
+      ),
+      'department_listing' => array(
+        'custom_settings' => FALSE,
+      ),
+      'embed' => array(
+        'custom_settings' => FALSE,
+      ),
+      'featured_item' => array(
+        'custom_settings' => FALSE,
+      ),
+      'featured_topics' => array(
+        'custom_settings' => FALSE,
+      ),
+      'icon_popup' => array(
+        'custom_settings' => FALSE,
+      ),
+      'listing' => array(
+        'custom_settings' => FALSE,
+      ),
+      'listing_short' => array(
+        'custom_settings' => FALSE,
+      ),
+      'listing_long' => array(
+        'custom_settings' => FALSE,
+      ),
+      'poll_stub' => array(
+        'custom_settings' => FALSE,
+      ),
+      'popup_icon' => array(
+        'custom_settings' => FALSE,
+      ),
+      'published_by' => array(
+        'custom_settings' => FALSE,
+      ),
+      'ical' => array(
+        'custom_settings' => FALSE,
+      ),
+      'diff_standard' => array(
+        'custom_settings' => FALSE,
+      ),
+      'token' => array(
+        'custom_settings' => FALSE,
+      ),
+    ),
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
