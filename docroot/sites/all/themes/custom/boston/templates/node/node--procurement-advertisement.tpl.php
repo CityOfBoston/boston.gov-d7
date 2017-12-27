@@ -95,12 +95,17 @@ hide($content['links']);
         <?php print render($content['field_intro_text']); ?>
       <?php endif; ?>
       <?php if (isset($content['body'])): ?>
+<<<<<<< HEAD
         <div class="body">  
+=======
+        <div class="body">
+>>>>>>> 4528fbf84ca8a6bcba5262dc30a2e286c4690917
           <?php print render($content['body']); ?>
         </div>
       <?php endif; ?>
     </div>
     <div class="column sidebar mobile-100 desktop-33-right">
+<<<<<<< HEAD
       <div class="p-t500">
         <ul class="dl">
           <li class="dl-i">
@@ -149,11 +154,83 @@ hide($content['links']);
           </li>
         </ul>
       </div>
+=======
+      <!-- DATE OUTPUT PLACEHOLDER -->
+      <div class="event-date-wrapper">
+        <div class="event-date sidebar-header"><?php print render($content['field_public_notice_date']); ?></div>
+      </div>
+      <div class="list-item event-time-wrapper">
+        <?php
+        $date_vars = array(
+          'label' => $time_range,
+          'classes' => array(
+            'icon' => 'icon-time',
+            'body' => 'detail-item__body--tertiary',
+          ),
+        );
+        if (isset($repeat_rule)) {
+          $date_vars['body'] = $repeat_rule;
+        }
+        else {
+          $date_vars['classes']['detail'] = 'detail-item--middle';
+        }
+        print theme('detail_item', $date_vars);
+        ?>
+      </div>
+      <?php if (isset($content['field_address'])): ?>
+        <div class="list-item">
+          <?php print render($content['field_address']); ?>
+        </div>
+      <?php endif; ?>
+      <?php if (isset($content['field_email'])): ?>
+        <div class="list-item">
+          <?php print render($content['field_email']); ?>
+        </div>
+      <?php endif; ?>
+      <?php if (isset($content['field_phone_number'])): ?>
+        <div class="list-item">
+          <?php print render($content['field_phone_number']); ?>
+        </div>
+      <?php endif; ?>
+      <?php if (isset($content['field_event_contact'])): ?>
+        <div class="list-item">
+          <?php print render($content['field_event_contact']); ?>
+        </div>
+      <?php endif; ?>
+      <?php if (isset($content['field_multiple_neighborhoods'])): ?>
+        <div class="list-item">
+          <?php print render($content['field_multiple_neighborhoods']); ?>
+        </div>
+      <?php endif; ?>
+      <?php if (isset($content['field_event_type'])): ?>
+        <div class="list-item">
+          <?php print render($content['field_event_type']); ?>
+        </div>
+      <?php endif; ?>
+      <?php if (isset($notice_date_long)): ?>
+        <div class="list-item">
+          <div class="detail-item detail-item--secondary">
+            <div class="detail-item__left">
+              <div>Posted:</div>
+            </div>
+            <div class="detail-item__content">
+              <div class="detail-item__body detail-item__body--secondary"><?php print $notice_date_short; ?></div>
+            </div>
+          </div>
+        </div>
+      <?php endif; ?>
+      <?php if (isset($content['field_links'])): ?>
+        <div class="list-item">
+          <?php print render($content['field_links']); ?>
+        </div>
+      <?php endif; ?>
+>>>>>>> 4528fbf84ca8a6bcba5262dc30a2e286c4690917
       <?php if (isset($content['field_sidebar_components'])): ?>
         <?php print render($content['field_sidebar_components']); ?>
       <?php endif; ?>
     </div>
   </div>
+<<<<<<< HEAD
   <?php if (isset($content['field_components']) || isset($content['field_ma_general_law'])): ?>
     <div class="department-components desktop-100" <?php print $content_attributes; ?>>
       <?php if (isset($content['field_ma_general_law'])): ?>
@@ -168,4 +245,14 @@ hide($content['links']);
   <?php if (isset($content['field_contacts'])): ?>
     <?php print theme('page_contacts', array('title' => "Who's Involved", 'contacts' => $content['field_contacts'])); ?>
   <?php endif; ?>
+=======
+  <?php if (isset($content['field_components'])): ?>
+  <div class="department-components desktop-100" <?php print $content_attributes; ?>>
+    <?php print render($content['field_components']); ?>
+  </div>
+  <?php endif; ?>
+    <?php if (isset($content['field_contacts'])): ?>
+      <?php print theme('page_contacts', array('title' => "Who's Involved", 'contacts' => $content['field_contacts'])); ?>
+    <?php endif; ?>
+>>>>>>> 4528fbf84ca8a6bcba5262dc30a2e286c4690917
 </article>
