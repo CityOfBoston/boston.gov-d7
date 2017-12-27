@@ -1066,7 +1066,7 @@ function boston_preprocess_node_procurement_advertisement(&$variables) {
     // Add '+0000' so that strtotime doesn't try to convert a UTC time, we'll do that in format_date().
     $start_date = strtotime($dates[0]['value'] . " +0000");
     $end_date = strtotime($dates[0]['value2'] . " +0000");
-    $now = new DateTime();
+    $now = time();
     
     $variables['is_closed'] = $end_date < $now;
     
