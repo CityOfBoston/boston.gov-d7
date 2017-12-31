@@ -200,7 +200,7 @@ function bos_content_type_procurement_advertisement_views_default_views() {
   $handler->display->display_options['filters']['title']['operator'] = 'word';
   $handler->display->display_options['filters']['title']['exposed'] = TRUE;
   $handler->display->display_options['filters']['title']['expose']['operator_id'] = 'title_op';
-  $handler->display->display_options['filters']['title']['expose']['label'] = 'Search Public Notices';
+  $handler->display->display_options['filters']['title']['expose']['label'] = 'Search Title';
   $handler->display->display_options['filters']['title']['expose']['operator'] = 'title_op';
   $handler->display->display_options['filters']['title']['expose']['identifier'] = 'title';
   $handler->display->display_options['filters']['title']['expose']['remember_roles'] = array(
@@ -215,18 +215,18 @@ function bos_content_type_procurement_advertisement_views_default_views() {
     41 => 0,
     46 => 0,
     51 => 0,
+    56 => 0,
   );
-  /* Filter criterion: Field: Contact (field_contact) */
-  $handler->display->display_options['filters']['field_contact_target_id']['id'] = 'field_contact_target_id';
-  $handler->display->display_options['filters']['field_contact_target_id']['table'] = 'field_data_field_contact';
-  $handler->display->display_options['filters']['field_contact_target_id']['field'] = 'field_contact_target_id';
-  $handler->display->display_options['filters']['field_contact_target_id']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_contact_target_id']['expose']['operator_id'] = 'field_contact_target_id_op';
-  $handler->display->display_options['filters']['field_contact_target_id']['expose']['label'] = 'Contact (field_contact)';
-  $handler->display->display_options['filters']['field_contact_target_id']['expose']['operator'] = 'field_contact_target_id_op';
-  $handler->display->display_options['filters']['field_contact_target_id']['expose']['identifier'] = 'field_contact_target_id';
-  $handler->display->display_options['filters']['field_contact_target_id']['expose']['multiple'] = TRUE;
-  $handler->display->display_options['filters']['field_contact_target_id']['expose']['remember_roles'] = array(
+  /* Filter criterion: Content: Awarding Authority (field_awarding_authority) */
+  $handler->display->display_options['filters']['field_awarding_authority_target_id']['id'] = 'field_awarding_authority_target_id';
+  $handler->display->display_options['filters']['field_awarding_authority_target_id']['table'] = 'field_data_field_awarding_authority';
+  $handler->display->display_options['filters']['field_awarding_authority_target_id']['field'] = 'field_awarding_authority_target_id';
+  $handler->display->display_options['filters']['field_awarding_authority_target_id']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_awarding_authority_target_id']['expose']['operator_id'] = 'field_awarding_authority_target_id_op';
+  $handler->display->display_options['filters']['field_awarding_authority_target_id']['expose']['label'] = 'Awarding Authority (field_awarding_authority)';
+  $handler->display->display_options['filters']['field_awarding_authority_target_id']['expose']['operator'] = 'field_awarding_authority_target_id_op';
+  $handler->display->display_options['filters']['field_awarding_authority_target_id']['expose']['identifier'] = 'field_awarding_authority_target_id';
+  $handler->display->display_options['filters']['field_awarding_authority_target_id']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
     11 => 0,
@@ -238,6 +238,7 @@ function bos_content_type_procurement_advertisement_views_default_views() {
     41 => 0,
     46 => 0,
     51 => 0,
+    56 => 0,
   );
 
   /* Display: Landing */
@@ -282,7 +283,7 @@ function bos_content_type_procurement_advertisement_views_default_views() {
   $handler->display->display_options['filters']['title']['operator'] = 'word';
   $handler->display->display_options['filters']['title']['exposed'] = TRUE;
   $handler->display->display_options['filters']['title']['expose']['operator_id'] = 'title_op';
-  $handler->display->display_options['filters']['title']['expose']['label'] = 'Search Public Notices';
+  $handler->display->display_options['filters']['title']['expose']['label'] = 'Search by Title';
   $handler->display->display_options['filters']['title']['expose']['operator'] = 'title_op';
   $handler->display->display_options['filters']['title']['expose']['identifier'] = 'title';
   $handler->display->display_options['filters']['title']['expose']['remember_roles'] = array(
@@ -297,6 +298,7 @@ function bos_content_type_procurement_advertisement_views_default_views() {
     41 => 0,
     46 => 0,
     51 => 0,
+    56 => 0,
   );
   /* Filter criterion: Content: Awarding Authority (field_awarding_authority) */
   $handler->display->display_options['filters']['field_awarding_authority_target_id']['id'] = 'field_awarding_authority_target_id';
