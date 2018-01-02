@@ -223,7 +223,7 @@ function bos_content_type_procurement_advertisement_views_default_views() {
   $handler->display->display_options['filters']['field_awarding_authority_target_id']['field'] = 'field_awarding_authority_target_id';
   $handler->display->display_options['filters']['field_awarding_authority_target_id']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_awarding_authority_target_id']['expose']['operator_id'] = 'field_awarding_authority_target_id_op';
-  $handler->display->display_options['filters']['field_awarding_authority_target_id']['expose']['label'] = 'Awarding Authority (field_awarding_authority)';
+  $handler->display->display_options['filters']['field_awarding_authority_target_id']['expose']['label'] = 'Awarding Authority';
   $handler->display->display_options['filters']['field_awarding_authority_target_id']['expose']['operator'] = 'field_awarding_authority_target_id_op';
   $handler->display->display_options['filters']['field_awarding_authority_target_id']['expose']['identifier'] = 'field_awarding_authority_target_id';
   $handler->display->display_options['filters']['field_awarding_authority_target_id']['expose']['remember_roles'] = array(
@@ -240,6 +240,12 @@ function bos_content_type_procurement_advertisement_views_default_views() {
     51 => 0,
     56 => 0,
   );
+  /* Filter criterion: Content: Period Open - end date (field_date_range:value2) */
+  $handler->display->display_options['filters']['field_date_range_value2']['id'] = 'field_date_range_value2';
+  $handler->display->display_options['filters']['field_date_range_value2']['table'] = 'field_data_field_date_range';
+  $handler->display->display_options['filters']['field_date_range_value2']['field'] = 'field_date_range_value2';
+  $handler->display->display_options['filters']['field_date_range_value2']['operator'] = '<';
+  $handler->display->display_options['filters']['field_date_range_value2']['default_date'] = 'now';
 
   /* Display: Landing */
   $handler = $view->new_display('page', 'Landing', 'landing');
@@ -323,6 +329,12 @@ function bos_content_type_procurement_advertisement_views_default_views() {
     51 => 0,
     56 => 0,
   );
+  /* Filter criterion: Content: Period Open - end date (field_date_range:value2) */
+  $handler->display->display_options['filters']['field_date_range_value2']['id'] = 'field_date_range_value2';
+  $handler->display->display_options['filters']['field_date_range_value2']['table'] = 'field_data_field_date_range';
+  $handler->display->display_options['filters']['field_date_range_value2']['field'] = 'field_date_range_value2';
+  $handler->display->display_options['filters']['field_date_range_value2']['operator'] = '>';
+  $handler->display->display_options['filters']['field_date_range_value2']['default_date'] = 'now';
   $handler->display->display_options['path'] = 'views/bid-listings';
 
   /* Display: Archive */
