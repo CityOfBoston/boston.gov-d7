@@ -126,30 +126,33 @@ hide($content['links']);
             <span class="dl-d"><?php print $end_date ?></span>
           </li>
           <li class="dl-i">
-            <span class="dl-t">Awarded by</span>
-            <span class="dl-d"><?php print render($content['field_awarding_authority']) ?></span>
+            <span class="dl-t">Type</span>
+            <span class="dl-d"><?php print render($content['field_bid_type']) ?></span>
           </li>
-          <li class="dl-i">
-            <span class="dl-t">Project Number</span>
-            <span class="dl-d"><?php print render($content['field_event_project_number']) ?></span>
+          <li class="dl-i dl-i--b">
+            <div class="dl-t">Awarded by</div>
+            <div class="dl-d"><?php print render($content['field_awarding_authority']) ?></div>
           </li>
-          <li class="dl-i">
-            <span class="t--sans t--upper t--cb t--s100"><?php print render($content['field_bid_type']) ?></span>
+          <li class="dl-i dl-i--b">
+            <div class="dl-t">Project Number</div>
+            <div class="dl-d"><?php print render($content['field_event_project_number']) ?></div>
           </li>
-          <li class="dl-i">
-            <span class="dl-t">UNSPSC</span>
-            <span class="dl-d"><?php print render($content['field_unspsc']) ?></span>
+          <li class="dl-i dl-i--b">
+            <div class="dl-t">UNSPSC</div>
+            <div class="dl-d"><?php print render($content['field_unspsc']) ?></div>
           </li>
-          <li class="dl-i">
-            <div>Questions about this page? Contact:</div>
-            <div><?php print render($content['field_department']) ?></div>
-            <div><?php print render($content['field_address']) ?></div>
-            <div><?php print render($content['field_email']) ?></div>
-            <div><?php print render($content['field_phone_number']) ?></div>
+          <li class="dl-i dl-i--b">
+            <div class="dl-t">Questions about this page? Contact:</div>
+            <div class="dl-d">
+              <div><?php print render($content['field_department']) ?></div>
+              <div><?php print render($content['field_address']) ?></div>
+              <div><?php print render($content['field_email']) ?></div>
+              <div><?php print render($content['field_phone_number']) ?></div>
+            </div>
           </li>
-          <li class="dl-i">
-            <div>Related Links</div>
-            <div><?php print render($content['field_details_link']) ?></div>
+          <li class="dl-i dl-i--b">
+            <div class="dl-t">Related Links</div>
+            <div class="dl-d"><?php print render($content['field_details_link']) ?></div>
           </li>
         </ul>
       </div>
