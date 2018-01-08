@@ -139,6 +139,10 @@ function bos_swiftype_page_range($info) {
     $end = $info->current_page + 2;
   }
 
+  if ($end > $info->num_pages) {
+    $end = $info->num_pages;
+  } 
+
   if ($info->num_pages < 5) {
     $end = $info->num_pages;
   }
