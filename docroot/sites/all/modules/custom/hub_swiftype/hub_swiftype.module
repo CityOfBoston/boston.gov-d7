@@ -5,8 +5,8 @@
  * Library for connecting to Swiftype.
  */
 
-$swiftype_api_path = function_exists('libraries_get_path') ? libraries_get_path('swiftype') : 'sites/all/libraries/swiftype/';
-require $swiftype_api_path . 'Swiftype/swiftype.php';
+$swiftype_api_path = function_exists('libraries_get_path') ? libraries_get_path('swiftype') : 'sites/all/libraries/swiftype';
+require $swiftype_api_path . '/Swiftype/swiftype.php';
 
 /**
  * Implements hub_swiftype_menu().
