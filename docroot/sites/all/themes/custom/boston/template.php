@@ -1058,6 +1058,66 @@ function boston_preprocess_node_event(&$variables) {
 /**
  * Implements hook_preprocess_node_BUNDLE().
  */
+function boston_preprocess_node_procurement_advertisement(&$variables) {
+  $dates = field_get_items('node', $variables['node'], 'field_date_range');
+
+  if ($dates !== FALSE) {
+    $timezone = $dates[0]['timezone'];
+    // Add '+0000' so that strtotime doesn't try to convert a UTC time, we'll do that in format_date().
+    $start_date = strtotime($dates[0]['value'] . " +0000");
+    $end_date = strtotime($dates[0]['value2'] . " +0000");
+    $now = time();
+
+    $variables['is_closed'] = $end_date < $now;
+    
+    $variables['start_date'] = date('n/j/Y - g:ia', $start_date);
+    $variables['end_date'] = date('n/j/Y - g:ia', $end_date);
+    $variables['due_date'] = date('F j, Y', $end_date);
+  }
+  else {
+    $variables['time_range'] = '';
+  }
+
+  $submissions = $variables['field_bid'];
+
+  $bid_entity_id_array = array();
+  foreach ($submissions as $submission) {
+    $bid_entity_id_array[] = $submission['value'];
+  }
+
+  $awarded = array();
+  $other = array();
+
+  // Here we need to load all the components because
+  // the not all components have a short title
+  // required so we do not create nav link for it.
+  $submissions = entity_load('paragraphs_item', $bid_entity_id_array);
+  foreach ($submissions as $submission) {
+    $bid = array(
+      'company' => $submission->field_company_name['und'][0]['value'],
+      'amount' => $submission->field_bid_amount['und'][0]['value'],
+      'awarded' => $submission->field_awarded['und'][0]['value'],
+    );
+
+    if ($bid['awarded'] === '1') {
+      $awarded[] = $bid;
+    } else {
+      $other[] = $bid;
+    }
+  }
+
+  $variables['bid_awarded'] = $awarded;
+  $variables['bid_other'] = $other;
+
+  $award_date = field_get_items('node', $variables['node'], 'field_award_date');
+  $awarded = strtotime($award_date[0]['value']);
+
+  $variables['award_date'] = date('F j, Y', $awarded);
+}
+
+/**
+ * Implements hook_preprocess_node_BUNDLE().
+ */
 function boston_preprocess_node_public_notice(&$variables) {
   $time_range_view_modes = array(
     'calendar_listing',

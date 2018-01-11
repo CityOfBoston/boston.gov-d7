@@ -58,11 +58,11 @@
             <div class="fs-c m-b300">
               <div class="txt">
                 <label for="email" class="txt-l txt-l--mt000">Your email address</label>
-                <input id="email" name="email" type="text" value="" placeholder="email@address.com" class="txt-f txt-f--sm">
+                <input id="email" name="email" type="text" value="" placeholder="email@address.com" class="txt-f">
               </div>
               <div class="txt">
                 <label for="phone_number" class="txt-l txt-l--w txt-l--mt000">Your phone number</label>
-                <input id="phone_number" name="phone_number" type="text" value="" placeholder="Phone number" class="txt-f txt-f--sm">
+                <input id="phone_number" name="phone_number" type="text" value="" placeholder="Phone number" class="txt-f">
               </div>
             </div>
             <div class="fs-c fs-c--i">
@@ -80,19 +80,19 @@
             <div class="fs-c m-b300">
               <div class="txt">
                 <label for="first_name" class="txt-l txt-l--mt000">First name</label>
-                <input id="first_name" name="first_name" type="text" value="" placeholder="First name" class="txt-f txt-f--sm">
+                <input id="first_name" name="first_name" type="text" value="" placeholder="First name" class="txt-f">
               </div>
             </div>
             <div class="fs-c m-b300">
               <div class="txt">
                 <label for="last_name" class="txt-l txt-l--mt000">Last name</label>
-                <input id="last_name" name="last_name" type="text" value="" placeholder="Last name" class="txt-f txt-f--sm">
+                <input id="last_name" name="last_name" type="text" value="" placeholder="Last name" class="txt-f">
               </div>
             </div>
             <div class="fs-c m-b300">
               <div class="txt">
                 <label for="zip_code" class="txt-l txt-l--w txt-l--mt000">Zip code</label>
-                <input id="zip_code" name="zip" type="text" value="" placeholder="Zip code" class="txt-f txt-f--sm" size="10">
+                <input id="zip_code" name="zip" type="text" value="" placeholder="Zip code" class="txt-f" size="10">
               </div>
             </div>
             <div id="message" class="m-b300" style="display: none"></div>
