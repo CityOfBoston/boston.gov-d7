@@ -759,6 +759,11 @@ function boston_preprocess_paragraphs_item_map(&$variables) {
     'scope' => 'header',
     'weight' => -1,
   ));
+  drupal_add_js('https://unpkg.com/esri-leaflet-geocoder@2.2.6', array(
+    'type' => 'external',
+    'scope' => 'header',
+    'weight' => 0,
+  ));
 
   // Get ESRI feed info: title, url, color.
   $feeds = array();
