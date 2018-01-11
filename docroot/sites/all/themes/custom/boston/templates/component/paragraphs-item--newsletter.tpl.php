@@ -49,11 +49,11 @@
               <div class="fs-c fs-c--i">
                 <div class="txt">
                   <label for="subscriber[email]" class="txt-l">Your Email Address</label>
-                  <input name="subscriber[email]" type="email" value="" placeholder="Email address" class="txt-f txt-f--sm bos-newsletter-email">
+                  <input name="subscriber[email]" type="email" value="" placeholder="Email address" class="txt-f bos-newsletter-email">
                 </div>
                 <div class="txt">
                   <label for="subscriber[zipcode]" class="txt-l">Zip Code</label>
-                  <input name="subscriber[zipcode]" type="text" value="" placeholder="Zip Code" class="txt-f txt-f--sm bos-newsletter-zip" size="18">
+                  <input name="subscriber[zipcode]" type="text" value="" placeholder="Zip Code" class="txt-f bos-newsletter-zip" size="18">
                 </div>
               </div>
               <div class="bc bc--r">
