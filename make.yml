@@ -167,6 +167,8 @@ projects:
     version: 1.9
   login_destination:
     version: 1.4
+  markup:
+    version: 1.2
   masquerade:
     version: 1.0-rc7
   media:

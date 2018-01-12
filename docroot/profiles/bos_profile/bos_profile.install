@@ -782,3 +782,13 @@ function bos_profile_update_7033() {
   }
 
 }
+
+/**
+ * Update for 1/12/18
+ */
+function bos_profile_update_7034() {
+  $enabled_modules = array(
+    'markup',
+  );
+  module_enable($enabled_modules);
+}
