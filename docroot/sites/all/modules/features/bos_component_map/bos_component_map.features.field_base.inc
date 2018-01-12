@@ -120,5 +120,25 @@ function bos_component_map_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
+  // Exported field_base: 'field_vizwiz'.
+  $field_bases['field_vizwiz'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_vizwiz',
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'markup',
+    'settings' => array(
+      'markup' => array(
+        'format' => 'full_html',
+        'value' => '<div id="data-filter-widget"><data-filter defaults="" title="Component Title" viz-id="myvizid"></data-filter></div>',
+      ),
+    ),
+    'translatable' => 0,
+    'type' => 'markup',
+  );
+
   return $field_bases;
 }
