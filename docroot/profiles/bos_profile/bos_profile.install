@@ -826,3 +826,15 @@ function bos_profile_update_7033() {
   }
 
 }
+
+/**
+ * Update for 1/18/18.
+ */
+function bos_profile_update_7034() {
+  $enabled_modules = array(
+    's3fs',
+    's3fs_cors',
+    's3fs_migrate',
+  );
+  module_enable($enabled_modules);
+}

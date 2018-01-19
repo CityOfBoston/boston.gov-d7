@@ -203,6 +203,12 @@ projects:
     version: 1.2
   redirect:
     version: 1.0-rc3
+  s3fs:
+    version: 2.10
+  s3fs_cors:
+    version: 1.4
+  s3fs_migrate:
+    version: 1.0-beta3
   salesforce:
     version: 3.2
   salesforce_term_ref:
