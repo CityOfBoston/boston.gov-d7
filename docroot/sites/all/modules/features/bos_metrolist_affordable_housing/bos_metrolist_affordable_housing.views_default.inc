@@ -747,6 +747,13 @@ function bos_metrolist_affordable_housing_views_default_views() {
   $handler->display->display_options['filters']['field_mah_not_active_value']['value'] = array(
     1 => '1',
   );
+  /* Filter criterion: Content: Publish to Metrolist (field_mah_publish_to_metrolist) */
+  $handler->display->display_options['filters']['field_mah_publish_to_metrolist_value']['id'] = 'field_mah_publish_to_metrolist_value';
+  $handler->display->display_options['filters']['field_mah_publish_to_metrolist_value']['table'] = 'field_data_field_mah_publish_to_metrolist';
+  $handler->display->display_options['filters']['field_mah_publish_to_metrolist_value']['field'] = 'field_mah_publish_to_metrolist_value';
+  $handler->display->display_options['filters']['field_mah_publish_to_metrolist_value']['value'] = array(
+    1 => '1',
+  );
   $handler->display->display_options['path'] = 'metrolist-affordable-housing-lottery';
   $export['metrolist_affordable_housing'] = $view;
 
