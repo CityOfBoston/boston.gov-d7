@@ -27,13 +27,13 @@
 $field_title = $content['field_title'][0]['#markup'];
 ?>
 <?php if (isset($link_icon["classes"]["icon"])) { ?>
-  <a href="<?php print $internal_link_path; ?>" title="Go to <?php print ((!empty($field_title) ? $field_title : $internal_link_title)); ?>" class="<?php print $link_icon["classes"]["container"]; ?>">
-    <span<?php print((isset($link_icon["classes"]["icon"]) ? ' class="' . $link_icon["classes"]["icon"] . '"' : '')); ?>><img src="<?php print $link_icon["image"] ?>" class="lwi-i" role="presentation" alt="<?php print ((!empty($field_title) ? $field_title : $internal_link_title)); ?>" /></span>
+  <a href="<?php print $internal_link_path; ?>">
+    <span<?php print((isset($link_icon["classes"]["icon"]) ? ' class="' . $link_icon["classes"]["icon"] . '"' : '')); ?>><img src="<?php print $link_icon["image"] ?>" class="lwi-i" role="presentation" alt="" /></span>
     <span<?php print((isset($link_icon["classes"]["text"]) ? ' class="' . $link_icon["classes"]["text"] . '"' : '')); ?>><?php print ((!empty($field_title) ? $field_title : $internal_link_title)); ?></span>
   </a>
 <?php } else { ?>
   <div class="link-wrapper internal-link">
-    <a href="<?php print $internal_link_path; ?>" title="Go to <?php if (!empty($field_title)): ?><?php print $field_title; ?><?php else: ?><?php print $internal_link_title; ?><?php endif; ?>">
+    <a href="<?php print $internal_link_path; ?>">
     <?php if (!empty($field_title)): ?>
       <?php print $field_title; ?>
     <?php else: ?>
