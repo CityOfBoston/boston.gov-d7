@@ -20,6 +20,44 @@ If you're interested in helping Boston.gov, there are three ways to help. Be sur
 
 Get started with our [developer guide](https://github.com/CityOfBoston/boston.gov/blob/develop/guides/02-setting-up-development.md). Each contributor should [fork](https://help.github.com/articles/fork-a-repo) the primary Boston.gov repo. All developers should then checkout a local copy of the `develop` branch to begin work.
 
+### Docker Quick-Start
+
+1. Download [Docker for
+   Mac](https://www.docker.com/docker-machttps://www.docker.com/docker-mac) or
+   [Docker for Windows](https://www.docker.com/docker-windows), or otherwise get
+   a Docker environment with Docker Compose installed.
+1. Clone this repo
+1. Run `docker-compose up` in the root directory
+1. Initialize the database: `docker exec bostongov_drupal_1 scripts/init-docker-container.sh` (this will take 10+ minutes)
+1. Visit http://localhost:8888/ to see the blank install. Visit
+   http://localhost:8888/user?local to log in, with admin/admin as username and
+   password.
+
+The Hub — our internal Drupal install — can run in the same container and
+against the same MySQL server. To initialize it, run:
+
+`docker exec bostongov_drupal_1 scripts/init-docker-container.sh hub`
+
+It’s available at http://localhost:8889/ and you can log in with admin/admin at
+http://localhost:8889/user?local
+
+Since pulling files through the Docker volume mount is relatively slow, we keep
+vendored packages within the container and only map in our custom directories.
+So, only local edits to the following directories will be seen within the
+container:
+
+```
+  docroot/profiles
+  docroot/sites/default
+  docroot/sites/hub
+  docroot/sites/all/modules/custom
+  docroot/sites/all/modules/features
+  docroot/sites/all/settings
+  docroot/sites/all/themes/custom
+```
+
+You can modify this list by editing `scripts/init-docker-container.sh`
+
 
 ## Public domain
 

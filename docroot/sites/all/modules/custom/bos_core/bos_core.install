@@ -12,6 +12,36 @@ function bos_core_install() {
   bos_core_update_7002();
   bos_core_update_7003();
   bos_core_update_7004();
+  bos_core_update_7005();
+  bos_core_update_7006();
+  bos_core_update_7007();
+  bos_core_update_7008();
+  bos_core_update_7009();
+  bos_core_update_7010();
+  bos_core_update_7011();
+  bos_core_update_7012();
+  bos_core_update_7013();
+  bos_core_update_7014();
+  bos_core_update_7015();
+  bos_core_update_7016();
+  bos_core_update_7017();
+  bos_core_update_7018();
+  bos_core_update_7019();
+  bos_core_update_7020();
+  bos_core_update_7021();
+  bos_core_update_7022();
+  bos_core_update_7023();
+  bos_core_update_7024();
+  bos_core_update_7025();
+  bos_core_update_7026();
+  bos_core_update_7027();
+  bos_core_update_7028();
+  bos_core_update_7029();
+  bos_core_update_7030();
+  bos_core_update_7031();
+  bos_core_update_7032();
+  bos_core_update_7033();
+  bos_core_update_7034();
 }
 
 /**

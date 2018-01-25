@@ -1,0 +1,18 @@
+version: '3.2'
+services:
+  drupal:
+    build: .
+    ports:
+    - "8888:80"
+    - "8889:80"
+    volumes:
+    - .:/host-repo:cached
+    environment:
+    - DRUPAL_DATABASE_HOST=mysql
+  mysql:
+    image: "mysql:5.6"
+    command: ["--character-set-server=utf8mb4", "--collation-server=utf8mb4_unicode_ci"]
+    ports:
+    - "3306:3306"
+    environment:
+    - MYSQL_ALLOW_EMPTY_PASSWORD=true

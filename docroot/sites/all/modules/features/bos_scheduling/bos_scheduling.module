@@ -29,8 +29,10 @@ function bos_scheduling_views_default_views_alter(&$views) {
   );
   foreach ($type_filter_exception_by_view as $view_name => $info) {
     if (isset($views[$view_name])) {
-      $views[$view_name]
-        = bos_core_filter_type_by_all_except($views[$view_name], $info['displays'], $info['exceptions']);
+      if (function_exists('bos_core_filter_type_by_all_except')) {
+        $views[$view_name]
+          = bos_core_filter_type_by_all_except($views[$view_name], $info['displays'], $info['exceptions']);
+      }
     }
   }
 
@@ -47,7 +49,9 @@ function bos_scheduling_views_default_views_alter(&$views) {
   foreach ($views_to_disable_per_site as $site => $disable_views) {
     foreach ($disable_views as $view_name) {
       if (isset($views[$view_name])) {
-        bos_core_disable_view($site, $views[$view_name]);
+        if (function_exists('bos_core_disable_view')) {
+          bos_core_disable_view($site, $views[$view_name]);
+        }
       }
     }
   }
