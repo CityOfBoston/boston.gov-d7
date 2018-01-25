@@ -27,8 +27,8 @@
  $field_title = $content['field_title'][0]['#markup'];
 ?>
 <?php if (isset($link_icon["classes"]["icon"])) { ?>
-  <a href="<?php print $external_link_path; ?>" title="Go to <?php print ((!empty($field_title) ? $field_title : $external_link_title)); ?>"  class="<?php print $link_icon["classes"]["container"]; ?>" target="_blank">
-    <span<?php print((isset($link_icon["classes"]["icon"]) ? ' class="' . $link_icon["classes"]["icon"] . '"' : '')); ?>><img src="<?php print $link_icon["image"] ?>" class="lwi-i" alt="<?php print ((!empty($field_title) ? $field_title : $external_link_title)); ?>" /></span>
+  <a href="<?php print $external_link_path; ?>" class="<?php print $link_icon["classes"]["container"]; ?>" target="_blank">
+    <span<?php print((isset($link_icon["classes"]["icon"]) ? ' class="' . $link_icon["classes"]["icon"] . '"' : '')); ?>><img src="<?php print $link_icon["image"] ?>" class="lwi-i" alt="" /></span>
     <span<?php print((isset($link_icon["classes"]["text"]) ? ' class="' . $link_icon["classes"]["text"] . '"' : '')); ?>><?php print ((!empty($field_title) ? $field_title : $external_link_title)); ?></span>
   </a>
 <?php } else { ?>
