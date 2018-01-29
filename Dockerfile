@@ -20,7 +20,7 @@ RUN npm install
 
 ADD composer.json composer.lock /boston.gov/
 RUN composer install
-RUN ln -s vendor/drush/drush/drush /usr/local/bin/drush
+RUN ln -s /boston.gov/vendor/drush/drush/drush /usr/local/bin/drush
 
 ADD . /boston.gov
 RUN ./task.sh setup:build:make
