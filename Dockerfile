@@ -8,19 +8,19 @@ RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-av
 
 RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends git zip unzip bzip2 rsync nodejs libgd-dev mysql-client && \
-    docker-php-ext-install pdo_mysql gd
+    apt-get install -y --no-install-recommends git zip unzip bzip2 libbz2-dev rsync nodejs libgd-dev mysql-client && \
+    docker-php-ext-install pdo_mysql gd bz2
 RUN curl --silent --show-error https://getcomposer.org/installer | php
 RUN mv composer.phar /usr/local/bin/composer 
 
-ADD default.php.ini /usr/local/etc/php/php.ini
+ADD docker/php.ini /usr/local/etc/php/
 
 ADD package.json package-lock.json /boston.gov/
 RUN npm install
 
 ADD composer.json composer.lock /boston.gov/
 RUN composer install
-RUN ln -s /boston.gov/vendor/drush/drush/drush /usr/local/bin/drush
+RUN ln -s /boston.gov/vendor/bin/drush /usr/local/bin/drush
 
 ADD . /boston.gov
 RUN ./task.sh setup:build:make

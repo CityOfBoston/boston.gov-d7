@@ -58,6 +58,22 @@ container:
 
 You can modify this list by editing `scripts/init-docker-container.sh`
 
+#### Running `drush` commands
+
+To get a shell within a running Drupal container, run `docker exec -it
+bostongov_drupal_1 /bin/bash`
+
+From there you can run `drush` or `task.sh` commands.
+
+#### Running tests in Docker
+
+Assuming you have already done the local initialization, you can run:
+```
+docker exec bostongov_drupal_1 ./task.sh -Dbehat.run-server=true -Dproject.build_db_from=initialize tests:all
+```
+
+_Note: as of this writing, the tests do not work for the Hub environment (`./hub-task.sh`)._
+
 
 ## Public domain
 
