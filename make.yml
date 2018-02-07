@@ -38,7 +38,7 @@ projects:
   advanced_text_formatter:
     version: 1.4
   autologout:
-    version: 4.4
+    version: 4.5
   addressfield:
     version: 1.2
   admin_menu:
@@ -104,7 +104,7 @@ projects:
   entity:
     version: 1.6
   entityreference:
-    version: 1.1
+    version: 1.5
   entityreference_autocreate:
     version: 1.1
   expire:
@@ -269,7 +269,7 @@ projects:
   token_filter:
     version: 1.1
   views:
-    version: 3.15
+    version: 3.18
   views_datasource:
     version: 1.0-alpha2
   views_load_more:
