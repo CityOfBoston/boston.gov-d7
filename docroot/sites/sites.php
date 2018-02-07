@@ -82,7 +82,9 @@ $sites['hub-uat.boston.gov'] = 'hub';
 // @see sites/default/settings/default.local.settings.php
 // @see sites/hub/settings/default.local.settings.php
 $sites['8888.127.0.0.1'] = 'default';
+$sites['8888.localhost'] = 'default';
 $sites['8889.127.0.0.1'] = 'hub';
+$sites['8889.localhost'] = 'hub';
 
 if (file_exists(__DIR__ . '/local.sites.php')) {
   require __DIR__ . '/local.sites.php';
