@@ -838,3 +838,13 @@ function bos_profile_update_7034() {
   );
   module_enable($enabled_modules);
 }
+
+/**
+ * Update for 2/8/18.
+ */
+function bos_profile_update_7035() {
+  $enabled_modules = array(
+    'paragraphs_bundle_permissions',
+  );
+  module_enable($enabled_modules);
+}
