@@ -27,7 +27,7 @@
 ?>
 
 <div class="link-wrapper download-link">
-  <a href="<?php print $document_link; ?>" title="Download <?php print $document_filename; ?>" target="_blank">
+  <a href="<?php print $document_link; ?>" target="_blank">
     <?php if (isset($content['field_title'])): ?>
       <?php print render($content['field_title']); ?>
     <?php else: ?>
