@@ -5,9 +5,7 @@
   "version": "1.0.0",
   "repository": {},
   "devDependencies": {
-    "breakpoint-sass": "^2.7.0",
     "browser-sync": "^2.12.8",
-    "chroma-sass": "^1.2.4",
     "compass-mixins": "^0.12.10",
     "compass-options": "^0.1.1",
     "del": "^2.2.0",
@@ -19,8 +17,6 @@
     "gulp-jshint": "^2.0.1",
     "gulp-load-plugins": "^1.2.4",
     "gulp-rename": "^1.2.2",
-    "gulp-sass": "2.0.x",
-    "gulp-sass-lint": "^1.1.1",
     "gulp-size": "^2.1.0",
     "gulp-sourcemaps": "^1.6.0",
     "gulp-uglify": "^1.5.3",

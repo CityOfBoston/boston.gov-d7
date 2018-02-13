@@ -4,6 +4,10 @@
  * Install tasks for Boston Component List module.
  */
 
+function bos_component_list_install() {
+  bos_component_list_update_7000();
+}
+
 /**
  * Reset field_list varg values.
  */
