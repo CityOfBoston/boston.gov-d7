@@ -94,33 +94,3 @@ _well_. Add a brief description of what you like and/or dislike about it.]
 
 ```
 
-### Contribute to development
-
-To contribute to the development of Boston.gov, you'll need to get a development environment up and running. This section will get you started.
-
-Our process resembles a [Gitflow Workflow](https://www.atlassian.com/git/workflows#!workflow-gitflow) with the following specifics:
-
-* The `master` branch is always ready for deployment.
-* All development is performed against a `develop` branch.
-* Before release, `develop` is deployed to our staging environment and tested. It is then merged into `master` and `master` is deployed to production.
-
-
-#### Project setup
-
-Each contributor should [fork](https://help.github.com/articles/fork-a-repo) the primary Boston.gov repo. All developers should then checkout a local copy of the `develop` branch to begin work.
-
-For any work, pull requests must be created for individual tasks and submitted for review. Before submitting a pull request, be sure to [sync the local branch](https://help.github.com/articles/syncing-a-fork) with the upstream primary branch.
-
-Pull requests should be submitted from the forked repo to the `develop` branch of the primary repo. Make sure to give your pull request a **clear and descriptive title** and use the template below.
-
-#### Pull request template
-
-```
-## Changes
-
- * [First change]
- * [Second change]
- * [Third change]
-
-This PR references #[GitHub issue number]
-```
