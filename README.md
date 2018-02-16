@@ -8,17 +8,29 @@ The source code for [Boston.gov](https://boston.gov), the official site of the C
 
 There’s a large, civic-minded ecosystem of software developers out there, especially in the Drupal community, and we’re hoping they’re willing to lend a hand and help Boston.gov grow, as well as foster collaboration between multiple organizations to solve common technical hurdles.    
 
-## Contributions
-
-If you're interested in helping Boston.gov, there are three ways to help. Be sure to checkout our [Guide to Contributing](https://github.com/CityOfBoston/boston.gov/blob/develop/guides/03-contributing-to-boston.gov.md).
-
-* [Report issues on Boston.gov](https://github.com/CityOfBoston/boston.gov/blob/develop/guides/03-contributing-to-boston.gov.md#reporting-bugs)
-* [Suggest new features](https://github.com/CityOfBoston/boston.gov/blob/develop/guides/03-contributing-to-boston.gov.md#suggest-new-features)
-* [Contributing to development](https://github.com/CityOfBoston/boston.gov/blob/develop/guides/03-contributing-to-boston.gov.md#contributing-to-development)
-
 ## Developers
 
-Get started with our [developer guide](https://github.com/CityOfBoston/boston.gov/blob/develop/guides/02-setting-up-development.md). Each contributor should [fork](https://help.github.com/articles/fork-a-repo) the primary Boston.gov repo. All developers should then checkout a local copy of the `develop` branch to begin work.
+Get started with our [developer guide](https://github.com/CityOfBoston/boston.gov/blob/develop/guides/02-setting-up-development.md). 
+
+Each contributor should [fork](https://help.github.com/articles/fork-a-repo) the primary Boston.gov repo. All developers should then checkout a local copy of the `develop` branch to begin work.
+
+For any work, pull requests must be created for individual tasks and submitted for review. Before submitting a pull request, be sure to [sync the local branch](https://help.github.com/articles/syncing-a-fork) with the upstream primary branch.
+
+Pull requests should be submitted from the forked repo to the `develop` branch of the primary repo. Make sure to give your pull request a **clear and descriptive title** and use the template below.
+
+#### Pull request template
+
+```
+## Changes
+
+This PR references #[GitHub issue number]
+
+ * [First change]
+ * [Second change]
+ * [Third change]
+
+This PR references #[GitHub issue number]
+```
 
 ### Docker Quick-Start
 
@@ -74,7 +86,6 @@ docker exec bostongov_drupal_1 ./task.sh -Dbehat.run-server=true -Dproject.build
 
 _Note: as of this writing, the tests do not work for the Hub environment (`./hub-task.sh`)._
 
-
 ## Public domain
 
 This project is in the worldwide [public domain](LICENSE.md). As stated in [LICENSE](LICENSE.md):
@@ -87,19 +98,6 @@ This project is in the worldwide [public domain](LICENSE.md). As stated in [LICE
 
 All projects, open source or not, need some way to stay organized. Whether reporting a bug ([check out the template](https://github.com/CityOfBoston/boston.gov/blob/develop/guides/03-contributing-to-boston.gov.md#bug-report-template)), suggesting a feature [another template](https://github.com/CityOfBoston/boston.gov/blob/develop/guides/03-contributing-to-boston.gov.md#feature-template), filing a pull request [yay, templates](https://github.com/CityOfBoston/boston.gov/blob/develop/guides/03-contributing-to-boston.gov.md#pull-request-template), or even just seeing what's next in the queue, here are some ways we keep things clear on the Digital Team:
 
-#### Labels on Issues
+### Contribute to development
 
-Filtering on issues with Labels helps us stay organized. Below we have provided more meaning to some of the less obviously named labels.
-
-* Both sites: Alongside Boston.gov, we at the City connect our employees [many of which are also Boston residents] with simple and easy-to-access information via an internal website called ‘The Hub’. The Hub is built from the same source code as Boston.gov, which allows us to leverage our development resources. The ‘both sites’ label means that the development work will apply to both Boston.gov and the Hub.
-* Hub only: At times, there are website features needed only by the Hub. The ‘Hub only’ label pinpoints these issues.
-
-#### Use the templates
-
-* [Suggest a feature](https://github.com/CityOfBoston/boston.gov/blob/develop/guides/03-contributing-to-boston.gov.md#feature-template)
-* [Report a bug](https://github.com/CityOfBoston/boston.gov/blob/develop/guides/03-contributing-to-boston.gov.md#bug-report-template)
-* [Submit a pull request](https://github.com/CityOfBoston/boston.gov/blob/develop/guides/03-contributing-to-boston.gov.md#pull-request-template)
-
-#### Think about using Zenhub
-
-* We aren't endorsing [Zenhub](https://www.zenhub.com/), but we use them to manage the issues in our queue. If you want to see what we're getting ready to work on, are actively working on, or are pushing in our next release, layer Zenhub over your Github account.
+Check out our current prioroities for boston.gov in our [Git project](https://github.com/orgs/CityOfBoston/projects/3).
