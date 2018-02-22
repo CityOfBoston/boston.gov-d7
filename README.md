@@ -26,9 +26,12 @@ Get started with our [developer guide](https://github.com/CityOfBoston/boston.go
    Mac](https://www.docker.com/docker-machttps://www.docker.com/docker-mac) or
    [Docker for Windows](https://www.docker.com/docker-windows), or otherwise get
    a Docker environment with Docker Compose installed.
-1. Clone this repo
-1. Run `docker-compose up` in the root directory
-1. Initialize the database: `docker exec bostongov_drupal_1 scripts/init-docker-container.sh` (this will take 10+ minutes)
+1. Clone this repo.
+1. Run `docker-compose up` in the root directory. This will start the servers
+   and stay open to show their logs.
+1. In another terminal window, initialize the database: `docker exec
+   bostongov_drupal_1 scripts/init-docker-container.sh` (this will take 10+
+   minutes).
 1. Visit http://127.0.0.1:8888/ to see the blank install. Visit
    http://127.0.0.1:8888/user?local to log in, with admin/admin as username and
    password.

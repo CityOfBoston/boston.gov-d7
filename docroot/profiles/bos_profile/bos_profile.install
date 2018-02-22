@@ -9,6 +9,9 @@
  * Implements hook_install().
  *
  * This function is also used by the hub_profile_install() function.
+ *
+ * This function needs to call all of the migrations in order to set
+ * up a fresh Drupal install.
  */
 function bos_profile_install() {
   bos_profile_install_common();
@@ -46,6 +49,8 @@ function bos_profile_install() {
   bos_profile_update_7031();
   bos_profile_update_7032();
   bos_profile_update_7033();
+  bos_profile_update_7034();
+  bos_profile_update_7035();
 }
 
 /**
@@ -848,3 +853,8 @@ function bos_profile_update_7035() {
   );
   module_enable($enabled_modules);
 }
+
+/*******************************************************************
+Any new migrations need to also be added to bos_profile_install so that
+they can run on fresh Docker installs.
+********************************************************************/
