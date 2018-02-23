@@ -102,7 +102,7 @@ projects:
   email_confirm:
     version: 1.2
   entity:
-    version: 1.6
+    version: 1.9
   entityreference:
     version: 1.5
   entityreference_autocreate:
