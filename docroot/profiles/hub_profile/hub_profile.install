@@ -538,3 +538,8 @@ function hub_profile_update_7024() {
   }
 
 }
+
+/*******************************************************************
+Any new migrations need to also be added to hub_profile_install so that
+they can run on fresh Docker installs.
+********************************************************************/
