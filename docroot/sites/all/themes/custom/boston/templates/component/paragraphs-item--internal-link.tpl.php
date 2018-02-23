@@ -27,7 +27,7 @@
 $field_title = $content['field_title'][0]['#markup'];
 ?>
 <?php if (isset($link_icon["classes"]["icon"])) { ?>
-  <a href="<?php print $internal_link_path; ?>">
+  <a href="<?php print $internal_link_path; ?>" class="<?php print $link_icon["classes"]["container"]; ?>">
     <span<?php print((isset($link_icon["classes"]["icon"]) ? ' class="' . $link_icon["classes"]["icon"] . '"' : '')); ?>><img src="<?php print $link_icon["image"] ?>" class="lwi-i" role="presentation" alt="" /></span>
     <span<?php print((isset($link_icon["classes"]["text"]) ? ' class="' . $link_icon["classes"]["text"] . '"' : '')); ?>><?php print ((!empty($field_title) ? $field_title : $internal_link_title)); ?></span>
   </a>
