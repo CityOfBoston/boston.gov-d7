@@ -17,7 +17,8 @@
  * roles and permissions.
  */
 function acquia_permissions_map() {
-  return array(
+
+  $roles = array(
     // Anonymous user role permissions.
     'anonymous user' => array(
       'access content',
@@ -530,4 +531,80 @@ function acquia_permissions_map() {
       'view revisions',
     ),
   );
+
+  $paragraphs = [
+    '3_column_w_image',
+    'bid',
+    'bos_signup_emergency_alerts',
+    'bos311',
+    'cabinet',
+    'card',
+    'city_score_dashboard',
+    'custom_hours_text',
+    'daily_hours',
+    'discussion_topic',
+    'document',
+    'drawer',
+    'drawers',
+    'election_results',
+    'external_link',
+    'featured_item',
+    'featured_topics',
+    'feedback',
+    'fyi',
+    'gol_list_links',
+    'grid_of_cards',
+    'grid_of_people',
+    'grid_of_places',
+    'grid_of_programs_initiatives',
+    'grid_of_quotes',
+    'grid_of_topics',
+    'group_of_links_grid',
+    'group_of_links_list',
+    'group_of_links_mini_grid',
+    'header_text',
+    'hero_image',
+    'how_to_contact_step',
+    'how_to_tab',
+    'how_to_text_step',
+    'iframe',
+    'internal_link',
+    'list',
+    'map',
+    'map_coordinates',
+    'map_esri_feed',
+    'map_pin',
+    'message_for_the_day',
+    'news_announcements',
+    'newsletter',
+    'photo',
+    'quote',
+    'recollect_widget',
+    'script_embed',
+    'seamless_doc',
+    'sidebar_item',
+    'sidebar_item_w_icon',
+    'social_media_links',
+    'social_networking',
+    'status_override',
+    'tabbed_content_tab',
+    'text',
+    'text_one_column',
+    'text_three_column',
+    'text_two_column',
+    'transaction_grid',
+    'upcoming_events',
+    'user_action',
+    'video',
+  ];
+
+  foreach ($paragraphs as $paragraph) {
+    $roles['anonymous user'][] = 'view paragraph content ' . $paragraph;
+    $roles['authenticated user'][] = 'view paragraph content ' . $paragraph;
+    $roles['authenticated user'][] = 'create paragraph content ' . $paragraph;
+    $roles['authenticated user'][] = 'update paragraph content ' . $paragraph;
+    $roles['authenticated user'][] = 'delete paragraph content ' . $paragraph;
+  }
+
+  return $roles;
 }

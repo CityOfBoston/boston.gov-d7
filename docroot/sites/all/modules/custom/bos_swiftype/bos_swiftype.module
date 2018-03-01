@@ -5,8 +5,9 @@
  * Library for connecting to Swiftype.
  */
 
-$swiftype_api_path = function_exists('libraries_get_path') ? libraries_get_path('swiftype') : 'sites/all/libraries/swiftype/';
-require $swiftype_api_path . 'Swiftype/swiftype.php';
+$swiftype_api_path = function_exists('libraries_get_path') ? libraries_get_path('swiftype') : 'sites/all/libraries/swiftype';
+require $swiftype_api_path . '/Swiftype/swiftype.php';
+use \Swiftype\SwiftypeClient;
 
 /**
  * Implements bos_swiftype_menu().
@@ -49,7 +50,7 @@ function bos_swiftype_search_click_callback() {
   $url = html_entity_decode($params['url']);
 
   try {
-    $client = new \Swiftype\SwiftypeClient(variable_get('swiftype_email'), variable_get('swiftype_password'), variable_get('swiftype_key'));
+    $client = new SwiftypeClient(variable_get('swiftype_email'), variable_get('swiftype_password'), variable_get('swiftype_key'));
     $results = $client->log_click(variable_get('swiftype_engine'), 'page', $params['id'], $params['query']);
   }
   catch (Exception $e) {
@@ -66,7 +67,7 @@ function bos_swiftype_search_click_callback() {
 function bos_swiftype_search_page_callback() {
   $params = drupal_get_query_parameters();
 
-  $client = new \Swiftype\SwiftypeClient(variable_get('swiftype_email'), variable_get('swiftype_password'), variable_get('swiftype_key'));
+  $client = new SwiftypeClient(variable_get('swiftype_email'), variable_get('swiftype_password'), variable_get('swiftype_key'));
 
   if ($params['query']) {
     if ($params['facet']) {
@@ -137,6 +138,10 @@ function bos_swiftype_page_range($info) {
   if ($info->current_page > 5) {
     $start = $info->current_page - 2;
     $end = $info->current_page + 2;
+  }
+
+  if ($end > $info->num_pages) {
+    $end = $info->num_pages;
   }
 
   if ($info->num_pages < 5) {

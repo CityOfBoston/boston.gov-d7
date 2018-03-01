@@ -4,12 +4,60 @@
  * Install file for Boston.gov.
  */
 
+
 /**
  * Implements hook_install().
  *
  * This function is also used by the hub_profile_install() function.
+ *
+ * This function needs to call all of the migrations in order to set
+ * up a fresh Drupal install.
  */
 function bos_profile_install() {
+  bos_profile_install_common();
+
+  bos_profile_update_7001(TRUE);
+  bos_profile_update_7002();
+  bos_profile_update_7003();
+  bos_profile_update_7004();
+  bos_profile_update_7005();
+  bos_profile_update_7006();
+  bos_profile_update_7007();
+  bos_profile_update_7008();
+  bos_profile_update_7009();
+  bos_profile_update_7010();
+  bos_profile_update_7011();
+  bos_profile_update_7012();
+  bos_profile_update_7013();
+  bos_profile_update_7014();
+  bos_profile_update_7015();
+  bos_profile_update_7016();
+  bos_profile_update_7017();
+  bos_profile_update_7018();
+  bos_profile_update_7019();
+  bos_profile_update_7020();
+  bos_profile_update_7021();
+  bos_profile_update_7022();
+  bos_profile_update_7023();
+  bos_profile_update_7024();
+  bos_profile_update_7025();
+  bos_profile_update_7026();
+  bos_profile_update_7027();
+  bos_profile_update_7028();
+  bos_profile_update_7029();
+  bos_profile_update_7030();
+  bos_profile_update_7031();
+  bos_profile_update_7032();
+  bos_profile_update_7033();
+  bos_profile_update_7034();
+  bos_profile_update_7035();
+  bos_profile_update_7036();
+}
+
+/**
+ * This function is also used by the hub_profile_install() function.
+ */
+function bos_profile_install_common() {
   // Enable user picture support and set the default
   // to a square thumbnail option.
   variable_set('user_pictures', '1');
@@ -92,7 +140,7 @@ function _bos_profile_fix_full_html() {
  *
  * Work for: Sprint 4
  */
-function bos_profile_update_7001() {
+function bos_profile_update_7001($is_install = FALSE) {
   // Deleted field instances in sprint 4 should be listed here.
   $deleted_field_instances = array(
     'taxonomy_term' => array(
@@ -134,29 +182,31 @@ function bos_profile_update_7001() {
   module_disable($disabled_modules);
   module_enable($enabled_modules);
 
-  // Remove orphaned migrations since we're disabling bos_migrate. This is
-  // identical to what the drush deregistration command does.
-  $migrations = array();
-  $result = db_select('migrate_status', 'ms')
-    ->fields('ms', array('class_name', 'machine_name'))
-    ->execute();
-  foreach ($result as $row) {
-    if (!class_exists($row->class_name)) {
-      $migrations[] = $row->machine_name;
+  if (!$is_install) {
+    // Remove orphaned migrations since we're disabling bos_migrate. This is
+    // identical to what the drush deregistration command does.
+    $migrations = array();
+    $result = db_select('migrate_status', 'ms')
+      ->fields('ms', array('class_name', 'machine_name'))
+      ->execute();
+    foreach ($result as $row) {
+      if (!class_exists($row->class_name)) {
+        $migrations[] = $row->machine_name;
+      }
     }
-  }
-  foreach ($migrations as $machine_name) {
-    $machine_name = drupal_strtolower($machine_name);
-    // The class is gone, so we'll manually clear migrate_status, and make
-    // the default assumptions about the map/message tables.
-    db_drop_table('migrate_map_' . $machine_name);
-    db_drop_table('migrate_message_' . $machine_name);
-    db_delete('migrate_status')
-      ->condition('machine_name', $machine_name)
-      ->execute();
-    db_delete('migrate_field_mapping')
-      ->condition('machine_name', $machine_name)
-      ->execute();
+    foreach ($migrations as $machine_name) {
+      $machine_name = drupal_strtolower($machine_name);
+      // The class is gone, so we'll manually clear migrate_status, and make
+      // the default assumptions about the map/message tables.
+      db_drop_table('migrate_map_' . $machine_name);
+      db_drop_table('migrate_message_' . $machine_name);
+      db_delete('migrate_status')
+        ->condition('machine_name', $machine_name)
+        ->execute();
+      db_delete('migrate_field_mapping')
+        ->condition('machine_name', $machine_name)
+        ->execute();
+    }
   }
 }
 
@@ -784,11 +834,38 @@ function bos_profile_update_7033() {
 }
 
 /**
- * Update for 1/12/18
+ * Update for 1/18/18.
  */
 function bos_profile_update_7034() {
+  $enabled_modules = array(
+    's3fs',
+    's3fs_cors',
+    's3fs_migrate',
+  );
+  module_enable($enabled_modules);
+}
+
+/**
+ * Update for 2/8/18.
+ */
+function bos_profile_update_7035() {
+  $enabled_modules = array(
+    'paragraphs_bundle_permissions',
+  );
+  module_enable($enabled_modules);
+}
+
+/**
+ * Update for 1/12/18.
+ */
+function bos_profile_update_7036() {
   $enabled_modules = array(
     'markup',
   );
   module_enable($enabled_modules);
 }
+
+/*******************************************************************
+Any new migrations need to also be added to bos_profile_install so that
+they can run on fresh Docker installs.
+********************************************************************/

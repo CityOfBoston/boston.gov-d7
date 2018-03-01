@@ -112,7 +112,7 @@
     <div class="h2 tt-u ta-c p-h300">Can't find what you're looking for?</div>
     <hr class="hr hr--sq m-h300 m-v500">
     <div class="ta-c p-h200 t--intro">
-      Please contact Employee Connect via email at <a href="mailto:EMPLOYEECONNECT@BOSTON.GOV">employeeconnect@boston.gov</a>, <a href="/need-something-else">the web</a>, or phone at <a href="tel:617-635-3221">617-635-3221</a>.
+      Our 311 operators are available 24/7 to help point you in the right direction. Call <a href="tel:311">311</a>, or <a href="tel:617-635-4500">617-635-4500</a>.
     </div>
   </div>
 </div>

@@ -5,6 +5,10 @@
  * Use to make database updates that features won't automatically do.
  */
 
+function bos_component_video_install() {
+  bos_component_video_update_7001();
+}
+
 /**
  * Implements hook_update_N().
  *

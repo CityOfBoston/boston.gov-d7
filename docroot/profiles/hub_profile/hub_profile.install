@@ -9,7 +9,33 @@
  */
 function hub_profile_install() {
   require_once __DIR__ . '/../bos_profile/bos_profile.install';
-  bos_profile_install();
+  bos_profile_install_common();
+
+  hub_profile_update_7001();
+  hub_profile_update_7002();
+  hub_profile_update_7003();
+  hub_profile_update_7004();
+  hub_profile_update_7005();
+  hub_profile_update_7006();
+  hub_profile_update_7007();
+  hub_profile_update_7008();
+  hub_profile_update_7009();
+  hub_profile_update_7010();
+  hub_profile_update_7011();
+  hub_profile_update_7012();
+  hub_profile_update_7013();
+  hub_profile_update_7014();
+  hub_profile_update_7015();
+  hub_profile_update_7016();
+  hub_profile_update_7017();
+  hub_profile_update_7018();
+  hub_profile_update_7019();
+  hub_profile_update_7020();
+  hub_profile_update_7021();
+  hub_profile_update_7022();
+  hub_profile_update_7023();
+  hub_profile_update_7024();
+
 }
 
 /**
@@ -23,7 +49,7 @@ function hub_profile_update_7001() {
     'profile2',
     'profile2_page',
     'hub_profile2_main',
-    'bos_component_fyi',
+    'hub_component_fyi',
     'bos_component_iframe',
     'bos_menu_secondary_menu',
     'bos_settings_theme',
@@ -216,7 +242,7 @@ function hub_profile_update_7007()
   module_disable($disabled_modules);
   module_enable($enabled_modules);
 
-  // Delete the old applications_access_list field as we've replaced
+  // Delete the old applications_access_list field as we’ve replaced
   // it with a single comma separated field.
   $delete_fields = array(
     'field_applications_access_list',
@@ -341,7 +367,7 @@ function hub_profile_update_7013() {
  */
 function hub_profile_update_7014() {
   $enabled_modules = array(
-    'keyboard_shortcuts',
+    'keyboard_shortcut',
     'hub_keyboard_shortcuts',
   );
   module_enable($enabled_modules);
@@ -512,3 +538,8 @@ function hub_profile_update_7024() {
   }
 
 }
+
+/*******************************************************************
+Any new migrations need to also be added to hub_profile_install so that
+they can run on fresh Docker installs.
+********************************************************************/

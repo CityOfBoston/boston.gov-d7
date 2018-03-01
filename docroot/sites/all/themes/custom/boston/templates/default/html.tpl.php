@@ -69,20 +69,20 @@
                 <div class="fs">
                   <div class="fs-c">
                     <div class="txt m-b300">
-                      <label for="email[name]" class="txt-l txt-l--mt000">Full Name</label>
-                      <input name="email[name]" type="text" class="txt-f txt-f--sm bos-contact-name" size="10" value="">
+                      <label for="contact-name" class="txt-l txt-l--mt000">Full Name</label>
+                      <input id="contact-name" name="email[name]" type="text" class="txt-f bos-contact-name" size="10" value="">
                     </div>
                     <div class="txt m-b300">
-                      <label for="email[from_address]" class="txt-l txt-l--mt000">Email Address</label>
-                      <input name="email[from_address]" type="text" placeholder="email@address.com" class="txt-f txt-f--sm bos-contact-email" value="">
+                      <label for="contact-address" class="txt-l txt-l--mt000">Email Address</label>
+                      <input id="contact-address" name="email[from_address]" type="text" placeholder="email@address.com" class="txt-f bos-contact-email" value="">
                     </div>
                     <div class="txt m-b300">
-                      <label for="email[subject]" class="txt-l txt-l--mt000">Subject</label>
-                      <input name="email[subject]" type="text" class="txt-f txt-f--sm bos-contact-subject" size="10" value="">
+                      <label for="contact-subject" class="txt-l txt-l--mt000">Subject</label>
+                      <input id="contact-subject" name="email[subject]" type="text" class="txt-f bos-contact-subject" size="10" value="">
                     </div>
                     <div class="txt m-b300">
-                      <label for="email[message]" class="txt-l txt-l--mt000">Message</label>
-                      <textarea name="email[message]" type="text" class="txt-f txt-f--sm bos-contact-message" rows="10"></textarea>
+                      <label for="contact-message" class="txt-l txt-l--mt000">Message</label>
+                      <textarea id="contact-message" name="email[message]" type="text" class="txt-f bos-contact-message" rows="10"></textarea>
                     </div>
                   </div>
                   <div class="bc bc--r p-t500">
