@@ -189,6 +189,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
         'label' => 'hidden',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
@@ -418,6 +419,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
         'label' => 'hidden',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
@@ -470,6 +472,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
         'module' => 'entityreference',
         'settings' => array(
           'links' => 1,
+          'use_content_language' => TRUE,
           'view_mode' => 'popup_icon',
         ),
         'type' => 'entityreference_entity_view',
@@ -1011,6 +1014,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
         'module' => 'entityreference',
         'settings' => array(
           'links' => TRUE,
+          'use_content_language' => TRUE,
           'view_mode' => 'default',
         ),
         'type' => 'entityreference_entity_view',
@@ -1112,6 +1116,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
@@ -1157,6 +1162,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
         'label' => 'hidden',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
@@ -1204,6 +1210,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
@@ -1302,6 +1309,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
@@ -1353,6 +1361,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
         'label' => 'hidden',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
@@ -1409,6 +1418,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
@@ -1460,6 +1470,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
@@ -1511,6 +1522,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
@@ -1562,6 +1574,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
@@ -1613,6 +1626,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
@@ -1664,6 +1678,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',

@@ -15,5 +15,4 @@ features[views_view][] = boston_scheduling_event
 features[views_view][] = boston_scheduling_post
 features[workbench_scheduler][] = schedule
 features[workbench_scheduler][] = unpublish
-mtime = 1495558874
 project path = sites/all/modules/features
