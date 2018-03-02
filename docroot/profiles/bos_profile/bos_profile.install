@@ -865,6 +865,16 @@ function bos_profile_update_7036() {
   module_enable($enabled_modules);
 }
 
+/**
+ * Update for 3/2/18.
+ */
+function bos_profile_update_7037() {
+  $enabled_modules = array(
+    'bos_component_vizwiz',
+  );
+  module_enable($enabled_modules);
+}
+
 /*******************************************************************
 Any new migrations need to also be added to bos_profile_install so that
 they can run on fresh Docker installs.

@@ -1,0 +1,16 @@
+name = Boston Component VizWiz
+description = WizViz Data Visualization Tool
+core = 7.x
+package = Features
+version = 7.x-1.0
+dependencies[] = bos_component_map
+dependencies[] = features
+dependencies[] = field_group
+dependencies[] = paragraphs
+dependencies[] = text
+features[features_api][] = api:2
+features[field_group][] = group_vizwiz_json|paragraphs_item|vizwiz|form
+features[field_group][] = group_vizwiz|paragraphs_item|vizwiz|form
+features[field_instance][] = paragraphs_item-vizwiz-field_vizwiz
+features[field_instance][] = paragraphs_item-vizwiz-field_vizwiz_json
+features[paragraphs][] = vizwiz
