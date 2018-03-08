@@ -58,7 +58,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 3,
+      'weight' => 4,
     ),
   );
 
@@ -513,7 +513,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 7,
+      'weight' => 8,
     ),
   );
 
@@ -561,7 +561,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
       'module' => 'number',
       'settings' => array(),
       'type' => 'number',
-      'weight' => 9,
+      'weight' => 10,
     ),
   );
 
@@ -569,7 +569,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
   $field_instances['node-procurement_advertisement-field_date_range'] = array(
     'bundle' => 'procurement_advertisement',
     'deleted' => 0,
-    'description' => '',
+    'description' => 'This reflects the date that will be displayed to users when an ad is open and when it closes. This is for display purposes only. To control when the ad goes live on the site, use the scheduled publishing functionality for this content type. See the Digital Team if you have any questions.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -597,7 +597,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
     'fences_wrapper' => 'div_div_div',
     'field_name' => 'field_date_range',
     'label' => 'Period Open',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'default_value' => 'now',
       'default_value2' => 'same',
@@ -908,7 +908,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
     'bundle' => 'procurement_advertisement',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'The project number serves as the URL for the project. For example, if the project number is ABC123, the URL for the ad will be boston.gov/bid-listings/ABC123. If multiple ads have the same project number, a counter will be appended. For example, if there are multiple projects with ABC123 as the project number, the first will be boston.gov/bid-listings/ABC123, and the second will be boston.gov/bid-listings/ABC123-0. If needed, you can edit the original in this example and republish as new.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -946,7 +946,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 9,
+      'weight' => 2,
     ),
   );
 
@@ -997,7 +997,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
         'show_token_tree' => 0,
       ),
       'type' => 'text_textarea',
-      'weight' => 2,
+      'weight' => 3,
     ),
   );
 
@@ -1055,7 +1055,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 4,
+      'weight' => 5,
     ),
   );
 
@@ -1100,7 +1100,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 8,
+      'weight' => 9,
     ),
   );
 
@@ -1195,7 +1195,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 5,
+      'weight' => 6,
     ),
   );
 
@@ -1402,7 +1402,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 6,
+      'weight' => 7,
     ),
   );
 
@@ -1844,6 +1844,8 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
   t('Related posts');
   t('Related programs / initiatives');
   t('Supplier Portal Link');
+  t('The project number serves as the URL for the project. For example, if the project number is ABC123, the URL for the ad will be boston.gov/bid-listings/ABC123. If multiple ads have the same project number, a counter will be appended. For example, if there are multiple projects with ABC123 as the project number, the first will be boston.gov/bid-listings/ABC123, and the second will be boston.gov/bid-listings/ABC123-0. If needed, you can edit the original in this example and republish as new.');
+  t('This reflects the date that will be displayed to users when an ad is open and when it closes. This is for display purposes only. To control when the ad goes live on the site, use the scheduled publishing functionality for this content type. See the Digital Team if you have any questions.');
   t('UNSPSC');
 
   return $field_instances;
