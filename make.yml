@@ -149,13 +149,7 @@ projects:
   libraries:
     version: 2.2
   imce:
-    version: 1.10
-    patch:
-    # Issue https://www.drupal.org/node/2357871.
-    # Allow IMCE to use the admin theme so that it uses correct jQuery settings.
-    - https://www.drupal.org/files/issues/imce-n2357871-12.patch
-    # Specify a validator so Drupal does not use default.
-    - https://www.drupal.org/files/issues/imce.extension.validator-1018344-3.patch
+    version: 1.11
   insert:
     version: 1.3
   keyboard_shortcut:
