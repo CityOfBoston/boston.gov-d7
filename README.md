@@ -33,6 +33,7 @@ This PR references #[GitHub issue number]
 ```
 
 ### Docker Quick-Start
+[Watch a YouTube video of this quick-start.](https://www.youtube.com/watch?v=KgUzuKq-pfA&feature=youtu.be)
 
 1. Download [Docker for
    Mac](https://www.docker.com/docker-machttps://www.docker.com/docker-mac) or
