@@ -152,7 +152,7 @@ hide($content['links']);
           </li>
           <li class="dl-i dl-i--b">
             <div class="dl-t">Related Links</div>
-            <div class="dl-d"><?php print render($content['field_details_link']) ?></div>
+            <div class="dl-d"><?php print render($content['field_related_links']) ?></div>
           </li>
         </ul>
       </div>
