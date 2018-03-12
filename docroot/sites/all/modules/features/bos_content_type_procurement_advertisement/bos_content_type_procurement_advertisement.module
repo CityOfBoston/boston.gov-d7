@@ -13,18 +13,18 @@ include_once 'bos_content_type_procurement_advertisement.features.inc';
 function bos_content_type_procurement_advertisement_preprocess_views_exposed_form(&$vars) {
   if ($vars['form']['#id'] == 'views-exposed-form-bids-rfps-landing' || $vars['form']['#id'] == 'views-exposed-form-bids-rfps-archive') {
     $vars['widget_groups'] = array(
-      'search by title' => array(),
-      'search by awarding authority' => array(),
+      'search by project or bid name' => array(),
+      'search by department' => array(),
     );
 
     foreach ($vars['widgets'] as $id => $widget) {
       switch ($id) {
         case 'filter-title':
-          $vars['widget_groups']['search by title'][$id] = $widget;
+          $vars['widget_groups']['search by project or bid name'][$id] = $widget;
           break;
 
-        case 'filter-field_awarding_authority_target_id':
-          $vars['widget_groups']['search by awarding authority'][$id] = $widget;
+        case 'filter-field_contact_target_id':
+          $vars['widget_groups']['search by department'][$id] = $widget;
           break;
       }
     }
