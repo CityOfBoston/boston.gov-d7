@@ -33,6 +33,7 @@ function bos_content_type_procurement_advertisement_field_group_info() {
       7 => 'field_offering',
       8 => 'field_procurement',
       9 => 'title',
+      10 => 'field_procurement_footer',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -57,7 +58,7 @@ function bos_content_type_procurement_advertisement_field_group_info() {
   $field_group->parent_name = 'group_sidebar';
   $field_group->data = array(
     'label' => 'Contact',
-    'weight' => '14',
+    'weight' => '15',
     'children' => array(
       0 => 'field_address',
       1 => 'field_department',
@@ -129,12 +130,11 @@ function bos_content_type_procurement_advertisement_field_group_info() {
       1 => 'field_bid_type',
       2 => 'field_date_range',
       3 => 'field_delivery_address',
-      4 => 'field_details_link',
-      5 => 'field_document',
-      6 => 'field_unspsc',
-      7 => 'field_url',
-      8 => 'field_related_links',
-      9 => 'group_contact',
+      4 => 'field_document',
+      5 => 'field_unspsc',
+      6 => 'field_url',
+      7 => 'field_related_links',
+      8 => 'group_contact',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

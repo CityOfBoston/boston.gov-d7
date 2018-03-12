@@ -14,6 +14,7 @@ Feature: Site Roles
     | Content Author          |
     | Events Editor           |
     | Press Release Editor    |
+    | Procurement Editor      |
     | Status Alert Editor     |
     | Guide Author            |
     | Landing Author          |
