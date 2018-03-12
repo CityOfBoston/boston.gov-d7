@@ -173,13 +173,12 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
         'year_range' => '-3:+3',
       ),
       'type' => 'date_popup',
-      'weight' => 62,
+      'weight' => 66,
     ),
   );
 
-  // Exported field_instance:
-  // 'node-procurement_advertisement-field_awarding_authority'.
-  $field_instances['node-procurement_advertisement-field_awarding_authority'] = array(
+  // Exported field_instance: 'node-procurement_advertisement-field_awarded_by'.
+  $field_instances['node-procurement_advertisement-field_awarded_by'] = array(
     'bundle' => 'procurement_advertisement',
     'default_value' => NULL,
     'deleted' => 0,
@@ -189,11 +188,12 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
         'label' => 'hidden',
         'module' => 'entityreference',
         'settings' => array(
-          'bypass_access' => FALSE,
-          'link' => FALSE,
+          'links' => 1,
+          'use_content_language' => 1,
+          'view_mode' => 'department_listing',
         ),
-        'type' => 'entityreference_label',
-        'weight' => 5,
+        'type' => 'entityreference_entity_view',
+        'weight' => 36,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -204,15 +204,10 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
     ),
     'entity_type' => 'node',
     'fences_wrapper' => 'div_div_div',
-    'field_name' => 'field_awarding_authority',
-    'label' => 'Awarding Authority',
+    'field_name' => 'field_awarded_by',
+    'label' => 'Awarded By',
     'required' => 1,
     'settings' => array(
-      'behaviors' => array(
-        'taxonomy-index' => array(
-          'status' => TRUE,
-        ),
-      ),
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -230,7 +225,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 8,
+      'weight' => 9,
     ),
   );
 
@@ -404,7 +399,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
       'module' => 'paragraphs',
       'settings' => array(),
       'type' => 'paragraphs_embed',
-      'weight' => 64,
+      'weight' => 67,
     ),
   );
 
@@ -452,7 +447,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 9,
+      'weight' => 10,
     ),
   );
 
@@ -1082,6 +1077,57 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
     ),
   );
 
+  // Exported field_instance:
+  // 'node-procurement_advertisement-field_not_awarded'.
+  $field_instances['node-procurement_advertisement-field_not_awarded'] = array(
+    'bundle' => 'procurement_advertisement',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'Check this off if the bid is closed and <strong>will not</strong> be awarded.',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'services_views',
+        'settings' => array(
+          'data_element_key' => '',
+          'skip_empty_values' => 0,
+          'skip_safe' => 0,
+          'skip_text_format' => 1,
+          'term_name' => 1,
+        ),
+        'type' => 'services',
+        'weight' => 37,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div_div_div',
+    'field_name' => 'field_not_awarded',
+    'label' => 'Not Awarded',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 65,
+    ),
+  );
+
   // Exported field_instance: 'node-procurement_advertisement-field_offering'.
   $field_instances['node-procurement_advertisement-field_offering'] = array(
     'bundle' => 'procurement_advertisement',
@@ -1276,7 +1322,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 55,
+      'weight' => 56,
     ),
   );
 
@@ -1435,7 +1481,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 57,
+      'weight' => 58,
     ),
   );
 
@@ -1487,7 +1533,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 58,
+      'weight' => 59,
     ),
   );
 
@@ -1759,7 +1805,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 56,
+      'weight' => 57,
     ),
   );
 
@@ -1853,17 +1899,18 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 10,
+      'weight' => 11,
     ),
   );
 
   // Translatables
   // Included for use with string extractors like potx.
   t('Award date');
-  t('Awarding Authority');
+  t('Awarded By');
   t('Bid');
   t('Bid Type');
   t('Body');
+  t('Check this off if the bid is closed and <strong>will not</strong> be awarded.');
   t('Contact Email');
   t('Contact Phone Number');
   t('Contract Length');
@@ -1875,6 +1922,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
   t('Location');
   t('Massachusetts General Law');
   t('Multi-year Contract');
+  t('Not Awarded');
   t('Offering');
   t('Other related content');
   t('Period Open');

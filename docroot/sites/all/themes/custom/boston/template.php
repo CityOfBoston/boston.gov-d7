@@ -1113,6 +1113,9 @@ function boston_preprocess_node_procurement_advertisement(&$variables) {
   $awarded = strtotime($award_date[0]['value']);
 
   $variables['award_date'] = date('F j, Y', $awarded);
+
+  $not_awarded = field_get_items('node', $variables['node'], 'field_not_awarded');
+  $variables['not_awarded'] = $not_awarded[0]['value'] === "1";
 }
 
 /**

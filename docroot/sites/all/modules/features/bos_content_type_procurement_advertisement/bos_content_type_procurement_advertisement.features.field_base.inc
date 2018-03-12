@@ -40,13 +40,13 @@ function bos_content_type_procurement_advertisement_field_default_field_bases() 
     'type' => 'datetime',
   );
 
-  // Exported field_base: 'field_awarding_authority'.
-  $field_bases['field_awarding_authority'] = array(
+  // Exported field_base: 'field_awarded_by'.
+  $field_bases['field_awarded_by'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_awarding_authority',
+    'field_name' => 'field_awarded_by',
     'indexes' => array(
       'target_id' => array(
         0 => 'target_id',
@@ -66,10 +66,10 @@ function bos_content_type_procurement_advertisement_field_default_field_bases() 
           'type' => 'none',
         ),
         'target_bundles' => array(
-          'contact' => 'contact',
+          'person_profile' => 'person_profile',
         ),
       ),
-      'target_type' => 'taxonomy_term',
+      'target_type' => 'node',
     ),
     'translatable' => 0,
     'type' => 'entityreference',
@@ -269,6 +269,31 @@ function bos_content_type_procurement_advertisement_field_default_field_bases() 
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_multi_year_contract',
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        0 => '',
+        1 => '',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_boolean',
+  );
+
+  // Exported field_base: 'field_not_awarded'.
+  $field_bases['field_not_awarded'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_not_awarded',
     'indexes' => array(
       'value' => array(
         0 => 'value',
