@@ -1346,13 +1346,14 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
     'description' => 'This will add a pre-defined footer to the bottom of the ad. To get a new pre-defined value added, contact <a href="mailto:feedback@boston.gov">feedback@boston.gov</a>.',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'entityreference',
         'settings' => array(
-          'bypass_access' => FALSE,
-          'link' => FALSE,
+          'links' => TRUE,
+          'use_content_language' => TRUE,
+          'view_mode' => 'default',
         ),
-        'type' => 'entityreference_label',
+        'type' => 'entityreference_entity_view',
         'weight' => 35,
       ),
       'teaser' => array(

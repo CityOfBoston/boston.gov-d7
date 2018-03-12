@@ -97,6 +97,9 @@ hide($content['links']);
       <?php if (isset($content['body'])): ?>
         <div class="body">
           <?php print render($content['body']); ?>
+          <?php if (isset($content['field_procurement_footer'])): ?>
+            <?php print render($content['field_procurement_footer']); ?>
+          <?php endif; ?>
         </div>
       <?php endif; ?>
     </div>
