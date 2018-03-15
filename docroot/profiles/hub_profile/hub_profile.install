@@ -14,7 +14,7 @@ function hub_profile_install() {
   hub_profile_update_7001();
   hub_profile_update_7002();
   hub_profile_update_7003();
-  hub_profile_update_7004();
+  hub_profile_update_7004(TRUE);
   hub_profile_update_7005();
   hub_profile_update_7006();
   hub_profile_update_7007();
@@ -134,7 +134,7 @@ function hub_profile_update_7003() {
  * Delete the field_manager field from the main user profile bundle.
  * All sprint 13 updates belong in this update hook.
  */
-function hub_profile_update_7004() {
+function hub_profile_update_7004($is_install = FALSE) {
   $delete_fields = array(
     'field_manager',
   );
@@ -152,9 +152,13 @@ function hub_profile_update_7004() {
     'xautoload',
     'hub_migration',
   );
-  $disabled_modules = array(
-    'bos_pathauto',
-  );
+  $disabled_modules = array();
+
+  if (!$is_install) {
+    # In production, bos_pathauto seems to be enabled for the Hub
+    array_push($disabled_modules, 'bos_pathauto');
+  }
+
   module_disable($disabled_modules);
   module_enable($enabled_modules);
   $revert_features = array(
