@@ -14,3 +14,4 @@ features[field_group][] = group_vizwiz|paragraphs_item|vizwiz|form
 features[field_instance][] = paragraphs_item-vizwiz-field_vizwiz
 features[field_instance][] = paragraphs_item-vizwiz-field_vizwiz_json
 features[paragraphs][] = vizwiz
+files[] = bos_component_vizwiz.field_group.inc
