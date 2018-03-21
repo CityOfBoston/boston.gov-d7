@@ -133,7 +133,7 @@ function bos_component_map_field_default_field_bases() {
     'settings' => array(
       'markup' => array(
         'format' => 'full_html',
-        'value' => '<div id="data-filter-widget"><data-filter defaults="" title="Component Title" viz-id="myvizid"></data-filter></div>',
+        'value' => '<viz-wiz config="#vizconfig"></viz-wiz>',
       ),
     ),
     'translatable' => 0,

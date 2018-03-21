@@ -72,6 +72,7 @@ function bos_component_map_field_default_field_instances() {
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
@@ -214,6 +215,7 @@ function bos_component_map_field_default_field_instances() {
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
@@ -637,6 +639,7 @@ function bos_component_map_field_default_field_instances() {
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
@@ -719,90 +722,6 @@ function bos_component_map_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-map-field_vizwiz'.
-  $field_instances['paragraphs_item-map-field_vizwiz'] = array(
-    'bundle' => 'map',
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'hidden',
-        'module' => 'markup',
-        'settings' => array(),
-        'type' => 'markup_default',
-        'weight' => 10,
-      ),
-      'paragraphs_editor_preview' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'paragraphs_item',
-    'fences_wrapper' => 'div_div_div',
-    'field_name' => 'field_vizwiz',
-    'label' => 'VizWiz',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'markup',
-      'settings' => array(),
-      'type' => 'markup',
-      'weight' => 10,
-    ),
-  );
-
-  // Exported field_instance: 'paragraphs_item-map-field_vizwiz_json'.
-  $field_instances['paragraphs_item-map-field_vizwiz_json'] = array(
-    'bundle' => 'map',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'hidden',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 11,
-      ),
-      'paragraphs_editor_preview' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'paragraphs_item',
-    'fences_wrapper' => 'div_div_div',
-    'field_name' => 'field_vizwiz_json',
-    'label' => 'VizWiz JSON',
-    'required' => 0,
-    'settings' => array(
-      'linkit' => array(
-        'button_text' => 'Search',
-        'enable' => 0,
-        'profile' => '',
-      ),
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'rows' => 5,
-        'show_token_tree' => 0,
-      ),
-      'type' => 'text_textarea',
-      'weight' => 11,
-    ),
-  );
-
   // Translatables
   // Included for use with string extractors like potx.
   t('Contact');
@@ -816,8 +735,6 @@ function bos_component_map_field_default_field_instances() {
   t('Short Title');
   t('Title');
   t('Type');
-  t('VizWiz');
-  t('VizWiz JSON');
   t('You can include a point of interest via exact latitude and longitude. You can find latitude and longitude from this website [developer recommend and add in website].');
 
   return $field_instances;
