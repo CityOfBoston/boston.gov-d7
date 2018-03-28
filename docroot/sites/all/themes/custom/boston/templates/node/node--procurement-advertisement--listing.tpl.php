@@ -86,11 +86,16 @@ hide($content['links']);
 <div class="g g--m0 n-li">
   <div class="g--5 n-li-b n-li-b--br">
     <div class="n-li-t"><a href="<?php print $node_url; ?>" title="<?php print $title; ?>"><?php print $title; ?></a></div>
+    <div class="m--b300 t--sans t--upper t--g300 t--s300 lh--000"><?php print render($content['field_event_project_number']); ?></div>
     <?php if ($is_closed) { ?>
       <?php if ($bid_awarded) { ?>
         <div class="n-li-a"><span class="t--sans t--upper t--cb t--s300">Awarded</span></div>
       <?php } else { ?>
-        <div class="n-li-a"><span class="t--sans t--upper t--err t--s300">Closed</span></div>
+        <?php if ($not_awarded) { ?>
+          <div><strong class="t--sans t--upper t--err t--s300" data-swiftype-name="bid-status" data-swiftype-type="string">Not Awarded</strong></div>
+        <?php } else { ?>
+          <div><strong class="t--sans t--upper t--err t--s300" data-swiftype-name="bid-status" data-swiftype-type="string">Closed</strong></div>
+        <?php } ?>
       <?php } ?>
     <?php } ?>
   </div>

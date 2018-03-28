@@ -40,13 +40,13 @@ function bos_content_type_procurement_advertisement_field_default_field_bases() 
     'type' => 'datetime',
   );
 
-  // Exported field_base: 'field_awarding_authority'.
-  $field_bases['field_awarding_authority'] = array(
+  // Exported field_base: 'field_awarded_by'.
+  $field_bases['field_awarded_by'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_awarding_authority',
+    'field_name' => 'field_awarded_by',
     'indexes' => array(
       'target_id' => array(
         0 => 'target_id',
@@ -66,10 +66,10 @@ function bos_content_type_procurement_advertisement_field_default_field_bases() 
           'type' => 'none',
         ),
         'target_bundles' => array(
-          'contact' => 'contact',
+          'person_profile' => 'person_profile',
         ),
       ),
-      'target_type' => 'taxonomy_term',
+      'target_type' => 'node',
     ),
     'translatable' => 0,
     'type' => 'entityreference',
@@ -287,6 +287,31 @@ function bos_content_type_procurement_advertisement_field_default_field_bases() 
     'type' => 'list_boolean',
   );
 
+  // Exported field_base: 'field_not_awarded'.
+  $field_bases['field_not_awarded'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_not_awarded',
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        0 => '',
+        1 => '',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_boolean',
+  );
+
   // Exported field_base: 'field_offering'.
   $field_bases['field_offering'] = array(
     'active' => 1,
@@ -355,6 +380,70 @@ function bos_content_type_procurement_advertisement_field_default_field_bases() 
     ),
     'translatable' => 0,
     'type' => 'entityreference',
+  );
+
+  // Exported field_base: 'field_procurement_footer'.
+  $field_bases['field_procurement_footer'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_procurement_footer',
+    'indexes' => array(
+      'target_id' => array(
+        0 => 'target_id',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'entityreference',
+    'settings' => array(
+      'handler' => 'base',
+      'handler_settings' => array(
+        'behaviors' => array(
+          'views-select-list' => array(
+            'status' => 0,
+          ),
+        ),
+        'sort' => array(
+          'type' => 'none',
+        ),
+        'target_bundles' => array(
+          'procurement_footer' => 'procurement_footer',
+        ),
+      ),
+      'target_type' => 'taxonomy_term',
+    ),
+    'translatable' => 0,
+    'type' => 'entityreference',
+  );
+
+  // Exported field_base: 'field_related_links'.
+  $field_bases['field_related_links'] = array(
+    'active' => 1,
+    'cardinality' => -1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_related_links',
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'link',
+    'settings' => array(
+      'attributes' => array(
+        'class' => '',
+        'rel' => '',
+        'target' => 'default',
+      ),
+      'display' => array(
+        'url_cutoff' => 80,
+      ),
+      'enable_tokens' => 1,
+      'title' => 'optional',
+      'title_maxlength' => 128,
+      'title_value' => '',
+      'url' => 0,
+    ),
+    'translatable' => 0,
+    'type' => 'link_field',
   );
 
   // Exported field_base: 'field_unspsc'.

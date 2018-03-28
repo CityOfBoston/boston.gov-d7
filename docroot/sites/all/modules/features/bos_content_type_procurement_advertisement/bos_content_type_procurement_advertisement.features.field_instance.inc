@@ -58,7 +58,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 3,
+      'weight' => 4,
     ),
   );
 
@@ -173,13 +173,12 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
         'year_range' => '-3:+3',
       ),
       'type' => 'date_popup',
-      'weight' => 62,
+      'weight' => 66,
     ),
   );
 
-  // Exported field_instance:
-  // 'node-procurement_advertisement-field_awarding_authority'.
-  $field_instances['node-procurement_advertisement-field_awarding_authority'] = array(
+  // Exported field_instance: 'node-procurement_advertisement-field_awarded_by'.
+  $field_instances['node-procurement_advertisement-field_awarded_by'] = array(
     'bundle' => 'procurement_advertisement',
     'default_value' => NULL,
     'deleted' => 0,
@@ -189,10 +188,12 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
         'label' => 'hidden',
         'module' => 'entityreference',
         'settings' => array(
-          'link' => FALSE,
+          'links' => 1,
+          'use_content_language' => 1,
+          'view_mode' => 'department_listing',
         ),
-        'type' => 'entityreference_label',
-        'weight' => 5,
+        'type' => 'entityreference_entity_view',
+        'weight' => 36,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -203,15 +204,10 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
     ),
     'entity_type' => 'node',
     'fences_wrapper' => 'div_div_div',
-    'field_name' => 'field_awarding_authority',
-    'label' => 'Awarding Authority',
+    'field_name' => 'field_awarded_by',
+    'label' => 'Awarded By',
     'required' => 1,
     'settings' => array(
-      'behaviors' => array(
-        'taxonomy-index' => array(
-          'status' => TRUE,
-        ),
-      ),
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -229,7 +225,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 8,
+      'weight' => 9,
     ),
   );
 
@@ -403,7 +399,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
       'module' => 'paragraphs',
       'settings' => array(),
       'type' => 'paragraphs_embed',
-      'weight' => 63,
+      'weight' => 67,
     ),
   );
 
@@ -418,6 +414,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
         'label' => 'hidden',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
@@ -470,6 +467,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
         'module' => 'entityreference',
         'settings' => array(
           'links' => 1,
+          'use_content_language' => TRUE,
           'view_mode' => 'popup_icon',
         ),
         'type' => 'entityreference_entity_view',
@@ -510,7 +508,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 7,
+      'weight' => 9,
     ),
   );
 
@@ -558,7 +556,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
       'module' => 'number',
       'settings' => array(),
       'type' => 'number',
-      'weight' => 9,
+      'weight' => 11,
     ),
   );
 
@@ -566,7 +564,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
   $field_instances['node-procurement_advertisement-field_date_range'] = array(
     'bundle' => 'procurement_advertisement',
     'deleted' => 0,
-    'description' => '',
+    'description' => 'This reflects the date that will be displayed to users when an ad is open and when it closes. This is for display purposes only. To control when the ad goes live on the site, use the scheduled publishing functionality for this content type. See the Digital Team if you have any questions.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -594,7 +592,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
     'fences_wrapper' => 'div_div_div',
     'field_name' => 'field_date_range',
     'label' => 'Period Open',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'default_value' => 'now',
       'default_value2' => 'same',
@@ -725,75 +723,6 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
     ),
   );
 
-  // Exported field_instance:
-  // 'node-procurement_advertisement-field_details_link'.
-  $field_instances['node-procurement_advertisement-field_details_link'] = array(
-    'bundle' => 'procurement_advertisement',
-    'default_value' => array(
-      0 => array(
-        'title' => 'Replaced by bos_content_type_procurement_advertisement feature',
-        'url' => '<front>',
-      ),
-    ),
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'hidden',
-        'module' => 'link',
-        'settings' => array(),
-        'type' => 'link_default',
-        'weight' => 22,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'fences_wrapper' => 'div_div_div',
-    'field_name' => 'field_details_link',
-    'label' => 'Related Links',
-    'required' => 0,
-    'settings' => array(
-      'absolute_url' => 1,
-      'attributes' => array(
-        'class' => '',
-        'configurable_class' => 0,
-        'configurable_title' => 0,
-        'rel' => '',
-        'target' => 'default',
-        'title' => '',
-      ),
-      'display' => array(
-        'url_cutoff' => 80,
-      ),
-      'enable_tokens' => 1,
-      'linkit' => array(
-        'button_text' => 'Search',
-        'enable' => 0,
-        'profile' => '',
-      ),
-      'rel_remove' => 'default',
-      'title' => 'optional',
-      'title_label_use_field_label' => 0,
-      'title_maxlength' => 128,
-      'title_value' => '',
-      'url' => 0,
-      'user_register_form' => FALSE,
-      'validate_url' => 1,
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'link',
-      'settings' => array(),
-      'type' => 'link_field',
-      'weight' => 16,
-    ),
-  );
-
   // Exported field_instance: 'node-procurement_advertisement-field_document'.
   $field_instances['node-procurement_advertisement-field_document'] = array(
     'bundle' => 'procurement_advertisement',
@@ -905,7 +834,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
     'bundle' => 'procurement_advertisement',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'The project number serves as the URL for the project. For example, if the project number is ABC123, the URL for the ad will be boston.gov/bid-listings/ABC123. If multiple ads have the same project number, a counter will be appended. For example, if there are multiple projects with ABC123 as the project number, the first will be boston.gov/bid-listings/ABC123, and the second will be boston.gov/bid-listings/ABC123-0. If needed, you can edit the original in this example and republish as new.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -943,7 +872,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 9,
+      'weight' => 2,
     ),
   );
 
@@ -994,7 +923,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
         'show_token_tree' => 0,
       ),
       'type' => 'text_textarea',
-      'weight' => 2,
+      'weight' => 3,
     ),
   );
 
@@ -1011,6 +940,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
         'module' => 'entityreference',
         'settings' => array(
           'links' => TRUE,
+          'use_content_language' => TRUE,
           'view_mode' => 'default',
         ),
         'type' => 'entityreference_entity_view',
@@ -1051,7 +981,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 4,
+      'weight' => 6,
     ),
   );
 
@@ -1096,7 +1026,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 8,
+      'weight' => 10,
     ),
   );
 
@@ -1112,6 +1042,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
@@ -1146,6 +1077,57 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
     ),
   );
 
+  // Exported field_instance:
+  // 'node-procurement_advertisement-field_not_awarded'.
+  $field_instances['node-procurement_advertisement-field_not_awarded'] = array(
+    'bundle' => 'procurement_advertisement',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'Check this off if the bid is closed and <strong>will not</strong> be awarded.',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'services_views',
+        'settings' => array(
+          'data_element_key' => '',
+          'skip_empty_values' => 0,
+          'skip_safe' => 0,
+          'skip_text_format' => 1,
+          'term_name' => 1,
+        ),
+        'type' => 'services',
+        'weight' => 37,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div_div_div',
+    'field_name' => 'field_not_awarded',
+    'label' => 'Not Awarded',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 65,
+    ),
+  );
+
   // Exported field_instance: 'node-procurement_advertisement-field_offering'.
   $field_instances['node-procurement_advertisement-field_offering'] = array(
     'bundle' => 'procurement_advertisement',
@@ -1157,6 +1139,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
         'label' => 'hidden',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
@@ -1189,7 +1172,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 5,
+      'weight' => 7,
     ),
   );
 
@@ -1204,6 +1187,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
@@ -1302,6 +1286,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
@@ -1337,7 +1322,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 55,
+      'weight' => 56,
     ),
   );
 
@@ -1353,6 +1338,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
         'label' => 'hidden',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
@@ -1393,7 +1379,57 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 6,
+      'weight' => 8,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'node-procurement_advertisement-field_procurement_footer'.
+  $field_instances['node-procurement_advertisement-field_procurement_footer'] = array(
+    'bundle' => 'procurement_advertisement',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'This will add a pre-defined footer to the bottom of the ad. To get a new pre-defined value added, contact <a href="mailto:feedback@boston.gov">feedback@boston.gov</a>.',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'entityreference',
+        'settings' => array(
+          'links' => TRUE,
+          'use_content_language' => TRUE,
+          'view_mode' => 'default',
+        ),
+        'type' => 'entityreference_entity_view',
+        'weight' => 35,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div_div_div',
+    'field_name' => 'field_procurement_footer',
+    'label' => 'Procurement Footer',
+    'required' => 0,
+    'settings' => array(
+      'behaviors' => array(
+        'taxonomy-index' => array(
+          'status' => TRUE,
+        ),
+      ),
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
+      'type' => 'options_select',
+      'weight' => 5,
     ),
   );
 
@@ -1409,6 +1445,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
@@ -1444,7 +1481,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 57,
+      'weight' => 58,
     ),
   );
 
@@ -1460,6 +1497,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
@@ -1495,7 +1533,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 58,
+      'weight' => 59,
     ),
   );
 
@@ -1511,6 +1549,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
@@ -1562,6 +1601,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
@@ -1613,6 +1653,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
@@ -1653,6 +1694,70 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
   );
 
   // Exported field_instance:
+  // 'node-procurement_advertisement-field_related_links'.
+  $field_instances['node-procurement_advertisement-field_related_links'] = array(
+    'bundle' => 'procurement_advertisement',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'link',
+        'settings' => array(),
+        'type' => 'link_default',
+        'weight' => 34,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'no_wrapper',
+    'field_name' => 'field_related_links',
+    'label' => 'Related Links',
+    'required' => 0,
+    'settings' => array(
+      'absolute_url' => 1,
+      'attributes' => array(
+        'class' => '',
+        'configurable_class' => 0,
+        'configurable_title' => 0,
+        'rel' => '',
+        'target' => 'default',
+        'title' => '',
+      ),
+      'display' => array(
+        'url_cutoff' => 80,
+      ),
+      'enable_tokens' => 1,
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'rel_remove' => 'default',
+      'title' => 'optional',
+      'title_label_use_field_label' => 0,
+      'title_maxlength' => 128,
+      'title_value' => '',
+      'url' => 0,
+      'user_register_form' => FALSE,
+      'validate_url' => 1,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'link',
+      'settings' => array(),
+      'type' => 'link_field',
+      'weight' => 16,
+    ),
+  );
+
+  // Exported field_instance:
   // 'node-procurement_advertisement-field_related_posts'.
   $field_instances['node-procurement_advertisement-field_related_posts'] = array(
     'bundle' => 'procurement_advertisement',
@@ -1664,6 +1769,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
@@ -1699,7 +1805,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 56,
+      'weight' => 57,
     ),
   );
 
@@ -1800,10 +1906,11 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
   // Translatables
   // Included for use with string extractors like potx.
   t('Award date');
-  t('Awarding Authority');
+  t('Awarded By');
   t('Bid');
   t('Bid Type');
   t('Body');
+  t('Check this off if the bid is closed and <strong>will not</strong> be awarded.');
   t('Contact Email');
   t('Contact Phone Number');
   t('Contract Length');
@@ -1815,10 +1922,12 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
   t('Location');
   t('Massachusetts General Law');
   t('Multi-year Contract');
+  t('Not Awarded');
   t('Offering');
   t('Other related content');
   t('Period Open');
   t('Procurement');
+  t('Procurement Footer');
   t('Related Links');
   t('Related Neighborhoods');
   t('Related departments');
@@ -1829,6 +1938,9 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
   t('Related posts');
   t('Related programs / initiatives');
   t('Supplier Portal Link');
+  t('The project number serves as the URL for the project. For example, if the project number is ABC123, the URL for the ad will be boston.gov/bid-listings/ABC123. If multiple ads have the same project number, a counter will be appended. For example, if there are multiple projects with ABC123 as the project number, the first will be boston.gov/bid-listings/ABC123, and the second will be boston.gov/bid-listings/ABC123-0. If needed, you can edit the original in this example and republish as new.');
+  t('This reflects the date that will be displayed to users when an ad is open and when it closes. This is for display purposes only. To control when the ad goes live on the site, use the scheduled publishing functionality for this content type. See the Digital Team if you have any questions.');
+  t('This will add a pre-defined footer to the bottom of the ad. To get a new pre-defined value added, contact <a href="mailto:feedback@boston.gov">feedback@boston.gov</a>.');
   t('UNSPSC');
 
   return $field_instances;

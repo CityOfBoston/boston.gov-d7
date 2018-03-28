@@ -217,7 +217,7 @@ function bos_content_type_procurement_advertisement_views_default_views() {
     51 => 0,
     56 => 0,
   );
-  /* Filter criterion: Content: Awarding Authority (field_awarding_authority) */
+  /* Filter criterion: Broken/missing handler */
   $handler->display->display_options['filters']['field_awarding_authority_target_id']['id'] = 'field_awarding_authority_target_id';
   $handler->display->display_options['filters']['field_awarding_authority_target_id']['table'] = 'field_data_field_awarding_authority';
   $handler->display->display_options['filters']['field_awarding_authority_target_id']['field'] = 'field_awarding_authority_target_id';
@@ -306,7 +306,7 @@ function bos_content_type_procurement_advertisement_views_default_views() {
     51 => 0,
     56 => 0,
   );
-  /* Filter criterion: Content: Awarding Authority (field_awarding_authority) */
+  /* Filter criterion: Broken/missing handler */
   $handler->display->display_options['filters']['field_awarding_authority_target_id']['id'] = 'field_awarding_authority_target_id';
   $handler->display->display_options['filters']['field_awarding_authority_target_id']['table'] = 'field_data_field_awarding_authority';
   $handler->display->display_options['filters']['field_awarding_authority_target_id']['field'] = 'field_awarding_authority_target_id';
