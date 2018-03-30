@@ -27,7 +27,7 @@
 $field_title = $content['field_title'][0]['#markup'];
 ?>
 
-<a href="<?php print $internal_link_path; ?>" class="btn btn--c">
+<a href="<?php print $internal_link_path; ?>" class="btn btn--c btn--w-hov">
 <?php if (!empty($field_title)): ?>
   <?php print $field_title; ?>
 <?php else: ?>

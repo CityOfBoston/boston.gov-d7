@@ -1,4 +1,4 @@
-<a href="<?php print $document_link; ?>" class="btn btn--c">
+<a href="<?php print $document_link; ?>" class="btn btn--c btn--w-hov">
   <?php if (!empty($content['field_title'])): ?>
   <?php print render($content['field_title']); ?>
   <?php else: ?>
