@@ -25,7 +25,7 @@
  * @see template_process()
  */
 ?>
-<div class="b b--<?php print $component_theme; ?> b--fw">
+<div class="b b--<?php print $component_theme; ?> b--fw<?php if ($component_theme === 'b'): ?> b--wt<?php endif; ?>">
   <div class="b-c">
   	<div class="sh <?php print $section_header_theme; ?>">
       <?php if (isset($content['field_component_title'])): ?>
@@ -60,6 +60,11 @@
                 <label for="email" class="txt-l txt-l--mt000">Your email address</label>
                 <input id="email" name="email" type="text" value="" placeholder="email@address.com" class="txt-f">
               </div>
+              <div class="sep m-b300<?php if ($component_theme === 'b'): ?> sep--w<?php endif; ?>">
+                <div class="sep-l"></div>
+                <div class="sep-c">or</div>
+                <div class="sep-l"></div>
+              </div>
               <div class="txt">
                 <label for="phone_number" class="txt-l txt-l--w txt-l--mt000">Your phone number</label>
                 <input id="phone_number" name="phone_number" type="text" value="" placeholder="Phone number" class="txt-f">
@@ -67,12 +72,12 @@
             </div>
             <div class="fs-c fs-c--i">
               <label class="cb">
-                <input id="checkbox-call" name="call" type="checkbox" value="1" class="cb-f" checked>
-                <span class="cb-l cb-l--sans">Call me</span>
+                <input id="checkbox-text" name="text" type="checkbox" value="1" class="cb-f" checked>
+                <span class="cb-l cb-l--sans">Text me</span>
               </label>
               <label class="cb">
-                <input id="checkbox-text" name="text" type="checkbox" value="1" class="cb-f">
-                <span class="cb-l cb-l--sans">Text me</span>
+                <input id="checkbox-call" name="call" type="checkbox" value="1" class="cb-f">
+                <span class="cb-l cb-l--sans">Call me</span>
               </label>
             </div>
             <div class="t--subinfo<?php if ($component_theme === 'b'): ?> t--w<?php endif; ?> m-t100">Message &amp; data rates may apply</div>
@@ -93,6 +98,19 @@
               <div class="txt">
                 <label for="zip_code" class="txt-l txt-l--w txt-l--mt000">Zip code</label>
                 <input id="zip_code" name="zip" type="text" value="" placeholder="Zip code" class="txt-f" size="10">
+              </div>
+            </div>
+            <div class="fs-c m-b300">
+              <div class="sel">
+                <label for="emergency-alerts-language" class="txt-l txt-l--w txt-l--mt000">Language</label>
+                <div class="sel-c sel-c--fw">
+                  <select class="sel-f sel-f--fw" name="language" id="emergency-alerts-language">
+                    <option value="en" selected>English</option>
+                    <option value="es">Español</option>
+                    <option value="fr">Français</option>
+                    <option value="zh_TW">繁體中文</option>
+                  </select>
+                </div>
               </div>
             </div>
             <div id="message" class="m-b300" style="display: none"></div>
@@ -119,6 +137,7 @@
         last_name,
         call,
         zip,
+        language,
         text;
 
     function handleAlertSignup(ev) {
@@ -155,6 +174,7 @@
       triggerSuccess(first_name, data.contact.first_name);
       triggerSuccess(last_name, data.contact.last_name);
       triggerSuccess(zip, data.contact.zip);
+      triggerSuccess(language, data.contact.language_name);
       triggerSuccess(call, data.contact.call ? 'Yes' : 'No');
       triggerSuccess(text, data.contact.text ? 'Yes' : 'No');
       form.find('#message, #button').remove();
@@ -189,23 +209,21 @@
       jQuery('.txt-f').css({borderColor: ''});
     }
 
-    function triggerSuccess(el, msg) {
-      var parent = el.parent();
+  function triggerSuccess(el, msg) {
+    var parent = el.closest('.txt, .sel');
 
-      if (msg) {
-        parent.find('input').remove();
-        parent.append('<div class="t--info t--w" style="text-transform: none">' + msg + '</div>');
+    if (msg) {
+      parent.find('input, .sel-c').remove();
+      parent.append('<div class="t--info" style="text-transform: none">' + msg + '</div>');
 
-        if (parent.hasClass('cb')) {
-          parent.css({'display': 'block'});
-          parent.find('.cb-l').css({'margin-left': 0});
-        }
-
-        zip.parents('.m-b300').removeClass('m-b300');
-      } else {
-        parent.remove();
+      if (parent.hasClass('cb')) {
+        parent.css({'display': 'block'});
+        parent.find('.cb-l').css({'margin-left': 0});
       }
+    } else {
+      parent.remove();
     }
+  }
 
     function triggerError(el, msg, className) {
       var el = jQuery(el);
@@ -224,6 +242,7 @@
       call = jQuery('#checkbox-call');
       text = jQuery('#checkbox-text');
       zip = jQuery('#zip_code');
+      language = jQuery('#emergency-alerts-language');
       button = jQuery('#alert_submit');
       form.submit(handleAlertSignup)
     }
