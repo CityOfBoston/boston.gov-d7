@@ -214,6 +214,7 @@ function bos_component_list_field_default_field_instances() {
         'change_log' => 0,
         'feed_departments' => 0,
         'feed_events' => 0,
+        'hub_list_applications' => 'hub_list_applications',
         'media_default' => 0,
         'metrolist_affordable_housing' => 'metrolist_affordable_housing',
         'news_announcements' => 0,
