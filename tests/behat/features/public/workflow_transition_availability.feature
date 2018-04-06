@@ -14,6 +14,7 @@ Feature: Workflow Transition Availability
       | Content Editor              |
       | Content Author              |
       | Press Release Editor        |
+      | Procurement Editor          |
       | Events Editor               |
       | Status Alert Editor         |
 
@@ -34,3 +35,4 @@ Feature: Workflow Transition Availability
       | Post                        |
       | Program Initiative Profile  |
       | Guide                       |
+      | Procurement Advertisement   |

@@ -13,18 +13,18 @@ include_once 'bos_content_type_procurement_advertisement.features.inc';
 function bos_content_type_procurement_advertisement_preprocess_views_exposed_form(&$vars) {
   if ($vars['form']['#id'] == 'views-exposed-form-bids-rfps-landing' || $vars['form']['#id'] == 'views-exposed-form-bids-rfps-archive') {
     $vars['widget_groups'] = array(
-      'search by title' => array(),
-      'search by awarding authority' => array(),
+      'search by project or bid name' => array(),
+      'search by department' => array(),
     );
 
     foreach ($vars['widgets'] as $id => $widget) {
       switch ($id) {
         case 'filter-title':
-          $vars['widget_groups']['search by title'][$id] = $widget;
+          $vars['widget_groups']['search by project or bid name'][$id] = $widget;
           break;
 
-        case 'filter-field_awarding_authority_target_id':
-          $vars['widget_groups']['search by awarding authority'][$id] = $widget;
+        case 'filter-field_contact_target_id':
+          $vars['widget_groups']['search by department'][$id] = $widget;
           break;
       }
     }
@@ -36,23 +36,6 @@ function bos_content_type_procurement_advertisement_preprocess_views_exposed_for
  * Implements hook_form_FORM_ID_alter().
  */
 function bos_content_type_procurement_advertisement_form_procurement_advertisement_node_form_alter(&$form, &$form_state, $form_id) {
-
-  // Only add defaults when creating a new Procurement Advertisement.
-  if (isset($form['field_details_link']['und'][0]['#default_value']['title']) && $form['field_details_link']['und'][0]['#default_value']['title'] == 'Replaced by bos_content_type_procurement_advertisement feature') {
-
-    $form['field_details_link']['und'][0]['#default_value']['title'] = 'Procurement Department';
-    $form['field_details_link']['und'][0]['#default_value']['url'] = 'Boston.gov/procurement';
-
-    $form['field_details_link']['und'][1]['#default_value']['title'] = 'Govdeals';
-    $form['field_details_link']['und'][1]['#default_value']['url'] = 'www.govdeals.com';
-
-    // Expand 3rd value by assigning defaults from already visible link.
-    $form['field_details_link']['und'][2] = $form['field_details_link']['und'][1];
-    $form['field_details_link']['und'][2]['#default_value']['title'] = 'Commbuys';
-    $form['field_details_link']['und'][2]['#default_value']['url'] = 'www.commbuys.com/bso';
-
-  }
-
   // Only show Contract Length field if Multi-year option is selected.
   $form['field_contract_length']['#states'] = array(
     'visible' => array(

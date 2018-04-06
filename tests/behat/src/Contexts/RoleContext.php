@@ -40,6 +40,7 @@ class RoleContext extends RawDrupalContext implements SnippetAcceptingContext {
       'Landing Author',
       'Events Editor',
       'Press Release Editor',
+      'Procurement Editor',
       'Emergency Alert Author',
       'Manager',
     );

@@ -173,7 +173,8 @@ function bos_content_type_procurement_advertisement_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'node_options_procurement_advertisement';
   $strongarm->value = array(
-    0 => 'status',
+    0 => 'moderation',
+    1 => 'revision',
   );
   $export['node_options_procurement_advertisement'] = $strongarm;
 
@@ -207,6 +208,16 @@ function bos_content_type_procurement_advertisement_strongarm() {
     'priority' => '0.5',
   );
   $export['xmlsitemap_settings_node_procurement_advertisement'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'xmlsitemap_settings_taxonomy_term_procurement_footer';
+  $strongarm->value = array(
+    'status' => '0',
+    'priority' => '0.5',
+  );
+  $export['xmlsitemap_settings_taxonomy_term_procurement_footer'] = $strongarm;
 
   return $export;
 }

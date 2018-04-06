@@ -119,6 +119,7 @@ function boston_hub_preprocess_page(array &$variables) {
     if ($variables['logged_in'] && $menu['title'] != 'Log In') {
       $nav_menu[] = $menu;
     } else if (!$variables['logged_in'] && $menu['title'] == 'Log In') {
+      $menu['always_show'] = TRUE;
       $nav_menu[] = $menu;
     }
   }

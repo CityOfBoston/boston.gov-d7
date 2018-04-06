@@ -29,6 +29,13 @@
     <roles>Press Release Editor</roles>
   </user>
   <user>
+    <id>u0010</id>
+    <name>procurement_editor_fixture</name>
+    <pass>test1P*tttt</pass>
+    <mail>procurement_editor_fixture@example.com</mail>
+    <roles>Procurement Release Editor</roles>
+  </user>
+  <user>
     <id>u0005</id>
     <name>event_editor_fixture</name>
     <pass>test1P*tttt</pass>

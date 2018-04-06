@@ -59,7 +59,7 @@ function bos_component_bid_field_default_field_instances() {
     'bundle' => 'bid',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Leave blank to not display.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -153,6 +153,7 @@ function bos_component_bid_field_default_field_instances() {
   t('Awarded');
   t('Bid Amount');
   t('Company Name');
+  t('Leave blank to not display.');
 
   return $field_instances;
 }
