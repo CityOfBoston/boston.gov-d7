@@ -51,6 +51,7 @@ function bos_profile_install() {
   bos_profile_update_7033();
   bos_profile_update_7034();
   bos_profile_update_7035();
+  bos_profile_update_7036();
 }
 
 /**
@@ -850,6 +851,26 @@ function bos_profile_update_7034() {
 function bos_profile_update_7035() {
   $enabled_modules = array(
     'paragraphs_bundle_permissions',
+  );
+  module_enable($enabled_modules);
+}
+
+/**
+ * Update for 1/12/18.
+ */
+function bos_profile_update_7036() {
+  $enabled_modules = array(
+    'markup',
+  );
+  module_enable($enabled_modules);
+}
+
+/**
+ * Update for 3/2/18.
+ */
+function bos_profile_update_7037() {
+  $enabled_modules = array(
+    'bos_component_vizwiz',
   );
   module_enable($enabled_modules);
 }

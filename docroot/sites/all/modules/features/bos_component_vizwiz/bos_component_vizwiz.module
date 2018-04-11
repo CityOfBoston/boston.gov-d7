@@ -1,0 +1,56 @@
+<?php
+/**
+ * @file
+ * Code for the Boston Component VizWiz feature.
+ */
+
+include_once 'bos_component_vizwiz.features.inc';
+
+/**
+ * Implements hook_field_widget_form_alter().
+ */
+function bos_component_vizwiz_field_widget_form_alter(&$element, &$form_state, $context) {
+  $widget_type = $context['field']['type'];
+  if ($widget_type == 'paragraphs') {
+
+    // Override the original AJAX callback (paragraphs_add_more_js).
+    $element['add_more']['add_more']['#ajax']['callback'] = 'bos_component_vizwiz_ajax_callback';
+
+    // Account for fresh page loads with no AJAX calls.
+    $pid = $form_state['node']->field_components['und'][0]['value'];
+    $paragraphs = entity_load('paragraphs_item', array($pid));
+    foreach ($paragraphs as $paragraph) {
+      if ($paragraph->bundle == 'vizwiz') {
+        bos_component_vizwiz_add_libs();
+      }
+    }
+  }
+}
+
+/**
+ * Ajax callback.
+ */
+function bos_component_vizwiz_ajax_callback($form, $form_state) {
+  if (isset($form_state['values']['field_components']['und'])) {
+    $components = $form_state['values']['field_components']['und'];
+    foreach ($components as $component_key => $component_val) {
+      // Only loop through components, not attributes.
+      if (is_int($component_key)) {
+        // Only add the libraries for the VizWiz component.
+        if (isset($form_state['values']['field_components']['und'][$component_key]['field_vizwiz_json'])) {
+          bos_component_vizwiz_add_libs();
+        }
+      }
+    }
+  }
+  // Return the original callback that we are overriding (use xdebug).
+  return paragraphs_add_more_js($form, $form_state);
+}
+
+/**
+ * Load the CSS and JS VizWiz libraries.
+ */
+function bos_component_vizwiz_add_libs() {
+  drupal_add_css('https://patterns.boston.gov/vizwiz/vizwiz.min.css', array('type' => 'external'));
+  drupal_add_js('https://patterns.boston.gov/vizwiz/vizwiz.min.js');
+}

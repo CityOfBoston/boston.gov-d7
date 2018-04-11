@@ -125,7 +125,10 @@ projects:
   field_collection:
     version: 1.0-beta9
   field_group:
-    version: 1.5
+    version: 1.x-dev
+    patch:
+      # d.o issue: https://www.drupal.org/project/field_group/issues/1670136
+      - https://www.drupal.org/files/issues/1670136-export-ctools-plugin-info-21.patch
   file_entity:
     version: 2.2
   honeypot:
@@ -161,6 +164,8 @@ projects:
     version: 1.9
   login_destination:
     version: 1.4
+  markup:
+    version: 1.2
   masquerade:
     version: 1.0-rc7
   media:

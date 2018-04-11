@@ -721,6 +721,27 @@ function boston_preprocess_paragraphs_item_photo(&$variables) {
   $variables['photo_id'] = $GLOBALS['photo_component_id'];
 }
 
+function boston_preprocess_paragraphs_item_vizwiz(&$variables) {
+  // Load VizWiz web-components JS.
+  drupal_add_js('https://patterns.boston.gov/web-components/all.js', array(
+    'type' => 'external',
+    'scope' => 'footer',
+  ));
+  $json_val = $variables['field_vizwiz_json'][0]['value'];
+  $vizwiz_template = "
+    <cob-viz map-style=\"min-height: 500px\"
+      map-class=\"m-v500\"
+      map-onmouseover=\"console.log('mouseover')\"
+      map-show-address-search
+      map-zoom=\"11\">
+      <script slot=\"config\" type=\"application/json\">
+        $json_val
+      </script>
+    </cob-viz>
+  ";
+  $variables['content']['field_vizwiz_json'][0]['#markup'] = $vizwiz_template;
+}
+
 function boston_preprocess_paragraphs_item_map(&$variables) {
 
   // Load Map libraries.
@@ -758,6 +779,11 @@ function boston_preprocess_paragraphs_item_map(&$variables) {
     'type' => 'external',
     'scope' => 'header',
     'weight' => -1,
+  ));
+  drupal_add_js('https://unpkg.com/esri-leaflet-geocoder@2.2.6', array(
+    'type' => 'external',
+    'scope' => 'header',
+    'weight' => 0,
   ));
 
   // Get ESRI feed info: title, url, color.
