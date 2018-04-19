@@ -51,7 +51,9 @@ class hub_profile2_main_CrumbsMonoPlugin_UserProfileCrumbsPlugin implements crum
         if (!empty($profile_user) && $profile_user->uid != $user->uid) {
           // Get the display_name field from the user profile for the target.
           $profile_main = profile2_load_by_user($profile_user->uid, 'main');
-          $breadcrumb_title = field_view_field('profile2', $profile_main, 'field_display_name', 'value')['#items'][0]['safe_value'];
+          if (!empty($profile_main)) {
+            $breadcrumb_title = field_view_field('profile2', $profile_main, 'field_display_name', 'value')['#items'][0]['safe_value'];
+          }
         } else {
           // This is the logged in user, so just stop making breadcrumbs.
           $breadcrumb_title = FALSE;
