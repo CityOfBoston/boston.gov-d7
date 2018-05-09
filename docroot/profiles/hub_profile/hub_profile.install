@@ -546,7 +546,7 @@ function hub_profile_update_7024() {
 /**
  * Update for 5/9/18
  */
-function bos_profile_update_7025() {
+function hub_profile_update_7025() {
   $disabled_modules = array(
     'media_wysiwyg_view_mode',
   );
