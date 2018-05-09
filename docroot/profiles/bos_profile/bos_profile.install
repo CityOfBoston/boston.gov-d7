@@ -51,6 +51,7 @@ function bos_profile_install() {
   bos_profile_update_7033();
   bos_profile_update_7034();
   bos_profile_update_7035();
+  bos_profile_update_7036();
 }
 
 /**
@@ -852,6 +853,16 @@ function bos_profile_update_7035() {
     'paragraphs_bundle_permissions',
   );
   module_enable($enabled_modules);
+}
+
+/**
+ * Update for 5/9/18
+ */
+function bos_profile_update_7036() {
+  $disabled_modules = array(
+    'media_wysiwyg_view_mode',
+  );
+  module_disable($disabled_modules);
 }
 
 /*******************************************************************
