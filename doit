@@ -1,0 +1,184 @@
+#!/bin/bash
+
+# Define colors
+Black='\033[0;30m'
+DarkGray='\033[1;30m'
+Red='\033[0;31m'
+LightRed='\033[1;31m'
+Green='\033[0;32m'
+LightGreen='\033[1;32m'
+BrownOrange='\033[0;33m'
+Yellow='\033[1;33m'
+Blue='\033[0;34m'
+LightBlue='\033[1;34m'
+Purple='\033[0;35m'
+LightPurple='\033[1;35m'
+Cyan='\033[0;36m'
+LightCyan='\033[1;36m'
+LightGray='\033[0;37m'
+White='\033[1;37m'
+NC='\033[0m' # No Color
+
+# Draws "DoIT" in CLI block letters.
+function doitbrand() {
+  echo -e "${LightCyan}     ____________     ${LightPurple} ______________________________________ ${NC} "
+  echo -e "${LightCyan}   ________________   ${LightPurple}|.H.H.H.H.H.H.H.H.H.H.H.H.H.H.H.H.H.H.H|${NC} "
+  echo -e "${LightCyan} ____________________ ${LightPurple}|______________________________________|${NC} "
+  echo -e "${LightCyan} ____       ___ _____ ${LightPurple}  ||_~|~|~|~|~|~|~|~|~|~|~|~|~|~|~|_||  ${NC} "
+  echo -e "${LightCyan}|  _ \  ___|_ _|_   _|${LightPurple}    |______________________________|    ${NC} "
+  echo -e "${LightCyan}| | | |/ _ \| |  | |  ${LightPurple}     | HH |.H.H. Boston .H.H.| HH |     ${NC} "
+  echo -e "${LightCyan}| |_| | (_) | |  | |  ${LightPurple}     | HH ||~|~|City Hall~|~|| HH |     ${NC} "
+  echo -e "${LightCyan}|____/ \___/___| |_|  ${LightPurple}     | __ |__________________| __ |     ${NC} "
+  echo -e "${LightCyan} ____________________ ${LightPurple}     | HH |.H.H.H.'  '.H.H.H.| HH |     ${NC} "
+  echo -e "${LightCyan}   ________________   ${LightPurple}     | HH ||~|~|~|!XX!|~|~|~|| HH |     ${NC} "
+  echo -e "${LightCyan}     ____________     ${LightPurple}     |____|'''''''|~~|'''''''|____|     ${NC} "
+  echo -e "${LightBlue}"
+  echo -e "${NC}"
+  # Image credit: http://www.chris.com/ascii/index.php?art=objects/buildings
+}
+
+# Provide some details on how this tool works
+function doithelp() {
+  echo $'\r'
+  echo -e "${Yellow}Commands:${NC}"
+  echo -e "${LightBlue}  build-bos${NC}   Builds Boston.gov using a database from staging and runs tests."
+  echo -e "${LightBlue}  build-hub${NC}   Build the Hub using a database from staging and runs tests."
+  echo -e "${LightBlue}  sync-files${NC}  Gets the \"sites/default/files\" directory from staging."
+  echo -e "${LightBlue}  drush${NC}       Allows you to run drush commands in your container."
+  echo -e "${LightBlue}  cheatsheet${NC}  List of drush commands helpful to City of Boston (COB) dev."
+  echo $'\r'
+  echo -e "${Yellow}Flags:${NC}"
+  echo -e "${LightRed}  -tests${NC}      Add to \"build-bos\" or \"build-hub\" to run without Behat tests."
+  echo $'\r'
+}
+
+# Build Boston.gov with production db
+function doitbuildbos() {
+  if [[ -n "$arg" ]]; then
+    if [[ $arg == "-tests" ]]; then
+      echo $'\r'
+      echo -ne "${Yellow}Running build for Boston.gov ${LightRed}without tests${NC}"
+      echo $'\r'
+      echo $'\r'
+      docker exec bostongov_drupal_1 ./task.sh build:test
+    else
+      "Unknown argument \"$arg\""
+    fi
+  else
+    echo $'\r'
+    echo -ne "${Yellow}Running build for Boston.gov ${LightGreen}with Behat tests${NC}"
+    echo $'\r'
+    echo $'\r'
+    docker exec bostongov_drupal_1 ./task.sh -Dbehat.run-server=true build:test
+  fi
+}
+
+# Build the Hub with production db
+function doitbuildhub() {
+  if [[ -n "$arg" ]]; then
+    if [[ $arg == "-tests" ]]; then
+      echo $'\r'
+      echo -ne "${Yellow}Running build for the Hub ${LightRed}without tests${NC}"
+      echo $'\r'
+      echo $'\r'
+      docker exec bostongov_drupal_1 ./hub-task.sh build:test
+    else
+      "Unknown argument \"$arg\""
+    fi
+  else
+    echo $'\r'
+    echo -ne "${Yellow}Running build for the Hub ${LightGreen}with Behat tests${NC}"
+    echo $'\r'
+    echo $'\r'
+    docker exec bostongov_drupal_1 ./hub-task.sh -Dbehat.run-server=true build:test:hub
+  fi
+}
+
+# Build the Hub with production db
+function doitsyncfiles() {
+  docker exec -it bostongov_drupal_1 drush rsync @boston.test:%files/ %files -azP
+}
+
+# Run migration to create users on the Hub
+function doitcheatsheet() {
+  echo $'\r'
+  echo -ne "${Yellow}Hub Migration Commands${NC}"
+  echo $'\r'
+  echo -ne "${LightBlue}  Migration Status:${NC}       ./doit drush ms"
+  echo $'\r'
+  echo -ne "${LightBlue}  Run both migrations:${NC}    ./doit drush mi User,Profile --force --update${NC}"
+  echo $'\r'
+  echo -ne "${LightBlue}  Stop a migration:${NC}       ./doit drush mst User${NC}"
+  echo $'\r'
+  echo -ne "${LightBlue}  Reset status to Idle:${NC}   ./doit drush mrs User${NC}"
+  echo $'\r'
+  echo -ne "${LightBlue}  Purge Users & Profiles:${NC} ./doit drush hub-migrate-purge User,Profile${NC}"
+  echo $'\r'
+  echo $'\r'
+  echo -ne "${Yellow}Pattern Lab${NC}"
+  echo $'\r'
+  echo -ne "${LightBlue}  Connect to local Fleet:${NC} ./doit drush vset asset_url https://localhost:3000/"
+  echo $'\r'
+  echo $'\r'
+  echo -ne "${Yellow}User Management${NC}"
+  echo $'\r'
+  echo -ne "${LightBlue}  Login as admin:${NC}         ./doit drush uli admin"
+  echo $'\r'
+  echo -ne "${LightBlue}  Change password:${NC}        ./doit drush upwd YOUR_USERNAME --password=\"YOUR_PASSWORD\""
+  echo $'\r'
+  echo $'\r'
+  echo -ne "${Yellow}Multisite${NC}"
+  echo $'\r'
+  echo -ne "${LightBlue}  Run drush on hub db:${NC}    ./doit drush use hub"
+  echo $'\r'
+  echo -ne "${LightBlue}  Run drush on bos db:${NC}    ./doit drush use default"
+  echo $'\r'
+  echo $'\r'
+}
+
+# Build the Hub with production db
+function doitdrush() {
+  if [[ -n "$command" ]]; then
+    if [[ $command == "drush" ]]; then
+      echo -ne "${Yellow}Running \"${LightGreen}$full_command${Yellow}\" inside the container.${NC}"
+      echo $'\r'
+      first_char=${arg:0:1}
+      if [[ $first_char == "@" ]]; then
+        echo "Command is using drush alias on remote, not setting root"
+        docker exec bostongov_drupal_1 $full_command
+      else
+        echo "Setting root to /boston.gov/docroot"
+        docker exec bostongov_drupal_1 $full_command --root=/boston.gov/docroot
+      fi
+    fi
+  fi
+}
+
+# Get the user input
+command=$1
+arg=$2
+full_command="$@"
+if [[ -n "$command" ]]; then
+  if [[ $command == "build-bos" ]]; then
+    doitbuildbos
+  elif [[ $command == "build-hub" ]]; then
+    doitbuildhub
+  elif [[ $command == "sync-files" ]]; then
+    doitsyncfiles
+  elif [[ $command == "drush" ]]; then
+    doitdrush
+  elif [[ $command == "cheatsheet" ]]; then
+    doitcheatsheet
+  elif [[ $command == "help" ]]; then
+    doithelp
+  elif [[ $command == "brand" ]]; then
+    doitbrand
+  else
+    echo "$command is not a valid command. Please use \"./doit help\" to see what is available."
+  fi
+# The user did not give any input.
+else
+  echo $'\r'
+  doitbrand
+  doithelp
+fi
