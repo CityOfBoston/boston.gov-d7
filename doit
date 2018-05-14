@@ -47,59 +47,32 @@ function doithelp() {
   echo -e "${LightBlue}  drush${NC}       Allows you to run drush commands in your container."
   echo -e "${LightBlue}  cheatsheet${NC}  List of drush commands helpful to City of Boston (COB) dev."
   echo $'\r'
-  echo -e "${Yellow}Flags:${NC}"
-  echo -e "${LightRed}  -tests${NC}      Add to \"build-bos\" or \"build-hub\" to run without Behat tests."
-  echo $'\r'
 }
 
-# Build Boston.gov with production db
+# Build Boston.gov with staging db
 function doitbuildbos() {
-  if [[ -n "$arg" ]]; then
-    if [[ $arg == "-tests" ]]; then
-      echo $'\r'
-      echo -ne "${Yellow}Running build for Boston.gov ${LightRed}without tests${NC}"
-      echo $'\r'
-      echo $'\r'
-      docker exec bostongov_drupal_1 ./task.sh build:test
-    else
-      "Unknown argument \"$arg\""
-    fi
-  else
-    echo $'\r'
-    echo -ne "${Yellow}Running build for Boston.gov ${LightGreen}with Behat tests${NC}"
-    echo $'\r'
-    echo $'\r'
-    docker exec bostongov_drupal_1 ./task.sh -Dbehat.run-server=true build:test
-  fi
+  echo $'\r'
+  echo -ne "${Yellow}Running build for Boston.gov ${LightGreen}with Behat tests${NC}"
+  echo $'\r'
+  echo $'\r'
+  docker exec -t bostongov_drupal_1 ./task.sh -Dbehat.run-server=true build:test
 }
 
-# Build the Hub with production db
+# Build the Hub with staging db
 function doitbuildhub() {
-  if [[ -n "$arg" ]]; then
-    if [[ $arg == "-tests" ]]; then
-      echo $'\r'
-      echo -ne "${Yellow}Running build for the Hub ${LightRed}without tests${NC}"
-      echo $'\r'
-      echo $'\r'
-      docker exec bostongov_drupal_1 ./hub-task.sh build:test
-    else
-      "Unknown argument \"$arg\""
-    fi
-  else
-    echo $'\r'
-    echo -ne "${Yellow}Running build for the Hub ${LightGreen}with Behat tests${NC}"
-    echo $'\r'
-    echo $'\r'
-    docker exec bostongov_drupal_1 ./hub-task.sh -Dbehat.run-server=true build:test:hub
-  fi
+  echo $'\r'
+  echo -ne "${Yellow}Running build for the Hub ${LightGreen}with Behat tests${NC}"
+  echo $'\r'
+  echo $'\r'
+  docker exec -t bostongov_drupal_1 ./hub-task.sh -Dbehat.run-server=true build:test:hub
 }
 
-# Build the Hub with production db
+# Copy files from the staging site to your local environment.
 function doitsyncfiles() {
   docker exec -it bostongov_drupal_1 drush rsync @boston.test:%files/ %files -azP
 }
 
-# Run migration to create users on the Hub
+# Quick cheatsheet of common commands.
 function doitcheatsheet() {
   echo $'\r'
   echo -ne "${Yellow}Hub Migration Commands${NC}"
@@ -117,7 +90,7 @@ function doitcheatsheet() {
   echo $'\r'
   echo -ne "${Yellow}Pattern Lab${NC}"
   echo $'\r'
-  echo -ne "${LightBlue}  Connect to local Fleet:${NC} ./doit drush vset asset_url https://localhost:3000/"
+  echo -ne "${LightBlue}  Connect to local Fleet:${NC} ./doit drush vset asset_url https://localhost:3030/"
   echo $'\r'
   echo $'\r'
   echo -ne "${Yellow}User Management${NC}"
@@ -140,24 +113,26 @@ function doitcheatsheet() {
 function doitdrush() {
   if [[ -n "$command" ]]; then
     if [[ $command == "drush" ]]; then
-      echo -ne "${Yellow}Running \"${LightGreen}$full_command${Yellow}\" inside the container.${NC}"
+      echo -ne "${Yellow}Running \"${LightGreen}$command $args${Yellow}\" inside the container.${NC}"
       echo $'\r'
-      first_char=${arg:0:1}
+      first_char=${args:0:1}
       if [[ $first_char == "@" ]]; then
         echo "Command is using drush alias on remote, not setting root"
-        docker exec bostongov_drupal_1 $full_command
+        docker exec bostongov_drupal_1 $command $args
       else
         echo "Setting root to /boston.gov/docroot"
-        docker exec bostongov_drupal_1 $full_command --root=/boston.gov/docroot
+        docker exec bostongov_drupal_1 $command $args --root=/boston.gov/docroot
       fi
     fi
   fi
 }
 
-# Get the user input
+# Get the first word from user input.
 command=$1
-arg=$2
-full_command="$@"
+# Get everything after the first word from input.
+args=${@:2}
+
+# Run a function based on the command the user supplied.
 if [[ -n "$command" ]]; then
   if [[ $command == "build-bos" ]]; then
     doitbuildbos
