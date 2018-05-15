@@ -7,6 +7,9 @@ services:
     - "8889:80"
     volumes:
     - .:/host-repo:cached
+    - ~/.acquia:/root/.acquia
+    - ~/.drush:/root/.drush
+    - ~/.ssh:/root/.ssh
     environment:
     - DRUPAL_DATABASE_HOST=mysql
   mysql:
