@@ -239,6 +239,8 @@ function _bos_core_get_components() {
     'grid_of_cards',
   ];
   $profile_components['bos_profile'] = [
+    'commission_info',
+    'commission_members',
     'feedback',
     'grid_of_programs_initiatives',
     'grid_of_people',
