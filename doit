@@ -37,19 +37,62 @@ function doitbrand() {
   # Image credit: http://www.chris.com/ascii/index.php?art=objects/buildings
 }
 
-# Provide some details on how this tool works
+# Provide some details on how this tool works.
 function doithelp() {
   echo $'\r'
-  echo -e "${Yellow}Commands:${NC}"
+  echo -e "${Yellow}Community Commands:${NC}"
+  echo -e "${LightBlue}  serve${NC}       Starts the containers and runs continuously to show logs."
+  echo -e "${LightBlue}  init-bos${NC}    Creates fresh \"drupal\" db for Boston.gov and sets profile info."
+  echo -e "${LightBlue}  init-hub${NC}    Creates fresh \"hub\" db for the Hub and sets profile info."
+  echo -e "${LightBlue}  drush${NC}       Allows you to run drush commands in your container."
+  echo $'\r'
+  echo -e "${Yellow}Staff Commands:${NC}"
   echo -e "${LightBlue}  build-bos${NC}   Builds Boston.gov using a database from staging and runs tests."
   echo -e "${LightBlue}  build-hub${NC}   Build the Hub using a database from staging and runs tests."
   echo -e "${LightBlue}  sync-files${NC}  Gets the \"sites/default/files\" directory from staging."
-  echo -e "${LightBlue}  drush${NC}       Allows you to run drush commands in your container."
   echo -e "${LightBlue}  cheatsheet${NC}  List of drush commands helpful to City of Boston (COB) dev."
   echo $'\r'
 }
 
-# Build Boston.gov with staging db
+# Use docker-compose to start the containers.
+function doitserve() {
+  echo $'\r'
+  echo -ne "${Yellow}Starting containers using ${LightGreen}docker-compose up${NC}"
+  echo $'\r'
+  echo $'\r'
+  echo -ne "******************************************************************"
+  echo $'\r'
+  echo -ne "*** This command will continue to run so you can see the logs  ***"
+  echo $'\r'
+  echo -ne "*** Open in a new window to continue working in this directory ***"
+  echo $'\r'
+  echo -ne "*** You can exit the prompt and stop containers with \"Ctrl+C\"  ***"
+  echo $'\r'
+  echo -ne "******************************************************************"
+  echo $'\r'
+  echo $'\r'
+  docker-compose up
+}
+
+# Initialize Boston.gov (create db and set profile info).
+function doitinitbos() {
+  echo $'\r'
+  echo -ne "${Yellow}Initializing Boston.gov ${LightGreen}with a fresh database.${NC}"
+  echo $'\r'
+  echo $'\r'
+  docker exec -t bostongov_drupal_1 scripts/init-docker-container.sh
+}
+
+# Initialize the Hub (create db and set profile info).
+function doitinithub() {
+  echo $'\r'
+  echo -ne "${Yellow}Initializing the Hub ${LightGreen}with a fresh database.${NC}"
+  echo $'\r'
+  echo $'\r'
+  docker exec -t bostongov_drupal_1 scripts/init-docker-container.sh hub
+}
+
+# Build Boston.gov with staging db.
 function doitbuildbos() {
   echo $'\r'
   echo -ne "${Yellow}Running build for Boston.gov ${LightGreen}with Behat tests${NC}"
@@ -58,7 +101,7 @@ function doitbuildbos() {
   docker exec -t bostongov_drupal_1 ./task.sh -Dbehat.run-server=true build:test
 }
 
-# Build the Hub with staging db
+# Build the Hub with staging db.
 function doitbuildhub() {
   echo $'\r'
   echo -ne "${Yellow}Running build for the Hub ${LightGreen}with Behat tests${NC}"
@@ -136,8 +179,12 @@ args=${@:2}
 if [[ -n "$command" ]]; then
   if [[ $command == "build-bos" ]]; then
     doitbuildbos
+  elif [[ $command == "init-bos" ]]; then
+    doitinitbos
   elif [[ $command == "build-hub" ]]; then
     doitbuildhub
+  elif [[ $command == "init-hub" ]]; then
+    doitinithub
   elif [[ $command == "sync-files" ]]; then
     doitsyncfiles
   elif [[ $command == "drush" ]]; then
@@ -148,6 +195,8 @@ if [[ -n "$command" ]]; then
     doithelp
   elif [[ $command == "brand" ]]; then
     doitbrand
+  elif [[ $command == "serve" ]]; then
+    doitserve
   else
     echo "$command is not a valid command. Please use \"./doit help\" to see what is available."
   fi
