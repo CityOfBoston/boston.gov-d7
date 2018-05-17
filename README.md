@@ -90,6 +90,13 @@ docker exec bostongov_drupal_1 ./task.sh -Dbehat.run-server=true -Dproject.build
 
 _Note: as of this writing, the tests do not work for the Hub environment (`./hub-task.sh`)._
 
+##### Running `drush` commands with Acquia cloud site alias
+A drush alias is a shortcut to a remote Drupal site. It is in essence a tunnel through which drush commands can be issued. To use Drush to connect to Acquia Cloud site aliases, you must:
+
+1. [Register SSH public keys for your Acquia user profile](https://docs.acquia.com/acquia-cloud/ssh/enable/add-key)
+2. [Download Drush aliases for all of your sites and extract the archive into $HOME.](https://docs.acquia.com/acquia-cloud/drush/aliases)
+3. Ensure that your Acquia cloud site aliases are available with `drush sa`.  You should see the aliases listed.  If not, check that you exported the archive to your $HOME directory.
+
 ## Public domain
 
 This project is in the worldwide [public domain](LICENSE.md). As stated in [LICENSE](LICENSE.md):

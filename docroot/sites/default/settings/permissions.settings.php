@@ -539,6 +539,8 @@ function acquia_permissions_map() {
     'cabinet',
     'card',
     'city_score_dashboard',
+    'commission_info',
+    'commission_members',
     'custom_hours_text',
     'daily_hours',
     'discussion_topic',
