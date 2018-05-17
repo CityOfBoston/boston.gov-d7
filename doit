@@ -149,6 +149,11 @@ function doitmysql() {
 # Delete all containers and rebuild.
 function doitstartover() {
   echo $'\r'
+  echo -ne "${Yellow}Stopping any running docker-compose containers.${NC}"
+  echo $'\r'
+  echo $'\r'
+  /usr/local/bin/docker-compose stop
+  echo $'\r'
   echo -ne "${Yellow}Deleting all docker-compose containers.${NC}"
   echo $'\r'
   echo $'\r'
