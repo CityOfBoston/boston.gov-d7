@@ -51,6 +51,7 @@ function bos_profile_install() {
   bos_profile_update_7033();
   bos_profile_update_7034();
   bos_profile_update_7035();
+  bos_profile_update_7036();
 }
 
 /**
@@ -852,6 +853,302 @@ function bos_profile_update_7035() {
     'paragraphs_bundle_permissions',
   );
   module_enable($enabled_modules);
+}
+
+function bos_profile_update_7036() {
+  $enabled_modules = array(
+    'bos_components_commissions',
+  );
+  module_enable($enabled_modules);
+
+  # Initializing the taxonomy with Boards and Commissions as of 5/14
+
+  $vocabulary = taxonomy_vocabulary_machine_name_load('commissions');
+  if (!$vocabulary) {
+    return;
+  }
+
+  /*
+    GraphQL query:
+
+    {
+      commissions {
+        name
+        id
+      }
+    }
+  */
+  $COMMISSIONS_DUMP = <<<"EOF"
+{
+  "data": {
+    "commissions": [
+      {
+        "name": "Trustees of Charitable Donations for Inhabitants of Boston",
+        "id": 1
+      },
+      {
+        "name": "Boston School Committee Nominating Panel",
+        "id": 2
+      },
+      {
+        "name": "Boston School Committee",
+        "id": 4
+      },
+      {
+        "name": "Neighborhood Housing Trust Fund",
+        "id": 7
+      },
+      {
+        "name": "City of Boston School Trust Fund",
+        "id": 10
+      },
+      {
+        "name": "George Robert White Fund",
+        "id": 11
+      },
+      {
+        "name": "Fund for Parks & Recreation in Boston",
+        "id": 13
+      },
+      {
+        "name": "Resident Advisory Board",
+        "id": 15
+      },
+      {
+        "name": "Boston Cultural Council",
+        "id": 16
+      },
+      {
+        "name": "Neighborhood Jobs Trust",
+        "id": 18
+      },
+      {
+        "name": "Zoning Commission",
+        "id": 21
+      },
+      {
+        "name": "Boston Fair Housing Commission",
+        "id": 25
+      },
+      {
+        "name": "Boston Compensation Advisory Board",
+        "id": 28
+      },
+      {
+        "name": "Mass. Water Resources Authority",
+        "id": 31
+      },
+      {
+        "name": "Board of Review--Assessing",
+        "id": 32
+      },
+      {
+        "name": "Air Pollution Control Commission",
+        "id": 34
+      },
+      {
+        "name": "Archives and Records Advisory Commission",
+        "id": 35
+      },
+      {
+        "name": "Boston Art Commission",
+        "id": 36
+      },
+      {
+        "name": "Audit Committee of the City of Boston",
+        "id": 37
+      },
+      {
+        "name": "Back Bay Architectural Commission",
+        "id": 38
+      },
+      {
+        "name": "Back Bay West/Bay State Road Architectural Conservation District Commission",
+        "id": 39
+      },
+      {
+        "name": "Bay Village Historic District Commission",
+        "id": 40
+      },
+      {
+        "name": "Beacon Hill Architectural Commission",
+        "id": 41
+      },
+      {
+        "name": "Board of Examiners",
+        "id": 42
+      },
+      {
+        "name": "Boston Employment Commission",
+        "id": 43
+      },
+      {
+        "name": "Boston Housing Authority Monitoring Committee",
+        "id": 44
+      },
+      {
+        "name": "Boston Industrial Development Financing Authority",
+        "id": 45
+      },
+      {
+        "name": "Boston Public Health Commission",
+        "id": 46
+      },
+      {
+        "name": "Boston Public Library Board of Trustees",
+        "id": 47
+      },
+      {
+        "name": "Boston Redevelopment Authority (BRA)/Economic Development Industrial Corp (EDIC)",
+        "id": 48
+      },
+      {
+        "name": "Edward Ingersoll Browne Trust Fund",
+        "id": 51
+      },
+      {
+        "name": "Boston Elections Commission",
+        "id": 52
+      },
+      {
+        "name": "Freedom Trail Commission",
+        "id": 53
+      },
+      {
+        "name": "Parks & Recreation Commission",
+        "id": 55
+      },
+      {
+        "name": "Public Improvement Commission",
+        "id": 56
+      },
+      {
+        "name": "Licensing Board for the City of Boston",
+        "id": 59
+      },
+      {
+        "name": "Boston Conservation Commission",
+        "id": 60
+      },
+      {
+        "name": "Boston Water and Sewer Commission",
+        "id": 64
+      },
+      {
+        "name": "Boston Landmarks Commission",
+        "id": 65
+      },
+      {
+        "name": "Mission Hill Triangle Architectural Conservation District Commission",
+        "id": 66
+      },
+      {
+        "name": "South End Landmark District Commission",
+        "id": 67
+      },
+      {
+        "name": "St. Botolph Architectural Conservation District Commission",
+        "id": 68
+      },
+      {
+        "name": "Boston Civic Design Commission",
+        "id": 69
+      },
+      {
+        "name": "Fund for Boston Neighborhoods, Inc.",
+        "id": 84
+      },
+      {
+        "name": "Public Facilities Commission",
+        "id": 85
+      },
+      {
+        "name": "Residency Compliance Commission",
+        "id": 86
+      },
+      {
+        "name": "City of Boston Scholarship Fund",
+        "id": 87
+      },
+      {
+        "name": "Boston Waterways Board",
+        "id": 91
+      },
+      {
+        "name": "Boston Groundwater Trust",
+        "id": 157
+      },
+      {
+        "name": "Fort Point Channel Landmark District Commission",
+        "id": 162
+      },
+      {
+        "name": "Boston Disability Advisory Commission",
+        "id": 165
+      },
+      {
+        "name": "Boston Finance Commission",
+        "id": 168
+      },
+      {
+        "name": "Aberdeen Architectural Conservation District Commission",
+        "id": 170
+      },
+      {
+        "name": "Boston Retirement Board",
+        "id": 171
+      },
+      {
+        "name": "Zoning Board of Appeals",
+        "id": 180
+      },
+      {
+        "name": "Boston Human Rights Commission",
+        "id": 208
+      },
+      {
+        "name": "Trustee of the Copley Square Charitable Trust",
+        "id": 209
+      },
+      {
+        "name": "Off-Street Parking Facilities Board",
+        "id": 210
+      },
+      {
+        "name": "Living Wage Advisory Committee",
+        "id": 211
+      },
+      {
+        "name": "Animal Control Commission",
+        "id": 212
+      },
+      {
+        "name": "Residency Policy Commission",
+        "id": 213
+      },
+      {
+        "name": "Community Preservation Committee",
+        "id": 214
+      }
+    ]
+  }
+}
+EOF;
+
+  $commissions_data = drupal_json_decode($COMMISSIONS_DUMP);
+  foreach ($commissions_data['data']['commissions'] as &$commission) {
+    $term = (object) array(
+      'name' => $commission['name'],
+      'vid' => $vocabulary->vid,
+      'field_commission_id' => array(
+        LANGUAGE_NONE => array(array(
+          'value' => $commission['id'],
+        )),
+      ),
+    );
+
+    taxonomy_term_save($term);
+  }
 }
 
 /*******************************************************************
