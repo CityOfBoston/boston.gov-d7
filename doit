@@ -44,11 +44,15 @@ function doithelp() {
   echo -e "${LightBlue}  serve${NC}       Starts the containers and runs continuously to show logs."
   echo -e "${LightBlue}  init-bos${NC}    Creates fresh \"drupal\" db for Boston.gov and sets profile info."
   echo -e "${LightBlue}  init-hub${NC}    Creates fresh \"hub\" db for the Hub and sets profile info."
+  echo -e "${LightBlue}  start-over${NC}  Deletes all docker-compose containers and rebuilds from scratch."
   echo -e "${LightBlue}  drush${NC}       Allows you to run drush commands in your container."
+  echo -e "${LightBlue}  mysql${NC}       Opens a MySQL prompt inside the database container."
   echo $'\r'
   echo -e "${Yellow}Staff Commands:${NC}"
   echo -e "${LightBlue}  build-bos${NC}   Builds Boston.gov using a database from staging and runs tests."
   echo -e "${LightBlue}  build-hub${NC}   Build the Hub using a database from staging and runs tests."
+  echo -e "${LightBlue}  test-bos${NC}    Runs Behat against Boston.gov database."
+  echo -e "${LightBlue}  test-hub${NC}    Runs Behat against the Hub database."
   echo -e "${LightBlue}  sync-files${NC}  Gets the \"sites/default/files\" directory from staging."
   echo -e "${LightBlue}  cheatsheet${NC}  List of drush commands helpful to City of Boston (COB) dev."
   echo $'\r'
@@ -101,6 +105,15 @@ function doitbuildbos() {
   docker exec -t bostongov_drupal_1 ./task.sh -Dbehat.run-server=true build:test
 }
 
+# Ran Behat test on the Boston.gov
+function doittestbos() {
+  echo $'\r'
+  echo -ne "${Yellow}Running Behat against ${LightGreen}Boston.gov${NC}"
+  echo $'\r'
+  echo $'\r'
+  docker exec -t bostongov_drupal_1 ./vendor/bin/behat tests/behat/features --config=tests/behat/local.yml -p local
+}
+
 # Build the Hub with staging db.
 function doitbuildhub() {
   echo $'\r'
@@ -110,9 +123,46 @@ function doitbuildhub() {
   docker exec -t bostongov_drupal_1 ./hub-task.sh -Dbehat.run-server=true build:test:hub
 }
 
+# Ran Behat test on the Hub.
+function doittesthub() {
+  echo $'\r'
+  echo -ne "${Yellow}Running Behat against ${LightGreen}the Hub${NC}"
+  echo $'\r'
+  echo $'\r'
+  docker exec -t bostongov_drupal_1 ./vendor/bin/behat tests/behat/features --config=tests/behat/local.yml -p hub
+}
+
 # Copy files from the staging site to your local environment.
 function doitsyncfiles() {
   docker exec -it bostongov_drupal_1 drush rsync @boston.test:%files/ %files -azP
+}
+
+# Open MySQL prompt.
+function doitmysql() {
+  echo $'\r'
+  echo -ne "${Yellow}Opening MySQL promt inside container ${LightGreen}(type \"exit\" or use Ctrl+c to escape).${NC}"
+  echo $'\r'
+  echo $'\r'
+  docker exec -it bostongov_mysql_1 mysql --pager="less -SFX"
+}
+
+# Delete all containers and rebuild.
+function doitstartover() {
+  echo $'\r'
+  echo -ne "${Yellow}Stopping any running docker-compose containers.${NC}"
+  echo $'\r'
+  echo $'\r'
+  /usr/local/bin/docker-compose stop
+  echo $'\r'
+  echo -ne "${Yellow}Deleting all docker-compose containers.${NC}"
+  echo $'\r'
+  echo $'\r'
+  /usr/local/bin/docker-compose rm
+  echo $'\r'
+  echo -ne "${Yellow}Building the containers again${NC}"
+  echo $'\r'
+  echo $'\r'
+  /usr/local/bin/docker-compose build
 }
 
 # Quick cheatsheet of common commands.
@@ -181,16 +231,24 @@ if [[ -n "$command" ]]; then
     doitbuildbos
   elif [[ $command == "init-bos" ]]; then
     doitinitbos
+  elif [[ $command == "test-bos" ]]; then
+    doittestbos
   elif [[ $command == "build-hub" ]]; then
     doitbuildhub
   elif [[ $command == "init-hub" ]]; then
     doitinithub
+  elif [[ $command == "test-hub" ]]; then
+    doittesthub
   elif [[ $command == "sync-files" ]]; then
     doitsyncfiles
   elif [[ $command == "drush" ]]; then
     doitdrush
+  elif [[ $command == "mysql" ]]; then
+    doitmysql
   elif [[ $command == "cheatsheet" ]]; then
     doitcheatsheet
+  elif [[ $command == "start-over" ]]; then
+    doitstartover
   elif [[ $command == "help" ]]; then
     doithelp
   elif [[ $command == "brand" ]]; then
