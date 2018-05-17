@@ -44,6 +44,7 @@ function doithelp() {
   echo -e "${LightBlue}  serve${NC}       Starts the containers and runs continuously to show logs."
   echo -e "${LightBlue}  init-bos${NC}    Creates fresh \"drupal\" db for Boston.gov and sets profile info."
   echo -e "${LightBlue}  init-hub${NC}    Creates fresh \"hub\" db for the Hub and sets profile info."
+  echo -e "${LightBlue}  start-over${NC}  Deletes all docker-compose containers and rebuilds from scratch."
   echo -e "${LightBlue}  drush${NC}       Allows you to run drush commands in your container."
   echo -e "${LightBlue}  mysql${NC}       Opens a MySQL prompt inside the database container."
   echo $'\r'
@@ -145,6 +146,20 @@ function doitmysql() {
   docker exec -it bostongov_mysql_1 mysql --pager="less -SFX"
 }
 
+# Delete all containers and rebuild.
+function doitstartover() {
+  echo $'\r'
+  echo -ne "${Yellow}Deleting all docker-compose containers.${NC}"
+  echo $'\r'
+  echo $'\r'
+  /usr/local/bin/docker-compose rm
+  echo $'\r'
+  echo -ne "${Yellow}Building the containers again${NC}"
+  echo $'\r'
+  echo $'\r'
+  /usr/local/bin/docker-compose build
+}
+
 # Quick cheatsheet of common commands.
 function doitcheatsheet() {
   echo $'\r'
@@ -227,6 +242,8 @@ if [[ -n "$command" ]]; then
     doitmysql
   elif [[ $command == "cheatsheet" ]]; then
     doitcheatsheet
+  elif [[ $command == "start-over" ]]; then
+    doitstartover
   elif [[ $command == "help" ]]; then
     doithelp
   elif [[ $command == "brand" ]]; then
