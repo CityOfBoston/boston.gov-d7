@@ -2,8 +2,13 @@ sudo: false
 language: php
 env:
 - TASK="./task.sh validate:all"
-- TASK="./task.sh -Dbehat.run-server=true build:test"
+# Use "build_db_from_initialize" until we can speed up the staging DB import, which
+# causes Travis to stall out.
+- TASK="./task.sh -Dbehat.run-server=true -Dproject.build_db_from=initialize build:local tests:all"
 - TASK="./hub-task.sh -Dbehat.run-server=true build:test:hub"
+branches:
+  only:
+  - develop
 php:
 - 5.6
 addons:
