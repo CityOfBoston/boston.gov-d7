@@ -1,0 +1,6 @@
+FROM mysql:5.6
+
+WORKDIR /mysql
+RUN apt-get update
+# Install less so we can use mysql in the container with a useful pager.
+RUN apt-get install less
