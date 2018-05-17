@@ -33,7 +33,9 @@ function bos_components_commissions_query($graphql) {
 
   $query_string = json_encode($query);
 
-  $ch = curl_init('https://commissions.digital-staging.boston.gov/commissions/graphql');
+  $ch = curl_init(variable_get(
+    'commissions_graphql_endpoint',
+    'https://commissions.digital-staging.boston.gov/commissions/graphql'));
   curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
   curl_setopt($ch, CURLOPT_POSTFIELDS, $query_string);
   curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
@@ -41,6 +43,7 @@ function bos_components_commissions_query($graphql) {
         $ch, CURLOPT_HTTPHEADER, array(
           'Content-Type: application/json',
           'Content-Length: ' . mb_strlen($query_string),
+          'X-API-KEY: ' . variable_get('commissions_graphql_api_key', 'none'),
         )
     );
 
