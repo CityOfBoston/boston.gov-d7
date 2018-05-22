@@ -22,8 +22,12 @@
 
       // Creates scroll effect on anchor links.
       $('.scroll-link-js').click(function () {
+        var navOffset = 75;
+        if (!$(this).parents("nav").hasClass("sticky")) {
+          navOffset += 115;
+        }
         $('html, body').animate({
-          scrollTop: $('[name="' + $.attr(this, 'href').substr(1) + '"]').offset().top - 75
+          scrollTop: $('[name="' + $.attr(this, 'href').substr(1) + '"]').offset().top - navOffset
         }, 1);
       });
 

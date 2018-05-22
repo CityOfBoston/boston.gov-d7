@@ -97,6 +97,14 @@ hide($content['links']);
       <?php if (isset($content['field_intro_text'])): ?>
         <?php print render($content['field_intro_text']); ?>
       <?php endif; ?>
+      <div class="sub-nav-trigger drawer-trigger">
+        <div class="sub-nav-chevron"><?php print file_get_contents(drupal_get_path('theme', $GLOBALS['theme']) . '/dist/img/subnav-toggle.svg') ?></div>
+        Page Sections
+      </div>
+      <nav class="topic-nav topic-nav__left">
+        <ul></ul>
+        <a name="section-nav"></a>
+      </nav>
       <?php if (isset($content['body'])): ?>
         <div class="body">
           <?php print render($content['body']); ?>
