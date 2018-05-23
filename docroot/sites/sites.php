@@ -86,6 +86,10 @@ $sites['8888.localhost'] = 'default';
 $sites['8889.127.0.0.1'] = 'hub';
 $sites['8889.localhost'] = 'hub';
 
+if (getenv('DRUPAL_BASE_URL') && getenv('DRUPAL_SITE')) {
+    $sites[getenv('DRUPAL_BASE_URL')] = getenv('DRUPAL_SITE');
+}
+
 if (file_exists(__DIR__ . '/local.sites.php')) {
   require __DIR__ . '/local.sites.php';
 }

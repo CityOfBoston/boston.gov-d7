@@ -20,7 +20,7 @@ $databases['default']['default'] = array(
 // This must match URLs in the following files for automated testing to work:
 // @see build/custom/phing/hub.yml
 // @see docroot/sites/sites.php
-$base_url = 'http://127.0.0.1:8888';
+$base_url = getenv('DRUPAL_BASE_URL') ? getenv('DRUPAL_BASE_URL') : 'http://127.0.0.1:8888';
 
 $conf['clamav_enabled'] = 0;
 $conf['clamav_enable_element_image_widget'] = 0;

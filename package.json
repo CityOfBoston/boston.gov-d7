@@ -42,5 +42,37 @@
   },
   "dependencies": {
     "run-sequence": "^2.2.0"
+  },
+  "labtest": {
+    "app_name": "bostongov",
+    "host": "test",
+    "test_domain": "digital-test.boston.gov",
+    "use_ssh_config": true,
+    "provider": "aws",
+    "code_repo_url": "git@github.com:CityOfBoston/boston.gov.git",
+    "environment": [
+      "DRUPAL_DATABASE_HOST=mysql",
+      "DRUPAL_BASE_URL=$VIRTUAL_HOST",
+      "DRUPAL_SITE=default"
+    ],
+    "services": {
+      "mysql": {
+        "provider": "docker",
+        "service": "mysql",
+        "provision_type": "independent",
+        "options": {
+          "initial_data_source": "/backups/bostongov/",
+          "image": "mysql:5.6",
+          "commands": [
+            "--character-set-server=utf8mb4",
+            "--collation-server=utf8mb4_unicode_ci"
+          ],
+          "environment": [
+            "MYSQL_ALLOW_EMPTY_PASSWORD=true",
+            "MYSQL_DATABASE=drupal"
+          ]
+        }
+      }
+    }
   }
 }
