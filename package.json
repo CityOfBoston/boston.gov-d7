@@ -50,6 +50,7 @@
     "use_ssh_config": true,
     "provider": "aws",
     "code_repo_url": "git@github.com:CityOfBoston/boston.gov.git",
+    "container_build_command": "docker build -t $APP_NAME/$INSTANCE_NAME -f dockerfiles/drupal .",
     "environment": [
       "DRUPAL_DATABASE_HOST=mysql",
       "DRUPAL_BASE_URL=$VIRTUAL_HOST",
