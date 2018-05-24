@@ -6,7 +6,15 @@ if ($content['field_show_contact_info']['#items'][0]['value'] == '1') {
 ?>
 <div class="article-contact">
   <address>
-    <h5 class="contact-title"><a href="<?php print render($content['department_url']); ?>"><?php print render($content['department_name']); ?></a></h5>
+    <h5 class="contact-title">
+      <?php if ($content['department_url']) { ?>
+        <a href="<?php print render($content['department_url']); ?>">
+          <?php print render($content['department_name']); ?>
+        </a>
+      <?php } else { ?>
+        <?php print render($content['department_name']); ?>
+      <?php } ?>
+    </h5>
     <?php if (isset($content['contact_email'])): ?>
       <div class="list-item">
         <?php 
