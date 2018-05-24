@@ -686,6 +686,23 @@ function boston_preprocess_paragraphs_item_card(&$variables) {
   }
 
   $variables['card_url'] = $url;
+
+  if ($link->field_lightbox_link) {
+      drupal_add_css('https://cdnjs.cloudflare.com/ajax/libs/lity/2.3.1/lity.min.css', array(
+          'type' => 'external',
+          'scope' => 'header',
+      ));
+
+      drupal_add_js('https://cdnjs.cloudflare.com/ajax/libs/lity/2.3.1/lity.min.js', array(
+          'every_page' => TRUE,
+      ));
+      $variables['isLightbox'] = 1;
+  } else {
+      $variables['isLightbox'] = 0;
+  }
+
+
+
 }
 
 function boston_preprocess_field_field_how_to_tabs(&$variables) {
@@ -1967,6 +1984,22 @@ function boston_preprocess_paragraphs_item_external_link(&$variables) {
     $variables['external_link_path'] = '';
     $variables['external_link_title'] = '';
   }
+}
+
+/**
+ * Implements hook_preprocess_paragraphs_item_BUNDLE().
+ */
+function boston_preprocess_paragraphs_item_lightbox_link(&$variables) {
+    $lightbox_link = field_get_items('paragraphs_item', $variables['paragraphs_item'], 'field_lightbox_link');
+
+    if ($lightbox_link !== FALSE) {
+        $variables['lightbox_link_path'] = $lightbox_link[0]['url'];
+        $variables['lightbox_link_title'] = check_plain($lightbox_link[0]['title']);
+    }
+    else {
+        $variables['lightbox_link_path'] = '';
+        $variables['lightbox_link_title'] = '';
+    }
 }
 
 /**

@@ -52,6 +52,7 @@ function bos_profile_install() {
   bos_profile_update_7034();
   bos_profile_update_7035();
   bos_profile_update_7036();
+  bos_profile_update_7037();
 }
 
 /**
@@ -1149,6 +1150,13 @@ EOF;
 
     taxonomy_term_save($term);
   }
+}
+
+function bos_profile_update_7037() {
+    $enabled_modules = array(
+        'bos_component_lightbox_link',
+    );
+    module_enable($enabled_modules);
 }
 
 /*******************************************************************
