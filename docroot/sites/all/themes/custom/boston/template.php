@@ -1334,8 +1334,13 @@ function boston_preprocess_paragraphs_item_message_for_the_day(&$variables) {
   // field_alert_icon fields on the message for the day to be rendered.
   $variables['content']['field_title'] = field_view_field('node', $status_item, 'field_title', 'full');
   $variables['content']['field_icon'] = field_view_field('node', $status_item, 'field_icon', 'full');
-  $variables['icon'] = file_get_contents(drupal_realpath(trim(render($variables['content']['field_icon'][0]))));
-  $variables['icon'] = filter_xss($variables['icon'], explode(' ', BOS_CORE_SVG_ELEMENTS));
+  $filename = drupal_realpath(trim(render($variables['content']['field_icon'][0])));
+  // We can't find the file by default in dev, so we avoid trying to
+  // do the file_get_contents piece below.
+  if ($filename) {
+    $variables['icon'] = file_get_contents($filename);
+    $variables['icon'] = filter_xss($variables['icon'], explode(' ', BOS_CORE_SVG_ELEMENTS));
+  }
 
   $link_id = bos_core_field_get_first_item('paragraphs_item', $variables['paragraphs_item'], 'field_link')['value'];
 

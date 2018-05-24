@@ -8,12 +8,16 @@ RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-av
 
 RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends git zip unzip bzip2 libbz2-dev rsync nodejs libgd-dev mysql-client && \
-    docker-php-ext-install pdo_mysql gd bz2
+    apt-get install -y --no-install-recommends git zip unzip bzip2 libbz2-dev rsync nodejs libgd-dev mysql-client openssh-client vim && \
+    docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ && \
+    docker-php-ext-install pdo_mysql gd bz2 && \
+    pecl install xdebug-2.5.5
 RUN curl --silent --show-error https://getcomposer.org/installer | php
 RUN mv composer.phar /usr/local/bin/composer 
 
 ADD docker/php.ini /usr/local/etc/php/
+
+ADD docker/xdebug.ini /usr/local/etc/php/conf.d
 
 ADD package.json package-lock.json /boston.gov/
 RUN npm install
