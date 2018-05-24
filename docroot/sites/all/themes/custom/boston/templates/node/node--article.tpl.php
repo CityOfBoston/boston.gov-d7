@@ -97,7 +97,7 @@ hide($content['links']);
       <?php endif; ?>
       <div class="sub-nav-trigger drawer-trigger">
         <div class="sub-nav-chevron"><?php print file_get_contents(drupal_get_path('theme', $GLOBALS['theme']) . '/dist/img/subnav-toggle.svg') ?></div>
-        Article Menu
+        Page Sections
       </div>
       <nav class="topic-nav topic-nav__left">
         <ul></ul>
