@@ -9,6 +9,8 @@ env:
 branches:
   only:
   - develop
+  - master
+  - settings
 php:
 - 5.6
 addons:
