@@ -6,7 +6,8 @@ RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-av
     sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf && \
     a2enmod rewrite
 
-RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
+RUN apt-get update && apt-get install -my gnupg && \
+    curl -sL https://deb.nodesource.com/setup_8.x | bash -
 RUN apt-get update && \
     apt-get install -y --no-install-recommends git zip unzip bzip2 libbz2-dev rsync nodejs libgd-dev mysql-client openssh-client vim && \
     docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ && \
