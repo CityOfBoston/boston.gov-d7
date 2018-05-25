@@ -4,6 +4,10 @@
 
   <target name="local:sync" description="Synchronize remote environment with local environment."
           depends="setup:drupal:settings">
+    <chown file="/root/.ssh/config" user="root" group="root" failonerror="true" verbose="true"/>
+    <chown file="/root/.ssh/id_rsa" user="root" group="root" failonerror="true" verbose="true"/>
+    <chown file="/root/.ssh/id_rsa.pub" user="root" group="root" failonerror="true" verbose="true"/>
+    <chown file="/root/.ssh/known_hosts" user="root" group="root" failonerror="true" verbose="true"/>
     <exec dir="${docroot}" command="${drush.cmd} sql-drop -y" logoutput="true"/>
     <exec dir="${docroot}" command="${drush.cmd} sql-sync ${project.cloud_alias}.test @self --create-db --structure-tables-key=lightweight -y" logoutput="true"/>
     <exec dir="${docroot}" command="${drush.cmd} cc all" logoutput="true"/>
