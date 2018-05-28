@@ -5,3 +5,58 @@
  */
 
 include_once 'bos_subcomponents_links.features.inc';
+
+/**
+ * Implements hook_node_validate().
+ * @param object $node - drupal-node object, the node attached to form
+ * @param array $form - drupal-form array, the submitted form
+ * @param array $form_state - drupal-form_state array
+ */
+function bos_subcomponents_links_node_validate($node, &$form, &$form_state) {
+  if (isset($node->field_components) && !_bos_subcomponents_link_media_is_provided($form['field_components'], $media)) {
+    $name = implode('][', $media['#parents']);
+    form_set_error($name, "Please provide an <b>Icon</b> in the Transaction Component");
+  }
+}
+
+/**
+ * Validates the field_icon media object has a value
+ * (reqiured property does not cause validation)
+ * @param array $form - drupal array object - the submitted form
+ * @param array &$element(byref) - the field_icon element, if found
+ *
+ * @return bool
+ */
+function _bos_subcomponents_link_media_is_provided($form, &$element) {
+  if($element = in_array_recursive('field_icon', $form, true)){
+    $lang = $form['#language'];
+    return ( !empty($element[$lang][0]['#value']['fid']) );
+  }
+  return true;    // validates by default
+}
+
+/**
+ * Recursively checks an array and returns true/false or the element value
+ * @param string $needle - key to find
+ * @param array $haystack - array (or arrays) to search
+ * @param bool $fetch if true returns the value,if false just returns a boolean
+ *
+ * @return null|string|object|array|boolean
+ */
+function in_array_recursive($needle, $haystack, $fetch = false) {
+  foreach($haystack as $key => $value) {
+    if ($key === $needle) {
+      if ($fetch) return $value;
+      else return $key;
+    }
+    elseif(is_array($value)) {
+      $clean = array_filter($value, function($k) {
+        return ( $k[0] != "#" );
+      }, ARRAY_FILTER_USE_KEY);
+
+      $result = in_array_recursive($needle, $clean, $fetch);
+      if ($result != null) return $result;
+    }
+  }
+  return null;
+}
