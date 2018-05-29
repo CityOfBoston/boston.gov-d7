@@ -8,10 +8,6 @@ include_once 'bos_subcomponents_links.features.inc';
 
 /**
  * Implements hook_node_validate().
- *
- * @param object $node - drupal-node object, the node attached to form.
- * @param array $form - drupal-form array, the submitted form.
- * @param array $form_state - drupal-form_state array.
  */
 function bos_subcomponents_links_node_validate($node, &$form, &$form_state) {
   if (isset($node->field_components) && !_bos_subcomponents_link_media_is_provided($form['field_components'], $media)) {
@@ -24,8 +20,10 @@ function bos_subcomponents_links_node_validate($node, &$form, &$form_state) {
  * Validates the field_icon media object has a value,
  * (reqiured property does not cause validation).
  *
- * @param array $form - drupal array object - the submitted form.
- * @param array &$element (byref) - the field_icon element, if found.
+ * @param array $form
+ *    Drupal array object - the submitted form.
+ * @param array &$element
+ *    Field_icon element, if found.
  *
  * @return bool
  */
@@ -34,15 +32,18 @@ function _bos_subcomponents_link_media_is_provided($form, &$element) {
     $lang = $form['#language'];
     return (!empty($element[$lang][0]['#value']['fid']));
   }
-  return TRUE;    // validates by default
+  return TRUE;    // validates by default.
 }
 
 /**
  * Recursively checks an array and returns true/false or the element value.
  *
- * @param string $needle - key to find.
- * @param array $haystack - array (or arrays) to search.
- * @param bool $fetch if true returns the value,if false just returns a boolean.
+ * @param string $needle
+ *    Key to find.
+ * @param array $haystack
+ *    Array (or arrays) to search.
+ * @param bool $fetch
+ *    If TRUE returns the value of the key, FALSE returns boolean if key exists.
  *
  * @return null|string|object|array|boolean
  */
