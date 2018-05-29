@@ -13,9 +13,15 @@ DOCROOT=$GIT_ROOT/docroot
 set -e
 
 echo "--------------------------------"
-echo "Cloning settings"
-git clone git@github.com:CityOfBoston/boston.settings.git ${DIR}/tmp/settings
-echo "Settings cloned. Release the kraken!"
+if [[ "${TRAVIS_BRANCH}" = "settings" ]]; then
+  echo "Cloning settings (From settings-develop branch)"
+  git clone -b settings-develop git@github.com:CityOfBoston/boston.settings.git ${DIR}/tmp/settings
+  echo "Settings cloned from settings-develop. Release the kraken!"
+else
+  echo "Cloning settings"
+  git clone git@github.com:CityOfBoston/boston.settings.git ${DIR}/tmp/settings
+  echo "Settings cloned. Release the kraken!"
+fi
 echo "--------------------------------"
 rm -Rf $DOCROOT/.htaccess
 mv ${DIR}/tmp/settings/.htaccess $DOCROOT/.htaccess
