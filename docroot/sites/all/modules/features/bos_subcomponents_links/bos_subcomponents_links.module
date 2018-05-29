@@ -17,8 +17,9 @@ function bos_subcomponents_links_node_validate($node, &$form, &$form_state) {
 }
 
 /**
- * Validates the field_icon media object has a value,
- * (reqiured property does not cause validation).
+ * Validates the field_icon media object has a value.
+ *
+ * Function needed because required property on fc does not cause validation.
  *
  * @param array $form
  *    Drupal array object - the submitted form.
@@ -26,13 +27,14 @@ function bos_subcomponents_links_node_validate($node, &$form, &$form_state) {
  *    Field_icon element, if found.
  *
  * @return bool
+ *    Defaults to TRUE if element not found.
  */
 function _bos_subcomponents_link_media_is_provided($form, &$element) {
   if ($element = in_array_recursive('field_icon', $form, TRUE)) {
     $lang = $form['#language'];
     return (!empty($element[$lang][0]['#value']['fid']));
   }
-  return TRUE;    // validates by default.
+  return TRUE;
 }
 
 /**
@@ -45,7 +47,8 @@ function _bos_subcomponents_link_media_is_provided($form, &$element) {
  * @param bool $fetch
  *    If TRUE returns the value of the key, FALSE returns boolean if key exists.
  *
- * @return null|string|object|array|boolean
+ * @return null|string|object|array|bool
+ *    Returns bool if $fetch=FALSE, or else the value of the key in the array.
  */
 function in_array_recursive($needle, $haystack, $fetch = FALSE) {
   foreach ($haystack as $key => $value) {
