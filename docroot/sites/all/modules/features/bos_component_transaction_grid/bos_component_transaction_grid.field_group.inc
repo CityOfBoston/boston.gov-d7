@@ -37,7 +37,7 @@ function bos_component_transaction_grid_field_group_info() {
         'classes' => 'group-transaction-info field-group-fieldset',
         'description' => '',
       ),
-      'formatter' => 'open',
+      'formatter' => 'collapsed',
     ),
   );
   $field_groups['group_transaction_info|paragraphs_item|transaction_grid|form'] = $field_group;
