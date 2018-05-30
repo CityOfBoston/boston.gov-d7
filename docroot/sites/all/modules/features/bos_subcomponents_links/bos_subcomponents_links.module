@@ -30,9 +30,18 @@ function bos_subcomponents_links_node_validate($node, &$form, &$form_state) {
  *    Defaults to TRUE if element not found.
  */
 function _bos_subcomponents_link_media_is_provided($form, &$element) {
-  if ($element = in_array_recursive('field_icon', $form, TRUE)) {
+  if ($element = in_array_recursive('field_transactions', $form, TRUE)) {
     $lang = $form['#language'];
-    return (!empty($element[$lang][0]['#value']['fid']));
+    $out = TRUE;
+    $clean = array_filter($element[$lang], function ($k) {
+      return (is_numeric($k));
+    }, ARRAY_FILTER_USE_KEY);
+    foreach ($clean as $key => $field) {
+      $out = ($out && !empty($field['field_icon'][$lang][0]['#value']['fid']));
+      if (!$out) {
+        return FALSE;
+      }
+    }
   }
   return TRUE;
 }
