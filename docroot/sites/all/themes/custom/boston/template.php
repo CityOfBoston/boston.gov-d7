@@ -2057,6 +2057,10 @@ function boston_preprocess_field_field_intro_text(&$variables) {
       $variables['classes_array'][] = "squiggle-border-bottom";
     }
   }
+
+  if ($variables['element']['#bundle'] == "hero_image") {
+    boston_preprocess_field_field_component_title($variables);
+  }
 }
 
 /**
