@@ -1069,7 +1069,7 @@ function boston_preprocess_node_procurement_advertisement(&$variables) {
     $now = time();
 
     $variables['is_closed'] = $end_date < $now;
-    
+
     $variables['start_date'] = date('n/j/Y - g:ia', $start_date);
     $variables['end_date'] = date('n/j/Y - g:ia', $end_date);
     $variables['due_date'] = date('F j, Y', $end_date);
@@ -2072,6 +2072,24 @@ function boston_preprocess_field_field_component_title(&$variables) {
       $short_title_link = preg_replace('@^[0-9\s]+@','', strtolower($short_title[0]['safe_value']));
       $variables['short_title_link'] = preg_replace('@[^a-z0-9-]+@','-', $short_title_link);
     }
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function boston_preprocess_field_field_title(&$variables) {
+  if (in_array($variables['element']['#bundle'], ['cabinet', 'fyi'])) {
+    return boston_preprocess_field_field_component_title($variables);
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function boston_preprocess_field_field_topics(&$variables) {
+  if (in_array($variables['element']['#bundle'], ['featured_topics'])) {
+    return boston_preprocess_field_field_component_title($variables);
   }
 }
 
