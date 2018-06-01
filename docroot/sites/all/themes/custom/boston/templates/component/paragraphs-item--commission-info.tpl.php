@@ -6,7 +6,15 @@ if ($content['field_show_contact_info']['#items'][0]['value'] == '1') {
 ?>
 <div class="article-contact">
   <address>
-    <h5 class="contact-title"><a href="<?php print render($content['department_url']); ?>"><?php print render($content['department_name']); ?></a></h5>
+    <h5 class="contact-title">
+      <?php if ($content['department_url']) { ?>
+        <a href="<?php print render($content['department_url']); ?>">
+          <?php print render($content['department_name']); ?>
+        </a>
+      <?php } else { ?>
+        <?php print render($content['department_name']); ?>
+      <?php } ?>
+    </h5>
     <?php if (isset($content['contact_email'])): ?>
       <div class="list-item">
         <?php 
@@ -71,7 +79,7 @@ $detail_item_classes = array(
 <div class="list-item">
   <?php
   print theme('detail_item', array(
-    'label' => 'Seats:',
+    'label' => 'Total Seats:',
     'body' => check_plain($content['seats']),
     'classes' => $detail_item_classes,
   ));
@@ -79,22 +87,24 @@ $detail_item_classes = array(
 </div>
 
 <div class="list-item">
-  <?php
-  $link = check_plain($content['enabling_legislation_url']);
-  print theme('detail_item', array(
-    'label' => 'Resources:',
-    'body' => <<<EOF
-<div class="link-wrapper external-link">
-  <a href="$link"
-     target="_blank">
-     Enabling legislation
-  </a>
+  <i>Resources:</i>
+
+  <div class="detail-item__body--secondary">
+    <div class="link-wrapper external-link">
+      <a href="$link"
+        target="_blank">
+        Enabling legislation
+      </a>
+    </div>
+  </div>
 </div>
-EOF
-,
-    'classes' => array(
-      'body' => 'detail-item__body--secondary',
-    ),
-  ));
-  ?>
+
+<?php if ($content['apply_url']) { ?>
+<div class="list-item">
+  <i>We have openings:</i>
+
+  <div class="m-v200">
+    <a class="btn" href="<? render($content['apply_url']) ?>">Apply online</a>
+  </div>
 </div>
+<?php } ?>

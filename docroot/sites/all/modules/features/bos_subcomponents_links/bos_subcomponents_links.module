@@ -5,3 +5,80 @@
  */
 
 include_once 'bos_subcomponents_links.features.inc';
+
+/**
+ * Implements hook_node_validate().
+ */
+function bos_subcomponents_links_node_validate($node, &$form, &$form_state) {
+  if (isset($node->field_components) && !_bos_subcomponents_link_media_is_provided($form['field_components'], $media)) {
+    $name = implode('][', $media['#parents']);
+    form_set_error($name, "Please provide an <b>Icon</b> in the Transaction Component");
+  }
+}
+
+/**
+ * Validates the field_icon media object has a value.
+ *
+ * Function needed because required property on fc does not cause validation.
+ *
+ * @param array $form
+ *    Drupal array object - the submitted form.
+ * @param array &$element
+ *    Field_icon element, if found.
+ *
+ * @return bool
+ *    Defaults to TRUE if element not found.
+ */
+function _bos_subcomponents_link_media_is_provided($form, &$element) {
+  if ($element = in_array_recursive('field_transactions', $form, TRUE)) {
+    $lang = $form['#language'];
+    $out = TRUE;
+    $clean = array_filter($element[$lang], function ($k) {
+      return (is_numeric($k));
+    }, ARRAY_FILTER_USE_KEY);
+    foreach ($clean as $key => $field) {
+      $out = ($out && !empty($field['field_icon'][$lang][0]['#value']['fid']));
+      if (!$out) {
+        return FALSE;
+      }
+    }
+  }
+  return TRUE;
+}
+
+/**
+ * Recursively checks an array and returns true/false or the element value.
+ *
+ * @param string $needle
+ *    Key to find.
+ * @param array $haystack
+ *    Array (or arrays) to search.
+ * @param bool $fetch
+ *    If TRUE returns the value of the key, FALSE returns boolean if key exists.
+ *
+ * @return null|string|object|array|bool
+ *    Returns bool if $fetch=FALSE, or else the value of the key in the array.
+ */
+function in_array_recursive($needle, $haystack, $fetch = FALSE) {
+  foreach ($haystack as $key => $value) {
+    if ($key === $needle) {
+      if ($fetch) {
+        return $value;
+      }
+      else {
+        return $key;
+      }
+    }
+    elseif (is_array($value)) {
+      $clean = array_filter($value, function ($k) {
+        return ($k[0] != "#");
+      }, ARRAY_FILTER_USE_KEY);
+
+      $result = in_array_recursive($needle, $clean, $fetch);
+      if ($result != NULL) {
+        return $result;
+      }
+    }
+  }
+  return NULL;
+}
