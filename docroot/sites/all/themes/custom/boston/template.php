@@ -1852,6 +1852,9 @@ function boston_preprocess_paragraphs_item(&$variables) {
 
   if ($theme) {
     $variables['component_theme'] = $theme['value'];
+    if ($theme['value'] == "b" && $variables['paragraphs_item']->bundle == "newsletter") {
+      $variables['component_theme'] .= " b--wt";
+    }
     $variables['section_header_theme'] = $theme['value'] === 'b' ? 'sh--w' : '';
   }
 }
