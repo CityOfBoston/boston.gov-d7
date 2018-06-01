@@ -283,20 +283,13 @@ projects:
     version: 2.12
   workbench:
     version: 1.2
+  drafty:
+    version: 1.0-rc1
   workbench_moderation:
-    version: 1.4
-    patch:
-      # This allows authenticated users to view drafts
-      - https://www.drupal.org/files/workbench_moderation-view-drafts-permission-fix-1461950-8.patch
-      # Without this patch, Behat tests will fail when using fixtures in
-      # combination with Workbench Moderation.
-      - https://www.drupal.org/files/issues/node-deleted-before-shutdown-function-2645622-1.patch
-      # Fixes the issue with the "Generate automatic URL alias" being unchecked
-      # after workbench moderation content is published.
-      - https://www.drupal.org/files/issues/workbench_moderation-pathauto_alias_issue-2308095-20.patch
+    version: 3.0
   #Dev version of WYSIWYG is required for 4.x CKEditor to work.
   workbench_scheduler:
-    version: 2.0-beta2
+    version: 2.0
   wysiwyg:
     version: 2.x-dev
   wysiwyg_filter:
