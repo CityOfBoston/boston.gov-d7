@@ -24,15 +24,11 @@
  * @see template_preprocess_entity()
  * @see template_process()
  */
+ $field_title = $content['field_title'][0]['#markup'];
 ?>
 
-<a href="<?php print $card_url; ?>" <?php if ($isLightbox): ?> data-lity<?php endif; ?> class="cd g--4 g--4--sl m-t500">
-  <div class="cd-ic" style="background-image: url(<?php print render($content['field_thumbnail']); ?>)"></div>
-  <div class="cd-c">
-    <div class="cd-t"><?php print render($content['field_title']); ?></div>
-    <?php if (isset($content['field_subheader'])): ?>
-      <div class="cd-st t--upper t--subtitle"><?php print render($content['field_subheader']); ?></div>
-    <?php endif; ?>
-    <div class="cd-d"><?php print render($content['field_short_description']); ?></div>
-  </div>
-</a>
+<div class="link-wrapper">
+    <a href="<?php print $lightbox_link_path; ?>" data-lity>
+            <?php print $lightbox_link_title; ?>
+    </a>
+</div>

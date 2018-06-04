@@ -1,0 +1,16 @@
+name = Boston Component Lightbox Link
+description = Lightbox modal
+core = 7.x
+package = Features
+version = 7.x-1.0
+dependencies[] = features
+dependencies[] = field_group
+dependencies[] = link
+dependencies[] = paragraphs
+features[ctools][] = field_group:field_group:1
+features[features_api][] = api:2
+features[field_base][] = field_lightbox_link
+features[field_group][] = group_link_info|paragraphs_item|lightbox_link|form
+features[field_instance][] = paragraphs_item-lightbox_link-field_lightbox_link
+features[paragraphs][] = lightbox_link
+features_exclude[dependencies][ctools] = ctools
