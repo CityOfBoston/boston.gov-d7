@@ -47,6 +47,7 @@ function doithelp() {
   echo -e "${LightBlue}  start-over${NC}  Deletes all docker-compose containers and rebuilds from scratch."
   echo -e "${LightBlue}  drush${NC}       Allows you to run drush commands in your container."
   echo -e "${LightBlue}  mysql${NC}       Opens a MySQL prompt inside the database container."
+  echo -e "${LightBlue}  logs drupal|mysql${NC}  Tails logs from Docker containers"
   echo $'\r'
   echo -e "${Yellow}Staff Commands:${NC}"
   echo -e "${LightBlue}  build-bos${NC}   Builds Boston.gov using a database from staging and runs tests."
@@ -120,6 +121,13 @@ function doitsyncfiles() {
 function doitmysql() {
   doitcomment "Opening MySQL promt inside container" "type \"exit\" or use Ctrl+c to escape)."
   docker exec -it bostongov_mysql_1 mysql --pager="less -SFX"
+}
+
+function doitlogs() {
+  service="${args[0]:-drupal}"
+
+  doitcomment "Tailing container logs." "Type Ctrl+c to escape."
+  docker logs -f "bostongov_${service}_1" 
 }
 
 # Delete all containers and rebuild.
@@ -220,6 +228,8 @@ if [[ -n "$command" ]]; then
     doitdrush
   elif [[ $command == "mysql" ]]; then
     doitmysql
+  elif [[ $command == "logs" ]]; then
+    doitlogs
   elif [[ $command == "cheatsheet" ]]; then
     doitcheatsheet
   elif [[ $command == "start-over" ]]; then
