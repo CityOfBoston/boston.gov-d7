@@ -5,7 +5,7 @@
   <target name="local:sync" description="Synchronize remote environment with local environment."
           depends="setup:drupal:settings">
     <exec dir="${docroot}" command="${drush.cmd} sql-drop -y" logoutput="true"/>
-    <exec dir="${docroot}" command="${drush.cmd} sql-sync ${project.cloud_alias}.test @self --create-db --structure-tables-key=lightweight -y" logoutput="true"/>
+    <exec dir="${docroot}" command="${drush.cmd} sql-sync ${project.cloud_alias}.test @self --create-db --structure-tables-list='field_revision*,cache*' -y" logoutput="true"/>
     <exec dir="${docroot}" command="${drush.cmd} cc all" logoutput="true"/>
     <exec dir="${docroot}" command="${drush.cmd} cc drush" logoutput="true"/>
   </target>
