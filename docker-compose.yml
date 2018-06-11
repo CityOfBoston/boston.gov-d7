@@ -11,7 +11,7 @@ services:
     - .:/host-repo:cached
     - ~/.acquia:/root/.acquia
     - ~/.drush:/root/.drush
-    - ~/.ssh:/root/.ssh
+    - ~/.ssh:/root/host-ssh
     environment:
     - DRUPAL_DATABASE_HOST=mysql
   mysql:
