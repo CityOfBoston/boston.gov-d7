@@ -412,6 +412,10 @@ function bos_core_field_get_first_item($entity_type, $entity, $field_name) {
 function bos_core_field_get_link_url($link) {
   $url = NULL;
 
+  if ($link->field_lightbox_link) {
+    $url = $link->field_lightbox_link["und"][0]["url"];
+  }
+
   if ($link->field_external_link) {
     $url = $link->field_external_link["und"][0]["url"];
   }
