@@ -142,7 +142,7 @@ function boston_preprocess_html(array &$variables, $hook) {
   }
 
   // A variable to define the asset url
-  $variables['asset_url'] = variable_get('asset_url', 'https://patterns.boston.gov');
+    $variables['asset_url'] = variable_get('asset_url', 'https://localhost:3030');
   $variables['asset_name'] = $GLOBALS['theme'] == 'boston_hub' ? 'hub' : 'public';
   $variables['google_tag_manager_id'] = variable_get('google_tag_manager_id', FALSE);
 

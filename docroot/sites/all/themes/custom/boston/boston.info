@@ -43,12 +43,13 @@ core        = 7.x
 ; CSS3 media queries: http://www.w3.org/TR/css3-mediaqueries/
 
 ; First we remove any Drupal styling that Thunder provides as components.
-stylesheets[all][] = system.base.css
-stylesheets[all][] = system.menus.css
-stylesheets[all][] = system.messages.css
-stylesheets[all][] = system.theme.css
-stylesheets[all][] = comment.css
-stylesheets[all][] = node.css
+stylesheets[screen][] = system.base.css
+stylesheets[screen][] = system.menus.css
+stylesheets[screen][] = system.messages.css
+stylesheets[screen][] = system.theme.css
+stylesheets[screen][] = comment.css
+stylesheets[screen][] = node.css
+stylesheets[print][] = ./css/print.css
 
 ; If you wish to use conditional stylesheets, you should install the
 ; conditional stylesheets module: https://drupal.org/project/conditional_styles
