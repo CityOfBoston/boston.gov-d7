@@ -23,9 +23,6 @@ do
   ln -s "/host-repo/${p}" "./${p}"
 done
 
-# Uncomment next line to copy files in mounted ssh folder from host into container to ensure root:root permissions.
-# cp -rfu ~/host-ssh/ ~/.ssh/
-
 if [ "$1" = "hub" ]
 then
   ./hub-task.sh -Dproject.build_db_from=initialize build:local
