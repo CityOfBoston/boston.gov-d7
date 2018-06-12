@@ -10,3 +10,4 @@ simplesaml
 sites
 profiles
 favicon.ico
+webconsole.php
