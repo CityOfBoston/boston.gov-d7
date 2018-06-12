@@ -18,7 +18,11 @@ services:
     build:
       context: .
       dockerfile: dockerfiles/mysql
-    command: ["--character-set-server=utf8mb4", "--collation-server=utf8mb4_unicode_ci"]
+    command: 
+      - "--character-set-server=utf8mb4"
+      - "--collation-server=utf8mb4_unicode_ci"
+      - "--innodb-buffer-pool-size=256M"
+      - "--key-buffer-size=10M" 
     ports:
     - "3306:3306"
     environment:

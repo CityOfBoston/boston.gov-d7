@@ -9,11 +9,11 @@ $database_hostname = 'mysql';
 
 $databases['default']['default'] = array(
   'driver' => 'mysql',
-  'database' => 'hub',
-  'username' => 'root',
-  'password' => '',
+  'database' => getenv('DRUPAL_DATABASE') ? getenv('DRUPAL_DATABASE') : 'hub',
+  'username' => getenv('DRUPAL_DATABASE_USER') ? getenv('DRUPAL_DATABASE_USER') : 'root',
+  'password' => getenv('DRUPAL_DATABASE_PASSWORD') ? getenv('DRUPAL_DATABASE_PASSWORD') : '',
   'host' => getenv('DRUPAL_DATABASE_HOST') ? getenv('DRUPAL_DATABASE_HOST') : 'localhost',
-  'port' => '3306',
+  'port' => getenv('DRUPAL_DATABASE_PORT') ? getenv('DRUPAL_DATABASE_PORT') : '3306',
   'collation' => 'utf8_general_ci',
 );
 
