@@ -53,6 +53,7 @@ function bos_profile_install() {
   bos_profile_update_7035();
   bos_profile_update_7036();
   bos_profile_update_7037();
+  bos_profile_update_7038();
 }
 
 /**
@@ -1157,6 +1158,13 @@ function bos_profile_update_7037() {
         'bos_component_lightbox_link',
     );
     module_enable($enabled_modules);
+}
+
+function bos_profile_update_7038(){
+   $disabled_modules = array(
+      'drafty',
+   );
+   module_disable($disabled_modules);
 }
 
 /*******************************************************************
