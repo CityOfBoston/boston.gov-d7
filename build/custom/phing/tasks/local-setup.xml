@@ -6,7 +6,7 @@
           depends="setup:drupal:settings">
     <exec dir="${docroot}" command="cp -rfu ~/host-ssh/ ~/.ssh/" logoutput="true"/>
     <exec dir="${docroot}" command="${drush.cmd} sql-drop -y" logoutput="true"/>
-    <exec dir="${docroot}" command="${drush.cmd} sql-sync ${project.cloud_alias}.test @self --create-db --structure-tables-list='field_revision_*,*_revision*,cache*,*_node_history,metatag,watchdog' -y" logoutput="true"/>
+    <exec dir="${docroot}" command="${drush.cmd} sql-sync ${project.cloud_alias}.test @self --create-db --structure-tables-list='cache*,metatag,watchdog,history,sessions' -y" logoutput="true"/>
     <exec dir="${docroot}" command="${drush.cmd} cc all" logoutput="true"/>
     <exec dir="${docroot}" command="${drush.cmd} cc drush" logoutput="true"/>
   </target>
