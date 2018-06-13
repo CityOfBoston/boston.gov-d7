@@ -81,6 +81,7 @@
  */
 hide($content['comments']);
 hide($content['links']);
+
 ?>
   <script>
     var event_id = "node-<?php print $node->nid; ?>";
@@ -93,8 +94,24 @@ hide($content['links']);
   <?php endif; ?>
   <div class="department-info-wrapper desktop-100 clearfix">
     <div class="column mobile-100 desktop-66-left">
-      <h1 class="title"><?php print $title; ?></h1>
-      <?php if (isset($content['field_intro_text'])): ?>
+      <h1 class="title">
+        <?php if ($is_cancelled): ?>
+          <span class='t--err'>Canceled:</span><br>
+        <?php endif; ?>
+        <?php print $title; ?>
+      </h1>
+      <?php if ($is_cancelled): ?>
+        <div class="supporting-text squiggle-border-bottom"><strong>Canceled: </strong>
+        <?php
+          if (isset($field_extra_info_event['und'][0]['safe_value'])) {
+            print $field_extra_info_event['und'][0]['safe_value'];
+          }
+          else {
+            print "Contact organizer.";
+          }
+        ?>
+        </div>
+      <?php else: ?>
         <?php print render($content['field_intro_text']); ?>
       <?php endif; ?>
       <div class="sub-nav-trigger drawer-trigger">

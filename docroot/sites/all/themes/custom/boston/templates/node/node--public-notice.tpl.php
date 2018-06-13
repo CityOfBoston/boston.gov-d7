@@ -90,7 +90,12 @@ hide($content['links']);
   <?php endif; ?>
   <div class="department-info-wrapper desktop-100 clearfix">
     <div class="column mobile-100 desktop-66-left">
-      <h1 class="title"><?php print $title; ?></h1>
+      <h1 class="title">
+        <?php if ($is_cancelled): ?>
+          <span class='t--err'>Canceled:</span><br>
+        <?php endif; ?>
+        <?php print $title; ?>
+      </h1>
       <?php if ($is_cancelled): ?>
         <div class="supporting-text squiggle-border-bottom"><strong>Canceled<?php if (isset($content['field_extra_info'])): ?>:</strong> <?php print render($content['field_extra_info']) ?><?php else: ?></strong><?php endif; ?></div>
       <?php else: ?>
