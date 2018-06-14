@@ -4,6 +4,7 @@ set -e
 
 # Every time we start up we need to make sure that we can write to this
 # directory.
+mkdir -p /boston.gov/docroot/sites/default/files
 chown -R www-data /boston.gov/docroot/sites/default/files
 
 # We need to set the permissions here because on AWS this is a bind mount.

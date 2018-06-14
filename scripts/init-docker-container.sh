@@ -29,5 +29,6 @@ then
 else
   ./task.sh -Dproject.build_db_from=initialize build:local
   # Need to re-do this chown now that things are symlinked in.
-  chown -R www-data /boston.gov/docroot/sites/default/files 
+  mkdir -p /boston.gov/docroot/sites/default/files
+  chown -R www-data /boston.gov/docroot/sites/default/files
 fi
