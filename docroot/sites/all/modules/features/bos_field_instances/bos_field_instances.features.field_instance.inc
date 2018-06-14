@@ -3054,6 +3054,7 @@ function bos_field_instances_field_default_field_instances() {
         'cabinet' => -1,
         'card' => -1,
         'city_score_dashboard' => -1,
+        'commission_info' => 'commission_info',
         'custom_hours_text' => -1,
         'daily_hours' => -1,
         'discussion_topic' => -1,
