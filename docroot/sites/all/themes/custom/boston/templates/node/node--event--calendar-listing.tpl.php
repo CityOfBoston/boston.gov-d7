@@ -97,7 +97,9 @@
     <?php endif; ?>
     <div class="title">
       <?php if ($live_stream):?><span class="live-stream-flag">Live:</span><?php endif; ?>
+      <?php if ($is_cancelled):?><span class="t--err">Canceled: </span><span class="td-str"><?php endif; ?>
       <?php print $title; ?>
+        <?php if ($is_cancelled):?></span><?php endif; ?>
     </div>
   </div>
   <div class="event-details drawer">
@@ -126,11 +128,28 @@
         <?php print render($content['field_links']); ?>
       </div>
     <?php endif; ?>
-    <?php if (isset($content['field_intro_text'])): ?>
-      <div class="description">
-      <?php print render($content['field_intro_text']); ?>
+
+    <?php if ($is_cancelled): ?>
+      <div class="description supporting-text">Reason for cancellation:<br/>
+        <?php
+        if (isset($field_extra_info_event['und'][0]['safe_value'])) {
+          print $field_extra_info_event['und'][0]['safe_value'];
+        }
+        else {
+          print "Unspecified - Please contact organizer.";
+        }
+        ?>
       </div>
+    <?php else: ?>
+      <?php if (isset($content['field_intro_text'])): ?>
+        <div class="description">
+          <?php print render($content['field_intro_text']); ?>
+        </div>
+      <?php endif; ?>
     <?php endif; ?>
+
+
+
     <?php if (isset($content['field_details_link'])): ?>
       <div class="external-link external-link--inline">
         <a class="button" href="<?php print render($content['field_details_link']); ?>">Event website<span class="a11y--hidden"> for <?php print $title; ?></span></a>

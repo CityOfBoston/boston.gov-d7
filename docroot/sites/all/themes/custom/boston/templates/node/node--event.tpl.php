@@ -96,18 +96,18 @@ hide($content['links']);
     <div class="column mobile-100 desktop-66-left">
       <h1 class="title">
         <?php if ($is_cancelled): ?>
-          <span class='t--err'>Canceled:</span><br>
+          <span class='t--err t--s60pct'>Canceled:</span><br>
         <?php endif; ?>
         <?php print $title; ?>
       </h1>
       <?php if ($is_cancelled): ?>
-        <div class="supporting-text squiggle-border-bottom"><strong>Canceled: </strong>
+        <div class="supporting-text squiggle-border-bottom">Reason for cancellation:
         <?php
           if (isset($field_extra_info_event['und'][0]['safe_value'])) {
             print $field_extra_info_event['und'][0]['safe_value'];
           }
           else {
-            print "Contact organizer.";
+            print "Unspecified - Please contact organizer.";
           }
         ?>
         </div>

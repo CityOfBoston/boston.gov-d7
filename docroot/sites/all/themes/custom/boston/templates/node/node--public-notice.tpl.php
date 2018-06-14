@@ -92,12 +92,18 @@ hide($content['links']);
     <div class="column mobile-100 desktop-66-left">
       <h1 class="title">
         <?php if ($is_cancelled): ?>
-          <span class='t--err'>Canceled:</span><br>
+          <span class='t--err t--s60pct'>Canceled:</span><br>
         <?php endif; ?>
         <?php print $title; ?>
       </h1>
       <?php if ($is_cancelled): ?>
-        <div class="supporting-text squiggle-border-bottom"><strong>Canceled<?php if (isset($content['field_extra_info'])): ?>:</strong> <?php print render($content['field_extra_info']) ?><?php else: ?></strong><?php endif; ?></div>
+        <div class="supporting-text squiggle-border-bottom">Reason for cancellation:
+          <?php if (isset($content['field_extra_info'])): ?>
+            <?php print render($content['field_extra_info']) ?>
+          <?php else: ?>
+            <?php print "Unspecified." ?>
+          <?php endif; ?>
+        </div>
       <?php else: ?>
         <?php if (isset($content['field_intro_text'])): ?>
           <?php print render($content['field_intro_text']); ?>
