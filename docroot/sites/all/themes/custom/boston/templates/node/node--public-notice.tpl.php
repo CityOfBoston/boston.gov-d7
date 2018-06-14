@@ -101,7 +101,7 @@ hide($content['links']);
           <?php if (isset($content['field_extra_info'])): ?>
             <?php print render($content['field_extra_info']) ?>
           <?php else: ?>
-            <?php print "Unspecified." ?>
+            <?php print "Please contact organizer." ?>
           <?php endif; ?>
         </div>
       <?php else: ?>

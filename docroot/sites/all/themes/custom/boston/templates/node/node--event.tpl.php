@@ -107,7 +107,7 @@ hide($content['links']);
             print $field_extra_info_event['und'][0]['safe_value'];
           }
           else {
-            print "Unspecified - Please contact organizer.";
+            print "Please contact organizer.";
           }
         ?>
         </div>
