@@ -287,6 +287,67 @@ function bos_content_type_event_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-event-field_cancel_event'.
+  $field_instances['node-event-field_cancel_event'] = [
+    'bundle' => 'event',
+    'default_value' => [
+      0 => [
+        'value' => 0,
+      ],
+    ],
+    'deleted' => 0,
+    'description' => 'If this event is cancelled, check this box and give a reason below.',
+    'display' => [
+      'calendar_listing' => [
+        'label' => 'above',
+        'settings' => [],
+        'type' => 'hidden',
+        'weight' => 0,
+      ],
+      'default' => [
+        'label' => 'above',
+        'settings' => [],
+        'type' => 'hidden',
+        'weight' => 30,
+      ],
+      'featured_item' => [
+        'label' => 'above',
+        'settings' => [],
+        'type' => 'hidden',
+        'weight' => 0,
+      ],
+      'listing' => [
+        'label' => 'above',
+        'settings' => [],
+        'type' => 'hidden',
+        'weight' => 0,
+      ],
+      'listing_short' => [
+        'label' => 'above',
+        'settings' => [],
+        'type' => 'hidden',
+        'weight' => 0,
+      ],
+    ],
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div_div_div',
+    'field_name' => 'field_cancel_event',
+    'label' => 'Cancel Event',
+    'required' => 0,
+    'settings' => [
+      'user_register_form' => FALSE,
+    ],
+    'widget' => [
+      'active' => 1,
+      'module' => 'options',
+      'settings' => [
+        'display_label' => 1,
+      ],
+      'type' => 'options_onoff',
+      'weight' => 48,
+    ],
+  ];
+
   // Exported field_instance: 'node-event-field_city_hall'.
   $field_instances['node-event-field_city_hall'] = array(
     'bundle' => 'event',
@@ -428,6 +489,7 @@ function bos_content_type_event_field_default_field_instances() {
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
@@ -1143,6 +1205,7 @@ function bos_content_type_event_field_default_field_instances() {
         'module' => 'entityreference',
         'settings' => array(
           'links' => 1,
+          'use_content_language' => TRUE,
           'view_mode' => 'default',
         ),
         'type' => 'entityreference_entity_view',
@@ -1182,6 +1245,7 @@ function bos_content_type_event_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
@@ -1241,6 +1305,70 @@ function bos_content_type_event_field_default_field_instances() {
       'weight' => 48,
     ),
   );
+
+  // Exported field_instance: 'node-event-field_extra_info_event'.
+  $field_instances['node-event-field_extra_info_event'] = [
+    'bundle' => 'event',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'If this event is cancelled, enter a reason.',
+    'display' => [
+      'calendar_listing' => [
+        'label' => 'above',
+        'settings' => [],
+        'type' => 'hidden',
+        'weight' => 0,
+      ],
+      'default' => [
+        'label' => 'above',
+        'settings' => [],
+        'type' => 'hidden',
+        'weight' => 29,
+      ],
+      'featured_item' => [
+        'label' => 'above',
+        'settings' => [],
+        'type' => 'hidden',
+        'weight' => 0,
+      ],
+      'listing' => [
+        'label' => 'above',
+        'settings' => [],
+        'type' => 'hidden',
+        'weight' => 0,
+      ],
+      'listing_short' => [
+        'label' => 'above',
+        'settings' => [],
+        'type' => 'hidden',
+        'weight' => 0,
+      ],
+    ],
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div_div_div',
+    'field_name' => 'field_extra_info_event',
+    'label' => 'Cancellation Reason',
+    'required' => 0,
+    'settings' => [
+      'linkit' => [
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ],
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ],
+    'widget' => [
+      'active' => 1,
+      'module' => 'text',
+      'settings' => [
+        'show_token_tree' => 0,
+        'size' => 60,
+      ],
+      'type' => 'text_textfield',
+      'weight' => 49,
+    ],
+  ];
 
   // Exported field_instance: 'node-event-field_featured'.
   $field_instances['node-event-field_featured'] = array(
@@ -1832,6 +1960,7 @@ function bos_content_type_event_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
@@ -1859,6 +1988,7 @@ function bos_content_type_event_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
@@ -1910,6 +2040,7 @@ function bos_content_type_event_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
@@ -1931,6 +2062,7 @@ function bos_content_type_event_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
@@ -2108,6 +2240,7 @@ function bos_content_type_event_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
@@ -2129,6 +2262,7 @@ function bos_content_type_event_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
@@ -2179,6 +2313,7 @@ function bos_content_type_event_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
@@ -2200,6 +2335,7 @@ function bos_content_type_event_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
@@ -2395,6 +2531,7 @@ function bos_content_type_event_field_default_field_instances() {
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
@@ -2416,6 +2553,7 @@ function bos_content_type_event_field_default_field_instances() {
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
@@ -2466,6 +2604,7 @@ function bos_content_type_event_field_default_field_instances() {
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
@@ -2534,6 +2673,7 @@ function bos_content_type_event_field_default_field_instances() {
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
@@ -2602,6 +2742,7 @@ function bos_content_type_event_field_default_field_instances() {
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
@@ -2670,6 +2811,7 @@ function bos_content_type_event_field_default_field_instances() {
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
@@ -3075,6 +3217,8 @@ function bos_content_type_event_field_default_field_instances() {
   t('An email address for constituents to reach out about the event.');
   t('Are any cemeteries, parks, historic districts, or community centers relevant for this event?');
   t('Body');
+  t('Cancel Event');
+  t('Cancellation Reason');
   t('Check this box if the event is <strong>NOT</strong> sponsored by the City, or should <strong>NOT</strong> show up in the Boston.gov calendar for any reason. This event will still be added to the events feed for consumption by other sites or applications.');
   t('Check this box if the event is happening at City Hall, or on City Hall Plaza.');
   t('Contact');
@@ -3089,6 +3233,8 @@ function bos_content_type_event_field_default_field_instances() {
   t('Event Type');
   t('Event not sponsored by the City');
   t('Featured');
+  t('If this event is cancelled, check this box and give a reason below.');
+  t('If this event is cancelled, enter a reason.');
   t('Intro Image');
   t('Is this event happening at City Hall?');
   t('Location');

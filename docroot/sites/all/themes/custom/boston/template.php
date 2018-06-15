@@ -994,6 +994,11 @@ function boston_preprocess_node_event(&$variables) {
 
   $variables['live_stream_active'] = 0;
 
+  $cancelled = field_get_items('node', $variables['node'], 'field_cancel_event');
+  if ($cancelled[0]['value']) {
+    $variables['is_cancelled'] = TRUE;
+  }
+
   if ($components_field) {
     foreach ($components_field as $comp) {
       $comp_entity_id_array[] = $comp['value'];
