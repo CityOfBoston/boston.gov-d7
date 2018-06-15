@@ -15,7 +15,7 @@
   <div class="nv-m-h">
       <div class="nv-m-h-ic">
         <a href="/" title="Go to home page">
-          <img src="<?php print $asset_url ?>/images/b-dark.svg" title="B" aria-hidden="true" class="nv-m-h-i" />
+          <img src="<?php print $asset_url ?>/images/b-dark.svg" alt="City of Boston" aria-hidden="true" class="nv-m-h-i" />
         </a>
       </div>
       <div id="nv-m-h-t" class="nv-m-h-t">&nbsp;</div>
