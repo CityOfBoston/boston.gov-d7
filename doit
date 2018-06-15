@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 # Define colors
 Black='\033[0;30m'
 DarkGray='\033[1;30m'
@@ -56,6 +58,7 @@ function doithelp() {
   echo -e "${LightBlue}  test-hub${NC}    Runs Behat against the Hub database."
   echo -e "${LightBlue}  sync-files${NC}  Gets the \"sites/default/files\" directory from staging."
   echo -e "${LightBlue}  cheatsheet${NC}  List of drush commands helpful to City of Boston (COB) dev."
+  echo -e "${LightBlue}  stage <variant>${NC}       Build and push a container to the staging cluster"
   echo $'\r'
 }
 
@@ -138,6 +141,140 @@ function doitstartover() {
   docker-compose rm
   doitcomment "Building the containers again."
   docker-compose build
+}
+
+# Pushes the current repository to an ECS service in our staging cluster. Set up
+# the services by adding a "variant" to the boston_gov_deploy module in the
+# Terraform configuration.
+function doitstage() {
+  # These defaults could presumably be put somewhere else, or even be allowed to
+  # be overridden, but for our purposes they really don’t change.
+  region="us-east-1"
+  cluster="AppsStaging"
+  cluster_namespace="cob-digital-apps-staging"
+  service_base="boston-gov"
+  drupal_container_name="drupal"
+
+  variant="${args[0]:-default}"
+
+  if [ "${variant}" == "default" ]; then
+    service="${service_base}"
+  else
+    service="${service_base}-${variant}"
+  fi
+
+  # This refreshes Docker with our AWS credentials so we can push to ECR.
+  doitcomment "Logging in to AWS."
+  `aws ecr get-login --no-include-email`
+
+  # The ECR repositories have the account ID in the URL. Rather that hard-code
+  # it, which is not super-great, we can pull it dynamically.
+  account_id=`aws sts get-caller-identity | jq '.["Account"]' -r -`
+  repository_url="${account_id}.dkr.ecr.${region}.amazonaws.com/${cluster_namespace}/${service_base}:deploy-${variant}"
+
+  doitcomment "Building the container image."
+  docker build --pull -f dockerfiles/drupal -t $repository_url .
+
+  doitcomment "Pushing to ECR."
+  docker push $repository_url
+
+  # The service should already have been created by Terraform, with a task
+  # definition that points to the "deploy-${variant}" tag used above. Forcing a
+  # new deployment will cause ECS to run new tasks, which will pick up the new
+  # container image we just pushed.
+  #
+  # We use jq on the output to pull the deployment ID that this update created
+  # so we can monitor its tasks later on.
+  #
+  # TODO(finh): It would be good to automatically use the latest task definition
+  # for this update. Right now this just redeploys whatever task definition is
+  # already on the service.
+  #
+  # This means that if you update the task definition through Terraform, say to
+  # change memory or environment variables, you need to run an update through the
+  # ECS UI to put the service on the latest task definition.
+  doitcomment "Updating service ${service}."
+  deployment_id=`aws ecs update-service \
+    --cluster "${cluster}" \
+    --service "${service}" \
+    --desired-count 1 \
+    --force-new-deployment \
+    | jq '.["service"]["deployments"][] | select(.status == "PRIMARY") | .id' -r -`
+
+  doitcomment "Awaiting task creation. Events:" "https://console.aws.amazon.com/ecs/home?region=${region}#/clusters/${cluster}/services/${service}/events"
+
+  # TODO(finh): Stream the service events until the task starts up so that we
+  # can see if there are any task placement errors or anything.
+  
+  # Polling until AWS creates the task in the service update’s deployment.
+  task_arn="null"
+  while [ "${task_arn}" == "null" ]; do
+    sleep 5
+    task_arn=`aws ecs list-tasks \
+      --cluster "${cluster}" \
+      --started-by "${deployment_id}" | jq '.["taskArns"][0]' -r -`
+  done
+
+  # Task ARN is something like
+  # arn:aws:ecs:<region>:<aws_account_id>:task/c5cba4eb-5dad-405e-96db-71ef8eefe6a8
+  # We get just the ID from the end because that’s what future commands use.
+  # (list-tasks only returns ARNs.)
+  task_id=`[[ "${task_arn}" =~ /(.*)$ ]] && echo ${BASH_REMATCH[1]}`
+
+  logs_url="https://console.aws.amazon.com/cloudwatch/home?region=${region}#logEventViewer:group=${cluster}/${service_base};stream=ecs/drupal/${task_id}"
+  doitcomment "Task created." "Streaming CloudWatch logs."
+
+  # We expect the aws logs call to return 255 until the stream is created, so we
+  # don’t want the script to crash while that happens.
+  set +e
+
+  # Keeping track of the "forward token" will let us only get new logs with each
+  # poll. "f/0" seems to work as a "start from the beginning" token.
+  next_forward_token="f/0"
+
+  done=0
+  while [ $done -eq 0 ]; do
+    # We save the results into $events because we need to both print the
+    # messages but also parse out the "nextForwardToken" for the next time
+    # through the loop. We use 2>&1 to capture stdout and stderr so that we
+    # swallow any expected "logs not created yet" error messages.
+    events=$(aws logs get-log-events \
+      --log-group-name "${cluster}/${service_base}" \
+      --log-stream-name "ecs/${drupal_container_name}/${task_id}" \
+      --next-token "${next_forward_token}" 2>&1)
+
+    # As mentioned above, we start polling before the log stream is necessarily
+    # created (the task may still be in PENDING state when it appears in
+    # "list-tasks"). During that time the get-log-events will exit with an error
+    # code.
+    if [ $? -eq 0 ]; then
+      next_forward_token=$(echo "${events}" | jq '.["nextForwardToken"]' -r -)
+      echo "${events}" | jq '.["events"][]["message"]' -r -
+    fi
+
+    # If we’re starting to see health checker lines coming from the Apache logs
+    # then the server is running.
+    if [[ "${events}" =~ ELB-HealthChecker ]]; then
+      done=1
+    else
+      sleep 1
+    fi
+  done
+
+  set -e
+
+  doitcomment "Waiting a minute for health checks to succeed."
+  
+  # At this point the old task is still taking traffic, so we don’t want to
+  # direct anyone to the URLs because they might log in to the old task rather
+  # than the new one. After 60 seconds the health checks should succeed and the
+  # ALB will start sending traffic to the new task.
+  sleep 60
+
+  doitcomment "Staging ready!" "https://${service}.digital-staging.boston.gov/"
+  doitcomment "Login:" "https://${service}.digital-staging.boston.gov/user?local"
+  doitcomment "Web console:" "https://${service}.digital-staging.boston.gov/webconsole.php"
+  doitcomment "CloudWatch logs:" "${logs_url}"
 }
 
 # Quick cheatsheet of common commands.
@@ -240,6 +377,8 @@ if [[ -n "$command" ]]; then
     doitbrand
   elif [[ $command == "serve" ]]; then
     doitserve
+  elif [[ $command == "stage" ]]; then
+    doitstage
   else
     echo "$command is not a valid command. Please use \"./doit help\" to see what is available."
   fi

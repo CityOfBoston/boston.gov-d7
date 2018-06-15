@@ -104,7 +104,7 @@ $detail_item_classes = array(
   <i>We have openings:</i>
 
   <div class="m-v200">
-    <a class="btn" href="<? render($content['apply_url']) ?>">Apply online</a>
+    <a class="btn" href="<? print render($content['apply_url']) ?>">Apply online</a>
   </div>
 </div>
 <?php } ?>
