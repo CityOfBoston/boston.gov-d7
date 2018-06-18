@@ -97,6 +97,84 @@ A drush alias is a shortcut to a remote Drupal site. It is in essence a tunnel t
 2. [Download Drush aliases for all of your sites and extract the archive into $HOME.](https://docs.acquia.com/acquia-cloud/drush/aliases)
 3. Ensure that your Acquia cloud site aliases are available with `drush sa`.  You should see the aliases listed.  If not, check that you exported the archive to your $HOME directory.
 
+### On-demand test instances
+
+_For City team members._
+
+You can push your local repository up to a test instance on our staging cluster
+on AWS. This will let you show off functionality using data from a staging
+snapshot of Boston.gov.
+
+#### Prerequisites
+
+* You will need Docker installed on your local machine
+* Install the [AWS Command Line Interface](https://aws.amazon.com/cli/)
+* Get a “CLI” IAM user with an access key and secret key
+* Use `aws configure` to log your CLI user in locally. Use `us-east-1` as the
+  default region.
+
+#### Setup
+
+To create a place to upload your code, follow the instructions in the
+[CityOfBoston/digital-terraform](https://github.com/CityOfBoston/digital-terraform)
+repo to make a “variant” of the Boston.gov staging deployment.
+
+#### Pushing local code
+
+To push your local repository up to the cluster, run:
+
+```
+$ ./doit stage <variant>
+```
+
+Where “`<variant>`” is the variant name you created in
+`CityOfBoston/digital-terraform`.
+
+This will build a container image locally and upload it to ECR. It will then
+update your staging ECS service to use the new code.
+
+By default, the container startup process will initialize its MySQL database
+with a snapshot of the staging environment from Acquia.
+
+After the container starts up and is healthy, the `doit` script will print
+useful URLs and then quit.
+
+#### Running drush on staging
+
+Direct SSH access is not generally available on the ECS cluster. To run `drush`
+commands on your test instance, you can visit the `webconsole.php` page at its
+domain. This will give you a shell prompt where you can run _e.g._ `drush uli`
+to get a login link.
+
+The `webconsole.php` shell starts in `docroot`.
+
+Talk to another developer to get the username and password.
+
+#### Preserving the database between pushes
+
+By default, each time you deploy code to your test instance it starts with a
+fresh copy of the Drupal database.
+
+If you want to preserve state between test runs, log in to `webconsole.php` and
+run:
+
+```
+$  ../doit stash-db
+```
+
+(The `..` is because `webconsole.php` starts in the `docroot`.)
+
+This will take a snapshot of your database and upload it to S3. The next time
+your test instance starts up, it will start its sync from this database rather
+than the Acquia staging one.
+
+To clear the stash, so that your database starts fresh on the next test instance
+push, use `webconsole.php` to run:
+
+```
+$ ../doit stash-db reset
+```
+
 ## Public domain
 
 This project is in the worldwide [public domain](LICENSE.md). As stated in [LICENSE](LICENSE.md):

@@ -60,6 +60,9 @@ function doithelp() {
   echo -e "${LightBlue}  cheatsheet${NC}  List of drush commands helpful to City of Boston (COB) dev."
   echo -e "${LightBlue}  stage <variant>${NC}       Build and push a container to the staging cluster"
   echo $'\r'
+  echo -e "${Yellow}Staging Commands:${NC}"
+  echo -e "${LightBlue}  stash-db${NC}    Run on staging webconsole.php to save the variant’s database."
+  echo $'\r'
 }
 
 # Use docker-compose to start the containers.
@@ -195,6 +198,7 @@ function doitstage() {
   # ECS UI to put the service on the latest task definition.
   doitcomment "Updating service ${service}."
   deployment_id=`aws ecs update-service \
+    --format json \
     --cluster "${cluster}" \
     --service "${service}" \
     --desired-count 1 \
@@ -211,6 +215,7 @@ function doitstage() {
   while [ "${task_arn}" == "null" ]; do
     sleep 5
     task_arn=`aws ecs list-tasks \
+      --format json \
       --cluster "${cluster}" \
       --started-by "${deployment_id}" | jq '.["taskArns"][0]' -r -`
   done
@@ -239,6 +244,7 @@ function doitstage() {
     # through the loop. We use 2>&1 to capture stdout and stderr so that we
     # swallow any expected "logs not created yet" error messages.
     events=$(aws logs get-log-events \
+      --format json
       --log-group-name "${cluster}/${service_base}" \
       --log-stream-name "ecs/${drupal_container_name}/${task_id}" \
       --next-token "${next_forward_token}" 2>&1)
@@ -275,6 +281,47 @@ function doitstage() {
   doitcomment "Login:" "https://${service}.digital-staging.boston.gov/user?local"
   doitcomment "Web console:" "https://${service}.digital-staging.boston.gov/webconsole.php"
   doitcomment "CloudWatch logs:" "${logs_url}"
+}
+
+function doitstashdb() {
+  subcommand="${args[0]}"
+
+  if [ -z "${AWS_S3_DATABASE_URL}" ]; then
+    echo '$AWS_S3_DATABASE_URL not set. You must run this command on staging.'
+    exit -1
+  fi
+
+  s3_dump_location="${AWS_S3_DATABASE_URL}/dump.sql.gz"
+
+  if [ "${subcommand}" = "reset" ]; then
+    doitcomment "Deleting database dump from S3."
+    aws s3 rm "${s3_dump_location}"
+    exit
+  fi
+
+  if [ "${subcommand}" = "fetch" ]; then
+    doitcomment "Fetching dump from S3"
+
+    aws s3 cp "${AWS_S3_DATABASE_URL}/dump.sql.gz" /tmp/ || doitcomment "dump.sql.gz not found on S3"
+
+    if [ -f /tmp/dump.sql.gz ]; then
+      doitcomment "Ungzipping"
+      gunzip /tmp/dump.sql.gz
+      # Allows the Apache user to overwrite this
+      chmod a+w /tmp/dump.sql
+    fi
+
+    exit
+  fi
+
+  doitcomment "Dumping database SQL."
+  drush --root=/boston.gov/docroot sql-dump > /tmp/dump.sql
+
+  doitcomment "Gzipping dump."
+  gzip /tmp/dump.sql
+
+  doitcomment "Uploading to S3."
+  aws s3 cp --no-progress /tmp/dump.sql.gz "${s3_dump_location}"
 }
 
 # Quick cheatsheet of common commands.
@@ -379,6 +426,8 @@ if [[ -n "$command" ]]; then
     doitserve
   elif [[ $command == "stage" ]]; then
     doitstage
+  elif [[ $command == "stash-db" ]]; then
+    doitstashdb
   else
     echo "$command is not a valid command. Please use \"./doit help\" to see what is available."
   fi
