@@ -27,9 +27,20 @@ else
   chmod 400 /root/.ssh/id_rsa
 fi
 
+./doit stash-db fetch
+
+if [ -f /tmp/dump.sql ]; then
+  # This read in build.xml and causes us to initialize from /tmp/dump.sql rather
+  # than from a sync from staging.
+  db_from=dump
+else
+  # The default, which pulls from staging.
+  db_from=sync
+fi
+
 # Sets up the database by initializing from the latest copy of the staging DB
 # from Acquia, then runs local unapplied install hooks.
-./task.sh build:local
+./task.sh -Dproject.build_db_from=$db_from build:local
 
 # Necessary so that Apache can write proxied assets to the filesystem.
 chown -R www-data /boston.gov/docroot/sites/default/files 
