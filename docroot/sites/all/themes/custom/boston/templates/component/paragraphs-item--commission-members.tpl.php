@@ -26,27 +26,31 @@
  */
 ?>
 
-<div class="sh">
-  <?php print render($content['field_component_title']) ?>
-</div>
+<div class="b b--w b--fw">
+  <div class="b-c">
+    <div class="sh">
+      <?php print render($content['field_component_title']) ?>
+    </div>
 
-<table border="1" cellpadding="1" cellspacing="1" class="responsive-table responsive-table--horizontal">
-  <thead>
-    <tr>
-      <th>Member</th>
-      <th>Appointed</th>
-      <th>Expires</th>
-      <th>Status</th>
-    </tr>
-  </thead>
-  <tbody>
-    <?php foreach($content['members'] as $member) { ?>
-    <tr>
-      <td data-label="Member"><?php print check_plain($member['name']) ?></td>
-      <td data-label="Appointed"><?php print $member['appointed'] ?></td>
-      <td data-label="Expires"><?php print $member['expires'] ?></td>
-      <td data-label="Status"><?php print check_plain($member['status']) ?></td>
-    </tr>
-    <?php } ?>
-  </tbody>
-</table>
+    <table border="1" cellpadding="1" cellspacing="1" class="responsive-table responsive-table--horizontal m-t300">
+      <thead>
+        <tr>
+          <th>Member</th>
+          <th>Appointed</th>
+          <th>Expires</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php foreach($content['members'] as $member) { ?>
+        <tr>
+          <td data-label="Member"><?php print check_plain($member['name']) ?></td>
+          <td data-label="Appointed"><?php print $member['appointed'] ?></td>
+          <td data-label="Expires"><?php print $member['expires'] ?></td>
+          <td data-label="Status"><?php print check_plain($member['status']) ?></td>
+        </tr>
+        <?php } ?>
+      </tbody>
+    </table>
+  </div>
+</div>

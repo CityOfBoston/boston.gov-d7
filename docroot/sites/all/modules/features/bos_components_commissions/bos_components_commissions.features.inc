@@ -21,14 +21,19 @@ function bos_components_commissions_ctools_plugin_api($module = NULL, $api = NUL
  */
 function bos_components_commissions_paragraphs_info() {
   $items = array(
-    'commission_info' => array(
-      'name' => 'Commission Info',
-      'bundle' => 'commission_info',
+    'commission_contact_info' => array(
+      'name' => 'Commission Contact Info',
+      'bundle' => 'commission_contact_info',
       'locked' => '1',
     ),
     'commission_members' => array(
       'name' => 'Commission Members',
       'bundle' => 'commission_members',
+      'locked' => '1',
+    ),
+    'commission_summary' => array(
+      'name' => 'Commission Summary',
+      'bundle' => 'commission_summary',
       'locked' => '1',
     ),
   );

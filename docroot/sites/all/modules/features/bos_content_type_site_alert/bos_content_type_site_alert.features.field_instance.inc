@@ -206,6 +206,7 @@ function bos_content_type_site_alert_field_default_field_instances() {
         'bos311' => -1,
         'cabinet' => -1,
         'city_score_dashboard' => -1,
+        'commission_contact_info' => -1,
         'custom_hours_text' => -1,
         'daily_hours' => -1,
         'discussion_topic' => -1,

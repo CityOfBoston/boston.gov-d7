@@ -1162,6 +1162,7 @@ function bos_content_type_place_profile_field_default_field_instances() {
       'add_mode' => 'select',
       'allowed_bundles' => array(
         '3_column_w_image' => -1,
+        'commission_contact_info' => -1,
         'custom_hours_text' => -1,
         'daily_hours' => -1,
         'document' => 'document',
@@ -1343,6 +1344,7 @@ function bos_content_type_place_profile_field_default_field_instances() {
       'add_mode' => 'select',
       'allowed_bundles' => array(
         '3_column_w_image' => -1,
+        'commission_contact_info' => -1,
         'custom_hours_text' => 'custom_hours_text',
         'daily_hours' => 'daily_hours',
         'document' => -1,
