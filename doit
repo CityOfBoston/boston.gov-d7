@@ -198,7 +198,7 @@ function doitstage() {
   # ECS UI to put the service on the latest task definition.
   doitcomment "Updating service ${service}."
   deployment_id=`aws ecs update-service \
-    --format json \
+    --output json \
     --cluster "${cluster}" \
     --service "${service}" \
     --desired-count 1 \
@@ -215,7 +215,7 @@ function doitstage() {
   while [ "${task_arn}" == "null" ]; do
     sleep 5
     task_arn=`aws ecs list-tasks \
-      --format json \
+      --output json \
       --cluster "${cluster}" \
       --started-by "${deployment_id}" | jq '.["taskArns"][0]' -r -`
   done
@@ -244,7 +244,7 @@ function doitstage() {
     # through the loop. We use 2>&1 to capture stdout and stderr so that we
     # swallow any expected "logs not created yet" error messages.
     events=$(aws logs get-log-events \
-      --format json
+      --output json \
       --log-group-name "${cluster}/${service_base}" \
       --log-stream-name "ecs/${drupal_container_name}/${task_id}" \
       --next-token "${next_forward_token}" 2>&1)
