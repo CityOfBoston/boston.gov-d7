@@ -153,7 +153,8 @@ function bos_components_commissions_preprocess_entity(&$variables) {
     bos_components_commissions_add_members($variables);
   }
 
-  if ($variables['elements']['#bundle'] == 'commission_info') {
+  if ($variables['elements']['#bundle'] == 'commission_contact_info' ||
+      $variables['elements']['#bundle'] == 'commission_summary') {
     bos_components_commissions_add_info($variables);
   }
 }

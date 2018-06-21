@@ -85,37 +85,37 @@ function doitserve() {
 # Initialize Boston.gov (create db and set profile info).
 function doitinitbos() {
   doitcomment "Initializing Boston.gov" "with a fresh database."
-  docker exec -t bostongov_drupal_1 scripts/init-docker-container.sh
+  docker exec -it bostongov_drupal_1 scripts/init-docker-container.sh
 }
 
 # Initialize the Hub (create db and set profile info).
 function doitinithub() {
   doitcomment "Initializing the Hub" "with a fresh database."
-  docker exec -t bostongov_drupal_1 scripts/init-docker-container.sh hub
+  docker exec -it bostongov_drupal_1 scripts/init-docker-container.sh hub
 }
 
 # Build Boston.gov with staging db.
 function doitbuildbos() {
   doitcomment "Running build for Boston.gov" "with Behat tests"
-  docker exec -t bostongov_drupal_1 ./task.sh -Dbehat.run-server=true build:test
+  docker exec -it bostongov_drupal_1 ./task.sh -Dbehat.run-server=true build:test
 }
 
 # Ran Behat test on the Boston.gov
 function doittestbos() {
   doitcomment "Running Behat against" "Boston.gov"
-  docker exec -t bostongov_drupal_1 ./vendor/bin/behat tests/behat/features --config=tests/behat/local.yml -p local
+  docker exec -it bostongov_drupal_1 ./vendor/bin/behat tests/behat/features --config=tests/behat/local.yml -p local
 }
 
 # Build the Hub with staging db.
 function doitbuildhub() {
   doitcomment "Running build for the Hub" "with Behat tests"
-  docker exec -t bostongov_drupal_1 ./hub-task.sh -Dbehat.run-server=true build:test:hub
+  docker exec -it bostongov_drupal_1 ./hub-task.sh -Dbehat.run-server=true build:test:hub
 }
 
 # Ran Behat test on the Hub.
 function doittesthub() {
   doitcomment "Running Behat against" "the Hub"
-  docker exec -t bostongov_drupal_1 ./vendor/bin/behat tests/behat/features --config=tests/behat/local.yml -p hub
+  docker exec -it bostongov_drupal_1 ./vendor/bin/behat tests/behat/features --config=tests/behat/local.yml -p hub
 }
 
 # Copy files from the staging site to your local environment.
@@ -370,10 +370,10 @@ function doitdrush() {
       first_char=${args:0:1}
       if [[ $first_char == "@" ]]; then
         echo "Command is using drush alias on remote, not setting root"
-        docker exec bostongov_drupal_1 $command $args
+        docker exec -it bostongov_drupal_1 $command $args
       else
         echo "Setting root to /boston.gov/docroot"
-        docker exec bostongov_drupal_1 $command $args --root=/boston.gov/docroot
+        docker exec -it bostongov_drupal_1 $command $args --root=/boston.gov/docroot
       fi
     fi
   fi

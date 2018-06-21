@@ -140,6 +140,7 @@ function bos_drawers_component_field_default_field_instances() {
       'allowed_bundles' => array(
         '3_column_w_image' => -1,
         'cabinet' => -1,
+        'commission_contact_info' => -1,
         'custom_hours_text' => -1,
         'daily_hours' => -1,
         'document' => -1,

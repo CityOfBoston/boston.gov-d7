@@ -287,6 +287,7 @@ function bos_components_sidebar_field_default_field_instances() {
       'add_mode' => 'select',
       'allowed_bundles' => array(
         '3_column_w_image' => -1,
+        'commission_contact_info' => -1,
         'document' => -1,
         'external_link' => -1,
         'featured_item' => -1,
