@@ -41,6 +41,26 @@
 
     <div class="g m-t500">
       <div class="g--8">
+        <?php if ($content['department_name']) { ?>
+          <div class="list-item">
+            <?php
+            $department_name = check_plain($content['department_name']);
+            $department_url = check_plain($content['department_url']);
+            if ($department_url) {
+              $department_content = <<<HTML
+                <a href="$department_url">$department_name</a>
+HTML;
+            } else {
+              $department_content = $department_name;
+            }
+            print theme('detail_item', array(
+              'label' => 'Department:',
+              'body' => $department_content,
+              'classes' => $detail_item_classes,
+            ));
+            ?>
+          </div>
+        <?php } ?>
         <?php if ($content['authority']) { ?>
         <div class="list-item">
           <?php
@@ -91,10 +111,10 @@
       </div>
 
       <div class="g--4">
-        <?php if ($content['enabling_legislation_url']) { ?>
         <div class="list-item">
           <i>Resources:</i>
 
+          <?php if ($content['enabling_legislation_url']) { ?>
           <div class="detail-item__body--secondary">
             <div class="link-wrapper external-link">
               <a href="<? print render($content['enabling_legislation_url']) ?>"
@@ -103,8 +123,17 @@
               </a>
             </div>
           </div>
+          <?php } ?>
+
+          <div class="detail-item__body--secondary">
+            <div class="link-wrapper external-link">
+              <a href="https://www.cityofboston.gov/boardsandcommissions/Default.aspx"
+                target="_blank">
+                Boards and commissions information
+              </a>
+            </div>
+          </div>
         </div>
-        <?php } ?>
 
         <?php if ($content['apply_url']) { ?>
         <div class="list-item" style="border-bottom: none">
