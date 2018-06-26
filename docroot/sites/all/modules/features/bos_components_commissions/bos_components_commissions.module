@@ -113,6 +113,7 @@ function bos_components_commissions_add_info(&$variables) {
       authority
       contactEmail
       contactName
+      contactPhone
       department {
         name
         homepageUrl
@@ -134,6 +135,7 @@ EOF
   $variables['content']['authority'] = $info['authority'];
   $variables['content']['contact_email'] = $info['contactEmail'];
   $variables['content']['contact_name'] = $info['contactName'];
+  $variables['content']['contact_phone'] = $info['contactPhone'];
   $variables['content']['seats'] = $info['seats'];
   $variables['content']['stipend'] = money_format("$%n", $info['stipend']);
   $variables['content']['term'] = $info['term'];
