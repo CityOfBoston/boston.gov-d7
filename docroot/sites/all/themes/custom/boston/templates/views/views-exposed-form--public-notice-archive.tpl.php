@@ -21,7 +21,7 @@
  *
  * @ingroup views_templates
  */
-
+$counter = 0;
 ?>
 <?php if (!empty($q)): ?>
   <?php
@@ -38,11 +38,10 @@
   <div class="views-exposed-widgets clearfix">
     <?php foreach($widget_groups as $group_id => $widget_group): ?>
       <div class="drawer-wrapper">
-        <div class="drawer-trigger">
-            <div class="drawer-trigger-chevron"></div>
+        <button type="button" aria-expanded="true/false" aria-controls="drawer-<?php print $counter; ?>" class="drawer-trigger">            <div class="drawer-trigger-chevron"></div>
             <?php print $group_id; ?>
-        </div>
-        <div class="drawer drawer-<?php print $group_id; ?>">
+        </button>
+        <div id="drawer-<?php print $counter++; ?>" class="clearfix drawer drawer-<?php print $group_id; ?>">
           <?php foreach ($widget_group as $widget_id => $widget): ?>
             <div id="<?php print $widget->id; ?>-wrapper" class="views-exposed-widget views-widget-<?php print $widget_id; ?>">
               <?php if (!empty($widget->label)): ?>
