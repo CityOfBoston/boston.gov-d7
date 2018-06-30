@@ -5,3 +5,32 @@
  */
 
 include_once 'bos_component_news_announcements.features.inc';
+
+/**
+ * Implements hook_views_post_execute().
+ */
+function bos_component_news_announcements_views_post_execute(&$view) {
+  if ($view->name == "news_announcements") {
+    /*
+     * Cleans out the featured post from the latest posts.
+     */
+    if (isset($view->args[0]) && $node = node_load($view->args[0])) {
+      $components = field_get_items('node', $node, "field_components", $node->language);
+      foreach ($components as $component) {
+        if (isset($component['entity']) && $component['entity']->bundle == "news_announcements") {
+          $featured_post = field_get_items('paragraphs_item', $component['entity'], "field_featured_post", $node->language)[0]['target_id'];
+          foreach ($view->result as $key => $result) {
+            if ($result->nid == $featured_post) {
+              unset($view->result[$key]);
+            }
+          }
+          $view->result = array_values($view->result);
+        }
+      }
+    }
+    do {
+      unset($view->result[$key]);
+      $view->result = array_values($view->result);
+    } while (isset($view->result[4]));
+  }
+}
