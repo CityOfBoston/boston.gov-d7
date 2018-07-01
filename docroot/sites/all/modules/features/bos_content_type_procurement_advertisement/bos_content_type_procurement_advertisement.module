@@ -78,6 +78,104 @@ function bos_content_type_procurement_advertisement_form_procurement_advertiseme
     'visible' => array(
       ':input[name="field_bid_type[und]"]' => array('value' => $paper_tid),
     ),
+    'required' => array(
+      ':input[name="field_bid_type[und]"]' => array('value' => $paper_tid),
+    ),
+  );
+  // Address 1.
+  // Remove default required validation so form saves if Paper is not selected.
+  $form['field_delivery_address']['und'][0]['street_block']['thoroughfare']['#required'] = FALSE;
+  // Add asterisk to visually show user what is required before form submission.
+  $form['field_delivery_address']['und'][0]['street_block']['thoroughfare']['#states'] = array(
+    'required' => array(
+      // Check that Paper is selected for Bid Type.
+      ':input[name="field_bid_type[und]"]' => array('value' => $paper_tid),
+    ),
+  );
+  // City.
+  // Remove default required validation so form saves if Paper is not selected.
+  $form['field_delivery_address']['und'][0]['locality_block']['locality']['#required'] = FALSE;
+  // Add asterisk to visually show user what is required before form submission.
+  $form['field_delivery_address']['und'][0]['locality_block']['locality']['#states'] = array(
+    'required' => array(
+      // Check that Paper is selected for Bid Type.
+      ':input[name="field_bid_type[und]"]' => array('value' => $paper_tid),
+    ),
+  );
+  // ZIP code.
+  // Remove default required validation so form saves if Paper is not selected.
+  $form['field_delivery_address']['und'][0]['locality_block']['postal_code']['#required'] = FALSE;
+  // Add asterisk to visually show user what is required before form submission.
+  $form['field_delivery_address']['und'][0]['locality_block']['postal_code']['#states'] = array(
+    'required' => array(
+      // Check that Paper is selected for Bid Type.
+      ':input[name="field_bid_type[und]"]' => array('value' => $paper_tid),
+    ),
+  );
+  // State.
+  // Remove default required validation so form saves if Paper is not selected.
+  $form['field_delivery_address']['und'][0]['locality_block']['administrative_area']['#required'] = FALSE;
+  // Add asterisk to visually show user what is required before form submission.
+  $form['field_delivery_address']['und'][0]['locality_block']['administrative_area']['#states'] = array(
+    'required' => array(
+      // Check that Paper is selected for Bid Type.
+      ':input[name="field_bid_type[und]"]' => array('value' => $paper_tid),
+    ),
+  );
+  // Country.
+  // Remove default required validation so form saves if Paper is not selected.
+  $form['field_delivery_address']['und'][0]['country']['#required'] = FALSE;
+  // Add asterisk to visually show user what is required before form submission.
+  $form['field_delivery_address']['und'][0]['country']['#states'] = array(
+    'required' => array(
+      // Check that Paper is selected for Bid Type.
+      ':input[name="field_bid_type[und]"]' => array('value' => $paper_tid),
+    ),
   );
 
+  // Add custom validation since above required states are client-side only.
+  $form['#validate'][] = 'bos_content_type_procurement_advertisement_form_validate';
+
+}
+
+/**
+ * Form validate callback.
+ */
+function bos_content_type_procurement_advertisement_form_validate($form, $form_state) {
+  $terms = taxonomy_get_term_by_name('Paper', 'bid_type');
+  // Get the actual TID from the term object.
+  foreach ($terms as $term) {
+    // Assign TID to variable to be checked in Bid Type.
+    $paper_tid = $term->tid;
+  }
+  // Make sure 'Paper' is selected in Bid Type field.
+  if ($form_state['values']['field_bid_type']['und'][0]['target_id'] == $paper_tid) {
+    // Created variables for user inputted values.
+    $address_1 = $form_state['values']['field_delivery_address']['und'][0]['thoroughfare'];
+    $city = $form_state['values']['field_delivery_address']['und'][0]['locality'];
+    $state = $form_state['values']['field_delivery_address']['und'][0]['administrative_area'];
+    $zip_code = $form_state['values']['field_delivery_address']['und'][0]['postal_code'];
+    $country = $form_state['values']['field_delivery_address']['und'][0]['country'];
+    // Assign readable titles to each user inputted value.
+    $required_fields = array(
+      "Address 1" => $address_1,
+      "City" => $city,
+      "State" => $state,
+      "ZIP code" => $zip_code,
+      "Country" => $country,
+    );
+    // Create a placeholder array for all required fields without values.
+    $empty_required_fields = [];
+    foreach ($required_fields as $field_name => $field_value) {
+      if (!$field_value) {
+        // Compose error message for required fields that are missing values.
+        $empty_required_fields[] = "Please fill out the '$field_name' field when selecting 'Paper' as Bid Type";
+      }
+    }
+    // Make sure there are required fields missing input.
+    if (count($empty_required_fields) > 0) {
+      // Block form submission and display help text to user about empty fields.
+      form_set_error('Paper Bid Type Address Errors', theme('item_list', array('items' => $empty_required_fields)));
+    }
+  }
 }
