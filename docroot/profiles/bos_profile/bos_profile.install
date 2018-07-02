@@ -55,6 +55,7 @@ function bos_profile_install() {
   bos_profile_update_7037();
   bos_profile_update_7038();
   bos_profile_update_7039();
+  bos_profile_update_7040();
 }
 
 /**
@@ -1183,6 +1184,15 @@ function bos_profile_update_7039() {
   metatag_config_save($config);
 }
 
+/**
+ * Updates media 2.0-beta1 to 2.19 and remove patch.
+ */
+function bos_profile_update_7040() {
+  $disabled_modules = array(
+    'media_wysiwyg_view_mode',
+  );
+  module_disable($disabled_modules);
+}
 
 /*******************************************************************
 Any new migrations need to also be added to bos_profile_install so that
