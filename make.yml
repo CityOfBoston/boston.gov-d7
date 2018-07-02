@@ -164,7 +164,7 @@ projects:
   masquerade:
     version: 1.0-rc7
   media:
-    version: 2.19-beta1
+    version: 2.19
   memcache:
     version: 1.5
   menu_target:
