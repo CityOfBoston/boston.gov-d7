@@ -55,6 +55,7 @@ function bos_profile_install() {
   bos_profile_update_7037();
   bos_profile_update_7038();
   bos_profile_update_7039();
+  bos_profile_update_7040();
 }
 
 /**
@@ -1181,6 +1182,16 @@ function bos_profile_update_7039() {
   $config->config['apple-touch-icon']['value'] = "/apple-touch-icon.png";
   $config->config['apple-touch-icon-precomposed']['value'] = "/apple-touch-icon-precomposed.png";
   metatag_config_save($config);
+}
+
+/**
+ * Update for 5/9/18
+ */
+function bos_profile_update_7040() {
+  $disabled_modules = array(
+    'media_wysiwyg_view_mode',
+  );
+  module_disable($disabled_modules);
 }
 
 

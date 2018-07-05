@@ -56,7 +56,6 @@ dependencies[] = libraries
 dependencies[] = linkit
 dependencies[] = media
 dependencies[] = media_wysiwyg
-dependencies[] = media_wysiwyg_view_mode
 dependencies[] = menu_block
 dependencies[] = menu_target
 dependencies[] = pathauto

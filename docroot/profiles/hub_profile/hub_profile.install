@@ -35,7 +35,7 @@ function hub_profile_install() {
   hub_profile_update_7022();
   hub_profile_update_7023();
   hub_profile_update_7024();
-
+  hub_profile_update_7025();
 }
 
 /**
@@ -541,6 +541,16 @@ function hub_profile_update_7024() {
     taxonomy_term_save($newterm);
   }
 
+}
+
+/**
+ * Update for 5/9/18
+ */
+function hub_profile_update_7025() {
+  $disabled_modules = array(
+    'media_wysiwyg_view_mode',
+  );
+  module_disable($disabled_modules);
 }
 
 /*******************************************************************
