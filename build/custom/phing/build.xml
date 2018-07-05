@@ -26,10 +26,10 @@
   </target>
 
   <target name="setenv:hub" description="Specify hub for drush.">
-      <exec command="${composer.bin}/drush use hub" logoutput="true"/>
+      <exec dir="${docroot}" command="${composer.bin}/drush use hub" logoutput="true"/>
   </target>
   <target name="setenv:default" description="Specify hub for drush.">
-      <exec command="${composer.bin}/drush use default" logoutput="true"/>
+      <exec dir="${docroot}" command="${composer.bin}/drush use default" logoutput="true"/>
   </target>
 
   <!-- @todo Re-enable Behat tests by adding tests:behat as a dependency! -->
