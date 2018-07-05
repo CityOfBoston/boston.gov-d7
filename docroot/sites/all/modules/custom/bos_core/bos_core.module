@@ -418,22 +418,46 @@ function bos_core_field_get_link_url($link) {
   $url = NULL;
 
   if ($link->field_lightbox_link) {
-    $url = $link->field_lightbox_link["und"][0]["url"];
+    $url = $link->field_lightbox_link[$link->langcode()][0]["url"];
   }
 
-  if ($link->field_external_link) {
-    $url = $link->field_external_link["und"][0]["url"];
+  elseif ($link->field_external_link) {
+    $url = $link->field_external_link[$link->langcode()][0]["url"];
   }
 
-  if ($link->field_internal_link) {
-    $url = url('node/' . $link->field_internal_link["und"][0]["target_id"]);
+  elseif ($link->field_internal_link) {
+    $url = url('node/' . $link->field_internal_link[$link->langcode()][0]["target_id"]);
   }
 
-  if ($link->field_document) {
-    $url = file_create_url($link->field_document["und"][0]["uri"]);
+  elseif ($link->field_document) {
+    $url = file_create_url($link->field_document[$link->langcode()][0]["uri"]);
   }
 
   return $url;
+}
+
+/**
+ * Take a link reference and return the URL target.
+ */
+function bos_core_field_get_link_attributes($link) {
+  $attr = array();
+
+  if ($link->field_lightbox_link) {
+    $attr = $link->field_lightbox_link[$link->langcode()][0]["attributes"];
+  }
+
+  elseif ($link->field_external_link) {
+    $attr = $link->field_external_link[$link->langcode()][0]["attributes"];
+  }
+
+  $out = "";
+  if (!empty($attr)) {
+    foreach ($attr as $attribute => $value) {
+      $out .= " " . $attribute . '="' . $value . '"';
+    }
+  }
+
+  return $out;
 }
 
 /**
