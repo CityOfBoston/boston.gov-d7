@@ -38,7 +38,16 @@
               <phingcall target="setup:drupal:install"/>
           </then>
           <else>
-              <phingcall target="local:sync"/>
+              <if>
+                  <equals arg1="${project.build_db_from}" arg2="dump" />
+                  <then>
+                      <exec dir="${docroot}" command="${drush.cmd} sql-create -y" logoutput="true"/>
+                      <exec dir="${docroot}" command="${drush.cmd} sql-cli &lt; /tmp/dump.sql" logoutput="true"/>
+                  </then>
+                  <else>
+                      <phingcall target="local:sync"/>
+                  </else>
+              </if>
               <phingcall target="local:update"/>
           </else>
       </if>

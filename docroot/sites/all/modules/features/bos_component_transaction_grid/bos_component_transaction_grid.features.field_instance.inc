@@ -41,7 +41,7 @@ function bos_component_transaction_grid_field_default_field_instances() {
     'settings' => array(
       'add_mode' => 'button',
       'allowed_bundles' => array(
-        'document' => -1,
+        'document' => 'document',
         'external_link' => 'external_link',
         'group_of_links_grid' => -1,
         'internal_link' => 'internal_link',

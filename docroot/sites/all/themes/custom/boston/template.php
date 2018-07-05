@@ -682,10 +682,9 @@ function boston_preprocess_paragraphs_item_card(&$variables) {
     $link = paragraphs_item_load($link_id);
 
     // Return the url
-    $url = bos_core_field_get_link_url($link);
+    $variables['card_url'] = bos_core_field_get_link_url($link);
+    $variables['card_attr'] = bos_core_field_get_link_attributes($link);
   }
-
-  $variables['card_url'] = $url;
 
   if ($link->field_lightbox_link) {
       drupal_add_css('https://cdnjs.cloudflare.com/ajax/libs/lity/2.3.1/lity.min.css', array(
