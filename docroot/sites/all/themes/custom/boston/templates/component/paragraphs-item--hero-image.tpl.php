@@ -65,7 +65,7 @@
     </div>
     <?php if (!isset($content['field_grid_link'])): ?>
       <div class="the-b the-b--c">
-        <img src="<?php print $asset_url ?>/images/b-light.svg" alt="B Logo" class="the-b-i">
+        <img src="<?php print $asset_url ?>/images/b-light.svg" alt="City of Boston" class="the-b-i">
       </div>
     <?php endif; ?>
   </div>

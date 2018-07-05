@@ -993,6 +993,7 @@ function bos_content_type_department_profile_field_default_field_instances() {
       'add_mode' => 'button',
       'allowed_bundles' => array(
         '3_column_w_image' => -1,
+        'commission_contact_info' => -1,
         'custom_hours_text' => 'custom_hours_text',
         'daily_hours' => 'daily_hours',
         'document' => -1,

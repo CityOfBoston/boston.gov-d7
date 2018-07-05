@@ -13,6 +13,35 @@ function bos_content_type_event_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_cancelled|node|event|form';
+  $field_group->group_name = 'group_cancelled';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'event';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_event_details';
+  $field_group->data = [
+    'label' => 'Cancel Event',
+    'weight' => '44',
+    'children' => [
+      0 => 'field_cancel_event',
+      1 => 'field_extra_info_event',
+    ],
+    'format_type' => 'fieldset',
+    'format_settings' => [
+      'formatter' => 'collapsible',
+      'instance_settings' => [
+        'description' => '',
+        'classes' => 'group-cancelled field-group-fieldset',
+        'required_fields' => 1,
+        'id' => '',
+      ],
+    ],
+  ];
+  $field_groups['group_cancelled|node|event|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_components|node|event|form';
   $field_group->group_name = 'group_components';
   $field_group->entity_type = 'node';
@@ -115,8 +144,9 @@ function bos_content_type_event_field_group_info() {
       0 => 'field_event_contact',
       1 => 'field_phone_number',
       2 => 'field_email',
-      3 => 'group_event_information',
-      4 => 'group_event_location',
+      3 => 'group_cancelled',
+      4 => 'group_event_information',
+      5 => 'group_event_location',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -141,7 +171,7 @@ function bos_content_type_event_field_group_info() {
   $field_group->parent_name = 'group_event_details';
   $field_group->data = array(
     'label' => 'Event Information',
-    'weight' => '44',
+    'weight' => '45',
     'children' => array(
       0 => 'field_cost',
       1 => 'field_details_link',
@@ -286,6 +316,7 @@ function bos_content_type_event_field_group_info() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Basic Information');
+  t('Cancel Event');
   t('Components');
   t('Event Dates');
   t('Event Details');

@@ -686,6 +686,23 @@ function boston_preprocess_paragraphs_item_card(&$variables) {
   }
 
   $variables['card_url'] = $url;
+
+  if ($link->field_lightbox_link) {
+      drupal_add_css('https://cdnjs.cloudflare.com/ajax/libs/lity/2.3.1/lity.min.css', array(
+          'type' => 'external',
+          'scope' => 'header',
+      ));
+
+      drupal_add_js('https://cdnjs.cloudflare.com/ajax/libs/lity/2.3.1/lity.min.js', array(
+          'every_page' => TRUE,
+      ));
+      $variables['isLightbox'] = 1;
+  } else {
+      $variables['isLightbox'] = 0;
+  }
+
+
+
 }
 
 function boston_preprocess_field_field_how_to_tabs(&$variables) {
@@ -977,6 +994,11 @@ function boston_preprocess_node_event(&$variables) {
 
   $variables['live_stream_active'] = 0;
 
+  $cancelled = field_get_items('node', $variables['node'], 'field_cancel_event');
+  if ($cancelled[0]['value']) {
+    $variables['is_cancelled'] = TRUE;
+  }
+
   if ($components_field) {
     foreach ($components_field as $comp) {
       $comp_entity_id_array[] = $comp['value'];
@@ -1069,7 +1091,7 @@ function boston_preprocess_node_procurement_advertisement(&$variables) {
     $now = time();
 
     $variables['is_closed'] = $end_date < $now;
-    
+
     $variables['start_date'] = date('n/j/Y - g:ia', $start_date);
     $variables['end_date'] = date('n/j/Y - g:ia', $end_date);
     $variables['due_date'] = date('F j, Y', $end_date);
@@ -1334,8 +1356,13 @@ function boston_preprocess_paragraphs_item_message_for_the_day(&$variables) {
   // field_alert_icon fields on the message for the day to be rendered.
   $variables['content']['field_title'] = field_view_field('node', $status_item, 'field_title', 'full');
   $variables['content']['field_icon'] = field_view_field('node', $status_item, 'field_icon', 'full');
-  $variables['icon'] = file_get_contents(drupal_realpath(trim(render($variables['content']['field_icon'][0]))));
-  $variables['icon'] = filter_xss($variables['icon'], explode(' ', BOS_CORE_SVG_ELEMENTS));
+  $filename = drupal_realpath(trim(render($variables['content']['field_icon'][0])));
+  // We can't find the file by default in dev, so we avoid trying to
+  // do the file_get_contents piece below.
+  if ($filename) {
+    $variables['icon'] = file_get_contents($filename);
+    $variables['icon'] = filter_xss($variables['icon'], explode(' ', BOS_CORE_SVG_ELEMENTS));
+  }
 
   $link_id = bos_core_field_get_first_item('paragraphs_item', $variables['paragraphs_item'], 'field_link')['value'];
 
@@ -1847,6 +1874,9 @@ function boston_preprocess_paragraphs_item(&$variables) {
 
   if ($theme) {
     $variables['component_theme'] = $theme['value'];
+    if ($theme['value'] == "b" && $variables['paragraphs_item']->bundle == "newsletter") {
+      $variables['component_theme'] .= " b--wt";
+    }
     $variables['section_header_theme'] = $theme['value'] === 'b' ? 'sh--w' : '';
   }
 }
@@ -1967,6 +1997,22 @@ function boston_preprocess_paragraphs_item_external_link(&$variables) {
 /**
  * Implements hook_preprocess_paragraphs_item_BUNDLE().
  */
+function boston_preprocess_paragraphs_item_lightbox_link(&$variables) {
+    $lightbox_link = field_get_items('paragraphs_item', $variables['paragraphs_item'], 'field_lightbox_link');
+
+    if ($lightbox_link !== FALSE) {
+        $variables['lightbox_link_path'] = $lightbox_link[0]['url'];
+        $variables['lightbox_link_title'] = check_plain($lightbox_link[0]['title']);
+    }
+    else {
+        $variables['lightbox_link_path'] = '';
+        $variables['lightbox_link_title'] = '';
+    }
+}
+
+/**
+ * Implements hook_preprocess_paragraphs_item_BUNDLE().
+ */
 function boston_preprocess_paragraphs_item_header_text(&$variables) {
   // In some cases we will need to bring the host content title into the
   // header text component so we can display it within the header text component
@@ -2052,6 +2098,10 @@ function boston_preprocess_field_field_intro_text(&$variables) {
       $variables['classes_array'][] = "squiggle-border-bottom";
     }
   }
+
+  if ($variables['element']['#bundle'] == "hero_image") {
+    boston_preprocess_field_field_component_title($variables);
+  }
 }
 
 /**
@@ -2067,6 +2117,24 @@ function boston_preprocess_field_field_component_title(&$variables) {
       $short_title_link = preg_replace('@^[0-9\s]+@','', strtolower($short_title[0]['safe_value']));
       $variables['short_title_link'] = preg_replace('@[^a-z0-9-]+@','-', $short_title_link);
     }
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function boston_preprocess_field_field_title(&$variables) {
+  if (in_array($variables['element']['#bundle'], ['cabinet', 'fyi'])) {
+    return boston_preprocess_field_field_component_title($variables);
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function boston_preprocess_field_field_topics(&$variables) {
+  if (in_array($variables['element']['#bundle'], ['featured_topics'])) {
+    return boston_preprocess_field_field_component_title($variables);
   }
 }
 

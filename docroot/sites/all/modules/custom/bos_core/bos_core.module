@@ -210,6 +210,11 @@ function bos_core_form_node_form_alter(&$form, &$form_state) {
 /**
  * Provide a list of component names depending on the active profile.
  *
+ * This list controls what’s available in the "components" section of a
+ * content type. Any components not on this list won’t appear, and all
+ * components on this list will appear. (Appended to the end if they
+ * don’t have a weight.)
+ *
  * @return array
  *   List of component names.
  */
@@ -239,6 +244,8 @@ function _bos_core_get_components() {
     'grid_of_cards',
   ];
   $profile_components['bos_profile'] = [
+    'commission_summary',
+    'commission_members',
     'feedback',
     'grid_of_programs_initiatives',
     'grid_of_people',
@@ -409,6 +416,10 @@ function bos_core_field_get_first_item($entity_type, $entity, $field_name) {
  */
 function bos_core_field_get_link_url($link) {
   $url = NULL;
+
+  if ($link->field_lightbox_link) {
+    $url = $link->field_lightbox_link["und"][0]["url"];
+  }
 
   if ($link->field_external_link) {
     $url = $link->field_external_link["und"][0]["url"];

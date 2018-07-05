@@ -90,6 +90,7 @@ function bos_drawer_component_field_default_field_instances() {
       'allowed_bundles' => array(
         '3_column_w_image' => -1,
         'cabinet' => -1,
+        'commission_contact_info' => -1,
         'document' => -1,
         'drawer' => -1,
         'drawers' => -1,

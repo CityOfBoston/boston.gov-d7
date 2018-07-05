@@ -21,7 +21,7 @@
  *
  * @ingroup views_templates
  */
-
+$counter = 0;
 ?>
 <?php if (!empty($q)): ?>
   <?php
@@ -35,13 +35,13 @@
   Filter
 </div>
 <div class="views-exposed-form drawer mobile-only">
-  <div class="views-exposed-widgets clearfix">
+  <bu class="views-exposed-widgets clearfix">
     <?php foreach($widget_groups as $group_id => $widget_group): ?>
-      <div class="drawer-trigger">
+    <button type="button" aria-expanded="true/false" aria-controls="drawer-<?php print $counter; ?>" class="drawer-trigger">
           <div class="drawer-trigger-chevron"></div>
           <span>Filter by <?php print $group_id; ?></span>
-      </div>
-      <div class="drawer">
+    </button>
+      <div id="drawer-<?php print $counter++; ?>" class="clearfix drawer">
         <?php foreach ($widget_group as $widget_id => $widget): ?>
           <div id="<?php print $widget->id; ?>-wrapper" class="views-exposed-widget views-widget-<?php print $widget_id; ?>">
             <?php if (!empty($widget->label)): ?>

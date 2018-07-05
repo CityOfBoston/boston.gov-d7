@@ -343,6 +343,7 @@ function bos_content_type_how_to_field_default_field_instances() {
       'add_mode' => 'button',
       'allowed_bundles' => array(
         '3_column_w_image' => -1,
+        'commission_contact_info' => -1,
         'custom_hours_text' => -1,
         'daily_hours' => -1,
         'document' => -1,
@@ -630,6 +631,7 @@ function bos_content_type_how_to_field_default_field_instances() {
       'add_mode' => 'button',
       'allowed_bundles' => array(
         '3_column_w_image' => -1,
+        'commission_contact_info' => -1,
         'document' => 'document',
         'external_link' => 'external_link',
         'featured_item' => -1,
@@ -1284,6 +1286,7 @@ function bos_content_type_how_to_field_default_field_instances() {
       'add_mode' => 'button',
       'allowed_bundles' => array(
         '3_column_w_image' => -1,
+        'commission_contact_info' => -1,
         'custom_hours_text' => 'custom_hours_text',
         'daily_hours' => 'daily_hours',
         'document' => -1,
@@ -1479,6 +1482,7 @@ function bos_content_type_how_to_field_default_field_instances() {
       'add_mode' => 'button',
       'allowed_bundles' => array(
         '3_column_w_image' => -1,
+        'commission_contact_info' => -1,
         'custom_hours_text' => -1,
         'daily_hours' => -1,
         'document' => -1,

@@ -108,6 +108,7 @@ function bos_content_type_listing_page_field_default_field_instances() {
       'add_mode' => 'button',
       'allowed_bundles' => array(
         '3_column_w_image' => -1,
+        'commission_contact_info' => -1,
         'document' => -1,
         'external_link' => -1,
         'featured_item' => 'featured_item',

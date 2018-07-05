@@ -21,7 +21,7 @@
  *
  * @ingroup views_templates
  */
-
+$i=0;
 ?>
 <?php if (!empty($q)): ?>
   <?php
@@ -30,19 +30,22 @@
   print $q;
   ?>
 <?php endif; ?>
-<div class="co">
+<?php // Note du ticket #973
+      // Manually adds 'view' classes to align with legacy styling and functionality
+      // Manually adds 'drawer' classes to align with legacy styling and functionality
+?>
+<div class="co views-exposed-topbar">
   <input id="collapsible" type="checkbox" class="co-f d-n" aria-hidden=true>
   <label for="collapsible" class="co-t">Filter</label>
-  <div class="co-b p-t200 p-a000--s">
+  <div class="co-b p-t200 p-a000--s view-filters">
     <?php $counter = 0; ?>
     <?php foreach($widget_groups as $group_id => $widget_group): ?>
       <div class="dr dr--sm">
-        <input type="checkbox" id="dr-tr-<?php print $counter ?>" class="dr-tr a11y--h">
-        <label for="dr-tr-<?php print $counter ?>" class="dr-h">
-          <div class="dr-ic"><svg xmlns="http://www.w3.org/2000/svg" viewBox="-2 8.5 18 25"><path class="dr-i" d="M16 21L.5 33.2c-.6.5-1.5.4-2.2-.2-.5-.6-.4-1.6.2-2l12.6-10-12.6-10c-.6-.5-.7-1.5-.2-2s1.5-.7 2.2-.2L16 21z"/></svg></div>
-          <div class="dr-t">Filter by <?php print $group_id; ?></div>
-        </label>
-        <div class="dr-c">
+        <button type="button" aria-expanded="true/false" aria-controls="drawer-<?php print $i; ?>" class="drawer-trigger dr-h">
+          <div class="drawer-trigger-chevron xdr-ic"></div>
+          Filter by <?php print $group_id; ?>
+        </button>
+        <div id="drawer-<?php print $i; ?>" class="dr-c drawer">
           <?php foreach ($widget_group as $widget_id => $widget): ?>
             <div id="<?php print $widget->id; ?>-wrapper" class="views-exposed-widget views-widget-<?php print $widget_id; ?>">
               <?php if (!empty($widget->label)): ?>

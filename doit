@@ -1,0 +1,439 @@
+#!/bin/bash
+
+set -e
+
+# Define colors
+Black='\033[0;30m'
+DarkGray='\033[1;30m'
+Red='\033[0;31m'
+LightRed='\033[1;31m'
+Green='\033[0;32m'
+LightGreen='\033[1;32m'
+BrownOrange='\033[0;33m'
+Yellow='\033[1;33m'
+Blue='\033[0;34m'
+LightBlue='\033[1;34m'
+Purple='\033[0;35m'
+LightPurple='\033[1;35m'
+Cyan='\033[0;36m'
+LightCyan='\033[1;36m'
+LightGray='\033[0;37m'
+White='\033[1;37m'
+NC='\033[0m' # No Color
+
+# Draws "DoIT" in CLI block letters.
+function doitbrand() {
+  echo -e "${LightCyan}     ____________     ${LightPurple} ______________________________________ ${NC} "
+  echo -e "${LightCyan}   ________________   ${LightPurple}|.H.H.H.H.H.H.H.H.H.H.H.H.H.H.H.H.H.H.H|${NC} "
+  echo -e "${LightCyan} ____________________ ${LightPurple}|______________________________________|${NC} "
+  echo -e "${LightCyan} ____       ___ _____ ${LightPurple}  ||_~|~|~|~|~|~|~|~|~|~|~|~|~|~|~|_||  ${NC} "
+  echo -e "${LightCyan}|  _ \  ___|_ _|_   _|${LightPurple}    |______________________________|    ${NC} "
+  echo -e "${LightCyan}| | | |/ _ \| |  | |  ${LightPurple}     | HH |.H.H. Boston .H.H.| HH |     ${NC} "
+  echo -e "${LightCyan}| |_| | (_) | |  | |  ${LightPurple}     | HH ||~|~|City Hall~|~|| HH |     ${NC} "
+  echo -e "${LightCyan}|____/ \___/___| |_|  ${LightPurple}     | __ |__________________| __ |     ${NC} "
+  echo -e "${LightCyan} ____________________ ${LightPurple}     | HH |.H.H.H.'  '.H.H.H.| HH |     ${NC} "
+  echo -e "${LightCyan}   ________________   ${LightPurple}     | HH ||~|~|~|!XX!|~|~|~|| HH |     ${NC} "
+  echo -e "${LightCyan}     ____________     ${LightPurple}     |____|'''''''|~~|'''''''|____|     ${NC} "
+  echo -e "${LightBlue}"
+  echo -e "${NC}"
+  # Image credit: http://www.chris.com/ascii/index.php?art=objects/buildings
+}
+
+# Provide some details on how this tool works.
+function doithelp() {
+  echo $'\r'
+  echo -e "${Yellow}Community Commands:${NC}"
+  echo -e "${LightBlue}  serve${NC}       Starts the containers and runs continuously to show logs."
+  echo -e "${LightBlue}  init-bos${NC}    Creates fresh \"drupal\" db for Boston.gov and sets profile info."
+  echo -e "${LightBlue}  init-hub${NC}    Creates fresh \"hub\" db for the Hub and sets profile info."
+  echo -e "${LightBlue}  start-over${NC}  Deletes all docker-compose containers and rebuilds from scratch."
+  echo -e "${LightBlue}  drush${NC}       Allows you to run drush commands in your container."
+  echo -e "${LightBlue}  mysql${NC}       Opens a MySQL prompt inside the database container."
+  echo -e "${LightBlue}  logs drupal|mysql${NC}  Tails logs from Docker containers"
+  echo $'\r'
+  echo -e "${Yellow}Staff Commands:${NC}"
+  echo -e "${LightBlue}  build-bos${NC}   Builds Boston.gov using a database from staging and runs tests."
+  echo -e "${LightBlue}  build-hub${NC}   Build the Hub using a database from staging and runs tests."
+  echo -e "${LightBlue}  test-bos${NC}    Runs Behat against Boston.gov database."
+  echo -e "${LightBlue}  test-hub${NC}    Runs Behat against the Hub database."
+  echo -e "${LightBlue}  sync-files${NC}  Gets the \"sites/default/files\" directory from staging."
+  echo -e "${LightBlue}  cheatsheet${NC}  List of drush commands helpful to City of Boston (COB) dev."
+  echo -e "${LightBlue}  stage <variant>${NC}       Build and push a container to the staging cluster"
+  echo $'\r'
+  echo -e "${Yellow}Staging Commands:${NC}"
+  echo -e "${LightBlue}  stash-db${NC}    Run on staging webconsole.php to save the variant’s database."
+  echo $'\r'
+}
+
+# Use docker-compose to start the containers.
+function doitserve() {
+  doitcomment "Starting containers using" "docker-compose up"
+  echo -ne "******************************************************************"
+  echo $'\r'
+  echo -ne "*** This command will continue to run so you can see the logs  ***"
+  echo $'\r'
+  echo -ne "*** Open in a new window to continue working in this directory ***"
+  echo $'\r'
+  echo -ne "*** You can exit the prompt and stop containers with \"Ctrl+C\"  ***"
+  echo $'\r'
+  echo -ne "******************************************************************"
+  echo $'\r'
+  echo $'\r'
+  docker-compose up
+}
+
+# Initialize Boston.gov (create db and set profile info).
+function doitinitbos() {
+  doitcomment "Initializing Boston.gov" "with a fresh database."
+  docker exec -it bostongov_drupal_1 scripts/init-docker-container.sh
+}
+
+# Initialize the Hub (create db and set profile info).
+function doitinithub() {
+  doitcomment "Initializing the Hub" "with a fresh database."
+  docker exec -it bostongov_drupal_1 scripts/init-docker-container.sh hub
+}
+
+# Build Boston.gov with staging db.
+function doitbuildbos() {
+  doitcomment "Running build for Boston.gov" "with Behat tests"
+  docker exec -it bostongov_drupal_1 ./task.sh -Dbehat.run-server=true build:test
+}
+
+# Ran Behat test on the Boston.gov
+function doittestbos() {
+  doitcomment "Running Behat against" "Boston.gov"
+  docker exec -it bostongov_drupal_1 ./vendor/bin/behat tests/behat/features --config=tests/behat/local.yml -p local
+}
+
+# Build the Hub with staging db.
+function doitbuildhub() {
+  doitcomment "Running build for the Hub" "with Behat tests"
+  docker exec -it bostongov_drupal_1 ./hub-task.sh -Dbehat.run-server=true build:test:hub
+}
+
+# Ran Behat test on the Hub.
+function doittesthub() {
+  doitcomment "Running Behat against" "the Hub"
+  docker exec -it bostongov_drupal_1 ./vendor/bin/behat tests/behat/features --config=tests/behat/local.yml -p hub
+}
+
+# Copy files from the staging site to your local environment.
+function doitsyncfiles() {
+  docker exec -it bostongov_drupal_1 drush rsync @boston.test:%files/ %files -azP
+}
+
+# Open MySQL prompt.
+function doitmysql() {
+  doitcomment "Opening MySQL promt inside container" "type \"exit\" or use Ctrl+c to escape)."
+  docker exec -it bostongov_mysql_1 mysql --pager="less -SFX"
+}
+
+function doitlogs() {
+  service="${args[0]:-drupal}"
+
+  doitcomment "Tailing container logs." "Type Ctrl+c to escape."
+  docker logs -f "bostongov_${service}_1" 
+}
+
+# Delete all containers and rebuild.
+function doitstartover() {
+  doitcomment "Stopping any running docker-compose containers."
+  docker-compose stop
+  doitcomment "Deleting all docker-compose containers."
+  docker-compose rm
+  doitcomment "Building the containers again."
+  docker-compose build
+}
+
+# Pushes the current repository to an ECS service in our staging cluster. Set up
+# the services by adding a "variant" to the boston_gov_deploy module in the
+# Terraform configuration.
+function doitstage() {
+  # These defaults could presumably be put somewhere else, or even be allowed to
+  # be overridden, but for our purposes they really don’t change.
+  region="us-east-1"
+  cluster="AppsStaging"
+  cluster_namespace="cob-digital-apps-staging"
+  service_base="boston-gov"
+  drupal_container_name="drupal"
+
+  variant="${args[0]:-default}"
+
+  if [ "${variant}" == "default" ]; then
+    service="${service_base}"
+  else
+    service="${service_base}-${variant}"
+  fi
+
+  # This refreshes Docker with our AWS credentials so we can push to ECR.
+  doitcomment "Logging in to AWS."
+  `aws ecr get-login --no-include-email`
+
+  # The ECR repositories have the account ID in the URL. Rather that hard-code
+  # it, which is not super-great, we can pull it dynamically.
+  account_id=`aws sts get-caller-identity | jq '.["Account"]' -r -`
+  repository_url="${account_id}.dkr.ecr.${region}.amazonaws.com/${cluster_namespace}/${service_base}:deploy-${variant}"
+
+  doitcomment "Building the container image."
+  docker build --pull -f dockerfiles/drupal -t $repository_url .
+
+  doitcomment "Pushing to ECR."
+  docker push $repository_url
+
+  # The service should already have been created by Terraform, with a task
+  # definition that points to the "deploy-${variant}" tag used above. Forcing a
+  # new deployment will cause ECS to run new tasks, which will pick up the new
+  # container image we just pushed.
+  #
+  # We use jq on the output to pull the deployment ID that this update created
+  # so we can monitor its tasks later on.
+  #
+  # TODO(finh): It would be good to automatically use the latest task definition
+  # for this update. Right now this just redeploys whatever task definition is
+  # already on the service.
+  #
+  # This means that if you update the task definition through Terraform, say to
+  # change memory or environment variables, you need to run an update through the
+  # ECS UI to put the service on the latest task definition.
+  doitcomment "Updating service ${service}."
+  deployment_id=`aws ecs update-service \
+    --output json \
+    --cluster "${cluster}" \
+    --service "${service}" \
+    --desired-count 1 \
+    --force-new-deployment \
+    | jq '.["service"]["deployments"][] | select(.status == "PRIMARY") | .id' -r -`
+
+  doitcomment "Awaiting task creation. Events:" "https://console.aws.amazon.com/ecs/home?region=${region}#/clusters/${cluster}/services/${service}/events"
+
+  # TODO(finh): Stream the service events until the task starts up so that we
+  # can see if there are any task placement errors or anything.
+  
+  # Polling until AWS creates the task in the service update’s deployment.
+  task_arn="null"
+  while [ "${task_arn}" == "null" ]; do
+    sleep 5
+    task_arn=`aws ecs list-tasks \
+      --output json \
+      --cluster "${cluster}" \
+      --started-by "${deployment_id}" | jq '.["taskArns"][0]' -r -`
+  done
+
+  # Task ARN is something like
+  # arn:aws:ecs:<region>:<aws_account_id>:task/c5cba4eb-5dad-405e-96db-71ef8eefe6a8
+  # We get just the ID from the end because that’s what future commands use.
+  # (list-tasks only returns ARNs.)
+  task_id=`[[ "${task_arn}" =~ /(.*)$ ]] && echo ${BASH_REMATCH[1]}`
+
+  logs_url="https://console.aws.amazon.com/cloudwatch/home?region=${region}#logEventViewer:group=${cluster}/${service_base};stream=ecs/drupal/${task_id}"
+  doitcomment "Task created." "Streaming CloudWatch logs."
+
+  # We expect the aws logs call to return 255 until the stream is created, so we
+  # don’t want the script to crash while that happens.
+  set +e
+
+  # Keeping track of the "forward token" will let us only get new logs with each
+  # poll. "f/0" seems to work as a "start from the beginning" token.
+  next_forward_token="f/0"
+
+  done=0
+  while [ $done -eq 0 ]; do
+    # We save the results into $events because we need to both print the
+    # messages but also parse out the "nextForwardToken" for the next time
+    # through the loop. We use 2>&1 to capture stdout and stderr so that we
+    # swallow any expected "logs not created yet" error messages.
+    events=$(aws logs get-log-events \
+      --output json \
+      --log-group-name "${cluster}/${service_base}" \
+      --log-stream-name "ecs/${drupal_container_name}/${task_id}" \
+      --next-token "${next_forward_token}" 2>&1)
+
+    # As mentioned above, we start polling before the log stream is necessarily
+    # created (the task may still be in PENDING state when it appears in
+    # "list-tasks"). During that time the get-log-events will exit with an error
+    # code.
+    if [ $? -eq 0 ]; then
+      next_forward_token=$(echo "${events}" | jq '.["nextForwardToken"]' -r -)
+      echo "${events}" | jq '.["events"][]["message"]' -r -
+    fi
+
+    # If we’re starting to see health checker lines coming from the Apache logs
+    # then the server is running.
+    if [[ "${events}" =~ ELB-HealthChecker ]]; then
+      done=1
+    else
+      sleep 1
+    fi
+  done
+
+  set -e
+
+  doitcomment "Waiting a minute for health checks to succeed."
+  
+  # At this point the old task is still taking traffic, so we don’t want to
+  # direct anyone to the URLs because they might log in to the old task rather
+  # than the new one. After 60 seconds the health checks should succeed and the
+  # ALB will start sending traffic to the new task.
+  sleep 60
+
+  doitcomment "Staging ready!" "https://${service}.digital-staging.boston.gov/"
+  doitcomment "Login:" "https://${service}.digital-staging.boston.gov/user?local"
+  doitcomment "Web console:" "https://${service}.digital-staging.boston.gov/webconsole.php"
+  doitcomment "CloudWatch logs:" "${logs_url}"
+}
+
+function doitstashdb() {
+  subcommand="${args[0]}"
+
+  if [ -z "${AWS_S3_DATABASE_URL}" ]; then
+    echo '$AWS_S3_DATABASE_URL not set. You must run this command on staging.'
+    exit -1
+  fi
+
+  s3_dump_location="${AWS_S3_DATABASE_URL}/dump.sql.gz"
+
+  if [ "${subcommand}" = "reset" ]; then
+    doitcomment "Deleting database dump from S3."
+    aws s3 rm "${s3_dump_location}"
+    exit
+  fi
+
+  if [ "${subcommand}" = "fetch" ]; then
+    doitcomment "Fetching dump from S3"
+
+    aws s3 cp "${AWS_S3_DATABASE_URL}/dump.sql.gz" /tmp/ || doitcomment "dump.sql.gz not found on S3"
+
+    if [ -f /tmp/dump.sql.gz ]; then
+      doitcomment "Ungzipping"
+      gunzip /tmp/dump.sql.gz
+      # Allows the Apache user to overwrite this
+      chmod a+w /tmp/dump.sql
+    fi
+
+    exit
+  fi
+
+  doitcomment "Dumping database SQL."
+  drush --root=/boston.gov/docroot sql-dump > /tmp/dump.sql
+
+  doitcomment "Gzipping dump."
+  gzip /tmp/dump.sql
+
+  doitcomment "Uploading to S3."
+  aws s3 cp --no-progress /tmp/dump.sql.gz "${s3_dump_location}"
+}
+
+# Quick cheatsheet of common commands.
+function doitcheatsheet() {
+  echo $'\r'
+  echo -ne "${Yellow}Hub Migration Commands${NC}"
+  echo $'\r'
+  echo -ne "${LightBlue}  Migration Status:${NC}       ./doit drush ms"
+  echo $'\r'
+  echo -ne "${LightBlue}  Run both migrations:${NC}    ./doit drush mi User,Profile --force --update${NC}"
+  echo $'\r'
+  echo -ne "${LightBlue}  Stop a migration:${NC}       ./doit drush mst User${NC}"
+  echo $'\r'
+  echo -ne "${LightBlue}  Reset status to Idle:${NC}   ./doit drush mrs User${NC}"
+  echo $'\r'
+  echo -ne "${LightBlue}  Purge Users & Profiles:${NC} ./doit drush hub-migrate-purge User,Profile${NC}"
+  echo $'\r'
+  echo $'\r'
+  echo -ne "${Yellow}Pattern Lab${NC}"
+  echo $'\r'
+  echo -ne "${LightBlue}  Connect to local Fleet:${NC} ./doit drush vset asset_url https://localhost:3030/"
+  echo $'\r'
+  echo $'\r'
+  echo -ne "${Yellow}User Management${NC}"
+  echo $'\r'
+  echo -ne "${LightBlue}  Login as admin:${NC}         ./doit drush uli admin"
+  echo $'\r'
+  echo -ne "${LightBlue}  Change password:${NC}        ./doit drush upwd YOUR_USERNAME --password=\"YOUR_PASSWORD\""
+  echo $'\r'
+  echo $'\r'
+  echo -ne "${Yellow}Multisite${NC}"
+  echo $'\r'
+  echo -ne "${LightBlue}  Run drush on hub db:${NC}    ./doit drush use hub"
+  echo $'\r'
+  echo -ne "${LightBlue}  Run drush on bos db:${NC}    ./doit drush use default"
+  echo $'\r'
+  echo $'\r'
+}
+
+# Build the Hub with production db
+function doitdrush() {
+  if [[ -n "$command" ]]; then
+    if [[ $command == "drush" ]]; then
+      echo -ne "${Yellow}Running \"${LightGreen}$command $args${Yellow}\" inside the container.${NC}"
+      echo $'\r'
+      first_char=${args:0:1}
+      if [[ $first_char == "@" ]]; then
+        echo "Command is using drush alias on remote, not setting root"
+        docker exec -it bostongov_drupal_1 $command $args
+      else
+        echo "Setting root to /boston.gov/docroot"
+        docker exec -it bostongov_drupal_1 $command $args --root=/boston.gov/docroot
+      fi
+    fi
+  fi
+}
+
+# Formatting for a simple comment.
+function doitcomment() {
+  echo $'\r'
+  echo -ne "${Yellow}$1${LightGreen} $2${NC}"
+  echo $'\r'
+  echo $'\r'
+}
+
+# Get the first word from user input.
+command=$1
+# Get everything after the first word from input.
+args=${@:2}
+
+# Run a function based on the command the user supplied.
+if [[ -n "$command" ]]; then
+  if [[ $command == "build-bos" ]]; then
+    doitbuildbos
+  elif [[ $command == "init-bos" ]]; then
+    doitinitbos
+  elif [[ $command == "test-bos" ]]; then
+    doittestbos
+  elif [[ $command == "build-hub" ]]; then
+    doitbuildhub
+  elif [[ $command == "init-hub" ]]; then
+    doitinithub
+  elif [[ $command == "test-hub" ]]; then
+    doittesthub
+  elif [[ $command == "sync-files" ]]; then
+    doitsyncfiles
+  elif [[ $command == "drush" ]]; then
+    doitdrush
+  elif [[ $command == "mysql" ]]; then
+    doitmysql
+  elif [[ $command == "logs" ]]; then
+    doitlogs
+  elif [[ $command == "cheatsheet" ]]; then
+    doitcheatsheet
+  elif [[ $command == "start-over" ]]; then
+    doitstartover
+  elif [[ $command == "help" ]]; then
+    doithelp
+  elif [[ $command == "brand" ]]; then
+    doitbrand
+  elif [[ $command == "serve" ]]; then
+    doitserve
+  elif [[ $command == "stage" ]]; then
+    doitstage
+  elif [[ $command == "stash-db" ]]; then
+    doitstashdb
+  else
+    echo "$command is not a valid command. Please use \"./doit help\" to see what is available."
+  fi
+# The user did not give any input.
+else
+  echo $'\r'
+  doitbrand
+  doithelp
+fi

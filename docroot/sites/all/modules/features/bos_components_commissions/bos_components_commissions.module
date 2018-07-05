@@ -1,0 +1,162 @@
+<?php
+
+/**
+ * @file
+ * Code for the bos_components_commissions feature.
+ */
+
+require_once 'bos_components_commissions.features.inc';
+
+/**
+ * Extracts the string commission ID from "field_commission".
+ */
+function bos_components_commissions_commission_id(&$variables) {
+  $items = field_get_items(
+        $variables['elements']['#entity_type'],
+        $variables['elements']['#entity'],
+        'field_commission'
+    );
+  $term = taxonomy_term_load($items[0]['tid']);
+  return $term->field_commission_id[LANGUAGE_NONE][0]['value'];
+}
+
+/**
+ * Makes a GraphQL query to the commissions GraphQL backend.
+ *
+ * Returns the parsed JSON response.
+ */
+function bos_components_commissions_query($graphql) {
+  $query = array(
+    'query' => $graphql,
+    'variables' => NULL,
+  );
+
+  $query_string = json_encode($query);
+
+  $ch = curl_init(variable_get(
+    'commissions_graphql_endpoint',
+    'https://commissions-app.digital-staging.boston.gov/commissions/graphql'));
+  curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+  curl_setopt($ch, CURLOPT_POSTFIELDS, $query_string);
+  curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+  curl_setopt(
+        $ch, CURLOPT_HTTPHEADER, array(
+          'Content-Type: application/json',
+          'Content-Length: ' . mb_strlen($query_string),
+          'X-API-KEY: ' . variable_get('commissions_graphql_api_key', 'none'),
+        )
+    );
+
+  $result_string = curl_exec($ch);
+  return drupal_json_decode($result_string);
+}
+
+/**
+ * Adds commission membership from the GraphQL endpoint.
+ */
+function bos_components_commissions_add_members(&$variables) {
+  $commission_id = bos_components_commissions_commission_id($variables);
+  $result_json = bos_components_commissions_query(
+        <<<EOF
+  {
+    commission(id:$commission_id) {
+      members {
+        name
+        appointed
+        expires
+        status
+      }
+    }
+  }
+EOF
+    );
+
+  $members = $result_json['data']['commission']['members'];
+
+  $date_input_format = 'Y-m-d\TH:i:s.u\Z';
+  $date_output_format = 'n/j/Y';
+
+  foreach ($members as &$member) {
+    if ($member['appointed']) {
+      $datetime = DateTime::createFromFormat($date_input_format, $member['appointed']);
+      $member['appointed'] = format_date(
+        date_timestamp_get($datetime),
+        'custom',
+        $date_output_format
+      );
+    }
+
+    if ($member['expires']) {
+      $datetime = DateTime::createFromFormat($date_input_format, $member['expires']);
+      $member['expires'] = format_date(
+        date_timestamp_get($datetime),
+        'custom',
+        $date_output_format
+      );
+    }
+  }
+
+  $variables['content']['members'] = $members;
+}
+
+/**
+ * Adds commission info from the GraphQL endpoint.
+ */
+function bos_components_commissions_add_info(&$variables) {
+  $commission_id = bos_components_commissions_commission_id($variables);
+  $result_json = bos_components_commissions_query(
+        <<<EOF
+  {
+    commission(id: $commission_id) {
+      id
+      name
+      authority
+      contactEmail
+      contactName
+      contactPhone
+      department {
+        name
+        homepageUrl
+      }
+      enablingLegislation
+      seats
+      stipend
+      term
+      openSeats
+      applyUrl
+    }
+  }
+EOF
+    );
+  $info = $result_json['data']['commission'];
+
+  $variables['content']['department_name'] = $info['department']['name'];
+  $variables['content']['department_url'] = $info['department']['homepageUrl'];
+  $variables['content']['authority'] = $info['authority'];
+  $variables['content']['contact_email'] = $info['contactEmail'];
+  $variables['content']['contact_name'] = $info['contactName'];
+  $variables['content']['contact_phone'] = $info['contactPhone'];
+  $variables['content']['seats'] = $info['seats'];
+  $variables['content']['stipend'] = money_format("$%n", $info['stipend']);
+  $variables['content']['term'] = $info['term'];
+  $variables['content']['enabling_legislation_url'] = $info['enablingLegislation'];
+
+  if ($info['openSeats'] > 0) {
+    $variables['content']['open_seats'] = $info['openSeats'];
+    $variables['content']['apply_url'] = $info['applyUrl'];
+  }
+}
+
+/**
+ * This is the best hook we have to add data for the templates.
+ */
+function bos_components_commissions_preprocess_entity(&$variables) {
+  if ($variables['elements']['#bundle'] == 'commission_members') {
+    bos_components_commissions_add_members($variables);
+  }
+
+  if ($variables['elements']['#bundle'] == 'commission_contact_info' ||
+      $variables['elements']['#bundle'] == 'commission_summary') {
+    bos_components_commissions_add_info($variables);
+  }
+}

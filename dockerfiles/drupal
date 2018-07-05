@@ -1,0 +1,53 @@
+FROM php:5.6-apache
+
+WORKDIR /boston.gov
+ENV APACHE_DOCUMENT_ROOT /boston.gov/docroot
+RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf && \
+    sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf && \
+    a2enmod rewrite
+
+RUN apt-get update && apt-get install -my gnupg && \
+    curl -sL https://deb.nodesource.com/setup_8.x | bash -
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+        git zip unzip bzip2 libbz2-dev rsync nodejs \
+        libgd-dev mysql-client openssh-client vim \
+        python python-dev && \
+    docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ && \
+    docker-php-ext-install pdo_mysql gd bz2 && \
+    pecl install xdebug-2.5.5
+
+# AWS command so we can sync files from the S3 config bucket.
+RUN cd /tmp \
+  && curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip" \
+  && unzip awscli-bundle.zip \
+  && ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws \
+  && rm awscli-bundle.zip \
+  && rm -rf awscli-bundle
+
+RUN curl --silent --show-error https://getcomposer.org/installer | php
+RUN mv composer.phar /usr/local/bin/composer
+
+ADD package.json package-lock.json /boston.gov/
+RUN npm install
+
+ADD composer.json composer.lock /boston.gov/
+RUN composer install
+RUN ln -s /boston.gov/vendor/bin/drush /usr/local/bin/drush
+
+ADD docker/php.ini /usr/local/etc/php/
+ADD docker/xdebug.ini /usr/local/etc/php/conf.d
+
+# Adds a web console to run drush commands on staging.
+# ZOMG THIS IS NOT FOR PRODUCTION SERIOUSLY NOT
+ADD docker/vendor/webconsole/webconsole.php /boston.gov/docroot/
+RUN chmod a+rx /boston.gov/docroot/webconsole.php
+
+ADD . /boston.gov
+RUN ./task.sh setup:build:make
+
+ENTRYPOINT ["/boston.gov/scripts/drupal-entrypoint.sh"]
+
+ # Default from the base Dockerfile, but when you override ENTRYPOINT you need
+ # to override this as well.
+ CMD ["apache2-foreground"]

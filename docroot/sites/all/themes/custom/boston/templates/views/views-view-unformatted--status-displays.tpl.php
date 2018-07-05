@@ -7,7 +7,7 @@
  * @ingroup views_templates
  */
 ?>
-<div class="g g--hc">
+<div class="g g--top">
   <?php foreach ($rows as $id => $row): ?>
     <?php print $row; ?>
   <?php endforeach; ?>
