@@ -453,7 +453,7 @@ function bos_core_field_get_link_attributes($link) {
   $out = "";
   if (!empty($attr)) {
     foreach ($attr as $attribute => $value) {
-      $out .= " " . $attribute . '="' . $value .'"';
+      $out .= " " . $attribute . '="' . $value . '"';
     }
   }
 
