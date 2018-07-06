@@ -13,13 +13,14 @@
 function hub_migrate_purge_drush_command() {
   return array(
     'hub-migrate-purge' => array(
-      'description' => 'Check remote source for orphaned records (removed) and remove them locally',
+      'description' => 'Check remote source for orphaned records (removed) and disable them locally',
       'arguments' => array(
         'migration-name' => 'Name of the migration to check',
       ),
       'required-arguments' => 1,
       'options' => array(
-        'dry-run' => 'Do not delete, just report the records',
+        'dry-run' => 'Do not alter, just report the records',
+        'delete-accounts' => 'Delete the purged accounts'
       ),
     ),
   );
@@ -41,38 +42,116 @@ function drush_hub_migrate_purge($migration_name) {
       return;
     }
 
+    // Determine if the user passed the "dry-run" flag.
+    $dry_run = drush_get_option('dry-run');
+    // Determine if the user passed the "delete-accounts" flag.
+    $verb = "disable";
+    if($delete_accounts = drush_get_option('delete-accounts')) {
+      $verb = "delete";
+    }
+
     drush_log('Starting migration purge for ' . $migration_name, 'ok');
+    if ($dry_run) {
+      drush_log('** Notice: using --dry-run, some errors ignored, nothing will be committed', 'ok');
+    }
 
     if ($migration->getStatus() != MigrationBase::STATUS_IDLE) {
       drush_set_error('Migration not idle, waiting to finish. Status is: ' . $migration->getStatus());
-      return;
+      if (!$dry_run) {
+        return;
+      }
     }
+
     // Get the source to destination ID mapping from database.
     $rows = db_select('migrate_map_' . $migration->getMachineName(), 'm')
       ->fields('m', array('sourceid1', 'destid1'))
       ->isNotNull('destid1')
       ->execute()
       ->fetchAllKeyed(0, 1);
+
     // Count how many mapped IDs we have.
     $count = count($rows);
-    // Determine if the user passed the "dry-run" flag.
-    $dry_run = drush_get_option('dry-run');
+    $threshold_map = 10000;
+    $threshold_feed = 15000;
+    if ($count < $threshold_map) {
+      // fail safe, dont want to alter records based on incomplete file.
+      drush_set_error('Found '. $count . ' records in map file - less than threshold of ' . $threshold_map .' so aborting. Purge not performed.');
+      if (!$dry_run) {
+        return;
+      }
+    }
+
+    // Grab latest migrate_log record from the DB
+    $q = db_select('hub.migrate_log', 'log')
+      ->fields('log', array('numprocessed'))
+      ->condition('machine_name', 'User', '=')
+      ->condition('process_type', '1', '=')
+      ->where('DATE(from_unixtime(starttime/1000)) = CURDATE()')
+      ->orderBy('starttime', 'DESC');
+    $q->addExpression('from_unixtime(starttime/1000)', 'start');
+    $q->addExpression('from_unixtime(endtime/1000)', 'end');
+    $q->addExpression('(endtime - starttime) / 1000 / 60', 'duration');
+    $q->range(0,1);
+    $rows2 = $q->execute()->fetchAll();
+
+    if (empty($rows2)) {
+      // only run if a migration has been started today.
+      drush_set_error('Migration has not yet been run today.');
+      if (!$dry_run) {
+        return;
+      }
+    }
+
+    if (empty($rows2[0]->end)) {
+      // only run if a migration has already ended today.
+      drush_set_error('Migration has not yet finished for today.');
+      if (!$dry_run) {
+        return;
+      }
+    }
 
     // Get the source object.
     $source = $migration->getSource();
     // Get the URL where we're getting the JSON.
     $urls = $source->getSourceUrls();
+
     if ($urls[0]) {
       // Get the JSON from the URL.
       $request = drupal_http_request($urls[0]);
-      // Turn the JSON into an array that we can manipulate.
-      $json_response = drupal_json_decode($request->data);
-      // Get the relevant employee data from the array.
-      $employee_data = $json_response['Y_HCM_PORTALDIR_DOC']['EE_GET_DATA'];
+      if(!isset($request)) {
+        // Quit if can't connect to URL (will happen outside the boston network).
+        drush_set_error('Can\'t access source URL.');
+        return;
+      }
+
+      if (!empty($request->data)) {
+          // Turn the JSON into an array that we can manipulate.
+          $json_response = drupal_json_decode($request->data);
+          if (empty($json_response)) {
+            drush_set_error('Bad JSON data retrieved from source.');
+            return;
+          }
+          // Get the relevant employee data from the array.
+          $employee_data = $json_response['Y_HCM_PORTALDIR_DOC']['EE_GET_DATA'];
+      }
+
+      if(empty($employee_data)) {
+        // Quit if can't connect to URL (will happen outside the boston network).
+        drush_set_error('No data retrieved from source.');
+        return;
+      }
+
+      if (count($employee_data) < $threshold_feed) {
+        // fail safe, dont want to alter records based on incomplete file.
+        drush_set_error('Found '. count($employee_data) . ' records in feed - less than threshold of ' . $threshold_feed .' so aborting. Purge not performed.');
+        if (!$dry_run) {
+          return;
+        }
+      }
     }
     else {
-      // Quit if can't connect to URL (will happen outside the boston network).
-      drush_set_error('Can\'t access source URL.');
+      // Quit if can't find any URLs.
+      drush_set_error('Can\'t find a source URL.');
       return;
     }
     foreach ($employee_data as $id => $data) {
@@ -112,15 +191,15 @@ function drush_hub_migrate_purge($migration_name) {
     }
     if ($migration_name == 'User') {
       if (count($uids) == 0) {
-        drush_log('There are no Users to delete.', 'ok');
+        drush_log('There are no Users to ' . $verb . '.', 'ok');
       }
       elseif (count($uids) < 100) {
         // If there are only a few Users, specify which ones are being deleted.
-        drush_log('Preparing to delete the following users: ' . implode(",", $uids), 'ok');
+        drush_log('Preparing to ' . $verb . ' the following users: ' . implode(",", $uids), 'ok');
       }
       else {
         // If there are a lot of Users, just specify how many are being deleted.
-        drush_log('Preparing to delete ' . count($uids) . ' Users.', 'ok');
+        drush_log('Preparing to ' . $verb . ' ' . count($uids) . ' Users.', 'ok');
       }
     }
     if ($migration_name == 'Profile') {
@@ -131,24 +210,32 @@ function drush_hub_migrate_purge($migration_name) {
         // If there are only a few Profiles, specify which ones to delete.
         drush_log('Preparing to delete the following Profiles: ' . implode(",", $pids), 'ok');
       }
+      elseif (!$delete_accounts) {
+        // If we are not deleting accounts.
+        drush_log('The --delete-accounts flag is not swet, so profile records are not altered.', 'ok');
+      }
       else {
         // If there are lots of Profiles, just specify how many to delete.
         drush_log('Preparing to delete ' . count($pids) . ' Profiles.', 'ok');
       }
     }
-    // Check if the user actually wants us to delete anything from the db.
+    // Check if the user actually wants us to alter anything from the db.
     if (!$dry_run) {
-      // Delete the users specified.
+
+      // Delete/disable the users specified.
       if ($uids) {
+        $action = 'user_cancel_block';
+        if ($delete_accounts) {
+          $action = "user_cancel_reassign";
+        }
         foreach ($uids as $uid) {
-          // Actually delete the user and assign content to anonymous.
           user_cancel(
             array(
               'user_cancel_notify' => FALSE,
-              'user_cancel_method' => 'user_cancel_reassign',
+              'user_cancel_method' => $action,
             ),
             $uid,
-            'user_cancel_reassign'
+            $action
           );
           // The user cancellation process needs to be run in a batch.
           // https://drupal.stackexchange.com/questions/204394/cannot-disable-user-programmatically-with-user-cancel
@@ -156,13 +243,15 @@ function drush_hub_migrate_purge($migration_name) {
           $batch['progressive'] = FALSE;
           batch_process();
         }
-        drush_log('Users have been deleted.', 'ok');
+        drush_log('Users have been ' . $verb . 'd.', 'ok');
       }
-      // Delete the profiles specified.
-      if ($pids) {
+
+      // Delete the profiles specified if flag set.
+      if ($delete_accounts && $pids) {
         profile2_delete_multiple($pids);
         drush_log('Profiles have been deleted.', 'ok');
       }
+      // finally,
       foreach ($delete_src as $id) {
         // Delete the IDs from the map table for this migration.
         $migration->getMap()->delete(array($id));
