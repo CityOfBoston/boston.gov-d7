@@ -11,19 +11,19 @@
  * Adds drush command: hub-migrate-purge.
  */
 function hub_migrate_purge_drush_command() {
-  return array(
-    'hub-migrate-purge' => array(
+  return [
+    'hub-migrate-purge' => [
       'description' => 'Check remote source for orphaned records (removed) and disable them locally',
-      'arguments' => array(
+      'arguments' => [
         'migration-name' => 'Name of the migration to check',
-      ),
+      ],
       'required-arguments' => 1,
-      'options' => array(
+      'options' => [
         'dry-run' => 'Do not alter, just report the records',
-        'delete-accounts' => 'Delete the purged accounts'
-      ),
-    ),
-  );
+        'delete-accounts' => 'Delete the purged accounts',
+      ],
+    ],
+  ];
 }
 
 /**
@@ -46,7 +46,7 @@ function drush_hub_migrate_purge($migration_name) {
     $dry_run = drush_get_option('dry-run');
     // Determine if the user passed the "delete-accounts" flag.
     $verb = "disable";
-    if($delete_accounts = drush_get_option('delete-accounts')) {
+    if ($delete_accounts = drush_get_option('delete-accounts')) {
       $verb = "delete";
     }
 
@@ -64,7 +64,7 @@ function drush_hub_migrate_purge($migration_name) {
 
     // Get the source to destination ID mapping from database.
     $rows = db_select('migrate_map_' . $migration->getMachineName(), 'm')
-      ->fields('m', array('sourceid1', 'destid1'))
+      ->fields('m', ['sourceid1', 'destid1'])
       ->isNotNull('destid1')
       ->execute()
       ->fetchAllKeyed(0, 1);
@@ -74,16 +74,16 @@ function drush_hub_migrate_purge($migration_name) {
     $threshold_map = 10000;
     $threshold_feed = 15000;
     if ($count < $threshold_map) {
-      // fail safe, dont want to alter records based on incomplete file.
-      drush_set_error('Found '. $count . ' records in map file - less than threshold of ' . $threshold_map .' so aborting. Purge not performed.');
+      // Fail safe, dont want to alter records based on incomplete file.
+      drush_set_error('Found ' . $count . ' records in map file - less than threshold of ' . $threshold_map . ' so aborting. Purge not performed.');
       if (!$dry_run) {
         return;
       }
     }
 
-    // Grab latest migrate_log record from the DB
+    // Grab latest migrate_log record from the DB.
     $q = db_select('hub.migrate_log', 'log')
-      ->fields('log', array('numprocessed'))
+      ->fields('log', ['numprocessed'])
       ->condition('machine_name', 'User', '=')
       ->condition('process_type', '1', '=')
       ->where('DATE(from_unixtime(starttime/1000)) = CURDATE()')
@@ -91,11 +91,11 @@ function drush_hub_migrate_purge($migration_name) {
     $q->addExpression('from_unixtime(starttime/1000)', 'start');
     $q->addExpression('from_unixtime(endtime/1000)', 'end');
     $q->addExpression('(endtime - starttime) / 1000 / 60', 'duration');
-    $q->range(0,1);
+    $q->range(0, 1);
     $rows2 = $q->execute()->fetchAll();
 
     if (empty($rows2)) {
-      // only run if a migration has been started today.
+      // Only run if a migration has been started today.
       drush_set_error('Migration has not yet been run today.');
       if (!$dry_run) {
         return;
@@ -103,7 +103,7 @@ function drush_hub_migrate_purge($migration_name) {
     }
 
     if (empty($rows2[0]->end)) {
-      // only run if a migration has already ended today.
+      // Only run if a migration has already ended today.
       drush_set_error('Migration has not yet finished for today.');
       if (!$dry_run) {
         return;
@@ -118,32 +118,32 @@ function drush_hub_migrate_purge($migration_name) {
     if ($urls[0]) {
       // Get the JSON from the URL.
       $request = drupal_http_request($urls[0]);
-      if(!isset($request)) {
-        // Quit if can't connect to URL (will happen outside the boston network).
+      if (!isset($request)) {
+        // Quit if can't connect to URL (e.g outside the boston network).
         drush_set_error('Can\'t access source URL.');
         return;
       }
 
       if (!empty($request->data)) {
-          // Turn the JSON into an array that we can manipulate.
-          $json_response = drupal_json_decode($request->data);
-          if (empty($json_response)) {
-            drush_set_error('Bad JSON data retrieved from source.');
-            return;
-          }
-          // Get the relevant employee data from the array.
-          $employee_data = $json_response['Y_HCM_PORTALDIR_DOC']['EE_GET_DATA'];
+        // Turn the JSON into an array that we can manipulate.
+        $json_response = drupal_json_decode($request->data);
+        if (empty($json_response)) {
+          drush_set_error('Bad JSON data retrieved from source.');
+          return;
+        }
+        // Get the relevant employee data from the array.
+        $employee_data = $json_response['Y_HCM_PORTALDIR_DOC']['EE_GET_DATA'];
       }
 
-      if(empty($employee_data)) {
-        // Quit if can't connect to URL (will happen outside the boston network).
+      if (empty($employee_data)) {
+        // Quit if can't connect to URL (e.g outside the boston network).
         drush_set_error('No data retrieved from source.');
         return;
       }
 
       if (count($employee_data) < $threshold_feed) {
-        // fail safe, dont want to alter records based on incomplete file.
-        drush_set_error('Found '. count($employee_data) . ' records in feed - less than threshold of ' . $threshold_feed .' so aborting. Purge not performed.');
+        // Fail safe, dont want to alter records based on incomplete file.
+        drush_set_error('Found ' . count($employee_data) . ' records in feed - less than threshold of ' . $threshold_feed . ' so aborting. Purge not performed.');
         if (!$dry_run) {
           return;
         }
@@ -159,9 +159,9 @@ function drush_hub_migrate_purge($migration_name) {
       $json_source_ids[] = $data['EMPLID'];
     }
 
-    $uids = array();
-    $pids = array();
-    $delete_src = array();
+    $uids = [];
+    $pids = [];
+    $delete_src = [];
     foreach ($rows as $db_source_id => $drupal_id) {
       // If the mapped ID from the db is not still in the source.
       if (!in_array($db_source_id, $json_source_ids)) {
@@ -230,10 +230,10 @@ function drush_hub_migrate_purge($migration_name) {
         }
         foreach ($uids as $uid) {
           user_cancel(
-            array(
+            [
               'user_cancel_notify' => FALSE,
               'user_cancel_method' => $action,
-            ),
+            ],
             $uid,
             $action
           );
@@ -251,10 +251,10 @@ function drush_hub_migrate_purge($migration_name) {
         profile2_delete_multiple($pids);
         drush_log('Profiles have been deleted.', 'ok');
       }
-      // finally,
+      // finally.
       foreach ($delete_src as $id) {
         // Delete the IDs from the map table for this migration.
-        $migration->getMap()->delete(array($id));
+        $migration->getMap()->delete([$id]);
         drush_log('Map records have been deleted.', 'ok');
       }
       // Notify the user that the deletion has completed.
