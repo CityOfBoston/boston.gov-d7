@@ -738,137 +738,20 @@ function boston_preprocess_paragraphs_item_photo(&$variables) {
 }
 
 function boston_preprocess_paragraphs_item_map(&$variables) {
-
-  // Load Map libraries.
-  drupal_add_css('https://unpkg.com/leaflet@1.0.3/dist/leaflet.css', array(
+  drupal_add_js(
+    $variables['asset_url'] . '/web-components/fleetcomponents.js',
+    array(
     'type' => 'external',
-    'scope' => 'header',
-    'weight' => -7,
-  ));
-  drupal_add_js('https://unpkg.com/leaflet@1.0.3/dist/leaflet-src.js', array(
-    'type' => 'external',
-    'scope' => 'header',
-    'weight' => -6,
-  ));
-  drupal_add_js('https://unpkg.com/esri-leaflet@2.0.8', array(
-    'type' => 'external',
-    'scope' => 'header',
-    'weight' => -5,
-  ));
-  drupal_add_css('https://unpkg.com/leaflet.markercluster@1.0.4/dist/MarkerCluster.Default.css', array(
-    'type' => 'external',
-    'scope' => 'header',
-    'weight' => -4,
-  ));
-  drupal_add_css('https://unpkg.com/leaflet.markercluster@1.0.4/dist/MarkerCluster.css', array(
-    'type' => 'external',
-    'scope' => 'header',
-    'weight' => -3,
-  ));
-  drupal_add_js('https://unpkg.com/leaflet.markercluster@1.0.4/dist/leaflet.markercluster.js', array(
-    'type' => 'external',
-    'scope' => 'header',
-    'weight' => -2,
-  ));
-  drupal_add_js('https://unpkg.com/esri-leaflet-cluster@2.0.0', array(
-    'type' => 'external',
-    'scope' => 'header',
-    'weight' => -1,
+    'scope' => 'footer',
   ));
 
-  // Get ESRI feed info: title, url, color.
-  $feeds = array();
-  if ($variables['paragraphs_item']->field_map['und'][0]['entity']->field_map_esri_feed['und']) {
-    foreach ($variables['paragraphs_item']->field_map['und'][0]['entity']->field_map_esri_feed['und'] as $ids) {
-      // Get the paragraph ID.
-      $pid = $ids['value'];
-      // Load the referenced map_esri_feed paragraph.
-      $entity = entity_load('paragraphs_item', array($pid));
-      $title = $entity[$pid]->field_title['und'][0]['value'];
-      $url = $entity[$pid]->field_url['und'][0]['value'];
-      $color = $entity[$pid]->field_color['und'][0]['value'];
-      $cluster = $entity[$pid]->field_map_cluster['und'][0]['value'];
-      $popup = $entity[$pid]->field_additional_information['und'][0]['value'];
-      // Create a render array that holds title, url, & color for feed.
-      $feeds[] = array(
-        'title' => $title,
-        'url' => $url,
-        'color' => $color,
-        'cluster' => $cluster,
-        'popup' => $popup,
-      );
-    }
-  }
-
-  // Get whether the map is static or interactive (zoomable).
-  $field_map_options = $variables['paragraphs_item']->field_map_options['und'][0]['value'];
-
-  // Get the selected basemap.
-  $field_basemap_url = $variables['paragraphs_item']->field_map_type['und'][0]['entity']->field_basemap_url_['und'][0]['value'];
-
-  // Get default lat, long, and zoom values from ESRI taxonomy.
-  $map_coordinates_esri_pid = $variables['paragraphs_item']->field_map['und'][0]['entity']->field_map_default_coordinates['und'][0]['value'];
-  $map_coordinates_esri_paragraph = $map_coordinates_esri_pid ? entity_load('paragraphs_item', array($map_coordinates_esri_pid)) : NULL;
-  $esri_field_map_latitude = $map_coordinates_esri_paragraph[$map_coordinates_esri_pid]->field_map_latitude['und'][0]['value'];
-  $esri_field_map_longitude = $map_coordinates_esri_paragraph[$map_coordinates_esri_pid]->field_map_longitude['und'][0]['value'];
-  $esri_field_map_zoom = $map_coordinates_esri_paragraph[$map_coordinates_esri_pid]->field_map_zoom['und'][0]['value'];
-
-  // Get default lat, long, & zoom overrides for the main Map component.
-  $map_coordinates_pid = $variables['paragraphs_item']->field_map_default_coordinates['und'][0]['value'];
-  $map_coordinates_paragraph = $map_coordinates_pid ? entity_load('paragraphs_item', array($map_coordinates_pid)) : NULL;
-  $field_map_latitude = $map_coordinates_paragraph[$map_coordinates_pid]->field_map_latitude['und'][0]['value'];
-  $field_map_longitude = $map_coordinates_paragraph[$map_coordinates_pid]->field_map_longitude['und'][0]['value'];
-  $field_map_zoom = $map_coordinates_paragraph[$map_coordinates_pid]->field_map_zoom['und'][0]['value'];
-
-  // Get custom dropped pins from Maps component.
-  $points = array();
-  if ($variables['paragraphs_item']->field_map_point_of_interest['und']) {
-    foreach ($variables['paragraphs_item']->field_map_point_of_interest['und'] as $ids) {
-      $map_pins_pid = $ids['value'];
-      $map_pins_paragraph = $map_pins_pid ? entity_load('paragraphs_item', array($map_pins_pid)) : NULL;
-      $field_custom_pin_name = htmlentities($map_pins_paragraph[$map_pins_pid]->field_pin_name['und'][0]['title'], ENT_QUOTES);
-      $field_custom_pin_url = $map_pins_paragraph[$map_pins_pid]->field_pin_name['und'][0]['url'];
-      $field_custom_pin_desc = htmlentities($map_pins_paragraph[$map_pins_pid]->field_description['und'][0]['value'], ENT_QUOTES);
-      $field_custom_pin_latitude = $map_pins_paragraph[$map_pins_pid]->field_map_latitude['und'][0]['value'];
-      $field_custom_pin_longitude = $map_pins_paragraph[$map_pins_pid]->field_map_longitude['und'][0]['value'];
-      $points[] = array(
-        'name' => $field_custom_pin_name,
-        'url' => $field_custom_pin_url,
-        'desc' => $field_custom_pin_desc,
-        'lat' => $field_custom_pin_latitude,
-        'long' => $field_custom_pin_longitude,
-      );
-    }
-  }
-
-  // Create a unique ID for each canvas.
+  // Create a unique ID for each map. Some of this is borrowed from the
+  // preprocessing for photos.
   $map_id = "map--" . $variables['elements']['#entity']->item_id;
+  $GLOBALS['photo_component_id'] = $variables['elements']['#entity']->item_id;
 
-  // Create canvas for each map.
-  $canvas = '<div id="' . $map_id . '" class="map"></div>';
-
-  // Allow canvas variable to be used in paragraphs-item--map.tpl.php.
-  $variables['content']['map_canvas'] = $canvas;
-
-  $variables['content']['map_id'] = $map_id;
-
-  // Create JSON object that contains values for map.
-  $map_values = json_encode(array(
-    'mapID' => $map_id,
-    'feeds' => $feeds,
-    'points' => $points,
-    'options' => $field_map_options,
-    'basemap' => $field_basemap_url,
-    'esriLat' => $esri_field_map_latitude,
-    'esriLong' => $esri_field_map_longitude,
-    'esriZoom' => $esri_field_map_zoom,
-    'componentLat' => $field_map_latitude,
-    'componentLong' => $field_map_longitude,
-    'componentZoom' => $field_map_zoom,
-  ));
-
-  // Make map values available in paragraphs-item--map.tpl.php.
-  $variables['content']['map_object'] = $map_values;
+  $variables['map_id']  = $map_id;
+  $variables['photo_id'] = $GLOBALS['photo_component_id'];
 }
 
 function boston_preprocess_field_field_image(&$variables) {
