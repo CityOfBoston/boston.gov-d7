@@ -52,7 +52,11 @@
 
 <div class="b b--fw">
   <div class="ph ph--wc">
-    <div class="ph-p ph-p--<?php print $photo_id; ?>"><?php print render($content['field_image']); ?></div>
+    <a href="#<?php print $map_id; ?>">
+      <div class="ph-p ph-p--<?php print $photo_id; ?>">
+        <?php print render($content['field_image']); ?>
+      </div>
+    </a>
 
     <div class="ph-c p-a600">
       <div class="m-b200">
