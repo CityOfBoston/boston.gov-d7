@@ -35,6 +35,7 @@ function hub_profile_install() {
   hub_profile_update_7022();
   hub_profile_update_7023();
   hub_profile_update_7024();
+  hub_profile_update_7025();
 
 }
 
@@ -543,6 +544,20 @@ function hub_profile_update_7024() {
 
 }
 
+/**
+ * Adds metatag-favicon support, and references apple-touch-icon assets
+ */
+function bos_profile_update_7025() {
+  $enabled_modules = array(
+    'metatag_favicons',
+  );
+  module_enable($enabled_modules);
+
+  $config = metatag_config_load('global');
+  $config->config['apple-touch-icon']['value'] = "/sites/default/files/apple-touch-icon.png";
+  $config->config['apple-touch-icon-precomposed']['value'] = "/sites/default/files/apple-touch-icon-precomposed.png";
+  metatag_config_save($config);
+}
 /*******************************************************************
 Any new migrations need to also be added to hub_profile_install so that
 they can run on fresh Docker installs.

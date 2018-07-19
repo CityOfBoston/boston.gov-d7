@@ -1173,15 +1173,25 @@ function bos_profile_update_7038(){
  * Adds metatag-favicon support, and references apple-touch-icon assets
  */
 function bos_profile_update_7039() {
+}
+
+/**
+ * Adds metatag-favicon support, and references apple-touch-icon assets
+ */
+function bos_profile_update_7040() {
+
   $enabled_modules = array(
     'metatag_favicons',
   );
   module_enable($enabled_modules);
 
   $config = metatag_config_load('global');
-  $config->config['apple-touch-icon']['value'] = "/apple-touch-icon.png";
-  $config->config['apple-touch-icon-precomposed']['value'] = "/apple-touch-icon-precomposed.png";
+  $config->config['apple-touch-icon']['value'] = "/sites/default/files/apple-touch-icon.png";
+  $config->config['apple-touch-icon-precomposed']['value'] = "/sites/default/files/apple-touch-icon-precomposed.png";
   metatag_config_save($config);
+
+  rename(__DIR__ . "/apple-touch-icon.png", __DIR__ . "/../../sites/default/files/apple-touch-icon.png");
+  rename(__DIR__ . "/apple-touch-icon-precomposed.png", __DIR__ . "/../../sites/default/files/apple-touch-icon-precomposed.png");
 }
 
 /**
