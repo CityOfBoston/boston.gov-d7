@@ -1788,6 +1788,28 @@ function boston_preprocess_paragraphs_item_list(&$variables) {
 function boston_preprocess_paragraphs_item_document(&$variables) {
   $variables['document_link'] = $variables['content']['field_document'][0]['#markup'];
   $variables['document_filename'] = $variables['content']['field_document']['#items'][0]['filename'];
+
+  // only want to give a new theme to the transaction grid paragraph type.
+  if (isset($variables['paragraphs_item']->hostEntity()->hostEntity()->bundle)
+    && $variables['paragraphs_item']->hostEntity()->hostEntity()->bundle == "transaction_grid") {
+    $variables["is_transaction_grid"] = TRUE;
+    $document_link = field_get_items('paragraphs_item', $variables['paragraphs_item'], 'field_document');
+    $link_icon = drupal_static("link_icon", NULL);
+
+    if ($document_link !== FALSE) {
+      $variables['document_link_path'] = $document_link[0]['url'];
+      $variables['document_link_title'] = $variables['field_title'][0]['safe_value'];
+
+      if (isset($link_icon)) {
+        $variables['link_icon'] = $link_icon;
+        drupal_static_reset("link_icon");
+      }
+    }
+    else {
+      $variables['document_link_path'] = '';
+      $variables['document_link_title'] = '';
+    }
+  }
 }
 
 /**
