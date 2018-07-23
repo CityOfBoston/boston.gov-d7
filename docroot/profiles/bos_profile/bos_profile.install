@@ -56,6 +56,7 @@ function bos_profile_install() {
   bos_profile_update_7038();
   bos_profile_update_7039();
   bos_profile_update_7040();
+  bos_profile_update_7041();
 }
 
 /**
@@ -1178,7 +1179,7 @@ function bos_profile_update_7039() {
 /**
  * Adds metatag-favicon support, and references apple-touch-icon assets
  */
-function bos_profile_update_7040() {
+function bos_profile_update_7041() {
 
   $enabled_modules = array(
     'metatag_favicons',
