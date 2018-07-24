@@ -13,6 +13,12 @@
 
   <target name="tests:behat:execute" description="Executes behat tests against specific path.">
     <!-- Run behat. Any settings in behat.yml or local.yml will be used. -->
+    <if>
+      <equals arg1="behat.profile" arg2="hub" />
+      <then>
+        <exec dir="${docroot}" command="${composer.bin}/drush use hub" logoutput="true"/>
+      </then>
+    </if>
     <behat executable="${composer.bin}/behat"
            config="${behat.config}"
            profile="${behat.profile}"
