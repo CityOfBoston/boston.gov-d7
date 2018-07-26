@@ -229,6 +229,63 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
     ),
   );
 
+  // Exported field_instance:
+  // 'node-procurement_advertisement-field_awarding_authority'.
+  $field_instances['node-procurement_advertisement-field_awarding_authority'] = array(
+    'bundle' => 'procurement_advertisement',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'entityreference',
+        'settings' => array(
+          'bypass_access' => FALSE,
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 5,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div_div_div',
+    'field_name' => 'field_awarding_authority',
+    'label' => 'Awarding Authority',
+    'required' => 1,
+    'settings' => array(
+      'behaviors' => array(
+        'taxonomy-index' => array(
+          'status' => TRUE,
+        ),
+      ),
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference',
+      'settings' => array(
+        'entityreference_autocreate' => array(
+          'active' => 0,
+          'author' => '',
+          'author_current_user' => 1,
+          'status' => -1,
+        ),
+        'match_operator' => 'CONTAINS',
+        'path' => '',
+        'size' => 60,
+      ),
+      'type' => 'entityreference_autocomplete',
+      'weight' => 8,
+    ),
+  );
+
   // Exported field_instance: 'node-procurement_advertisement-field_bid'.
   $field_instances['node-procurement_advertisement-field_bid'] = array(
     'bundle' => 'procurement_advertisement',
@@ -721,6 +778,75 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
       ),
       'type' => 'text_textfield',
       'weight' => 14,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'node-procurement_advertisement-field_details_link'.
+  $field_instances['node-procurement_advertisement-field_details_link'] = array(
+    'bundle' => 'procurement_advertisement',
+    'default_value' => array(
+      0 => array(
+        'title' => 'Replaced by bos_content_type_procurement_advertisement feature',
+        'url' => '<front>',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'link',
+        'settings' => array(),
+        'type' => 'link_default',
+        'weight' => 22,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div_div_div',
+    'field_name' => 'field_details_link',
+    'label' => 'Related Links',
+    'required' => 0,
+    'settings' => array(
+      'absolute_url' => 1,
+      'attributes' => array(
+        'class' => '',
+        'configurable_class' => 0,
+        'configurable_title' => 0,
+        'rel' => '',
+        'target' => 'default',
+        'title' => '',
+      ),
+      'display' => array(
+        'url_cutoff' => 80,
+      ),
+      'enable_tokens' => 1,
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'rel_remove' => 'default',
+      'title' => 'optional',
+      'title_label_use_field_label' => 0,
+      'title_maxlength' => 128,
+      'title_value' => '',
+      'url' => 0,
+      'user_register_form' => FALSE,
+      'validate_url' => 1,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'link',
+      'settings' => array(),
+      'type' => 'link_field',
+      'weight' => 16,
     ),
   );
 
@@ -1815,7 +1941,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
     'bundle' => 'procurement_advertisement',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Minimum value is 10000000 and maximum value is 99999999 based on the categories you can find here: <a href="http://www.doa.la.gov/osp/vendorcenter/docs/unspsc_commoditycodes.pdf">http://www.doa.la.gov/osp/vendorcenter/docs/unspsc_commoditycodes.pdf</a>',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -1908,6 +2034,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
   // Included for use with string extractors like potx.
   t('Award date');
   t('Awarded By');
+  t('Awarding Authority');
   t('Bid');
   t('Bid Type');
   t('Body');
@@ -1922,6 +2049,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
   t('Intro Text');
   t('Location');
   t('Massachusetts General Law');
+  t('Minimum value is 10000000 and maximum value is 99999999 based on the categories you can find here: <a href="http://www.doa.la.gov/osp/vendorcenter/docs/unspsc_commoditycodes.pdf">http://www.doa.la.gov/osp/vendorcenter/docs/unspsc_commoditycodes.pdf</a>');
   t('Multi-year Contract');
   t('Not Awarded');
   t('Offering');

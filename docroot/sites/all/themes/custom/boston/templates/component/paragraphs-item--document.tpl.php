@@ -26,12 +26,33 @@
  */
 ?>
 
-<div class="link-wrapper download-link">
-  <a href="<?php print $document_link; ?>" target="_blank">
-    <?php if (isset($content['field_title'])): ?>
-      <?php print render($content['field_title']); ?>
-    <?php else: ?>
-      <?php print $document_filename; ?>
-    <?php endif; ?>
-  </a>
-</div>
+<?php if (!empty($is_transaction_grid)): ?>
+
+  <?php if (isset($link_icon["classes"]["icon"])): ?>
+    <a href="<?php print $document_link; ?>" class="<?php print $link_icon["classes"]["container"]; ?>" target="_blank">
+      <span<?php print((isset($link_icon["classes"]["icon"]) ? ' class="' . $link_icon["classes"]["icon"] . '"' : '')); ?>>
+        <img src="<?php print $link_icon["image"] ?>" class="lwi-i" alt=""/>
+      </span>
+      <span<?php print((isset($link_icon["classes"]["text"]) ? ' class="' . $link_icon["classes"]["text"] . '"' : '')); ?>>
+        <?php print $document_link_title; ?>
+      </span>
+    </a>
+  <?php else: ?>
+    <div class="link-wrapper <?php print $classes; ?>"<?php print $content_attributes; ?>>
+      <?php print render($content); ?>
+    </div>
+  <?php endif; ?>
+
+<?php else: ?>
+
+  <div class="link-wrapper download-link">
+    <a href="<?php print $document_link; ?>" target="_blank">
+      <?php if (isset($content['field_title'])): ?>
+        <?php print render($content['field_title']); ?>
+      <?php else: ?>
+        <?php print $document_filename; ?>
+      <?php endif; ?>
+    </a>
+  </div>
+
+<?php endif; ?>
