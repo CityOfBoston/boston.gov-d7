@@ -123,10 +123,11 @@ function drush_hub_migrate_purge($migration_name) {
         drush_set_error('Can\'t access source URL.');
         return;
       }
-
-      if (!empty($request->data)) {
-        // Turn the JSON into an array that we can manipulate.
-        $json_response = drupal_json_decode($request->data);
+      // Remove unicode characters that can't be parsed by json_decode().
+      $request_data_string = preg_replace('/[\x00-\x1F\x7F]/u', '', $request->data);
+      if ($request_data_string) {
+        // Turn the JSON string into an array that we can manipulate.
+        $json_response = drupal_json_decode($request_data_string);
         if (empty($json_response)) {
           drush_set_error('Bad JSON data retrieved from source.');
           return;
