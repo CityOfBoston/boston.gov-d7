@@ -201,8 +201,8 @@ function bos_view_news_announcements_views_default_views() {
   $handler->display->display_options['filters']['nid']['relationship'] = 'field_featured_post_target_id';
   $handler->display->display_options['filters']['nid']['operator'] = 'empty';
 
-  /* Display: News */
-  $handler = $view->new_display('block', 'News', 'news_events');
+  /* Display: Other */
+  $handler = $view->new_display('block', 'Other', 'news_events');
   $handler->display->display_options['defaults']['query'] = FALSE;
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['disable_sql_rewrite'] = TRUE;
