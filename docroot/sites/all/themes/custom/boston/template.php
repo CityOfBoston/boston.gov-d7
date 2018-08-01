@@ -1790,7 +1790,8 @@ function boston_preprocess_paragraphs_item_document(&$variables) {
   $variables['document_filename'] = $variables['content']['field_document']['#items'][0]['filename'];
 
   // only want to give a new theme to the transaction grid paragraph type.
-  if (isset($variables['paragraphs_item']->hostEntity()->hostEntity()->bundle)
+  if (isset($variables['paragraphs_item']->hostEntity()->bundle)
+    && isset($variables['paragraphs_item']->hostEntity()->hostEntity()->bundle)
     && $variables['paragraphs_item']->hostEntity()->hostEntity()->bundle == "transaction_grid") {
     $variables["is_transaction_grid"] = TRUE;
     $document_link = field_get_items('paragraphs_item', $variables['paragraphs_item'], 'field_document');
