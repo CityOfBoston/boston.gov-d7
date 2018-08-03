@@ -290,7 +290,7 @@ function bos_component_map_field_default_field_instances() {
     'fences_wrapper' => 'div_div_div',
     'field_name' => 'field_short_title',
     'label' => 'Short Title',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'linkit' => array(
         'button_text' => 'Search',
