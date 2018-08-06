@@ -24,7 +24,9 @@
  * @see template_preprocess_entity()
  * @see template_process()
  */
-$field_title = $content['field_title'][0]['#markup'];
+if (isset($content['field_title'])) {
+  $field_title = $content['field_title'][0]['#markup'];
+}
 ?>
 <?php if (isset($link_icon["classes"]["icon"])) { ?>
   <a href="<?php print $internal_link_path; ?>" class="<?php print $link_icon["classes"]["container"]; ?>">

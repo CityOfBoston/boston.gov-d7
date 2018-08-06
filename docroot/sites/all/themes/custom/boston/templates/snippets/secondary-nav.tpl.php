@@ -13,7 +13,7 @@
       </li>
     <?php endif; ?>
     <?php foreach ($secondary_menu as $link) { ?>
-      <li class="nv-h-l-i"><a href="<?php print url($link['href'], array('absolute' => true)) ?>" title="<?php print $link['title'] ?>" class="nv-h-l-a<?php print $link['always_show'] ? ' nv-h-l-a--k' : '' ?>"><?php print $link['title'] ?></a></li>
+      <li class="nv-h-l-i"><a href="<?php print url($link['href'], array('absolute' => true)) ?>" title="<?php print $link['title'] ?>" class="nv-h-l-a<?php print !empty($link['always_show']) ? ' nv-h-l-a--k' : '' ?>"><?php print $link['title'] ?></a></li>
     <?php } ?>
     <li class="tr nv-h-l-i">
       <a href="#translate" title="Translate" class="nv-h-l-a nv-h-l-a--k--s tr-link">Translate</a>

@@ -450,7 +450,7 @@ function boston_preprocess_page(array &$variables) {
   drupal_add_html_head($priority_element, 'swiftype_priority');
 
   // Create necessary page classes
-  if ($variables['node']->type !== 'tabbed_content' && $variables['node']->type !== 'how_to' && !$has_hero) {
+  if (isset($variables['node']) && $variables['node']->type !== 'tabbed_content' && $variables['node']->type !== 'how_to' && !$has_hero) {
     $page_class = 'page';
   } else {
     $page_class = NULL;
@@ -686,7 +686,7 @@ function boston_preprocess_paragraphs_item_card(&$variables) {
     $variables['card_attr'] = bos_core_field_get_link_attributes($link);
   }
 
-  if ($link->field_lightbox_link) {
+  if (!empty($link->field_lightbox_link)) {
       drupal_add_css('https://cdnjs.cloudflare.com/ajax/libs/lity/2.3.1/lity.min.css', array(
           'type' => 'external',
           'scope' => 'header',
@@ -774,10 +774,12 @@ function _boston_paragrpahs_item_group_of_links_is_left_region_empty($paragraph)
 
   $all_fields_empty = TRUE;
   foreach ($fields as $field) {
-    $value = $paragraph->{$field};
-    if (!empty($value)) {
-      $all_fields_empty = FALSE;
-      break;
+    if (isset($paragraph->{$field})) {
+      $value = $paragraph->{$field};
+      if (!empty($value)) {
+        $all_fields_empty = FALSE;
+        break;
+      }
     }
   }
 
@@ -871,22 +873,24 @@ function boston_preprocess_node_site_alert(&$variables) {
  * Implements hook_preprocess_node_BUNDLE().
  */
 function boston_preprocess_node_event(&$variables) {
-  $components_field = $variables['field_components']['und'];
+  if(isset($variables['field_components']['und'])) {
+    $components_field = $variables['field_components']['und'];
+  }
   $comp_entity_id_array = array();
 
   $variables['live_stream_active'] = 0;
 
   $cancelled = field_get_items('node', $variables['node'], 'field_cancel_event');
-  if ($cancelled[0]['value']) {
+  if (!empty($cancelled[0]['value'])) {
     $variables['is_cancelled'] = TRUE;
   }
 
-  if ($components_field) {
+  if (!empty($components_field)) {
     foreach ($components_field as $comp) {
       $comp_entity_id_array[] = $comp['value'];
     }
 
-    $components = entity_load('paragraphs_item', $components_field);
+    $components = entity_load('paragraphs_item', $comp_entity_id_array);
     if (!empty($components)) {
       foreach ($components as $comp) {
         $video = field_get_items('paragraphs_item', $comp, 'field_live_stream');
@@ -1771,7 +1775,7 @@ function boston_preprocess_paragraphs_item_list(&$variables) {
   // list is displaying. This is needed to target things like background
   // color for the component.
   $vname = field_get_items('paragraphs_item', $variables['paragraphs_item'], 'field_list');
-  if ($vname !== FALSE) {
+  if (isset($vname[0]) && $vname !== FALSE) {
     $class_name = 'view-' . preg_replace('/[|_]/', '-', $vname[0]['vname']);
     $variables['classes_array'][] = $class_name;
   }

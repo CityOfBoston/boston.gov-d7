@@ -95,12 +95,12 @@ hide($content['links']);
   <div class="department-info-wrapper desktop-100 clearfix">
     <div class="column mobile-100 desktop-66-left">
       <h1 class="title">
-        <?php if ($is_cancelled): ?>
+        <?php if (!empty($is_cancelled)): ?>
           <span class='t--err t--s60pct'>Canceled:</span><br>
         <?php endif; ?>
         <?php print $title; ?>
       </h1>
-      <?php if ($is_cancelled): ?>
+      <?php if (!empty($is_cancelled)): ?>
         <div class="supporting-text squiggle-border-bottom">Reason for cancellation:
         <?php
           if (isset($field_extra_info_event['und'][0]['safe_value'])) {
