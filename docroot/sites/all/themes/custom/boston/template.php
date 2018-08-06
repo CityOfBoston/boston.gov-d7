@@ -1975,7 +1975,7 @@ function boston_preprocess_field(&$variables, $hook) {
  * Implements hook_preprocess_HOOK().
  */
 function boston_preprocess_field_field_intro_text(&$variables) {
-  $variables['classes_array'] = "";
+  $variables['classes_array'] = [];
   $variables['classes_array'][] = "intro-text";
   $view_mode = $variables['element']['#view_mode'];
   $bundle = $variables['element']['#bundle'];
