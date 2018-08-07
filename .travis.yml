@@ -11,6 +11,7 @@ branches:
   - develop
   - master
   - settings
+  - php-7-1-upgrade
 php:
 - 5.6
 addons:
