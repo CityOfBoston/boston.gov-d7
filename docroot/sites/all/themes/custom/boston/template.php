@@ -952,7 +952,7 @@ function boston_preprocess_node_event(&$variables) {
     $dates = field_get_items('node', $variables['node'], 'field_event_dates');
     $dt = new DateTime();
     $start_time = strtotime($dates[0]['value'] . " +0000");
-    $current_time = date_format($dt, U);
+    $current_time = date_format($dt, "U");
     $future_time = $start_time + 21600;
 
     if ($current_time > $future_time) {
@@ -1083,7 +1083,7 @@ function boston_preprocess_node_public_notice(&$variables) {
     $dates = field_get_items('node', $variables['node'], 'field_public_notice_date');
     $dt = new DateTime();
     $start_time = strtotime($dates[0]['value'] . " +0000");
-    $current_time = date_format($dt, U);
+    $current_time = date_format($dt, "U");
     $future_time = $start_time + 21600;
 
     if ($current_time > $future_time) {
