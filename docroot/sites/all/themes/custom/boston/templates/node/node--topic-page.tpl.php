@@ -50,7 +50,7 @@
 
       <div class="section-nav-button-container">
         <button class="sub-nav-button">
-          <?php print file_get_contents(drupal_get_path('theme', $GLOBALS['theme']) . '/dist/img/subnav-toggle.svg') ?>
+          <?php print _boston_findsvg($GLOBALS['theme_info'], 'subnav-toggle.svg'); ?>
         </button>
       </div>
 

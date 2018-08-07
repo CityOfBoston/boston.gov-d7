@@ -39,7 +39,7 @@
   <?php endif; ?>
   <div class="content desktop-100"<?php print $content_attributes; ?>>
 
-    <?php if ($viewing_own) : ?>
+    <?php if (!empty($viewing_own)) : ?>
       <div class="user-profile-header-block">
         <div class="container">
           <h1>My Profile <label><a href="https://ess.boston.gov" title="Edit profile">Edit profile</a></label></h1>
@@ -169,7 +169,7 @@
     <?php endif ?>
     </div><!--user-profile-info-block-->
 </div>
-    <?php if ($viewing_own) : ?>
+    <?php if (!empty($viewing_own)) : ?>
       <div class="user-profile-section user-profile-personal-info">
         <div class="container">
           <div class="user-help-wrapper">
@@ -183,8 +183,8 @@
         </div>
       </div>
     <?php endif; ?>
-    <?php if (!$viewing_own) : ?>
-      <div class="user-profile-picture user-profile-picture-bottom <?php if ($viewing_own) : ?>hide-from-current<?php endif; ?>">
+    <?php if (empty($viewing_own)) : ?>
+      <div class="user-profile-picture user-profile-picture-bottom <?php if (!empty($viewing_own)) : ?>hide-from-current<?php endif; ?>">
         <?php if (!empty($content['field_user_picture'])) : ?>
           <?php print render($content['field_user_picture']); ?>
         <?php else :?>

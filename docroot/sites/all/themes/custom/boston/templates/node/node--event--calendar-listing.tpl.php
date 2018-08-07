@@ -86,12 +86,12 @@
 
 <article id="node-<?php print $node->nid; ?>"
      class="<?php print $classes; ?> calendar-listing-wrapper"
-     <?php if ($live_stream): ?>data-livestream="1"<?php endif; ?>>
+     <?php if (!empty($live_stream)): ?>data-livestream="1"<?php endif; ?>>
   <div class="teaser drawer-trigger">
     <div class="drawer-trigger-chevron"></div>
     <?php if (isset($time_range)): ?>
       <span class="time-range">
-        <?php if ($live_stream) :?><span class="live-stream-flag">Live:</span><?php endif; ?>
+        <?php if (!empty($live_stream)) :?><span class="live-stream-flag">Live:</span><?php endif; ?>
         <?php print $time_range; ?>
       </span>
     <?php endif; ?>

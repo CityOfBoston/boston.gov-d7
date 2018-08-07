@@ -1,6 +1,6 @@
 <nav class="nv-h">
   <ul class="nv-h-l">
-    <?php if ($logged_in && $GLOBALS['theme'] == 'boston_hub'): ?>
+    <?php if (!empty($logged_in) && $GLOBALS['theme'] == 'boston_hub'): ?>
       <li class="nv-h-l-i nv-dd">
         <input type="checkbox" name="nv-dd-tr" id="nv-tr[0]" class="nv-dd-tr">
         <label class="nv-h-l-a nv-h-l-a--k nv-dd-l" for="nv-tr[0]"><?php if ($first_name): ?>Hello, <?php print $first_name ?><?php else: ?>My Account<?php endif; ?></label>

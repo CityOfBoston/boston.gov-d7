@@ -2285,3 +2285,28 @@ function boston_preprocess_paragraphs_item_tabbed_content_tab(&$variables) {
   $variables['tabbed_content_tabs_count'] = $GLOBALS['tabbed_content_tabs_count'];
   $GLOBALS['tabbed_content_tabs_count']++;
 }
+
+/**
+ * Helper to find the svg images from the correct /dist/img/ in the theme or base_themes.
+ *
+ * @param $theme_info
+ * @param $image
+ *
+ * @return bool|string
+ */
+function _boston_findsvg($theme_info, $image) {
+  $svg = "";
+  if( file_exists(drupal_get_path('theme', $theme_info->name) . '/dist/img/' . $image)) {
+    $svg = file_get_contents(drupal_get_path('theme', $theme_info->name) . '/dist/img/' . $image);
+  }
+  else {
+    foreach($theme_info->base_themes as $base_theme) {
+      if( file_exists(drupal_get_path('theme', $base_theme) . '/dist/img/' . $image)) {
+        $svg = file_get_contents(drupal_get_path('theme', $base_theme) . '/dist/img/' . $image);
+        break;
+      }
+    }
+  }
+  return $svg;
+
+}
