@@ -56,6 +56,7 @@ function bos_profile_install() {
   bos_profile_update_7038();
   bos_profile_update_7039();
   bos_profile_update_7040();
+  bos_profile_update_7041();
 }
 
 /**
@@ -1187,7 +1188,7 @@ function bos_profile_update_7039() {
 /**
  * Updates media 2.0-beta1 to 2.19 and remove patch.
  */
-function bos_profile_update_7040() {
+function bos_profile_update_7041() {
   $disabled_modules = array(
     'media_wysiwyg_view_mode',
   );
