@@ -75,7 +75,7 @@ function bos_form_citywide_neighborhood_page_build(&$page) {
             unset($page['content']['system_main']['nodes'][$nid]['field_multiple_neighborhoods'][$key]);
           }
         }
-        // Re-add the 'Citywide' markup so it is the only neighborhood displayed.
+      // Re-add the 'Citywide' markup so it is the only neighborhood displayed.
         $page['content']['system_main']['nodes'][$nid]['field_multiple_neighborhoods'][0]['#markup'] = 'Citywide';
       }
     }
