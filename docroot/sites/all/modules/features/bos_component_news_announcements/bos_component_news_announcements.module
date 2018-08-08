@@ -28,9 +28,11 @@ function bos_component_news_announcements_views_post_execute(&$view) {
         }
       }
     }
-    do {
-      unset($view->result[$key]);
-      $view->result = array_values($view->result);
-    } while (isset($view->result[4]));
+    // Convert keys into numberic values.
+    $view->result = array_values($view->result);
+    if (isset($view->result[4])) {
+      // Remove the extra 5th item from the list.
+      unset($view->result[4]);
+    }
   }
 }

@@ -10,48 +10,32 @@
 function bos_component_map_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'field_map'.
-  $field_bases['field_map'] = array(
+  // Exported field_base: 'field_map_config_json'.
+  $field_bases['field_map_config_json'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_map',
+    'field_name' => 'field_map_config_json',
     'indexes' => array(
-      'target_id' => array(
-        0 => 'target_id',
+      'format' => array(
+        0 => 'format',
       ),
     ),
     'locked' => 0,
-    'module' => 'entityreference',
-    'settings' => array(
-      'handler' => 'base',
-      'handler_settings' => array(
-        'behaviors' => array(
-          'views-select-list' => array(
-            'status' => 0,
-          ),
-        ),
-        'sort' => array(
-          'type' => 'none',
-        ),
-        'target_bundles' => array(
-          'maps_esri_feed' => 'maps_esri_feed',
-        ),
-      ),
-      'target_type' => 'taxonomy_term',
-    ),
+    'module' => 'text',
+    'settings' => array(),
     'translatable' => 0,
-    'type' => 'entityreference',
+    'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_map_options'.
-  $field_bases['field_map_options'] = array(
+  // Exported field_base: 'field_map_inline'.
+  $field_bases['field_map_inline'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_map_options',
+    'field_name' => 'field_map_inline',
     'indexes' => array(
       'value' => array(
         0 => 'value',
@@ -61,63 +45,13 @@ function bos_component_map_field_default_field_bases() {
     'module' => 'list',
     'settings' => array(
       'allowed_values' => array(
-        0 => 'Static',
-        1 => 'Zoomable',
+        0 => '',
+        1 => '',
       ),
       'allowed_values_function' => '',
     ),
     'translatable' => 0,
-    'type' => 'list_text',
-  );
-
-  // Exported field_base: 'field_map_point_of_interest'.
-  $field_bases['field_map_point_of_interest'] = array(
-    'active' => 1,
-    'cardinality' => -1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_map_point_of_interest',
-    'indexes' => array(),
-    'locked' => 0,
-    'module' => 'paragraphs',
-    'settings' => array(),
-    'translatable' => 0,
-    'type' => 'paragraphs',
-  );
-
-  // Exported field_base: 'field_map_type'.
-  $field_bases['field_map_type'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_map_type',
-    'indexes' => array(
-      'target_id' => array(
-        0 => 'target_id',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'entityreference',
-    'settings' => array(
-      'handler' => 'base',
-      'handler_settings' => array(
-        'behaviors' => array(
-          'views-select-list' => array(
-            'status' => 0,
-          ),
-        ),
-        'sort' => array(
-          'type' => 'none',
-        ),
-        'target_bundles' => array(
-          'maps_basemap' => 'maps_basemap',
-        ),
-      ),
-      'target_type' => 'taxonomy_term',
-    ),
-    'translatable' => 0,
-    'type' => 'entityreference',
+    'type' => 'list_boolean',
   );
 
   return $field_bases;

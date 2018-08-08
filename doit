@@ -307,8 +307,9 @@ function doitstashdb() {
     if [ -f /tmp/dump.sql.gz ]; then
       doitcomment "Ungzipping"
       gunzip /tmp/dump.sql.gz
-      # Allows the Apache user to overwrite this
-      chmod a+w /tmp/dump.sql
+      # Necessary to allow the Apache user to delete this. webconsole.php runs
+      # as www-data.
+      chown www-data /tmp/dump.sql
     fi
 
     exit

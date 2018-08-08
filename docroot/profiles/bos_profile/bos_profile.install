@@ -1174,15 +1174,50 @@ function bos_profile_update_7038(){
  * Adds metatag-favicon support, and references apple-touch-icon assets
  */
 function bos_profile_update_7039() {
+}
+
+/**
+ * Adds metatag-favicon support, and references apple-touch-icon assets
+ */
+function bos_profile_update_7041() {
+
   $enabled_modules = array(
     'metatag_favicons',
   );
   module_enable($enabled_modules);
 
   $config = metatag_config_load('global');
-  $config->config['apple-touch-icon']['value'] = "/apple-touch-icon.png";
-  $config->config['apple-touch-icon-precomposed']['value'] = "/apple-touch-icon-precomposed.png";
+  $config->config['apple-touch-icon']['value'] = "/sites/default/files/apple-touch-icon.png";
+  $config->config['apple-touch-icon-precomposed']['value'] = "/sites/default/files/apple-touch-icon-precomposed.png";
   metatag_config_save($config);
+
+  rename(__DIR__ . "/apple-touch-icon.png", __DIR__ . "/../../sites/default/files/apple-touch-icon.png");
+  rename(__DIR__ . "/apple-touch-icon-precomposed.png", __DIR__ . "/../../sites/default/files/apple-touch-icon-precomposed.png");
+}
+
+/**
+ * Deletes unused old maps fields.
+ */
+function bos_profile_update_7040() {
+  $delete_field_instances = array(
+    'field_map',
+    'field_map_options',
+    'field_map_point_of_interest',
+    'field_map_type',
+    'field_contact',
+    'field_hide_title_bar',
+    'field_map_default_coordinates'
+  );
+
+  foreach ($delete_field_instances as $field_instance) {
+    if ($instance = field_info_instance('paragraphs_item', $field_instance, 'map')) {
+      # This will also delete fields if this deletes the last instance of that
+      # field.
+      field_delete_instance($instance);
+    }
+  }
+
+  field_purge_batch(1000);
 }
 
 /**

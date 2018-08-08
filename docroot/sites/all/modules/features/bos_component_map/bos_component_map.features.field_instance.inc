@@ -61,57 +61,6 @@ function bos_component_map_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-map-field_contact'.
-  $field_instances['paragraphs_item-map-field_contact'] = array(
-    'bundle' => 'map',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 3,
-      ),
-      'paragraphs_editor_preview' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'paragraphs_item',
-    'fences_wrapper' => 'div_div_div',
-    'field_name' => 'field_contact',
-    'label' => 'Contact',
-    'required' => 1,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'entityreference',
-      'settings' => array(
-        'apply_chosen' => '',
-        'entityreference_autocreate' => array(
-          'active' => 0,
-          'author' => '',
-          'author_current_user' => 1,
-          'status' => -1,
-        ),
-        'match_operator' => 'CONTAINS',
-        'path' => '',
-        'size' => 60,
-      ),
-      'type' => 'entityreference_autocomplete',
-      'weight' => 3,
-    ),
-  );
-
   // Exported field_instance: 'paragraphs_item-map-field_extra_info'.
   $field_instances['paragraphs_item-map-field_extra_info'] = array(
     'bundle' => 'map',
@@ -137,7 +86,7 @@ function bos_component_map_field_default_field_instances() {
     'fences_wrapper' => 'div_div_div',
     'field_name' => 'field_extra_info',
     'label' => 'Description',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'linkit' => array(
         'button_text' => 'Search',
@@ -159,23 +108,21 @@ function bos_component_map_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-map-field_hide_title_bar'.
-  $field_instances['paragraphs_item-map-field_hide_title_bar'] = array(
+  // Exported field_instance: 'paragraphs_item-map-field_image'.
+  $field_instances['paragraphs_item-map-field_image'] = array(
     'bundle' => 'map',
-    'default_value' => array(
-      0 => array(
-        'value' => 0,
-      ),
-    ),
     'deleted' => 0,
     'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'list',
-        'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 1,
+        'module' => 'image',
+        'settings' => array(
+          'image_link' => '',
+          'image_style' => '',
+        ),
+        'type' => 'image',
+        'weight' => 12,
       ),
       'paragraphs_editor_preview' => array(
         'label' => 'above',
@@ -186,8 +133,119 @@ function bos_component_map_field_default_field_instances() {
     ),
     'entity_type' => 'paragraphs_item',
     'fences_wrapper' => 'div_div_div',
-    'field_name' => 'field_hide_title_bar',
-    'label' => 'Hide Title Bar',
+    'field_name' => 'field_image',
+    'label' => 'Background Image',
+    'required' => 0,
+    'settings' => array(
+      'alt_field' => 0,
+      'default_image' => 0,
+      'file_directory' => '',
+      'file_extensions' => 'png gif jpg jpeg',
+      'max_filesize' => '',
+      'max_resolution' => '',
+      'min_resolution' => '',
+      'title_field' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'media',
+      'settings' => array(
+        'allowed_schemes' => array(
+          'public' => 'public',
+          's3' => 0,
+        ),
+        'allowed_types' => array(
+          'audio' => 0,
+          'document' => 0,
+          'image' => 'image',
+          'video' => 0,
+        ),
+        'browser_plugins' => array(
+          'boston_media_browser_tabs--boston_media' => 0,
+          'boston_media_browser_tabs--icons' => 0,
+          'media_default--media_browser_1' => 0,
+          'media_default--media_browser_my_files' => 0,
+          'upload' => 0,
+        ),
+      ),
+      'type' => 'media_generic',
+      'weight' => 4,
+    ),
+  );
+
+  // Exported field_instance: 'paragraphs_item-map-field_map_config_json'.
+  $field_instances['paragraphs_item-map-field_map_config_json'] = array(
+    'bundle' => 'map',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Test your config JSON with the <a href="https://patterns.boston.gov/web-components/map-editor.html">map editor</a>.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 10,
+      ),
+      'paragraphs_editor_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'paragraphs_item',
+    'fences_wrapper' => 'no_wrapper',
+    'field_name' => 'field_map_config_json',
+    'label' => 'Config JSON',
+    'required' => 1,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+        'show_token_tree' => 0,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 5,
+    ),
+  );
+
+  // Exported field_instance: 'paragraphs_item-map-field_map_inline'.
+  $field_instances['paragraphs_item-map-field_map_inline'] = array(
+    'bundle' => 'map',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 13,
+      ),
+      'paragraphs_editor_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'paragraphs_item',
+    'fences_wrapper' => 'div_div_div',
+    'field_name' => 'field_map_inline',
+    'label' => 'Inline',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -199,472 +257,7 @@ function bos_component_map_field_default_field_instances() {
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 1,
-    ),
-  );
-
-  // Exported field_instance: 'paragraphs_item-map-field_map'.
-  $field_instances['paragraphs_item-map-field_map'] = array(
-    'bundle' => 'map',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 4,
-      ),
-      'paragraphs_editor_preview' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'paragraphs_item',
-    'fences_wrapper' => 'div_div_div',
-    'field_name' => 'field_map',
-    'label' => 'Map',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(
-        'apply_chosen' => '',
-      ),
-      'type' => 'options_select',
-      'weight' => 4,
-    ),
-  );
-
-  // Exported field_instance:
-  // 'paragraphs_item-map-field_map_default_coordinates'.
-  $field_instances['paragraphs_item-map-field_map_default_coordinates'] = array(
-    'bundle' => 'map',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'Override the Latitude, Longitude, and Zoom set by the referenced ESRI feed. If no ESRI feed is set, use this to configure how the map should initially load.',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'paragraphs',
-        'settings' => array(
-          'view_mode' => 'full',
-        ),
-        'type' => 'paragraphs_view',
-        'weight' => 8,
-      ),
-      'paragraphs_editor_preview' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'paragraphs_item',
-    'fences_wrapper' => 'div_div_div',
-    'field_name' => 'field_map_default_coordinates',
-    'label' => 'Map Default Coordinates Override',
-    'required' => 0,
-    'settings' => array(
-      'add_mode' => 'select',
-      'allowed_bundles' => array(
-        '3_column_w_image' => -1,
-        'bos311' => -1,
-        'bos_signup_emergency_alerts' => -1,
-        'cabinet' => -1,
-        'card' => -1,
-        'city_score_dashboard' => -1,
-        'custom_hours_text' => -1,
-        'daily_hours' => -1,
-        'discussion_topic' => -1,
-        'document' => -1,
-        'drawer' => -1,
-        'drawers' => -1,
-        'election_results' => -1,
-        'external_link' => -1,
-        'featured_item' => -1,
-        'featured_topics' => -1,
-        'feedback' => -1,
-        'fyi' => -1,
-        'gol_list_links' => -1,
-        'grid_of_cards' => -1,
-        'grid_of_people' => -1,
-        'grid_of_places' => -1,
-        'grid_of_programs_initiatives' => -1,
-        'grid_of_quotes' => -1,
-        'grid_of_topics' => -1,
-        'group_of_links_grid' => -1,
-        'group_of_links_list' => -1,
-        'group_of_links_mini_grid' => -1,
-        'header_text' => -1,
-        'hero_image' => -1,
-        'how_to_contact_step' => -1,
-        'how_to_tab' => -1,
-        'how_to_text_step' => -1,
-        'iframe' => -1,
-        'internal_link' => -1,
-        'list' => -1,
-        'map' => -1,
-        'map_coordinates' => 'map_coordinates',
-        'map_pin' => -1,
-        'message_for_the_day' => -1,
-        'news_announcements' => -1,
-        'newsletter' => -1,
-        'photo' => -1,
-        'quote' => -1,
-        'recollect_widget' => -1,
-        'script_embed' => -1,
-        'seamless_doc' => -1,
-        'sidebar_item' => -1,
-        'sidebar_item_w_icon' => -1,
-        'social_media_links' => -1,
-        'social_networking' => -1,
-        'status_override' => -1,
-        'tabbed_content_tab' => -1,
-        'text' => -1,
-        'text_one_column' => -1,
-        'text_three_column' => -1,
-        'text_two_column' => -1,
-        'transaction_grid' => -1,
-        'upcoming_events' => -1,
-        'user_action' => -1,
-        'video' => -1,
-      ),
-      'bundle_weights' => array(
-        '3_column_w_image' => 2,
-        'bos311' => 3,
-        'bos_signup_emergency_alerts' => 4,
-        'cabinet' => 5,
-        'card' => 6,
-        'city_score_dashboard' => 7,
-        'custom_hours_text' => 8,
-        'daily_hours' => 9,
-        'discussion_topic' => 10,
-        'document' => 11,
-        'drawer' => 12,
-        'drawers' => 13,
-        'election_results' => 14,
-        'external_link' => 15,
-        'featured_item' => 16,
-        'featured_topics' => 17,
-        'feedback' => 18,
-        'fyi' => 19,
-        'gol_list_links' => 20,
-        'grid_of_cards' => 21,
-        'grid_of_people' => 22,
-        'grid_of_places' => 23,
-        'grid_of_programs_initiatives' => 24,
-        'grid_of_quotes' => 25,
-        'grid_of_topics' => 26,
-        'group_of_links_grid' => 27,
-        'group_of_links_list' => 28,
-        'group_of_links_mini_grid' => 29,
-        'header_text' => 30,
-        'hero_image' => 31,
-        'how_to_contact_step' => 32,
-        'how_to_tab' => 33,
-        'how_to_text_step' => 34,
-        'iframe' => 35,
-        'internal_link' => 36,
-        'list' => 37,
-        'map' => 38,
-        'map_coordinates' => 39,
-        'map_pin' => 40,
-        'message_for_the_day' => 41,
-        'news_announcements' => 43,
-        'newsletter' => 42,
-        'photo' => 44,
-        'quote' => 45,
-        'recollect_widget' => 46,
-        'script_embed' => 47,
-        'seamless_doc' => 48,
-        'sidebar_item' => 49,
-        'sidebar_item_w_icon' => 50,
-        'social_media_links' => 51,
-        'social_networking' => 52,
-        'status_override' => 53,
-        'tabbed_content_tab' => 54,
-        'text' => 55,
-        'text_one_column' => 56,
-        'text_three_column' => 57,
-        'text_two_column' => 58,
-        'transaction_grid' => 59,
-        'upcoming_events' => 60,
-        'user_action' => 61,
-        'video' => 62,
-      ),
-      'default_edit_mode' => 'open',
-      'title' => 'Coordinates Override',
-      'title_multiple' => 'Coordinates Overrides',
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'paragraphs',
-      'settings' => array(),
-      'type' => 'paragraphs_embed',
-      'weight' => 9,
-    ),
-  );
-
-  // Exported field_instance: 'paragraphs_item-map-field_map_options'.
-  $field_instances['paragraphs_item-map-field_map_options'] = array(
-    'bundle' => 'map',
-    'default_value' => array(
-      0 => array(
-        'value' => 1,
-      ),
-    ),
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'list',
-        'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 6,
-      ),
-      'paragraphs_editor_preview' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'paragraphs_item',
-    'fences_wrapper' => 'div_div_div',
-    'field_name' => 'field_map_options',
-    'label' => 'Options',
-    'required' => 1,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(),
-      'type' => 'options_buttons',
-      'weight' => 6,
-    ),
-  );
-
-  // Exported field_instance: 'paragraphs_item-map-field_map_point_of_interest'.
-  $field_instances['paragraphs_item-map-field_map_point_of_interest'] = array(
-    'bundle' => 'map',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'You can include a point of interest via exact latitude and longitude. You can find latitude and longitude from this website [developer recommend and add in website].',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'paragraphs',
-        'settings' => array(
-          'view_mode' => 'full',
-        ),
-        'type' => 'paragraphs_view',
-        'weight' => 5,
-      ),
-      'paragraphs_editor_preview' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'paragraphs_item',
-    'fences_wrapper' => 'div_div_div',
-    'field_name' => 'field_map_point_of_interest',
-    'label' => 'Point of Interest',
-    'required' => 0,
-    'settings' => array(
-      'add_mode' => 'select',
-      'allowed_bundles' => array(
-        '3_column_w_image' => -1,
-        'bos311' => -1,
-        'bos_signup_emergency_alerts' => -1,
-        'cabinet' => -1,
-        'card' => -1,
-        'city_score_dashboard' => -1,
-        'custom_hours_text' => -1,
-        'daily_hours' => -1,
-        'discussion_topic' => -1,
-        'document' => -1,
-        'drawer' => -1,
-        'drawers' => -1,
-        'election_results' => -1,
-        'external_link' => -1,
-        'featured_item' => -1,
-        'featured_topics' => -1,
-        'feedback' => -1,
-        'fyi' => -1,
-        'gol_list_links' => -1,
-        'grid_of_cards' => -1,
-        'grid_of_people' => -1,
-        'grid_of_places' => -1,
-        'grid_of_programs_initiatives' => -1,
-        'grid_of_quotes' => -1,
-        'grid_of_topics' => -1,
-        'group_of_links_grid' => -1,
-        'group_of_links_list' => -1,
-        'group_of_links_mini_grid' => -1,
-        'header_text' => -1,
-        'hero_image' => -1,
-        'how_to_contact_step' => -1,
-        'how_to_tab' => -1,
-        'how_to_text_step' => -1,
-        'iframe' => -1,
-        'internal_link' => -1,
-        'list' => -1,
-        'map' => -1,
-        'map_pin' => 'map_pin',
-        'message_for_the_day' => -1,
-        'news_announcements' => -1,
-        'newsletter' => -1,
-        'photo' => -1,
-        'quote' => -1,
-        'recollect_widget' => -1,
-        'script_embed' => -1,
-        'seamless_doc' => -1,
-        'sidebar_item' => -1,
-        'sidebar_item_w_icon' => -1,
-        'social_media_links' => -1,
-        'social_networking' => -1,
-        'status_override' => -1,
-        'tabbed_content_tab' => -1,
-        'text' => -1,
-        'text_one_column' => -1,
-        'text_three_column' => -1,
-        'text_two_column' => -1,
-        'transaction_grid' => -1,
-        'upcoming_events' => -1,
-        'user_action' => -1,
-        'video' => -1,
-      ),
-      'bundle_weights' => array(
-        '3_column_w_image' => 2,
-        'bos311' => 3,
-        'bos_signup_emergency_alerts' => 4,
-        'cabinet' => 5,
-        'card' => 6,
-        'city_score_dashboard' => 7,
-        'custom_hours_text' => 8,
-        'daily_hours' => 9,
-        'discussion_topic' => 10,
-        'document' => 11,
-        'drawer' => 12,
-        'drawers' => 13,
-        'election_results' => 14,
-        'external_link' => 15,
-        'featured_item' => 16,
-        'featured_topics' => 17,
-        'feedback' => 18,
-        'fyi' => 19,
-        'gol_list_links' => 20,
-        'grid_of_cards' => 21,
-        'grid_of_people' => 22,
-        'grid_of_places' => 23,
-        'grid_of_programs_initiatives' => 24,
-        'grid_of_quotes' => 25,
-        'grid_of_topics' => 26,
-        'group_of_links_grid' => 27,
-        'group_of_links_list' => 28,
-        'group_of_links_mini_grid' => 29,
-        'header_text' => 30,
-        'hero_image' => 31,
-        'how_to_contact_step' => 32,
-        'how_to_tab' => 33,
-        'how_to_text_step' => 34,
-        'iframe' => 35,
-        'internal_link' => 36,
-        'list' => 37,
-        'map' => 38,
-        'map_pin' => 39,
-        'message_for_the_day' => 40,
-        'news_announcements' => 42,
-        'newsletter' => 41,
-        'photo' => 43,
-        'quote' => 44,
-        'recollect_widget' => 45,
-        'script_embed' => 46,
-        'seamless_doc' => 47,
-        'sidebar_item' => 48,
-        'sidebar_item_w_icon' => 49,
-        'social_media_links' => 50,
-        'social_networking' => 51,
-        'status_override' => 52,
-        'tabbed_content_tab' => 53,
-        'text' => 54,
-        'text_one_column' => 55,
-        'text_three_column' => 56,
-        'text_two_column' => 57,
-        'transaction_grid' => 58,
-        'upcoming_events' => 59,
-        'user_action' => 60,
-        'video' => 61,
-      ),
-      'default_edit_mode' => 'open',
-      'title' => 'Point of Interest',
-      'title_multiple' => 'Points of Interest',
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'paragraphs',
-      'settings' => array(),
-      'type' => 'paragraphs_embed',
-      'weight' => 7,
-    ),
-  );
-
-  // Exported field_instance: 'paragraphs_item-map-field_map_type'.
-  $field_instances['paragraphs_item-map-field_map_type'] = array(
-    'bundle' => 'map',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 7,
-      ),
-      'paragraphs_editor_preview' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'paragraphs_item',
-    'fences_wrapper' => 'div_div_div',
-    'field_name' => 'field_map_type',
-    'label' => 'Type',
-    'required' => 1,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(
-        'apply_chosen' => '',
-      ),
-      'type' => 'options_select',
-      'weight' => 5,
+      'weight' => 3,
     ),
   );
 
@@ -697,7 +290,7 @@ function bos_component_map_field_default_field_instances() {
     'fences_wrapper' => 'div_div_div',
     'field_name' => 'field_short_title',
     'label' => 'Short Title',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'linkit' => array(
         'button_text' => 'Search',
@@ -715,24 +308,19 @@ function bos_component_map_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 2,
+      'weight' => 1,
     ),
   );
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Contact');
+  t('Background Image');
+  t('Config JSON');
   t('Description');
-  t('Hide Title Bar');
-  t('Map');
-  t('Map Default Coordinates Override');
-  t('Options');
-  t('Override the Latitude, Longitude, and Zoom set by the referenced ESRI feed. If no ESRI feed is set, use this to configure how the map should initially load.');
-  t('Point of Interest');
+  t('Inline');
   t('Short Title');
+  t('Test your config JSON with the <a href="https://patterns.boston.gov/web-components/map-editor.html">map editor</a>.');
   t('Title');
-  t('Type');
-  t('You can include a point of interest via exact latitude and longitude. You can find latitude and longitude from this website [developer recommend and add in website].');
 
   return $field_instances;
 }

@@ -37,6 +37,8 @@ RUN ln -s /boston.gov/vendor/bin/drush /usr/local/bin/drush
 
 ADD docker/php.ini /usr/local/etc/php/
 ADD docker/xdebug.ini /usr/local/etc/php/conf.d
+ADD docker/limit-apache-children.conf /etc/apache2/conf-available/
+RUN a2enconf limit-apache-children
 
 # Adds a web console to run drush commands on staging.
 # ZOMG THIS IS NOT FOR PRODUCTION SERIOUSLY NOT
