@@ -7,7 +7,6 @@ dependencies[] = ctools
 dependencies[] = features
 dependencies[] = filter
 dependencies[] = media_wysiwyg
-dependencies[] = media_wysiwyg_view_mode
 dependencies[] = picture
 dependencies[] = shortcode
 dependencies[] = token_filter

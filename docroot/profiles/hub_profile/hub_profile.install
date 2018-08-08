@@ -36,6 +36,7 @@ function hub_profile_install() {
   hub_profile_update_7023();
   hub_profile_update_7024();
   hub_profile_update_7025();
+  hub_profile_update_7027();
 
 }
 
@@ -545,6 +546,23 @@ function hub_profile_update_7024() {
 }
 
 /**
+ * Updates media 2.0-beta1 to 2.19 and remove patch.
+ */
+function hub_profile_update_7027() {
+  $disabled_modules = array(
+    'media_wysiwyg_view_mode',
+  );
+  module_disable($disabled_modules);
+
+  // force removal of roles to allow build tests to pass.
+  $permission = "administer media wysiwyg view mode";
+  $roles = user_roles(TRUE, $permission);
+  foreach($roles as $rid => $role) {
+    user_role_revoke_permissions($rid, [$permission]);
+  }
+}
+
+/*
  * Adds metatag-favicon support, and references apple-touch-icon assets
  */
 function bos_profile_update_7025() {
@@ -558,6 +576,7 @@ function bos_profile_update_7025() {
   $config->config['apple-touch-icon-precomposed']['value'] = "/sites/default/files/apple-touch-icon-precomposed.png";
   metatag_config_save($config);
 }
+
 /*******************************************************************
 Any new migrations need to also be added to hub_profile_install so that
 they can run on fresh Docker installs.
