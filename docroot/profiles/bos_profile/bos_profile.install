@@ -1229,6 +1229,14 @@ function bos_profile_update_7042() {
     'media_wysiwyg_view_mode',
   );
   module_disable($disabled_modules);
+
+  // force removal of roles to allow build tests to pass.
+  $permission = "administer media wysiwyg view mode";
+  $roles = user_roles(TRUE, $permission);
+  foreach($roles as $rid => $role) {
+    user_role_revoke_permissions($rid, [$permission]);
+  }
+
 }
 
 /*******************************************************************
