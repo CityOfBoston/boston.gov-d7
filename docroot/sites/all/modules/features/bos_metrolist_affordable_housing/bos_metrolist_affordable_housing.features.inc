@@ -232,9 +232,9 @@ function bos_metrolist_affordable_housing_default_salesforce_mapping() {
           "htmlFormatted" : false,
           "idLookup" : false,
           "inlineHelpText" : null,
-          "label" : "Neighborhood (pl)",
+          "label" : "Neighborhood",
           "length" : 255,
-          "name" : "Neighborhood_pl__c",
+          "name" : "Neighborhood__c",
           "nameField" : false,
           "namePointing" : false,
           "nillable" : true,
@@ -341,13 +341,6 @@ function bos_metrolist_affordable_housing_default_salesforce_mapping() {
             {
               "active" : true,
               "defaultValue" : false,
-              "label" : "Downtown",
-              "validFor" : null,
-              "value" : "Downtown"
-            },
-            {
-              "active" : true,
-              "defaultValue" : false,
               "label" : "Dorchester - Adams Village",
               "validFor" : null,
               "value" : "Dorchester - Adams Village"
@@ -418,6 +411,13 @@ function bos_metrolist_affordable_housing_default_salesforce_mapping() {
             {
               "active" : true,
               "defaultValue" : false,
+              "label" : "Downtown",
+              "validFor" : null,
+              "value" : "Downtown"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
               "label" : "East Boston",
               "validFor" : null,
               "value" : "East Boston"
@@ -425,16 +425,16 @@ function bos_metrolist_affordable_housing_default_salesforce_mapping() {
             {
               "active" : true,
               "defaultValue" : false,
-              "label" : "Fenway\\/Kenmore",
+              "label" : "Fenway",
               "validFor" : null,
-              "value" : "Fenway\\/Kenmore"
+              "value" : "Fenway"
             },
             {
               "active" : true,
               "defaultValue" : false,
-              "label" : "Fenway",
+              "label" : "Fenway\\/Kenmore",
               "validFor" : null,
-              "value" : "Fenway"
+              "value" : "Fenway\\/Kenmore"
             },
             {
               "active" : true,
@@ -530,6 +530,13 @@ function bos_metrolist_affordable_housing_default_salesforce_mapping() {
             {
               "active" : true,
               "defaultValue" : false,
+              "label" : "Outside Boston",
+              "validFor" : null,
+              "value" : "Outside Boston"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
               "label" : "Roslindale",
               "validFor" : null,
               "value" : "Roslindale"
@@ -586,23 +593,9 @@ function bos_metrolist_affordable_housing_default_salesforce_mapping() {
             {
               "active" : true,
               "defaultValue" : false,
-              "label" : "South Boston - Fort Point",
+              "label" : "South Easton",
               "validFor" : null,
-              "value" : "South Boston - Fort Point"
-            },
-            {
-              "active" : true,
-              "defaultValue" : false,
-              "label" : "South Boston - Marine Industrial Park",
-              "validFor" : null,
-              "value" : "South Boston - Marine Industrial Park"
-            },
-            {
-              "active" : true,
-              "defaultValue" : false,
-              "label" : "South Boston - Waterfront",
-              "validFor" : null,
-              "value" : "South Boston - Waterfront"
+              "value" : "South Easton"
             },
             {
               "active" : true,
@@ -631,13 +624,6 @@ function bos_metrolist_affordable_housing_default_salesforce_mapping() {
               "label" : "West Roxbury",
               "validFor" : null,
               "value" : "West Roxbury"
-            },
-            {
-              "active" : true,
-              "defaultValue" : false,
-              "label" : "Outside Boston",
-              "validFor" : null,
-              "value" : "Outside Boston"
             }
           ],
           "precision" : 0,
@@ -1151,6 +1137,13 @@ function bos_metrolist_affordable_housing_default_salesforce_mapping() {
               "label" : "Gloucester",
               "validFor" : null,
               "value" : "Gloucester"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Groton",
+              "validFor" : null,
+              "value" : "Groton"
             },
             {
               "active" : true,
@@ -1694,6 +1687,13 @@ function bos_metrolist_affordable_housing_default_salesforce_mapping() {
             {
               "active" : true,
               "defaultValue" : false,
+              "label" : "West Boylston",
+              "validFor" : null,
+              "value" : "West Boylston"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
               "label" : "Weston",
               "validFor" : null,
               "value" : "Weston"
@@ -1874,6 +1874,13 @@ function bos_metrolist_affordable_housing_default_salesforce_mapping() {
               "label" : "Resale",
               "validFor" : null,
               "value" : "Resale"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Rental Post Lottery",
+              "validFor" : null,
+              "value" : "Rental Post Lottery"
             }
           ],
           "precision" : 0,
@@ -2064,6 +2071,13 @@ function bos_metrolist_affordable_housing_default_salesforce_mapping() {
           "nillable" : true,
           "permissionable" : true,
           "picklistValues" : [
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "30%",
+              "validFor" : null,
+              "value" : "30%"
+            },
             {
               "active" : true,
               "defaultValue" : false,
