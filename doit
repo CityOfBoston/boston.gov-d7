@@ -319,6 +319,7 @@ function doitstashdb() {
   drush --root=/boston.gov/docroot sql-dump > /tmp/dump.sql
 
   doitcomment "Gzipping dump."
+  rm -f /tmp/dump.sql.gz
   gzip /tmp/dump.sql
 
   doitcomment "Uploading to S3."
