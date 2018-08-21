@@ -49,32 +49,35 @@ function bos_form_citywide_neighborhood_page_build(&$page) {
     $nid = $node->nid;
   }
   // Get the content type.
-  $bundle = $page['content']['system_main']['nodes'][$nid]['#bundle'];
-  // Make sure we only run this code on certain content types.
-  if ($bundle == 'event' || $bundle == 'public_notice') {
-    // Get details about field_multiple_neighborhoods for current node.
-    $neighborhoods = $page['content']['system_main']['nodes'][$nid]['field_multiple_neighborhoods'];
-    // Assume 'Citywide' is not set by default.
-    $is_citywide = FALSE;
-    // Loop through all attributes for this field.
-    foreach ($neighborhoods as $key => $neighborhood) {
-      // Check if 'Citywide' has been saved for node.
-      if (is_numeric($key) && $neighborhood['#markup'] == 'Citywide') {
-        // 'Citywide' is found.
-        $is_citywide = TRUE;
-      }
-    }
-    // Remove other neighborhoods from display if 'Citywide' was found.
-    if ($is_citywide) {
+  if (isset($nid) && isset($page['content'])) {
+    $bundle = $page['content']['system_main']['nodes'][$nid]['#bundle'];
+
+    // Make sure we only run this code on certain content types.
+    if ($bundle == 'event' || $bundle == 'public_notice') {
+      // Get details about field_multiple_neighborhoods for current node.
+      $neighborhoods = $page['content']['system_main']['nodes'][$nid]['field_multiple_neighborhoods'];
+      // Assume 'Citywide' is not set by default.
+      $is_citywide = FALSE;
+      // Loop through all attributes for this field.
       foreach ($neighborhoods as $key => $neighborhood) {
-        // Make sure you're not running logic on attributes that aren't terms.
-        if (is_numeric($key)) {
-          // Remove term so it does not display.
-          unset($page['content']['system_main']['nodes'][$nid]['field_multiple_neighborhoods'][$key]);
+        // Check if 'Citywide' has been saved for node.
+        if (is_numeric($key) &&  !empty($neighborhood['#markup']) && $neighborhood['#markup'] == 'Citywide') {
+          // 'Citywide' is found.
+          $is_citywide = TRUE;
         }
       }
-      // Re-add the 'Citywide' markup so it is the only neighborhood displayed.
-      $page['content']['system_main']['nodes'][$nid]['field_multiple_neighborhoods'][0]['#markup'] = 'Citywide';
+      // Remove other neighborhoods from display if 'Citywide' was found.
+      if ($is_citywide) {
+        foreach ($neighborhoods as $key => $neighborhood) {
+          // Make sure you're not running logic on attributes that aren't terms.
+          if (is_numeric($key)) {
+            // Remove term so it does not display.
+            unset($page['content']['system_main']['nodes'][$nid]['field_multiple_neighborhoods'][$key]);
+          }
+        }
+        // Re-add 'Citywide' markup so it is the only neighborhood displayed.
+        $page['content']['system_main']['nodes'][$nid]['field_multiple_neighborhoods'][0]['#markup'] = 'Citywide';
+      }
     }
   }
 }

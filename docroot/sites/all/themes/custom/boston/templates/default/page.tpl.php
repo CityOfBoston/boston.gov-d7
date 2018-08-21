@@ -49,7 +49,7 @@
           <?php endif; ?>
         <?php endif; ?>
         <?php print render($title_prefix); ?>
-        <?php if ($title && !$hide_page_title): ?>
+        <?php if (!empty($title) && isset($hide_page_title) && !$hide_page_title): ?>
           <h1 class="page-title"><?php print $title; ?></h1>
         <?php endif; ?>
         <?php print render($title_suffix); ?>

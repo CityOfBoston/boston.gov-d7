@@ -25,7 +25,7 @@
  * @see template_process()
  */
 ?>
-<div class="link-wrapper"<?php print $content_attributes; ?>>
+<div class="link-wrapper"<?php print (isset($content_attributes) ? $content_attributes : ""); ?>>
   <div class="link-item ribbon">
     <?php print render($content); ?>
   </div>

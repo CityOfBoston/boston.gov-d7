@@ -86,20 +86,20 @@
 
 <article id="node-<?php print $node->nid; ?>"
      class="<?php print $classes; ?> calendar-listing-wrapper"
-     <?php if ($live_stream): ?>data-livestream="1"<?php endif; ?>>
+     <?php if (!empty($live_stream)): ?>data-livestream="1"<?php endif; ?>>
   <div class="teaser drawer-trigger">
     <div class="drawer-trigger-chevron"></div>
     <?php if (isset($time_range)): ?>
       <span class="time-range">
-        <?php if ($live_stream) :?><span class="live-stream-flag">Live:</span><?php endif; ?>
+        <?php if (!empty($live_stream)) :?><span class="live-stream-flag">Live:</span><?php endif; ?>
         <?php print $time_range; ?>
       </span>
     <?php endif; ?>
     <div class="title">
-      <?php if ($live_stream):?><span class="live-stream-flag">Live:</span><?php endif; ?>
-      <?php if ($is_cancelled):?><span class="t--err">Canceled: </span><span class="td-str"><?php endif; ?>
+      <?php if (!empty($live_stream)):?><span class="live-stream-flag">Live:</span><?php endif; ?>
+      <?php if (!empty($is_cancelled)):?><span class="t--err">Canceled: </span><span class="td-str"><?php endif; ?>
       <?php print $title; ?>
-        <?php if ($is_cancelled):?></span><?php endif; ?>
+        <?php if (!empty($is_cancelled)):?></span><?php endif; ?>
     </div>
   </div>
   <div class="event-details drawer">
@@ -108,7 +108,7 @@
         <?php print render($content['field_address']); ?>
       </div>
     <?php endif; ?>
-    <?php if ($has_email): ?>
+    <?php if (!empty($has_email)): ?>
       <div class="list-item">
         <?php print render($content['field_email']); ?>
       </div>
@@ -129,7 +129,7 @@
       </div>
     <?php endif; ?>
 
-    <?php if ($is_cancelled): ?>
+    <?php if (!empty($is_cancelled)): ?>
       <div class="description supporting-text">Reason for cancellation:<br/>
         <?php
         if (isset($field_extra_info_event['und'][0]['safe_value'])) {
@@ -155,7 +155,7 @@
         <a class="button" href="<?php print render($content['field_details_link']); ?>">Event website<span class="a11y--hidden"> for <?php print $title; ?></span></a>
       </div>
     <?php else: ?>
-      <?php if ($live_stream): ?>
+      <?php if (!empty($live_stream)): ?>
         <a class="button live-stream" href="<?php print $node_url; ?>" title="Live stream for <?php print $title; ?>">Event details<span class="a11y--hidden"> for <?php print $title; ?></span></a>
       <?php else: ?>
         <a class="button" href="<?php print $node_url; ?>" title="get more details">Event details<span class="a11y--hidden"> for <?php print $title; ?></span></a>

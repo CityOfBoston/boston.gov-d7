@@ -18,7 +18,7 @@
 
     <?php print $bars; ?>
 
-    <?php if ($voted): ?>
+    <?php if (!empty($voted)): ?>
     <div class="poll-message"><?php print t('Thank you for voting.'); ?></div>
     <?php endif; ?>
 

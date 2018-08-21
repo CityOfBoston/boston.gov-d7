@@ -115,7 +115,8 @@
         <?php if (isset($content['field_thumbnail'])): ?>
           <?php print render($content['field_thumbnail']); ?>
         <?php else: ?>
-          <img src="/<?php print drupal_get_path('theme', $GLOBALS['theme']) ?>/dist/img/icon-public_notice.svg" />
+<!--          <img src="/--><?php //print drupal_get_path('theme', $GLOBALS['theme']) ?><!--/dist/img/icon-public_notice.svg" />-->
+          <?php print _boston_findsvg($GLOBALS['theme_info'], 'icon-public_notice.svg'); ?>
         <?php endif; ?>
       </div>
     </div>

@@ -25,9 +25,9 @@
  * @see template_process()
  */
 ?>
-<div class="b b--<?php print $component_theme; ?> b--fw">
+<div class="b b--<?php print (isset($component_theme) ? $component_theme : ""); ?> b--fw">
   <div class="b-c">
-    <div class="sh m--b000 <?php print $section_header_theme; ?>">
+    <div class="sh m--b000 <?php print (isset($section_header_theme) ? $section_header_theme : ""); ?>">
       <?php if (isset($content['field_component_title'])): ?>
         <?php print render($content['field_component_title']); ?>
       <?php endif; ?>
