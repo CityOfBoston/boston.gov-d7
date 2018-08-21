@@ -40,7 +40,7 @@
 
   <header class="header" role="banner">
 
-    <?php if ($logo): ?>
+    <?php if (!empty($logo)): ?>
       <a href="<?php print $base_path; ?>" title="<?php print t('Home'); ?>" rel="home" class="header__logo"><img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" class="header__logo-image" /></a>
     <?php endif; ?>
 

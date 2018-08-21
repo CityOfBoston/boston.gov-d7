@@ -26,7 +26,7 @@
 
   <?php print render($content); ?>
 
-  <?php if ($links): ?>
+  <?php if (!empty($links)): ?>
     <div class="links">
       <?php print $links; ?>
     </div>

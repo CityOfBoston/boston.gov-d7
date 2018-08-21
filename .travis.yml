@@ -11,6 +11,7 @@ branches:
   - develop
   - master
   - settings
+  - php-7-1-upgrade
 php:
 - 5.6
 addons:
@@ -68,3 +69,4 @@ after_success:
 - scripts/make/apply-crispus.sh
 - scripts/deploy/travis-deploy.sh develop develop-build
 - scripts/deploy/travis-deploy.sh master master-build
+- scripts/deploy/travis-deploy.sh php-7-1-upgrade php-build

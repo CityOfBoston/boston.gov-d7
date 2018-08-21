@@ -51,7 +51,7 @@
         <p><?php print t('The results of this poll will be available after @date.', array('@date' => $date)); ?></p>
     <?php endif; ?>
 
-    <?php if ($votes): ?>
+    <?php if (!empty($votes)): ?>
     <div class="poll-message"><?php print t('Thank you for voting.'); ?></div>
     <?php endif; ?>
 

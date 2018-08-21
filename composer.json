@@ -16,12 +16,14 @@
     "behat/mink-browserkit-driver": "*",
     "drupal/drupal-extension":      "*",
     "drupal/coder":                 "8.2.6",
-    "drush/drush":                  "~7.2",
+    "drush/drush":                  "~8",
     "phpunit/phpunit":              "4.6.*",
     "squizlabs/php_codesniffer":    "2.*",
     "phing/phing":                  "~2.15",
     "jakoch/phantomjs-installer":   "*",
-    "jarnaiz/behat-junit-formatter": "^1.2"
+    "jarnaiz/behat-junit-formatter": "^1.2",
+    "pear/console_table": "~1.3",
+    "symfony/yaml": "~2.7"
   },
   "scripts": {
     "post-install-cmd": [

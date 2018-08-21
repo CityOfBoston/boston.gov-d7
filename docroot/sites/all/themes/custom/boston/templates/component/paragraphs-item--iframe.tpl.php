@@ -44,5 +44,5 @@ $iframe_id = uniqid();
       <?php print render($content['field_contact']); ?>
     </div>
   </div>
-  <iframe src="<?php print $field_source_url ?>" border="0" class="iframe-component" id="iframe-<?php print $iframe_id ?>"<?php if ($iframe_height) { ?> style="height: <?php echo $iframe_height; ?><?php } ?>"></iframe>
+  <iframe src="<?php print $field_source_url ?>" border="0" class="iframe-component" id="iframe-<?php print $iframe_id ?>"<?php if (!empty($iframe_height)) { ?> style="height: <?php echo $iframe_height; ?><?php } ?>"></iframe>
 </div>

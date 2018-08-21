@@ -25,13 +25,13 @@
 
 <?php print render($content); ?>
 
-<?php if ($links): ?>
+<?php if (!empty($links)): ?>
   <div class="links">
     <?php print $links; ?>
   </div>
 <?php endif; ?>
 
-<?php if ($more): ?>
+<?php if (!empty($more)): ?>
   <div class="more-link">
     <?php print $more; ?>
   </div>

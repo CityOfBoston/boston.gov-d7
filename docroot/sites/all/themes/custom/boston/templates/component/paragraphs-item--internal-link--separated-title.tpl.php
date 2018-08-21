@@ -24,7 +24,9 @@
  * @see template_preprocess_entity()
  * @see template_process()
  */
-$field_title = $content['field_title'][0]['#markup'];
+if (isset($content['field_title'])) {
+  $field_title = $content['field_title'][0]['#markup'];
+}
 ?>
 
 <div class="link-wrapper internal-link separated-link"<?php print $content_attributes; ?>>

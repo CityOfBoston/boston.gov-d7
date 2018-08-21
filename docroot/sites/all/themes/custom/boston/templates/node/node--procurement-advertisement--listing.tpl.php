@@ -87,7 +87,7 @@ hide($content['links']);
   <div class="g--5 n-li-b n-li-b--br">
     <div class="n-li-t"><a href="<?php print $node_url; ?>" title="<?php print $title; ?>"><?php print $title; ?></a></div>
     <div class="m--b300 t--sans t--upper t--g300 t--s300 lh--000"><?php print render($content['field_event_project_number']); ?></div>
-    <?php if ($is_closed) { ?>
+    <?php if (!empty($is_closed)) { ?>
       <?php if ($bid_awarded) { ?>
         <div class="n-li-a"><span class="t--sans t--upper t--cb t--s300">Awarded</span></div>
       <?php } else { ?>

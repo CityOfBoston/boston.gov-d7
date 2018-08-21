@@ -57,6 +57,7 @@ function bos_profile_install() {
   bos_profile_update_7039();
   bos_profile_update_7040();
   bos_profile_update_7041();
+  bos_profile_update_7042();
 }
 
 /**
@@ -1220,6 +1221,23 @@ function bos_profile_update_7040() {
   field_purge_batch(1000);
 }
 
+/**
+ * Updates media 2.0-beta1 to 2.19 and remove patch.
+ */
+function bos_profile_update_7042() {
+  $disabled_modules = array(
+    'media_wysiwyg_view_mode',
+  );
+  module_disable($disabled_modules);
+
+  // force removal of roles to allow build tests to pass.
+  $permission = "administer media wysiwyg view mode";
+  $roles = user_roles(TRUE, $permission);
+  foreach($roles as $rid => $role) {
+    user_role_revoke_permissions($rid, [$permission]);
+  }
+
+}
 
 /*******************************************************************
 Any new migrations need to also be added to bos_profile_install so that

@@ -43,7 +43,7 @@ elseif (isset($image)) {
     <?php endif; ?>
     <?php if (!empty($body)): ?>
     <div class="detail-item__body <?php print $classes['body']; ?>">
-      <?php if ($phone) { ?>
+      <?php if (!empty($phone)) { ?>
         <a href="tel:<?php print $body; ?>"><?php print $body; ?></a>
       <?php } else { ?>
         <?php print $body; ?>

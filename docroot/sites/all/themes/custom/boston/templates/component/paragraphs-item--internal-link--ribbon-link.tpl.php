@@ -28,7 +28,7 @@
 <div class="link-wrapper internal-link"<?php print $content_attributes; ?>>
 
   <div class="link-item ribbon">
-    <a href="<?php print $internal_link_path; ?>" title="Go to <?php if (!empty($field_title)): ?><?php print $field_title; ?><?php else: ?><?php print $internal_link_title; ?><?php endif; ?>">
+    <a href="<?php print $internal_link_path; ?>" title="Go to <?php print (!empty($field_title[0]) ? $field_title[0]['value'] : $internal_link_title); ?>">
     <?php if (!empty($content['field_title'])): ?>
       <?php print render($content['field_title']); ?>
     <?php else: ?>

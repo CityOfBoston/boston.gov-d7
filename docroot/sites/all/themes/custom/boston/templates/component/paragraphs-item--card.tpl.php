@@ -26,7 +26,7 @@
  */
 ?>
 
-<a href="<?php print $card_url; ?>" <?php if ($isLightbox): ?> data-lity<?php endif; ?> class="cd g--4 g--4--sl m-t500"<?php if (!empty($card_attr)): print $card_attr; endif ?>>
+<a href="<?php print $card_url; ?>" <?php if (!empty($isLightbox)): ?> data-lity<?php endif; ?> class="cd g--4 g--4--sl m-t500"<?php if (!empty($card_attr)): print $card_attr; endif ?>>
   <div class="cd-ic" style="background-image: url(<?php print render($content['field_thumbnail']); ?>)"></div>
   <div class="cd-c">
     <div class="cd-t"><?php print render($content['field_title']); ?></div>

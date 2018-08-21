@@ -1,6 +1,6 @@
 <nav class="nv-h">
   <ul class="nv-h-l">
-    <?php if ($logged_in && $GLOBALS['theme'] == 'boston_hub'): ?>
+    <?php if (!empty($logged_in) && $GLOBALS['theme'] == 'boston_hub'): ?>
       <li class="nv-h-l-i nv-dd">
         <input type="checkbox" name="nv-dd-tr" id="nv-tr[0]" class="nv-dd-tr">
         <label class="nv-h-l-a nv-h-l-a--k nv-dd-l" for="nv-tr[0]"><?php if ($first_name): ?>Hello, <?php print $first_name ?><?php else: ?>My Account<?php endif; ?></label>
@@ -13,7 +13,7 @@
       </li>
     <?php endif; ?>
     <?php foreach ($secondary_menu as $link) { ?>
-      <li class="nv-h-l-i"><a href="<?php print url($link['href'], array('absolute' => true)) ?>" title="<?php print $link['title'] ?>" class="nv-h-l-a<?php print $link['always_show'] ? ' nv-h-l-a--k' : '' ?>"><?php print $link['title'] ?></a></li>
+      <li class="nv-h-l-i"><a href="<?php print url($link['href'], array('absolute' => true)) ?>" title="<?php print $link['title'] ?>" class="nv-h-l-a<?php print !empty($link['always_show']) ? ' nv-h-l-a--k' : '' ?>"><?php print $link['title'] ?></a></li>
     <?php } ?>
     <li class="tr nv-h-l-i">
       <a href="#translate" title="Translate" class="nv-h-l-a nv-h-l-a--k--s tr-link">Translate</a>

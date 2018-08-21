@@ -95,12 +95,12 @@ hide($content['links']);
   <div class="department-info-wrapper desktop-100 clearfix">
     <div class="column mobile-100 desktop-66-left">
       <h1 class="title">
-        <?php if ($is_cancelled): ?>
+        <?php if (!empty($is_cancelled)): ?>
           <span class='t--err t--s60pct'>Canceled:</span><br>
         <?php endif; ?>
         <?php print $title; ?>
       </h1>
-      <?php if ($is_cancelled): ?>
+      <?php if (!empty($is_cancelled)): ?>
         <div class="supporting-text squiggle-border-bottom">Reason for cancellation:
         <?php
           if (isset($field_extra_info_event['und'][0]['safe_value'])) {
@@ -115,7 +115,9 @@ hide($content['links']);
         <?php print render($content['field_intro_text']); ?>
       <?php endif; ?>
       <div class="sub-nav-trigger drawer-trigger">
-        <div class="sub-nav-chevron"><?php print file_get_contents(drupal_get_path('theme', $GLOBALS['theme']) . '/dist/img/subnav-toggle.svg') ?></div>
+        <div class="sub-nav-chevron">
+          <?php print _boston_findsvg($GLOBALS['theme_info'], 'subnav-toggle.svg'); ?>
+        </div>
         Page Sections
       </div>
       <nav class="topic-nav topic-nav__left">

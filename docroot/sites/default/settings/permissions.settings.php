@@ -44,7 +44,6 @@ function acquia_permissions_map() {
       'access workbench',
       'administer custom tokens',
       'administer keyboard shortcuts',
-      'administer media wysiwyg view mode',
       'administer menu',
       'administer taxonomy',
       'bypass rh_file',
@@ -161,7 +160,6 @@ function acquia_permissions_map() {
     'Content Editor' => array(
       'access media browser',
       'access workbench',
-      'administer media wysiwyg view mode',
       'create article content',
       'create department_profile content',
       'create event content',
@@ -234,7 +232,6 @@ function acquia_permissions_map() {
       'access content',
       'access media browser',
       'access workbench',
-      'administer media wysiwyg view mode',
       'create article content',
       'create department_profile content',
       'create event content',
@@ -289,7 +286,6 @@ function acquia_permissions_map() {
     'Events Editor' => array(
       'access media browser',
       'access workbench',
-      'administer media wysiwyg view mode',
       'create event content',
       'create files',
       'edit any event content',
@@ -322,7 +318,6 @@ function acquia_permissions_map() {
     'Press Release Editor' => array(
       'access media browser',
       'access workbench',
-      'administer media wysiwyg view mode',
       'create files',
       'create post content',
       'edit any image files',
@@ -358,7 +353,6 @@ function acquia_permissions_map() {
     'Procurement Editor' => array(
       'access media browser',
       'access workbench',
-      'administer media wysiwyg view mode',
       'create procurement_advertisement content',
       'create files',
       'edit any procurement_advertisement content',
@@ -429,7 +423,6 @@ function acquia_permissions_map() {
     'Developer' => array(
       'access media browser',
       'access workbench',
-      'administer media wysiwyg view mode',
       'administer menu',
       'administer taxonomy',
       'create advpoll content',

@@ -107,11 +107,11 @@ hide($content['links']);
       <div class="p-t500">
         <ul class="dl">
           <li class="dl-i">
-            <?php if ($is_closed) { ?>
+            <?php if (!empty($is_closed)) { ?>
               <?php if ($bid_awarded) { ?>
                 <div><strong class="t--sans t--upper t--ob t--s400" data-swiftype-name="bid-status" data-swiftype-type="string">Awarded</strong></div>
               <?php } else { ?>
-                <?php if ($not_awarded) { ?>
+                <?php if (!empty($not_awarded)) { ?>
                   <div><strong class="t--sans t--upper t--err t--s400" data-swiftype-name="bid-status" data-swiftype-type="string">Not Awarded</strong></div>
                 <?php } else { ?>
                   <div><strong class="t--sans t--upper t--err t--s400" data-swiftype-name="bid-status" data-swiftype-type="string">Closed</strong></div>
@@ -129,7 +129,7 @@ hide($content['links']);
             <span class="dl-d"><?php print $start_date ?></span>
           </li>
           <li class="dl-i">
-            <span class="dl-t">Close<?php if ($is_closed) { ?>d<?php } else { ?>s<?php } ?></span>
+            <span class="dl-t">Close<?php if (!empty($is_closed)) { ?>d<?php } else { ?>s<?php } ?></span>
             <span class="dl-d"><?php print $end_date ?></span>
           </li>
           <li class="dl-i">
