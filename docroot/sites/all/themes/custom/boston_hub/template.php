@@ -72,11 +72,11 @@ function boston_hub_preprocess_page(array &$variables) {
 
       case 'prod':
 
-        $variables['change_password_path'] = 'https://identity-prod.boston.gov/identityiq/changePassword.jsf';
+        $variables['change_password_path'] = 'https://identity.boston.gov/identityiq/changePassword.jsf.';
         break;
 
       default:
-        $variables['change_password_path'] = 'https://identity-prod.boston.gov/identityiq/changePassword.jsf';
+        $variables['change_password_path'] = 'https://identity.boston.gov/identityiq/changePassword.jsf.';
     }
   }
 
