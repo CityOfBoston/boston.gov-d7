@@ -58,6 +58,7 @@ function bos_profile_install() {
   bos_profile_update_7040();
   bos_profile_update_7041();
   bos_profile_update_7042();
+  bos_profile_update_7043();
 }
 
 /**
@@ -1237,6 +1238,17 @@ function bos_profile_update_7042() {
     user_role_revoke_permissions($rid, [$permission]);
   }
 
+}
+
+
+/**
+ * Adds boards and commissions search feature module.
+ */
+function bos_profile_update_7043() {
+    $enabled_modules = array(
+        'bos_commissions_search',
+    );
+    module_enable($enabled_modules);
 }
 
 /*******************************************************************
