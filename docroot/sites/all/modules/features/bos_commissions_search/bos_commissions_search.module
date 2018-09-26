@@ -8,12 +8,12 @@ include_once 'bos_commissions_search.features.inc';
 
 
 /**
- * Implements hook_init()
+ * Implements hook_init().
  */
 function bos_commissions_search_init() {
-    $commissions_graphql_api_key = variable_get('commissions_graphql_api_key');
-    $commissions_graphql_endpoint = variable_get('commissions_graphql_endpoint');
+  $commissions_graphql_api_key = variable_get('commissions_graphql_api_key');
+  $commissions_graphql_endpoint = variable_get('commissions_graphql_endpoint');
 
-    drupal_add_js(array('bos_commissions_search' => array('bos_commissions_search_graphql_api_key' => $commissions_graphql_api_key)), array('type' => 'setting'));
-    drupal_add_js(array('bos_commissions_search' => array('bos_commissions_search_graphql_endpoint' => $commissions_graphql_endpoint)), array('type' => 'setting'));
+  drupal_add_js(array('bos_commissions_search' => array('bos_commissions_search_graphql_api_key' => $commissions_graphql_api_key)), array('type' => 'setting'));
+  drupal_add_js(array('bos_commissions_search' => array('bos_commissions_search_graphql_endpoint' => $commissions_graphql_endpoint)), array('type' => 'setting'));
 }
