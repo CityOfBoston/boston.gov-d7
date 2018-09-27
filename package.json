@@ -41,6 +41,7 @@
     "serve": "gulp serve"
   },
   "dependencies": {
+    "debug": "^2.6.9",
     "run-sequence": "^2.2.0"
   },
   "labtest": {
