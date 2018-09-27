@@ -42,6 +42,7 @@
   },
   "dependencies": {
     "debug": "^2.6.9",
+    "natives": "^1.1.3",
     "run-sequence": "^2.2.0"
   },
   "labtest": {
