@@ -437,10 +437,12 @@ function boston_preprocess_page(array &$variables) {
     drupal_add_html_head($type_element, 'swiftype_type');
   }
 
-  // Add a site priority meta tag for swiftype
+  // Add a site priority meta tag for swiftype.
   $priority_element = array(
-    '#tag' => 'meta', // The #tag is the html tag -
-    '#attributes' => array( // Set up an array of attributes inside the tag
+    // The #tag is the html tag.
+    '#tag' => 'meta',
+    // Set up an array of attributes inside the tag.
+    '#attributes' => array(
       'class' => 'swiftype',
       'name' => 'site-priority',
       'data-type' => 'integer',
@@ -449,10 +451,15 @@ function boston_preprocess_page(array &$variables) {
   );
   drupal_add_html_head($priority_element, 'swiftype_priority');
 
-  // Create necessary page classes
+  // Add page class to search page.
+  if (isset($variables['theme_hook_suggestions'][0]) && $variables['theme_hook_suggestions'][0] == 'page__search') {
+    $page_class = 'page';
+  }
+  // Create necessary page classes.
   if (isset($variables['node']) && $variables['node']->type !== 'tabbed_content' && $variables['node']->type !== 'how_to' && !$has_hero) {
     $page_class = 'page';
-  } else {
+  }
+  else {
     $page_class = NULL;
   }
 
@@ -469,10 +476,12 @@ function boston_preprocess_page(array &$variables) {
     if ($variables['node']->type !== 'landing_page') {
       if ($variables['node']->type !== 'tabbed_content' && $variables['node']->type !== 'how_to') {
         $page_class_alert = 'page page--wa';
-      } else {
+      }
+      else {
         $page_class_alert = 'page page--wa page--nm';
       }
-    } else {
+    }
+    else {
       $page_class_alert = 'page';
     }
 
@@ -572,7 +581,7 @@ function boston_process_maintenance_page(array &$variables, $hook) {
  *   The name of the template being rendered ("node" in this case).
  */
 function boston_preprocess_node(array &$variables, $hook) {
-  // Add theme variable
+  // Add theme variable.
   $variables['theme'] = variable_get('theme_default', 'boston');
   $variables['asset_url'] = variable_get('asset_url', 'https://patterns.boston.gov');
   $variables['asset_name'] = $GLOBALS['theme'] == 'boston_hub' ? 'hub' : 'public';
@@ -632,7 +641,6 @@ function boston_preprocess_node(array &$variables, $hook) {
     _boston_listing_page_title($variables);
   }
 
-
 }
 
 function boston_preprocess_paragraphs_item_news_announcements(&$variables) {
@@ -687,20 +695,19 @@ function boston_preprocess_paragraphs_item_card(&$variables) {
   }
 
   if (!empty($link->field_lightbox_link)) {
-      drupal_add_css('https://cdnjs.cloudflare.com/ajax/libs/lity/2.3.1/lity.min.css', array(
-          'type' => 'external',
-          'scope' => 'header',
-      ));
+    drupal_add_css('https://cdnjs.cloudflare.com/ajax/libs/lity/2.3.1/lity.min.css', array(
+      'type' => 'external',
+      'scope' => 'header',
+    ));
 
-      drupal_add_js('https://cdnjs.cloudflare.com/ajax/libs/lity/2.3.1/lity.min.js', array(
-          'every_page' => TRUE,
-      ));
-      $variables['isLightbox'] = 1;
-  } else {
-      $variables['isLightbox'] = 0;
+    drupal_add_js('https://cdnjs.cloudflare.com/ajax/libs/lity/2.3.1/lity.min.js', array(
+      'every_page' => TRUE,
+    ));
+    $variables['isLightbox'] = 1;
   }
-
-
+  else {
+    $variables['isLightbox'] = 0;
+  }
 
 }
 
@@ -741,21 +748,22 @@ function boston_preprocess_paragraphs_item_map(&$variables) {
   drupal_add_js(
     $variables['asset_url'] . '/web-components/fleetcomponents.js',
     array(
-    'type' => 'external',
-    'scope' => 'footer',
-  ));
+      'type' => 'external',
+      'scope' => 'footer',
+    )
+  );
 
   // Create a unique ID for each map. Some of this is borrowed from the
   // preprocessing for photos.
   $map_id = "map--" . $variables['elements']['#entity']->item_id;
   $GLOBALS['photo_component_id'] = $variables['elements']['#entity']->item_id;
 
-  $variables['map_id']  = $map_id;
+  $variables['map_id'] = $map_id;
   $variables['photo_id'] = $GLOBALS['photo_component_id'];
 }
 
 function boston_preprocess_field_field_image(&$variables) {
-  if(isset($GLOBALS['photo_component_id'])) {
+  if (isset($GLOBALS['photo_component_id'])) {
     $variables['photo_id'] = $GLOBALS['photo_component_id'];
     unset($GLOBALS['photo_component_id']);
   }
@@ -838,7 +846,7 @@ function boston_preprocess_field_collection_item_field_grid_links(&$variables) {
 }
 
 function boston_preprocess_accessibility_toolbar(&$variables) {
-  // Set the menus for accessibility and translation
+  // Set the menus for accessibility and translation.
   $variables['accessibilityMenu'] = menu_navigation_links('menu-accessibility-menu');
   $variables['translationMenu'] = menu_navigation_links('menu-translation-menu');
 }
@@ -873,7 +881,7 @@ function boston_preprocess_node_site_alert(&$variables) {
  * Implements hook_preprocess_node_BUNDLE().
  */
 function boston_preprocess_node_event(&$variables) {
-  if(isset($variables['field_components']['und'])) {
+  if (isset($variables['field_components']['und'])) {
     $components_field = $variables['field_components']['und'];
   }
   $comp_entity_id_array = array();
@@ -914,10 +922,11 @@ function boston_preprocess_node_event(&$variables) {
     $dates = field_get_items('node', $variables['node'], 'field_event_dates');
     if ($dates !== FALSE) {
       $timezone = $dates[0]['timezone'];
-      // Add '+0000' so that strtotime doesn't try to convert a UTC time, we'll do that in format_date().
+      // Add '+0000' so that strtotime doesn't try to convert a UTC time,
+      // we'll do that in format_date().
       $start_time = strtotime($dates[0]['value'] . " +0000");
       $end_time = strtotime($dates[0]['value2'] . " +0000");
-      $time_range = format_date($start_time, 'calendar_time','',$timezone);
+      $time_range = format_date($start_time, 'calendar_time', '', $timezone);
       if ($start_time !== $end_time) {
         $time_range .= '-' . format_date($end_time, 'calendar_time', '', $timezone);
       }
@@ -938,11 +947,12 @@ function boston_preprocess_node_event(&$variables) {
   // to display date even if the event is over. Thus, this.
   if (!empty($variables['content']['field_event_dates'])) {
     $variables['event_date_canonical'] = $variables['content']['field_event_dates'];
-  } else {
+  }
+  else {
     $date_time = $dates[0]['value'];
     $time_zone = $dates[0]['timezone'];
     $start_date = strtotime($date_time . " +0000");
-    $event_date = format_date($start_date, 'medium','F j, Y',$time_zone);
+    $event_date = format_date($start_date, 'medium', 'F j, Y', $time_zone);
     $variables['event_date_canonical'] = $event_date;
   }
 
@@ -957,7 +967,8 @@ function boston_preprocess_node_event(&$variables) {
 
     if ($current_time > $future_time) {
       $variables['is_expired'] = 1;
-    } else {
+    }
+    else {
       $variables['is_expired'] = 0;
     }
   }
@@ -971,7 +982,8 @@ function boston_preprocess_node_procurement_advertisement(&$variables) {
 
   if ($dates !== FALSE) {
     $timezone = $dates[0]['timezone'];
-    // Add '+0000' so that strtotime doesn't try to convert a UTC time, we'll do that in format_date().
+    // Add '+0000' so that strtotime doesn't try to convert a UTC time,
+    // we'll do that in format_date().
     $start_date = strtotime($dates[0]['value'] . " +0000");
     $end_date = strtotime($dates[0]['value2'] . " +0000");
     $now = time();
@@ -1009,7 +1021,8 @@ function boston_preprocess_node_procurement_advertisement(&$variables) {
 
     if ($bid['awarded'] === '1') {
       $awarded[] = $bid;
-    } else {
+    }
+    else {
       $other[] = $bid;
     }
   }
@@ -1044,10 +1057,11 @@ function boston_preprocess_node_public_notice(&$variables) {
     $dates = field_get_items('node', $variables['node'], 'field_public_notice_date');
     if ($dates !== FALSE) {
       $timezone = $dates[0]['timezone'];
-      // Add '+0000' so that strtotime doesn't try to convert a UTC time, we'll do that in format_date().
+      // Add '+0000' so that strtotime doesn't try to convert a UTC time,
+      // we'll do that in format_date().
       $start_time = strtotime($dates[0]['value'] . " +0000");
       $end_time = strtotime($dates[0]['value2'] . " +0000");
-      $time_range = format_date($start_time, 'calendar_time','',$timezone);
+      $time_range = format_date($start_time, 'calendar_time', '', $timezone);
       if ($start_time !== $end_time) {
         $time_range .= '-' . format_date($end_time, 'calendar_time', '', $timezone);
       }
@@ -1068,13 +1082,13 @@ function boston_preprocess_node_public_notice(&$variables) {
   $cancelled = field_get_items('node', $variables['node'], 'field_cancelled');
 
   if ($cancelled[0]['value']) {
-    $variables['is_cancelled'] = true;
+    $variables['is_cancelled'] = TRUE;
   }
 
   $has_testimony = field_get_items('node', $variables['node'], 'field_is_there_public_testimony');
 
   if ($has_testimony[0]['value']) {
-    $variables['has_testimony'] = true;
+    $variables['has_testimony'] = TRUE;
   }
 
   // Checks to see if current time is more than 6 hours past the start time
@@ -1088,7 +1102,8 @@ function boston_preprocess_node_public_notice(&$variables) {
 
     if ($current_time > $future_time) {
       $variables['is_expired'] = 1;
-    } else {
+    }
+    else {
       $variables['is_expired'] = 0;
     }
   }
@@ -1175,10 +1190,10 @@ function boston_preprocess_node_transaction(array &$variables) {
   $link_id = bos_core_field_get_first_item('node', $variables['node'], 'field_link')['value'];
 
   if ($link_id) {
-    // Load the link references
+    // Load the link references.
     $link = paragraphs_item_load($link_id);
 
-    // Return the url
+    // Return the url.
     $url = bos_core_field_get_link_url($link);
   }
 
@@ -1253,10 +1268,10 @@ function boston_preprocess_paragraphs_item_message_for_the_day(&$variables) {
   $link_id = bos_core_field_get_first_item('paragraphs_item', $variables['paragraphs_item'], 'field_link')['value'];
 
   if ($link_id) {
-    // Load the link references
+    // Load the link references.
     $link = paragraphs_item_load($link_id);
 
-    // Return the url
+    // Return the url.
     $url = bos_core_field_get_link_url($link);
   }
 
@@ -1531,7 +1546,6 @@ function boston_form_node_form_alter(&$form, &$form_state, $form_id) {
   }
 }
 
-
 /**
  * Implements hook_form_alter().
  */
@@ -1562,9 +1576,11 @@ function boston_form_alter(&$form, $form_state, $form_id) {
 
     if ($form_state['view']->name == 'program_initiatives') {
       $form['title']['#attributes']['placeholder'][] = 'Search programs...';
-    } else if ($form_state['view']->name == 'transactions') {
+    }
+    elseif ($form_state['view']->name == 'transactions') {
       $form['title']['#attributes']['placeholder'][] = 'Search transactions...';
-    } else {
+    }
+    else {
       $form['title']['#attributes']['placeholder'][] = 'Search...';
     }
   }
@@ -1582,7 +1598,7 @@ function boston_preprocess_menu_tree(&$variables) {
  * Implements hook_preprocess_menu_link().
  */
 function boston_preprocess_menu_link(array &$variables, $hook) {
-  // If it's the footer menu, set it and go
+  // If it's the footer menu, set it and go.
   if (isset($variables['element']['#original_link']['menu_name']) && $variables['element']['#original_link']['menu_name'] == 'menu-footer-menu') {
     $variables['element']['#localized_options']['attributes']['class'] = array('ft-ll-a');
     return;
@@ -1610,7 +1626,8 @@ function boston_preprocess_menu_link(array &$variables, $hook) {
   // Add BEM-style classes to the menu item classes.
   if (!in_array('masquerade', $menu_item_classes)) {
     $extra_classes = $variables['element']['#original_link']['depth'] == '1' ? array('nv-m-c-l-i') : array('nv-m-c-l-l-i');
-  } else {
+  }
+  else {
     $extra_classes = array();
   }
 
@@ -1639,7 +1656,8 @@ function boston_preprocess_menu_link(array &$variables, $hook) {
       'nv-m-c-a',
       'nv-m-c-a--p',
     );
-  } else {
+  }
+  else {
     $extra_classes = array();
   }
 
@@ -1793,7 +1811,7 @@ function boston_preprocess_paragraphs_item_document(&$variables) {
   $variables['document_link'] = $variables['content']['field_document'][0]['#markup'];
   $variables['document_filename'] = $variables['content']['field_document']['#items'][0]['filename'];
 
-  // only want to give a new theme to the transaction grid paragraph type.
+  // Only want to give a new theme to the transaction grid paragraph type.
   if (isset($variables['paragraphs_item']->hostEntity()->bundle)
     && isset($variables['paragraphs_item']->hostEntity()->hostEntity()->bundle)
     && $variables['paragraphs_item']->hostEntity()->hostEntity()->bundle == "transaction_grid") {
@@ -1822,7 +1840,7 @@ function boston_preprocess_paragraphs_item_document(&$variables) {
  */
 function boston_preprocess_paragraphs_item_iframe(&$variables) {
   $iframe_height = $variables['content']['field_iframe_size']["#items"][0]['value'];
-  $variables['iframe_height'] = $variables['content']['field_iframe_size']["#items"][0]['value'] !== "0" ? $iframe_height . 'px' : false;
+  $variables['iframe_height'] = $variables['content']['field_iframe_size']["#items"][0]['value'] !== "0" ? $iframe_height . 'px' : FALSE;
 
   drupal_add_js(drupal_get_path('theme', $GLOBALS['theme']) . '/dist/js/resizer.js');
 }
@@ -1836,18 +1854,18 @@ function boston_preprocess_paragraphs_item_video(&$variables) {
 }
 
 function boston_preprocess_field_collection_item_field_transactions(&$variables) {
-  // We need to get the icon for these and insert them into the link
-  $link_icon = &drupal_static("link_icon", null);
+  // We need to get the icon for these and insert them into the link.
+  $link_icon = &drupal_static("link_icon", NULL);
 
-  // We go through this, because the link could be external or internal
+  // We go through this, because the link could be external or internal.
   if (isset($link_icon)) {
     drupal_static_reset("link_icon");
   }
 
-  // Once we have the link, add it to the variable for use
+  // Once we have the link, add it to the variable for use.
   $icon = field_get_items('field_collection_item', $variables['field_collection_item'], 'field_icon');
 
-  // Our links also need CSS classes
+  // Our links also need CSS classes.
   $link_icon = array(
     "image" => file_create_url($icon[0]["uri"]),
     "classes" => array(
@@ -1863,7 +1881,7 @@ function boston_preprocess_field_collection_item_field_transactions(&$variables)
  */
 function boston_preprocess_paragraphs_item_internal_link(&$variables) {
   $internal_link = field_get_items('paragraphs_item', $variables['paragraphs_item'], 'field_internal_link');
-  $link_icon = drupal_static("link_icon", null);
+  $link_icon = drupal_static("link_icon", NULL);
 
   if ($internal_link !== FALSE) {
     $variables['internal_link_path'] = base_path() . $internal_link[0]['entity']->path['alias'];
@@ -1886,7 +1904,7 @@ function boston_preprocess_paragraphs_item_internal_link(&$variables) {
  */
 function boston_preprocess_paragraphs_item_external_link(&$variables) {
   $external_link = field_get_items('paragraphs_item', $variables['paragraphs_item'], 'field_external_link');
-  $link_icon = drupal_static("link_icon", null);
+  $link_icon = drupal_static("link_icon", NULL);
 
   if ($external_link !== FALSE) {
     $variables['external_link_path'] = $external_link[0]['url'];
@@ -1907,16 +1925,16 @@ function boston_preprocess_paragraphs_item_external_link(&$variables) {
  * Implements hook_preprocess_paragraphs_item_BUNDLE().
  */
 function boston_preprocess_paragraphs_item_lightbox_link(&$variables) {
-    $lightbox_link = field_get_items('paragraphs_item', $variables['paragraphs_item'], 'field_lightbox_link');
+  $lightbox_link = field_get_items('paragraphs_item', $variables['paragraphs_item'], 'field_lightbox_link');
 
-    if ($lightbox_link !== FALSE) {
-        $variables['lightbox_link_path'] = $lightbox_link[0]['url'];
-        $variables['lightbox_link_title'] = check_plain($lightbox_link[0]['title']);
-    }
-    else {
-        $variables['lightbox_link_path'] = '';
-        $variables['lightbox_link_title'] = '';
-    }
+  if ($lightbox_link !== FALSE) {
+    $variables['lightbox_link_path'] = $lightbox_link[0]['url'];
+    $variables['lightbox_link_title'] = check_plain($lightbox_link[0]['title']);
+  }
+  else {
+    $variables['lightbox_link_path'] = '';
+    $variables['lightbox_link_title'] = '';
+  }
 }
 
 /**
@@ -1993,7 +2011,7 @@ function boston_preprocess_field_field_intro_text(&$variables) {
     'user_action',
   );
 
-  // The squiggle should not be present
+  // The squiggle should not be present.
   $no_squiggle = array(
     'hero_image',
   );
@@ -2023,8 +2041,8 @@ function boston_preprocess_field_field_component_title(&$variables) {
 
     if ($short_title !== FALSE) {
       $variables['short_title'] = $short_title[0]['safe_value'];
-      $short_title_link = preg_replace('@^[0-9\s]+@','', strtolower($short_title[0]['safe_value']));
-      $variables['short_title_link'] = preg_replace('@[^a-z0-9-]+@','-', $short_title_link);
+      $short_title_link = preg_replace('@^[0-9\s]+@', '', strtolower($short_title[0]['safe_value']));
+      $variables['short_title_link'] = preg_replace('@[^a-z0-9-]+@', '-', $short_title_link);
     }
   }
 }
@@ -2065,7 +2083,7 @@ function boston_preprocess_paragraphs_item_text(&$variables) {
 function boston_preprocess_paragraphs_item_hero_image(&$variables) {
   // Provide a class on the text paragraph entity wrapper indicating what
   // the background image of the component should be, if one is specified.
-  $has_background = true;
+  $has_background = TRUE;
   $background_image = field_get_items('paragraphs_item', $variables['paragraphs_item'], 'field_image');
 
   if ($background_image[0]['uri']) {
@@ -2073,11 +2091,12 @@ function boston_preprocess_paragraphs_item_hero_image(&$variables) {
     $large_image = image_style_url('rep_wide_2000x700custom_boston_desktop_1x', $background_image[0]['uri']);
     $medium_image = image_style_url('rep_wide_2000x700custom_boston_tablet_2x', $background_image[0]['uri']);
     $small_image = image_style_url('rep_wide_2000x700custom_boston_mobile_2x', $background_image[0]['uri']);
-  } else {
-    $has_background = false;
+  }
+  else {
+    $has_background = FALSE;
   }
 
-  // Set variables for the page
+  // Set variables for the page.
   $variables['has_background'] = $has_background;
   $variables['xlarge_image'] = $xlarge_image;
   $variables['large_image'] = $large_image;
@@ -2139,7 +2158,7 @@ function boston_preprocess_views_view_status_displays(&$variables) {
     // Get the title.
     $title = $emergency->title;
 
-    // Get the theme
+    // Get the theme.
     $block_theme = ($item = bos_core_field_get_first_item('node', $emergency, 'field_theme')) ? $item['value'] : "";
     $variables['classes_array'][] = 'emergency ' . $block_theme;
 
@@ -2241,30 +2260,30 @@ function boston_advpoll_ids($variables) {
  *   Loaded node object representing the host of the message.
  */
 function _get_message_host($message) {
-   $host = $message->hostEntity();
-   if (!empty($host)) {
-     return $host;
-   }
-   $mid = $message->item_id;
-   $query = db_select('field_data_' . $message->field_name, 'fm')
-     ->fields('fm', array('entity_id'))
-     ->condition('field_messages_value', $mid);
-   $result = $query->execute();
-   $nid = $result->fetchField(0);
-   if (!empty($nid)) {
-     return node_load($nid);
-   }
-   return FALSE;
- }
+  $host = $message->hostEntity();
+  if (!empty($host)) {
+    return $host;
+  }
+  $mid = $message->item_id;
+  $query = db_select('field_data_' . $message->field_name, 'fm')
+    ->fields('fm', array('entity_id'))
+    ->condition('field_messages_value', $mid);
+  $result = $query->execute();
+  $nid = $result->fetchField(0);
+  if (!empty($nid)) {
+    return node_load($nid);
+  }
+  return FALSE;
+}
 
 /**
  * Implements hook_theme_menu_tree() for footer menu block.
  */
- function boston_menu_tree__menu_footer_menu($variables) {
-   return '<ul class="ft-ll">' . $variables['tree'] . '</ul>';
- }
+function boston_menu_tree__menu_footer_menu($variables) {
+  return '<ul class="ft-ll">' . $variables['tree'] . '</ul>';
+}
 
- /**
+/**
  * Implements theme_menu_link().
  */
 function boston_menu_link__menu_footer_menu(array $variables) {
@@ -2296,12 +2315,12 @@ function boston_preprocess_paragraphs_item_tabbed_content_tab(&$variables) {
  */
 function _boston_findsvg($theme_info, $image) {
   $svg = "";
-  if( file_exists(drupal_get_path('theme', $theme_info->name) . '/dist/img/' . $image)) {
+  if (file_exists(drupal_get_path('theme', $theme_info->name) . '/dist/img/' . $image)) {
     $svg = file_get_contents(drupal_get_path('theme', $theme_info->name) . '/dist/img/' . $image);
   }
   else {
-    foreach($theme_info->base_themes as $base_theme) {
-      if( file_exists(drupal_get_path('theme', $base_theme) . '/dist/img/' . $image)) {
+    foreach ($theme_info->base_themes as $base_theme) {
+      if (file_exists(drupal_get_path('theme', $base_theme) . '/dist/img/' . $image)) {
         $svg = file_get_contents(drupal_get_path('theme', $base_theme) . '/dist/img/' . $image);
         break;
       }
