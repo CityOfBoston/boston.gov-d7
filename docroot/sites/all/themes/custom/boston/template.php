@@ -451,6 +451,7 @@ function boston_preprocess_page(array &$variables) {
   );
   drupal_add_html_head($priority_element, 'swiftype_priority');
 
+  $page_class = NULL;
   // Add page class to search page.
   if (isset($variables['theme_hook_suggestions'][0]) && $variables['theme_hook_suggestions'][0] == 'page__search') {
     $page_class = 'page';
@@ -458,9 +459,6 @@ function boston_preprocess_page(array &$variables) {
   // Create necessary page classes.
   if (isset($variables['node']) && $variables['node']->type !== 'tabbed_content' && $variables['node']->type !== 'how_to' && !$has_hero) {
     $page_class = 'page';
-  }
-  else {
-    $page_class = NULL;
   }
 
   $page_class_alert = $page_class;
