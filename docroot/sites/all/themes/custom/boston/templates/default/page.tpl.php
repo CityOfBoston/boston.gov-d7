@@ -25,7 +25,7 @@
   </div>
 </nav>
 
-<div <?php if (isset($page_class)): ?>class="<?php print $page_class; ?> mn"<?php endif; ?> id="page">
+<div class="<?php if (isset($page_class)): ?><?php print $page_class; ?> <?php endif; ?>mn" id="page">
   <input type="checkbox" id="s-tr" class="s-tr" aria-hidden="true">
   <header id="main-menu" class="h" role="banner" data-swiftype-index="false">
     <?php print theme('burger'); ?>
