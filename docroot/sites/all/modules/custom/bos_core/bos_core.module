@@ -222,6 +222,7 @@ function _bos_core_get_components() {
   $components = [
     '3_column_w_image',
     'bos_signup_emergency_alerts',
+    'commissions_search',
     'drawers',
     'featured_topics',
     'fyi',
