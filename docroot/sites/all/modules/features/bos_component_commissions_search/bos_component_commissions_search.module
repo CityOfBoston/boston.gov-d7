@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the Boston Component Commissions Search feature.
- */
-
-include_once 'bos_component_commissions_search.features.inc';

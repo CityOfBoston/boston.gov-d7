@@ -12,3 +12,17 @@ function bos_commissions_search_ctools_plugin_api($module = NULL, $api = NULL) {
     return array("version" => "1");
   }
 }
+
+/**
+ * Implements hook_paragraphs_info().
+ */
+function bos_commissions_search_paragraphs_info() {
+  $items = array(
+    'commissions_search' => array(
+      'name' => 'Commissions Search',
+      'bundle' => 'commissions_search',
+      'locked' => '1',
+    ),
+  );
+  return $items;
+}

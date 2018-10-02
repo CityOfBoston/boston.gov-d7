@@ -1,9 +1,0 @@
-name = Boston Component Commissions Search
-description = Embeds ReactJS Component for Boards & Commissions Search
-core = 7.x
-package = Features
-version = 7.x-1.0
-dependencies[] = features
-dependencies[] = paragraphs
-features[features_api][] = api:2
-features[paragraphs][] = commissions_search
