@@ -304,7 +304,7 @@ projects:
       # Removes no follow from relative links
       - https://www.drupal.org/files/issues/wysiwyg_filter-nofollow-on-relative-links-1077900-4.patch
   xmlsitemap:
-    version: 2.3
+    version: 2.5
   profile2_xmlsitemap:
     version: 1.x-dev
   ape:

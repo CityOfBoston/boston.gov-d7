@@ -9,7 +9,7 @@
   $records = $results['body']->records->page;
   $facets = $info->page->facets->type;
 ?>
-<form id="searchForm" action="<?php print $bos_search_url; ?>" accept-charset="UTF-8" method="get">
+<form id="searchForm" class="m-t500" action="<?php print $bos_search_url; ?>" accept-charset="UTF-8" method="get">
   <input name="utf8" type="hidden" value="✓">
   <div class="b b--fw">
     <div class="b-c b-c--ntp" style="margin-top: -25px">
