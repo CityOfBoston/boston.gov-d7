@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Code for the Boston Commissions Search feature.
@@ -6,14 +7,31 @@
 
 include_once 'bos_commissions_search.features.inc';
 
-
 /**
- * Implements hook_init().
+ * Implements hook_preprocess_entity().
  */
-function bos_commissions_search_init() {
-  $commissions_graphql_api_key = variable_get('commissions_graphql_api_key');
-  $commissions_graphql_endpoint = variable_get('commissions_graphql_endpoint');
+function bos_commissions_search_preprocess_entity(&$variables) {
+  if ($variables['entity_type'] == 'paragraphs_item') {
+    if ($variables['elements']['#bundle'] == 'commissions_search') {
+      $commissions_graphql_api_key = variable_get('commissions_graphql_api_key');
+      $commissions_graphql_endpoint = variable_get('commissions_graphql_endpoint');
 
-  drupal_add_js(array('bos_commissions_search' => array('bos_commissions_search_graphql_api_key' => $commissions_graphql_api_key)), array('type' => 'setting'));
-  drupal_add_js(array('bos_commissions_search' => array('bos_commissions_search_graphql_endpoint' => $commissions_graphql_endpoint)), array('type' => 'setting'));
+      drupal_add_js(
+        array(
+          'bos_commissions_search' => array(
+            'bos_commissions_search_graphql_api_key' => $commissions_graphql_api_key,
+          ),
+        ),
+        array('type' => 'setting')
+      );
+      drupal_add_js(
+        array(
+          'bos_commissions_search' => array(
+            'bos_commissions_search_graphql_endpoint' => $commissions_graphql_endpoint,
+          ),
+        ),
+        array('type' => 'setting')
+      );
+    }
+  }
 }

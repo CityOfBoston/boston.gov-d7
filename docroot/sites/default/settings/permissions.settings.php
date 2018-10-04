@@ -526,6 +526,7 @@ function acquia_permissions_map() {
     'commission_contact_info',
     'commission_summary',
     'commission_members',
+    'commissions_search',
     'custom_hours_text',
     'daily_hours',
     'discussion_topic',
