@@ -7,7 +7,6 @@ dependencies[] = ctools
 dependencies[] = page_manager
 dependencies[] = features
 dependencies[] = paragraphs
-scripts[] = static/js/main.8cb48dd7.js
 features[ctools][] = page_manager:pages_default:1
 features[features_api][] = api:2
 features[page_manager_pages][] = commissions_search
