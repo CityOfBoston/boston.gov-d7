@@ -20,10 +20,7 @@ function bos_commissions_search_preprocess_entity(&$variables) {
             'bos_commissions_search_graphql_api_key' => $commissions_graphql_api_key,
           ),
         ),
-        array(
-          'type' => 'setting',
-          'weight' => 1000,
-        )
+        array('type' => 'setting')
       );
       drupal_add_js(
         array(
@@ -31,10 +28,7 @@ function bos_commissions_search_preprocess_entity(&$variables) {
             'bos_commissions_search_graphql_endpoint' => $commissions_graphql_endpoint,
           ),
         ),
-        array(
-          'type' => 'setting',
-          'weight' => 1000,
-        )
+        array('type' => 'setting')
       );
     }
   }
