@@ -29,8 +29,6 @@
 <div class="<?php print $classes; ?>"<?php print $attributes; ?>>
   <div class="content"<?php print $content_attributes; ?>>
     <?php print render($content); ?>
-    <link href="https://apps.boston.gov/commissions-search/static/css/main.css" rel="stylesheet" type="text/css">
-    <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root">&nbsp;
       <script type="text/javascript" src="https://apps.boston.gov/commissions-search/static/js/main.js"></script>
     </div> 
