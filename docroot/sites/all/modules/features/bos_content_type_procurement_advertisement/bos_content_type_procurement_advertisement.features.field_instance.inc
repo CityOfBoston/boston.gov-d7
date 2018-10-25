@@ -1966,7 +1966,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
     'fences_wrapper' => 'div_div_div',
     'field_name' => 'field_unspsc',
     'label' => 'UNSPSC',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'max' => 99999999,
       'min' => 10000000,
