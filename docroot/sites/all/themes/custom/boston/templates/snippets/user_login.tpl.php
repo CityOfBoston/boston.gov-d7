@@ -13,7 +13,7 @@
         </div>
         <div>
           <?php if($sso_link) { ?>
-            <a href="<?php echo $sso_link; ?>" title="Login via The Hub" class="button">Login via The Hub</a>
+            <a href="<?php echo $sso_link; ?>" title="Login" class="button">Login</a>
           <?php } else { ?>
             <a href="/user?local" title="Login" class="button">Login</a>
           <?php } ?>
