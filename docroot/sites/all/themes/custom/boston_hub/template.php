@@ -60,7 +60,7 @@ function boston_hub_preprocess_page(array &$variables) {
 
     $variables['profile_path'] = base_path() . 'my-profile';
     $variables['logout_path'] = base_path() . 'user/logout';
-    $variables['security_questions_path'] = 'https://oimprd.cityofboston.gov/admin/faces/pages/pwdmgmt.jspx?action=setchallenges&backUrl=https://oif.cityofboston.gov%2Ffed%2Fidp%2Finitiatesso%3Fproviderid%3Dthehubprod';
+    //$variables['security_questions_path'] = 'https://oimprd.cityofboston.gov/admin/faces/pages/pwdmgmt.jspx?action=setchallenges&backUrl=https://oif.cityofboston.gov%2Ffed%2Fidp%2Finitiatesso%3Fproviderid%3Dthehubprod';
     switch ($_ENV['AH_SITE_ENVIRONMENT']) {
       case 'dev':
         $variables['change_password_path'] = 'https://identity-dev.boston.gov/identityiq/changePassword.jsf';
@@ -72,11 +72,11 @@ function boston_hub_preprocess_page(array &$variables) {
 
       case 'prod':
 
-        $variables['change_password_path'] = 'https://oimprd.cityofboston.gov/admin/faces/pages/pwdmgmt.jspx?action=changepassword&backUrl=https://oif.cityofboston.gov%2Ffed%2Fidp%2Finitiatesso%3Fproviderid%3Dthehubprod';
+        $variables['change_password_path'] = 'https://identity.boston.gov/identityiq/changePassword.jsf';
         break;
 
       default:
-        $variables['change_password_path'] = 'https://oimprd.cityofboston.gov/admin/faces/pages/pwdmgmt.jspx?action=changepassword&backUrl=https://oif.cityofboston.gov%2Ffed%2Fidp%2Finitiatesso%3Fproviderid%3Dthehubprod';
+        $variables['change_password_path'] = 'https://identity.boston.gov/identityiq/changePassword.jsf';
     }
   }
 

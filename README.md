@@ -40,8 +40,8 @@ This PR references #[GitHub issue number]
    [Docker for Windows](https://www.docker.com/docker-windows), or otherwise get
    a Docker environment with Docker Compose installed.
 1. Clone this repo.
-1. Run `docker-compose up` in the root directory. This will start the servers
-   and stay open to show their logs.
+1. Run `docker-compose up` in the root directory. **This will start the servers**
+   **and stay open to show their logs.**
 1. In another terminal window, initialize the database: `docker exec
    bostongov_drupal_1 scripts/init-docker-container.sh` (this will take 10+
    minutes).
