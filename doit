@@ -301,7 +301,7 @@ function doitstashdb() {
     echo -e "${LightGray}                   is not restored. After 'fetch', use mysql or phing ${NC}"
     echo -e "${LightGray}                   commands to restore the database.${NC}"
     echo -e "${LightGray} 4. If the container is restarted, then the current database dump (stashed using${NC}"
-    echo -e "${LightGray}    'doit stash dump') will be automatically restored (any unstashed changes).${NC}"
+    echo -e "${LightGray}    'doit stash dump') will be automatically restored -any unstashed changes.${NC}"
     echo -e "${LightGray}    will be lost.${NC}"
       if [ -z "${AWS_S3_DATABASE_URL}" ]; then
         echo -e "${Red}This does not appear to be an AWS container.${NC}"
