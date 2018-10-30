@@ -315,6 +315,20 @@ function doitstashdb() {
     exit
   fi
 
+  if [ "${subcommand}" = "status" ]; then
+    doitcomment "Fetching Database dump/stash information from S3"
+
+    # See if we can access the AWS folder.
+    aws s3 ls "${AWS_S3_DATABASE_URL}/" > /dev/null 2>&1 || doitcomment "Error: Cannot access Amazon backup area."
+
+	# Extract the date of the backup.
+    aws s3 ls "${AWS_S3_DATABASE_URL}/" | grep dump.sql.gz | awk '{print "\n   - DB backup date: " $1 " at " $2 "\n"}' || doitcomment "Error: Cannot find any DB backup files."
+
+    exit
+  fi
+
+  doitcomment "Stashing Database. " " - If you receive a red AJAX error, wait 60 secs and check the stashed DB status using './doit stash status'."
+
   doitcomment "Dumping database SQL."
   drush --root=/boston.gov/docroot sql-dump > /tmp/dump.sql
 
