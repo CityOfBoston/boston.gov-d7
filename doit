@@ -304,7 +304,7 @@ function doitstashdb() {
     echo -e "${LightGray}    'doit stash dump') will be automatically restored (any unstashed changes).${NC}"
     echo -e "${LightGray}    will be lost.${NC}"
       if [ -z "${AWS_S3_DATABASE_URL}" ]; then
-        echo -e "${Red}This does not appear to be an AWS container.${NC}'
+        echo -e "${Red}This does not appear to be an AWS container.${NC}"
       fi
     exit
   fi
