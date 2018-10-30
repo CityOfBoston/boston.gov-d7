@@ -286,6 +286,29 @@ function doitstage() {
 function doitstashdb() {
   subcommand="${args[0]}"
 
+  if [ "${subcommand}" = "help" ]; then
+    echo -e "${Yellow}\n Manage on-demand database:${NC}"
+    echo -e "${LightBlue}  stash reset${NC}   Deletes any existing databases."
+    echo -e "${LightBlue}  stash fetch${NC}   Copies a previous database into the container."
+    echo -e "${LightBlue}  stash dump${NC}    Creates and saves (to AWS) a backup of the database."
+    echo -e "${LightBlue}  stash status${NC}  Provides timestamp of the currently stashed database."
+    echo -e "${LightBlue}  stash help${NC}    Show this page."
+    echo -e "${White}\nNotes:${NC}"
+    echo -e "${LightGray} 1. Only works when executed in an AWS on-demand container.${NC}"
+    echo -e "${LightGray} 2. dump command:  Only one backup can be saved at a time -executing 'dump'.${NC}"
+    echo -e "${LightGray}                   overwrites any existing dump.${NC}"
+    echo -e "${LightGray} 3. fetch command: The database is just copied back into the container and ${NC}"
+    echo -e "${LightGray}                   is not restored. After 'fetch', use mysql or phing ${NC}"
+    echo -e "${LightGray}                   commands to restore the database.${NC}"
+    echo -e "${LightGray} 4. If the container is restarted, then the current database dump (stashed using${NC}"
+    echo -e "${LightGray}    'doit stash dump') will be automatically restored (any unstashed changes).${NC}"
+    echo -e "${LightGray}    will be lost.${NC}"
+      if [ -z "${AWS_S3_DATABASE_URL}" ]; then
+        echo -e "${Red}This does not appear to be an AWS container.${NC}'
+      fi
+    exit
+  fi
+
   if [ -z "${AWS_S3_DATABASE_URL}" ]; then
     echo '$AWS_S3_DATABASE_URL not set. You must run this command on staging.'
     exit -1
