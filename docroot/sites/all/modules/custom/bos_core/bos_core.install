@@ -636,3 +636,13 @@ function bos_core_update_7034() {
     }
   }
 }
+
+/**
+ * Updates for 10/2018.
+ */
+function bos_core_update_7035() {
+  $disabled_modules = array(
+    's3fs',
+  );
+  module_disable($disabled_modules, TRUE);
+}
