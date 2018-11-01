@@ -637,7 +637,7 @@ function bos_core_update_7034() {
   }
 }
 
-/*
+/**
  * Updates for 10/2018.
  */
 function bos_core_update_7035() {
