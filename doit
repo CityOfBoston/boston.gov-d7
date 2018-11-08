@@ -286,6 +286,36 @@ function doitstage() {
 function doitstashdb() {
   subcommand="${args[0]}"
 
+  # Note: Webconsole does not support color output.
+
+  if [ "${subcommand}" = "help" ]; then
+    echo ""
+    echo " Manage on-demand database:"
+    echo ""
+    echo "  stash reset   Deletes any existing databases."
+    echo "  stash fetch   Copies a previous database into the container."
+    echo "  stash dump    Creates and saves (to AWS) a backup of the database."
+    echo "  stash status  Provides timestamp of the currently stashed database."
+    echo "  stash help    Show this page."
+    echo ""
+    echo "Notes:"
+    echo " 1. Only works when executed in an AWS on-demand container."
+    echo " 2. dump command:  Only one backup can be saved at a time -executing 'dump'."
+    echo "                   overwrites any existing dump."
+    echo " 3. fetch command: The database is just copied back into the container and "
+    echo "                   is not restored. After 'fetch', use mysql or phing "
+    echo "                   commands to restore the database."
+    echo " 4. If the container is restarted, then the current database dump (stashed using"
+    echo "    'doit stash dump') will be automatically restored -any unstashed changes"
+    echo "    will be lost."
+      if [ -z "${AWS_S3_DATABASE_URL}" ]; then
+        echo ""
+        echo " *** WARNING: This does not appear to be an AWS container."
+        echo ""
+      fi
+    exit
+  fi
+
   if [ -z "${AWS_S3_DATABASE_URL}" ]; then
     echo '$AWS_S3_DATABASE_URL not set. You must run this command on staging.'
     exit -1
@@ -294,18 +324,18 @@ function doitstashdb() {
   s3_dump_location="${AWS_S3_DATABASE_URL}/dump.sql.gz"
 
   if [ "${subcommand}" = "reset" ]; then
-    doitcomment "Deleting database dump from S3."
+    echo "Deleting database dump from S3."
     aws s3 rm "${s3_dump_location}"
     exit
   fi
 
   if [ "${subcommand}" = "fetch" ]; then
-    doitcomment "Fetching dump from S3"
+    echo "Fetching dump from S3"
 
-    aws s3 cp "${AWS_S3_DATABASE_URL}/dump.sql.gz" /tmp/ || doitcomment "dump.sql.gz not found on S3"
+    aws s3 cp "${AWS_S3_DATABASE_URL}/dump.sql.gz" /tmp/ || echo "dump.sql.gz not found on S3"
 
     if [ -f /tmp/dump.sql.gz ]; then
-      doitcomment "Ungzipping"
+      echo "Ungzipping"
       gunzip /tmp/dump.sql.gz
       # Necessary to allow the Apache user to delete this. webconsole.php runs
       # as www-data.
@@ -315,15 +345,33 @@ function doitstashdb() {
     exit
   fi
 
-  doitcomment "Dumping database SQL."
+  if [ "${subcommand}" = "status" ]; then
+    echo "Fetching Database dump/stash information from S3"
+
+    # See if we can access the AWS folder.
+    aws s3 ls "${AWS_S3_DATABASE_URL}/" > /dev/null 2>&1 || echo "Error: Cannot access Amazon backup area."
+
+	# Extract the date of the backup.
+    aws s3 ls "${AWS_S3_DATABASE_URL}/" | grep dump.sql.gz | awk '{print "\n   - DB backup date: " $1 " at " $2 "\n"}' || echo "Error: Cannot find any DB backup files."
+    exit
+  fi
+
+  echo "Stashing Database. "
+  echo "  - If you receive a red AJAX error, wait 60 secs and check the stashed DB status using './doit stash status'."
+
+  echo "Dumping database SQL."
   drush --root=/boston.gov/docroot sql-dump > /tmp/dump.sql
 
-  doitcomment "Gzipping dump."
+  echo "Gzipping dump."
   rm -f /tmp/dump.sql.gz
   gzip /tmp/dump.sql
 
-  doitcomment "Uploading to S3."
+  echo "Uploading to S3."
   aws s3 cp --no-progress /tmp/dump.sql.gz "${s3_dump_location}"
+
+  echo "Success - complete."
+  echo "You can check using doit stash status"
+
 }
 
 # Quick cheatsheet of common commands.
