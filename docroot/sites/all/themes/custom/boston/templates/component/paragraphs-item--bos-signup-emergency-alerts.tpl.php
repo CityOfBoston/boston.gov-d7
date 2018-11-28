@@ -81,6 +81,9 @@
               </label>
             </div>
             <div class="t--subinfo<?php if ($component_theme === 'b'): ?> t--w<?php endif; ?> m-t100">Message &amp; data rates may apply</div>
+            <div>
+              <div id="text_or_call" class="txt-l"></div>
+            </div>
             <hr class="hr hr--sq" />
             <div class="fs-c m-b300">
               <div class="txt">
@@ -187,6 +190,9 @@
       var valid = true;
 
       resetForm();
+      var textVal = jQuery("#checkbox-text").prop('checked');
+      var callVal = jQuery("#checkbox-call").prop('checked');
+      var checkEmailFormat = /^[A-Z0-9_'%=+!`#~$*?^{}&|-]+([\.][A-Z0-9_'%=+!`#~$*?^{}&|-]+)*@[A-Z0-9-]+(\.[A-Z0-9-]+)+$/i;
 
       if (email.val() == '' && phone_number.val() == '') {
         triggerError(email, "Please enter a valid email or phone number", 'txt-f--err');
@@ -197,6 +203,16 @@
       if (first_name.val() == '' && last_name.val() == '') {
         triggerError(first_name, "Please enter your first or last name", 'txt-f--err');
         triggerError(last_name, "Please enter your first or last name", 'txt-f--err');
+        valid = false;
+      }
+
+      if (email.val() !== '' && !checkEmailFormat.test(email.val())){
+        triggerError(email, "Email format is invalid", 'txt-f--err');
+        valid = false;
+      }
+
+      if (phone_number.val() !== '' && textVal == false && callVal == false ) {
+        triggerError(text_or_call, "Please select text or call", 'txt-f--err');
         valid = false;
       }
 
