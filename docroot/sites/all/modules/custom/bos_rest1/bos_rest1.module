@@ -1,15 +1,21 @@
 <?php
+/**
+ * @file
+ * Code for the Boston Custom Rest feature.
+ */
+
+include_once 'bos_rest1.features.inc';
 
 /**
  * Implements hook_init().
  */
 function bos_rest_init() {
-  // emulates values set in an admin form.
+  // Emulates values set in an admin form.
   $settings = [
     "cityscore" => [
       "token" => "9juHD7Y8oZpN2-erChlUQQ",
       "ip_whitelist" => [
-        "172.24.0.1"
+        "172.24.0.1",
       ],
     ],
   ];
@@ -26,14 +32,14 @@ function bos_rest_menu() {
 
   // The path that the endpoint will be registered to.
   $items['rest/%/%'] = array(
-      'title' => 'API',
-      // The name of the function called when the path is accessed.
-      'page callback' => 'bos_rest_endpoint',
-      'page arguments' => array(1,2),
-      // Set this value to TRUE to allow access to any user.
-      'access callback' => TRUE,
-      // Declare this as a simple registered path.
-      'type' => MENU_CALLBACK,
+    'title' => 'API',
+    // The name of the function called when the path is accessed.
+    'page callback' => 'bos_rest_endpoint',
+    'page arguments' => array(1,2),
+    // Set this value to TRUE to allow access to any user.
+    'access callback' => TRUE,
+    // Declare this as a simple registered path.
+    'type' => MENU_CALLBACK,
   );
 
   return $items;

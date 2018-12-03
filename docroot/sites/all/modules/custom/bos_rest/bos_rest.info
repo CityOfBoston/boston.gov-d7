@@ -1,5 +1,0 @@
-name = Boston RESTFul Services
-core = 7.x
-package = Boston Custom
-description = Defines REST endpoints for the Boston.gov site.
-dependencies[] = restws
