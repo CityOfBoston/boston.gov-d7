@@ -1,7 +1,7 @@
 name = Boston Custom Rest
-description = Boston RESTFul API customization.
 core = 7.x
-package = Boston
+package = Boston Custom
+description = Defines REST endpoints for the Boston.gov site.
 version = 7.x-1.0
 dependencies[] = ctools
 dependencies[] = features
