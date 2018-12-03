@@ -1,0 +1,222 @@
+<?php
+
+/**
+ * Implements hook_init().
+ */
+function bos_rest_init() {
+  // emulates values set in an admin form.
+  $settings = [
+    "cityscore" => [
+      "token" => "9juHD7Y8oZpN2-erChlUQQ",
+      "ip_whitelist" => [
+        "172.24.0.1"
+      ],
+    ],
+  ];
+  variable_set("bos_rest", serialize($settings));
+}
+
+/**
+ * Implements hook_menu().
+ */
+function bos_rest_menu() {
+  $items = array();
+
+  // MATT: add an array element to define the config page here.
+
+  // The path that the endpoint will be registered to.
+  $items['rest/%/%'] = array(
+      'title' => 'API',
+      // The name of the function called when the path is accessed.
+      'page callback' => 'bos_rest_endpoint',
+      'page arguments' => array(1,2),
+      // Set this value to TRUE to allow access to any user.
+      'access callback' => TRUE,
+      // Declare this as a simple registered path.
+      'type' => MENU_CALLBACK,
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_admin_menu_cache_info().
+ */
+function bos_rest_admin() {
+  // MATT: create a config form to hold variables in the init() section.
+}
+
+/**
+ * Outputs results from endpoint processing.
+ * @param $action
+ */
+function bos_rest_endpoint($type, $action) {
+  // Create new endpoints (e.g. /rest/newtype/action) by adding functions
+  // with the name $endpoint.  Use bos_rest_hook and bos_rest_hook_action
+  // functions as a template.
+  $endpoint = "bos_rest_" . $type;
+  echo $endpoint($action);
+}
+
+/**
+ * Processes the endpoint.
+ * @return string|void
+ */
+function bos_rest_cityscore($action) {
+  $settings = variable_get("bos_rest", []);
+  $settings = unserialize($settings);
+  $settings = $settings["cityscore"];
+  // Check token.
+  if (!empty($settings['token']) && $_REQUEST["api-key"] != $settings['token']) {
+    return _bos_rest_json_error("error missing token");
+  }
+  // Check IP whitelist.
+  if (!empty($settings['ip_whitelist']) && in_array(array_flip(ip_address()), $settings['ip_whitelist'])) {
+    return _bos_rest_json_error("error ip not recognised");
+  }
+
+  // Determine the endpoint variant.
+  // Create new cityscore endpoints (e.g. /rest/cityscore/action) by adding
+  // function/s named $callback below.
+  $callback = "bos_rest_cityscore_" . $action;
+
+  // Check payload.
+  if (in_array($_SERVER['REQUEST_METHOD'], ["POST", "DELETE", "PUT"] )) {
+    if (empty($_REQUEST['payload'])) {
+      return _bos_rest_json_error("error no payload");
+    }
+    try {
+      $payload = _bos_rest_cleanup_payload($_REQUEST['payload']);
+      if (!($payload = json_decode($payload))) {
+        return _bos_rest_json_error("bad json in payload");
+      }
+    }
+    catch (Error $e) {
+      return _bos_rest_json_error("bad json in payload");
+    }
+    return $callback($payload);
+  }
+
+  return $callback();
+
+}
+
+function bos_rest_cityscore_load($payload) {
+  // process payload into taxonomy.
+  $result = [];
+  $vocab = taxonomy_vocabulary_machine_name_load("cityscore_metrics");
+  $vid = $vocab->vid;
+  foreach($payload as $row) {
+    $tax = taxonomy_get_term_by_name($row->metric_name, "cityscore_metrics");
+    $result['count']++;
+    if (empty($tax)) {
+      // Create the record.
+      $tax = new stdClass();
+      $tax->vocabulary_machine_name = "cityscore_metrics";
+      $tax->name = $row->metric_name;
+      $tax->vid = $vid;
+      if (taxonomy_term_save($tax) != SAVED_NEW) {
+        // Continue for now.  May fail later.
+      }
+    }
+    else {
+      $tax = array_values($tax)[0];
+    }
+    // Update the taxonomy term.
+    if (isset($tax)) {
+      $tax->field_calc_timestamp['und'][0]['value'] = strtotime($row->score_calculated_ts);
+      $tax->field_table_timestamp['und'][0]['value'] = strtotime($row->score_final_table_ts);
+      $tax->field_day['und'][0]['value'] = $row->score_day_name;
+      $tax->field_previous_quarter['und'][0]['value'] = $row->previous_quarter_score;
+      $tax->field_previous_month['und'][0]['value'] = $row->previous_month_score;
+      $tax->field_previous_week['und'][0]['value'] = $row->previous_week_score;
+      $tax->field_previous_day['und'][0]['value'] = $row->previous_day_score;
+      if (taxonomy_term_save($tax) == SAVED_UPDATED) {
+        $result['saved']++;
+      }
+    }
+  }
+  if ($result['saved'] != $result['count']) {
+    return _bos_rest_json_error("Not all records saved");
+  }
+
+  return '{"status":"success","message":"cityscore updated"}';
+
+}
+
+/**
+ * Helper: Formats a standardised error as a json string.
+ * @param $error
+ *
+ * @return string
+ */
+function _bos_rest_json_error($error) {
+  return '{"status":"error","message":"' . $error . '"}';
+}
+
+/**
+ * Helper: Checks the payload.
+ * @param $payload
+ *
+ * @return string
+ */
+function _bos_rest_cleanup_payload($payload) {
+  $replacements = [
+    '/[\n\t]/' => "",
+    '/\"\s|\s\"/' => '"',
+  ];
+
+  foreach($replacements as $regex_search => $replace) {
+    $payload = preg_replace($regex_search, $replace, $payload);
+  }
+
+  $pos = min(strpos($payload,"["), strpos($payload,"{"));
+  if ($pos !== FALSE && $pos > 0) {
+    $payload = substr($payload, $pos);
+  }
+
+  return trim($payload);
+}
+
+/**
+ * Templates ...
+ *
+ */
+
+/**
+ * Template for endpoint (type).
+ *
+ * @param string $action
+ *   The endpoint action, 3rd element in URI path (e.g rest/type/action).
+ *
+ * @return string
+ *   JSON output.
+ */
+function bos_rest_type($action) {
+  // 1. Read settings for this type.
+  // 2. Do any validation/authentication.
+  $payload = _bos_rest_cleanup_payload($_REQUEST['payload']);
+  $payload = json_decode($payload);
+  // 3. Direct to correct endpoint action function.
+  $callback = "bos_rest_cityscore_" . $action;
+  return $callback($payload);
+}
+
+/**
+ * Template for endpoint (type) action.
+ *
+ * @param $payload
+ *   JSON string as payload for actions with update some Drupal entity.
+ *
+ * @return string
+ *   JSON string as output from the desired action.
+ */
+function bos_rest_type_action($payload) {
+  // 1. Perform the action.
+  // 2. Return JSON string.
+  $result = new stdClass();
+  $result->status = "";
+  $result->message = "";
+  $result = json_encode($result);
+  return $result;
+}
