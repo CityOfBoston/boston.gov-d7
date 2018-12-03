@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * bos_rest1.features.taxonomy.inc
+ * bos_rest.features.taxonomy.inc
  */
 
 /**
  * Implements hook_taxonomy_default_vocabularies().
  */
-function bos_rest1_taxonomy_default_vocabularies() {
+function bos_rest_taxonomy_default_vocabularies() {
   return array(
     'cityscore_metrics' => array(
       'name' => 'Cityscore Metrics',

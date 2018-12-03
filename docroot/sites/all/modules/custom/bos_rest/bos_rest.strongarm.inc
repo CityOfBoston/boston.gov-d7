@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * bos_rest1.strongarm.inc
+ * bos_rest.strongarm.inc
  */
 
 /**
  * Implements hook_strongarm().
  */
-function bos_rest1_strongarm() {
+function bos_rest_strongarm() {
   $export = array();
 
   $strongarm = new stdClass();

@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * bos_rest1.field_group.inc
+ * bos_rest.field_group.inc
  */
 
 /**
  * Implements hook_field_group_info().
  */
-function bos_rest1_field_group_info() {
+function bos_rest_field_group_info() {
   $field_groups = array();
 
   $field_group = new stdClass();

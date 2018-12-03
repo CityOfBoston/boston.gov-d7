@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * bos_rest1.features.field_instance.inc
+ * bos_rest.features.field_instance.inc
  */
 
 /**
  * Implements hook_field_default_field_instances().
  */
-function bos_rest1_field_default_field_instances() {
+function bos_rest_field_default_field_instances() {
   $field_instances = array();
 
   // Exported field_instance:

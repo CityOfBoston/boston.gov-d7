@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * bos_rest1.features.field_base.inc
+ * bos_rest.features.field_base.inc
  */
 
 /**
  * Implements hook_field_default_field_bases().
  */
-function bos_rest1_field_default_field_bases() {
+function bos_rest_field_default_field_bases() {
   $field_bases = array();
 
   // Exported field_base: 'field_calc_timestamp'.
