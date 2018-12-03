@@ -4,7 +4,7 @@
  * Code for the Boston Custom Rest feature.
  */
 
-include_once 'bos_rest1.features.inc';
+include_once 'bos_rest.features.inc';
 
 /**
  * Implements hook_init().
