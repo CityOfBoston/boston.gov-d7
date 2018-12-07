@@ -59,6 +59,8 @@ function bos_profile_install() {
   bos_profile_update_7041();
   bos_profile_update_7042();
   bos_profile_update_7043();
+  bos_profile_update_7044();
+  bos_profile_update_7045();
 }
 
 /**
@@ -1249,6 +1251,27 @@ function bos_profile_update_7043() {
         'bos_commissions_search',
     );
     module_enable($enabled_modules);
+}
+
+/**
+ * Update for 12/2018. Adds views_datasource fpr JSON API views.
+ */
+function bos_profile_update_7044() {
+  $enabled_modules = array(
+    'views_json',
+    'bos_rest',
+  );
+  module_enable($enabled_modules);
+}
+
+/**
+ * Update for 12/7/2018. Adds views_php.
+ */
+function bos_profile_update_7045() {
+  $enabled_modules = array(
+    'views_php',
+  );
+  module_enable($enabled_modules);
 }
 
 /*******************************************************************
