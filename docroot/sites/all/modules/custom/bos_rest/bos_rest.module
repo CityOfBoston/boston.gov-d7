@@ -14,9 +14,7 @@ function bos_rest_init() {
   $settings = [
     "cityscore" => [
       "token" => "9juHD7Y8oZpN2-erChlUQQ",
-      "ip_whitelist" => [
-        "172.24.0.1",
-      ],
+      "ip_whitelist" => [],
     ],
   ];
   variable_set("bos_rest", serialize($settings));
@@ -72,10 +70,7 @@ function bos_rest_cityscore($action) {
   $settings = variable_get("bos_rest", []);
   $settings = unserialize($settings);
   $settings = $settings["cityscore"];
-  // Check token.
-  if (!empty($settings['token']) && $_REQUEST["api-key"] != $settings['token']) {
-    return _bos_rest_json_error("error missing token");
-  }
+
   // Check IP whitelist.
   if (!empty($settings['ip_whitelist']) && in_array(array_flip(ip_address()), $settings['ip_whitelist'])) {
     return _bos_rest_json_error("error ip not recognised");
@@ -88,6 +83,10 @@ function bos_rest_cityscore($action) {
 
   // Check payload.
   if (in_array($_SERVER['REQUEST_METHOD'], ["POST", "DELETE", "PUT"] )) {
+    // Check token.
+    if (!empty($settings['token']) && $_REQUEST["api-key"] != $settings['token']) {
+      return _bos_rest_json_error("error missing token");
+    }    
     if (empty($_REQUEST['payload'])) {
       return _bos_rest_json_error("error no payload");
     }
@@ -105,6 +104,10 @@ function bos_rest_cityscore($action) {
 
   return $callback();
 
+}
+
+function bos_rest_cityscore_html() {
+  return views_embed_view('cityscore', 'html_cs_table');
 }
 
 function bos_rest_cityscore_load($payload) {
