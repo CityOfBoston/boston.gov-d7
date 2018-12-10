@@ -35,8 +35,8 @@ function hub_profile_install() {
   hub_profile_update_7022();
   hub_profile_update_7023();
   hub_profile_update_7024();
-  hub_profile_update_7025();
   hub_profile_update_7027();
+  hub_profile_update_7028();
 
 }
 
@@ -565,7 +565,7 @@ function hub_profile_update_7027() {
 /*
  * Adds metatag-favicon support, and references apple-touch-icon assets
  */
-function bos_profile_update_7025() {
+function hub_profile_update_7028() {
   $enabled_modules = array(
     'metatag_favicons',
   );
