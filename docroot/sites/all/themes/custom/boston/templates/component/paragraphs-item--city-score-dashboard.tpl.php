@@ -83,7 +83,7 @@
     function loadScores() {
       jQuery.ajax({
         //url: "//cob-cityscore.herokuapp.com/scores/latest",
-        url: "http://127.0.0.1:8888/rest/cityscore/html",
+        url: "/rest/cityscore/html",
         type:'GET',
         contentType: 'text/plain',
         dataType: "html",
@@ -95,7 +95,7 @@
 
     function loadTodaysScore() {
       //jQuery.getJSON( "//cob-cityscore.herokuapp.com/totals/latest" )
-      jQuery.getJSON( "http://127.0.0.1:8888/rest/cityscore/totals")
+      jQuery.getJSON( "/cityscore/totals/latest")
         .done(function(json) {
           var jsonArrayObject = new Array(json);
           var csVals = jsonArrayObject[0][0];         

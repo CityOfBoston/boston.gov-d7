@@ -110,6 +110,13 @@ function bos_rest_cityscore_html() {
   return views_embed_view('cityscore', 'html_cs_table');
 }
 
+function bos_rest_cityscore_json() {
+  $formatJSON = views_embed_view('cityscore', 'json_cs_output');
+  //echo var_dump($formatJSON);
+  echo "arse";
+  end; // json_encode($formatJSON[0]);
+}
+
 function bos_rest_cityscore_load($payload) {
   // process payload into taxonomy.
   $result = [];
