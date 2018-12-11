@@ -64,7 +64,7 @@ function bos_rest_endpoint($type, $action) {
 
 /**
  * Processes the endpoint.
- * @return string|void
+ * @return string
  */
 function bos_rest_cityscore($action) {
   $settings = variable_get("bos_rest", []);
@@ -111,10 +111,20 @@ function bos_rest_cityscore_html() {
 }
 
 function bos_rest_cityscore_json() {
-  $formatJSON = views_embed_view('cityscore', 'json_cs_output');
-  //echo var_dump($formatJSON);
-  echo "arse";
-  end; // json_encode($formatJSON[0]);
+  $curl_handle = curl_init();
+  curl_setopt($curl_handle, CURLOPT_URL, 'http://localhost:80/cityscore/totals/latest.json');
+  curl_setopt($curl_handle, CURLOPT_RETURNTRANSFER, true); // Fetch the contents too.
+  curl_setopt($curl_handle, CURLOPT_FOLLOWLOCATION, true); // Follow redirects.
+  curl_setopt($curl_handle, CURLOPT_AUTOREFERER, true); // Set referer on redirect.
+  if ($json = curl_exec($curl_handle)) { // Execute the request.
+    $json = json_decode($json)[0];
+    $output = json_encode($json, JSON_NUMERIC_CHECK);
+  }
+  else {
+    $output = _bos_rest_json_error(urlencode(curl_error($curl_handle)));
+  }
+  curl_close($curl_handle);
+  return $output;
 }
 
 function bos_rest_cityscore_load($payload) {
@@ -147,6 +157,7 @@ function bos_rest_cityscore_load($payload) {
       $tax->field_previous_month['und'][0]['value'] = $row->previous_month_score;
       $tax->field_previous_week['und'][0]['value'] = $row->previous_week_score;
       $tax->field_previous_day['und'][0]['value'] = $row->previous_day_score;
+      $tax->field_cs_weight['und'][0]['value'] = $result['count'];
       if (taxonomy_term_save($tax) == SAVED_UPDATED) {
         $result['saved']++;
       }

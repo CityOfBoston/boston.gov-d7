@@ -28,7 +28,7 @@ function bos_rest_field_default_field_instances() {
           'thousand_separator' => '',
         ),
         'type' => 'number_integer',
-        'weight' => 17,
+        'weight' => 25,
       ),
     ),
     'entity_type' => 'taxonomy_term',
@@ -52,6 +52,47 @@ function bos_rest_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'taxonomy_term-cityscore_metrics-field_cs_weight'.
+  $field_instances['taxonomy_term-cityscore_metrics-field_cs_weight'] = array(
+    'bundle' => 'cityscore_metrics',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'number',
+        'settings' => array(
+          'decimal_separator' => '.',
+          'prefix_suffix' => TRUE,
+          'scale' => 0,
+          'thousand_separator' => '',
+        ),
+        'type' => 'number_integer',
+        'weight' => 19,
+      ),
+    ),
+    'entity_type' => 'taxonomy_term',
+    'fences_wrapper' => 'no_wrapper',
+    'field_name' => 'field_cs_weight',
+    'label' => 'weight',
+    'required' => 0,
+    'settings' => array(
+      'max' => '',
+      'min' => '',
+      'prefix' => '',
+      'suffix' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'number',
+      'settings' => array(),
+      'type' => 'number',
+      'weight' => 54,
+    ),
+  );
+
   // Exported field_instance: 'taxonomy_term-cityscore_metrics-field_day'.
   $field_instances['taxonomy_term-cityscore_metrics-field_day'] = array(
     'bundle' => 'cityscore_metrics',
@@ -64,7 +105,7 @@ function bos_rest_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 6,
+        'weight' => 20,
       ),
     ),
     'entity_type' => 'taxonomy_term',
@@ -111,7 +152,7 @@ function bos_rest_field_default_field_instances() {
           'thousand_separator' => '',
         ),
         'type' => 'number_decimal',
-        'weight' => 15,
+        'weight' => 23,
       ),
     ),
     'entity_type' => 'taxonomy_term',
@@ -148,7 +189,7 @@ function bos_rest_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 9,
+        'weight' => 21,
       ),
     ),
     'entity_type' => 'taxonomy_term',
@@ -162,10 +203,6 @@ function bos_rest_field_default_field_instances() {
         'enable' => 0,
         'profile' => '',
       ),
-      'max' => '',
-      'min' => '',
-      'prefix' => '',
-      'suffix' => '',
       'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
@@ -194,7 +231,7 @@ function bos_rest_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 10,
+        'weight' => 22,
       ),
     ),
     'entity_type' => 'taxonomy_term',
@@ -208,10 +245,6 @@ function bos_rest_field_default_field_instances() {
         'enable' => 0,
         'profile' => '',
       ),
-      'max' => '',
-      'min' => '',
-      'prefix' => '',
-      'suffix' => '',
       'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
@@ -245,7 +278,7 @@ function bos_rest_field_default_field_instances() {
           'thousand_separator' => '',
         ),
         'type' => 'number_decimal',
-        'weight' => 16,
+        'weight' => 24,
       ),
     ),
     'entity_type' => 'taxonomy_term',
@@ -287,7 +320,7 @@ function bos_rest_field_default_field_instances() {
           'thousand_separator' => '',
         ),
         'type' => 'number_integer',
-        'weight' => 18,
+        'weight' => 26,
       ),
     ),
     'entity_type' => 'taxonomy_term',
@@ -320,6 +353,7 @@ function bos_rest_field_default_field_instances() {
   t('Previous Quarter');
   t('Previous Week');
   t('Table Timestamp');
+  t('weight');
 
   return $field_instances;
 }

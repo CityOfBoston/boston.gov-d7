@@ -95,7 +95,7 @@
 
     function loadTodaysScore() {
       //jQuery.getJSON( "//cob-cityscore.herokuapp.com/totals/latest" )
-      jQuery.getJSON( "/cityscore/totals/latest")
+      jQuery.getJSON( "/cityscore/totals/latest.json")
         .done(function(json) {
           var jsonArrayObject = new Array(json);
           var csVals = jsonArrayObject[0][0];         
