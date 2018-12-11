@@ -272,7 +272,7 @@ projects:
   views_exclude_previous:
     version: 1.x-dev
   views_php:
-    version: 1.x-alpha3
+    version: 1.0-alpha3
   viewfield:
     version: 2.0
     patch:
