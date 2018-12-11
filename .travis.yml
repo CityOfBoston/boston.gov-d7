@@ -11,7 +11,7 @@ branches:
   - develop
   - master
   - settings
-  - php-7-1-upgrade
+  - cityscore_rest
 php:
 - 7.1
 addons:
