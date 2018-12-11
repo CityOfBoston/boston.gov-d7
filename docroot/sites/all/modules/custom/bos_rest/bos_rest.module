@@ -132,7 +132,7 @@ function bos_rest_cityscore_html() {
  */
 function bos_rest_cityscore_json() {
   $curl_handle = curl_init();
-  curl_setopt($curl_handle, CURLOPT_URL, 'http://localhost:80/cityscore/totals/latest.json');
+  curl_setopt($curl_handle, CURLOPT_URL, 'https://' . $_SERVER['HTTP_HOST'] . '/cityscore/totals/latest.json');
   curl_setopt($curl_handle, CURLOPT_RETURNTRANSFER, TRUE);
   curl_setopt($curl_handle, CURLOPT_FOLLOWLOCATION, TRUE);
   curl_setopt($curl_handle, CURLOPT_AUTOREFERER, TRUE);

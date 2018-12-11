@@ -24,11 +24,13 @@ function bos_rest_views_default_views() {
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'hsfghbsfgh';
   $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['access']['type'] = 'none';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '1';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'views_json';
   $handler->display->display_options['style_options']['root_object'] = '';
   $handler->display->display_options['style_options']['top_child_object'] = '';
@@ -52,22 +54,6 @@ function bos_rest_views_default_views() {
   $handler->display->display_options['fields']['name']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['name']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['name']['link_to_taxonomy'] = TRUE;
-  /* Sort criterion: Taxonomy term: Previous Day (field_previous_day) */
-  $handler->display->display_options['sorts']['field_previous_day_value']['id'] = 'field_previous_day_value';
-  $handler->display->display_options['sorts']['field_previous_day_value']['table'] = 'field_data_field_previous_day';
-  $handler->display->display_options['sorts']['field_previous_day_value']['field'] = 'field_previous_day_value';
-  /* Sort criterion: Taxonomy term: Previous Month (field_previous_month) */
-  $handler->display->display_options['sorts']['field_previous_month_value']['id'] = 'field_previous_month_value';
-  $handler->display->display_options['sorts']['field_previous_month_value']['table'] = 'field_data_field_previous_month';
-  $handler->display->display_options['sorts']['field_previous_month_value']['field'] = 'field_previous_month_value';
-  /* Sort criterion: Taxonomy term: Previous Quarter (field_previous_quarter) */
-  $handler->display->display_options['sorts']['field_previous_quarter_value']['id'] = 'field_previous_quarter_value';
-  $handler->display->display_options['sorts']['field_previous_quarter_value']['table'] = 'field_data_field_previous_quarter';
-  $handler->display->display_options['sorts']['field_previous_quarter_value']['field'] = 'field_previous_quarter_value';
-  /* Sort criterion: Taxonomy term: Previous Week (field_previous_week) */
-  $handler->display->display_options['sorts']['field_previous_week_value']['id'] = 'field_previous_week_value';
-  $handler->display->display_options['sorts']['field_previous_week_value']['table'] = 'field_data_field_previous_week';
-  $handler->display->display_options['sorts']['field_previous_week_value']['field'] = 'field_previous_week_value';
   /* Filter criterion: Taxonomy vocabulary: Machine name */
   $handler->display->display_options['filters']['machine_name']['id'] = 'machine_name';
   $handler->display->display_options['filters']['machine_name']['table'] = 'taxonomy_vocabulary';
@@ -83,6 +69,9 @@ function bos_rest_views_default_views() {
   $handler->display->display_options['defaults']['use_ajax'] = FALSE;
   $handler->display->display_options['defaults']['access'] = FALSE;
   $handler->display->display_options['access']['type'] = 'menu';
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'table';
   $handler->display->display_options['style_options']['default_row_class'] = FALSE;
@@ -244,10 +233,10 @@ jQuery(\'table.views-table\').append(\'<thead><tr class="cs__table-header"><th>T
   $handler->display->display_options['fields']['php']['use_php_setup'] = 0;
   $handler->display->display_options['fields']['php']['php_output'] = '<?php 
 $getName = $data->taxonomy_term_data_name; 
-$getDay = $data->field_data_field_previous_day_field_previous_day_value;
-$getWeek = $data->field_data_field_previous_week_field_previous_week_value;
-$getMonth = $data->field_data_field_previous_month_field_previous_month_value;
-$getQuarter = $data->field_data_field_previous_quarter_field_previous_quarter_val;
+$getDay = $data->field_field_previous_day[0][\'raw\'][\'value\'];
+$getWeek = $data->field_field_previous_week[0][\'raw\'][\'value\'];
+$getMonth = $data->field_field_previous_month[0][\'raw\'][\'value\'];
+$getQuarter = $data->field_field_previous_quarter[0][\'raw\'][\'value\'];
 
 $getDay = (is_null($getDay) ? \'-\' : number_format($getDay, 2) );
 $getWeek = (is_null($getWeek) ? \'-\' : number_format($getWeek, 2) );
@@ -269,6 +258,11 @@ print \'</tr>\';
 ?>';
   $handler->display->display_options['fields']['php']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php']['php_click_sortable'] = '';
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Taxonomy term: weight (field_cs_weight) */
+  $handler->display->display_options['sorts']['field_cs_weight_value']['id'] = 'field_cs_weight_value';
+  $handler->display->display_options['sorts']['field_cs_weight_value']['table'] = 'field_data_field_cs_weight';
+  $handler->display->display_options['sorts']['field_cs_weight_value']['field'] = 'field_cs_weight_value';
   $handler->display->display_options['path'] = 'rest/cityscore/html-table';
 
   /* Display: JSON Output */
@@ -277,6 +271,10 @@ print \'</tr>\';
   $handler->display->display_options['group_by'] = TRUE;
   $handler->display->display_options['defaults']['cache'] = FALSE;
   $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '1';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'views_json';
   $handler->display->display_options['style_options']['root_object'] = '';
@@ -284,9 +282,10 @@ print \'</tr>\';
   $handler->display->display_options['style_options']['plaintext_output'] = 0;
   $handler->display->display_options['style_options']['remove_newlines'] = 0;
   $handler->display->display_options['style_options']['jsonp_prefix'] = '';
+  $handler->display->display_options['style_options']['content_type'] = 'text/json';
   $handler->display->display_options['style_options']['using_views_api_mode'] = 0;
   $handler->display->display_options['style_options']['object_arrays'] = 0;
-  $handler->display->display_options['style_options']['numeric_strings'] = 0;
+  $handler->display->display_options['style_options']['numeric_strings'] = 1;
   $handler->display->display_options['style_options']['bigint_string'] = 0;
   $handler->display->display_options['style_options']['pretty_print'] = 0;
   $handler->display->display_options['style_options']['unescaped_slashes'] = 0;
@@ -332,7 +331,6 @@ print \'</tr>\';
   $handler->display->display_options['fields']['field_previous_month']['label'] = 'month';
   $handler->display->display_options['fields']['field_previous_month']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_previous_month']['element_default_classes'] = FALSE;
-  $handler->display->display_options['fields']['field_previous_month']['type'] = 'text_default';
   /* Field: Taxonomy term: Previous Quarter */
   $handler->display->display_options['fields']['field_previous_quarter']['id'] = 'field_previous_quarter';
   $handler->display->display_options['fields']['field_previous_quarter']['table'] = 'field_data_field_previous_quarter';
@@ -340,13 +338,14 @@ print \'</tr>\';
   $handler->display->display_options['fields']['field_previous_quarter']['group_type'] = 'avg';
   $handler->display->display_options['fields']['field_previous_quarter']['label'] = 'quarter';
   $handler->display->display_options['fields']['field_previous_quarter']['element_default_classes'] = FALSE;
-  $handler->display->display_options['fields']['field_previous_quarter']['type'] = 'text_default';
   /* Field: Taxonomy term: Table Timestamp */
   $handler->display->display_options['fields']['field_table_timestamp']['id'] = 'field_table_timestamp';
   $handler->display->display_options['fields']['field_table_timestamp']['table'] = 'field_data_field_table_timestamp';
   $handler->display->display_options['fields']['field_table_timestamp']['field'] = 'field_table_timestamp';
   $handler->display->display_options['fields']['field_table_timestamp']['group_type'] = 'max';
   $handler->display->display_options['fields']['field_table_timestamp']['label'] = 'date_posted';
+  $handler->display->display_options['fields']['field_table_timestamp']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_table_timestamp']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['field_table_timestamp']['alter']['text'] = '<?php print \'test\'?>';
   $handler->display->display_options['fields']['field_table_timestamp']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['field_table_timestamp']['hide_alter_empty'] = FALSE;
@@ -354,9 +353,18 @@ print \'</tr>\';
     'thousand_separator' => '',
     'prefix_suffix' => 0,
   );
+  /* Field: Global: PHP */
+  $handler->display->display_options['fields']['php']['id'] = 'php';
+  $handler->display->display_options['fields']['php']['table'] = 'views';
+  $handler->display->display_options['fields']['php']['field'] = 'php';
+  $handler->display->display_options['fields']['php']['label'] = 'date_posted';
+  $handler->display->display_options['fields']['php']['use_php_setup'] = 0;
+  $handler->display->display_options['fields']['php']['php_output'] = '<?php print date("m/d/Y", $data->field_data_field_table_timestamp_field_table_timestamp_value); ?>';
+  $handler->display->display_options['fields']['php']['use_php_click_sortable'] = '0';
+  $handler->display->display_options['fields']['php']['php_click_sortable'] = '';
   $handler->display->display_options['defaults']['sorts'] = FALSE;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
-  $handler->display->display_options['path'] = 'cityscore/totals/latest';
+  $handler->display->display_options['path'] = 'cityscore/totals/latest.json';
   $export['cityscore'] = $view;
 
   return $export;
