@@ -26,14 +26,13 @@ function bos_rest_init() {
 function bos_rest_menu() {
   $items = array();
 
-  // MATT: add an array element to define the config page here.
-
+  // TODO: add an array element to define the config page here.
   // The path that the endpoint will be registered to.
   $items['rest/%/%'] = array(
     'title' => 'API',
     // The name of the function called when the path is accessed.
     'page callback' => 'bos_rest_endpoint',
-    'page arguments' => array(1,2),
+    'page arguments' => array(1, 2),
     // Set this value to TRUE to allow access to any user.
     'access callback' => TRUE,
     // Declare this as a simple registered path.
@@ -51,8 +50,12 @@ function bos_rest_admin() {
 }
 
 /**
- * Outputs results from endpoint processing.
- * @param $action
+ * Entrypoint for the rest/%/% menu callback (redirects to other functions).
+ *
+ * @param string $type
+ *   The first element of the endpoint URI - the main endpoint type.
+ * @param string $action
+ *   The second element of the endpoint URI - the endpoint action.
  */
 function bos_rest_endpoint($type, $action) {
   // Create new endpoints (e.g. /rest/newtype/action) by adding functions
@@ -63,8 +66,13 @@ function bos_rest_endpoint($type, $action) {
 }
 
 /**
- * Processes the endpoint.
+ * Processes the rest/cityscore/% endpoint (redirects to other functions).
+ *
+ * @param string $action
+ *   The endpoint action.
+ *
  * @return string
+ *   Endpoint output (usually JSON).
  */
 function bos_rest_cityscore($action) {
   $settings = variable_get("bos_rest", []);
@@ -82,11 +90,11 @@ function bos_rest_cityscore($action) {
   $callback = "bos_rest_cityscore_" . $action;
 
   // Check payload.
-  if (in_array($_SERVER['REQUEST_METHOD'], ["POST", "DELETE", "PUT"] )) {
+  if (in_array($_SERVER['REQUEST_METHOD'], ["POST", "DELETE", "PUT"])) {
     // Check token.
     if (!empty($settings['token']) && $_REQUEST["api-key"] != $settings['token']) {
       return _bos_rest_json_error("error missing token");
-    }    
+    }
     if (empty($_REQUEST['payload'])) {
       return _bos_rest_json_error("error no payload");
     }
@@ -106,17 +114,29 @@ function bos_rest_cityscore($action) {
 
 }
 
+/**
+ * Processes the rest/cityscore/html endpoint (outputs html table).
+ *
+ * @return bool|void
+ *   Returns an HTML string with a formatted table of cityscore parameters.
+ */
 function bos_rest_cityscore_html() {
   return views_embed_view('cityscore', 'html_cs_table');
 }
 
+/**
+ * Process the rest/cityscore/json endpoint (cityscore totals in json).
+ *
+ * @return false|string
+ *   JSON String with current sityscore totals.
+ */
 function bos_rest_cityscore_json() {
   $curl_handle = curl_init();
   curl_setopt($curl_handle, CURLOPT_URL, 'http://localhost:80/cityscore/totals/latest.json');
-  curl_setopt($curl_handle, CURLOPT_RETURNTRANSFER, true); // Fetch the contents too.
-  curl_setopt($curl_handle, CURLOPT_FOLLOWLOCATION, true); // Follow redirects.
-  curl_setopt($curl_handle, CURLOPT_AUTOREFERER, true); // Set referer on redirect.
-  if ($json = curl_exec($curl_handle)) { // Execute the request.
+  curl_setopt($curl_handle, CURLOPT_RETURNTRANSFER, TRUE);
+  curl_setopt($curl_handle, CURLOPT_FOLLOWLOCATION, TRUE);
+  curl_setopt($curl_handle, CURLOPT_AUTOREFERER, TRUE);
+  if ($json = curl_exec($curl_handle)) {
     $json = json_decode($json)[0];
     $output = json_encode($json, JSON_NUMERIC_CHECK);
   }
@@ -127,12 +147,21 @@ function bos_rest_cityscore_json() {
   return $output;
 }
 
+/**
+ * Processes the rest/cityscore/load endpoint (loads latest cityscore data).
+ *
+ * @param string $payload
+ *   The payload to process.
+ *
+ * @return string
+ *   JSON result.
+ */
 function bos_rest_cityscore_load($payload) {
-  // process payload into taxonomy.
+  // Process payload into taxonomy.
   $result = [];
   $vocab = taxonomy_vocabulary_machine_name_load("cityscore_metrics");
   $vid = $vocab->vid;
-  foreach($payload as $row) {
+  foreach ($payload as $row) {
     $tax = taxonomy_get_term_by_name($row->metric_name, "cityscore_metrics");
     $result['count']++;
     if (empty($tax)) {
@@ -173,9 +202,12 @@ function bos_rest_cityscore_load($payload) {
 
 /**
  * Helper: Formats a standardised error as a json string.
- * @param $error
+ *
+ * @param string $error
+ *   Error message to JSON'ify.
  *
  * @return string
+ *   JSON formatted error message.
  */
 function _bos_rest_json_error($error) {
   return '{"status":"error","message":"' . $error . '"}';
@@ -183,9 +215,12 @@ function _bos_rest_json_error($error) {
 
 /**
  * Helper: Checks the payload.
- * @param $payload
+ *
+ * @param string $payload
+ *   The payload to process.
  *
  * @return string
+ *   Cleaned payload.
  */
 function _bos_rest_cleanup_payload($payload) {
   $replacements = [
@@ -193,11 +228,11 @@ function _bos_rest_cleanup_payload($payload) {
     '/\"\s|\s\"/' => '"',
   ];
 
-  foreach($replacements as $regex_search => $replace) {
+  foreach ($replacements as $regex_search => $replace) {
     $payload = preg_replace($regex_search, $replace, $payload);
   }
 
-  $pos = min(strpos($payload,"["), strpos($payload,"{"));
+  $pos = min(strpos($payload, "["), strpos($payload, "{"));
   if ($pos !== FALSE && $pos > 0) {
     $payload = substr($payload, $pos);
   }
@@ -207,7 +242,6 @@ function _bos_rest_cleanup_payload($payload) {
 
 /**
  * Templates ...
- *
  */
 
 /**
@@ -232,7 +266,7 @@ function bos_rest_type($action) {
 /**
  * Template for endpoint (type) action.
  *
- * @param $payload
+ * @param string $payload
  *   JSON string as payload for actions with update some Drupal entity.
  *
  * @return string
