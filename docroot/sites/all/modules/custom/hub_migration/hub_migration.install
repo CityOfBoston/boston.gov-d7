@@ -8,7 +8,7 @@
  /**
   * Clean up user accounts.
   */
-function hub_migration_update_70001(&$sandbox) {
+function hub_migration_update_7001(&$sandbox) {
   if (empty($sandbox)) {
     $names = array(
       '047974',
@@ -89,10 +89,12 @@ function hub_migration_update_70001(&$sandbox) {
   foreach ($current_run as $uid => $data) {
     $sandbox['total']++;
     if ($user = user_load($uid)) {
-      $profile = profile2_load_by_user($user);
-      $profile = array_shift($profile);
-      profile2_delete($profile);
-      user_delete($uid);
+      if (profile2_load_by_user($uid)) {
+        $profile = profile2_load_by_user($user);
+        $profile = array_shift($profile);
+        profile2_delete($profile);
+        user_delete($uid);
+      }
       $sandbox['deleted']++;
     }
   }
