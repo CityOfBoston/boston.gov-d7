@@ -131,11 +131,12 @@ function bos_rest_cityscore_html() {
  *   JSON String with current sityscore totals.
  */
 function bos_rest_cityscore_json() {
-  $curl_handle = curl_init();
-  curl_setopt($curl_handle, CURLOPT_URL, 'https://' . $_SERVER['HTTP_HOST'] . '/cityscore/totals/latest.json');
+  $curl_handle = curl_init("54.227.255.2");
+  curl_setopt($curl_handle, CURLOPT_URL, 'https://edit-ci.boston.gov/cityscore/totals/latest.json');
   curl_setopt($curl_handle, CURLOPT_RETURNTRANSFER, TRUE);
   curl_setopt($curl_handle, CURLOPT_FOLLOWLOCATION, TRUE);
   curl_setopt($curl_handle, CURLOPT_AUTOREFERER, TRUE);
+  curl_setopt($curl_handle, CURLOPT_SSL_VERIFYPEER, FALSE);
   if ($json = curl_exec($curl_handle)) {
     $json = json_decode($json)[0];
     $output = json_encode($json, JSON_NUMERIC_CHECK);
