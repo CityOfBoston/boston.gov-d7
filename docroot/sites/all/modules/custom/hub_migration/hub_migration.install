@@ -2,10 +2,11 @@
 
 /**
  * @file
+ * Runs HCM migration related tasks.
  */
 
  /**
-  * Clean up user accounts
+  * Clean up user accounts.
   */
 function hub_migration_update_70001(&$sandbox) {
   if (empty($sandbox)) {
