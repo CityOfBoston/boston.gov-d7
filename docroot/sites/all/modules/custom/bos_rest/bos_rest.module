@@ -134,7 +134,6 @@ function bos_rest_cityscore_json() {
   $curl_handle = curl_init();
   curl_setopt($curl_handle, CURLOPT_URL, 'http://54.227.255.2/cityscore/totals/latest.json');
   curl_setopt($curl_handle, CURLOPT_HTTPHEADER, ["Host: edit-ci.boston.gov"]);
-//  curl_setopt($curl_handle, CURLOPT_RESOLVE, ["edit-ci.boston.gov:54.227.255.2"]);
   curl_setopt($curl_handle, CURLOPT_RETURNTRANSFER, TRUE);
   curl_setopt($curl_handle, CURLOPT_FOLLOWLOCATION, TRUE);
   curl_setopt($curl_handle, CURLOPT_AUTOREFERER, TRUE);
