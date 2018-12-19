@@ -163,6 +163,9 @@ function bos_rest_cityscore_load($payload) {
   // Process payload into taxonomy.
   $result = [];
   $vocab = taxonomy_vocabulary_machine_name_load("cityscore_metrics");
+  foreach (taxonomy_get_tree($vocab->vid, 0, 1, FALSE) as $term) {
+    taxonomy_term_delete($term->tid);
+  }
   $vid = $vocab->vid;
   foreach ($payload as $row) {
     $tax = taxonomy_get_term_by_name($row->metric_name, "cityscore_metrics");
