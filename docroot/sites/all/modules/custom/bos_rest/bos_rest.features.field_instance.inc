@@ -161,8 +161,8 @@ function bos_rest_field_default_field_instances() {
     'label' => 'Previous Day',
     'required' => 0,
     'settings' => array(
-      'max' => '',
-      'min' => '',
+      'max' => 5,
+      'min' => 0,
       'prefix' => '',
       'suffix' => '',
       'user_register_form' => FALSE,
@@ -198,12 +198,10 @@ function bos_rest_field_default_field_instances() {
     'label' => 'Previous Month',
     'required' => 0,
     'settings' => array(
-      'linkit' => array(
-        'button_text' => 'Search',
-        'enable' => 0,
-        'profile' => '',
-      ),
-      'text_processing' => 0,
+      'max' => 5,
+      'min' => 0,
+      'prefix' => '',
+      'suffix' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -240,12 +238,10 @@ function bos_rest_field_default_field_instances() {
     'label' => 'Previous Quarter',
     'required' => 0,
     'settings' => array(
-      'linkit' => array(
-        'button_text' => 'Search',
-        'enable' => 0,
-        'profile' => '',
-      ),
-      'text_processing' => 0,
+      'max' => 5,
+      'min' => 0,
+      'prefix' => '',
+      'suffix' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -287,8 +283,8 @@ function bos_rest_field_default_field_instances() {
     'label' => 'Previous Week',
     'required' => 0,
     'settings' => array(
-      'max' => '',
-      'min' => '',
+      'max' => 5,
+      'min' => 0,
       'prefix' => '',
       'suffix' => '',
       'user_register_form' => FALSE,
