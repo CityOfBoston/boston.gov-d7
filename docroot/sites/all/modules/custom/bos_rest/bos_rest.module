@@ -84,7 +84,7 @@ function bos_rest_cityscore($action) {
   $cityscore_ip_whitelist = variable_get('cityscore_ip_whitelist', "");
   if (!empty($cityscore_ip_whitelist)) {
     $cityscore_ip_whitelist = explode("\n", $cityscore_ip_whitelist);
-    if (!in_array(array_flip(ip_address()), $cityscore_ip_whitelist)) {
+    if (!in_array(ip_address(), $cityscore_ip_whitelist)) {
       return _bos_rest_json_error("error ip not recognised");
     }
   }
@@ -255,9 +255,6 @@ function _bos_rest_cleanup_payload($payload) {
  * Implements hook_form().
  */
 function bos_rest_cityscore_admin_form($form, &$form_state) {
-
-  $settings = unserialize(variable_get('bos_rest'));
-
   $form['bos_rest'] = [
     '#type' => 'fieldset',
     '#title' => 'Boston API Endpoints',
