@@ -169,7 +169,7 @@ jQuery(\'table.views-table\').append(\'<thead><tr class="cs__table-header"><th>T
   $handler->display->display_options['fields']['field_previous_day']['settings'] = array(
     'thousand_separator' => '',
     'decimal_separator' => '.',
-    'scale' => '2',
+    'scale' => '6',
     'prefix_suffix' => 1,
   );
   /* Field: Taxonomy term: Previous Week */
@@ -187,7 +187,7 @@ jQuery(\'table.views-table\').append(\'<thead><tr class="cs__table-header"><th>T
   $handler->display->display_options['fields']['field_previous_week']['settings'] = array(
     'thousand_separator' => '',
     'decimal_separator' => '.',
-    'scale' => '2',
+    'scale' => '6',
     'prefix_suffix' => 1,
   );
   /* Field: Taxonomy term: Previous Month */
@@ -203,7 +203,7 @@ jQuery(\'table.views-table\').append(\'<thead><tr class="cs__table-header"><th>T
   $handler->display->display_options['fields']['field_previous_month']['settings'] = array(
     'thousand_separator' => '',
     'decimal_separator' => '.',
-    'scale' => '2',
+    'scale' => '6',
     'prefix_suffix' => 0,
   );
   /* Field: Taxonomy term: Previous Quarter */
@@ -219,7 +219,7 @@ jQuery(\'table.views-table\').append(\'<thead><tr class="cs__table-header"><th>T
   $handler->display->display_options['fields']['field_previous_quarter']['settings'] = array(
     'thousand_separator' => '',
     'decimal_separator' => '.',
-    'scale' => '2',
+    'scale' => '6',
     'prefix_suffix' => 1,
   );
   /* Field: Global: PHP */
