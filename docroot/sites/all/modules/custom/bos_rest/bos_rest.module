@@ -11,13 +11,9 @@ include_once 'bos_rest.features.inc';
  */
 function bos_rest_init() {
   // Emulates values set in an admin form.
-  $settings = [
-    "cityscore" => [
-      "token" => "9juHD7Y8oZpN2-erChlUQQ",
-      "ip_whitelist" => [],
-    ],
-  ];
-  variable_set("bos_rest", serialize($settings));
+  if (!variable_get('cityscore_token', FALSE)) {
+    variable_set('cityscore_token', '9juHD7Y8oZpN2-erChlUQQ');
+  }
 }
 
 /**
@@ -37,6 +33,14 @@ function bos_rest_menu() {
     'access callback' => TRUE,
     // Declare this as a simple registered path.
     'type' => MENU_CALLBACK,
+  );
+
+  $items['admin/config/services/cityscore'] = array(
+    'title' => 'Boston API Endpoints',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('bos_rest_cityscore_admin_form'),
+    'access arguments' => array('administer taxonomy'),
+    'type' => MENU_NORMAL_ITEM,
   );
 
   return $items;
@@ -75,13 +79,14 @@ function bos_rest_endpoint($type, $action) {
  *   Endpoint output (usually JSON).
  */
 function bos_rest_cityscore($action) {
-  $settings = variable_get("bos_rest", []);
-  $settings = unserialize($settings);
-  $settings = $settings["cityscore"];
 
   // Check IP whitelist.
-  if (!empty($settings['ip_whitelist']) && in_array(array_flip(ip_address()), $settings['ip_whitelist'])) {
-    return _bos_rest_json_error("error ip not recognised");
+  $cityscore_ip_whitelist = variable_get('cityscore_ip_whitelist', "");
+  if (!empty($cityscore_ip_whitelist)) {
+    $cityscore_ip_whitelist = explode("\n", $cityscore_ip_whitelist);
+    if (!in_array(array_flip(ip_address()), $cityscore_ip_whitelist)) {
+      return _bos_rest_json_error("error ip not recognised");
+    }
   }
 
   // Determine the endpoint variant.
@@ -241,6 +246,44 @@ function _bos_rest_cleanup_payload($payload) {
   }
 
   return trim($payload);
+}
+
+/**
+ * Implements hook_form().
+ */
+function bos_rest_cityscore_admin_form($form, &$form_state) {
+
+  $settings = unserialize(variable_get('bos_rest'));
+
+  $form['bos_rest'] = [
+    '#type' => 'fieldset',
+    '#title' => 'Boston API Endpoints',
+    '#description' => 'Configuration for Boston API endpoints.',
+
+    'cityscore' => [
+      '#type' => 'fieldset',
+      '#title' => 'Cityscore',
+
+      'cityscore_token' => [
+        '#type' => 'textfield',
+        '#title' => t('API KEY / Token'),
+        '#description' => t('Enter a random string to authenticate API calls.'),
+        '#default_value' => variable_get('cityscore_token'),
+        '#required' => FALSE,
+      ],
+
+      'cityscore_ip_whitelist' => [
+        '#type' => 'textarea',
+        '#title' => t('IP Address Whitelist Filter'),
+        '#description' => t('List of valid IP Addresses, one address per line. Leave empty for no IPAddress filtering.'),
+        '#default_value' => variable_get('cityscore_ip_whitelist'),
+        '#rows' => 5,
+        '#required' => FALSE,
+      ],
+    ],
+  ];
+
+  return system_settings_form($form);
 }
 
 /**
