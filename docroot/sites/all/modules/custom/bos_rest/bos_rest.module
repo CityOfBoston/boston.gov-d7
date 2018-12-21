@@ -7,13 +7,15 @@
 include_once 'bos_rest.features.inc';
 
 /**
- * Implements hook_init().
+ * Implements hook_permission().
  */
-function bos_rest_init() {
-  // Emulates values set in an admin form.
-  if (!variable_get('cityscore_token', FALSE)) {
-    variable_set('cityscore_token', '9juHD7Y8oZpN2-erChlUQQ');
-  }
+function bos_rest_permission() {
+  return [
+    'administer bos_rest' => [
+      'title' => t("Administer Boston API Endpoints"),
+      'description' => t("Configure API endpoint tokens, IP whitelists and other settings."),
+    ],
+  ];
 }
 
 /**
@@ -22,7 +24,6 @@ function bos_rest_init() {
 function bos_rest_menu() {
   $items = array();
 
-  // TODO: add an array element to define the config page here.
   // The path that the endpoint will be registered to.
   $items['rest/%/%'] = array(
     'title' => 'API',
@@ -39,7 +40,7 @@ function bos_rest_menu() {
     'title' => 'Boston API Endpoints',
     'page callback' => 'drupal_get_form',
     'page arguments' => array('bos_rest_cityscore_admin_form'),
-    'access arguments' => array('administer taxonomy'),
+    'access arguments' => array('administer bos_rest'),
     'type' => MENU_NORMAL_ITEM,
   );
 
