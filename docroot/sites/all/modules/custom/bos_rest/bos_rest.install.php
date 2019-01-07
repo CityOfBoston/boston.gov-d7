@@ -1,4 +1,7 @@
 <?php
+/**
+ * @file Install file for bos_rst module
+ */
 
 /**
  * Implements hook_uninstall().
@@ -11,15 +14,14 @@ function bos_rest_uninstall() {
 }
 
 /**
- * Implements hook_update_n().
- *   Gives administrator role permissions to key objects.
+ * Gives administrator role permissions to key objects.
  */
 function bos_rest_update_7001() {
   // Give administrator permissions to the admin page.
   $permissions[] = 'administer bos_rest';
   // Give administrator permissions to the taxonomy pages.
   $tax = taxonomy_vocabulary_machine_name_load('cityscore_metrics');
-  if(!empty($tax)) {
+  if (!empty($tax)) {
     $permissions[] = 'delete terms in ' . $tax->vid;
     $permissions[] = 'edit terms in ' . $tax->vid;
   }
@@ -30,8 +32,7 @@ function bos_rest_update_7001() {
 }
 
 /**
- * Implements hook_update_n().
- *   Creates a default cityscore token.
+ * Creates a default cityscore token.
  */
 function bos_rest_update_7002() {
   // Creates a default cityscore  token.
