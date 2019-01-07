@@ -1,6 +1,7 @@
 <?php
 /**
- * @file Install file for bos_rst module
+ * @file 
+ * Install file for bos_rst module.
  */
 
 /**
