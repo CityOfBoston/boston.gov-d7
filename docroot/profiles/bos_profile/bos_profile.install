@@ -1245,10 +1245,10 @@ function bos_profile_update_7042() {
  * Adds boards and commissions search feature module.
  */
 function bos_profile_update_7043() {
-    $enabled_modules = array(
-        'bos_commissions_search',
-    );
-    module_enable($enabled_modules);
+  $enabled_modules = array(
+    'bos_commissions_search',
+  );
+  module_enable($enabled_modules);
 }
 
 /*******************************************************************
