@@ -19,8 +19,8 @@ function bos_view_api_public_notices_menu() {
       'access callback' => TRUE,
       // Declare this as a simple registered path.
       'type' => MENU_CALLBACK,
-      ],
-    ];
+    ],
+  ];
 }
 
 /**
@@ -31,7 +31,7 @@ function bos_view_api_public_notices_endpoint() {
     "Status" => 200,
     "Cache-Control" => "max-age=60",
     "Content-Type" => "application/json; charset=utf-8'",
-    "Expires" => format_date(strtotime("+1 minute"),"custom" , "D, d M Y H:i:s \G\M\T")
+    "Expires" => format_date(strtotime("+1 minute"), "custom", "D, d M Y H:i:s \G\M\T"),
   ];
 
   $json = file_get_contents('http://localhost/api/v1/public-notices/view');
@@ -52,7 +52,7 @@ function bos_view_api_public_notices_endpoint() {
     }
   }
   else {
-    // Nothing returned
+    // Nothing returned.
     $headers['Status'] = "200";
     $json = [];
   }
