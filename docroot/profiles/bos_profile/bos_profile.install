@@ -1256,18 +1256,18 @@ function bos_profile_update_7043() {
  *  Updates public-notices API.
  */
 function bos_profile_update_7044() {
-  $disabled_modules = array(
+  $disabled_modules = [
     'bos_api_public_notice',
     'bos_view_api_public_notice',
-  );
+  ];
   module_disable($disabled_modules);
 
   services_endpoint_delete('bos_api_public_notice');
 
-  $enabled_modules = array(
+  $enabled_modules = [
     'bos_api_public_notice',
     'bos_view_api_public_notice',
-  );
+  ];
   module_enable($enabled_modules);
 }
 
