@@ -42,6 +42,13 @@ function bos_api_public_notice_default_services_endpoint() {
     ),
   );
   $endpoint->resources = array(
+    'public-notices' => array(
+      'operations' => array(
+        'index' => array(
+          'enabled' => '1',
+        ),
+      ),
+    ),
     'departments' => array(
       'operations' => array(
         'index' => array(

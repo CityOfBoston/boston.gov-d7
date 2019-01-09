@@ -59,7 +59,6 @@ function bos_profile_install() {
   bos_profile_update_7041();
   bos_profile_update_7042();
   bos_profile_update_7043();
-  bos_profile_update_7044();
 }
 
 /**
@@ -1249,25 +1248,6 @@ function bos_profile_update_7043() {
   $enabled_modules = array(
     'bos_commissions_search',
   );
-  module_enable($enabled_modules);
-}
-
-/**
- *  Updates public-notices API.
- */
-function bos_profile_update_7044() {
-  $disabled_modules = [
-    'bos_api_public_notice',
-    'bos_view_api_public_notice',
-  ];
-  module_disable($disabled_modules);
-
-  services_endpoint_delete('bos_api_public_notice');
-
-  $enabled_modules = [
-    'bos_api_public_notice',
-    'bos_view_api_public_notice',
-  ];
   module_enable($enabled_modules);
 }
 

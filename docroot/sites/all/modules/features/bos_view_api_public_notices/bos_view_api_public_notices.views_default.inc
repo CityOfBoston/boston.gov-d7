@@ -234,7 +234,7 @@ function bos_view_api_public_notices_views_default_views() {
   $handler->display->display_options['style_options']['remove_newlines'] = 0;
   $handler->display->display_options['style_options']['jsonp_prefix'] = '';
   $handler->display->display_options['style_options']['using_views_api_mode'] = 0;
-  $handler->display->display_options['style_options']['object_arrays'] = 1;
+  $handler->display->display_options['style_options']['object_arrays'] = 0;
   $handler->display->display_options['style_options']['numeric_strings'] = 0;
   $handler->display->display_options['style_options']['bigint_string'] = 0;
   $handler->display->display_options['style_options']['pretty_print'] = 0;
@@ -365,9 +365,8 @@ function bos_view_api_public_notices_views_default_views() {
   $handler->display->display_options['fields']['field_drawer']['field'] = 'field_drawer';
   $handler->display->display_options['fields']['field_drawer']['label'] = '';
   $handler->display->display_options['fields']['field_drawer']['alter']['text'] = '[field_drawer]';
-  $handler->display->display_options['fields']['field_drawer']['alter']['trim_whitespace'] = TRUE;
   $handler->display->display_options['fields']['field_drawer']['alter']['strip_tags'] = TRUE;
-  $handler->display->display_options['fields']['field_drawer']['alter']['preserve_tags'] = '<li>';
+  $handler->display->display_options['fields']['field_drawer']['alter']['preserve_tags'] = '<u><li><p><strong><font><span><em><u><br><image><ol><ul>';
   $handler->display->display_options['fields']['field_drawer']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_drawer']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['field_drawer']['hide_alter_empty'] = FALSE;
@@ -375,7 +374,7 @@ function bos_view_api_public_notices_views_default_views() {
     'view_mode' => 'full',
   );
   $handler->display->display_options['fields']['field_drawer']['delta_offset'] = '0';
-  $handler->display->display_options['fields']['field_drawer']['separator'] = '~';
+  $handler->display->display_options['fields']['field_drawer']['separator'] = '';
   /* Field: Content: Body */
   $handler->display->display_options['fields']['body']['id'] = 'body';
   $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
@@ -411,8 +410,8 @@ function bos_view_api_public_notices_views_default_views() {
   $handler->display->display_options['filters']['field_public_notice_date_value']['table'] = 'field_data_field_public_notice_date';
   $handler->display->display_options['filters']['field_public_notice_date_value']['field'] = 'field_public_notice_date_value';
   $handler->display->display_options['filters']['field_public_notice_date_value']['operator'] = '>=';
-  $handler->display->display_options['filters']['field_public_notice_date_value']['default_date'] = '-3 hours';
-  $handler->display->display_options['path'] = 'api/v1/public-notices/view';
+  $handler->display->display_options['filters']['field_public_notice_date_value']['default_date'] = '-3 days';
+  $handler->display->display_options['path'] = 'api/v2/public-notices';
   $export['api_public_notice'] = $view;
 
   return $export;
