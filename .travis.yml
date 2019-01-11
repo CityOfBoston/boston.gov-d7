@@ -7,6 +7,7 @@ branches:
   only:
   - develop
   - master
+  - faster-deploys
 php:
 - 7.1
 addons:
@@ -60,7 +61,17 @@ before_script:
 - scripts/make/apply-settings.sh
 script:
 - "$TASK"
-after_success:
 - scripts/make/apply-crispus.sh
-- scripts/deploy/travis-deploy.sh develop develop-build
-- scripts/deploy/travis-deploy.sh master master-build
+deploy:
+#- provider: script
+#  script: bash scripts/deploy/travis-deploy.sh $TRAVIS_BRANCH develop-build $COB_ARTIFACT
+#  on:
+#    branch: develop
+#- provider: script
+#  script: bash scripts/deploy/travis-deploy.sh $TRAVIS_BRANCH master-build $COB_ARTIFACT
+#  on:
+#    branch: master
+- provider: script
+  script: bash scripts/deploy/travis-deploy.sh $TRAVIS_BRANCH faster-deploys $COB_ARTIFACT
+  on:
+    branch: faster-deploys
