@@ -1,8 +1,8 @@
 sudo: false
 language: php
 env:
-- TASK="./task.sh -Dbehat.run-server=true -Dproject.build_db_from=initialize validate:all build:local tests:all"
-- TASK="./hub-task.sh -Dbehat.run-server=true validate:all build:test:hub"
+- COB_ARTIFACT="boston" TASK="./task.sh -Dbehat.run-server=true -Dproject.build_db_from=initialize validate:all build:local tests:all"
+- COB_ARTIFACT="hub" TASK="./hub-task.sh -Dbehat.run-server=true validate:all build:test:hub"
 branches:
   only:
   - develop
