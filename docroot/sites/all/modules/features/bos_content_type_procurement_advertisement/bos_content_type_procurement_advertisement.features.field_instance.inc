@@ -10,10 +10,6 @@
 function bos_content_type_procurement_advertisement_field_default_field_instances() {
   $field_instances = array();
 
-  $default_terms = taxonomy_get_term_by_name('default', 'procurement_footer');
-  $default_term = current($default_terms);
-  $default_tid = $default_term->tid ?: NULL;
-
   // Exported field_instance: 'node-procurement_advertisement-body'.
   $field_instances['node-procurement_advertisement-body'] = array(
     'bundle' => 'procurement_advertisement',
@@ -1520,7 +1516,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
     'bundle' => 'procurement_advertisement',
     'default_value' => array(
       0 => array(
-        'target_id' => $default_tid,
+        'target_id' => NULL,
       ),
     ),
     'deleted' => 0,

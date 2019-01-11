@@ -8,6 +8,19 @@
 include_once 'bos_content_type_procurement_advertisement.features.inc';
 
 /**
+ * Implements hook_field_default_field_instances_alter().
+ */
+function bos_content_type_procurement_advertisement_field_default_field_instances_alter(&$instances) {
+
+  $default_terms = taxonomy_get_term_by_name('default', 'procurement_footer');
+  $default_term = current($default_terms);
+  $default_tid = $default_term->tid ?: NULL;
+
+  $instances['node-procurement_advertisement-field_procurement_footer']['default_value'][0]['target_id'] = $default_tid;
+
+}
+
+/**
  * Implements hook_preprocess_views_exposed_form().
  */
 function bos_content_type_procurement_advertisement_preprocess_views_exposed_form(&$vars) {
@@ -30,7 +43,6 @@ function bos_content_type_procurement_advertisement_preprocess_views_exposed_for
     }
   }
 }
-
 
 /**
  * Implements hook_form_FORM_ID_alter().
