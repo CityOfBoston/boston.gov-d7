@@ -30,12 +30,13 @@ if [[ "${TRAVIS_PULL_REQUEST}" = "false" ]] || [[ "${DEPLOY_PR}" = "true" ]];
     # Trigger deployment if $source_branch parameters matches or this is a tag.
     if [[ "${TRAVIS_BRANCH}" = $source_branch ]] || [[ -n "${TRAVIS_TAG}" ]];
       then
-        echo "Build artifact will be deployed."
+        echo "Build artifact will be deployed to ${dest_branch}."
         commit_msg="Automated commit by Travis for Build #${TRAVIS_BUILD_ID} Branch ${TRAVIS_BRANCH}";
         # Call the `deploy` Phing target, passing in required parameters.
 #        echo "NOTE: Would have built ${TRAVIS_BRANCH} and deployed to ${dest_branch}."
 #        echo "      Msg: ${commit_msg}."
         cd ${TRAVIS_BUILD_DIR}
+        ls -la vendor/bin/
         ./task.sh deploy:artifact -Ddeploy.branch="${dest_branch}" -Ddeploy.commitMsg="${commit_msg}";
       else
         echo "Build artifact will NOT be deployed for this branch."
