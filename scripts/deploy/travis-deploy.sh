@@ -33,9 +33,6 @@ if [[ "${TRAVIS_PULL_REQUEST}" = "false" ]] || [[ "${DEPLOY_PR}" = "true" ]];
         echo "Build artifact will be deployed to ${dest_branch}."
         commit_msg="Automated commit by Travis for Build #${TRAVIS_BUILD_ID} Branch ${TRAVIS_BRANCH}";
         # Call the `deploy` Phing target, passing in required parameters.
-#        echo "NOTE: Would have built ${TRAVIS_BRANCH} and deployed to ${dest_branch}."
-#        echo "      Msg: ${commit_msg}."
-        cd ${TRAVIS_BUILD_DIR}
         ./task.sh deploy:artifact -Ddeploy.branch="${dest_branch}" -Ddeploy.commitMsg="${commit_msg}";
       else
         echo "Build artifact will NOT be deployed for this branch."

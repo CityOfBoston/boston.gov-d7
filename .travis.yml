@@ -64,14 +64,17 @@ script:
 - scripts/make/apply-crispus.sh
 deploy:
 #- provider: script
+#- skip_cleanup: true
 #  script: bash scripts/deploy/travis-deploy.sh $TRAVIS_BRANCH develop-build $COB_ARTIFACT
 #  on:
 #    branch: develop
 #- provider: script
+  #- skip_cleanup: true
 #  script: bash scripts/deploy/travis-deploy.sh $TRAVIS_BRANCH master-build $COB_ARTIFACT
 #  on:
 #    branch: master
 - provider: script
+  skip_cleanup: true
   script: bash scripts/deploy/travis-deploy.sh $TRAVIS_BRANCH faster-deploys $COB_ARTIFACT
   on:
     branch: faster-deploys
