@@ -36,7 +36,8 @@ if [[ "${TRAVIS_PULL_REQUEST}" = "false" ]] || [[ "${DEPLOY_PR}" = "true" ]];
 #        echo "NOTE: Would have built ${TRAVIS_BRANCH} and deployed to ${dest_branch}."
 #        echo "      Msg: ${commit_msg}."
         cd ${TRAVIS_BUILD_DIR}
-        ls -la vendor/bin/
+        ls -la
+        ls -la vendor/bin
         ./task.sh deploy:artifact -Ddeploy.branch="${dest_branch}" -Ddeploy.commitMsg="${commit_msg}";
       else
         echo "Build artifact will NOT be deployed for this branch."
