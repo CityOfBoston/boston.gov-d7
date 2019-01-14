@@ -1514,11 +1514,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
   // 'node-procurement_advertisement-field_procurement_footer'.
   $field_instances['node-procurement_advertisement-field_procurement_footer'] = array(
     'bundle' => 'procurement_advertisement',
-    'default_value' => array(
-      0 => array(
-        'target_id' => NULL,
-      ),
-    ),
+    'default_value' => NULL,
     'deleted' => 0,
     'description' => 'This will add a pre-defined footer to the bottom of the ad. To get a new pre-defined value added, contact <a href="mailto:feedback@boston.gov">feedback@boston.gov</a>.',
     'display' => array(
