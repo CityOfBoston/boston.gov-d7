@@ -1,13 +1,13 @@
 #!/bin/sh
 #
-# Cloud Hook: post-code-update
+# Cloud Hook: post-code-deploy
 #
-# The post-code-update hook runs in response to code commits.
-# When you push commits to a Git branch, the post-code-update hooks runs for
-# each environment that is currently running that branch.. See
+# The post-code-deploy hook is run whenever you use the Workflow page to
+# deploy new code to an environment, either via drag-drop or by selecting
+# an existing branch or tag from the Code drop-down list. See
 # ../README.md for details.
 #
-# Usage: post-code-update site target-env source-branch deployed-tag repo-url
+# Usage: post-code-deploy site target-env source-branch deployed-tag repo-url
 #                         repo-type
 
 # ======== City of Boston Notes ===============================
@@ -30,27 +30,19 @@ deployed_tag="$4"
 repo_url="$5"
 repo_type="$6"
 
-if [[ "$target_env" = 'uat' || "$target_env" = 'ci' ]]; then
-
-    # THIS HOOK USED FOR UAT AND CI ENVIRONMENTS ONLY.
-
-    echo "$site.$target_env: A successful commit to $source_branch branch has caused a code update on $target_env environment of $site environment."
+if [[ "$target_env" = 'test' ]]; then
+    echo "$site.$target_env: A code-copy (deploy) to $source_branch branch has caused a code update on $target_env environment of $site environment."
     echo "This hook will now synchronise the $target_env database with updated code."
 
     if [[ ${site} = "boston" ]]; then
 
-        echo "Copy database from stage (aka test) to $target_env."
-        drush @${site}.test ac-database-copy ${site} ${target_env}
+        echo "Backing up the current $site database on ${target_env}."
+        drush @${site}.${target_env} ac-database-instance-backup ${site}
 
-        if [[ "$target_env" = 'ci' ]]; then
-            # Place CI-specific commands/configurations here
-            echo "CI Environment."
-        elif [[ "$target_env" = 'uat' ]]; then
-            # Place UAT-specific commands/configurations here
-            echo "UAT Environment."
-            # redirect to a different patterns CDN.
-            # drush @${site}.${target_env} vset "asset_url" "https://cob-patterns-staging.herokuapp.com/"
-        fi
+        echo "Copy database from production to $target_env."
+        # drush sql-sync @${site}.test @self --create-db --structure-tables-key=lightweight -y
+        # Use acapi command (rather than sql-sync) because this will cause the DB copy hooks to run.
+        drush @${site}.prod ac-database-copy ${site} ${target_env}
 
         echo "Update database ($site) on $target_env with configuration from updated code in $source_branch."
         drush @${site}.${target_env} en stage_file_proxy -y
@@ -64,20 +56,17 @@ if [[ "$target_env" = 'uat' || "$target_env" = 'ci' ]]; then
         drush @${site}.${target_env} acquia-reset-permissions -y
         drush @${site}.${target_env} cron
 
-        echo "=== Code update completed ==="
+        echo "=== Code-copy (deploy) update completed ==="
 
     elif [[ ${site} = "thehub" ]]; then
 
-        echo "Copy database from stage (aka test) to $target_env."
-        drush @${site}.test ac-database-copy ${site} ${target_env}
+        echo "Backing up the current $site database on ${target_env}."
+        drush @${site}.${target_env} ac-database-instance-backup ${site}
 
-        if [[ "$target_env" = 'ci' ]]; then
-            # Place CI-specific commands/configurations here
-            echo "CI Environment."
-        elif [[ "$target_env" = 'uat' ]]; then
-            # Place UAT-specific commands/configurations here
-            echo "UAT Environment."
-        fi
+        echo "Copy database from producction to $target_env."
+        # drush sql-sync @${site}.test @self --create-db --structure-tables-key=lightweight -y
+        # Use acapi command (rather than sql-sync) because this will cause the DB copy hooks to run.
+        drush @${site}.prod ac-database-copy ${site} ${target_env}
 
         echo "Update database ($site) on $target_env with configuration from updated code in $source_branch."
         drush @${site}.${target_env} en stage_file_proxy -y
@@ -91,6 +80,6 @@ if [[ "$target_env" = 'uat' || "$target_env" = 'ci' ]]; then
         drush @${site}.${target_env} acquia-reset-permissions -y
         drush @${site}.${target_env} cron
 
-        echo "=== Code update completed ==="
+        echo "=== Code-copy (deploy) update completed ==="
     fi
 fi
