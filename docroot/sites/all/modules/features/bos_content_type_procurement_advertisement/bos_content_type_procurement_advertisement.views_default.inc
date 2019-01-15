@@ -240,7 +240,7 @@ function bos_content_type_procurement_advertisement_views_default_views() {
     51 => 0,
     56 => 0,
   );
-  /* Filter criterion: Content: Period Open - end date (field_date_range:value2) */
+  /* Filter criterion: Content: Bid Date - end date (field_date_range:value2) */
   $handler->display->display_options['filters']['field_date_range_value2']['id'] = 'field_date_range_value2';
   $handler->display->display_options['filters']['field_date_range_value2']['table'] = 'field_data_field_date_range';
   $handler->display->display_options['filters']['field_date_range_value2']['field'] = 'field_date_range_value2';
@@ -329,7 +329,7 @@ function bos_content_type_procurement_advertisement_views_default_views() {
     51 => 0,
     56 => 0,
   );
-  /* Filter criterion: Content: Period Open - end date (field_date_range:value2) */
+  /* Filter criterion: Content: Bid Date - end date (field_date_range:value2) */
   $handler->display->display_options['filters']['field_date_range_value2']['id'] = 'field_date_range_value2';
   $handler->display->display_options['filters']['field_date_range_value2']['table'] = 'field_data_field_date_range';
   $handler->display->display_options['filters']['field_date_range_value2']['field'] = 'field_date_range_value2';

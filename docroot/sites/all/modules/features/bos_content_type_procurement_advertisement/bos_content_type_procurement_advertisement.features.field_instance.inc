@@ -649,7 +649,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
     'entity_type' => 'node',
     'fences_wrapper' => 'div_div_div',
     'field_name' => 'field_date_range',
-    'label' => 'Period Open',
+    'label' => 'Bid Date',
     'required' => 1,
     'settings' => array(
       'default_value' => 'now',
@@ -2036,6 +2036,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
   t('Awarded By');
   t('Awarding Authority');
   t('Bid');
+  t('Bid Date');
   t('Bid Type');
   t('Body');
   t('Check this off if the bid is closed and <strong>will not</strong> be awarded.');
@@ -2054,7 +2055,6 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
   t('Not Awarded');
   t('Offering');
   t('Other related content');
-  t('Period Open');
   t('Procurement Footer');
   t('Procurement Type');
   t('Related Links');
