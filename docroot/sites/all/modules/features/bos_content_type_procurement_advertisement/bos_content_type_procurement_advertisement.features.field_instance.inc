@@ -79,7 +79,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
           'use_widget_handlers' => 1,
         ),
         'type' => 'addressfield_default',
-        'weight' => 25,
+        'weight' => 24,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -119,6 +119,65 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
     ),
   );
 
+  // Exported field_instance:
+  // 'node-procurement_advertisement-field_advertisement_date'.
+  $field_instances['node-procurement_advertisement-field_advertisement_date'] = array(
+    'bundle' => 'procurement_advertisement',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'date',
+        'settings' => array(
+          'format_type' => 'long',
+          'fromto' => 'both',
+          'multiple_from' => '',
+          'multiple_number' => '',
+          'multiple_to' => '',
+          'show_remaining_days' => FALSE,
+          'show_repeat_rule' => 'show',
+        ),
+        'type' => 'date_default',
+        'weight' => 22,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div_div_div',
+    'field_name' => 'field_advertisement_date',
+    'label' => 'Advertisement Date',
+    'required' => 0,
+    'settings' => array(
+      'default_value' => 'now',
+      'default_value2' => 'same',
+      'default_value_code' => '',
+      'default_value_code2' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'date',
+      'settings' => array(
+        'increment' => 15,
+        'input_format' => 'm/d/Y - g:i:sa',
+        'input_format_custom' => '',
+        'label_position' => 'above',
+        'no_fieldset' => 0,
+        'repeat_collapsed' => 0,
+        'text_parts' => array(),
+        'year_range' => '-3:+3',
+      ),
+      'type' => 'date_popup',
+      'weight' => 68,
+    ),
+  );
+
   // Exported field_instance: 'node-procurement_advertisement-field_award_date'.
   $field_instances['node-procurement_advertisement-field_award_date'] = array(
     'bundle' => 'procurement_advertisement',
@@ -138,7 +197,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
           'show_repeat_rule' => 'show',
         ),
         'type' => 'date_default',
-        'weight' => 20,
+        'weight' => 18,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -193,7 +252,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
           'view_mode' => 'department_listing',
         ),
         'type' => 'entityreference_entity_view',
-        'weight' => 36,
+        'weight' => 35,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -225,7 +284,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 9,
+      'weight' => 70,
     ),
   );
 
@@ -300,7 +359,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
           'view_mode' => 'full',
         ),
         'type' => 'paragraphs_view',
-        'weight' => 19,
+        'weight' => 17,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -505,7 +564,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 10,
+      'weight' => 71,
     ),
   );
 
@@ -529,7 +588,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
           'view_mode' => 'popup_icon',
         ),
         'type' => 'entityreference_entity_view',
-        'weight' => 23,
+        'weight' => 21,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -588,7 +647,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
           'thousand_separator' => '',
         ),
         'type' => 'number_integer',
-        'weight' => 30,
+        'weight' => 29,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -637,7 +696,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
           'show_repeat_rule' => 'show',
         ),
         'type' => 'date_default',
-        'weight' => 24,
+        'weight' => 23,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -672,7 +731,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
         'year_range' => '-3:+3',
       ),
       'type' => 'date_popup',
-      'weight' => 7,
+      'weight' => 69,
     ),
   );
 
@@ -694,7 +753,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
           'use_widget_handlers' => 1,
         ),
         'type' => 'addressfield_default',
-        'weight' => 32,
+        'weight' => 31,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -730,7 +789,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
         ),
       ),
       'type' => 'addressfield_standard',
-      'weight' => 13,
+      'weight' => 74,
     ),
   );
 
@@ -746,7 +805,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_plain',
-        'weight' => 28,
+        'weight' => 27,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -799,7 +858,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
         'module' => 'link',
         'settings' => array(),
         'type' => 'link_default',
-        'weight' => 22,
+        'weight' => 20,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -861,7 +920,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
         'module' => 'file',
         'settings' => array(),
         'type' => 'file_default',
-        'weight' => 33,
+        'weight' => 32,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -904,7 +963,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
         ),
       ),
       'type' => 'media_generic',
-      'weight' => 12,
+      'weight' => 73,
     ),
   );
 
@@ -920,7 +979,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_plain',
-        'weight' => 27,
+        'weight' => 26,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1019,7 +1078,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 21,
+        'weight' => 19,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1129,7 +1188,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 29,
+        'weight' => 28,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1227,7 +1286,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
           'term_name' => 1,
         ),
         'type' => 'services',
-        'weight' => 37,
+        'weight' => 36,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1367,7 +1426,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_plain',
-        'weight' => 26,
+        'weight' => 25,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1527,7 +1586,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
           'view_mode' => 'default',
         ),
         'type' => 'entityreference_entity_view',
-        'weight' => 35,
+        'weight' => 34,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1833,7 +1892,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
         'module' => 'link',
         'settings' => array(),
         'type' => 'link_default',
-        'weight' => 34,
+        'weight' => 33,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1880,7 +1939,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 16,
+      'weight' => 77,
     ),
   );
 
@@ -1979,7 +2038,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
       'module' => 'number',
       'settings' => array(),
       'type' => 'number',
-      'weight' => 14,
+      'weight' => 75,
     ),
   );
 
@@ -1995,7 +2054,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 31,
+        'weight' => 30,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -2026,12 +2085,13 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 11,
+      'weight' => 72,
     ),
   );
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Advertisement Date');
   t('Award date');
   t('Awarded By');
   t('Awarding Authority');
