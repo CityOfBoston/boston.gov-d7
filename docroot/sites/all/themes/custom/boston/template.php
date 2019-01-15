@@ -996,6 +996,12 @@ function boston_preprocess_node_procurement_advertisement(&$variables) {
     $variables['time_range'] = '';
   }
 
+  $field_advertisement_date = field_get_items('node', $variables['node'], 'field_advertisement_date');
+  if ($field_advertisement_date !== FALSE) {
+    $advertisement_date = strtotime($field_advertisement_date[0]['value']);
+    $variables['advert_date'] = date('n/j/Y', $advertisement_date);
+  }
+
   $submissions = $variables['field_bid'];
 
   $bid_entity_id_array = array();

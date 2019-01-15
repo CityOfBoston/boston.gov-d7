@@ -125,6 +125,10 @@ hide($content['links']);
             <span class="t--sans t--upper t--cb t--s100"><?php print render($content['field_procurement']) ?></span>
           </li>
           <li class="dl-i">
+            <span class="dl-t">Ad Date</span>
+            <span class="dl-d"><?php print render($advert_date) ?></span>
+          </li>
+          <li class="dl-i">
             <span class="dl-t">Posted</span>
             <span class="dl-d"><?php print $start_date ?></span>
           </li>
