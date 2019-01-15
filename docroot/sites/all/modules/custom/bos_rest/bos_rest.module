@@ -115,7 +115,9 @@ function bos_rest_cityscore($action) {
     }
     return $callback($payload);
   }
-
+  drupal_add_http_header('Content-Type', 'application/json');
+  drupal_add_http_header('Access-Control-Allow-Origin', "*");
+  drupal_add_http_header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
   return $callback();
 
 }
