@@ -1,6 +1,6 @@
 <?php
 /**
- * @file 
+ * @file
  * Install file for bos_rst module.
  */
 
