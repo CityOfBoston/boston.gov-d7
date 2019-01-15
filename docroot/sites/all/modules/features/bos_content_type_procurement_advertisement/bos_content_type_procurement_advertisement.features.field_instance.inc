@@ -1481,7 +1481,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
     'entity_type' => 'node',
     'fences_wrapper' => 'div_div_div',
     'field_name' => 'field_procurement',
-    'label' => 'Procurement',
+    'label' => 'Procurement Type',
     'required' => 1,
     'settings' => array(
       'behaviors' => array(
@@ -2055,8 +2055,8 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
   t('Offering');
   t('Other related content');
   t('Period Open');
-  t('Procurement');
   t('Procurement Footer');
+  t('Procurement Type');
   t('Related Links');
   t('Related Neighborhoods');
   t('Related departments');
