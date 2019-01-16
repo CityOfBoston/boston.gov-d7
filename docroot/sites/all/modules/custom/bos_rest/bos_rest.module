@@ -339,9 +339,9 @@ function bos_rest_type_action($payload) {
 /**
  * Logs API actions to Google Analytics.
  *
- * @param string $pageId
+ * @param string $page_id
  *   This is the document path for API tracking.
- * @param string $pageTitle
+ * @param string $page_title
  *   This is the document title for API tracking.
  *
  *   Format: api/endpoint_module/type/description.
@@ -350,7 +350,7 @@ function bos_rest_type_action($payload) {
  */
 function bos_rest_ga($page_id, $page_title = NULL) {
   if (!isset($page_title)) {
-    $page_title = "CoB REST | " . str_replace("/", "-", trim($pageId, "/api/"));
+    $page_title = "CoB REST | " . str_replace("/", "-", trim($page_id, "/api/"));
   }
   $payload = [
     "v" => 1,
