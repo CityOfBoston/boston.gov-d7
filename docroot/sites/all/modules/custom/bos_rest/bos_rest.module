@@ -115,6 +115,7 @@ function bos_rest_cityscore($action) {
     }
     return $callback($payload);
   }
+
   drupal_add_http_header('Content-Type', 'application/json');
   drupal_add_http_header('Access-Control-Allow-Origin', "*");
   drupal_add_http_header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
@@ -129,6 +130,7 @@ function bos_rest_cityscore($action) {
  *   Returns an HTML string with a formatted table of cityscore parameters.
  */
 function bos_rest_cityscore_html() {
+  bos_rest_ga("/api/cityscore/list/html");
   return views_embed_view('cityscore', 'html_cs_table');
 }
 
@@ -139,6 +141,7 @@ function bos_rest_cityscore_html() {
  *   JSON String with current sityscore totals.
  */
 function bos_rest_cityscore_json() {
+  bos_rest_ga("/api/cityscore/summary/json");
   $curl_handle = curl_init();
   curl_setopt($curl_handle, CURLOPT_URL, 'http://edit-ci.boston.gov/cityscore/totals/latest.json?id=' . rand());
   curl_setopt($curl_handle, CURLOPT_HTTPHEADER, ["Host: edit-ci.boston.gov"]);
@@ -169,6 +172,8 @@ function bos_rest_cityscore_json() {
  */
 function bos_rest_cityscore_load($payload) {
   // Process payload into taxonomy.
+  bos_rest_ga("/api/cityscore/load/default");
+
   $result = [];
   $vocab = taxonomy_vocabulary_machine_name_load("cityscore_metrics");
   foreach (taxonomy_get_tree($vocab->vid, 0, 1, FALSE) as $term) {
@@ -329,4 +334,52 @@ function bos_rest_type_action($payload) {
   $result->message = "";
   $result = json_encode($result);
   return $result;
+}
+
+/**
+ * Logs API actions to Google Analytics.
+ *
+ * @param string $pageId
+ *   This is the document path for API tracking.
+ * @param string $pageTitle
+ *   This is the document title for API tracking.
+ *
+ *  Format: api/endpoint_module/type/description.
+ *  E.g. api/cityscore/list/summary
+ *  E.g. api/cityscore/list/html
+ */
+function bos_rest_ga($pageId, $pageTitle = NULL) {
+  if(!isset($pageTitle)) {
+    $pageTitle = "CoB REST: " . str_replace("/", "-", trim($pageId, "/api/"));
+  }
+  $payload = [
+    "v" => 1,
+    "tid" => "UA-2187282-27",
+    "t" => "pageview",
+    "dp" => $pageId,
+    "dt" => $pageTitle,
+    "ni" => 1,
+    "cid" => "237920b7-6309-40d9-91ed-51086bd71a2a",
+    "uip" => ip_address(),
+    "cg1" => "API"
+  ];
+  foreach($payload as $key => &$value) {
+    $value = utf8_encode($value);
+    $value = urlencode($value);
+    $value = $key . "=" . $value;
+  }
+  $pl = implode("&", $payload);
+
+  $ch = curl_init("https://www.google-analytics.com/collect");
+  curl_setopt($ch, CURLOPT_HEADER, false);
+  curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+  curl_setopt($ch, CURLOPT_HTTPHEADER, ["Content-type: text/plain"]);
+  curl_setopt($ch, CURLOPT_POST, FALSE);
+  curl_setopt($ch, CURLOPT_POSTFIELDS, $pl);
+
+  $response = curl_exec($ch);
+  $statusCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+  if ($statusCode >= 300 || $statusCode < 200 ) {
+    watchdog("REST", "Google Analytics Post error.", [],WATCHDOG_ERROR);
+  }
 }
