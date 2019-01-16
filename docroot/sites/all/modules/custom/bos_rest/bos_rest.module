@@ -344,26 +344,26 @@ function bos_rest_type_action($payload) {
  * @param string $pageTitle
  *   This is the document title for API tracking.
  *
- *  Format: api/endpoint_module/type/description.
- *  E.g. api/cityscore/list/summary
- *  E.g. api/cityscore/list/html
+ *   Format: api/endpoint_module/type/description.
+ *   E.g. api/cityscore/list/summary.
+ *   E.g. api/cityscore/list/html.
  */
-function bos_rest_ga($pageId, $pageTitle = NULL) {
-  if(!isset($pageTitle)) {
-    $pageTitle = "CoB REST: " . str_replace("/", "-", trim($pageId, "/api/"));
+function bos_rest_ga($page_id, $page_title = NULL) {
+  if (!isset($page_title)) {
+    $page_title = "CoB REST | " . str_replace("/", "-", trim($pageId, "/api/"));
   }
   $payload = [
     "v" => 1,
     "tid" => "UA-2187282-27",
     "t" => "pageview",
-    "dp" => $pageId,
-    "dt" => $pageTitle,
+    "dp" => $page_id,
+    "dt" => $page_title,
     "ni" => 1,
     "cid" => "237920b7-6309-40d9-91ed-51086bd71a2a",
     "uip" => ip_address(),
-    "cg1" => "API"
+    "cg1" => "API",
   ];
-  foreach($payload as $key => &$value) {
+  foreach ($payload as $key => &$value) {
     $value = utf8_encode($value);
     $value = urlencode($value);
     $value = $key . "=" . $value;
@@ -371,15 +371,15 @@ function bos_rest_ga($pageId, $pageTitle = NULL) {
   $pl = implode("&", $payload);
 
   $ch = curl_init("https://www.google-analytics.com/collect");
-  curl_setopt($ch, CURLOPT_HEADER, false);
-  curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+  curl_setopt($ch, CURLOPT_HEADER, FALSE);
+  curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
   curl_setopt($ch, CURLOPT_HTTPHEADER, ["Content-type: text/plain"]);
   curl_setopt($ch, CURLOPT_POST, FALSE);
   curl_setopt($ch, CURLOPT_POSTFIELDS, $pl);
 
   $response = curl_exec($ch);
-  $statusCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-  if ($statusCode >= 300 || $statusCode < 200 ) {
-    watchdog("REST", "Google Analytics Post error.", [],WATCHDOG_ERROR);
+  $status_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+  if ($status_code >= 300 || $status_code < 200) {
+    watchdog("REST", "Google Analytics Post error.", [], WATCHDOG_ERROR);
   }
 }
