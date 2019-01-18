@@ -262,7 +262,7 @@ function bos_content_type_event_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => 'Related Content',
+    'label' => 'Related Content - ORIGINAL',
     'weight' => '9',
     'children' => array(
       0 => 'field_place',
@@ -276,15 +276,44 @@ function bos_content_type_event_field_group_info() {
     ),
     'format_type' => 'tab',
     'format_settings' => array(
-      'formatter' => 'closed',
+      'label' => 'Related Content - ORIGINAL',
       'instance_settings' => array(
-        'description' => '',
-        'classes' => 'group-related-content field-group-tab',
         'required_fields' => 1,
+        'classes' => 'group-related-content field-group-tab',
+        'description' => '',
       ),
+      'formatter' => 'closed',
     ),
   );
   $field_groups['group_related_content|node|event|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_related|node|event|form';
+  $field_group->group_name = 'group_related';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'event';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Related Content - NEW',
+    'weight' => '10',
+    'children' => array(
+      0 => 'field_related',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'label' => 'Related Content - NEW',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-related field-group-tab',
+        'description' => '',
+      ),
+      'formatter' => 'closed',
+    ),
+  );
+  $field_groups['group_related|node|event|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -323,7 +352,8 @@ function bos_content_type_event_field_group_info() {
   t('Event Information');
   t('Event Location');
   t('Page Meta Data');
-  t('Related Content');
+  t('Related Content - NEW');
+  t('Related Content - ORIGINAL');
   t('Sidebar Components');
 
   return $field_groups;
