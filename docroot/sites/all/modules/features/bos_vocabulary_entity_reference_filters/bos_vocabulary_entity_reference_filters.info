@@ -1,0 +1,11 @@
+name = Boston Vocabulary Entity Reference Filters
+description = Entity selection modes for Entity Reference fields on Content Types
+core = 7.x
+package = Features
+version = 7.x-1.0
+dependencies[] = entityreference
+dependencies[] = views
+features[ctools][] = views:views_default:3.0
+features[features_api][] = api:2
+features[views_view][] = entity_reference_filters
+features_exclude[dependencies][ctools] = ctools
