@@ -19,24 +19,24 @@ function bos_content_type_event_field_group_info() {
   $field_group->bundle = 'event';
   $field_group->mode = 'form';
   $field_group->parent_name = 'group_event_details';
-  $field_group->data = [
+  $field_group->data = array(
     'label' => 'Cancel Event',
     'weight' => '44',
-    'children' => [
+    'children' => array(
       0 => 'field_cancel_event',
       1 => 'field_extra_info_event',
-    ],
+    ),
     'format_type' => 'fieldset',
-    'format_settings' => [
+    'format_settings' => array(
       'formatter' => 'collapsible',
-      'instance_settings' => [
+      'instance_settings' => array(
         'description' => '',
         'classes' => 'group-cancelled field-group-fieldset',
         'required_fields' => 1,
         'id' => '',
-      ],
-    ],
-  ];
+      ),
+    ),
+  );
   $field_groups['group_cancelled|node|event|form'] = $field_group;
 
   $field_group = new stdClass();

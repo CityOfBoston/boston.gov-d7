@@ -288,65 +288,65 @@ function bos_content_type_event_field_default_field_instances() {
   );
 
   // Exported field_instance: 'node-event-field_cancel_event'.
-  $field_instances['node-event-field_cancel_event'] = [
+  $field_instances['node-event-field_cancel_event'] = array(
     'bundle' => 'event',
-    'default_value' => [
-      0 => [
+    'default_value' => array(
+      0 => array(
         'value' => 0,
-      ],
-    ],
+      ),
+    ),
     'deleted' => 0,
     'description' => 'If this event is cancelled, check this box and give a reason below.',
-    'display' => [
-      'calendar_listing' => [
+    'display' => array(
+      'calendar_listing' => array(
         'label' => 'above',
-        'settings' => [],
+        'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
-      ],
-      'default' => [
+      ),
+      'default' => array(
         'label' => 'above',
-        'settings' => [],
+        'settings' => array(),
         'type' => 'hidden',
         'weight' => 30,
-      ],
-      'featured_item' => [
+      ),
+      'featured_item' => array(
         'label' => 'above',
-        'settings' => [],
+        'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
-      ],
-      'listing' => [
+      ),
+      'listing' => array(
         'label' => 'above',
-        'settings' => [],
+        'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
-      ],
-      'listing_short' => [
+      ),
+      'listing_short' => array(
         'label' => 'above',
-        'settings' => [],
+        'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
-      ],
-    ],
+      ),
+    ),
     'entity_type' => 'node',
     'fences_wrapper' => 'div_div_div',
     'field_name' => 'field_cancel_event',
     'label' => 'Cancel Event',
     'required' => 0,
-    'settings' => [
+    'settings' => array(
       'user_register_form' => FALSE,
-    ],
-    'widget' => [
+    ),
+    'widget' => array(
       'active' => 1,
       'module' => 'options',
-      'settings' => [
+      'settings' => array(
         'display_label' => 1,
-      ],
+      ),
       'type' => 'options_onoff',
       'weight' => 48,
-    ],
-  ];
+    ),
+  );
 
   // Exported field_instance: 'node-event-field_city_hall'.
   $field_instances['node-event-field_city_hall'] = array(
@@ -1307,68 +1307,68 @@ function bos_content_type_event_field_default_field_instances() {
   );
 
   // Exported field_instance: 'node-event-field_extra_info_event'.
-  $field_instances['node-event-field_extra_info_event'] = [
+  $field_instances['node-event-field_extra_info_event'] = array(
     'bundle' => 'event',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => 'If this event is cancelled, enter a reason.',
-    'display' => [
-      'calendar_listing' => [
+    'display' => array(
+      'calendar_listing' => array(
         'label' => 'above',
-        'settings' => [],
+        'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
-      ],
-      'default' => [
+      ),
+      'default' => array(
         'label' => 'above',
-        'settings' => [],
+        'settings' => array(),
         'type' => 'hidden',
         'weight' => 29,
-      ],
-      'featured_item' => [
+      ),
+      'featured_item' => array(
         'label' => 'above',
-        'settings' => [],
+        'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
-      ],
-      'listing' => [
+      ),
+      'listing' => array(
         'label' => 'above',
-        'settings' => [],
+        'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
-      ],
-      'listing_short' => [
+      ),
+      'listing_short' => array(
         'label' => 'above',
-        'settings' => [],
+        'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
-      ],
-    ],
+      ),
+    ),
     'entity_type' => 'node',
     'fences_wrapper' => 'div_div_div',
     'field_name' => 'field_extra_info_event',
     'label' => 'Cancellation Reason',
     'required' => 0,
-    'settings' => [
-      'linkit' => [
+    'settings' => array(
+      'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
         'profile' => '',
-      ],
+      ),
       'text_processing' => 0,
       'user_register_form' => FALSE,
-    ],
-    'widget' => [
+    ),
+    'widget' => array(
       'active' => 1,
       'module' => 'text',
-      'settings' => [
+      'settings' => array(
         'show_token_tree' => 0,
         'size' => 60,
-      ],
+      ),
       'type' => 'text_textfield',
       'weight' => 49,
-    ],
-  ];
+    ),
+  );
 
   // Exported field_instance: 'node-event-field_featured'.
   $field_instances['node-event-field_featured'] = array(

@@ -128,9 +128,6 @@ function bos_content_type_event_strongarm() {
       'ical' => array(
         'custom_settings' => FALSE,
       ),
-      'embed' => array(
-        'custom_settings' => FALSE,
-      ),
     ),
     'extra_fields' => array(
       'form' => array(
