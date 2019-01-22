@@ -257,6 +257,10 @@ projects:
     version: 3.x-dev
   token:
     version: 1.6
+    patch:
+    # Issue Link https://www.drupal.org/project/token/issues/2825841
+    # Fixes fatal errors in php 7+ environments
+    - https://www.drupal.org/files/issues/token-fix-cannot-use-string-offset-as-array_0.patch
   token_custom:
     version: 2.0
   token_filter:
