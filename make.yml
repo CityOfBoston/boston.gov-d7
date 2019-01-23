@@ -180,11 +180,7 @@ projects:
   paranoia:
     version: 1.5
   password_policy:
-    version: 1.12
-    patch:
-    # Issue link https://www.drupal.org/node/985758
-    # Implement Features hooks to import configurations
-    - https://www.drupal.org/files/issues/password_policy-985758-49_0.patch
+    version: 1.16
   pathauto:
     version: 1.3
   picture:
@@ -257,6 +253,10 @@ projects:
     version: 3.x-dev
   token:
     version: 1.6
+    patch:
+    # Issue Link https://www.drupal.org/project/token/issues/2825841
+    # Fixes fatal errors in php 7+ environments
+    - https://www.drupal.org/files/issues/token-fix-cannot-use-string-offset-as-array_0.patch
   token_custom:
     version: 2.0
   token_filter:
