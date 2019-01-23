@@ -321,7 +321,7 @@ function bos_component_events_and_notices_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'paragraphs_item',
-    'fences_wrapper' => 'div_div_div',
+    'fences_wrapper' => 'no_wrapper',
     'field_name' => 'field_list',
     'label' => 'List',
     'required' => 0,
