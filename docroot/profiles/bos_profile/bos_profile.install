@@ -1259,6 +1259,7 @@ function bos_profile_update_7044() {
     'bos_vocabulary_entity_reference_filters',
     'bos_view_events_and_notices',
     'bos_component_events_and_notices',
+    'bos_view_news_and_announcements',
   );
   module_enable($enabled_modules);
 }
