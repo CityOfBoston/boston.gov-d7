@@ -1,0 +1,11 @@
+name = Boston View News & Announcements
+description = Upcoming and Related Posts for News & Announcements Component
+core = 7.x
+package = Features
+version = 7.x-1.0
+dependencies[] = entity
+dependencies[] = views
+features[ctools][] = views:views_default:3.0
+features[features_api][] = api:2
+features[views_view][] = news_and_announcements
+features_exclude[dependencies][ctools] = ctools

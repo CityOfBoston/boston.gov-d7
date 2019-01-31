@@ -10,14 +10,13 @@
 function bos_content_type_public_notice_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'field_cancelled'
+  // Exported field_base: 'field_cancelled'.
   $field_bases['field_cancelled'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_cancelled',
-    'foreign keys' => array(),
     'indexes' => array(
       'value' => array(
         0 => 'value',
@@ -36,14 +35,13 @@ function bos_content_type_public_notice_field_default_field_bases() {
     'type' => 'list_boolean',
   );
 
-  // Exported field_base: 'field_is_there_public_testimony'
+  // Exported field_base: 'field_is_there_public_testimony'.
   $field_bases['field_is_there_public_testimony'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_is_there_public_testimony',
-    'foreign keys' => array(),
     'indexes' => array(
       'value' => array(
         0 => 'value',
@@ -62,14 +60,13 @@ function bos_content_type_public_notice_field_default_field_bases() {
     'type' => 'list_boolean',
   );
 
-  // Exported field_base: 'field_public_notice_date'
+  // Exported field_base: 'field_public_notice_date'.
   $field_bases['field_public_notice_date'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_public_notice_date',
-    'foreign keys' => array(),
     'indexes' => array(),
     'locked' => 0,
     'module' => 'date',
@@ -93,14 +90,13 @@ function bos_content_type_public_notice_field_default_field_bases() {
     'type' => 'datetime',
   );
 
-  // Exported field_base: 'field_time'
+  // Exported field_base: 'field_time'.
   $field_bases['field_time'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_time',
-    'foreign keys' => array(),
     'indexes' => array(),
     'locked' => 0,
     'module' => 'date',

@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Boston Vocabulary Entity Reference Filters feature.
+ */
+
+include_once 'bos_vocabulary_entity_reference_filters.features.inc';

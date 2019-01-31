@@ -10,7 +10,7 @@
 function bos_content_type_public_notice_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-public_notice-body'
+  // Exported field_instance: 'node-public_notice-body'.
   $field_instances['node-public_notice-body'] = array(
     'bundle' => 'public_notice',
     'default_value' => NULL,
@@ -76,7 +76,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-public_notice-field_address'
+  // Exported field_instance: 'node-public_notice-field_address'.
   $field_instances['node-public_notice-field_address'] = array(
     'bundle' => 'public_notice',
     'default_value' => NULL,
@@ -158,7 +158,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-public_notice-field_cancelled'
+  // Exported field_instance: 'node-public_notice-field_cancelled'.
   $field_instances['node-public_notice-field_cancelled'] = array(
     'bundle' => 'public_notice',
     'default_value' => array(
@@ -216,7 +216,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-public_notice-field_city_hall'
+  // Exported field_instance: 'node-public_notice-field_city_hall'.
   $field_instances['node-public_notice-field_city_hall'] = array(
     'bundle' => 'public_notice',
     'default_value' => array(
@@ -266,7 +266,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-public_notice-field_contact'
+  // Exported field_instance: 'node-public_notice-field_contact'.
   $field_instances['node-public_notice-field_contact'] = array(
     'bundle' => 'public_notice',
     'default_value' => NULL,
@@ -278,6 +278,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
         'module' => 'entityreference',
         'settings' => array(
           'links' => 0,
+          'use_content_language' => TRUE,
           'view_mode' => 'icon_popup',
         ),
         'type' => 'entityreference_entity_view',
@@ -287,6 +288,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
@@ -297,6 +299,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
         'module' => 'entityreference',
         'settings' => array(
           'links' => 1,
+          'use_content_language' => TRUE,
           'view_mode' => 'icon_popup',
         ),
         'type' => 'entityreference_entity_view',
@@ -341,7 +344,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-public_notice-field_drawer'
+  // Exported field_instance: 'node-public_notice-field_drawer'.
   $field_instances['node-public_notice-field_drawer'] = array(
     'bundle' => 'public_notice',
     'default_value' => NULL,
@@ -514,7 +517,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-public_notice-field_email'
+  // Exported field_instance: 'node-public_notice-field_email'.
   $field_instances['node-public_notice-field_email'] = array(
     'bundle' => 'public_notice',
     'default_value' => NULL,
@@ -575,7 +578,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-public_notice-field_event_contact'
+  // Exported field_instance: 'node-public_notice-field_event_contact'.
   $field_instances['node-public_notice-field_event_contact'] = array(
     'bundle' => 'public_notice',
     'default_value' => NULL,
@@ -636,7 +639,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-public_notice-field_extra_info'
+  // Exported field_instance: 'node-public_notice-field_extra_info'.
   $field_instances['node-public_notice-field_extra_info'] = array(
     'bundle' => 'public_notice',
     'default_value' => NULL,
@@ -697,7 +700,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-public_notice-field_featured'
+  // Exported field_instance: 'node-public_notice-field_featured'.
   $field_instances['node-public_notice-field_featured'] = array(
     'bundle' => 'public_notice',
     'default_value' => NULL,
@@ -749,7 +752,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-public_notice-field_intro_text'
+  // Exported field_instance: 'node-public_notice-field_intro_text'.
   $field_instances['node-public_notice-field_intro_text'] = array(
     'bundle' => 'public_notice',
     'default_value' => NULL,
@@ -810,7 +813,8 @@ function bos_content_type_public_notice_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-public_notice-field_is_there_public_testimony'
+  // Exported field_instance:
+  // 'node-public_notice-field_is_there_public_testimony'.
   $field_instances['node-public_notice-field_is_there_public_testimony'] = array(
     'bundle' => 'public_notice',
     'default_value' => array(
@@ -868,7 +872,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-public_notice-field_links'
+  // Exported field_instance: 'node-public_notice-field_links'.
   $field_instances['node-public_notice-field_links'] = array(
     'bundle' => 'public_notice',
     'default_value' => NULL,
@@ -1041,7 +1045,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-public_notice-field_multiple_neighborhoods'
+  // Exported field_instance: 'node-public_notice-field_multiple_neighborhoods'.
   $field_instances['node-public_notice-field_multiple_neighborhoods'] = array(
     'bundle' => 'public_notice',
     'default_value' => NULL,
@@ -1052,6 +1056,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
@@ -1067,6 +1072,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
@@ -1112,7 +1118,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-public_notice-field_people'
+  // Exported field_instance: 'node-public_notice-field_people'.
   $field_instances['node-public_notice-field_people'] = array(
     'bundle' => 'public_notice',
     'default_value' => NULL,
@@ -1123,6 +1129,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
@@ -1164,11 +1171,11 @@ function bos_content_type_public_notice_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 20,
+      'weight' => 19,
     ),
   );
 
-  // Exported field_instance: 'node-public_notice-field_phone_number'
+  // Exported field_instance: 'node-public_notice-field_phone_number'.
   $field_instances['node-public_notice-field_phone_number'] = array(
     'bundle' => 'public_notice',
     'default_value' => NULL,
@@ -1229,7 +1236,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-public_notice-field_place'
+  // Exported field_instance: 'node-public_notice-field_place'.
   $field_instances['node-public_notice-field_place'] = array(
     'bundle' => 'public_notice',
     'default_value' => NULL,
@@ -1240,6 +1247,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
@@ -1281,11 +1289,11 @@ function bos_content_type_public_notice_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 21,
+      'weight' => 20,
     ),
   );
 
-  // Exported field_instance: 'node-public_notice-field_program_initiative'
+  // Exported field_instance: 'node-public_notice-field_program_initiative'.
   $field_instances['node-public_notice-field_program_initiative'] = array(
     'bundle' => 'public_notice',
     'default_value' => NULL,
@@ -1296,6 +1304,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
@@ -1337,11 +1346,11 @@ function bos_content_type_public_notice_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 23,
+      'weight' => 22,
     ),
   );
 
-  // Exported field_instance: 'node-public_notice-field_public_notice_date'
+  // Exported field_instance: 'node-public_notice-field_public_notice_date'.
   $field_instances['node-public_notice-field_public_notice_date'] = array(
     'bundle' => 'public_notice',
     'deleted' => 0,
@@ -1429,7 +1438,64 @@ function bos_content_type_public_notice_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-public_notice-field_related_content'
+  // Exported field_instance: 'node-public_notice-field_related'.
+  $field_instances['node-public_notice-field_related'] = array(
+    'bundle' => 'public_notice',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'bypass_access' => FALSE,
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 32,
+      ),
+      'featured_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div_div_div',
+    'field_name' => 'field_related',
+    'label' => 'Related',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference',
+      'settings' => array(
+        'entityreference_autocreate' => array(
+          'active' => 0,
+          'author' => '',
+          'author_current_user' => 1,
+          'status' => -1,
+        ),
+        'match_operator' => 'CONTAINS',
+        'path' => '',
+        'size' => 60,
+      ),
+      'type' => 'entityreference_autocomplete',
+      'weight' => 38,
+    ),
+  );
+
+  // Exported field_instance: 'node-public_notice-field_related_content'.
   $field_instances['node-public_notice-field_related_content'] = array(
     'bundle' => 'public_notice',
     'default_value' => NULL,
@@ -1440,6 +1506,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
@@ -1455,6 +1522,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
@@ -1490,11 +1558,11 @@ function bos_content_type_public_notice_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 24,
+      'weight' => 23,
     ),
   );
 
-  // Exported field_instance: 'node-public_notice-field_related_departments'
+  // Exported field_instance: 'node-public_notice-field_related_departments'.
   $field_instances['node-public_notice-field_related_departments'] = array(
     'bundle' => 'public_notice',
     'default_value' => NULL,
@@ -1505,6 +1573,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
@@ -1546,11 +1615,11 @@ function bos_content_type_public_notice_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 17,
+      'weight' => 16,
     ),
   );
 
-  // Exported field_instance: 'node-public_notice-field_related_events_notices'
+  // Exported field_instance: 'node-public_notice-field_related_events_notices'.
   $field_instances['node-public_notice-field_related_events_notices'] = array(
     'bundle' => 'public_notice',
     'default_value' => NULL,
@@ -1561,6 +1630,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
@@ -1602,11 +1672,11 @@ function bos_content_type_public_notice_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 18,
+      'weight' => 17,
     ),
   );
 
-  // Exported field_instance: 'node-public_notice-field_related_guides'
+  // Exported field_instance: 'node-public_notice-field_related_guides'.
   $field_instances['node-public_notice-field_related_guides'] = array(
     'bundle' => 'public_notice',
     'default_value' => NULL,
@@ -1617,6 +1687,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
@@ -1658,11 +1729,11 @@ function bos_content_type_public_notice_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 19,
+      'weight' => 18,
     ),
   );
 
-  // Exported field_instance: 'node-public_notice-field_related_posts'
+  // Exported field_instance: 'node-public_notice-field_related_posts'.
   $field_instances['node-public_notice-field_related_posts'] = array(
     'bundle' => 'public_notice',
     'default_value' => NULL,
@@ -1673,6 +1744,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
@@ -1714,11 +1786,11 @@ function bos_content_type_public_notice_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 22,
+      'weight' => 21,
     ),
   );
 
-  // Exported field_instance: 'node-public_notice-field_time'
+  // Exported field_instance: 'node-public_notice-field_time'.
   $field_instances['node-public_notice-field_time'] = array(
     'bundle' => 'public_notice',
     'deleted' => 0,
@@ -1806,7 +1878,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-public_notice-field_updated_date'
+  // Exported field_instance: 'node-public_notice-field_updated_date'.
   $field_instances['node-public_notice-field_updated_date'] = array(
     'bundle' => 'public_notice',
     'deleted' => 0,
@@ -1918,6 +1990,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
   t('Other related content');
   t('Please attach filed posting here.');
   t('Point of Contact');
+  t('Related');
   t('Related Neighborhoods');
   t('Related departments');
   t('Related events/notices');
