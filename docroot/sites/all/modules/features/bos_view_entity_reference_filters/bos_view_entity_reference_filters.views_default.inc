@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * bos_vocabulary_entity_reference_filters.views_default.inc
+ * bos_view_entity_reference_filters.views_default.inc
  */
 
 /**
  * Implements hook_views_default_views().
  */
-function bos_vocabulary_entity_reference_filters_views_default_views() {
+function bos_view_entity_reference_filters_views_default_views() {
   $export = array();
 
   $view = new view();
