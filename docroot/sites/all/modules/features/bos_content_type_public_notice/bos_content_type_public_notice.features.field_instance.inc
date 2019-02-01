@@ -1488,7 +1488,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
         ),
         'match_operator' => 'CONTAINS',
         'path' => '',
-        'size' => 60,
+        'size' => 120,
       ),
       'type' => 'entityreference_autocomplete',
       'weight' => 38,

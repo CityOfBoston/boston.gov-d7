@@ -1159,7 +1159,7 @@ function bos_content_type_post_field_default_field_instances() {
         ),
         'match_operator' => 'CONTAINS',
         'path' => '',
-        'size' => 60,
+        'size' => 120,
       ),
       'type' => 'entityreference_autocomplete',
       'weight' => 18,
