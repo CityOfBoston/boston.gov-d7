@@ -1256,7 +1256,7 @@ function bos_profile_update_7043() {
  */
 function bos_profile_update_7044() {
   $enabled_modules = array(
-    'bos_vocabulary_entity_reference_filters',
+    'bos_view_entity_reference_filters',
     'bos_view_events_and_notices',
     'bos_component_events_and_notices',
     'bos_view_news_and_announcements',
