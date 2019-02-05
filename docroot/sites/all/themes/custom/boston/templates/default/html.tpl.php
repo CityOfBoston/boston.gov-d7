@@ -14,6 +14,7 @@
   <!-- Start of Bibblio RCM includes -->
 <link rel="stylesheet" type="text/css" href="https://cdn.bibblio.org/rcm/3.10/bib-related-content.min.css">
 <script src="https://cdn.bibblio.org/rcm/3.10/bib-related-content.min.js"></script>
+<style type="text/css">.bib--rcm-init{display:none;}#bibblio-custom{margin-top:-90px;}#bibblio-custom .cd-ic{background-size: 25%;background-repeat: no-repeat;}</style>
 <!-- End of Bibblio RCM includes -->
 
   <!--[if !IE]><!-->
@@ -101,5 +102,6 @@
       </div>
     </script>
   <?php endif; ?>
+  <div class="bib--rcm-init" data-auto-ingestion="true" data-recommendation-key="6364c775-5133-4a32-a80e-a2116bac884b">&nbsp;</div>
 </body>
 </html>
