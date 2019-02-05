@@ -90,5 +90,67 @@
       <!-- End topic-departments-container -->
     </section><!-- End departments-container -->
   <?php endif; ?>
-
+  <!-- begin Bibblio custom markup-->
+       <div class="bibblio-container entity entity-paragraphs-item paragraphs-item-text component-section" about="" typeof="">
+          <div class="content">
+              <div class="sh">
+                <h2 class="sh-title">Related Content</h2>
+              </div>
+              <div class="paragraphs-items paragraphs-items-field-text-blocks paragraphs-items-field-text-blocks-full paragraphs-items-full">
+                  <div class="entity entity-paragraphs-item paragraphs-item-text-one-column component-section" about="" typeof="">
+                      <div class="content">
+                          <div id="bibblio-custom">
+                              <div class="g"></div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+        </div>
+  <!-- end Bibblio custom markup -->
 </article>
+
+<!-- begin Bibblio custom code -->
+<style type="text/css">.bib--rcm-init{display:none;}#bibblio-custom{margin-top:-100px;}</style>
+<div class="bib--rcm-init" data-auto-ingestion="true" data-recommendation-key="6364c775-5133-4a32-a80e-a2116bac884b">&nbsp;</div>
+<script>
+    function getHTML(bibContent){
+      var listItem = '';
+      jQuery(bibContent).each(function(index,value){
+          let bibFields = value.fields;
+          let bgImg = bibFields.moduleImage !== null ? bibFields.moduleImage.contentUrl : "https://patterns.boston.gov/images/public/icons/news.svg";
+          let bibName = bibFields.name;
+          let bibUrl = bibFields.url;
+          let bibDesc = bibFields.description; 
+          listItem += '<a class= "cd g--4 g--4--sl m-t500" href="'+bibUrl+'"><div class="cd-ic" style="background-image:url('+bgImg+')"><\/div><div class="cd-c"><div class="cd-t">'+bibName+'<\/div><div class="cd-d"\>'+bibDesc+'<\/div><\/div><\/a>';
+          
+      });
+      //console.log(listItem);
+      jQuery('#bibblio-custom div.g').append(listItem);
+    }
+    const pageURL = window.location.pathname;
+    jQuery.ajax({
+      method: "GET",
+      url: "https://api.bibblio.org/v1/recommendations",
+      contentType: "application/json",
+      headers: {
+        "Authorization": "Bearer 6364c775-5133-4a32-a80e-a2116bac884b"
+      },
+      data:{ 
+        "customUniqueIdentifier": "https://bostonuat.prod.acquia-sites.com" + pageURL,
+        "fields":"name,moduleImage,url,datePublished,description", 
+        "limit":"3",
+      },
+      success: function (res){
+        let bibContent = res.results;
+        getHTML(bibContent); 
+        //alert('success' + res.status);
+      },
+      error: function (res){
+            if(res.status == '404'){
+              jQuery(".bibblio-container").hide();
+            };
+      }
+     });       
+  </script>
+<!-- end Bibblio custom code -->
