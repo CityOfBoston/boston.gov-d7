@@ -14,7 +14,7 @@
   <!-- Start of Bibblio RCM includes -->
 <link rel="stylesheet" type="text/css" href="https://cdn.bibblio.org/rcm/3.10/bib-related-content.min.css">
 <script src="https://cdn.bibblio.org/rcm/3.10/bib-related-content.min.js"></script>
-<style type="text/css">.bib--rcm-init{display:none;}#bibblio-custom{margin-top:-90px;}#bibblio-custom .cd-ic{background-size: 25%;background-repeat: no-repeat;}</style>
+<style type="text/css">.bib--rcm-init{display:none;}#bibblio-custom{margin-top:-90px;}</style>
 <!-- End of Bibblio RCM includes -->
 
   <!--[if !IE]><!-->

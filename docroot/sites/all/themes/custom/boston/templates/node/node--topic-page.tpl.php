@@ -117,7 +117,9 @@
       var listItem = '';
       jQuery(bibContent).each(function(index,value){
           let bibFields = value.fields;
-          let bgImg = bibFields.moduleImage !== null ? bibFields.moduleImage.contentUrl : "https://patterns.boston.gov/images/public/seal.svg?k=plwdm9";
+          let assetDefaultURL = "<?php  print $asset_url ?>/images/wallpaper.svg";
+          let bgImg = bibFields.moduleImage !== null ? bibFields.moduleImage.contentUrl : assetDefaultURL;
+          
           let bibName = bibFields.name;
           let bibUrl = bibFields.url;
           let bibDesc = bibFields.description; 
