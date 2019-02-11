@@ -46,4 +46,3 @@ features[variable][] = workbench_scheduler_article
 features[variable][] = xmlsitemap_settings_node_article
 features_exclude[field_instance][node-article-field_components] = node-article-field_components
 features_exclude[field_instance][node-article-field_sidebar_components] = node-article-field_sidebar_components
-mtime = 1495652915
