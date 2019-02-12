@@ -1252,7 +1252,7 @@ function bos_profile_update_7043() {
 }
 
 /**
- * Adds Entity Reference Filters view.
+ * Adds new related content and migrates field data.
  */
 function bos_profile_update_7044() {
   $enabled_modules = array(
@@ -1263,6 +1263,45 @@ function bos_profile_update_7044() {
     'bos_component_news_and_announcements',
   );
   module_enable($enabled_modules);
+
+  $event_nodes = node_load_multiple(array(), array('type' => 'event'));
+  $notice_nodes = node_load_multiple(array(), array('type' => 'public_notice'));
+  $post_nodes = node_load_multiple(array(), array('type' => 'post'));
+  // Get all nodes with related content fields.
+  $nodes = array_merge($event_nodes, $notice_nodes, $post_nodes);
+  foreach ($nodes as $node) {
+    // Check if fields have values.
+    $related_departments = is_array($node->field_related_departments['und']) ? $node->field_related_departments['und'] : [];
+    $related_events_notices = is_array($node->field_related_events_notices['und']) ? $node->field_related_events_notices['und'] : [];
+    $related_guides = is_array($node->field_related_guides['und']) ? $node->field_related_guides['und'] : [];
+    $related_people = is_array($node->field_people['und']) ? $node->field_people['und'] : [];
+    $related_place = is_array($node->field_place['und']) ? $node->field_place['und'] : [];
+    $related_posts = is_array($node->field_related_posts['und']) ? $node->field_related_posts['und'] : [];
+    $related_program_initiative = is_array($node->field_program_initiative['und']) ? $node->field_program_initiative['und'] : [];
+    $related_content = is_array($node->field_related_content['und']) ? $node->field_related_content['und'] : [];
+    // Transfer values to new related content field.
+    $node->field_related['und'] = array_merge(
+      $related_departments,
+      $related_events_notices,
+      $related_guides,
+      $related_people,
+      $related_place,
+      $related_posts,
+      $related_program_initiative,
+      $related_content
+    );
+    field_attach_update('node', $node);
+    // Remove old fields.
+    field_delete_field('field_related_departments');
+    field_delete_field('field_related_events_notices');
+    field_delete_field('field_related_guides');
+    field_delete_field('field_people');
+    field_delete_field('field_place');
+    field_delete_field('field_related_posts');
+    field_delete_field('field_program_initiative');
+    field_delete_field('field_related_content');
+    field_purge_batch(1);
+  }
 }
 
 /*******************************************************************
