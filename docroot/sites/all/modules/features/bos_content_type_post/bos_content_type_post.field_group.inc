@@ -144,19 +144,20 @@ function bos_content_type_post_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => 'Related Content - NEW',
+    'label' => 'Related Content',
     'weight' => '8',
     'children' => array(
       0 => 'field_related',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
-      'formatter' => 'closed',
+      'label' => 'Related Content',
       'instance_settings' => array(
-        'description' => '',
-        'classes' => 'group-related field-group-tab',
         'required_fields' => 1,
+        'classes' => 'group-related field-group-tab',
+        'description' => '',
       ),
+      'formatter' => 'closed',
     ),
   );
   $field_groups['group_related|node|post|form'] = $field_group;
@@ -193,7 +194,7 @@ function bos_content_type_post_field_group_info() {
   t('Basic Information');
   t('Components');
   t('Page Metadata');
-  t('Related Content - NEW');
+  t('Related Content');
   t('Related Content - ORIGINAL');
   t('Sidebar Components');
 

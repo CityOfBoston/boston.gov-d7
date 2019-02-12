@@ -297,14 +297,14 @@ function bos_content_type_event_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => 'Related Content - NEW',
+    'label' => 'Related Content',
     'weight' => '10',
     'children' => array(
       0 => 'field_related',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
-      'label' => 'Related Content - NEW',
+      'label' => 'Related Content',
       'instance_settings' => array(
         'required_fields' => 1,
         'classes' => 'group-related field-group-tab',
@@ -352,7 +352,7 @@ function bos_content_type_event_field_group_info() {
   t('Event Information');
   t('Event Location');
   t('Page Meta Data');
-  t('Related Content - NEW');
+  t('Related Content');
   t('Related Content - ORIGINAL');
   t('Sidebar Components');
 

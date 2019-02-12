@@ -315,14 +315,14 @@ function bos_content_type_public_notice_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => 'Related Content - NEW',
+    'label' => 'Related Content',
     'weight' => '6',
     'children' => array(
       0 => 'field_related',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
-      'label' => 'Related Content - NEW',
+      'label' => 'Related Content',
       'instance_settings' => array(
         'required_fields' => 1,
         'classes' => 'group-related field-group-tab',
@@ -372,7 +372,7 @@ function bos_content_type_public_notice_field_group_info() {
   t('Meeting Location');
   t('Page Meta Data');
   t('Public Testimony');
-  t('Related Content - NEW');
+  t('Related Content');
   t('Related Content - ORIGINAL');
 
   return $field_groups;
