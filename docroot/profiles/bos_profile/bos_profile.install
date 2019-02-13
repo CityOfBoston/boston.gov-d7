@@ -1269,6 +1269,7 @@ function bos_profile_update_7044() {
   $post_nodes = node_load_multiple(array(), array('type' => 'post'));
   // Get all nodes with related content fields.
   $nodes = array_merge($event_nodes, $notice_nodes, $post_nodes);
+  //var_dump($nodes);
   foreach ($nodes as $node) {
     // Check if fields have values.
     $related_departments = is_array($node->field_related_departments['und']) ? $node->field_related_departments['und'] : [];
@@ -1291,17 +1292,64 @@ function bos_profile_update_7044() {
       $related_content
     );
     field_attach_update('node', $node);
-    // Remove old fields.
-    field_delete_field('field_related_departments');
-    field_delete_field('field_related_events_notices');
-    field_delete_field('field_related_guides');
-    field_delete_field('field_people');
-    field_delete_field('field_place');
-    field_delete_field('field_related_posts');
-    field_delete_field('field_program_initiative');
-    field_delete_field('field_related_content');
-    field_purge_batch(1);
   }
+  // Remove old fields.
+  field_delete_field('field_related_departments');
+  field_delete_field('field_related_events_notices');
+  field_delete_field('field_related_guides');
+  field_delete_field('field_people');
+  field_delete_field('field_place');
+  field_delete_field('field_related_posts');
+  field_delete_field('field_program_initiative');
+  field_delete_field('field_related_content');
+  field_purge_batch(1);
+  // Delete old field groups.
+  if ($group = field_group_load_field_group('group_related_content', 'node', 'events', 'form')) {
+    ctools_include('export');
+    field_group_group_export_delete($group, FALSE);
+  }
+  if ($group = field_group_load_field_group('group_related_content', 'node', 'public_notice', 'form')) {
+    ctools_include('export');
+    field_group_group_export_delete($group, FALSE);
+  }
+  if ($group = field_group_load_field_group('group_related_content', 'node', 'post', 'form')) {
+    ctools_include('export');
+    field_group_group_export_delete($group, FALSE);
+  }
+  // Add new News & Announcements component to nodes and remove old one.
+  $query = new EntityFieldQuery();
+  $query
+    ->entityCondition('entity_type', 'paragraphs_item', '=')
+    ->propertyCondition('bundle', 'news_announcements', '=');
+  $result = $query->execute();
+  $ids = array_keys($result['paragraphs_item']);
+  $news_announcements_paragraphs = entity_load('paragraphs_item', $ids);
+  foreach ($news_announcements_paragraphs as $old_paragraph) {
+    $parent_node = $old_paragraph->hostEntity();
+
+    $new_paragraph = new ParagraphsItemEntity(array('field_name' => 'field_components', 'bundle' => 'news_and_announcements'));
+    $new_paragraph->is_new = TRUE;
+    $new_paragraph->field_component_title = $old_paragraph->field_component_title;
+    $new_paragraph->field_short_title = $old_paragraph->field_short_title;
+    $new_paragraph->field_featured_post = $old_paragraph->field_featured_post;
+    $new_paragraph->field_link = $old_paragraph->field_link;
+
+    $new_paragraph->setHostEntity('node', $parent_node);
+    $new_paragraph->save();
+  }
+  var_dump($news_announcements);
+  // Add new Events & Notices component to nodes and remove old one.
+
+  // Disable old modules.
+  $disabled_modules = array(
+    'bos_form_related_content',
+    'bos_view_news_announcements',
+    'bos_view_upcoming_events',
+    'bos_view_related_events',
+    'bos_component_news_announcements',
+    'bos_component_upcoming_events',
+  );
+  module_disable($disabled_modules);
 }
 
 /*******************************************************************
