@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the Boston Component News & Announcements feature.
- */
-
-include_once 'bos_component_news_and_announcements.features.inc';

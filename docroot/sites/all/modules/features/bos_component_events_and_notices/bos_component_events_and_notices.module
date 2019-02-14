@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the Boston Component Events & Notices feature.
- */
-
-include_once 'bos_component_events_and_notices.features.inc';

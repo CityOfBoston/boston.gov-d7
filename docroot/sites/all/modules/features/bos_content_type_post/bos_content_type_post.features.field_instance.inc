@@ -156,7 +156,6 @@ function bos_content_type_post_field_default_field_instances() {
         'module' => 'entityreference',
         'settings' => array(
           'links' => 1,
-          'use_content_language' => TRUE,
           'view_mode' => 'published_by',
         ),
         'type' => 'entityreference_entity_view',
@@ -173,7 +172,6 @@ function bos_content_type_post_field_default_field_instances() {
         'module' => 'entityreference',
         'settings' => array(
           'links' => 1,
-          'use_content_language' => TRUE,
           'view_mode' => 'popup_icon',
         ),
         'type' => 'entityreference_entity_view',
@@ -190,7 +188,6 @@ function bos_content_type_post_field_default_field_instances() {
         'module' => 'entityreference',
         'settings' => array(
           'links' => 1,
-          'use_content_language' => TRUE,
           'view_mode' => 'popup_icon',
         ),
         'type' => 'entityreference_entity_view',
@@ -206,7 +203,6 @@ function bos_content_type_post_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'entityreference',
         'settings' => array(
-          'bypass_access' => FALSE,
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
@@ -235,7 +231,6 @@ function bos_content_type_post_field_default_field_instances() {
         'module' => 'entityreference',
         'settings' => array(
           'links' => 1,
-          'use_content_language' => TRUE,
           'view_mode' => 'popup_icon',
         ),
         'type' => 'entityreference_entity_view',
@@ -625,7 +620,6 @@ function bos_content_type_post_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'entityreference',
         'settings' => array(
-          'bypass_access' => FALSE,
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
@@ -735,7 +729,6 @@ function bos_content_type_post_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'entityreference',
         'settings' => array(
-          'bypass_access' => FALSE,
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
@@ -804,7 +797,6 @@ function bos_content_type_post_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'entityreference',
         'settings' => array(
-          'bypass_access' => FALSE,
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
@@ -873,7 +865,6 @@ function bos_content_type_post_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'entityreference',
         'settings' => array(
-          'bypass_access' => FALSE,
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
@@ -1097,75 +1088,6 @@ function bos_content_type_post_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-post-field_related'.
-  $field_instances['node-post-field_related'] = array(
-    'bundle' => 'post',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'bypass_access' => FALSE,
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 21,
-      ),
-      'featured_item' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'listing' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'listing_short' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'fences_wrapper' => 'div_div_div',
-    'field_name' => 'field_related',
-    'label' => 'Related',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'entityreference',
-      'settings' => array(
-        'entityreference_autocreate' => array(
-          'active' => 0,
-          'author' => '',
-          'author_current_user' => 1,
-          'status' => -1,
-        ),
-        'match_operator' => 'CONTAINS',
-        'path' => '',
-        'size' => 60,
-      ),
-      'type' => 'entityreference_autocomplete',
-      'weight' => 18,
-    ),
-  );
-
   // Exported field_instance: 'node-post-field_related_content'.
   $field_instances['node-post-field_related_content'] = array(
     'bundle' => 'post',
@@ -1177,7 +1099,6 @@ function bos_content_type_post_field_default_field_instances() {
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
-          'bypass_access' => FALSE,
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
@@ -1246,7 +1167,6 @@ function bos_content_type_post_field_default_field_instances() {
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
-          'bypass_access' => FALSE,
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
@@ -1315,7 +1235,6 @@ function bos_content_type_post_field_default_field_instances() {
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
-          'bypass_access' => FALSE,
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
@@ -1384,7 +1303,6 @@ function bos_content_type_post_field_default_field_instances() {
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
-          'bypass_access' => FALSE,
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
@@ -1453,7 +1371,6 @@ function bos_content_type_post_field_default_field_instances() {
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
-          'bypass_access' => FALSE,
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
@@ -1860,7 +1777,6 @@ function bos_content_type_post_field_default_field_instances() {
   t('Other related content');
   t('Please select the type of content this piece of content can be filtered by.  NOTE:  This is currently used for the Hub.');
   t('Published Date');
-  t('Related');
   t('Related departments');
   t('Related events/notices');
   t('Related guides');
