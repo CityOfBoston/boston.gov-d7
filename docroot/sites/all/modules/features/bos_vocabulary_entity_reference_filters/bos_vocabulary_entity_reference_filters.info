@@ -1,4 +1,4 @@
-name = Boston View Entity Reference Filters
+name = Boston Vocabulary Entity Reference Filters
 description = Entity selection modes for Entity Reference fields on Content Types
 core = 7.x
 package = Features
