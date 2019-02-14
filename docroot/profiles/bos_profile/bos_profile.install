@@ -1263,7 +1263,41 @@ function bos_profile_update_7044() {
     'bos_component_news_and_announcements',
   );
   module_enable($enabled_modules);
+  // Add new News & Announcements component to nodes and remove old one.
+  $query = new EntityFieldQuery();
+  $query
+    ->entityCondition('entity_type', 'paragraphs_item', '=')
+    ->propertyCondition('bundle', 'news_announcements', '=');
+  $result = $query->execute();
+  $ids = array_keys($result['paragraphs_item']);
+  $news_announcements_paragraphs = entity_load('paragraphs_item', $ids);
+  foreach ($news_announcements_paragraphs as $old_paragraph) {
+    $parent_node = $old_paragraph->hostEntity();
+    if ($parent_node && $old_paragraph->bundle() == 'news_announcements') {
 
+      $new_paragraph = new ParagraphsItemEntity(array('field_name' => 'field_components', 'bundle' => 'news_and_announcements'));
+      $new_paragraph->is_new = TRUE;
+
+      $new_paragraph->field_component_title = $old_paragraph->field_component_title;
+      $new_paragraph->field_short_title = $old_paragraph->field_short_title;
+      $new_paragraph->field_featured_post = $old_paragraph->field_featured_post;
+      $new_paragraph->field_link = $old_paragraph->field_link;
+
+      ob_start();
+      echo "NEW paragraph: ";
+      var_dump($new_paragraph);
+      echo "OLD paragraph: ";
+      var_dump($old_paragraph);
+      $save = ob_get_contents();
+      ob_end_clean();
+      file_put_contents(paragraph_debugging, $save, FILE_APPEND);
+
+      $new_paragraph->setHostEntity('node', $parent_node);
+      $new_paragraph->save();
+    }
+  }
+
+  /*
   $event_nodes = node_load_multiple(array(), array('type' => 'event'));
   $notice_nodes = node_load_multiple(array(), array('type' => 'public_notice'));
   $post_nodes = node_load_multiple(array(), array('type' => 'post'));
@@ -1316,28 +1350,6 @@ function bos_profile_update_7044() {
     ctools_include('export');
     field_group_group_export_delete($group, FALSE);
   }
-  // Add new News & Announcements component to nodes and remove old one.
-  $query = new EntityFieldQuery();
-  $query
-    ->entityCondition('entity_type', 'paragraphs_item', '=')
-    ->propertyCondition('bundle', 'news_announcements', '=');
-  $result = $query->execute();
-  $ids = array_keys($result['paragraphs_item']);
-  $news_announcements_paragraphs = entity_load('paragraphs_item', $ids);
-  foreach ($news_announcements_paragraphs as $old_paragraph) {
-    $parent_node = $old_paragraph->hostEntity();
-
-    $new_paragraph = new ParagraphsItemEntity(array('field_name' => 'field_components', 'bundle' => 'news_and_announcements'));
-    $new_paragraph->is_new = TRUE;
-    $new_paragraph->field_component_title = $old_paragraph->field_component_title;
-    $new_paragraph->field_short_title = $old_paragraph->field_short_title;
-    $new_paragraph->field_featured_post = $old_paragraph->field_featured_post;
-    $new_paragraph->field_link = $old_paragraph->field_link;
-
-    $new_paragraph->setHostEntity('node', $parent_node);
-    $new_paragraph->save();
-  }
-  var_dump($news_announcements);
   // Add new Events & Notices component to nodes and remove old one.
 
   // Disable old modules.
@@ -1350,6 +1362,7 @@ function bos_profile_update_7044() {
     'bos_component_upcoming_events',
   );
   module_disable($disabled_modules);
+  */
 }
 
 /*******************************************************************
