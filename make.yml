@@ -208,7 +208,8 @@ projects:
     version: 1.3
   services_views:
     version: 1.3
-    patch: "patches/services_views_php_7_1_fix.patch"
+    patch:
+    - https://www.drupal.org/files/issues/services_views-php-7_1-fixes-2910966-8.patch
   seckit:
     version: 1.9
   security_review:
