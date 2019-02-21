@@ -77,7 +77,7 @@
   ?>
 
    <!-- begin Bibblio custom markup-->
-       <div class="bibblio-container b-c entity entity-paragraphs-item paragraphs-item-text component-section" about="" typeof="">
+       <div class="bibblio-container entity entity-paragraphs-item paragraphs-item-text component-section" about="" typeof="">
           <div class="content">
               <div class="sh">
                 <h2 class="sh-title">Suggested Content</h2>
@@ -155,3 +155,5 @@
      });       
   </script>
 <!-- end Bibblio custom code -->
+
+
