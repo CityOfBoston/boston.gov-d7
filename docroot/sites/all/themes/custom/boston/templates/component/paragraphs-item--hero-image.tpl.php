@@ -63,5 +63,10 @@
         <div class="hro-lnk"><?php print render($content['field_grid_link']); ?></div>
       <?php endif; ?>
     </div>
+    <?php if (!isset($content['field_grid_link'])): ?>
+      <div class="the-b the-b--c">
+        <img src="<?php print $asset_url ?>/images/b-light.svg" alt="City of Boston" class="the-b-i">
+      </div>
+    <?php endif; ?>
   </div>
 </div>
