@@ -142,11 +142,7 @@ projects:
   jquery_update:
     version: 3.0-alpha3
   link:
-    version: 1.4
-    # Issue https://www.drupal.org/node/2299657
-    # Allow .cob TLD to be a valid domain.
-    patch :
-    - https://www.drupal.org/files/issues/validate_url-2299657-22.patch
+    version: 1.6
   linkit:
     version: 3.x-dev
   libraries:
