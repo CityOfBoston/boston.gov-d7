@@ -1,0 +1,33 @@
+name: bos-d7
+recipe: drupal7
+
+config:
+  webroot: docroot
+  xdebug: true
+  php: 7.2
+  database: mysql:5.7
+
+services:
+  appserver:
+    run:
+      - "/app/task.sh -Dbehat.run-server=true build:test"
+  database:
+    type: mysql
+    portforward: 3307
+    host: localhost
+    run_as_root:
+      - apt-get install -y --no-install-recommends less python-pip python-setuptools
+      - pip install mycli
+    creds:
+      user: drupal
+      password: drupal
+      database: drupal
+
+tooling:
+  drush:
+    service: appserver
+    cmd: drush --root=/app/docroot
+  mycli:
+    service: database
+    description: "Open mycli prompt in db container: lando mycli"
+    cmd: "mycli -udrupal -pdrupal"

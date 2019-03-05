@@ -136,3 +136,6 @@ solr/*
 
 #Editor utility files
 .editorconfig
+
+#Ignore database dumps
+*.sql
