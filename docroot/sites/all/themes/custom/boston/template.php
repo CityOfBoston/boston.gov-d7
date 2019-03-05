@@ -294,6 +294,12 @@ function boston_preprocess_html(array &$variables, $hook) {
       'every_page' => TRUE,
     ));
   }
+
+  drupal_add_css(drupal_get_path('theme', 'boston') . '/css/boston.theme.overides.css', array(
+    'type'  =>  'file',
+    'group' =>  CSS_THEME
+  ));
+
 }
 
 /**
