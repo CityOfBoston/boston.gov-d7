@@ -1,0 +1,25 @@
+ @media screen and (max-width: 480px) {
+  .tr--visible {
+    display: block;
+  }
+  .lo-b-cont{
+    background:#091f2f url('https://patterns.boston.gov/images/b-light.svg') no-repeat center center;
+    background-size:20px auto;
+    width:65px;
+    height:65px;
+    margin:0 0 0 calc(-1rem - 2px)
+  }
+  .lo-b-cont a{
+    width:50px;
+    height:50px;
+    margin:0 auto;
+  }
+  .lo-b-cont img{
+    visibility:hidden;
+    width:0px;
+    height:0px;
+  }
+}
+
+
+
