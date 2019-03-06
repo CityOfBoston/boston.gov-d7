@@ -4,13 +4,17 @@ recipe: drupal7
 config:
   webroot: docroot
   xdebug: true
-  php: 7.2
+  php: 7.1
   database: mysql:5.7
 
 services:
+
   appserver:
-    run:
-      - "/app/task.sh -Dbehat.run-server=true build:test"
+    run_as_root:
+      - apt-get update -y
+      - apt-get install -y curl gnupg2
+      - curl -sL https://deb.nodesource.com/setup_8.x | bash -
+      - apt-get install -y nodejs
   database:
     type: mysql
     portforward: 3307
@@ -23,11 +27,37 @@ services:
       password: drupal
       database: drupal
 
+  node:
+    type: node:8
+    globals:
+      gulp-cli: "latest"
+      npm: "latest"
+
 tooling:
+
+  build-bos:
+    service: appserver
+    description: "Run build script"
+    cmd: "./task.sh -Dbehat.run-server=true build:test"
+
   drush:
     service: appserver
     cmd: drush --root=/app/docroot
+
   mycli:
     service: database
     description: "Open mycli prompt in db container: lando mycli"
     cmd: "mycli -udrupal -pdrupal"
+
+  npm:
+    service: node
+    description: "Run npm commands in node container: lando npm <command>"
+
+  node:
+    service: node
+    description: "Run node commands in node container: lando node <command>"
+
+  gulp:
+    service: node
+    description: "Run node:gulp commands in node container: lando gulp <command>"
+
