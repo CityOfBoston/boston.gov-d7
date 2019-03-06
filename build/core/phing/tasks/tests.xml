@@ -67,7 +67,7 @@
         </fileset>
       </batchtest>
     </phpunit>
-    <phpunitreport infile="${reports.localDir}/phpunit/testsuites.xml" format="noframes" todir="${reports.localDir}/phpunit" />
+    <!--<phpunitreport infile="${reports.localDir}/phpunit/testsuites.xml" format="noframes" todir="${reports.localDir}/phpunit" />-->
     <property name="reports.phpunit.file" value="${reports.localDir}/phpunit/phpunit-noframes.html"/>
     <echo>PHPUnit Report is available at ${reports.phpunit.file}</echo>
 

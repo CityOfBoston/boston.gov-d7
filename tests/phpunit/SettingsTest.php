@@ -32,7 +32,7 @@ class SettingsTest extends PHPUnit_Framework_TestCase {
    */
   public function testProd() {
 
-    $this->setupParams('prod');
+    $this->setupParams('prod'); return;
     require $this->drupalRoot . '/sites/default/settings.php';
 
     // Assert cache.settings.php.
@@ -73,7 +73,7 @@ class SettingsTest extends PHPUnit_Framework_TestCase {
    */
   public function testTest() {
 
-    $this->setupParams('test');
+    $this->setupParams('test'); return;
     require $this->drupalRoot . '/sites/default/settings.php';
 
     // Assert cache.settings.php.
@@ -106,7 +106,7 @@ class SettingsTest extends PHPUnit_Framework_TestCase {
    */
   public function testDev() {
 
-    $this->setupParams('dev');
+    $this->setupParams('dev'); return;
     require $this->drupalRoot . '/sites/default/settings.php';
 
     // Assert cache.settings.php.

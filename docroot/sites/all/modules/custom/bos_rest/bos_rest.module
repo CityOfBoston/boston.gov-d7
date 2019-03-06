@@ -143,9 +143,15 @@ function bos_rest_cityscore_html() {
 function bos_rest_cityscore_json() {
   bos_rest_ga("/api/cityscore/summary/json");
   $curl_handle = curl_init();
-  curl_setopt($curl_handle, CURLOPT_URL, 'http://edit-ci.boston.gov/cityscore/totals/latest.json?id=' . rand());
-  curl_setopt($curl_handle, CURLOPT_HTTPHEADER, ["Host: edit-ci.boston.gov"]);
-  curl_setopt($curl_handle, CURLOPT_RESOLVE, ["edit-ci.boston.gov:80:54.227.255.2", "edit-ci.boston.gov:443:54.227.255.2"]);
+  if (stripos($_SERVER["HTTP_HOST"], "edit-") !== FALSE) {
+    curl_setopt($curl_handle, CURLOPT_URL, 'http://edit-ci.boston.gov/cityscore/totals/latest.json?id=' . rand());
+    curl_setopt($curl_handle, CURLOPT_HTTPHEADER, ["Host: edit-ci.boston.gov", "Cache-Control: no-cache"]);
+    curl_setopt($curl_handle, CURLOPT_RESOLVE, ["edit-ci.boston.gov:80:54.227.255.2", "edit-ci.boston.gov:443:54.227.255.2"]);
+    curl_setopt($curl_handle, CURLOPT_URL, 'http://edit-ci.boston.gov/cityscore/totals/latest.json?id=' . rand());
+  }
+  elseif (stripos($_SERVER["HTTP_HOST"], "127.0.0.1") !== FALSE) {
+    curl_setopt($curl_handle, CURLOPT_URL, 'http://localhost/cityscore/totals/latest.json?id=' . rand());
+  }
   curl_setopt($curl_handle, CURLOPT_RETURNTRANSFER, TRUE);
   curl_setopt($curl_handle, CURLOPT_FOLLOWLOCATION, TRUE);
   curl_setopt($curl_handle, CURLOPT_AUTOREFERER, TRUE);
