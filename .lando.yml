@@ -28,7 +28,7 @@ services:
       password: drupal
       database: drupal
     config:
-      database: lando/my-custom.cnf
+      database: config/my-custom.cnf
 
   node:
     type: node:8
