@@ -20,12 +20,15 @@ services:
     portforward: 3307
     host: localhost
     run_as_root:
-      - apt-get install -y --no-install-recommends less python-pip python-setuptools
+      - apt-get update
+      - apt-get install less python-pip python-setuptools -y
       - pip install mycli
     creds:
       user: drupal
       password: drupal
       database: drupal
+    config:
+      database: lando/my-custom.cnf
 
   node:
     type: node:8
