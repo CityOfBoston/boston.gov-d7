@@ -129,6 +129,12 @@ function doitmysql() {
   docker exec -it bostongov-d7_mysql_1 mysql --pager="less -SFX"
 }
 
+# Open MyCLI prompt.
+function doitmycli() {
+  doitcomment "Opening MyCLI promt inside container" "type \"exit\" or use Ctrl+c to escape)."
+  docker exec -e COLUMNS="(tput cols)" -e LINES="(tput lines)" -ti bosd7_database_1 mycli
+}
+
 function doitlogs() {
   service="${args[0]:-drupal}"
 
@@ -462,6 +468,8 @@ if [[ -n "$command" ]]; then
     doitdrush
   elif [[ $command == "mysql" ]]; then
     doitmysql
+  elif [[ $command == "mycli" ]]; then
+    doitmycli
   elif [[ $command == "logs" ]]; then
     doitlogs
   elif [[ $command == "cheatsheet" ]]; then
