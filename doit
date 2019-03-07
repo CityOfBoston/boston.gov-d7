@@ -131,7 +131,7 @@ function doitmysql() {
 
 # Open MyCLI prompt.
 function doitmycli() {
-  doitcomment "Opening MyCLI promt inside container" "type \"exit\" or use Ctrl+c to escape)."
+  doitcomment "Opening MyCLI promt inside container" "type \"exit\" or \"quit\" to escape)."
   docker exec -e COLUMNS="(tput cols)" -e LINES="(tput lines)" -ti bosd7_database_1 mycli
 }
 
