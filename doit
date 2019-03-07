@@ -125,13 +125,13 @@ function doitsyncfiles() {
 
 # Open MySQL prompt.
 function doitmysql() {
-  doitcomment "Opening MySQL promt inside container" "type \"exit\" or use Ctrl+c to escape)."
+  doitcomment "Opening MySQL prompt inside container" "type \"exit\" or use Ctrl+c to escape)."
   docker exec -it bostongov-d7_mysql_1 mysql --pager="less -SFX"
 }
 
 # Open MyCLI prompt.
 function doitmycli() {
-  doitcomment "Opening MyCLI promt inside container" "type \"exit\" or \"quit\" to escape)."
+  doitcomment "Opening MyCLI prompt inside container" "type \"exit\" or \"quit\" to escape)."
   docker exec -e COLUMNS="(tput cols)" -e LINES="(tput lines)" -ti bosd7_database_1 mycli
 }
 
