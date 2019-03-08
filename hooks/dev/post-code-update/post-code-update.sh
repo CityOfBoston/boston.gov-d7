@@ -30,16 +30,16 @@ deployed_tag="$4"
 repo_url="$5"
 repo_type="$6"
 
-if [[ "$target_env" = 'dev' ]]; then
+if [ "$target_env" = 'dev' ]; then
     echo "$site.$target_env: A successful commit to $source_branch branch has caused a code update on $target_env environment of $site environment."
     echo "This hook will now synchronise the $target_env database with updated code."
 
-    if [[ ${site} = "boston" ]]; then
+    if [ ${site} = "boston" ]; then
 
         echo "Copy database from stage (aka test) to $target_env."
         # drush sql-sync @${site}.test @self --create-db --structure-tables-key=lightweight -y
         # Use acapi command (rather than sql-sync) because this will cause the Acquia DB copy hooks to run.
-        drush @${site}.test ac-database-copy ${site} ${target_env}
+#        drush @${site}.test ac-database-copy ${site} ${target_env}
 
         echo "Update database ($site) on $target_env with configuration from updated code in $source_branch."
         drush @${site}.${target_env} en stage_file_proxy -y
@@ -55,10 +55,10 @@ if [[ "$target_env" = 'dev' ]]; then
 
         echo "=== Code update completed ==="
 
-    elif [[ ${site} = "thehub" ]]; then
+    elif [ ${site} = "thehub" ]; then
 
         echo "Copy database from stage (aka test) to $target_env."
-        drush @${site}.test ac-database-copy ${site} ${target_env}
+#        drush @${site}.test ac-database-copy ${site} ${target_env}
 
         echo "Update database ($site) on $target_env with configuration from updated code in $source_branch."
         drush @${site}.${target_env} en stage_file_proxy -y
