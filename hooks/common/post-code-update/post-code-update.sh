@@ -30,7 +30,7 @@ deployed_tag="$4"
 repo_url="$5"
 repo_type="$6"
 
-if [ "$target_env" = 'uat' || "$target_env" = 'ci' ]; then
+if [ "$target_env" = 'uat' ] || [ "$target_env" = 'ci' ]; then
 
     # THIS HOOK USED FOR UAT AND CI ENVIRONMENTS ONLY.
 
