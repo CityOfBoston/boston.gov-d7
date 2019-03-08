@@ -28,7 +28,6 @@ class COBDrupalBootstrap {
     if (isset($drupalRoot)) {
       $this->drupalRoot = $drupalRoot;
     }
-    echo $drupalRoot;
     if (!defined('DRUPAL_ROOT')) {
       define('DRUPAL_ROOT', $this->drupalRoot);
     }
@@ -36,7 +35,7 @@ class COBDrupalBootstrap {
     $_SERVER['REMOTE_ADDR'] = '127.0.0.1';
 
     // Bootstrap Drupal.
-    drupal_bootstrap(DRUPAL_BOOTSTRAP_FULL);
+    drupal_bootstrap(DRUPAL_BOOTSTRAP_VARIABLES);
   }
 
 }

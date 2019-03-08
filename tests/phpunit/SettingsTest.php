@@ -8,6 +8,8 @@
 namespace Drupal;
 
 use PHPUnit_Framework_TestCase;
+use Drupal\phpunit\COBDrupalBootstrap;
+
 /**
  * Tests settings.php tests.
  */
@@ -19,12 +21,10 @@ class SettingsTest extends PHPUnit_Framework_TestCase {
    *   The acquia environment being simulated. E.g., prod, test, dev, etc.
    */
   public function setupParams($env) {
+    require_once __DIR__ . "/DrupalBootstrap.php";
+    $drupal = new COBDrupalBootstrap();
+    $drupal->bootstrapDrupal("/boston.gov/docroot");
 
-    $this->projectRoot = dirname(dirname(__DIR__));
-    $this->drupalRoot = $this->projectRoot . '/docroot';
-    if (!defined('DRUPAL_ROOT')) {
-      define('DRUPAL_ROOT', $this->drupalRoot);
-    }
   }
 
   /**
