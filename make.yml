@@ -105,9 +105,6 @@ projects:
     version: 1.9
   entityreference:
     version: 1.5
-    patch:
-      # Adds option to adjust number of autocomplete results (https://www.drupal.org/node/2185019)
-      - https://www.drupal.org/files/issues/2185019-26.patch
   entityreference_autocreate:
     version: 1.1
   expire:

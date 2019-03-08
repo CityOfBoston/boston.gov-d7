@@ -54,7 +54,7 @@ function bos_content_type_post_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Components',
-    'weight' => '6',
+    'weight' => '7',
     'children' => array(
       0 => 'field_components',
     ),
@@ -109,8 +109,8 @@ function bos_content_type_post_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => 'Related Content - ORIGINAL',
-    'weight' => '7',
+    'label' => 'Related Content',
+    'weight' => '8',
     'children' => array(
       0 => 'field_place',
       1 => 'field_program_initiative',
@@ -123,43 +123,15 @@ function bos_content_type_post_field_group_info() {
     ),
     'format_type' => 'tab',
     'format_settings' => array(
-      'label' => 'Related Content - ORIGINAL',
-      'instance_settings' => array(
-        'required_fields' => 1,
-        'classes' => 'group-related-content field-group-tab',
-        'description' => '',
-      ),
       'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-related-content field-group-tab',
+        'required_fields' => 1,
+      ),
     ),
   );
   $field_groups['group_related_content|node|post|form'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
-  $field_group->identifier = 'group_related|node|post|form';
-  $field_group->group_name = 'group_related';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'post';
-  $field_group->mode = 'form';
-  $field_group->parent_name = '';
-  $field_group->data = array(
-    'label' => 'Related Content - NEW',
-    'weight' => '8',
-    'children' => array(
-      0 => 'field_related',
-    ),
-    'format_type' => 'tab',
-    'format_settings' => array(
-      'formatter' => 'closed',
-      'instance_settings' => array(
-        'description' => '',
-        'classes' => 'group-related field-group-tab',
-        'required_fields' => 1,
-      ),
-    ),
-  );
-  $field_groups['group_related|node|post|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -172,7 +144,7 @@ function bos_content_type_post_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Sidebar Components',
-    'weight' => '5',
+    'weight' => '6',
     'children' => array(
       0 => 'field_sidebar_components',
     ),
@@ -193,8 +165,7 @@ function bos_content_type_post_field_group_info() {
   t('Basic Information');
   t('Components');
   t('Page Metadata');
-  t('Related Content - NEW');
-  t('Related Content - ORIGINAL');
+  t('Related Content');
   t('Sidebar Components');
 
   return $field_groups;

@@ -59,7 +59,6 @@ function bos_profile_install() {
   bos_profile_update_7041();
   bos_profile_update_7042();
   bos_profile_update_7043();
-  bos_profile_update_7044();
 }
 
 /**
@@ -1241,26 +1240,13 @@ function bos_profile_update_7042() {
 
 }
 
+
 /**
  * Adds boards and commissions search feature module.
  */
 function bos_profile_update_7043() {
   $enabled_modules = array(
     'bos_commissions_search',
-  );
-  module_enable($enabled_modules);
-}
-
-/**
- * Adds Entity Reference Filters view.
- */
-function bos_profile_update_7044() {
-  $enabled_modules = array(
-    'bos_view_entity_reference_filters',
-    'bos_view_events_and_notices',
-    'bos_component_events_and_notices',
-    'bos_view_news_and_announcements',
-    'bos_component_news_and_announcements',
   );
   module_enable($enabled_modules);
 }
