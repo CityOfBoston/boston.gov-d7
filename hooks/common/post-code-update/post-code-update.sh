@@ -40,7 +40,7 @@ if [[ "$target_env" = 'uat' || "$target_env" = 'ci' ]]; then
     if [[ ${site} = "boston" ]]; then
 
         echo "Copy database from stage (aka test) to $target_env."
-        drush @${site}.test ac-database-copy ${site} ${target_env}
+#        drush @${site}.test ac-database-copy ${site} ${target_env}
 
         if [[ "$target_env" = 'ci' ]]; then
             # Place CI-specific commands/configurations here
@@ -69,7 +69,7 @@ if [[ "$target_env" = 'uat' || "$target_env" = 'ci' ]]; then
     elif [[ ${site} = "thehub" ]]; then
 
         echo "Copy database from stage (aka test) to $target_env."
-        drush @${site}.test ac-database-copy ${site} ${target_env}
+#        drush @${site}.test ac-database-copy ${site} ${target_env}
 
         if [[ "$target_env" = 'ci' ]]; then
             # Place CI-specific commands/configurations here
