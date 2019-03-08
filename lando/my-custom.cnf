@@ -1,2 +1,2 @@
 [client]
-pager = 'less -SFX'
+pager = 'pspg -s 16'

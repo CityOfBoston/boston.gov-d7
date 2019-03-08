@@ -21,7 +21,7 @@ services:
     host: localhost
     run_as_root:
       - apt-get update
-      - apt-get install less python-pip python-setuptools -y
+      - apt-get install python-pip python-setuptools -y
       - pip install mycli
       - apt-get install wget ca-certificates -y
       - wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -
