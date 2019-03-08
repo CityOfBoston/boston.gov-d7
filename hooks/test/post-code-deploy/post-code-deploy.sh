@@ -30,11 +30,11 @@ deployed_tag="$4"
 repo_url="$5"
 repo_type="$6"
 
-if [[ "$target_env" = 'test' ]]; then
+if [ "$target_env" = 'test' ]; then
     echo "$site.$target_env: A code-copy (deploy) to $source_branch branch has caused a code update on $target_env environment of $site environment."
     echo "This hook will now synchronise the $target_env database with updated code."
 
-    if [[ ${site} = "boston" ]]; then
+    if [ ${site} = "boston" ]; then
 
         echo "Backing up the current $site database on ${target_env}."
         drush @${site}.${target_env} ac-database-instance-backup ${site}
@@ -58,7 +58,7 @@ if [[ "$target_env" = 'test' ]]; then
 
         echo "=== Code-copy (deploy) update completed ==="
 
-    elif [[ ${site} = "thehub" ]]; then
+    elif [ ${site} = "thehub" ]; then
 
         echo "Backing up the current $site database on ${target_env}."
         drush @${site}.${target_env} ac-database-instance-backup ${site}
