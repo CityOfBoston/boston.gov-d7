@@ -2,7 +2,6 @@
 <head>
   <?php print $head; ?>
   <title><?php print $head_title; ?></title>
-
   <?php if ($google_tag_manager_id) { ?>
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
