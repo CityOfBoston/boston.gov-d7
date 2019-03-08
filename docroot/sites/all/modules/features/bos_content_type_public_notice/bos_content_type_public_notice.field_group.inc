@@ -225,7 +225,7 @@ function bos_content_type_public_notice_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Page Meta Data',
-    'weight' => '6',
+    'weight' => '7',
     'children' => array(
       0 => 'field_updated_date',
     ),
@@ -273,14 +273,14 @@ function bos_content_type_public_notice_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_related|node|public_notice|form';
-  $field_group->group_name = 'group_related';
+  $field_group->identifier = 'group_related_content|node|public_notice|form';
+  $field_group->group_name = 'group_related_content';
   $field_group->entity_type = 'node';
   $field_group->bundle = 'public_notice';
   $field_group->mode = 'form';
   $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => 'Related Items',
+    'label' => 'Related Content - ORIGINAL',
     'weight' => '5',
     'children' => array(
       0 => 'field_multiple_neighborhoods',
@@ -298,9 +298,37 @@ function bos_content_type_public_notice_field_group_info() {
       'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
-        'classes' => 'group-related field-group-tab',
+        'classes' => 'group-related-content field-group-tab',
         'required_fields' => 1,
       ),
+    ),
+  );
+  $field_groups['group_related_content|node|public_notice|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_related|node|public_notice|form';
+  $field_group->group_name = 'group_related';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'public_notice';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Related Content - NEW',
+    'weight' => '6',
+    'children' => array(
+      0 => 'field_related',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'label' => 'Related Content - NEW',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-related field-group-tab',
+        'description' => '',
+      ),
+      'formatter' => 'closed',
     ),
   );
   $field_groups['group_related|node|public_notice|form'] = $field_group;
@@ -344,7 +372,8 @@ function bos_content_type_public_notice_field_group_info() {
   t('Meeting Location');
   t('Page Meta Data');
   t('Public Testimony');
-  t('Related Items');
+  t('Related Content - NEW');
+  t('Related Content - ORIGINAL');
 
   return $field_groups;
 }

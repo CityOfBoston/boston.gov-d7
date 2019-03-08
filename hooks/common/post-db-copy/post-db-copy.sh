@@ -13,12 +13,12 @@ target_env="$2"
 db_name="$3"
 source_env="$4"
 
+echo "$site.$target_env: The $db_name database has been copied from $source_env to $target_env."
 
 # Scrub the db of any PII if not on prod environemnt
-if [ "$site" != 'boston' ] && [ "$target_env" != 'prod' ]; then
-  echo "$site.$target_env: The $db_name database has been deployed from $source_env to $target_env.."
-  echo "$site.$target_env: Scrubbing database $db_name..."
-   (cat <<EOF
+if [[ "$site" != 'boston' ]] && [[ "$target_env" != 'prod' ]]; then
+    echo "$site.$target_env: Scrubbing database $db_name of Personal Information information..."
+    (cat <<EOF
   --
   -- Scrub important information from a Drupal database.
   --
@@ -33,8 +33,7 @@ if [ "$site" != 'boston' ] && [ "$target_env" != 'prod' ]; then
   TRUNCATE field_data_field_emergency_contact_phone;
   TRUNCATE field_data_field_emergency_contact_name;
 EOF
-) | drush @$site.$target_env ah-sql-cli --db=$db_name
-  echo "Database '$db_name' scrub complete..."
-else
-   echo "$site.$target_env: The $db_name database has been deployed from $source_env to $target_env."
+) | drush @${site}.${target_env} ah-sql-cli --db=${db_name}
+    drush @${site}.${target_env} sql-sanitize --sanitize-password=no
+    echo "Database '$db_name' scrub complete..."
 fi

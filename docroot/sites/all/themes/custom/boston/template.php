@@ -294,6 +294,12 @@ function boston_preprocess_html(array &$variables, $hook) {
       'every_page' => TRUE,
     ));
   }
+
+  drupal_add_css(drupal_get_path('theme', 'boston') . '/css/boston.theme.overides.css', array(
+    'type'  =>  'file',
+    'group' =>  CSS_THEME
+  ));
+
 }
 
 /**
@@ -994,6 +1000,12 @@ function boston_preprocess_node_procurement_advertisement(&$variables) {
   }
   else {
     $variables['time_range'] = '';
+  }
+
+  $field_advertisement_date = field_get_items('node', $variables['node'], 'field_advertisement_date');
+  if ($field_advertisement_date !== FALSE) {
+    $advertisement_date = strtotime($field_advertisement_date[0]['value']);
+    $variables['advert_date'] = date('n/j/Y', $advertisement_date);
   }
 
   $submissions = $variables['field_bid'];

@@ -1,0 +1,110 @@
+<?php
+
+/**
+ * @file
+ * Runs HCM migration related tasks.
+ */
+
+ /**
+  * Clean up user accounts.
+  */
+function hub_migration_update_7001(&$sandbox) {
+  if (empty($sandbox)) {
+    $names = array(
+      '047974',
+      '066720',
+      '082283',
+      '092294',
+      '097534',
+      '102135',
+      '116291',
+      '124366',
+      '132419',
+      '136524',
+      '136724',
+      '137036',
+      '139491',
+      '141998',
+      '143409',
+      '144410',
+      '145281',
+      '145289',
+      '145364',
+      '145441',
+      '145498',
+      '145752',
+      '148299',
+      '148338',
+      '149103',
+      '149135',
+      '149192',
+      '149205',
+      '149206',
+      '149224',
+      '149303',
+      '149309',
+      '149326',
+      '149336',
+      '149606',
+      '149713',
+      '149921',
+      '149953',
+      '149958',
+      '149967',
+      '149987',
+      '150014',
+      '150031',
+      '150035',
+      '150049',
+      '150051',
+      '150064',
+      '150113',
+      '150148',
+      '150199',
+      '150201',
+      '150202',
+      '150211',
+      '150266',
+      '150285',
+      '150286',
+      '150295',
+      '150303',
+      '150304',
+      '150306',
+      '150327',
+      '151186',
+      '151197',
+      '151740',
+      '152005',
+    );
+
+    $result = db_query('SELECT uid FROM users WHERE name IN (:names)', array(':names' => $names));
+    $sandbox['result'] = $result->fetchAllAssoc('uid');
+    $sandbox['count'] = count($sandbox['result']);
+    $sandbox['deleted'] = 0;
+    $sandbox['total'] = 0;
+  }
+
+  $current_run = array_slice($sandbox['result'], $sandbox['total'], '10', TRUE);
+  foreach ($current_run as $uid => $data) {
+    $sandbox['total']++;
+    if ($user = user_load($uid)) {
+      if (profile2_load_by_user($uid)) {
+        $profile = profile2_load_by_user($user);
+        $profile = array_shift($profile);
+        profile2_delete($profile);
+        user_delete($uid);
+      }
+      $sandbox['deleted']++;
+    }
+  }
+
+  if ($sandbox['count'] == 0) {
+    $sandbox['#finished'] = 1;
+  }
+  else {
+    $sandbox['#finished'] = $sandbox['total'] / $sandbox['count'];
+  }
+
+  return $sandbox['deleted'] . ' users and profiles deleted out of ' . $sandbox['count'] . ' total.';
+}
