@@ -39,18 +39,20 @@ if [ "$target_env" = 'uat' ] || [ "$target_env" = 'ci' ]; then
 
     if [ ${site} = "boston" ]; then
 
-        echo "Copy database from stage (aka test) to $target_env."
-#        drush @${site}.test ac-database-copy ${site} ${target_env}
-
         if [ "$target_env" = 'ci' ]; then
             # Place CI-specific commands/configurations here
-            echo "CI Environment."
+            echo "== CI Environment Specific =="
+#            echo "Copy database from stage (aka test) to $target_env."
+#            drush @${site}.test ac-database-copy ${site} ${target_env} --email=${ac_api_email} --key=${ac_api_key} --endpoint=https://cloudapi.acquia.com/v1
         elif [ "$target_env" = 'uat' ]; then
             # Place UAT-specific commands/configurations here
-            echo "UAT Environment."
+            echo "== UAT Environment Specific =="
+#             echo "Copy database from stage (aka test) to $target_env."
+#             drush @${site}.test ac-database-copy ${site} ${target_env} --email=${ac_api_email} --key=${ac_api_key} --endpoint=https://cloudapi.acquia.com/v1
             # redirect to a different patterns CDN.
-            # drush @${site}.${target_env} vset "asset_url" "https://cob-patterns-staging.herokuapp.com/"
+#             drush @${site}.${target_env} vset "asset_url" "https://cob-patterns-staging.herokuapp.com/"
         fi
+        echo "== End Environment Specific commands =="
 
         echo "Update database ($site) on $target_env with configuration from updated code in $source_branch."
         drush @${site}.${target_env} en stage_file_proxy -y

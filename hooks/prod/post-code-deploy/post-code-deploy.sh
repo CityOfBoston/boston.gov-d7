@@ -37,7 +37,7 @@ if [ "$target_env" = 'prod' ]; then
     if [ ${site} = "boston" ]; then
 
         echo "Backing up the $site database on production."
-        drush @${site}.${target_env} ac-database-instance-backup ${site}
+        drush @${site}.${target_env} ac-database-instance-backup ${site} --email=${ac_api_email} --key=${ac_api_key} --endpoint=https://cloudapi.acquia.com/v1
 
         echo "Update database ($site) on $target_env with configuration from updated code in $source_branch."
         drush @${site}.${target_env} cc drush
@@ -54,7 +54,7 @@ if [ "$target_env" = 'prod' ]; then
     elif [ ${site} = "thehub" ]; then
 
         echo "Backing up the $site database on production."
-        drush @${site}.${target_env} ac-database-instance-backup ${site}
+        drush @${site}.${target_env} ac-database-instance-backup ${site} --email=${ac_api_email} --key=${ac_api_key} --endpoint=https://cloudapi.acquia.com/v1
 
         echo "Update database ($site) on $target_env with configuration from updated code in $source_branch."
         drush @${site}.${target_env} cc drush
