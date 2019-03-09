@@ -38,7 +38,7 @@ if [ "$target_env" = 'dev' ]; then
 
         echo "Copy database from stage (aka test) to $target_env."
         # Use acapi command (rather than sql-sync) because this will cause the Acquia DB copy hooks to run.
-        drush @${site}.test ac-database-copy ${site} ${target_env} --email=${ac_api_email} --key={ac_api_key} --endpoint=https://cloudapi.acquia.com/v1
+        drush @${site}.test ac-database-copy ${site} ${target_env} --email=${ac_api_email} --key=${ac_api_key} --endpoint=https://cloudapi.acquia.com/v1
 
         echo "Update database ($site) on $target_env with configuration from updated code in $source_branch."
         drush @${site}.${target_env} en stage_file_proxy -y
@@ -57,7 +57,7 @@ if [ "$target_env" = 'dev' ]; then
     elif [ ${site} = "thehub" ]; then
 
         echo "Copy database from stage (aka test) to $target_env."
-        drush @${site}.test ac-database-copy ${site} ${target_env} --email=${ac_api_email} --key={ac_api_key} --endpoint=https://cloudapi.acquia.com/v1
+        drush @${site}.test ac-database-copy ${site} ${target_env} --email=${ac_api_email} --key=${ac_api_key} --endpoint=https://cloudapi.acquia.com/v1
 
         echo "Update database ($site) on $target_env with configuration from updated code in $source_branch."
         drush @${site}.${target_env} en stage_file_proxy -y

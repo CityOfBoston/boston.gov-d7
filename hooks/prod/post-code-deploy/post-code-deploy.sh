@@ -37,34 +37,47 @@ if [ "$target_env" = 'prod' ]; then
     if [ ${site} = "boston" ]; then
 
         echo "Backing up the $site database on production."
-        drush @${site}.${target_env} ac-database-instance-backup ${site}
+        drush @${site}.${target_env} ac-database-instance-backup ${site} --email=${ac_api_email} --key=${ac_api_key} --endpoint=https://cloudapi.acquia.com/v1
 
-        echo "Update database ($site) on $target_env with configuration from updated code in $source_branch."
-        drush @${site}.${target_env} cc drush
-        drush @${site}.${target_env} fra -y
-        drush @${site}.${target_env} updb -y
-        drush @${site}.${target_env} fra -y
+        if [ $? -eq 0 ]; then
+            echo "Update database ($site) on $target_env with configuration from updated code in $source_branch."
+            drush @${site}.${target_env} cc drush
+            drush @${site}.${target_env} fra -y
+            drush @${site}.${target_env} updb -y
+            drush @${site}.${target_env} fra -y
 
-        echo "Refresh all permissions and force run a cron task now."
-        drush @${site}.${target_env} acquia-reset-permissions -y
-        drush @${site}.${target_env} cron
-
+            echo "Refresh all permissions and force run a cron task now."
+            drush @${site}.${target_env} acquia-reset-permissions -y
+            drush @${site}.${target_env} cron
+        else
+            echo "\NERROR:"
+            echo "DATABASE BACKUP ERROR - THE DATABASE WAS NOT UPDATED."
+            echo "Please check why the database was not dumped and fix."
+            echo "Note: The code and database are presently NOT in sync, features and updates in the code have not been applied to the database."
+        fi
         echo "=== Code-copy (deploy) update completed ==="
 
     elif [ ${site} = "thehub" ]; then
 
         echo "Backing up the $site database on production."
-        drush @${site}.${target_env} ac-database-instance-backup ${site}
+        drush @${site}.${target_env} ac-database-instance-backup ${site} --email=${ac_api_email} --key=${ac_api_key} --endpoint=https://cloudapi.acquia.com/v1
 
-        echo "Update database ($site) on $target_env with configuration from updated code in $source_branch."
-        drush @${site}.${target_env} cc drush
-        drush @${site}.${target_env} fra -y
-        drush @${site}.${target_env} updb -y
-        drush @${site}.${target_env} fra -y
+        if [ $? -eq 0 ]; then
+            echo "Update database ($site) on $target_env with configuration from updated code in $source_branch."
+            drush @${site}.${target_env} cc drush
+            drush @${site}.${target_env} fra -y
+            drush @${site}.${target_env} updb -y
+            drush @${site}.${target_env} fra -y
 
-        echo "Refresh all permissions and force run a cron task now."
-        drush @${site}.${target_env} acquia-reset-permissions -y
-        drush @${site}.${target_env} cron
+            echo "Refresh all permissions and force run a cron task now."
+            drush @${site}.${target_env} acquia-reset-permissions -y
+            drush @${site}.${target_env} cron
+        else
+            echo "\NERROR:"
+            echo "DATABASE BACKUP ERROR - THE DATABASE WAS NOT UPDATED."
+            echo "Please check why the database was not dumped and fix."
+            echo "Note: The code and database are presently NOT in sync, features and updates in the code have not been applied to the database."
+        fi
 
         echo "=== Code-copy (deploy) update completed ==="
     fi
