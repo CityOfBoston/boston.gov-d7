@@ -55,7 +55,8 @@ tooling:
   mycli:
     service: database
     description: "Open mycli prompt in db container: lando mycli"
-    cmd: "mycli -udrupal -pdrupal"
+    cmd: "mycli --user=drupal --password=drupal --database=drupal"
+    user: root
 
   npm:
     service: node
