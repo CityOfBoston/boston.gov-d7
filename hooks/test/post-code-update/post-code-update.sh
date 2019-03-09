@@ -37,11 +37,11 @@ if [ "$target_env" = 'test' ]; then
     if [ ${site} = "boston" ]; then
 
         echo "Backing up the current $site database on ${target_env}."
-        drush @${site}.${target_env} ac-database-instance-backup ${site} --email=${ac_api_email} --key={ac_api_key}
+        drush @${site}.${target_env} ac-database-instance-backup ${site} --email=${ac_api_email} --key={ac_api_key} --endpoint=https://cloudapi.acquia.com/v1
 
         echo "Copy database from production to $target_env."
         # Use acapi command (rather than sql-sync) because this will cause the DB copy hooks to run.
-        drush @${site}.prod ac-database-copy ${site} ${target_env} --email=${ac_api_email} --key={ac_api_key}
+        drush @${site}.prod ac-database-copy ${site} ${target_env} --email=${ac_api_email} --key={ac_api_key} --endpoint=https://cloudapi.acquia.com/v1
 
         echo "Update database ($site) on $target_env with configuration from updated code in $source_branch."
         drush @${site}.${target_env} en stage_file_proxy -y
@@ -60,11 +60,11 @@ if [ "$target_env" = 'test' ]; then
     elif [ ${site} = "thehub" ]; then
 
         echo "Backing up the current $site database on ${target_env}."
-        drush @${site}.${target_env} ac-database-instance-backup ${site} --email=${ac_api_email} --key={ac_api_key}
+        drush @${site}.${target_env} ac-database-instance-backup ${site} --email=${ac_api_email} --key={ac_api_key} --endpoint=https://cloudapi.acquia.com/v1
 
         echo "Copy database from producction to $target_env."
         # Use acapi command (rather than sql-sync) because this will cause the DB copy hooks to run.
-        drush @${site}.prod ac-database-copy ${site} ${target_env} --email=${ac_api_email} --key={ac_api_key}
+        drush @${site}.prod ac-database-copy ${site} ${target_env} --email=${ac_api_email} --key={ac_api_key} --endpoint=https://cloudapi.acquia.com/v1
 
         echo "Update database ($site) on $target_env with configuration from updated code in $source_branch."
         drush @${site}.${target_env} en stage_file_proxy -y
