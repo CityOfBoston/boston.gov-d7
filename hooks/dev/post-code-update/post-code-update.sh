@@ -30,47 +30,54 @@ deployed_tag="$4"
 repo_url="$5"
 repo_type="$6"
 
+monitor_task() {
+    sleep 60
+    while true; do
+      # Wait for a new backup file to be created.
+      STATUS=$(drush $2 ac-task-info $1 --email=${ac_api_email} --key=${ac_api_key} --endpoint=https://cloudapi.acquia.com/v1 | grep state | awk '{print $3}')
+      if [ "${STATUS}" -eq "done" ]; then exit 0; fi
+      if [ "${STATUS}" -eq "error" ]; then exit 1; fi
+      if [ $LOOP_COUNT > 20 ]; then
+        echo "6 minute execution timeout."
+        exit 1
+      fi
+      sleep 15
+      LOOP_COUNT=$(( $LOOP_COUNT + 1 ))
+    done
+}
+
 if [ "$target_env" = 'dev' ]; then
     echo "$site.$target_env: A successful commit to $source_branch branch has caused a code update on $target_env environment of $site environment."
     echo "This hook will now synchronise the $target_env database with updated code."
 
-    if [ ${site} = "boston" ]; then
-
-        echo "Copy database from stage (aka test) to $target_env."
-        # Use acapi command (rather than sql-sync) because this will cause the Acquia DB copy hooks to run.
-        drush @${site}.test ac-database-copy ${site} ${target_env} --email=${ac_api_email} --key=${ac_api_key} --endpoint=https://cloudapi.acquia.com/v1
-
-        echo "Update database ($site) on $target_env with configuration from updated code in $source_branch."
-        drush @${site}.${target_env} en stage_file_proxy -y
-        drush @${site}.${target_env} vset "stage_file_proxy_origin" "https://www.boston.gov"
-        drush @${site}.${target_env} cc drush
-        drush @${site}.${target_env} fra -y
-        drush @${site}.${target_env} updb -y
-        drush @${site}.${target_env} fra -y
-
-        echo "Refresh all permissions and force run a cron task now."
-        drush @${site}.${target_env} acquia-reset-permissions -y
-        drush @${site}.${target_env} cron
-
-        echo "=== Code update completed ==="
-
-    elif [ ${site} = "thehub" ]; then
-
-        echo "Copy database from stage (aka test) to $target_env."
-        drush @${site}.test ac-database-copy ${site} ${target_env} --email=${ac_api_email} --key=${ac_api_key} --endpoint=https://cloudapi.acquia.com/v1
-
-        echo "Update database ($site) on $target_env with configuration from updated code in $source_branch."
-        drush @${site}.${target_env} en stage_file_proxy -y
-        drush @${site}.${target_env} vset "stage_file_proxy_origin" "https://www.boston.gov"
-        drush @${site}.${target_env} cc drush
-        drush @${site}.${target_env} fra -y
-        drush @${site}.${target_env} updb -y
-        drush @${site}.${target_env} fra -y
-
-        echo "Refresh all permissions and force run a cron task now."
-        drush @${site}.${target_env} acquia-reset-permissions -y
-        drush @${site}.${target_env} cron
-
-        echo "=== Code update completed ==="
+    # Use acapi command (rather than drush db-dump) because this will cause the backup
+    # to be shown the the acquia UI.
+    echo "Backing up the current $site database on ${target_env}."
+    TASK=$(drush @${site}.${target_env} ac-database-instance-backup ${site} --email=${ac_api_email} --key=${ac_api_key} --endpoint=https://cloudapi.acquia.com/v1  | awk '{print $2}')
+    monitor_task ${TASK} @${site}.${target_env}
+    if [ $? -ne 0 ]; then
+        echo "\nERROR BACKING UP DATABASE IN DEV ENVIRONMENT."
     fi
+    # Use acapi command (rather than sql-sync) because this will cause the Acquia DB copy hooks to run.
+    # The acapi command runs an async task, so we have to wait for the copy to complete
+    # before performing any DB sync activity
+    echo "Copy database from stage (aka test) to $target_env."
+    TASK=$(drush @${site}.test ac-database-copy ${site} ${target_env} --email=${ac_api_email} --key=${ac_api_key} --endpoint=https://cloudapi.acquia.com/v1 | awk '{print $2}')
+    monitor_task ${TASK} @${site}.test
+
+    if [ $? -ne 0 ]; then
+        echo "\nERROR COPYING DATABASE FROM STAGE ENVIRONMENT."
+    fi
+    echo "Update database ($site) on $target_env with configuration from updated code in $source_branch."
+    drush @${site}.${target_env} en stage_file_proxy -y
+    drush @${site}.${target_env} vset "stage_file_proxy_origin" "https://www.boston.gov"
+    drush @${site}.${target_env} cc drush
+    drush @${site}.${target_env} fra -y
+    drush @${site}.${target_env} updb -y
+    drush @${site}.${target_env} fra -y
+
+    echo "Refresh all permissions and force run a cron task now."
+    drush @${site}.${target_env} acquia-reset-permissions -y
+    drush @${site}.${target_env} cron
+
 fi
