@@ -50,7 +50,7 @@ if [ "$target_env" = 'prod' ]; then
             drush @${site}.${target_env} acquia-reset-permissions -y
             drush @${site}.${target_env} cron
         else
-            echo "\NERROR:"
+            echo "\nERROR:"
             echo "DATABASE BACKUP ERROR - THE DATABASE WAS NOT UPDATED."
             echo "Please check why the database was not dumped and fix."
             echo "Note: The code and database are presently NOT in sync, features and updates in the code have not been applied to the database."
@@ -73,7 +73,7 @@ if [ "$target_env" = 'prod' ]; then
             drush @${site}.${target_env} acquia-reset-permissions -y
             drush @${site}.${target_env} cron
         else
-            echo "\NERROR:"
+            echo "\nERROR:"
             echo "DATABASE BACKUP ERROR - THE DATABASE WAS NOT UPDATED."
             echo "Please check why the database was not dumped and fix."
             echo "Note: The code and database are presently NOT in sync, features and updates in the code have not been applied to the database."
