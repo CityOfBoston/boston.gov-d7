@@ -31,9 +31,11 @@ repo_url="$5"
 repo_type="$6"
 
 # Add utility functions
-source ../../common/cob_utilities.sh
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+source ${DIR}/../../common/cob_utilities.sh
 
-echo -e "\n$site.$target_env: A successful commit to $source_branch branch has caused a code update on $target_env environment of $site environment."
+echo "\n$site.$target_env: A successful commit to $source_branch branch has caused a code update on $target_env environment of $site environment."
+
 echo "This hook will now synchronise the $target_env database with updated code."
 
 # Use acapi command (rather than drush db-dump) because this will cause the backup
@@ -41,9 +43,9 @@ echo "This hook will now synchronise the $target_env database with updated code.
 echo "- Backing up the current $site database on ${target_env}."
 TASK=$(drush @${site}.${target_env} ac-database-instance-backup ${site} --email=${ac_api_email} --key=${ac_api_key} --endpoint=https://cloudapi.acquia.com/v1 --format=json)
 RES=$(monitor_task "${TASK}" "@${site}.${target_env}")
-echo -e "Result: ${RES}"
+echo "Result: ${RES}"
 if [ "${RES}" != "done" ]; then
-    echo -e "\nERROR BACKING UP DATABASE IN DEV ENVIRONMENT.\n"
+    echo "\nERROR BACKING UP DATABASE IN DEV ENVIRONMENT.\n"
     exit 1
 fi
 
@@ -53,9 +55,9 @@ fi
 echo "- Copy database from stage (aka test) to $target_env."
 TASK=$(drush @${site}.test ac-database-copy ${site} ${target_env} --email=${ac_api_email} --key=${ac_api_key} --endpoint=https://cloudapi.acquia.com/v1 --format=json)
 RES=$(monitor_task "${TASK}" "@${site}.test")
-echo -e "Result: ${RES}"
+echo "Result: ${RES}"
 if [ "${RES}" != "done" ]; then
-    echo -e "\nERROR COPYING DATABASE FROM STAGE ENVIRONMENT."
+    echo "\nERROR COPYING DATABASE FROM STAGE ENVIRONMENT."
     exit 1
 fi
 
@@ -67,6 +69,6 @@ drush @${site}.${target_env} fra -y
 drush @${site}.${target_env} updb -y
 drush @${site}.${target_env} fra -y
 
-echo -e "- Refresh all permissions and force run a cron task now."
+echo "- Refresh all permissions and force run a cron task now."
 drush @${site}.${target_env} acquia-reset-permissions -y
 drush @${site}.${target_env} cron
