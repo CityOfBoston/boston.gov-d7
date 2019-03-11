@@ -24,7 +24,7 @@
   <!-- Start of Bibblio RCM includes -->
 <link rel="stylesheet" type="text/css" href="https://cdn.bibblio.org/rcm/3.10/bib-related-content.min.css">
 <script src="https://cdn.bibblio.org/rcm/3.10/bib-related-content.min.js"></script>
-<style type="text/css">.bib--rcm-init{display:none;}#bibblio-custom{margin-top:-90px;}</style>
+<style type="text/css">.bib--rcm-init{display:none;}#bibblio-custom a{margin-top:0;padding-top:0;}</style>
 <!-- End of Bibblio RCM includes -->
 
   <!--[if !IE]><!-->
