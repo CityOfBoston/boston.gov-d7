@@ -35,6 +35,7 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 source ${DIR}/../../common/cob_utilities.sh
 
 echo "\n$site.$target_env: A successful commit to $source_branch branch has caused a code update on $target_env environment of $site environment."
+
 echo "This hook will now synchronise the $target_env database with updated code."
 
 # Use acapi command (rather than drush db-dump) because this will cause the backup
