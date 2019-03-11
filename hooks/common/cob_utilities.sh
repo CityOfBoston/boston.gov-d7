@@ -6,8 +6,12 @@ parse_json() {
 }
 monitor_task() {
     TASKID=$(parse_json "${1}" "id")
-    sleep 60
-    LOOP_COUNT=0
+    LOOP_INCREMENT=15
+    TIMEOUT=180
+    if [ "${3}" != "" ]; then TIMEOUT=${3}; fi
+    sleep $(( ${LOOP_INCREMENT} * 2 ))
+    LOOP_COUNT=$(( ${LOOP_INCREMENT} * 2 ))
+
     while true; do
       # Wait for a new backup file to be created.
       STATUS=$(drush ${2} ac-task-info ${TASKID} --email=${ac_api_email} --key=${ac_api_key} --endpoint=https://cloudapi.acquia.com/v1 --format=json)
@@ -18,12 +22,12 @@ monitor_task() {
         STATE=$(parse_json "${STATUS}" "result")
         break;
       fi
-      if (( $LOOP_COUNT > 36 )); then
-        STATE="10 minute timeout"
+      if (( ${LOOP_COUNT} > ${TIMEOUT} )); then
+        STATE="timeout"
         break
       fi
-      sleep 15
-      LOOP_COUNT=$(( $LOOP_COUNT + 1 ))
+      sleep ${LOOP_INCREMENT}
+      LOOP_COUNT=$(( ${LOOP_COUNT} + ${LOOP_INCREMENT} ))
     done
     echo "${STATE}"
 }
