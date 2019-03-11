@@ -1,8 +1,15 @@
 name = bos_view_api_public_notices
+description = Provides endpoint for public notices on BrightSigns displays.
 core = 7.x
 package = Features
+dependencies[] = bos_api_public_notice
+dependencies[] = ctools
+dependencies[] = rest_server
+dependencies[] = services
 dependencies[] = services_views
 dependencies[] = views
+dependencies[] = views_json
+features[ctools][] = services:services:3
 features[ctools][] = views:views_default:3.0
 features[features_api][] = api:2
 features[views_view][] = api_public_notice
