@@ -32,7 +32,9 @@ repo_type="$6"
 
 # Add utility functions
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
-source ${DIR}/../../common/cob_utilities.sh
+#source ${DIR}/../../common/cob_utilities.sh
+echo ${DIR}/../../common/cob_utilities.sh
+source /var/www/html/boston.dev/hooks/common/cob_utilities.sh
 
 echo "\n$site.$target_env: A successful commit to $source_branch branch has caused a code update on $target_env environment of $site environment."
 
