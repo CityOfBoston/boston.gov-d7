@@ -90,21 +90,3 @@
       <!-- End topic-departments-container -->
     </section><!-- End departments-container -->
   <?php endif; ?>
-
-  <!-- begin Bibblio custom markup-->
-       <div class="bibblio-container">
-          <div class="content entity entity-paragraphs-item paragraphs-item-text component-section">
-              <div class="sh">
-                <h2 class="sh-title">Suggested Content</h2>
-              </div>
-              <div class="paragraphs-items paragraphs-items-field-text-blocks paragraphs-items-field-text-blocks-full paragraphs-items-full">
-                      <div id="bibblio-custom">
-                          <div class="g"></div>
-                      </div>
-              </div>
-          </div>
-        </div>
-  <!-- end Bibblio custom markup -->
-</article>
-<!--Bibblio custom script -->
-<script src="/sites/all/themes/custom/boston/js/bibblio-custom.js"></script>

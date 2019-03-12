@@ -34,7 +34,7 @@ var getHTML = function(bibContent){
       let bibName = bibFields.name;
       let bibUrl = bibFields.url;
       let bibDesc = bibFields.description; 
-      listItem += '<a class= "cd g--4 g--4--sl m-t500" href="'+bibUrl+'"><div class="cd-ic" style="background-image:url(https://boston.gov/'+imgInfo.path+')" img-desc="'+imgInfo.desc+'"><\/div><div class="cd-c"><div class="cd-t">'+bibName+'<\/div><div class="cd-d"\>'+bibDesc+'<\/div><\/div><\/a>';
+      listItem += '<a class= "cd g--4 g--4--sl m-t500 bibblio" href="'+bibUrl+'"><div class="cd-ic" style="background-image:url(https://boston.gov/'+imgInfo.path+')" bibblio-img-desc="'+imgInfo.desc+'"><\/div><div class="cd-c"><div class="cd-t" bibblio-title="'+bibName+'">'+bibName+'<\/div><div class="cd-d"\>'+bibDesc+'<\/div><\/div><\/a>';
       
   });
   jQuery('#bibblio-custom div.g').append(listItem);
