@@ -33,7 +33,7 @@ services:
       password: drupal
       database: drupal
     config:
-      database: lando/my-custom.cnf
+      database: lando/.my.cnf
 
   node:
     type: node:8
@@ -55,7 +55,7 @@ tooling:
   mycli:
     service: database
     description: "Open mycli prompt in db container: lando mycli"
-    cmd: "mycli --user=drupal --password=drupal --database=drupal"
+    cmd: "mycli --user=drupal --password=drupal --database=drupal --defaults-file=/opt/bitnami/mysql/conf/bitnami/my_custom.cnf"
     user: root
 
   npm:
