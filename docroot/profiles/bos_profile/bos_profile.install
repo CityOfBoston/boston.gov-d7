@@ -1294,6 +1294,7 @@ function bos_profile_update_7044() {
       $new_paragraph->revision = TRUE;
       $new_paragraph->save(FALSE);
 
+      /*
       ob_start();
       echo "NEW paragraph: ";
       var_dump($new_paragraph);
@@ -1302,6 +1303,7 @@ function bos_profile_update_7044() {
       $save = ob_get_contents();
       ob_end_clean();
       file_put_contents(paragraph_debugging3, $save, FILE_APPEND);
+      */
 
     }
   }

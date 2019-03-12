@@ -15,6 +15,8 @@ services:
       - apt-get install -y curl gnupg2
       - curl -sL https://deb.nodesource.com/setup_8.x | bash -
       - apt-get install -y nodejs
+    config:
+      conf: lando/php.ini
   database:
     type: mysql
     portforward: 3307
@@ -33,7 +35,7 @@ services:
       password: drupal
       database: drupal
     config:
-      database: lando/.my.cnf
+      database: lando/my.cnf
 
   node:
     type: node:8
