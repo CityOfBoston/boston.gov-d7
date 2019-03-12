@@ -120,6 +120,9 @@ foreach($content['field_how_to_tabs'] as $key => $array){
               <div class="sh">
                 <h2 class="sh-title">Suggested Content</h2>
               </div>
+              <div class="supporting-text">
+                <p>We're testing out suggested content on Boston.gov below. If you see anything out of place, let us know at <a href="mailto:feedback@boston.gov" title="If you see anything out of place, let us know.">feedback@boston.gov</a></p>
+              </div>
               <div class="paragraphs-items paragraphs-items-field-text-blocks paragraphs-items-field-text-blocks-full paragraphs-items-full">
                       <div id="bibblio-custom">
                           <div class="g"></div>
@@ -129,5 +132,3 @@ foreach($content['field_how_to_tabs'] as $key => $array){
         </div>
   <!-- end Bibblio custom markup -->
 </article>
-<!-- begin Bibblio custom script -->
-<script src="/sites/all/themes/custom/boston/js/bibblio-custom.js"></script>

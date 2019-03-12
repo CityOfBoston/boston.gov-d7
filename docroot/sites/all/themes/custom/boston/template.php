@@ -489,6 +489,13 @@ function boston_preprocess_page(array &$variables) {
       $page_class_alert = 'page';
     }
 
+    if ($variables['node']->type == 'how_to') {
+        drupal_add_js(drupal_get_path('theme', 'boston') . '/js/bibblio-custom.js', array(
+          'scope' => 'footer',
+          'type'  =>  'file'
+        ));
+    }
+
     if (drupal_is_front_page()) {
       $page_class_alert = 'page page--wa page--fp';
     }

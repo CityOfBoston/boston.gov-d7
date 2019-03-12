@@ -20,6 +20,16 @@
     height:0px;
   }
 }
-
+/*bibblio*/
+.bib--rcm-init{
+  display:none;
+}
+#bibblio-custom{
+  margin-top:-35px;
+}
+#bibblio-custom a{
+  margin-top:0;
+  padding-top:0;
+}
 
 
