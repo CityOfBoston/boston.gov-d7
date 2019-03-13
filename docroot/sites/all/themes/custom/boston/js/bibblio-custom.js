@@ -34,21 +34,26 @@ var getHTML = function(bibContent){
       let bibName = bibFields.name;
       let bibUrl = bibFields.url;
       let bibDesc = bibFields.description; 
-      listItem += '<a class= "cd g--4 g--4--sl m-t500 bibblio" href="'+bibUrl+'"><div class="cd-ic" style="background-image:url(https://boston.gov/'+imgInfo.path+')" bibblio-img-desc="'+imgInfo.desc+'"><\/div><div class="cd-c"><div class="cd-t" bibblio-title="'+bibName+'">'+bibName+'<\/div><div class="cd-d"\>'+bibDesc+'<\/div><\/div><\/a>';
+      listItem += '<a class= "cd g--4 g--4--sl m-t500 bibblio" bibblio-title="'+bibName+'" bibblio-img-desc="'+imgInfo.desc+'" href="'+bibUrl+'"><div class="cd-ic" style="background-image:url(https://boston.gov/'+imgInfo.path+')" ><\/div><div class="cd-c"><div class="cd-t">'+bibName+'<\/div><div class="cd-d"\>'+bibDesc+'<\/div><\/div><\/a>';
       
   });
   jQuery('#bibblio-custom div.g').append(listItem);
 }
 const pageURL = window.location.pathname;
+//const siteLocation = 'https://boston.gov';
+const siteLocation = 'https://bostonuat.prod.acquia-sites.com';
 jQuery.ajax({
   method: "GET",
   url: "https://api.bibblio.org/v1/recommendations",
   contentType: "application/json",
   headers: {
-    "Authorization": "Bearer 6364c775-5133-4a32-a80e-a2116bac884b"
+    //live
+    //"Authorization": "Bearer 6364c775-5133-4a32-a80e-a2116bac884b"
+    //testing
+      "Authorization": "Bearer 0966dd72-5068-462f-8c15-9967ad9a975f"
   },
   data:{ 
-    "customUniqueIdentifier": "https://bostonuat.prod.acquia-sites.com" + pageURL,
+    "customUniqueIdentifier": siteLocation + pageURL,
     "fields":"name,moduleImage,url,datePublished,description", 
     "limit":"3",
   },
