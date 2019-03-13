@@ -30,6 +30,9 @@ deployed_tag="$4"
 repo_url="$5"
 repo_type="$6"
 
+# Add utility functions
+. "/var/www/html/boston.dev/hooks/common/cob_utilities.sh"
+
 if [ "$target_env" = 'uat' ] || [ "$target_env" = 'ci' ]; then
 
     # THIS HOOK USED FOR UAT AND CI ENVIRONMENTS ONLY.
@@ -39,6 +42,10 @@ if [ "$target_env" = 'uat' ] || [ "$target_env" = 'ci' ]; then
 
     if [ ${site} = "boston" ]; then
 
+        echo "- Backing up the current $site database on ${target_env}."
+        TASK=$(drush @${site}.${target_env} ac-database-instance-backup ${site} --email=${ac_api_email} --key=${ac_api_key} --endpoint=https://cloudapi.acquia.com/v1 --format=json)
+        RES=$(monitor_task "${TASK}" "@${site}.${target_env}" 500)
+
         if [ "$target_env" = 'ci' ]; then
             # Place CI-specific commands/configurations here
             echo "== CI Environment Specific =="
@@ -47,51 +54,35 @@ if [ "$target_env" = 'uat' ] || [ "$target_env" = 'ci' ]; then
         elif [ "$target_env" = 'uat' ]; then
             # Place UAT-specific commands/configurations here
             echo "== UAT Environment Specific =="
-#             echo "Copy database from stage (aka test) to $target_env."
-#             drush @${site}.test ac-database-copy ${site} ${target_env} --email=${ac_api_email} --key=${ac_api_key} --endpoint=https://cloudapi.acquia.com/v1
-            # redirect to a different patterns CDN.
-#             drush @${site}.${target_env} vset "asset_url" "https://cob-patterns-staging.herokuapp.com/"
+            if [ "${deployed_tag}" = "bibblio-test" ]; then
+                # redirect to a different patterns CDN.
+                drush @${site}.${target_env} vset "asset_url" "https://cob-patterns-staging-pr-436.herokuapp.com/"
+            fi
         fi
         echo "== End Environment Specific commands =="
 
-        echo "Update database ($site) on $target_env with configuration from updated code in $source_branch."
-        drush @${site}.${target_env} en stage_file_proxy -y
-        drush @${site}.${target_env} vset "stage_file_proxy_origin" "https://www.boston.gov"
-        drush @${site}.${target_env} cc drush
-        drush @${site}.${target_env} fra -y
-        drush @${site}.${target_env} updb -y
-        drush @${site}.${target_env} fra -y
-
-        echo "Refresh all permissions and force run a cron task now."
-        drush @${site}.${target_env} acquia-reset-permissions -y
-        drush @${site}.${target_env} cron
+        echo "- Update database ($site) on $target_env with configuration from updated code in $source_branch."
+        sync_db @${site}.${target_env}
 
         echo "=== Code update completed ==="
 
     elif [ ${site} = "thehub" ]; then
 
-        echo "Copy database from stage (aka test) to $target_env."
-#        drush @${site}.test ac-database-copy ${site} ${target_env}
+        echo "- Backing up the current $site database on ${target_env}."
+        TASK=$(drush @${site}.${target_env} ac-database-instance-backup ${site} --email=${ac_api_email} --key=${ac_api_key} --endpoint=https://cloudapi.acquia.com/v1 --format=json)
+        RES=$(monitor_task "${TASK}" "@${site}.${target_env}" 500)
 
         if [ "$target_env" = 'ci' ]; then
+            echo "== CI Environment Specific =="
             # Place CI-specific commands/configurations here
-            echo "CI Environment."
         elif [ "$target_env" = 'uat' ]; then
+            echo "== UAT Environment Specific =="
             # Place UAT-specific commands/configurations here
-            echo "UAT Environment."
         fi
+        echo "== End Environment Specific commands =="
 
-        echo "Update database ($site) on $target_env with configuration from updated code in $source_branch."
-        drush @${site}.${target_env} en stage_file_proxy -y
-        drush @${site}.${target_env} vset "stage_file_proxy_origin" "https://www.boston.gov"
-        drush @${site}.${target_env} cc drush
-        drush @${site}.${target_env} fra -y
-        drush @${site}.${target_env} updb -y
-        drush @${site}.${target_env} fra -y
-
-        echo "Refresh all permissions and force run a cron task now."
-        drush @${site}.${target_env} acquia-reset-permissions -y
-        drush @${site}.${target_env} cron
+        echo "- Update database ($site) on $target_env with configuration from updated code in $source_branch."
+        sync_db @${site}.${target_env}
 
         echo "=== Code update completed ==="
     fi

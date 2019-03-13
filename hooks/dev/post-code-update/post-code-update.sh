@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 #
 # Cloud Hook: post-code-update
 #
@@ -33,7 +33,7 @@ repo_type="$6"
 # Add utility functions
 . "/var/www/html/boston.dev/hooks/common/cob_utilities.sh"
 
-echo "\n$site.$target_env: A successful commit to $source_branch branch has caused a code update on $target_env environment of $site environment."
+echo -e "\n$site.$target_env: A successful commit to $source_branch branch has caused a code update on $target_env environment of $site environment."
 
 echo "This hook will now synchronise the $target_env database with updated code."
 
@@ -41,11 +41,10 @@ echo "This hook will now synchronise the $target_env database with updated code.
 # to be shown the the acquia UI.
 echo "- Backing up the current $site database on ${target_env}."
 TASK=$(drush @${site}.${target_env} ac-database-instance-backup ${site} --email=${ac_api_email} --key=${ac_api_key} --endpoint=https://cloudapi.acquia.com/v1 --format=json)
-RES=$(monitor_task "${TASK}" "@${site}.${target_env}" 240)
+RES=$(monitor_task "${TASK}" "@${site}.${target_env}" 500)
 echo "Result: ${RES}"
 if [ "${RES}" != "done" ]; then
-    echo "\nERROR BACKING UP DATABASE IN DEV ENVIRONMENT.\n"
-    exit 1
+    echo -e "\nERROR BACKING UP DATABASE IN DEV ENVIRONMENT.\n"
 fi
 
 # Use acapi command (rather than sql-sync) because this will cause the Acquia DB copy hooks to run.
@@ -53,21 +52,16 @@ fi
 # before performing any DB sync activity
 echo "- Copy database from stage (aka test) to $target_env."
 TASK=$(drush @${site}.test ac-database-copy ${site} ${target_env} --email=${ac_api_email} --key=${ac_api_key} --endpoint=https://cloudapi.acquia.com/v1 --format=json)
-RES=$(monitor_task "${TASK}" "@${site}.test" 500)
+RES=$(monitor_task "${TASK}" "@${site}.test" 1200)
 echo "Result: ${RES}"
 if [ "${RES}" != "done" ]; then
-    echo "\nERROR COPYING DATABASE FROM STAGE ENVIRONMENT."
+    echo -e "\nERROR COPYING DATABASE FROM STAGE ENVIRONMENT."
     exit 1
 fi
 
-echo "- Update database ($site) on $target_env with configuration from updated code in $source_branch."
 drush @${site}.${target_env} en stage_file_proxy -y
 drush @${site}.${target_env} vset "stage_file_proxy_origin" "https://www.boston.gov"
-drush @${site}.${target_env} cc drush
-drush @${site}.${target_env} fra -y
-drush @${site}.${target_env} updb -y
-drush @${site}.${target_env} fra -y
 
-echo "- Refresh all permissions and force run a cron task now."
-drush @${site}.${target_env} acquia-reset-permissions -y
-drush @${site}.${target_env} cron
+# Sync the copied database with the recently updated/deployed code.
+echo "- Update database ($site) on $target_env with configuration from updated code in $source_branch."
+sync_db @${site}.${target_env}
