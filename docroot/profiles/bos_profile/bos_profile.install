@@ -1274,11 +1274,6 @@ function bos_profile_update_7044() {
   foreach ($news_announcements_paragraphs as $old_paragraph) {
     $parent_node = $old_paragraph->hostEntity();
     $parent_node = workbench_moderation_node_current_load($parent_node);
-    //$parent_nid = $old_paragraph->hostEntityId();
-    //if (isset($parent_nid)) {
-    //  $published_parent_node = node_load($parent_nid);
-    //  $parent_node = workbench_moderation_node_current_load($published_parent_node);
-    //}
     if ($parent_node && $old_paragraph->bundle() == 'news_announcements') {
 
       $new_paragraph = new ParagraphsItemEntity(array('field_name' => 'field_components', 'bundle' => 'news_and_announcements'));
@@ -1289,27 +1284,9 @@ function bos_profile_update_7044() {
       $new_paragraph->field_featured_post = $old_paragraph->field_featured_post;
       $new_paragraph->field_link = $old_paragraph->field_link;
 
-      //$parent_node->workbench_moderation['updating_live_revision'] = 1;
-      //node_save($parent_node);
-      //if ($new_paragraph->getEntityType()->isRevisionable()) {
-      //  $new_paragraph->setNewRevision();
-      //}
-      //if (empty($host_entity->workbench_moderation['updating_live_revision'])) {
-      //}
       $new_paragraph->setHostEntity('node', $parent_node);
       $new_paragraph->revision = TRUE;
       $new_paragraph->save(FALSE);
-
-      /*
-      ob_start();
-      echo "NEW paragraph: ";
-      var_dump($new_paragraph);
-      echo "OLD paragraph: ";
-      var_dump($old_paragraph);
-      $save = ob_get_contents();
-      ob_end_clean();
-      file_put_contents(paragraph_debugging3, $save, FILE_APPEND);
-      */
 
     }
   }
