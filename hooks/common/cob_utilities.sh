@@ -1,8 +1,10 @@
-#!/bin/sh
+#!/bin/bash
 
 parse_json() {
-    SCRIPT="\$json='${1}'; \$a=json_decode(\$json); print \$a->${2};"
-    echo $(php -r "${SCRIPT}")
+    JSON="$(echo ${1} | sed "s/{\(.*\), \"logs.*}/\1/" |  sed "s/{\(.*\), \"tags.*}/\1/" )"
+    SCRIPT="\$json='{ ${JSON} }'; \$a=json_decode(\$json); print \$a->${2};"
+    out=$(php -r "${SCRIPT}")
+    echo $out;
 }
 monitor_task() {
     TASKID=$(parse_json "${1}" "id")

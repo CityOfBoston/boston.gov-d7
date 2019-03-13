@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 #
 # Cloud Hook: post-code-update
 #
@@ -45,7 +45,6 @@ RES=$(monitor_task "${TASK}" "@${site}.${target_env}" 300)
 echo "Result: ${RES}"
 if [ "${RES}" != "done" ]; then
     echo "\nERROR BACKING UP DATABASE IN DEV ENVIRONMENT.\n"
-    exit 1
 fi
 
 # Use acapi command (rather than sql-sync) because this will cause the Acquia DB copy hooks to run.
