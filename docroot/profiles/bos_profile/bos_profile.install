@@ -1273,6 +1273,12 @@ function bos_profile_update_7044() {
   $news_announcements_paragraphs = entity_load('paragraphs_item', $ids);
   foreach ($news_announcements_paragraphs as $old_paragraph) {
     $parent_node = $old_paragraph->hostEntity();
+    $parent_node = workbench_moderation_node_current_load($parent_node);
+    //$parent_nid = $old_paragraph->hostEntityId();
+    //if (isset($parent_nid)) {
+    //  $published_parent_node = node_load($parent_nid);
+    //  $parent_node = workbench_moderation_node_current_load($published_parent_node);
+    //}
     if ($parent_node && $old_paragraph->bundle() == 'news_announcements') {
 
       $new_paragraph = new ParagraphsItemEntity(array('field_name' => 'field_components', 'bundle' => 'news_and_announcements'));
