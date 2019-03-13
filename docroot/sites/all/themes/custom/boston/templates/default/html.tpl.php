@@ -109,6 +109,6 @@
       </div>
     </script>
   <?php endif; ?>
-  <div class="bib--rcm-init" data-auto-ingestion="true" data-recommendation-key="6364c775-5133-4a32-a80e-a2116bac884b">&nbsp;</div>
+  <div class="bib--rcm-init" data-auto-ingestion="true" data-recommendation-key="0966dd72-5068-462f-8c15-9967ad9a975f">&nbsp;</div>
 </body>
 </html>
