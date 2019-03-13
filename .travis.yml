@@ -8,6 +8,8 @@ branches:
   - develop
   - master
   - settings
+  - bibblio-test
+  - cityscore_rest
 php:
 - 7.1
 addons:
@@ -73,3 +75,15 @@ deploy:
   script: bash scripts/deploy/travis-deploy.sh $TRAVIS_BRANCH master-build $COB_ARTIFACT
   on:
     branch: master
+- provider: script
+  skip_cleanup: true
+  script: bash scripts/deploy/travis-deploy.sh $TRAVIS_BRANCH bibblio-build $COB_ARTIFACT
+  on:
+    branch: bibblio-test
+    condition: $COB_ARTIFACT = boston
+- provider: script
+  skip_cleanup: true
+  script: bash scripts/deploy/travis-deploy.sh $TRAVIS_BRANCH cityscore_rest $COB_ARTIFACT
+  on:
+    branch: cityscore_rest
+    condition: $COB_ARTIFACT = boston

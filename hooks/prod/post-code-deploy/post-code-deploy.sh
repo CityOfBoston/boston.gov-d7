@@ -41,7 +41,7 @@ if [ "$target_env" = 'prod' ]; then
     # Add utility functions
     . "/var/www/html/boston.dev/hooks/common/cob_utilities.sh"
 
-    echo "\n$site.$target_env: A successful commit to $source_branch branch has caused a code update on $target_env environment of $site environment."
+    echo -e "\n$site.$target_env: A successful commit to $source_branch branch has caused a code update on $target_env environment of $site environment."
 
     echo "This hook will now synchronise the $target_env database with updated code."
 
@@ -49,10 +49,10 @@ if [ "$target_env" = 'prod' ]; then
     # to be shown the the acquia UI.
     echo "- Backing up the current $site database on ${target_env}."
     TASK=$(drush @${site}.${target_env} ac-database-instance-backup ${site} --email=${ac_api_email} --key=${ac_api_key} --endpoint=https://cloudapi.acquia.com/v1 --format=json)
-    RES=$(monitor_task "${TASK}" "@${site}.${target_env}" 300)
+    RES=$(monitor_task "${TASK}" "@${site}.${target_env}" 500)
     echo "Result: ${RES}"
     if [ "${RES}" != "done" ]; then
-        echo "\nERROR BACKING UP DATABASE IN DEV ENVIRONMENT.\n"
+        echo -e "\nERROR BACKING UP DATABASE IN DEV ENVIRONMENT.\n"
         exit 1
     fi
 
