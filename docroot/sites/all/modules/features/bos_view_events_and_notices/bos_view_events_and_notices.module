@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the Boston View Events & Notices feature.
- */
-
-include_once 'bos_view_events_and_notices.features.inc';

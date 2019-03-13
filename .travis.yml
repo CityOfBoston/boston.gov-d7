@@ -1,18 +1,15 @@
 sudo: false
 language: php
 env:
-- TASK="./task.sh validate:all"
-# Use "build_db_from_initialize" until we can speed up the staging DB import, which
-# causes Travis to stall out.
-- TASK="./task.sh -Dbehat.run-server=true -Dproject.build_db_from=initialize build:local tests:all"
-- TASK="./hub-task.sh -Dbehat.run-server=true build:test:hub"
+- COB_ARTIFACT="boston" TASK="./task.sh -Dbehat.run-server=true -Dproject.build_db_from=initialize validate:all build:local tests:all"
+- COB_ARTIFACT="hub" TASK="./hub-task.sh -Dbehat.run-server=true validate:all build:test:hub"
 branches:
   only:
   - develop
   - master
   - settings
-  - php-7-1-upgrade
   - bibblio-test
+  - cityscore_rest
 php:
 - 7.1
 addons:
@@ -66,9 +63,27 @@ before_script:
 - scripts/make/apply-settings.sh
 script:
 - "$TASK"
-after_success:
 - scripts/make/apply-crispus.sh
-- scripts/deploy/travis-deploy.sh develop develop-build
-- scripts/deploy/travis-deploy.sh master master-build
-- scripts/deploy/travis-deploy.sh php-7-1-upgrade php-build
-- scripts/deploy/travis-deploy.sh bibblio-test bibblio-build
+deploy:
+- provider: script
+  skip_cleanup: true
+  script: bash scripts/deploy/travis-deploy.sh $TRAVIS_BRANCH develop-build $COB_ARTIFACT
+  on:
+    branch: develop
+- provider: script
+  skip_cleanup: true
+  script: bash scripts/deploy/travis-deploy.sh $TRAVIS_BRANCH master-build $COB_ARTIFACT
+  on:
+    branch: master
+- provider: script
+  skip_cleanup: true
+  script: bash scripts/deploy/travis-deploy.sh $TRAVIS_BRANCH bibblio-build $COB_ARTIFACT
+  on:
+    branch: bibblio-test
+    condition: $COB_ARTIFACT = boston
+- provider: script
+  skip_cleanup: true
+  script: bash scripts/deploy/travis-deploy.sh $TRAVIS_BRANCH cityscore_rest $COB_ARTIFACT
+  on:
+    branch: cityscore_rest
+    condition: $COB_ARTIFACT = boston

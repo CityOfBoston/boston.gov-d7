@@ -1,9 +1,7 @@
 <!DOCTYPE html>
-<html <?php print $html_attributes ?>>
 <head>
   <?php print $head; ?>
   <title><?php print $head_title; ?></title>
-
   <?php if ($google_tag_manager_id) { ?>
     <!-- Anti-flicker GTAG code snippet -->
     <style>.async-hide { opacity: 0 !important} </style>

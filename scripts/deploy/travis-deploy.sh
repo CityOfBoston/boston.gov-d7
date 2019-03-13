@@ -12,6 +12,12 @@
 
 source_branch=$1  # The branch to watch.
 dest_branch=$2    # The branch to which the build artifact should be committed and deployed.
+application=$3    # The application into which the build artifact should be committed and deployed.
+
+if [[ "${application}" = "hub" ]]; then
+    dest_branch="${dest_branch}-hub"
+fi
+
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
 # Note that the canonical repository is watched. Commits to forked repositories
@@ -24,10 +30,16 @@ if [[ "${TRAVIS_PULL_REQUEST}" = "false" ]] || [[ "${DEPLOY_PR}" = "true" ]];
     # Trigger deployment if $source_branch parameters matches or this is a tag.
     if [[ "${TRAVIS_BRANCH}" = $source_branch ]] || [[ -n "${TRAVIS_TAG}" ]];
       then
-        echo "Build artifact will be deployed."
-        commit_msg="Automated commit by Travis CI for Build #${TRAVIS_BUILD_ID}";
+        echo "Build & Deploy ${application}."
+        echo "Build artifact will be deployed to ${dest_branch}."
+        commit_msg="Automated commit by Travis for Build #${TRAVIS_BUILD_ID} Branch ${TRAVIS_BRANCH}";
         # Call the `deploy` Phing target, passing in required parameters.
-        ${DIR}/../../task.sh deploy:artifact -Ddeploy.branch="${dest_branch}" -Ddeploy.commitMsg="${commit_msg}";
+        if [[ "${application}" = "boston" ]]; then
+            ./task.sh deploy:artifact -Ddeploy.branch="${dest_branch}" -Ddeploy.commitMsg="${commit_msg}";
+        elif [[ "${application}" = "hub" ]]; then
+            ./hub-task.sh deploy:artifact -Ddeploy.branch="${dest_branch}" -Ddeploy.commitMsg="${commit_msg}";
+        fi
+
       else
         echo "Build artifact will NOT be deployed for this branch."
     fi
