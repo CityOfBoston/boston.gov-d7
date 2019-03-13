@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 #
 # Cloud Hook: post-code-deploy
 #
@@ -23,61 +23,5 @@
 # Jan 2019: These Aquia hooks manage the backup and synchronization of databases, so the only manual deploy actions
 #           required are to drag code around in the Acquia Cloud UI.
 
-site="$1"
-target_env="$2"
-source_branch="$3"
-deployed_tag="$4"
-repo_url="$5"
-repo_type="$6"
-
-if [ "$target_env" = 'test' ]; then
-    echo "$site.$target_env: A code-copy (deploy) to $source_branch branch has caused a code update on $target_env environment of $site environment."
-    echo "This hook will now synchronise the $target_env database with updated code."
-
-    if [ ${site} = "boston" ]; then
-
-        echo "Backing up the current $site database on ${target_env}."
-        drush @${site}.${target_env} ac-database-instance-backup ${site} --email=${ac_api_email} --key=${ac_api_key} --endpoint=https://cloudapi.acquia.com/v1
-
-        echo "Copy database from production to $target_env."
-        # Use acapi command (rather than sql-sync) because this will cause the DB copy hooks to run.
-        drush @${site}.prod ac-database-copy ${site} ${target_env} --email=${ac_api_email} --key=${ac_api_key} --endpoint=https://cloudapi.acquia.com/v1
-
-        echo "Update database ($site) on $target_env with configuration from updated code in $source_branch."
-        drush @${site}.${target_env} en stage_file_proxy -y
-        drush @${site}.${target_env} vset "stage_file_proxy_origin" "https://www.boston.gov"
-        drush @${site}.${target_env} cc drush
-        drush @${site}.${target_env} fra -y
-        drush @${site}.${target_env} updb -y
-        drush @${site}.${target_env} fra -y
-
-        echo "Refresh all permissions and force run a cron task now."
-        drush @${site}.${target_env} acquia-reset-permissions -y
-        drush @${site}.${target_env} cron
-
-        echo "=== Code-copy (deploy) update completed ==="
-
-    elif [ ${site} = "thehub" ]; then
-
-        echo "Backing up the current $site database on ${target_env}."
-        drush @${site}.${target_env} ac-database-instance-backup ${site} --email=${ac_api_email} --key=${ac_api_key} --endpoint=https://cloudapi.acquia.com/v1
-
-        echo "Copy database from producction to $target_env."
-        # Use acapi command (rather than sql-sync) because this will cause the DB copy hooks to run.
-        drush @${site}.prod ac-database-copy ${site} ${target_env} --email=${ac_api_email} --key=${ac_api_key} --endpoint=https://cloudapi.acquia.com/v1
-
-        echo "Update database ($site) on $target_env with configuration from updated code in $source_branch."
-        drush @${site}.${target_env} en stage_file_proxy -y
-        drush @${site}.${target_env} vset "stage_file_proxy_origin" "https://www.boston.gov"
-        drush @${site}.${target_env} cc drush
-        drush @${site}.${target_env} fra -y
-        drush @${site}.${target_env} updb -y
-        drush @${site}.${target_env} fra -y
-
-        echo "Refresh all permissions and force run a cron task now."
-        drush @${site}.${target_env} acquia-reset-permissions -y
-        drush @${site}.${target_env} cron
-
-        echo "=== Code-copy (deploy) update completed ==="
-    fi
-fi
+# Run the same code as post-code-update
+/mnt/users/boston/dev.shell /var/www/html/boston.dev/hooks/test/post-code-update/post-code-update.sh ${0} < /dev/null
