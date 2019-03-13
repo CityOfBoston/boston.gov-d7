@@ -38,7 +38,7 @@ services:
       database: lando/my.cnf
 
   node:
-    type: node:8
+    type: node:10
     globals:
       gulp-cli: "latest"
       npm: "latest"
