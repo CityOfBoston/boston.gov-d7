@@ -59,12 +59,9 @@ jQuery.ajax({
   },
   success: function (res){
     let bibContent = res.results;
-    getHTML(bibContent); 
-    //alert('success' + res.status);
+    getHTML(bibContent);
   },
   error: function (res){
-        if(res.status == '404'){
-          jQuery(".bibblio-container").hide();
-        };
+    jQuery(".bibblio-container").hide();
   }
 });       
