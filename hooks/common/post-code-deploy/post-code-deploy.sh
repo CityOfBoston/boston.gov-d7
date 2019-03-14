@@ -7,6 +7,8 @@
 # an existing branch or tag from the Code drop-down list. See
 # ../README.md for details.
 #
+# @see readme.md for City of Boston specific notes.
+#
 # Usage: post-code-deploy site target-env source-branch deployed-tag repo-url
 #                         repo-type
 
