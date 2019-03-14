@@ -21,7 +21,7 @@ repo_url="$5"
 repo_type="$6"
 
 # Add utility functions
-. "/var/www/html/boston.dev/hooks/common/cob_utilities.sh"
+. "/var/www/html/${site}.${target_env}/hooks/common/cob_utilities.sh"
 
 if [ "$target_env" = 'uat' ] || [ "$target_env" = 'ci' ]; then
 
