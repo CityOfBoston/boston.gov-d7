@@ -1274,11 +1274,6 @@ function bos_profile_update_7044() {
   foreach ($news_announcements_paragraphs as $old_paragraph) {
     $parent_node = $old_paragraph->hostEntity();
     $parent_node = workbench_moderation_node_current_load($parent_node);
-    if ($parent_node->nid == 21 || $parent_node->nid == 176) {
-      $test = 'hello';
-    } else if ($parent_node->nid == 131 || $parent_node->nid == 241) {
-      $test = 'goodbye';
-    }
     if ($parent_node && $old_paragraph->bundle() == 'news_announcements') {
       $current_revisions = [];
       foreach ($parent_node->field_components["und"] as $component) {
@@ -1294,6 +1289,53 @@ function bos_profile_update_7044() {
         $new_paragraph->field_short_title = $old_paragraph->field_short_title;
         $new_paragraph->field_featured_post = $old_paragraph->field_featured_post;
         $new_paragraph->field_link = $old_paragraph->field_link;
+        if (!empty($old_paragraph->field_list['und'][0]['vname'])) {                                                     
+          switch ($old_paragraph->field_list['und'][0]['vname']) {
+            // "Other" display has "news_events" machine name.
+            case "news_announcements|departments":
+            case "news_announcements|news_events":
+            case "news_announcements|places":
+            case "news_announcements|people":
+            case "news_announcements|programs":
+            case "news_announcements|neighborhoods":
+            case "news_announcements|guides":
+            case "news_announcements|events":
+            case "news_announcements|posts":
+              $new_paragraph->field_list = [
+                'und' => [
+                  0 => [
+                    // "Related" display has news_events machine name.
+                    'vname' => 'news_and_announcements|news_events',
+                    'vargs' => '',
+                  ],
+                ],
+              ];
+              break;
+
+            case "news_announcements|most_recent":
+              $new_paragraph->field_list = [
+                'und' => [
+                  0 => [
+                    // "Upcoming" display has most_recent machine name.
+                    'vname' => 'news_and_announcements|most_recent',
+                    'vargs' => '',
+                  ],
+                ],
+              ];
+              break;
+
+            default:
+              $new_paragraph->field_list = [
+                'und' => [
+                  0 => [
+                    // "Upcoming" display has most_recent machine name.
+                    'vname' => 'news_and_announcements|most_recent',
+                    'vargs' => '',
+                  ],
+                ],
+              ];
+          }
+        }
 
         $new_paragraph->setHostEntity('node', $parent_node);
         $new_paragraph->revision = TRUE;
