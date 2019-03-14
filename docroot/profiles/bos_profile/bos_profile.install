@@ -1273,35 +1273,32 @@ function bos_profile_update_7044() {
   $news_announcements_paragraphs = entity_load('paragraphs_item', $ids);
   foreach ($news_announcements_paragraphs as $old_paragraph) {
     $parent_node = $old_paragraph->hostEntity();
-    //$parent_node = workbench_moderation_node_current_load($parent_node);
-    //node_save($parent_node);
-    //workbench_moderation_moderate($parent_node, 'published');
+    $parent_node = workbench_moderation_node_current_load($parent_node);
     if ($parent_node->nid == 21 || $parent_node->nid == 176) {
       $test = 'hello';
     } else if ($parent_node->nid == 131 || $parent_node->nid == 241) {
       $test = 'goodbye';
     }
-    $current_revisions = [];
-    foreach ($parent_node->field_components["und"] as $component) {
-      $current_revisions[] = $component["revision_id"];
-    }
-    //if (in_array($old_paragraph->revision_id, $current_revisions)) {
-    //}
-    //if ($parent_node && $old_paragraph->bundle() == 'news_announcements' && $old_paragraph->archived == "0") {
-    if ($parent_node && $old_paragraph->bundle() == 'news_announcements' && in_array($old_paragraph->revision_id, $current_revisions)) {
+    if ($parent_node && $old_paragraph->bundle() == 'news_announcements') {
+      $current_revisions = [];
+      foreach ($parent_node->field_components["und"] as $component) {
+        $current_revisions[] = $component["revision_id"];
+      }
+      if (($old_paragraph->archived == "0" && $parent_node->workbench_moderation["current"]->from_state == 'published') ||
+          ($old_paragraph->archived == "1" && in_array($old_paragraph->revision_id, $current_revisions))) {
 
-      $new_paragraph = new ParagraphsItemEntity(array('field_name' => 'field_components', 'bundle' => 'news_and_announcements'));
-      $new_paragraph->is_new = TRUE;
+        $new_paragraph = new ParagraphsItemEntity(array('field_name' => 'field_components', 'bundle' => 'news_and_announcements'));
+        $new_paragraph->is_new = TRUE;
 
-      $new_paragraph->field_component_title = $old_paragraph->field_component_title;
-      $new_paragraph->field_short_title = $old_paragraph->field_short_title;
-      $new_paragraph->field_featured_post = $old_paragraph->field_featured_post;
-      $new_paragraph->field_link = $old_paragraph->field_link;
+        $new_paragraph->field_component_title = $old_paragraph->field_component_title;
+        $new_paragraph->field_short_title = $old_paragraph->field_short_title;
+        $new_paragraph->field_featured_post = $old_paragraph->field_featured_post;
+        $new_paragraph->field_link = $old_paragraph->field_link;
 
-      $new_paragraph->setHostEntity('node', $parent_node);
-      $new_paragraph->revision = TRUE;
-      $new_paragraph->save(FALSE);
-
+        $new_paragraph->setHostEntity('node', $parent_node);
+        $new_paragraph->revision = TRUE;
+        $new_paragraph->save(FALSE);
+      }
     }
   }
 
