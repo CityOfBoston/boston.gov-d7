@@ -1282,8 +1282,10 @@ function bos_profile_update_7044() {
       if (($old_paragraph->archived == "0" && $parent_node->workbench_moderation["current"]->from_state == 'published') ||
           ($old_paragraph->archived == "1" && in_array($old_paragraph->revision_id, $current_revisions))) {
 
-        $new_paragraph = new ParagraphsItemEntity(array('field_name' => 'field_components', 'bundle' => 'news_and_announcements'));
+        $delta = $old_paragraph->delta();
+        $new_paragraph = new ParagraphsItemEntity(array('field_name' => 'field_components', 'bundle' => 'news_and_announcements', 'weight' => $delta));
         $new_paragraph->is_new = TRUE;
+        // Set weight so new paragraph appears in correct order.
 
         $new_paragraph->field_component_title = $old_paragraph->field_component_title;
         $new_paragraph->field_short_title = $old_paragraph->field_short_title;
@@ -1342,14 +1344,15 @@ function bos_profile_update_7044() {
         $new_paragraph->save(FALSE);
 
         // Replace the old paragraph with the new one.
+        /*
         $components = $parent_node->field_components['und'];
         foreach ($components as $key => $component) {
           if ($component['value'] == $old_paragraph->item_id) {
-            $parent_node->field_components['und'][$key] = end($parent_node->field_components['und']);
+            unset($parent_node->field_components['und'][$key]);
           }
         }
-        array_pop($parent_node->field_components['und']);
         node_save($parent_node);
+         */
 
       }
     }
