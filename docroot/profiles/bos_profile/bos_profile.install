@@ -1340,6 +1340,19 @@ function bos_profile_update_7044() {
         $new_paragraph->setHostEntity('node', $parent_node);
         $new_paragraph->revision = TRUE;
         $new_paragraph->save(FALSE);
+
+        // Replace the old paragraph with the new one.
+        $components = $parent_node->field_components['und'];
+        foreach ($components as $key => $component) {
+          if ($component['value'] == $old_paragraph->item_id) {
+            $parent_node->field_components['und'][$key]['value'] = $new_paragraph->item_id;
+            $parent_node->field_components['und'][$key]['revision_id'] = $new_paragraph->revision_id;
+          }
+        }
+        // Remove new paragraph at the bottom of node.
+        array_pop($parent_node->field_components['und']);
+        node_save($parent_node);
+
       }
     }
   }
