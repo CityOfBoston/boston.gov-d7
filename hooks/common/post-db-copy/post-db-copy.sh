@@ -6,6 +6,9 @@
 # database from one environment to another. See ../README.md for
 # details.
 #
+# @see readme.md for City of Boston specific notes.
+#
+
 # Usage: post-db-copy site target-env db-name source-env
 
 site="$1"
