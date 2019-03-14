@@ -21,7 +21,7 @@ repo_url="$5"
 repo_type="$6"
 
 # Add utility functions
-. "/var/www/html/boston.dev/hooks/common/cob_utilities.sh"
+. "/var/www/html/${site}.${target_env}/hooks/common/cob_utilities.sh"
 
 echo -e "\n$site.$target_env: A successful commit to $source_branch branch has caused a code update on $target_env environment of $site environment."
 
