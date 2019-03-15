@@ -26,4 +26,6 @@ else
 fi
 
 # Run the same code as post-code-update
-/mnt/users/${site}/${target_env}.shell /var/www/html/boston.${target_env}/hooks/${target_env}/post-code-update/post-code-update.sh ${0} < /dev/null
+if [ "$target_env" = 'uat' ] || [ "$target_env" = 'ci' ]; then
+    /mnt/users/${site}/${target_env}.shell /var/www/html/boston.${target_env}/hooks/${target_env}/post-code-update/post-code-update.sh ${0} < /dev/null
+fi
