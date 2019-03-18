@@ -1306,8 +1306,8 @@ function bos_profile_update_7044() {
             case "news_announcements|guides":
             case "news_announcements|events":
             case "news_announcements|posts":
-              //$new_paragraph->field_list = [
-              $new_par->field_list = [
+              $new_paragraph->field_list = [
+              //$new_par->field_list = [
                 'und' => [
                   0 => [
                     // "Related" display has news_events machine name.
@@ -1319,8 +1319,8 @@ function bos_profile_update_7044() {
               break;
 
             case "news_announcements|most_recent":
-              //$new_paragraph->field_list = [
-              $new_par->field_list = [
+              $new_paragraph->field_list = [
+              //$new_par->field_list = [
                 'und' => [
                   0 => [
                     // "Upcoming" display has most_recent machine name.
@@ -1332,8 +1332,8 @@ function bos_profile_update_7044() {
               break;
 
             default:
-              //$new_paragraph->field_list = [
-              $new_par->field_list = [
+              $new_paragraph->field_list = [
+              //$new_par->field_list = [
                 'und' => [
                   0 => [
                     // "Upcoming" display has most_recent machine name.
@@ -1370,6 +1370,8 @@ function bos_profile_update_7044() {
       }
     }
   }
+  // Flush caches so viewfield value appears.
+  drupal_flush_all_caches();
 
   /*
   $event_nodes = node_load_multiple(array(), array('type' => 'event'));
