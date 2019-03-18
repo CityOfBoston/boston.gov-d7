@@ -1282,15 +1282,18 @@ function bos_profile_update_7044() {
       if (($old_paragraph->archived == "0" && $parent_node->workbench_moderation["current"]->from_state == 'published') ||
           ($old_paragraph->archived == "1" && in_array($old_paragraph->revision_id, $current_revisions))) {
 
-        $delta = $old_paragraph->delta();
-        $new_paragraph = new ParagraphsItemEntity(array('field_name' => 'field_components', 'bundle' => 'news_and_announcements', 'weight' => $delta));
+        $new_paragraph = new ParagraphsItemEntity(array('field_name' => 'field_components', 'bundle' => 'news_and_announcements'));
         $new_paragraph->is_new = TRUE;
+
         // Set weight so new paragraph appears in correct order.
+        $delta = $old_paragraph->delta();
+        $new_paragraph->delta = $delta;
 
         $new_paragraph->field_component_title = $old_paragraph->field_component_title;
         $new_paragraph->field_short_title = $old_paragraph->field_short_title;
         $new_paragraph->field_featured_post = $old_paragraph->field_featured_post;
         $new_paragraph->field_link = $old_paragraph->field_link;
+        // Viewfield must be set after paragraph position in list.
         if (!empty($old_paragraph->field_list['und'][0]['vname'])) {                                                     
           switch ($old_paragraph->field_list['und'][0]['vname']) {
             // "Other" display has "news_events" machine name.
@@ -1343,16 +1346,16 @@ function bos_profile_update_7044() {
         $new_paragraph->revision = TRUE;
         $new_paragraph->save(FALSE);
 
-        // Replace the old paragraph with the new one.
-        /*
+        // Replace the old paragraph with the new one. 
         $components = $parent_node->field_components['und'];
         foreach ($components as $key => $component) {
           if ($component['value'] == $old_paragraph->item_id) {
             unset($parent_node->field_components['und'][$key]);
+            //$parent_node->field_components['und'][$key] = end($parent_node->field_components['und']);
           }
         }
+        //array_pop($parent_node->field_components['und']);
         node_save($parent_node);
-         */
 
       }
     }
