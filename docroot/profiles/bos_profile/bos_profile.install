@@ -1435,7 +1435,7 @@ function bos_migrate_paragraphs(array $paragraph_list, string $paragraph_bundle)
             case "related_events|block_5":
             case "related_events|block_6":
             case "related_events|block_7":
-              $new_event_paragraph->field_list = [
+              $new_paragraph->field_list = [
                 'und' => [
                   0 => [
                     // "Related" display has block_1 machine name.
@@ -1460,7 +1460,7 @@ function bos_migrate_paragraphs(array $paragraph_list, string $paragraph_bundle)
 
             case "upcoming_events|most_recent":
             case "upcoming_events|block_1":
-              $new_event_paragraph->field_list = [
+              $new_paragraph->field_list = [
                 'und' => [
                   0 => [
                     // "Upcoming" display has most_recent machine name.
