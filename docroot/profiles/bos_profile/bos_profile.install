@@ -60,6 +60,10 @@ function bos_profile_install() {
   bos_profile_update_7042();
   bos_profile_update_7043();
   bos_profile_update_7044();
+  bos_profile_update_7045();
+  bos_profile_update_7046();
+  bos_profile_update_7047();
+  bos_profile_update_7048();
 }
 
 /**
@@ -1252,7 +1256,7 @@ function bos_profile_update_7043() {
 }
 
 /**
- * Adds new related content and migrates field data.
+ * Adds new related content functionality / features.
  */
 function bos_profile_update_7044() {
   $enabled_modules = array(
@@ -1263,123 +1267,19 @@ function bos_profile_update_7044() {
     'bos_component_news_and_announcements',
   );
   module_enable($enabled_modules);
-  // Add new News & Announcements component to nodes and remove old one.
-  $query = new EntityFieldQuery();
-  $query
-    ->entityCondition('entity_type', 'paragraphs_item', '=')
-    ->propertyCondition('bundle', 'news_announcements', '=');
-  $result = $query->execute();
-  $ids = array_keys($result['paragraphs_item']);
-  $news_announcements_paragraphs = entity_load('paragraphs_item', $ids);
-  foreach ($news_announcements_paragraphs as $old_paragraph) {
-    $parent_node = $old_paragraph->hostEntity();
-    $parent_node = workbench_moderation_node_current_load($parent_node);
-    if ($parent_node && $old_paragraph->bundle() == 'news_announcements') {
-      $current_revisions = [];
-      foreach ($parent_node->field_components["und"] as $component) {
-        $current_revisions[] = $component["revision_id"];
-      }
-      if (($old_paragraph->archived == "0" && $parent_node->workbench_moderation["current"]->from_state == 'published') ||
-          ($old_paragraph->archived == "1" && in_array($old_paragraph->revision_id, $current_revisions))) {
+}
 
-        $new_paragraph = new ParagraphsItemEntity(array('field_name' => 'field_components', 'bundle' => 'news_and_announcements'));
-        $new_paragraph->is_new = TRUE;
-
-        // Set weight so new paragraph appears in correct order.
-        //$delta = $old_paragraph->delta();
-        //$new_paragraph->delta = $delta;
-
-        $new_paragraph->field_component_title = $old_paragraph->field_component_title;
-        $new_paragraph->field_short_title = $old_paragraph->field_short_title;
-        $new_paragraph->field_featured_post = $old_paragraph->field_featured_post;
-        $new_paragraph->field_link = $old_paragraph->field_link;
-
-        if (!empty($old_paragraph->field_list['und'][0]['vname'])) {                                                     
-          switch ($old_paragraph->field_list['und'][0]['vname']) {
-            // "Other" display has "news_events" machine name.
-            case "news_announcements|departments":
-            case "news_announcements|news_events":
-            case "news_announcements|places":
-            case "news_announcements|people":
-            case "news_announcements|programs":
-            case "news_announcements|neighborhoods":
-            case "news_announcements|guides":
-            case "news_announcements|events":
-            case "news_announcements|posts":
-              $new_paragraph->field_list = [
-              //$new_par->field_list = [
-                'und' => [
-                  0 => [
-                    // "Related" display has news_events machine name.
-                    'vname' => 'news_and_announcements|news_events',
-                    'vargs' => '',
-                  ],
-                ],
-              ];
-              break;
-
-            case "news_announcements|most_recent":
-              $new_paragraph->field_list = [
-              //$new_par->field_list = [
-                'und' => [
-                  0 => [
-                    // "Upcoming" display has most_recent machine name.
-                    'vname' => 'news_and_announcements|most_recent',
-                    'vargs' => '',
-                  ],
-                ],
-              ];
-              break;
-
-            default:
-              $new_paragraph->field_list = [
-              //$new_par->field_list = [
-                'und' => [
-                  0 => [
-                    // "Upcoming" display has most_recent machine name.
-                    'vname' => 'news_and_announcements|most_recent',
-                    'vargs' => '',
-                  ],
-                ],
-              ];
-          }
-        }
-
-        $new_paragraph->setHostEntity('node', $parent_node);
-        $new_paragraph->revision = TRUE;
-        $new_paragraph->save(FALSE);
-
-        // Replace the old paragraph with the new one. 
-        $components = $parent_node->field_components['und'];
-        foreach ($components as $key => $component) {
-          if ($component['value'] == $old_paragraph->item_id) {
-            //unset($parent_node->field_components['und'][$key]);
-            $parent_node->field_components['und'][$key] = end($parent_node->field_components['und']);
-            //$delta = $key;
-          }
-        }
-        array_pop($parent_node->field_components['und']);
-        node_save($parent_node);
-
-        //$new_par_revision_id = $parent_node->field_components['und'][$delta]["revision_id"];
-        //$new_par = entity_revision_load("paragraphs_item", $new_par_revision_id);
-        //$new_par->setHostEntity('node', $parent_node);
-        //$new_par->revision = TRUE;
-        //$new_par->save(FALSE);
-
-      }
-    }
-  }
-  // Flush caches so viewfield value appears.
-  drupal_flush_all_caches();
-
-  /*
+/**
+ * Migrate field data from multiple related fields to single related field.
+ */
+function bos_profile_update_7045() {
+  // Load all nodes with related content fields.
   $event_nodes = node_load_multiple(array(), array('type' => 'event'));
   $notice_nodes = node_load_multiple(array(), array('type' => 'public_notice'));
   $post_nodes = node_load_multiple(array(), array('type' => 'post'));
-  // Get all nodes with related content fields.
+  // Combine all nodes with related content fields into one array.
   $nodes = array_merge($event_nodes, $notice_nodes, $post_nodes);
-  //var_dump($nodes);
+  // Loop through nodes with related content fields.
   foreach ($nodes as $node) {
     // Check if fields have values.
     $related_departments = is_array($node->field_related_departments['und']) ? $node->field_related_departments['und'] : [];
@@ -1426,8 +1326,133 @@ function bos_profile_update_7044() {
     ctools_include('export');
     field_group_group_export_delete($group, FALSE);
   }
-  // Add new Events & Notices component to nodes and remove old one.
+}
 
+/**
+ * Migrate news_announcement paragraph to news_and_announcements paragraph.
+ */
+function bos_profile_update_7046() {
+  // Get a list of all paragraphs of type news_announcements (the old paragraph bundle).
+  $query = new EntityFieldQuery();
+  $query
+    ->entityCondition('entity_type', 'paragraphs_item', '=')
+    ->propertyCondition('bundle', 'news_announcements', '=');
+  $result = $query->execute();
+  // Get an array of the ID's for each of these news_announcements paragraphs.
+  $ids = array_keys($result['paragraphs_item']);
+  // Get an array of paragraph objects.
+  $news_announcements_paragraphs = entity_load('paragraphs_item', $ids);
+  // Loop through the list of paragraph objects.
+  foreach ($news_announcements_paragraphs as $old_paragraph) {
+    // Load the node that the paragraph is attached to.
+    $parent_node = $old_paragraph->hostEntity();
+    $parent_node = workbench_moderation_node_current_load($parent_node);
+    // Double check you have a valid host node and the paragraph bundle is correct.
+    if ($parent_node && $old_paragraph->bundle() == 'news_announcements') {
+      // Get list of paragraphs currently in the field_components.
+      $current_revisions = [];
+      if (isset($parent_node->field_components["und"])) {
+        foreach ($parent_node->field_components["und"] as $component) {
+          // Add the revision ID to an array.
+          $current_revisions[] = $component["revision_id"];
+        }
+      }
+      // Check that the paragraph is not archived if the node is in published moderation state.
+      if (($old_paragraph->archived == "0" && $parent_node->workbench_moderation["current"]->from_state == 'published') ||
+          // If the paragraph is archived (possible on a forward revision), make sure it has a revision ID currently in field_component.
+          ($old_paragraph->archived == "1" && in_array($old_paragraph->revision_id, $current_revisions))) {
+
+        // Create new paragraph.
+        $new_paragraph = new ParagraphsItemEntity(array('field_name' => 'field_components', 'bundle' => 'news_and_announcements'));
+        $new_paragraph->is_new = TRUE;
+
+        // Copy field values from original paragraph to new paragraph.
+        $new_paragraph->field_component_title = $old_paragraph->field_component_title;
+        $new_paragraph->field_short_title = $old_paragraph->field_short_title;
+        $new_paragraph->field_featured_post = $old_paragraph->field_featured_post;
+        $new_paragraph->field_link = $old_paragraph->field_link;
+
+        // Transform previous viewfield value from field_list to new value for field_list.
+        if (!empty($old_paragraph->field_list['und'][0]['vname'])) {
+          switch ($old_paragraph->field_list['und'][0]['vname']) {
+            // "Other" display has "news_events" machine name.
+            case "news_announcements|departments":
+            case "news_announcements|news_events":
+            case "news_announcements|places":
+            case "news_announcements|people":
+            case "news_announcements|programs":
+            case "news_announcements|neighborhoods":
+            case "news_announcements|guides":
+            case "news_announcements|events":
+            case "news_announcements|posts":
+              $new_paragraph->field_list = [
+                'und' => [
+                  0 => [
+                    // "Related" display has news_events machine name.
+                    'vname' => 'news_and_announcements|news_events',
+                    'vargs' => '',
+                  ],
+                ],
+              ];
+              break;
+
+            case "news_announcements|most_recent":
+              $new_paragraph->field_list = [
+                'und' => [
+                  0 => [
+                    // "Upcoming" display has most_recent machine name.
+                    'vname' => 'news_and_announcements|most_recent',
+                    'vargs' => '',
+                  ],
+                ],
+              ];
+              break;
+
+            default:
+              $new_paragraph->field_list = [
+                'und' => [
+                  0 => [
+                    // "Upcoming" display has most_recent machine name.
+                    'vname' => 'news_and_announcements|most_recent',
+                    'vargs' => '',
+                  ],
+                ],
+              ];
+          }
+        }
+
+        // Attach the new paragraph to the host node that the old paragraph is on.
+        $new_paragraph->setHostEntity('node', $parent_node);
+        $new_paragraph->revision = TRUE;
+        $new_paragraph->save(FALSE);
+
+        // Replace the old paragraph with the new one. 
+        $components = $parent_node->field_components['und'];
+        foreach ($components as $key => $component) {
+          if ($component['value'] == $old_paragraph->item_id) {
+            // Copy over the old paragraph with the new one.
+            $parent_node->field_components['und'][$key] = end($parent_node->field_components['und']);
+          }
+        }
+        // Remove the duplicate new paragraph from the bottom of the list (it has been copied to the correct pos).
+        array_pop($parent_node->field_components['und']);
+        // Save the host node so the new paragraph order takes effect.
+        node_save($parent_node);
+      }
+    }
+  }
+
+}
+/**
+ * Migrate upcoming_events paragraph to events_and_notices paragraph.
+ */
+function bos_profile_update_7047() {
+}
+
+/**
+ * Disable the old related content modules.
+ */
+function bos_profile_update_7048() {
   // Disable old modules.
   $disabled_modules = array(
     'bos_form_related_content',
@@ -1438,7 +1463,6 @@ function bos_profile_update_7044() {
     'bos_component_upcoming_events',
   );
   module_disable($disabled_modules);
-  */
 }
 
 /*******************************************************************
