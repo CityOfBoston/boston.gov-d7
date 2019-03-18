@@ -63,7 +63,6 @@ function bos_profile_install() {
   bos_profile_update_7045();
   bos_profile_update_7046();
   bos_profile_update_7047();
-  bos_profile_update_7048();
 }
 
 /**
@@ -1342,13 +1341,32 @@ function bos_profile_update_7046() {
   $ids = array_keys($result['paragraphs_item']);
   // Get an array of paragraph objects.
   $news_announcements_paragraphs = entity_load('paragraphs_item', $ids);
+  bos_migrate_paragraphs($news_announcements_paragraphs, "news_and_announcements");
+
+  // Get a list of all paragraphs of type upcoming_events (the old paragraph bundle).
+  $query = new EntityFieldQuery();
+  $query
+    ->entityCondition('entity_type', 'paragraphs_item', '=')
+    ->propertyCondition('bundle', 'upcoming_events', '=');
+  $result = $query->execute();
+  // Get an array of the ID's for each of these news_announcements paragraphs.
+  $ids = array_keys($result['paragraphs_item']);
+  // Get an array of paragraph objects.
+  $upcoming_events_paragraphs = entity_load('paragraphs_item', $ids);
+  bos_migrate_paragraphs($upcoming_events_paragraphs, "events_and_notices");
+}
+
+/**
+ * Custom function to migrate paragraphs.
+ */
+function bos_migrate_paragraphs(array $paragraph_list, string $paragraph_bundle) {
   // Loop through the list of paragraph objects.
-  foreach ($news_announcements_paragraphs as $old_paragraph) {
+  foreach ($paragraph_list as $old_paragraph) {
     // Load the node that the paragraph is attached to.
     $parent_node = $old_paragraph->hostEntity();
     $parent_node = workbench_moderation_node_current_load($parent_node);
-    // Double check you have a valid host node and the paragraph bundle is correct.
-    if ($parent_node && $old_paragraph->bundle() == 'news_announcements') {
+    // Double check you have a valid host node.
+    if ($parent_node) {
       // Get list of paragraphs currently in the field_components.
       $current_revisions = [];
       if (isset($parent_node->field_components["und"])) {
@@ -1363,13 +1381,18 @@ function bos_profile_update_7046() {
           ($old_paragraph->archived == "1" && in_array($old_paragraph->revision_id, $current_revisions))) {
 
         // Create new paragraph.
-        $new_paragraph = new ParagraphsItemEntity(array('field_name' => 'field_components', 'bundle' => 'news_and_announcements'));
+        $new_paragraph = new ParagraphsItemEntity(array('field_name' => 'field_components', 'bundle' => $paragraph_bundle));
         $new_paragraph->is_new = TRUE;
 
         // Copy field values from original paragraph to new paragraph.
         $new_paragraph->field_component_title = $old_paragraph->field_component_title;
         $new_paragraph->field_short_title = $old_paragraph->field_short_title;
-        $new_paragraph->field_featured_post = $old_paragraph->field_featured_post;
+        // Account different "featured" entity_reference field.
+        if ($paragraph_bundle == "news_and_announcements") {
+          $new_paragraph->field_featured_post = $old_paragraph->field_featured_post;
+        } else if ($paragraph_bundle == "events_and_notices") {
+          $new_paragraph->field_featured_item = $old_paragraph->field_featured_item;
+        }
         $new_paragraph->field_link = $old_paragraph->field_link;
 
         // Transform previous viewfield value from field_list to new value for field_list.
@@ -1396,6 +1419,33 @@ function bos_profile_update_7046() {
               ];
               break;
 
+            // "Post" display has "most_recent" machine name.
+            // "Event/Notice" display has "block_1" machine name.
+            // "Guide" display has "block_2" machine name.
+            // "Person" display has "block_3" machine name.
+            // "Place" display has "block_4" machine name.
+            // "Program/Initiative" display has "block_5" machine name.
+            // "Other" display has "block_5" machine name.
+            // "Department" display has "block_5" machine name.
+            case "related_events|most_recent":
+            case "related_events|block_1":
+            case "related_events|block_2":
+            case "related_events|block_3":
+            case "related_events|block_4":
+            case "related_events|block_5":
+            case "related_events|block_6":
+            case "related_events|block_7":
+              $new_event_paragraph->field_list = [
+                'und' => [
+                  0 => [
+                    // "Related" display has block_1 machine name.
+                    'vname' => 'events_and_notices|block_1',
+                    'vargs' => '',
+                  ],
+                ],
+              ];
+              break;
+
             case "news_announcements|most_recent":
               $new_paragraph->field_list = [
                 'und' => [
@@ -1408,16 +1458,22 @@ function bos_profile_update_7046() {
               ];
               break;
 
-            default:
-              $new_paragraph->field_list = [
+            case "upcoming_events|most_recent":
+            case "upcoming_events|block_1":
+              $new_event_paragraph->field_list = [
                 'und' => [
                   0 => [
                     // "Upcoming" display has most_recent machine name.
-                    'vname' => 'news_and_announcements|most_recent',
+                    'vname' => 'events_and_notices|most_recent',
                     'vargs' => '',
                   ],
                 ],
               ];
+              break;
+
+            default:
+              echo "No field_list match for " . $old_paragraph->field_list['und'][0]['vname'] . " found in $paragraph_bundle";
+              break;
           }
         }
 
@@ -1441,18 +1497,12 @@ function bos_profile_update_7046() {
       }
     }
   }
-
-}
-/**
- * Migrate upcoming_events paragraph to events_and_notices paragraph.
- */
-function bos_profile_update_7047() {
 }
 
 /**
  * Disable the old related content modules.
  */
-function bos_profile_update_7048() {
+function bos_profile_update_7047() {
   // Disable old modules.
   $disabled_modules = array(
     'bos_form_related_content',
