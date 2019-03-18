@@ -1294,24 +1294,6 @@ function bos_profile_update_7044() {
         $new_paragraph->field_featured_post = $old_paragraph->field_featured_post;
         $new_paragraph->field_link = $old_paragraph->field_link;
 
-        $new_paragraph->setHostEntity('node', $parent_node);
-        $new_paragraph->revision = TRUE;
-        $new_paragraph->save(FALSE);
-
-        // Replace the old paragraph with the new one. 
-        $components = $parent_node->field_components['und'];
-        foreach ($components as $key => $component) {
-          if ($component['value'] == $old_paragraph->item_id) {
-            //unset($parent_node->field_components['und'][$key]);
-            $parent_node->field_components['und'][$key] = end($parent_node->field_components['und']);
-            $delta = $key;
-          }
-        }
-        array_pop($parent_node->field_components['und']);
-        node_save($parent_node);
-        $new_par_revision_id = $parent_node->field_components['und'][$delta]["revision_id"];
-        $new_par = entity_revision_load("paragraphs_item", $new_par_revision_id);
-        // Viewfield must be set after paragraph position in list.
         if (!empty($old_paragraph->field_list['und'][0]['vname'])) {                                                     
           switch ($old_paragraph->field_list['und'][0]['vname']) {
             // "Other" display has "news_events" machine name.
@@ -1362,9 +1344,28 @@ function bos_profile_update_7044() {
               ];
           }
         }
-        $new_par->setHostEntity('node', $parent_node);
+
+        $new_paragraph->setHostEntity('node', $parent_node);
+        $new_paragraph->revision = TRUE;
+        $new_paragraph->save(FALSE);
+
+        // Replace the old paragraph with the new one. 
+        $components = $parent_node->field_components['und'];
+        foreach ($components as $key => $component) {
+          if ($component['value'] == $old_paragraph->item_id) {
+            //unset($parent_node->field_components['und'][$key]);
+            $parent_node->field_components['und'][$key] = end($parent_node->field_components['und']);
+            //$delta = $key;
+          }
+        }
+        array_pop($parent_node->field_components['und']);
+        node_save($parent_node);
+
+        //$new_par_revision_id = $parent_node->field_components['und'][$delta]["revision_id"];
+        //$new_par = entity_revision_load("paragraphs_item", $new_par_revision_id);
+        //$new_par->setHostEntity('node', $parent_node);
         //$new_par->revision = TRUE;
-        $new_par->save(FALSE);
+        //$new_par->save(FALSE);
 
       }
     }
