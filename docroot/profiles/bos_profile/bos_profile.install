@@ -1274,14 +1274,19 @@ function bos_profile_update_7044() {
  */
 function bos_profile_update_7045() {
   // Load all nodes with related content fields.
+  echo "Loading all event nodes \r\n";
   $event_nodes = node_load_multiple(array(), array('type' => 'event'));
+  echo "Loading all public notice nodes \r\n";
   $notice_nodes = node_load_multiple(array(), array('type' => 'public_notice'));
+  echo "Loading all post nodes \r\n";
   $post_nodes = node_load_multiple(array(), array('type' => 'post'));
   // Combine all nodes with related content fields into one array.
   $nodes = array_merge($event_nodes, $notice_nodes, $post_nodes);
   // Loop through nodes with related content fields.
-  foreach ($nodes as $node) {
+  foreach ($nodes as $key => $node) {
     // Check if fields have values.
+    echo "Migrating field data for /node/" . $node->nid . "\r\n";
+    echo $key . " of " . count($nodes) . "\r\n\r\n";
     $related_departments = is_array($node->field_related_departments['und']) ? $node->field_related_departments['und'] : [];
     $related_events_notices = is_array($node->field_related_events_notices['und']) ? $node->field_related_events_notices['und'] : [];
     $related_guides = is_array($node->field_related_guides['und']) ? $node->field_related_guides['und'] : [];
@@ -1304,24 +1309,35 @@ function bos_profile_update_7045() {
     field_attach_update('node', $node);
   }
   // Remove old fields.
+  echo "Removing field_related_departments \r\n";
   field_delete_field('field_related_departments');
+  echo "Removing field_related_events_notices \r\n";
   field_delete_field('field_related_events_notices');
+  echo "Removing field_related_guides \r\n";
   field_delete_field('field_related_guides');
+  echo "Removing field_people \r\n";
   field_delete_field('field_people');
+  echo "Removing field_place \r\n";
   field_delete_field('field_place');
+  echo "Removing field_related_posts \r\n";
   field_delete_field('field_related_posts');
+  echo "Removing field_program_initiative \r\n";
   field_delete_field('field_program_initiative');
+  echo "Removing field_related_content \r\n";
   field_delete_field('field_related_content');
   field_purge_batch(1);
   // Delete old field groups.
+  echo "Removing Related field group for events \r\n";
   if ($group = field_group_load_field_group('group_related_content', 'node', 'events', 'form')) {
     ctools_include('export');
     field_group_group_export_delete($group, FALSE);
   }
+  echo "Removing Related field group for public notices \r\n";
   if ($group = field_group_load_field_group('group_related_content', 'node', 'public_notice', 'form')) {
     ctools_include('export');
     field_group_group_export_delete($group, FALSE);
   }
+  echo "Removing Related field group for posts \r\n";
   if ($group = field_group_load_field_group('group_related_content', 'node', 'post', 'form')) {
     ctools_include('export');
     field_group_group_export_delete($group, FALSE);
@@ -1333,6 +1349,7 @@ function bos_profile_update_7045() {
  */
 function bos_profile_update_7046() {
   // Get a list of all paragraphs of type news_announcements (the old paragraph bundle).
+  echo "Querying to get all news_announcements components \r\n";
   $query = new EntityFieldQuery();
   $query
     ->entityCondition('entity_type', 'paragraphs_item', '=')
@@ -1342,9 +1359,11 @@ function bos_profile_update_7046() {
   $ids = array_keys($result['paragraphs_item']);
   // Get an array of paragraph objects.
   $news_announcements_paragraphs = entity_load('paragraphs_item', $ids);
+  echo "Starting migration to news_and_announcements paragraph \r\n";
   bos_migrate_paragraphs($news_announcements_paragraphs, "news_and_announcements");
 
   // Get a list of all paragraphs of type upcoming_events (the old paragraph bundle).
+  echo "Querying to get all upcoming_events components \r\n";
   $query = new EntityFieldQuery();
   $query
     ->entityCondition('entity_type', 'paragraphs_item', '=')
@@ -1354,6 +1373,7 @@ function bos_profile_update_7046() {
   $ids = array_keys($result['paragraphs_item']);
   // Get an array of paragraph objects.
   $upcoming_events_paragraphs = entity_load('paragraphs_item', $ids);
+  echo "Starting migration to events_and_notices paragraph \r\n";
   bos_migrate_paragraphs($upcoming_events_paragraphs, "events_and_notices");
 }
 
