@@ -30,9 +30,9 @@ class SettingsTest extends PHPUnit_Framework_TestCase {
   /**
    * Test configuration for production environment on ACE.
    */
-  public function testProd() {
+  public function txestProd() {
 
-    $this->setupParams('prod'); return;
+    $this->setupParams('prod');
     require $this->drupalRoot . '/sites/default/settings.php';
 
     // Assert cache.settings.php.
@@ -71,9 +71,9 @@ class SettingsTest extends PHPUnit_Framework_TestCase {
   /**
    * Test configuration for test/stg environment on ACE.
    */
-  public function testTest() {
+  public function txestTest() {
 
-    $this->setupParams('test'); return;
+    $this->setupParams('test');
     require $this->drupalRoot . '/sites/default/settings.php';
 
     // Assert cache.settings.php.
@@ -104,9 +104,9 @@ class SettingsTest extends PHPUnit_Framework_TestCase {
   /**
    * Test configuration for dev environment on ACE.
    */
-  public function testDev() {
+  public function txestDev() {
 
-    $this->setupParams('dev'); return;
+    $this->setupParams('dev');
     require $this->drupalRoot . '/sites/default/settings.php';
 
     // Assert cache.settings.php.
