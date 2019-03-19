@@ -1308,88 +1308,31 @@ function bos_profile_update_7045() {
     );
     field_attach_update('node', $node);
   }
-  // Remove old fields.
-  echo "Removing field_related_departments \r\n";
-  if ($instance = field_info_instance('node', 'field_related_departments', 'event')) {
-    field_delete_instance($instance);
+  // Create an array of fields that should be removed.
+  $old_related_field_list = [
+    'field_related_departments',
+    'field_related_events_notices',
+    'field_related_guides',
+    'field_people',
+    'field_place',
+    'field_related_posts',
+    'field_program_initiative',
+    'field_related_content',
+  ];
+  foreach ($old_related_field_list as $field) {
+    // Remove old fields.
+    echo "Removing $field \r\n";
+    if ($instance = field_info_instance('node', $field, 'event')) {
+      field_delete_instance($instance);
+    }
+    if ($instance = field_info_instance('node', $field, 'public_notice')) {
+      field_delete_instance($instance);
+    }
+    if ($instance = field_info_instance('node', $field, 'post')) {
+      field_delete_instance($instance);
+    }
+    field_purge_batch(1);
   }
-  if ($instance = field_info_instance('node', 'field_related_departments', 'public_notice')) {
-    field_delete_instance($instance);
-  }
-  if ($instance = field_info_instance('node', 'field_related_departments', 'post')) {
-    field_delete_instance($instance);
-  }
-  echo "Removing field_related_events_notices \r\n";
-  if ($instance = field_info_instance('node', 'field_related_events_notices', 'event')) {
-    field_delete_instance($instance);
-  }
-  if ($instance = field_info_instance('node', 'field_related_events_notices', 'public_notice')) {
-    field_delete_instance($instance);
-  }
-  if ($instance = field_info_instance('node', 'field_related_events_notices', 'post')) {
-    field_delete_instance($instance);
-  }
-  echo "Removing field_related_guides \r\n";
-  if ($instance = field_info_instance('node', 'field_related_guides', 'event')) {
-    field_delete_instance($instance);
-  }
-  if ($instance = field_info_instance('node', 'field_related_guides', 'public_notice')) {
-    field_delete_instance($instance);
-  }
-  if ($instance = field_info_instance('node', 'field_related_guides', 'post')) {
-    field_delete_instance($instance);
-  }
-  echo "Removing field_people \r\n";
-  if ($instance = field_info_instance('node', 'field_people', 'event')) {
-    field_delete_instance($instance);
-  }
-  if ($instance = field_info_instance('node', 'field_people', 'public_notice')) {
-    field_delete_instance($instance);
-  }
-  if ($instance = field_info_instance('node', 'field_people', 'post')) {
-    field_delete_instance($instance);
-  }
-  echo "Removing field_place \r\n";
-  if ($instance = field_info_instance('node', 'field_place', 'event')) {
-    field_delete_instance($instance);
-  }
-  if ($instance = field_info_instance('node', 'field_place', 'public_notice')) {
-    field_delete_instance($instance);
-  }
-  if ($instance = field_info_instance('node', 'field_place', 'post')) {
-    field_delete_instance($instance);
-  }
-  echo "Removing field_related_posts \r\n";
-  if ($instance = field_info_instance('node', 'field_related_posts', 'event')) {
-    field_delete_instance($instance);
-  }
-  if ($instance = field_info_instance('node', 'field_related_posts', 'public_notice')) {
-    field_delete_instance($instance);
-  }
-  if ($instance = field_info_instance('node', 'field_related_posts', 'post')) {
-    field_delete_instance($instance);
-  }
-  echo "Removing field_program_initiative \r\n";
-  if ($instance = field_info_instance('node', 'field_program_initiative', 'event')) {
-    field_delete_instance($instance);
-  }
-  if ($instance = field_info_instance('node', 'field_program_initiative', 'public_notice')) {
-    field_delete_instance($instance);
-  }
-  if ($instance = field_info_instance('node', 'field_program_initiative', 'post')) {
-    field_delete_instance($instance);
-  }
-  echo "Removing field_related_content \r\n";
-  if ($instance = field_info_instance('node', 'field_related_content', 'event')) {
-    field_delete_instance($instance);
-  }
-  if ($instance = field_info_instance('node', 'field_related_content', 'public_notice')) {
-    field_delete_instance($instance);
-  }
-  if ($instance = field_info_instance('node', 'field_related_content', 'post')) {
-    field_delete_instance($instance);
-  }
-  field_purge_batch(1);
   // Delete old field groups.
   echo "Removing Related field group for events \r\n";
   if ($group = field_group_load_field_group('group_related_content', 'node', 'events', 'form')) {
