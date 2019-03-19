@@ -1115,7 +1115,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'options_buttons',
-      'weight' => 15,
+      'weight' => 38,
     ),
   );
 
