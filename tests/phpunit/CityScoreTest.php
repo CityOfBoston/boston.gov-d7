@@ -26,6 +26,7 @@ class CityScoreTest extends PHPUnit_Framework_TestCase {
 
   /**
    * Define an array of tests.
+   *
    * @var array
    */
   private $tests = [
@@ -67,7 +68,7 @@ class CityScoreTest extends PHPUnit_Framework_TestCase {
               "score_day_name" : "Monday"
             }
           ]',
-        ],
+      ],
       "response-format" => "json_array",
       "response-code" => 200,
       "tests" => [
@@ -110,7 +111,6 @@ class CityScoreTest extends PHPUnit_Framework_TestCase {
         ["type" => "string", "match" => '<td class="cs__low cs__table--centered">0.99</td>'],
         ["type" => "string", "match" => '<td class="cs__low cs__table--centered">0.95</td>'],
         ["type" => "string", "match" => '<td class="cs__low cs__table--centered">0.78</td>'],
-//        ["type" => "preg", "match" => "/.*/"],
       ],
     ],
     [
@@ -175,7 +175,7 @@ class CityScoreTest extends PHPUnit_Framework_TestCase {
               "score_day_name" : "Tuesday"
             }
           ]',
-        ],
+      ],
       "response-format" => "json_array",
       "response-code" => 200,
       "tests" => [
@@ -197,7 +197,7 @@ class CityScoreTest extends PHPUnit_Framework_TestCase {
         ["type" => "field", "name" => "quarter", "value" => '0.8'],
         ["type" => "field", "name" => "date_posted", "value" => "03/05/2019"],
       ],
-      ],
+    ],
     [
       "description" => "Retrieves cityscore (html) - expect 3 fields",
       "type" => "get",
@@ -210,16 +210,43 @@ class CityScoreTest extends PHPUnit_Framework_TestCase {
         ["type" => "string", "match" => "<td>FIELD 1</td>"],
         ["type" => "string", "match" => "<td>FIELD 2</td>"],
         ["type" => "string", "match" => "<td>FIELD 3</td>"],
-        ["type" => "string", "match" => '<td class="cs__table--centered">-</td>', "bool" => FALSE],
-        ["type" => "string", "match" => '<td class="cs__low cs__table--centered">0.22</td>'],
-        ["type" => "string", "match" => '<td class="cs__low cs__table--centered">0.33</td>'],
-        ["type" => "string", "match" => '<td class="cs__table--centered">3.99</td>'],
-        ["type" => "string", "match" => '<td class="cs__table--centered">1.16</td>'],
-        ["type" => "string", "match" => '<td class="cs__table--centered">1.29</td>'],
-        ["type" => "string", "match" => '<td class="cs__low cs__table--centered">0.99</td>'],
-        ["type" => "string", "match" => '<td class="cs__low cs__table--centered">0.11</td>'],
-        ["type" => "string", "match" => '<td class="cs__low cs__table--centered">0.44</td>'],
-        //        ["type" => "preg", "match" => "/.*/"],
+        [
+          "type" => "string",
+          "match" => '<td class="cs__table--centered">-</td>',
+          "bool" => FALSE,
+        ],
+        [
+          "type" => "string",
+          "match" => '<td class="cs__low cs__table--centered">0.22</td>',
+        ],
+        [
+          "type" => "string",
+          "match" => '<td class="cs__low cs__table--centered">0.33</td>',
+        ],
+        [
+          "type" => "string",
+          "match" => '<td class="cs__table--centered">3.99</td>',
+        ],
+        [
+          "type" => "string",
+          "match" => '<td class="cs__table--centered">1.16</td>',
+        ],
+        [
+          "type" => "string",
+          "match" => '<td class="cs__table--centered">1.29</td>',
+        ],
+        [
+          "type" => "string",
+          "match" => '<td class="cs__low cs__table--centered">0.99</td>',
+        ],
+        [
+          "type" => "string",
+          "match" => '<td class="cs__low cs__table--centered">0.11</td>',
+        ],
+        [
+          "type" => "string",
+          "match" => '<td class="cs__low cs__table--centered">0.44</td>',
+        ],
       ],
     ],
     [
@@ -251,7 +278,7 @@ class CityScoreTest extends PHPUnit_Framework_TestCase {
               "score_day_name" : "Wednesday"
             }
           ]',
-        ],
+      ],
       "response-format" => "json_array",
       "response-code" => 200,
       "tests" => [
@@ -291,7 +318,6 @@ class CityScoreTest extends PHPUnit_Framework_TestCase {
         ["type" => "string", "match" => '<td class="cs__table--centered">1.06</td>'],
         ["type" => "string", "match" => '<td class="cs__table--centered">1.29</td>'],
         ["type" => "string", "match" => '<td class="cs__low cs__table--centered">0.99</td>'],
-        //        ["type" => "preg", "match" => "/.*/"],
       ],
     ],
     [
@@ -401,25 +427,35 @@ class CityScoreTest extends PHPUnit_Framework_TestCase {
               "score_day_name" : "Tuesday"
             }
           ]',
-        ],
+      ],
       "response-format" => "json_array",
       "response-code" => 200,
       "tests" => [
-        ["type" => "field", "name" => "status", "value" => "error"],
-        ["type" => "field", "name" => "message", "value" => "bad json in payload"],
+        [
+          "type" => "field",
+          "name" => "status",
+          "value" => "error"
+        ],
+        [
+          "type" => "field",
+          "name" => "message",
+          "value" => "bad json in payload"
+        ],
       ],
     ],
   ];
 
   /**
+   * Used to track the drupal root.
+   *
    * @var string
-   *   Used to track the drupal root.
    */
   private $host = "http://127.0.0.1";
 
   /**
+   * Used to trap test errors.
+   *
    * @var array
-   *   Used to trap test errors.
    */
   private $failed = [];
 
@@ -439,11 +475,11 @@ class CityScoreTest extends PHPUnit_Framework_TestCase {
     }
 
     // Check for failed tests.
-    $errString = "";
-    foreach ($this->failed as $failReason) {
-      $errString .= $failReason . "\n";
+    $err_string = "";
+    foreach ($this->failed as $fail_reason) {
+      $err_string .= $fail_reason . "\n";
     }
-    $this->assertEmpty($errString, $errString);
+    $this->assertEmpty($err_string, $err_string);
 
   }
 
@@ -458,28 +494,27 @@ class CityScoreTest extends PHPUnit_Framework_TestCase {
 
     // Run tests.
     echo module_exists("bos_rest");
-    echo "a:" . variable_get('cityscore_token');
-//    $this->assertNotEmpty(variable_get('cityscore_token'), "Missing setting: cityscore_token.");
+    $this->assertNotEmpty(variable_get('cityscore_token'), "Missing setting: cityscore_token.");
   }
 
- /**
-   * POST data from an endpoint and test response.
-   *
-   * @param int $seq
-   *   The test number for reporting.
-   * @param array $test
-   *   The test to execute.
-   *
-   * @return bool
-   *   True if test passed, false if not.
-   */
-  public function postEndpoints(int $seq, array $test) {
+  /**
+  * POST data from an endpoint and test response.
+  *
+  * @param int $seq
+  *   The test number for reporting.
+  * @param array $test
+  *   The test to execute.
+  *
+  * @return bool
+  *   True if test passed, false if not.
+  */
+  public function postEndpoints($seq, array $test) {
     if (!class_exists("GuzzleHttp\Client")) {
       $this->recordFail($seq, "Require Guzzle to be installed (via composer).");
       return FALSE;
     }
     // Make POST to endpoint.
-    $endpoint =  $this->host . $test["endpoint"];
+    $endpoint = $this->host . $test["endpoint"];
     try {
       $client = new Client(["headers" => ["Cache-Control" => "no-cache"]]);
       $response = $client->request("POST", $endpoint, [
@@ -507,10 +542,10 @@ class CityScoreTest extends PHPUnit_Framework_TestCase {
         return FALSE;
       }
       // Run tests on JSON response (if any).
-      foreach ($test['tests'] as $testItem) {
-        if ($testItem["type"] == "field") {
-          if ($response->{$testItem["name"]} != $testItem["value"]) {
-            $this->recordFail($seq, "Unexpected response for " . $testItem["name"] . ": expected '" . $testItem["value"] . "' got '" . $response->{$testItem["name"]} . "'.");
+      foreach ($test['tests'] as $test_item) {
+        if ($test_item["type"] == "field") {
+          if ($response->{$test_item["name"]} != $test_item["value"]) {
+            $this->recordFail($seq, "Unexpected response for " . $test_item["name"] . ": expected '" . $test_item["value"] . "' got '" . $response->{$test_item["name"]} . "'.");
             return FALSE;
           }
         }
@@ -543,7 +578,7 @@ class CityScoreTest extends PHPUnit_Framework_TestCase {
       $response = $client->request("GET", $endpoint, $query);
 
       // Check response.
-      if (null !== $response && $response->getStatusCode() != $test["response-code"]) {
+      if (NULL !== $response && $response->getStatusCode() != $test["response-code"]) {
         $this->recordFail($seq, "Server returned code " . $response->getStatusCode() . " but expected " . $test["response-code"] . ".");
         return FALSE;
       }
@@ -553,11 +588,11 @@ class CityScoreTest extends PHPUnit_Framework_TestCase {
         $this->recordFail($seq, "Expected Code: " . $test["response-code"] . " but returned " . $e->getCode());
         return FALSE;
       }
-      $response = null;
+      $response = NULL;
     }
 
     if (
-      (null === $response || empty($response->getBody()))
+      (NULL === $response || empty($response->getBody()))
       && !empty($test['tests'])) {
       $this->recordFail($seq, "No data returned from " . $endpoint . ".");
       return FALSE;
@@ -571,10 +606,10 @@ class CityScoreTest extends PHPUnit_Framework_TestCase {
         return FALSE;
       }
       // Run tests on JSON response (if any).
-      foreach ($test['tests'] as $testItem) {
-        if ($testItem["type"] == "field") {
-          if ($response->{$testItem["name"]} != $testItem["value"]) {
-            $this->recordFail($seq, "Unexpected response for " . $testItem["name"] . ": expected '" . $testItem["value"] . "' got '" . $response->{$testItem["name"]} . "'.");
+      foreach ($test['tests'] as $test_item) {
+        if ($test_item["type"] == "field") {
+          if ($response->{$test_item["name"]} != $test_item["value"]) {
+            $this->recordFail($seq, "Unexpected response for " . $test_item["name"] . ": expected '" . $test_item["value"] . "' got '" . $response->{$test_item["name"]} . "'.");
             return FALSE;
           }
         }
@@ -583,25 +618,25 @@ class CityScoreTest extends PHPUnit_Framework_TestCase {
 
     elseif (!empty($test['tests']) && $test["response-format"] == "html_markup") {
       // Run tests on HTML response (if any).
-      foreach ($test['tests'] as $type => $testItem) {
-        if (!isset($testItem["bool"])) {
-          $testItem["bool"] = TRUE;
+      foreach ($test['tests'] as $type => $test_item) {
+        if (!isset($test_item["bool"])) {
+          $test_item["bool"] = TRUE;
         }
-        switch ($testItem["type"]) {
+        switch ($test_item["type"]) {
           case "string":
-            if (!$testItem["bool"] && stripos($response->getBody(), $testItem["match"]) !== FALSE) {
-              $this->recordFail($seq, "Found unexpected HTML string '" . $testItem["match"] . "'.");
+            if (!$test_item["bool"] && stripos($response->getBody(), $test_item["match"]) !== FALSE) {
+              $this->recordFail($seq, "Found unexpected HTML string '" . $test_item["match"] . "'.");
               return FALSE;
             }
-            elseif ($testItem["bool"] && stripos($response->getBody(), $testItem["match"]) === FALSE) {
-              $this->recordFail($seq, "Did not find expected HTML string '" . $testItem["match"] . "'.");
+            elseif ($test_item["bool"] && stripos($response->getBody(), $test_item["match"]) === FALSE) {
+              $this->recordFail($seq, "Did not find expected HTML string '" . $test_item["match"] . "'.");
               return FALSE;
             }
             break;
 
           case "preg":
-            if (preg_match($testItem["match"], $response->getBody()) === $testItem['bool']) {
-              $this->recordFail($seq, "Did not find expected HTML pattern '" . $testItem["match"] . "'.");
+            if (preg_match($test_item["match"], $response->getBody()) === $test_item['bool']) {
+              $this->recordFail($seq, "Did not find expected HTML pattern '" . $test_item["match"] . "'.");
               return FALSE;
             }
             break;
@@ -616,14 +651,15 @@ class CityScoreTest extends PHPUnit_Framework_TestCase {
    *
    * @param int $seq
    *   The test number for reporting.
-   * @param array $failReason
+   * @param string $fail_reason
    *   The reason the test failed..
    *
-   * @return boolean
+   * @return bool
    *   Always true.
    */
-  private function recordFail(int $seq, string $failReason) {
-    $this->failed[] = "Test " . $seq . ": " . $failReason;
+  private function recordFail($seq, string $fail_reason) {
+    $this->failed[] = "Test " . $seq . ": " . $fail_reason;
     return TRUE;
   }
+
 }
