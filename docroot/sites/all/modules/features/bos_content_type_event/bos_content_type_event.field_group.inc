@@ -346,10 +346,7 @@ function bos_content_type_event_field_group_info() {
   t('Event Location');
   t('Page Meta Data');
   t('Related Content');
-<<<<<<< HEAD
   t('Related Content - ORIGINAL');
-=======
->>>>>>> 0766f7c3d5b4388fe0a8509230a88e2a12dbac48
   t('Sidebar Components');
 
   return $field_groups;
