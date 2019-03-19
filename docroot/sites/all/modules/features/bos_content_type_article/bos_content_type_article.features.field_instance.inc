@@ -10,7 +10,7 @@
 function bos_content_type_article_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-article-body'.
+  // Exported field_instance: 'node-article-body'
   $field_instances['node-article-body'] = array(
     'bundle' => 'article',
     'default_value' => NULL,
@@ -123,7 +123,7 @@ function bos_content_type_article_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-article-field_contact'.
+  // Exported field_instance: 'node-article-field_contact'
   $field_instances['node-article-field_contact'] = array(
     'bundle' => 'article',
     'default_value' => NULL,
@@ -153,7 +153,6 @@ function bos_content_type_article_field_default_field_instances() {
         'module' => 'entityreference',
         'settings' => array(
           'links' => 1,
-          'use_content_language' => TRUE,
           'view_mode' => 'article',
         ),
         'type' => 'entityreference_entity_view',
@@ -233,7 +232,6 @@ function bos_content_type_article_field_default_field_instances() {
       'settings' => array(
         'entityreference_autocreate' => 0,
         'match_operator' => 'CONTAINS',
-        'max_results' => 10,
         'path' => '',
         'size' => 60,
       ),
@@ -242,7 +240,7 @@ function bos_content_type_article_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-article-field_intro_text'.
+  // Exported field_instance: 'node-article-field_intro_text'
   $field_instances['node-article-field_intro_text'] = array(
     'bundle' => 'article',
     'default_value' => NULL,
@@ -350,7 +348,7 @@ function bos_content_type_article_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-article-field_published_date'.
+  // Exported field_instance: 'node-article-field_published_date'
   $field_instances['node-article-field_published_date'] = array(
     'bundle' => 'article',
     'deleted' => 0,
@@ -474,7 +472,7 @@ function bos_content_type_article_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-article-field_type_of_content'.
+  // Exported field_instance: 'node-article-field_type_of_content'
   $field_instances['node-article-field_type_of_content'] = array(
     'bundle' => 'article',
     'default_value' => NULL,
@@ -510,7 +508,7 @@ function bos_content_type_article_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-article-field_updated_date'.
+  // Exported field_instance: 'node-article-field_updated_date'
   $field_instances['node-article-field_updated_date'] = array(
     'bundle' => 'article',
     'deleted' => 0,

@@ -54,7 +54,7 @@ function bos_content_type_post_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Components',
-    'weight' => '6',
+    'weight' => '7',
     'children' => array(
       0 => 'field_components',
     ),
@@ -109,8 +109,8 @@ function bos_content_type_post_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => 'Related Content - ORIGINAL',
-    'weight' => '7',
+    'label' => 'Related Content',
+    'weight' => '8',
     'children' => array(
       0 => 'field_place',
       1 => 'field_program_initiative',
@@ -160,7 +160,7 @@ function bos_content_type_post_field_group_info() {
       'formatter' => 'closed',
     ),
   );
-  $field_groups['group_related|node|post|form'] = $field_group;
+  $field_groups['group_related_content|node|post|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -173,7 +173,7 @@ function bos_content_type_post_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Sidebar Components',
-    'weight' => '5',
+    'weight' => '6',
     'children' => array(
       0 => 'field_sidebar_components',
     ),

@@ -1,16 +1,28 @@
 <!DOCTYPE html>
-<html <?php print $html_attributes ?>>
 <head>
   <?php print $head; ?>
   <title><?php print $head_title; ?></title>
-
   <?php if ($google_tag_manager_id) { ?>
+    <!-- Anti-flicker GTAG code snippet -->
+    <style>.async-hide { opacity: 0 !important} </style>
+    <script>(function(a,s,y,n,c,h,i,d,e){s.className+=' '+y;h.start=1*new Date;
+    h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
+    (a[n]=a[n]||[]).hide=h;setTimeout(function(){i();h.end=null},c);h.timeout=c;
+    })(window,document.documentElement,'async-hide','dataLayer',4000,
+    {'<?php echo $google_tag_manager_id ?>':true});</script>
+    
+    <!-- GTAG code snippet -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','<?php echo $google_tag_manager_id ?>');</script>
   <?php } ?>
+
+  <!-- Start of Bibblio RCM includes -->
+  <link rel="stylesheet" type="text/css" href="https://cdn.bibblio.org/rcm/3.10/bib-related-content.min.css">
+  <script src="https://cdn.bibblio.org/rcm/3.10/bib-related-content.min.js"></script>
+  <!-- End of Bibblio RCM includes -->
 
   <!--[if !IE]><!-->
 	<link href='<?php print $asset_url ?>/css/<?php print $asset_name ?>.css?<?php print $cache_buster ?>' rel='stylesheet' type='text/css'>
@@ -97,5 +109,6 @@
       </div>
     </script>
   <?php endif; ?>
+  <div class="bib--rcm-init visually-hidden" data-auto-ingestion="true" data-recommendation-key="852cf94f-5b38-4805-8b7b-a50c5a78609b">&nbsp;</div>
 </body>
 </html>

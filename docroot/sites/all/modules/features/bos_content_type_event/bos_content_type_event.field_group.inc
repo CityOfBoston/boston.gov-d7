@@ -19,24 +19,24 @@ function bos_content_type_event_field_group_info() {
   $field_group->bundle = 'event';
   $field_group->mode = 'form';
   $field_group->parent_name = 'group_event_details';
-  $field_group->data = array(
+  $field_group->data = [
     'label' => 'Cancel Event',
     'weight' => '44',
-    'children' => array(
+    'children' => [
       0 => 'field_cancel_event',
       1 => 'field_extra_info_event',
-    ),
+    ],
     'format_type' => 'fieldset',
-    'format_settings' => array(
+    'format_settings' => [
       'formatter' => 'collapsible',
-      'instance_settings' => array(
+      'instance_settings' => [
         'description' => '',
         'classes' => 'group-cancelled field-group-fieldset',
         'required_fields' => 1,
         'id' => '',
-      ),
-    ),
-  );
+      ],
+    ],
+  ];
   $field_groups['group_cancelled|node|event|form'] = $field_group;
 
   $field_group = new stdClass();
@@ -262,7 +262,7 @@ function bos_content_type_event_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => 'Related Content - ORIGINAL',
+    'label' => 'Related Content',
     'weight' => '9',
     'children' => array(
       0 => 'field_place',
@@ -276,12 +276,6 @@ function bos_content_type_event_field_group_info() {
     ),
     'format_type' => 'tab',
     'format_settings' => array(
-      'label' => 'Related Content - ORIGINAL',
-      'instance_settings' => array(
-        'required_fields' => 1,
-        'classes' => 'group-related-content field-group-tab',
-        'description' => '',
-      ),
       'formatter' => 'closed',
     ),
   );
@@ -306,14 +300,13 @@ function bos_content_type_event_field_group_info() {
     'format_settings' => array(
       'label' => 'Related Content',
       'instance_settings' => array(
-        'required_fields' => 1,
-        'classes' => 'group-related field-group-tab',
         'description' => '',
+        'classes' => 'group-related-content field-group-tab',
+        'required_fields' => 1,
       ),
-      'formatter' => 'closed',
     ),
   );
-  $field_groups['group_related|node|event|form'] = $field_group;
+  $field_groups['group_related_content|node|event|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -353,7 +346,10 @@ function bos_content_type_event_field_group_info() {
   t('Event Location');
   t('Page Meta Data');
   t('Related Content');
+<<<<<<< HEAD
   t('Related Content - ORIGINAL');
+=======
+>>>>>>> 0766f7c3d5b4388fe0a8509230a88e2a12dbac48
   t('Sidebar Components');
 
   return $field_groups;
