@@ -144,10 +144,10 @@ function bos_content_type_post_strongarm() {
           'weight' => '0',
         ),
         'redirect' => array(
-          'weight' => '10',
+          'weight' => '30',
         ),
         'xmlsitemap' => array(
-          'weight' => '9',
+          'weight' => '30',
         ),
       ),
       'display' => array(),

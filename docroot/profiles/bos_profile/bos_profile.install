@@ -1242,6 +1242,7 @@ function bos_profile_update_7042() {
 
 }
 
+
 /**
  * Adds boards and commissions search feature module.
  */
