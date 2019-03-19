@@ -59,13 +59,10 @@ function bos_profile_install() {
   bos_profile_update_7041();
   bos_profile_update_7042();
   bos_profile_update_7043();
-<<<<<<< HEAD
   bos_profile_update_7044();
   bos_profile_update_7045();
   bos_profile_update_7046();
   bos_profile_update_7047();
-=======
->>>>>>> 0766f7c3d5b4388fe0a8509230a88e2a12dbac48
 }
 
 /**
