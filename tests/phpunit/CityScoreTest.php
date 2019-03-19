@@ -348,12 +348,16 @@ class CityScoreTest extends PHPUnit_Framework_TestCase {
               "score_day_name" : "Tuesday"
             }
           ]',
-        ],
+      ],
       "response-format" => "json_array",
       "response-code" => 200,
       "tests" => [
         ["type" => "field", "name" => "status", "value" => "error"],
-        ["type" => "field", "name" => "message", "value" => "error missing token"],
+        [
+          "type" => "field",
+          "name" => "message",
+          "value" => "error missing token",
+        ],
       ],
     ],
     [
@@ -385,12 +389,16 @@ class CityScoreTest extends PHPUnit_Framework_TestCase {
               "score_day_name" : "Tuesday"
             }
           ]',
-        ],
+      ],
       "response-format" => "json_array",
       "response-code" => 200,
       "tests" => [
         ["type" => "field", "name" => "status", "value" => "error"],
-        ["type" => "field", "name" => "message", "value" => "error missing token"],
+        [
+          "type" => "field",
+          "name" => "message",
+          "value" => "error missing token",
+        ],
       ],
     ],
     [
@@ -400,7 +408,7 @@ class CityScoreTest extends PHPUnit_Framework_TestCase {
       "body" => [
         "api-key" => "9juHD7Y8oZpN2-erChlUQQ",
         "payload" => '',
-        ],
+      ],
       "response-format" => "json_array",
       "response-code" => 200,
       "tests" => [
@@ -434,12 +442,12 @@ class CityScoreTest extends PHPUnit_Framework_TestCase {
         [
           "type" => "field",
           "name" => "status",
-          "value" => "error"
+          "value" => "error",
         ],
         [
           "type" => "field",
           "name" => "message",
-          "value" => "bad json in payload"
+          "value" => "bad json in payload",
         ],
       ],
     ],
@@ -498,16 +506,16 @@ class CityScoreTest extends PHPUnit_Framework_TestCase {
   }
 
   /**
-  * POST data from an endpoint and test response.
-  *
-  * @param int $seq
-  *   The test number for reporting.
-  * @param array $test
-  *   The test to execute.
-  *
-  * @return bool
-  *   True if test passed, false if not.
-  */
+   * POST data from an endpoint and test response.
+   *
+   * @param int $seq
+   *   The test number for reporting.
+   * @param array $test
+   *   The test to execute.
+   *
+   * @return bool
+   *   True if test passed, false if not.
+   */
   public function postEndpoints($seq, array $test) {
     if (!class_exists("GuzzleHttp\Client")) {
       $this->recordFail($seq, "Require Guzzle to be installed (via composer).");
@@ -565,7 +573,7 @@ class CityScoreTest extends PHPUnit_Framework_TestCase {
    * @return bool
    *   True if test passed, false if not.
    */
-  public function getEndpoints(int $seq, array $test) {
+  public function getEndpoints($seq, array $test) {
     if (!class_exists("GuzzleHttp\Client")) {
       $this->recordFail($seq, "Require Guzzle to be installed (via composer).");
       return FALSE;
@@ -657,7 +665,7 @@ class CityScoreTest extends PHPUnit_Framework_TestCase {
    * @return bool
    *   Always true.
    */
-  private function recordFail($seq, string $fail_reason) {
+  private function recordFail($seq, $fail_reason) {
     $this->failed[] = "Test " . $seq . ": " . $fail_reason;
     return TRUE;
   }

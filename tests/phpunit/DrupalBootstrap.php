@@ -16,7 +16,7 @@ class COBDrupalBootstrap {
 
   /**
    * Used to track the drupal root.
-   * 
+   *
    * @var string
    */
   private $drupalRoot = "";
