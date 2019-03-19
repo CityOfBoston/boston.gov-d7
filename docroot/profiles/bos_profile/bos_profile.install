@@ -1385,17 +1385,21 @@ function bos_profile_update_7046() {
 }
 
 /**
- * Custom function to migrate paragraphs.
+* Custom function to migrate paragraphs.
  */
 function bos_migrate_paragraphs(array $paragraph_list, string $paragraph_bundle) {
   // Loop through the list of paragraph objects.
-  foreach ($paragraph_list as $old_paragraph) {
+  foreach ($paragraph_list as $par_num => $old_paragraph) {
+    echo "Migrating field data for paragraph=" . $old_paragraph->item_id . "\r\n";
+    echo $par_num . " of " . count($paragraph_list) . "\r\n\r\n";
     // Load the node that the paragraph is attached to.
+    echo "Loading parent node for paragraph \r\n";
     $parent_node = $old_paragraph->hostEntity();
     $parent_node = workbench_moderation_node_current_load($parent_node);
     // Double check you have a valid host node.
     if ($parent_node) {
       // Get list of paragraphs currently in the field_components.
+      echo "Creating list of all current paragraph revision IDs in field_component of parent node \r\n";
       $current_revisions = [];
       if (isset($parent_node->field_components["und"])) {
         foreach ($parent_node->field_components["und"] as $component) {
@@ -1404,14 +1408,18 @@ function bos_migrate_paragraphs(array $paragraph_list, string $paragraph_bundle)
         }
       }
       // Check that the paragraph is not archived if the node is in published moderation state.
+      echo "Checking if paragraph is included in the most recent revision \r\n";
       if (($old_paragraph->archived == "0" && $parent_node->workbench_moderation["current"]->from_state == 'published') ||
           // If the paragraph is archived (possible on a forward revision), make sure it has a revision ID currently in field_component.
           ($old_paragraph->archived == "1" && in_array($old_paragraph->revision_id, $current_revisions))) {
 
+        echo "Paragraph is in the most recent revision \r\n";
         // Create new paragraph.
+        echo "Creating new paragraph of type $paragraph_bundle \r\n";
         $new_paragraph = new ParagraphsItemEntity(array('field_name' => 'field_components', 'bundle' => $paragraph_bundle));
         $new_paragraph->is_new = TRUE;
 
+        echo "Migrating field data from the old paragraph to the new paragraph \r\n";
         // Copy field values from original paragraph to new paragraph.
         $new_paragraph->field_component_title = $old_paragraph->field_component_title;
         $new_paragraph->field_short_title = $old_paragraph->field_short_title;
@@ -1506,11 +1514,13 @@ function bos_migrate_paragraphs(array $paragraph_list, string $paragraph_bundle)
         }
 
         // Attach the new paragraph to the host node that the old paragraph is on.
+        echo "Attaching new paragraph to the parent node and saving \r\n";
         $new_paragraph->setHostEntity('node', $parent_node);
         $new_paragraph->revision = TRUE;
         $new_paragraph->save(FALSE);
 
         // Replace the old paragraph with the new one. 
+        echo "Removing old paragraph from node and copying new paragraph to its position in list \r\n";
         $components = $parent_node->field_components['und'];
         foreach ($components as $key => $component) {
           if ($component['value'] == $old_paragraph->item_id) {
@@ -1519,6 +1529,7 @@ function bos_migrate_paragraphs(array $paragraph_list, string $paragraph_bundle)
           }
         }
         // Remove the duplicate new paragraph from the bottom of the list (it has been copied to the correct pos).
+        echo "Removing duplicate new paragraph and saving node \r\n";
         array_pop($parent_node->field_components['und']);
         // Save the host node so the new paragraph order takes effect.
         node_save($parent_node);
