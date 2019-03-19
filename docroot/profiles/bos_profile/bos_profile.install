@@ -1270,7 +1270,7 @@ function bos_profile_update_7044() {
 /**
  * Update for 12/2018. Adds views_datasource fpr JSON API views.
  */
-function bos_profile_update_7044() {
+function bos_profile_update_7045() {
   $enabled_modules = array(
     'views_json',
     'bos_rest',
@@ -1281,7 +1281,7 @@ function bos_profile_update_7044() {
 /**
  * Update for 12/7/2018. Adds views_php.
  */
-function bos_profile_update_7045() {
+function bos_profile_update_7046() {
   $enabled_modules = array(
     'views_php',
   );
