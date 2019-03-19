@@ -1352,7 +1352,9 @@ function bos_profile_update_7045() {
 }
 
 /**
- * Migrate news_announcement paragraph to news_and_announcements paragraph.
+ * Migrate paragraph data.
+ * new_announcements = news_and_announcements
+ * upcoming_events = events_and_notices
  */
 function bos_profile_update_7046() {
   // Get a list of all paragraphs of type news_announcements (the old paragraph bundle).
@@ -1389,9 +1391,11 @@ function bos_profile_update_7046() {
  */
 function bos_migrate_paragraphs(array $paragraph_list, string $paragraph_bundle) {
   // Loop through the list of paragraph objects.
+  $index = 0;
   foreach ($paragraph_list as $par_num => $old_paragraph) {
-    echo "Migrating field data for paragraph=" . $old_paragraph->item_id . "\r\n";
-    echo $par_num . " of " . count($paragraph_list) . "\r\n\r\n";
+    echo "\r\nMigrating field data for paragraph=" . $old_paragraph->item_id . "\r\n";
+    echo $index . " of " . count($paragraph_list) . "\r\n";
+    $index++;
     // Load the node that the paragraph is attached to.
     echo "Loading parent node for paragraph \r\n";
     $parent_node = $old_paragraph->hostEntity();
