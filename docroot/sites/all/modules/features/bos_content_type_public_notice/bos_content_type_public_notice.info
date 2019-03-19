@@ -22,6 +22,7 @@ features[features_api][] = api:2
 features[field_base][] = field_cancelled
 features[field_base][] = field_is_there_public_testimony
 features[field_base][] = field_public_notice_date
+features[field_base][] = field_related
 features[field_base][] = field_time
 features[field_group][] = group_basic|node|public_notice|form
 features[field_group][] = group_cancelled|node|public_notice|form
