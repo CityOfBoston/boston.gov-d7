@@ -1312,7 +1312,6 @@ function bos_profile_update_7045() {
   }
   // Create an array of fields that should be removed.
   $old_related_field_list = [
-    'field_multiple_neighborhoods',
     'field_related_departments',
     'field_related_events_notices',
     'field_related_guides',
