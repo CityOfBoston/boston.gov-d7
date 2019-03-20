@@ -21,9 +21,9 @@
   <?php } ?>
 
   <!-- Start of Bibblio RCM includes -->
-<link rel="stylesheet" type="text/css" href="https://cdn.bibblio.org/rcm/3.10/bib-related-content.min.css">
-<script src="https://cdn.bibblio.org/rcm/3.10/bib-related-content.min.js"></script>
-<!-- End of Bibblio RCM includes -->
+  <link rel="stylesheet" type="text/css" href="https://cdn.bibblio.org/rcm/3.10/bib-related-content.min.css">
+  <script src="https://cdn.bibblio.org/rcm/3.10/bib-related-content.min.js"></script>
+  <!-- End of Bibblio RCM includes -->
 
   <!--[if !IE]><!-->
 	<link href='<?php print $asset_url ?>/css/<?php print $asset_name ?>.css?<?php print $cache_buster ?>' rel='stylesheet' type='text/css'>
@@ -110,6 +110,6 @@
       </div>
     </script>
   <?php endif; ?>
-  <div class="bib--rcm-init" data-auto-ingestion="true" data-recommendation-key="0966dd72-5068-462f-8c15-9967ad9a975f">&nbsp;</div>
+  <!--<div class="bib--rcm-init" data-auto-ingestion="true" data-recommendation-key="0966dd72-5068-462f-8c15-9967ad9a975f">&nbsp;</div>-->
 </body>
 </html>

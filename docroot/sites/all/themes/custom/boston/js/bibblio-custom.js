@@ -40,17 +40,17 @@ var getHTML = function(bibContent){
   jQuery('#bibblio-custom div.g').append(listItem);
 }
 const pageURL = window.location.pathname;
-//const siteLocation = 'https://boston.gov';
-const siteLocation = 'https://bostonuat.prod.acquia-sites.com';
+const siteLocation = 'https://www.boston.gov';
+//const siteLocation = 'https://bostonuat.prod.acquia-sites.com';
 jQuery.ajax({
   method: "GET",
   url: "https://api.bibblio.org/v1/recommendations",
   contentType: "application/json",
   headers: {
     //live
-    //"Authorization": "Bearer 6364c775-5133-4a32-a80e-a2116bac884b"
+    "Authorization": "Bearer 852cf94f-5b38-4805-8b7b-a50c5a78609b"
     //testing
-      "Authorization": "Bearer 0966dd72-5068-462f-8c15-9967ad9a975f"
+    //"Authorization": "Bearer 0966dd72-5068-462f-8c15-9967ad9a975f"
   },
   data:{ 
     "customUniqueIdentifier": siteLocation + pageURL,
