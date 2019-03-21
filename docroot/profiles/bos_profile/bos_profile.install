@@ -1361,11 +1361,13 @@ function bos_profile_update_7045() {
 
 /**
  * Migrate paragraph data.
- * new_announcements = news_and_announcements
- * upcoming_events = events_and_notices
+ *
+ * Par new_announcements = news_and_announcements.
+ *
+ * Par upcoming_events = events_and_notices.
  */
 function bos_profile_update_7046() {
-  // Get a list of all paragraphs of type news_announcements (the old paragraph bundle).
+  // Get a list of all paragraphs of type news_announcements (old bundle).
   echo "Querying to get all news_announcements components \r\n";
   $query = new EntityFieldQuery();
   $query
@@ -1379,7 +1381,7 @@ function bos_profile_update_7046() {
   echo "Starting migration to news_and_announcements paragraph \r\n";
   bos_migrate_paragraphs($news_announcements_paragraphs, "news_and_announcements");
 
-  // Get a list of all paragraphs of type upcoming_events (the old paragraph bundle).
+  // Get a list of all paragraphs of type upcoming_events (old bundle).
   echo "Querying to get all upcoming_events components \r\n";
   $query = new EntityFieldQuery();
   $query
@@ -1395,7 +1397,7 @@ function bos_profile_update_7046() {
 }
 
 /**
-* Custom function to migrate paragraphs.
+ * Custom function to migrate paragraphs.
  */
 function bos_migrate_paragraphs(array $paragraph_list, string $paragraph_bundle) {
   // Loop through the list of paragraph objects.
@@ -1419,10 +1421,11 @@ function bos_migrate_paragraphs(array $paragraph_list, string $paragraph_bundle)
           $current_revisions[] = $component["revision_id"];
         }
       }
-      // Check that the paragraph is not archived if the node is in published moderation state.
+      // Check that the paragraph is not archived if the node is published.
       echo "Checking if paragraph is included in the most recent revision \r\n";
       if (($old_paragraph->archived == "0" && $parent_node->workbench_moderation["current"]->from_state == 'published') ||
-          // If the paragraph is archived (possible on a forward revision), make sure it has a revision ID currently in field_component.
+          // If the paragraph is archived (forward revision),
+          // ensure revision ID is in field_component.
           ($old_paragraph->archived == "1" && in_array($old_paragraph->revision_id, $current_revisions))) {
 
         echo "Paragraph is in the most recent revision \r\n";
@@ -1438,12 +1441,13 @@ function bos_migrate_paragraphs(array $paragraph_list, string $paragraph_bundle)
         // Account different "featured" entity_reference field.
         if ($paragraph_bundle == "news_and_announcements") {
           $new_paragraph->field_featured_post = $old_paragraph->field_featured_post;
-        } else if ($paragraph_bundle == "events_and_notices") {
+        }
+        elseif ($paragraph_bundle == "events_and_notices") {
           $new_paragraph->field_featured_item = $old_paragraph->field_featured_item;
         }
         $new_paragraph->field_link = $old_paragraph->field_link;
 
-        // Transform previous viewfield value from field_list to new value for field_list.
+        // Transform old viewfield value to new value for field_list.
         if (!empty($old_paragraph->field_list['und'][0]['vname'])) {
           switch ($old_paragraph->field_list['und'][0]['vname']) {
             // "Other" display has "news_events" machine name.
@@ -1525,13 +1529,13 @@ function bos_migrate_paragraphs(array $paragraph_list, string $paragraph_bundle)
           }
         }
 
-        // Attach the new paragraph to the host node that the old paragraph is on.
+        // Attach new paragraph to the host node that the old paragraph is on.
         echo "Attaching new paragraph to the parent node and saving \r\n";
         $new_paragraph->setHostEntity('node', $parent_node);
         $new_paragraph->revision = TRUE;
         $new_paragraph->save(FALSE);
 
-        // Replace the old paragraph with the new one. 
+        // Replace the old paragraph with the new one.
         echo "Removing old paragraph from node and copying new paragraph to its position in list \r\n";
         $components = $parent_node->field_components['und'];
         foreach ($components as $key => $component) {
@@ -1540,7 +1544,7 @@ function bos_migrate_paragraphs(array $paragraph_list, string $paragraph_bundle)
             $parent_node->field_components['und'][$key] = end($parent_node->field_components['und']);
           }
         }
-        // Remove the duplicate new paragraph from the bottom of the list (it has been copied to the correct pos).
+        // Remove duplicate new paragraph from bottom of list.
         echo "Removing duplicate new paragraph and saving node \r\n";
         array_pop($parent_node->field_components['und']);
         // Save the host node so the new paragraph order takes effect.
