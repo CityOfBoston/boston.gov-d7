@@ -1,9 +1,9 @@
 <?php
+
 /**
  * @file
  * Install file for Boston.gov.
  */
-
 
 /**
  * Implements hook_install().
@@ -392,7 +392,7 @@ function bos_profile_update_7006() {
     'linkit',
     'bos_settings_linkit_editor',
     'bos_core',
-    'entityreference_autocreate'
+    'entityreference_autocreate',
   );
   module_disable($disabled_modules);
   module_enable($enabled_modules);
@@ -423,7 +423,8 @@ function bos_profile_update_7007() {
 
 /**
  * Enable the event's view for the workbench for the public site only.
- * Work for: Sprint 11
+ *
+ * Work for: Sprint 11.
  */
 function bos_profile_update_7008() {
   $disabled_modules = array();
@@ -540,7 +541,7 @@ function bos_profile_update_7012() {
 }
 
 /**
- * Updates for 10/05/2016
+ * Updates for 10/05/2016.
  */
 function bos_profile_update_7013() {
   $enabled_modules = array(
@@ -636,7 +637,7 @@ function bos_profile_update_7020() {
 }
 
 /**
- * Update for 4/21/17
+ * Update for 4/21/17.
  */
 function bos_profile_update_7021() {
   $enabled_modules = array(
@@ -646,7 +647,7 @@ function bos_profile_update_7021() {
 }
 
 /**
- * Update for 4/27/17
+ * Update for 4/27/17.
  */
 function bos_profile_update_7022() {
   $enabled_modules = array(
@@ -658,7 +659,7 @@ function bos_profile_update_7022() {
 }
 
 /**
- * Update for 5/5/17
+ * Update for 5/5/17.
  */
 function bos_profile_update_7023() {
   $enabled_modules = array(
@@ -669,7 +670,7 @@ function bos_profile_update_7023() {
 }
 
 /**
- * Update for 5/16/17
+ * Update for 5/16/17.
  */
 function bos_profile_update_7024() {
   $enabled_modules = array(
@@ -679,7 +680,7 @@ function bos_profile_update_7024() {
 }
 
 /**
- * Update for 5/24/17
+ * Update for 5/24/17.
  */
 function bos_profile_update_7025() {
   $enabled_modules = array(
@@ -690,7 +691,7 @@ function bos_profile_update_7025() {
 }
 
 /**
- * Update for 6/5/17
+ * Update for 6/5/17.
  */
 function bos_profile_update_7026() {
   $enabled_modules = array(
@@ -700,7 +701,7 @@ function bos_profile_update_7026() {
 }
 
 /**
- * Update for 6/12/17
+ * Update for 6/12/17.
  */
 function bos_profile_update_7027() {
   $enabled_modules = array(
@@ -716,7 +717,7 @@ function bos_profile_update_7027() {
 }
 
 /**
- * Update for 6/28/17
+ * Update for 6/28/17.
  */
 function bos_profile_update_7028() {
   $enabled_modules = array(
@@ -726,7 +727,7 @@ function bos_profile_update_7028() {
 }
 
 /**
- * Update for 10/12/17
+ * Update for 10/12/17.
  */
 function bos_profile_update_7029() {
   $enabled_modules = array(
@@ -739,7 +740,7 @@ function bos_profile_update_7029() {
 }
 
 /**
- * Update for 10/20/17
+ * Update for 10/20/17.
  */
 function bos_profile_update_7030() {
   $enabled_modules = array(
@@ -750,7 +751,7 @@ function bos_profile_update_7030() {
 }
 
 /**
- * Update for 10/20/17
+ * Update for 10/20/17.
  */
 function bos_profile_update_7031() {
   $disabled_modules = array(
@@ -763,7 +764,7 @@ function bos_profile_update_7031() {
 }
 
 /**
- * Update for 10/26/17
+ * Update for 10/26/17.
  */
 function bos_profile_update_7032() {
   $enabled_modules = array(
@@ -773,7 +774,7 @@ function bos_profile_update_7032() {
 }
 
 /**
- * Update for 12/19/17
+ * Update for 12/19/17.
  */
 function bos_profile_update_7033() {
   $enabled_modules = array(
@@ -866,14 +867,16 @@ function bos_profile_update_7035() {
   module_enable($enabled_modules);
 }
 
+/**
+ * Update for commissions component.
+ */
 function bos_profile_update_7036() {
   $enabled_modules = array(
     'bos_components_commissions',
   );
   module_enable($enabled_modules);
 
-  # Initializing the taxonomy with Boards and Commissions as of 5/14
-
+  // Initializing the taxonomy with Boards and Commissions as of 5/14.
   $vocabulary = taxonomy_vocabulary_machine_name_load('commissions');
   if (!$vocabulary) {
     return;
@@ -1323,14 +1326,17 @@ function bos_profile_update_7045() {
   ];
   foreach ($old_related_field_list as $field) {
     // Remove old fields.
-    echo "Removing $field \r\n";
+    echo "Preparing $field for removal \r\n";
     if ($instance = field_info_instance('node', $field, 'event')) {
+      echo "Removing $field \r\n";
       field_delete_instance($instance);
     }
     if ($instance = field_info_instance('node', $field, 'public_notice')) {
+      echo "Removing $field \r\n";
       field_delete_instance($instance);
     }
     if ($instance = field_info_instance('node', $field, 'post')) {
+      echo "Removing $field \r\n";
       field_delete_instance($instance);
     }
     field_purge_batch(1);
