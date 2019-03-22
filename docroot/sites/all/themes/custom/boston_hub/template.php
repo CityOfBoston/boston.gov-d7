@@ -58,25 +58,58 @@ function boston_hub_preprocess_page(array &$variables) {
       $variables['profile_avatar'] = '<img src="/' . drupal_get_path('theme', 'boston_hub') . '/dist/img/default-avatar.svg" alt="Missing profile picture">';
     }
 
-    $variables['profile_path'] = base_path() . 'my-profile';
-    $variables['logout_path'] = base_path() . 'user/logout';
+    //$variables['profile_path'] = base_path() . 'my-profile';
+    //$variables['logout_path'] = base_path() . 'user/logout';
     //$variables['security_questions_path'] = 'https://oimprd.cityofboston.gov/admin/faces/pages/pwdmgmt.jspx?action=setchallenges&backUrl=https://oif.cityofboston.gov%2Ffed%2Fidp%2Finitiatesso%3Fproviderid%3Dthehubprod';
-    switch ($_ENV['AH_SITE_ENVIRONMENT']) {
-      case 'dev':
-        $variables['change_password_path'] = 'https://identity-dev.boston.gov/identityiq/changePassword.jsf';
-        break;
+    $main_menu_links = menu_load_links('main-menu');
+    if (isset($main_menu_links)) {
+      foreach ($main_menu_links as $menu_link) {
+        // 'My Account' has a Menu Link ID (mlid) of 211746.
+        // Check that the current link has Parent Link ID (plid) of My Account.
+        // Make sure the current link is not disabled.
+        if ($menu_link['plid'] == '211746' && $menu_link['hidden'] == 0) {
+          if ($menu_link['link_title'] == 'Change Password') {
+            $change_pw_full_url = $menu_link['link_path'];
+            $change_pw_relative_url = parse_url($change_pw_full_url, PHP_URL_PATH);
+          }
+          if ($menu_link['link_title'] == 'Security Questions') {
+            $security_questions_url = $menu_link['link_path'] ;
+          }
+          if ($menu_link['link_title'] == 'Logout') {
+            $logout_url = $menu_link['link_path'] ;
+          }
+          if ($menu_link['link_title'] == 'My Profile') {
+            $profile_url = $menu_link['link_path'] ;
+          }
+        }
+      }
+    }
+    if (isset($profile_url)) {
+      $variables['profile_path'] = base_path() . $profile_url;
+    }
+    if (isset($logout_url)) {
+      $variables['logout_path'] = base_path() . $logout_url;
+    }
+    if (isset($security_questions_url)) {
+      $variables['security_questions_path'] = $security_questions_url;
+    }
+    if (isset($change_pw_relative_url)) {
+      switch ($_ENV['AH_SITE_ENVIRONMENT']) {
+        case 'dev':
+          $variables['change_password_path'] = 'https://identity-dev.boston.gov' . $change_pw_relative_url;
+          break;
 
-      case 'test':
-        $variables['change_password_path'] = 'https://identity-test.boston.gov/identityiq/changePassword.jsf';
-        break;
+        case 'test':
+          $variables['change_password_path'] = 'https://identity-test.boston.gov' . $change_pw_relative_url;
+          break;
 
-      case 'prod':
+        case 'prod':
+          $variables['change_password_path'] = 'https://identity.boston.gov' . $change_pw_relative_url;
+          break;
 
-        $variables['change_password_path'] = 'https://identity.boston.gov/identityiq/changePassword.jsf';
-        break;
-
-      default:
-        $variables['change_password_path'] = 'https://identity.boston.gov/identityiq/changePassword.jsf';
+        default:
+          $variables['change_password_path'] = 'https://identity.boston.gov/identityiq/changePassword.jsf';
+      }
     }
   }
 

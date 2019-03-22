@@ -5,10 +5,18 @@
         <input type="checkbox" name="nv-dd-tr" id="nv-tr[0]" class="nv-dd-tr">
         <label class="nv-h-l-a nv-h-l-a--k nv-dd-l" for="nv-tr[0]"><?php if ($first_name): ?>Hello, <?php print $first_name ?><?php else: ?>My Account<?php endif; ?></label>
         <ul class="nv-dd-c">
+          <?php if ($profile_path): ?>
           <li><a href="<?php print $profile_path; ?>" title="Visit my profile" class="nv-dd-c-link">Profile</a></li>
+          <?php endif; ?>
+          <?php if ($change_password_path): ?>
           <li><a href="<?php print $change_password_path; ?>" title="Change password" class="nv-dd-c-link">Change password</a></li>
-          <!-- <li><a href="<?php print $security_questions_path; ?>" title="Security questions" class="nv-dd-c-link">Security questions</a></li> -->
+          <?php endif; ?>
+          <?php if ($security_questions_path): ?>
+          <li><a href="<?php print $security_questions_path; ?>" title="Security questions" class="nv-dd-c-link">Security questions</a></li>
+          <?php endif; ?>
+          <?php if ($logout_path): ?>
           <li><a href="<?php print $logout_path; ?>" title="log out" class="nv-dd-c-link">Log Out</a></li>
+          <?php endif; ?>
         </ul>
       </li>
     <?php endif; ?>

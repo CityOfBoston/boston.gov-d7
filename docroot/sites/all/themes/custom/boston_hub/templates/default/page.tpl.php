@@ -38,7 +38,7 @@
       'asset_url' => $asset_url,
       'profile_path' => $profile_path,
       'change_password_path' => $change_password_path,
-      //'security_questions_path' => $security_questions_path,
+      'security_questions_path' => $security_questions_path,
       'logout_path' => $logout_path,
       'first_name' => $first_name,
     )); ?>
