@@ -58,9 +58,6 @@ function boston_hub_preprocess_page(array &$variables) {
       $variables['profile_avatar'] = '<img src="/' . drupal_get_path('theme', 'boston_hub') . '/dist/img/default-avatar.svg" alt="Missing profile picture">';
     }
 
-    //$variables['profile_path'] = base_path() . 'my-profile';
-    //$variables['logout_path'] = base_path() . 'user/logout';
-    //$variables['security_questions_path'] = 'https://oimprd.cityofboston.gov/admin/faces/pages/pwdmgmt.jspx?action=setchallenges&backUrl=https://oif.cityofboston.gov%2Ffed%2Fidp%2Finitiatesso%3Fproviderid%3Dthehubprod';
     $main_menu_links = menu_load_links('main-menu');
     if (isset($main_menu_links)) {
       foreach ($main_menu_links as $menu_link) {
@@ -68,32 +65,43 @@ function boston_hub_preprocess_page(array &$variables) {
         // Check that the current link has Parent Link ID (plid) of My Account.
         // Make sure the current link is not disabled.
         if ($menu_link['plid'] == '211746' && $menu_link['hidden'] == 0) {
-          if ($menu_link['link_title'] == 'Change Password') {
+          // Change Password.
+          if ($menu_link['mlid'] == '211751') {
             $change_pw_full_url = $menu_link['link_path'];
             $change_pw_relative_url = parse_url($change_pw_full_url, PHP_URL_PATH);
+            $change_pw_title = $menu_link['link_title'];
           }
-          if ($menu_link['link_title'] == 'Security Questions') {
-            $security_questions_url = $menu_link['link_path'] ;
+          // Security Questions.
+          if ($menu_link['mlid'] == '211756') {
+            $security_questions_url = $menu_link['link_path'];
+            $security_questions_title = $menu_link['link_title'];
           }
-          if ($menu_link['link_title'] == 'Logout') {
-            $logout_url = $menu_link['link_path'] ;
+          if ($menu_link['mlid'] == '211761') {
+            $logout_url = $menu_link['link_path'];
+            $logout_title = $menu_link['link_title'];
           }
-          if ($menu_link['link_title'] == 'My Profile') {
-            $profile_url = $menu_link['link_path'] ;
+          // Profile.
+          if ($menu_link['mlid'] == '135661') {
+            $profile_url = $menu_link['link_path'];
+            $profile_title = $menu_link['link_title'];
           }
         }
       }
     }
     if (isset($profile_url)) {
       $variables['profile_path'] = base_path() . $profile_url;
+      $variables['profile_title'] = $profile_title;
     }
     if (isset($logout_url)) {
       $variables['logout_path'] = base_path() . $logout_url;
+      $variables['logout_title'] = $logout_title;
     }
     if (isset($security_questions_url)) {
       $variables['security_questions_path'] = $security_questions_url;
+      $variables['security_questions_title'] = $security_questions_title;
     }
     if (isset($change_pw_relative_url)) {
+      $variables['change_password_title'] = $change_pw_title;
       switch ($_ENV['AH_SITE_ENVIRONMENT']) {
         case 'dev':
           $variables['change_password_path'] = 'https://identity-dev.boston.gov' . $change_pw_relative_url;
