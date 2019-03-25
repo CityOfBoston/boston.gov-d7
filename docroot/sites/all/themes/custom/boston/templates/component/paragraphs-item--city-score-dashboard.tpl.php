@@ -60,7 +60,9 @@
       </li>
     </ul>
   </div>
-  <div id="scoreTable" class="cs--block"></div>
+  <div id="scoreTable" class="cs--block">
+    <?php // print views_embed_view('cityscore', 'html_cs_table'); ?>
+  </div>
 </div>
 
 <script>
@@ -80,24 +82,27 @@
 
     function loadScores() {
       jQuery.ajax({
-        url: "//cob-cityscore.herokuapp.com/scores/latest",
+        //url: "//cob-cityscore.herokuapp.com/scores/latest",
+        url: "/rest/cityscore/html",
         type:'GET',
         contentType: 'text/plain',
         dataType: "html",
         success: function( html ){
-          jQuery('#scoreTable').html( html );
+          jQuery('#scoreTable').html(html);
         }
       });
     }
 
     function loadTodaysScore() {
-      jQuery.getJSON( "//cob-cityscore.herokuapp.com/totals/latest" )
-        .done(function( json ) {
-          if (json.day) {
-            todaysScore = json.day;
-            renderDateUpdated(json.date_posted);
-            renderTodaysScore(json.day);
-
+      //jQuery.getJSON( "//cob-cityscore.herokuapp.com/totals/latest" )
+      jQuery.getJSON( "/cityscore/totals/latest.json")
+        .done(function(json) {
+          var jsonArrayObject = new Array(json);
+          var csVals = jsonArrayObject[0][0];         
+          if (csVals.day) {
+            todaysScore = csVals.day;
+            renderDateUpdated(csVals.date_posted);
+            renderTodaysScore(csVals.day);
             // Then start to load other scores
             loadScores();
           } else {
