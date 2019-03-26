@@ -166,7 +166,7 @@ function bos_rest_cityscore_json() {
         break;
 
       default:
-        $self_domain = "http://localhost";
+        $self_domain = "localhost";
         break;
 
     }
