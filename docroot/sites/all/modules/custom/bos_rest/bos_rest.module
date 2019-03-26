@@ -1,0 +1,423 @@
+<?php
+/**
+ * @file
+ * Code for the Boston Custom Rest feature.
+ */
+
+include_once 'bos_rest.features.inc';
+
+/**
+ * Implements hook_permission().
+ */
+function bos_rest_permission() {
+  return [
+    'administer bos_rest' => [
+      'title' => t("Administer Boston API Endpoints"),
+      'description' => t("Configure API endpoint tokens, IP whitelists and other settings."),
+    ],
+  ];
+}
+
+/**
+ * Implements hook_menu().
+ */
+function bos_rest_menu() {
+  $items = array();
+
+  // The path that the endpoint will be registered to.
+  $items['rest/%/%'] = array(
+    'title' => 'API',
+    // The name of the function called when the path is accessed.
+    'page callback' => 'bos_rest_endpoint',
+    'page arguments' => array(1, 2),
+    // Set this value to TRUE to allow access to any user.
+    'access callback' => TRUE,
+    // Declare this as a simple registered path.
+    'type' => MENU_CALLBACK,
+  );
+
+  $items['admin/config/services/cityscore'] = array(
+    'title' => 'Boston API Endpoints',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('bos_rest_cityscore_admin_form'),
+    'access arguments' => array('administer bos_rest'),
+    'type' => MENU_NORMAL_ITEM,
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_admin_menu_cache_info().
+ */
+function bos_rest_admin() {
+  // MATT: create a config form to hold variables in the init() section.
+}
+
+/**
+ * Entrypoint for the rest/%/% menu callback (redirects to other functions).
+ *
+ * @param string $type
+ *   The first element of the endpoint URI - the main endpoint type.
+ * @param string $action
+ *   The second element of the endpoint URI - the endpoint action.
+ */
+function bos_rest_endpoint($type, $action) {
+  // Create new endpoints (e.g. /rest/newtype/action) by adding functions
+  // with the name $endpoint.  Use bos_rest_hook and bos_rest_hook_action
+  // functions as a template.
+  $endpoint = "bos_rest_" . $type;
+  echo $endpoint($action);
+}
+
+/**
+ * Processes the rest/cityscore/% endpoint (redirects to other functions).
+ *
+ * @param string $action
+ *   The endpoint action.
+ *
+ * @return string
+ *   Endpoint output (usually JSON).
+ */
+function bos_rest_cityscore($action) {
+
+  // Check IP whitelist.
+  $cityscore_ip_whitelist = variable_get('cityscore_ip_whitelist', "");
+  if (!empty($cityscore_ip_whitelist)) {
+    $cityscore_ip_whitelist = explode("\r\n", $cityscore_ip_whitelist);
+    if (!in_array(ip_address(), $cityscore_ip_whitelist)) {
+      return _bos_rest_json_error("error ip not recognised");
+    }
+  }
+
+  // Determine the endpoint variant.
+  // Create new cityscore endpoints (e.g. /rest/cityscore/action) by adding
+  // function/s named $callback below.
+  $callback = "bos_rest_cityscore_" . $action;
+
+  // Check payload.
+  if (in_array($_SERVER['REQUEST_METHOD'], ["POST", "DELETE", "PUT"])) {
+    // Check token.
+    if (!empty(variable_get('cityscore_token')) && $_REQUEST["api-key"] != variable_get('cityscore_token')) {
+      return _bos_rest_json_error("error missing token");
+    }
+    if (empty($_REQUEST['payload'])) {
+      return _bos_rest_json_error("error no payload");
+    }
+    try {
+      $payload = _bos_rest_cleanup_payload($_REQUEST['payload']);
+      if (!($payload = json_decode($payload))) {
+        return _bos_rest_json_error("bad json in payload");
+      }
+    }
+    catch (Error $e) {
+      return _bos_rest_json_error("bad json in payload");
+    }
+    return $callback($payload);
+  }
+
+  drupal_add_http_header('Content-Type', 'application/json');
+  drupal_add_http_header('Access-Control-Allow-Origin', "*");
+  drupal_add_http_header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+  return $callback();
+
+}
+
+/**
+ * Processes the rest/cityscore/html endpoint (outputs html table).
+ *
+ * @return bool|void
+ *   Returns an HTML string with a formatted table of cityscore parameters.
+ */
+function bos_rest_cityscore_html() {
+  bos_rest_ga("/api/cityscore/list/html");
+  return views_embed_view('cityscore', 'html_cs_table');
+}
+
+/**
+ * Process the rest/cityscore/json endpoint (cityscore totals in json).
+ *
+ * @return false|string
+ *   JSON String with current sityscore totals.
+ */
+function bos_rest_cityscore_json() {
+  bos_rest_ga("/api/cityscore/summary/json");
+  $curl_handle = curl_init();
+  if (stripos($_SERVER["HTTP_HOST"], "edit-") !== FALSE) {
+    switch ($_ENV["AH_SITE_ENVIRONMENT"]) {
+      case "uat":
+        $self_domain = "edit-uat.boston.gov";
+        break;
+
+      case "ci":
+        $self_domain = "edit-ci.boston.gov";
+        break;
+
+      case "dev":
+        $self_domain = "edit-dev.boston.gov";
+        break;
+
+      case "stg":
+        $self_domain = "edit-stg.boston.gov";
+        break;
+
+      case "prod":
+        $self_domain = "www.boston.gov";
+        break;
+
+      default:
+        $self_domain = "localhost";
+        break;
+
+    }
+    $host_resolve = [
+      "edit-ci.boston.gov:80:54.227.255.2", "edit-ci.boston.gov:443:54.227.255.2",
+      "edit-uat.boston.gov:80:54.227.255.2", "edit-uat.boston.gov:443:54.227.255.2",
+      "edit-dev.boston.gov:80:54.227.255.2", "edit-dev.boston.gov:443:54.227.255.2",
+      "edit-stg.boston.gov:80:54.227.255.2", "edit-stg.boston.gov:443:54.227.255.2",
+    ];
+    curl_setopt($curl_handle, CURLOPT_URL, 'http://' . $self_domain . '/cityscore/totals/latest.json?id=' . rand());
+    curl_setopt($curl_handle, CURLOPT_HTTPHEADER, ["Host: " . $self_domain, "Cache-Control: no-cache"]);
+    curl_setopt($curl_handle, CURLOPT_RESOLVE, $host_resolve);
+    curl_setopt($curl_handle, CURLOPT_URL, 'http://' . $self_domain . '/cityscore/totals/latest.json?id=' . rand());
+  }
+  elseif (stripos($_SERVER["HTTP_HOST"], "127.0.0.1") !== FALSE) {
+    curl_setopt($curl_handle, CURLOPT_URL, 'http://localhost/cityscore/totals/latest.json?id=' . rand());
+  }
+  curl_setopt($curl_handle, CURLOPT_RETURNTRANSFER, TRUE);
+  curl_setopt($curl_handle, CURLOPT_FOLLOWLOCATION, TRUE);
+  curl_setopt($curl_handle, CURLOPT_AUTOREFERER, TRUE);
+  curl_setopt($curl_handle, CURLOPT_SSL_VERIFYPEER, FALSE);
+  if ($json = curl_exec($curl_handle)) {
+    $json = json_decode($json)[0];
+    $output = json_encode($json, JSON_NUMERIC_CHECK);
+  }
+  else {
+    $output = _bos_rest_json_error(urlencode(curl_error($curl_handle)));
+  }
+  curl_close($curl_handle);
+  return $output;
+}
+
+/**
+ * Processes the rest/cityscore/load endpoint (loads latest cityscore data).
+ *
+ * @param string $payload
+ *   The payload to process.
+ *
+ * @return string
+ *   JSON result.
+ */
+function bos_rest_cityscore_load($payload) {
+  // Process payload into taxonomy.
+  bos_rest_ga("/api/cityscore/load/default");
+
+  $result = [];
+  $vocab = taxonomy_vocabulary_machine_name_load("cityscore_metrics");
+  foreach (taxonomy_get_tree($vocab->vid, 0, 1, FALSE) as $term) {
+    taxonomy_term_delete($term->tid);
+  }
+  $vid = $vocab->vid;
+  foreach ($payload as $row) {
+    $tax = taxonomy_get_term_by_name($row->metric_name, "cityscore_metrics");
+    $result['count']++;
+    if (empty($tax)) {
+      // Create the record.
+      $tax = new stdClass();
+      $tax->vocabulary_machine_name = "cityscore_metrics";
+      $tax->name = $row->metric_name;
+      $tax->vid = $vid;
+      if (taxonomy_term_save($tax) != SAVED_NEW) {
+        // Continue for now.  May fail later.
+      }
+    }
+    else {
+      $tax = array_values($tax)[0];
+    }
+    // Update the taxonomy term.
+    if (isset($tax)) {
+      $tax->field_calc_timestamp['und'][0]['value'] = strtotime($row->score_calculated_ts);
+      $tax->field_table_timestamp['und'][0]['value'] = strtotime($row->score_final_table_ts);
+      $tax->field_day['und'][0]['value'] = $row->score_day_name;
+      $tax->field_previous_quarter['und'][0]['value'] = $row->previous_quarter_score;
+      $tax->field_previous_month['und'][0]['value'] = $row->previous_month_score;
+      $tax->field_previous_week['und'][0]['value'] = $row->previous_week_score;
+      $tax->field_previous_day['und'][0]['value'] = $row->previous_day_score;
+      $tax->field_cs_weight['und'][0]['value'] = $result['count'];
+      if (taxonomy_term_save($tax) == SAVED_UPDATED) {
+        $result['saved']++;
+      }
+    }
+  }
+  if ($result['saved'] != $result['count']) {
+    return _bos_rest_json_error("Not all records saved");
+  }
+
+  return '{"status":"success","message":"cityscore updated"}';
+
+}
+
+/**
+ * Helper: Formats a standardised error as a json string.
+ *
+ * @param string $error
+ *   Error message to JSON'ify.
+ *
+ * @return string
+ *   JSON formatted error message.
+ */
+function _bos_rest_json_error($error) {
+  return '{"status":"error","message":"' . $error . '"}';
+}
+
+/**
+ * Helper: Checks the payload.
+ *
+ * @param string $payload
+ *   The payload to process.
+ *
+ * @return string
+ *   Cleaned payload.
+ */
+function _bos_rest_cleanup_payload($payload) {
+  $replacements = [
+    '/[\n\t]/' => "",
+    '/\"\s|\s\"/' => '"',
+  ];
+
+  foreach ($replacements as $regex_search => $replace) {
+    $payload = preg_replace($regex_search, $replace, $payload);
+  }
+
+  $pos = min(strpos($payload, "["), strpos($payload, "{"));
+  if ($pos !== FALSE && $pos > 0) {
+    $payload = substr($payload, $pos);
+  }
+
+  return trim($payload);
+}
+
+/**
+ * Implements hook_form().
+ */
+function bos_rest_cityscore_admin_form($form, &$form_state) {
+  $form['bos_rest'] = [
+    '#type' => 'fieldset',
+    '#title' => 'Boston API Endpoints',
+    '#description' => 'Configuration for Boston API endpoints.',
+
+    'cityscore' => [
+      '#type' => 'fieldset',
+      '#title' => 'Cityscore',
+
+      'cityscore_token' => [
+        '#type' => 'textfield',
+        '#title' => t('API KEY / Token'),
+        '#description' => t('Enter a random string to authenticate API calls.'),
+        '#default_value' => variable_get('cityscore_token'),
+        '#required' => FALSE,
+      ],
+
+      'cityscore_ip_whitelist' => [
+        '#type' => 'textarea',
+        '#title' => t('IP Address Whitelist Filter'),
+        '#description' => t('List of valid IP Addresses, one address per line. Leave empty for no IPAddress filtering.'),
+        '#default_value' => variable_get('cityscore_ip_whitelist'),
+        '#rows' => 5,
+        '#required' => FALSE,
+      ],
+    ],
+  ];
+
+  return system_settings_form($form);
+}
+
+/**
+ * Templates ...
+ */
+
+/**
+ * Template for endpoint (type).
+ *
+ * @param string $action
+ *   The endpoint action, 3rd element in URI path (e.g rest/type/action).
+ *
+ * @return string
+ *   JSON output.
+ */
+function bos_rest_type($action) {
+  // 1. Read settings for this type.
+  // 2. Do any validation/authentication.
+  $payload = _bos_rest_cleanup_payload($_REQUEST['payload']);
+  $payload = json_decode($payload);
+  // 3. Direct to correct endpoint action function.
+  $callback = "bos_rest_cityscore_" . $action;
+  return $callback($payload);
+}
+
+/**
+ * Template for endpoint (type) action.
+ *
+ * @param string $payload
+ *   JSON string as payload for actions with update some Drupal entity.
+ *
+ * @return string
+ *   JSON string as output from the desired action.
+ */
+function bos_rest_type_action($payload) {
+  // 1. Perform the action.
+  // 2. Return JSON string.
+  $result = new stdClass();
+  $result->status = "";
+  $result->message = "";
+  $result = json_encode($result);
+  return $result;
+}
+
+/**
+ * Logs API actions to Google Analytics.
+ *
+ * @param string $page_id
+ *   This is the document path for API tracking.
+ * @param string $page_title
+ *   This is the document title for API tracking.
+ *
+ *   Format: api/endpoint_module/type/description.
+ *   E.g. api/cityscore/list/summary.
+ *   E.g. api/cityscore/list/html.
+ */
+function bos_rest_ga($page_id, $page_title = NULL) {
+  if (!isset($page_title)) {
+    $page_title = "CoB REST | " . str_replace("/", "-", trim($page_id, "/api/"));
+  }
+  $payload = [
+    "v" => 1,
+    "tid" => "UA-2187282-27",
+    "t" => "pageview",
+    "dp" => $page_id,
+    "dt" => $page_title,
+    "ni" => 1,
+    "cid" => "237920b7-6309-40d9-91ed-51086bd71a2a",
+    "uip" => ip_address(),
+    "cg1" => "API",
+  ];
+  foreach ($payload as $key => &$value) {
+    $value = utf8_encode($value);
+    $value = urlencode($value);
+    $value = $key . "=" . $value;
+  }
+  $pl = implode("&", $payload);
+
+  $ch = curl_init("https://www.google-analytics.com/collect");
+  curl_setopt($ch, CURLOPT_HEADER, FALSE);
+  curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+  curl_setopt($ch, CURLOPT_HTTPHEADER, ["Content-type: text/plain"]);
+  curl_setopt($ch, CURLOPT_POST, FALSE);
+  curl_setopt($ch, CURLOPT_POSTFIELDS, $pl);
+
+  $response = curl_exec($ch);
+  $status_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+  if ($status_code >= 300 || $status_code < 200) {
+    watchdog("REST", "Google Analytics Post error.", [], WATCHDOG_ERROR);
+  }
+}
