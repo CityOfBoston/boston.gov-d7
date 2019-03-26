@@ -144,10 +144,42 @@ function bos_rest_cityscore_json() {
   bos_rest_ga("/api/cityscore/summary/json");
   $curl_handle = curl_init();
   if (stripos($_SERVER["HTTP_HOST"], "edit-") !== FALSE) {
-    curl_setopt($curl_handle, CURLOPT_URL, 'http://edit-ci.boston.gov/cityscore/totals/latest.json?id=' . rand());
-    curl_setopt($curl_handle, CURLOPT_HTTPHEADER, ["Host: edit-ci.boston.gov", "Cache-Control: no-cache"]);
-    curl_setopt($curl_handle, CURLOPT_RESOLVE, ["edit-ci.boston.gov:80:54.227.255.2", "edit-ci.boston.gov:443:54.227.255.2"]);
-    curl_setopt($curl_handle, CURLOPT_URL, 'http://edit-ci.boston.gov/cityscore/totals/latest.json?id=' . rand());
+    switch($_ENV["AH_SITE_ENVIRONMENT"]) {
+      case "uat":
+        $self_domain = "edit-uat.boston.gov";
+        break;
+
+      case "ci":
+        $self_domain = "edit-ci.boston.gov";
+        break;
+
+      case "dev":
+        $self_domain = "edit-dev.boston.gov";
+        break;
+
+      case "stg":
+        $self_domain = "edit-stg.boston.gov";
+        break;
+
+      case "prod":
+        $self_domain = "www.boston.gov";
+        break;
+
+      default:
+        $self_domain = "http://localhost";
+        break;
+
+    }
+    $host_resolve = [
+      "edit-ci.boston.gov:80:54.227.255.2", "edit-ci.boston.gov:443:54.227.255.2",
+      "edit-uat.boston.gov:80:54.227.255.2", "edit-uat.boston.gov:443:54.227.255.2",
+      "edit-dev.boston.gov:80:54.227.255.2", "edit-dev.boston.gov:443:54.227.255.2",
+      "edit-stg.boston.gov:80:54.227.255.2", "edit-stg.boston.gov:443:54.227.255.2",
+    ];
+    curl_setopt($curl_handle, CURLOPT_URL, 'http://' . $self_domain . '/cityscore/totals/latest.json?id=' . rand());
+    curl_setopt($curl_handle, CURLOPT_HTTPHEADER, ["Host: " . $self_domain, "Cache-Control: no-cache"]);
+    curl_setopt($curl_handle, CURLOPT_RESOLVE, $host_resolve);
+    curl_setopt($curl_handle, CURLOPT_URL, 'http://' . $self_domain . '/cityscore/totals/latest.json?id=' . rand());
   }
   elseif (stripos($_SERVER["HTTP_HOST"], "127.0.0.1") !== FALSE) {
     curl_setopt($curl_handle, CURLOPT_URL, 'http://localhost/cityscore/totals/latest.json?id=' . rand());
