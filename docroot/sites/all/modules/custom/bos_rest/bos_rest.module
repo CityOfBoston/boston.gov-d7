@@ -144,7 +144,7 @@ function bos_rest_cityscore_json() {
   bos_rest_ga("/api/cityscore/summary/json");
   $curl_handle = curl_init();
   if (stripos($_SERVER["HTTP_HOST"], "edit-") !== FALSE) {
-    switch($_ENV["AH_SITE_ENVIRONMENT"]) {
+    switch ($_ENV["AH_SITE_ENVIRONMENT"]) {
       case "uat":
         $self_domain = "edit-uat.boston.gov";
         break;
