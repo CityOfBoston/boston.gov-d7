@@ -136,3 +136,7 @@ solr/*
 
 #Editor utility files
 .editorconfig
+
+#local MySQL dumps
+*.sql
+*.sql.gz
