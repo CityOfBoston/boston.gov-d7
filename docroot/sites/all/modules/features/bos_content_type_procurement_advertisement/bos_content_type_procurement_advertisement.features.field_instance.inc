@@ -600,8 +600,8 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
     'entity_type' => 'node',
     'fences_wrapper' => 'div_div_div',
     'field_name' => 'field_contact',
-    'label' => 'Department',
-    'required' => 0,
+    'label' => 'Awarding Authority',
+    'required' => 1,
     'settings' => array(
       'behaviors' => array(
         'taxonomy-index' => array(
