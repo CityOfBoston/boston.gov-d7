@@ -172,23 +172,37 @@ hide($content['links']);
       <?php endif; ?>
     </div>
   </div>
-  <?php if (count($bid_other) > 0 || count($bid_awarded) > 0): ?>
+  <?php $award_logo = "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODEiIGhlaWdodD0iODEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPjxkZWZzPjxwYXRoIGlkPSJhIiBkPSJNMCA1My40NjNoNDUuNzgxVi4yOTNIMHoiLz48L2RlZnM+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMiAyKSIgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxNS44MzcgMTQuMTk5KSI+PHBhdGggZD0iTTM4LjQ2NSAxNi41ODhjMi43OTQtMi44NzYgNC4xNy02LjI3NSA0LjE3LTEwLjI5N2gtOS4yM1YxOS42OTFjMCAuMTk0LS4wMi4zODQtLjAzMi41NzVsMS4zODYtLjgyMmMxLjM0Ny0uNzk4IDIuNjE1LTEuNzM0IDMuNzA2LTIuODU2em0tMjcuNDQ0IDIuODU2bDEuMzg2LjgyMmMtLjAxMi0uMTkxLS4wMy0uMzgtLjAzLS41NzVWNi4yOUgzLjE0NGMwIDQuMDIyIDEuMzc3IDcuNDIgNC4xNzEgMTAuMjk3IDEuMDkgMS4xMjIgMi4zNTggMi4wNTggMy43MDUgMi44NTZ6TTMzLjQwNSAzLjQ3SDQ1Ljc4djMuNTU5YzAgNS4xLTIuNTk1IDkuOTQtNy4wODggMTMuMjE1bC03Ljc0NyA1LjY1Yy0xLjMyOCAxLjQ1NC0zLjExNCAyLjUzOS01LjE1MyAzLjA3NnY3LjEwMWMwIDEuMDQ0Ljg0OCAxLjg5MSAxLjg5NCAxLjg5MWE0LjcxNiA0LjcxNiAwIDAgMSA0LjcxNiA0LjcxMkgxMy4zNzdjMC0xLjMuNTI5LTIuNDc4IDEuMzgxLTMuMzNhNC43IDQuNyAwIDAgMSAzLjMzNy0xLjM4MiAxLjg5MiAxLjg5MiAwIDAgMCAxLjg5My0xLjg5di03LjEwM2MtMi4wNC0uNTM3LTMuODI1LTEuNjIxLTUuMTUyLTMuMDc0bC03Ljc0OC01LjY1QzIuNTk1IDE2Ljk2NyAwIDEyLjEzIDAgNy4wMjh2LTMuNTZoMTIuMzc2Vi4yOTNoMjEuMDI5VjMuNDd6IiBmaWxsPSIjRkZGIi8+PG1hc2sgaWQ9ImIiIGZpbGw9IiNmZmYiPjx1c2UgeGxpbms6aHJlZj0iI2EiLz48L21hc2s+PHBhdGggZD0iTTEwLjU2NCA1MS43NTVoMjQuNjU0di03Ljg3M0gxMC41NjR2Ny44NzN6bS0xLjcxIDEuNzA4aDI4LjA3M3YtMTEuMjlIOC44NTN2MTEuMjl6IiBmaWxsPSIjRkZGIiBtYXNrPSJ1cmwoI2IpIi8+PHBhdGggZmlsbD0iI0ZGRiIgbWFzaz0idXJsKCNiKSIgZD0iTTE1LjE4NiA1MC4wOTZoMTUuNDF2LTQuMjRoLTE1LjQxeiIvPjwvZz48Y2lyY2xlIHN0cm9rZT0iI0ZGRiIgc3Ryb2tlLXdpZHRoPSIzIiBjeD0iMzguNSIgY3k9IjM4LjUiIHI9IjM4LjUiLz48L2c+PC9zdmc+";?>
+  <?php if ((count($bid_other) > 0 || count($bid_awarded) > 0) && $bidding_has_ended): ?>
     <div class="b b--b b--fw">
       <div class="b-c">
         <div class="sh sh--w">
           <h2 class="sh-title">Submissions</h2>
         </div>
-        <?php if ($not_awarded && $is_closed): ?>
-          <div class="m-t500">
-            <div class="g">This was not awarded</div>
-          </div>
-        <?php endif; ?>
-        <?php if (count($bid_awarded) > 0 && $content['field_not_awarded'] == 0): ?>
+        <?php if ($not_awarded): ?>
           <div class="m-t500">
             <div class="g">
               <div class="g--2">
                 <div class="ta--c--large">
-                  <img style="width: 110px" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODEiIGhlaWdodD0iODEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPjxkZWZzPjxwYXRoIGlkPSJhIiBkPSJNMCA1My40NjNoNDUuNzgxVi4yOTNIMHoiLz48L2RlZnM+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMiAyKSIgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxNS44MzcgMTQuMTk5KSI+PHBhdGggZD0iTTM4LjQ2NSAxNi41ODhjMi43OTQtMi44NzYgNC4xNy02LjI3NSA0LjE3LTEwLjI5N2gtOS4yM1YxOS42OTFjMCAuMTk0LS4wMi4zODQtLjAzMi41NzVsMS4zODYtLjgyMmMxLjM0Ny0uNzk4IDIuNjE1LTEuNzM0IDMuNzA2LTIuODU2em0tMjcuNDQ0IDIuODU2bDEuMzg2LjgyMmMtLjAxMi0uMTkxLS4wMy0uMzgtLjAzLS41NzVWNi4yOUgzLjE0NGMwIDQuMDIyIDEuMzc3IDcuNDIgNC4xNzEgMTAuMjk3IDEuMDkgMS4xMjIgMi4zNTggMi4wNTggMy43MDUgMi44NTZ6TTMzLjQwNSAzLjQ3SDQ1Ljc4djMuNTU5YzAgNS4xLTIuNTk1IDkuOTQtNy4wODggMTMuMjE1bC03Ljc0NyA1LjY1Yy0xLjMyOCAxLjQ1NC0zLjExNCAyLjUzOS01LjE1MyAzLjA3NnY3LjEwMWMwIDEuMDQ0Ljg0OCAxLjg5MSAxLjg5NCAxLjg5MWE0LjcxNiA0LjcxNiAwIDAgMSA0LjcxNiA0LjcxMkgxMy4zNzdjMC0xLjMuNTI5LTIuNDc4IDEuMzgxLTMuMzNhNC43IDQuNyAwIDAgMSAzLjMzNy0xLjM4MiAxLjg5MiAxLjg5MiAwIDAgMCAxLjg5My0xLjg5di03LjEwM2MtMi4wNC0uNTM3LTMuODI1LTEuNjIxLTUuMTUyLTMuMDc0bC03Ljc0OC01LjY1QzIuNTk1IDE2Ljk2NyAwIDEyLjEzIDAgNy4wMjh2LTMuNTZoMTIuMzc2Vi4yOTNoMjEuMDI5VjMuNDd6IiBmaWxsPSIjRkZGIi8+PG1hc2sgaWQ9ImIiIGZpbGw9IiNmZmYiPjx1c2UgeGxpbms6aHJlZj0iI2EiLz48L21hc2s+PHBhdGggZD0iTTEwLjU2NCA1MS43NTVoMjQuNjU0di03Ljg3M0gxMC41NjR2Ny44NzN6bS0xLjcxIDEuNzA4aDI4LjA3M3YtMTEuMjlIOC44NTN2MTEuMjl6IiBmaWxsPSIjRkZGIiBtYXNrPSJ1cmwoI2IpIi8+PHBhdGggZmlsbD0iI0ZGRiIgbWFzaz0idXJsKCNiKSIgZD0iTTE1LjE4NiA1MC4wOTZoMTUuNDF2LTQuMjRoLTE1LjQxeiIvPjwvZz48Y2lyY2xlIHN0cm9rZT0iI0ZGRiIgc3Ryb2tlLXdpZHRoPSIzIiBjeD0iMzguNSIgY3k9IjM4LjUiIHI9IjM4LjUiLz48L2c+PC9zdmc+" alt="Award" />
+                  <img style="width: 110px" src=<?php print $award_logo; ?> alt="Award" />
+                </div>
+              </div>
+              <div class="g--10">
+                <div class="g p-t500">
+                  <div class="g--4 t--w t--s400">
+                    <strong class="t--upper t--sans">This Advertisement was not Awarded</strong>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        <?php endif; ?>
+        <?php if (count($bid_awarded) > 0 && !$not_awarded): ?>
+          <div class="m-t500">
+            <div class="g">
+              <div class="g--2">
+                <div class="ta--c--large">
+                <img style="width: 110px" src=<?php print $award_logo; ?> alt="Award" />
                 </div>
               </div>
               <div class="g--10">
@@ -201,7 +215,7 @@ hide($content['links']);
             </div>
           </div>
         <?php endif; ?>
-        <?php if (count($bid_other) > 0): ?>
+        <?php if (count($bid_other) > 0 && !$not_awarded): ?>
           <div>
             <div class="dr">
               <input type="checkbox" id="dr-tr1" class="dr-tr a11y--h">
