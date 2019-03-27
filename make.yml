@@ -21,6 +21,10 @@ projects:
       # https://www.drupal.org/node/2211429#comment-10033677
       - https://www.drupal.org/files/issues/drupal-image-style-not-found-2211429-4.patch
 
+      # Allow multiple default values in fields with cardinality > 1
+      # https://www.drupal.org/project/drupal/issues/1482386#comment-11573711
+      - https://www.drupal.org/files/issues/drupal-multiple-default-values-1482386-78.patch
+
   acquia_connector:
     version: 3.4
   acquia_purge:
