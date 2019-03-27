@@ -21,7 +21,7 @@
   }
 }
 /*bibblio*/
-.bib--rcm-init{
+.bib--rcm-init,.bibblio-container{
   display:none;
 }
 #bibblio-custom{

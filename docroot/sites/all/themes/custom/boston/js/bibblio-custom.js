@@ -22,7 +22,6 @@
 var getImgRand = function () {
     num = Math.floor(Math.random() * (randImgObj.length - 1));
     findItem = randImgObj.findIndex(i => i.desc === randImgObj[num].desc); 
-    //console.log(findItem +' : '+bibblioImgObj[findItem].path);
     pathVal = randImgObj[findItem];
     randImgObj.splice(findItem,1);
     return  pathVal;
@@ -34,25 +33,39 @@ var getImgBibblio = function (infoData) {
         }
     return imgObj;
 }
+var checkBadDesc = function (word){
+  return new RegExp('back to top', 'i').test(word);
+}
 var getHTML = function(bibContent){
   var listItem = '';
+  var listLength = 0
   jQuery(bibContent).each(function(index,value){
-      let bibFields = value.fields;
+      if(listLength > 2){return false}
+      
       let imgInfo;
+      let bibFields = value.fields;    
       let checkImg = bibFields.image;
-      //console.log(bibFields);
+
       if(checkImg == null){
         imgInfo = getImgRand() 
       }else{
         imgInfo = getImgBibblio(bibFields)
       }
+
       let bibName = bibFields.name;
       let bibUrl = bibFields.url;
-      let bibDesc = bibFields.description; 
-      listItem += '<a class= "cd g--4 g--4--sl m-t500 bibblio" bibblio-title="'+bibName+'" bibblio-img-desc="'+imgInfo.desc+'" href="'+bibUrl+'"><div class="cd-ic" style="background-image:url('+ imgInfo.path +')" ><\/div><div class="cd-c"><div class="cd-t">'+bibName+'<\/div><div class="cd-d"\>'+bibDesc+'<\/div><\/div><\/a>';
-      
+      let bibDesc = bibFields.description;
+      if(checkBadDesc(bibDesc) === false){
+        listItem += '<a class= "cd g--4 g--4--sl m-t500 bibblio" bibblio-title="'+bibName+'" bibblio-img-desc="'+imgInfo.desc+'" href="'+bibUrl+'"><div class="cd-ic" style="background-image:url('+ imgInfo.path +')" ><\/div><div class="cd-c"><div class="cd-t">'+bibName+'<\/div><div class="cd-d"\>'+bibDesc+'<\/div><\/div><\/a>';
+        listLength++;
+      }
+      //console.log(checkBadDesc(bibDesc) + ':' + bibName + ':' + bibDesc);      
   });
-  jQuery('#bibblio-custom div.g').append(listItem);
+
+  if(listLength > 0){
+    jQuery('#bibblio-custom div.g').append(listItem);
+    jQuery(".bibblio-container").show();
+  }
 }
 const pageURL = window.location.pathname;
 const siteLocation = 'https://www.boston.gov';
@@ -61,21 +74,16 @@ jQuery.ajax({
   url: "https://api.bibblio.org/v1/recommendations",
   contentType: "application/json",
   headers: {
-    //live
+    //live boston.gov key
     "Authorization": "Bearer 852cf94f-5b38-4805-8b7b-a50c5a78609b"
-    //testing
-    //"Authorization": "Bearer 0966dd72-5068-462f-8c15-9967ad9a975f"
   },
   data:{ 
     "customUniqueIdentifier": siteLocation + pageURL,
-    "fields":"name,image,image,url,datePublished,description", 
-    "limit":"3",
+    "fields":"name,image,image,url,datePublished,description,keywords", 
+    "limit":"6",
   },
   success: function (res){
     let bibContent = res.results;
     getHTML(bibContent);
-  },
-  error: function (res){
-    jQuery(".bibblio-container").hide();
   }
 });       
