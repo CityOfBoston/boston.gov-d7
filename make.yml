@@ -125,7 +125,7 @@ projects:
   field_collection:
     version: 1.0-beta9
   field_group:
-    version: 1.5
+    version: 1.6
   file_entity:
     version: 2.2
   honeypot:
