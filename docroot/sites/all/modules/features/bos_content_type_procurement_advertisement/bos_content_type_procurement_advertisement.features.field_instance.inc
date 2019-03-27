@@ -1570,56 +1570,6 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
   );
 
   // Exported field_instance:
-  // 'node-procurement_advertisement-field_procurement_footer'.
-  $field_instances['node-procurement_advertisement-field_procurement_footer'] = array(
-    'bundle' => 'procurement_advertisement',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'This will add a pre-defined footer to the bottom of the ad. To get a new pre-defined value added, contact <a href="mailto:feedback@boston.gov">feedback@boston.gov</a>.',
-    'display' => array(
-      'default' => array(
-        'label' => 'hidden',
-        'module' => 'entityreference',
-        'settings' => array(
-          'links' => TRUE,
-          'use_content_language' => TRUE,
-          'view_mode' => 'default',
-        ),
-        'type' => 'entityreference_entity_view',
-        'weight' => 34,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'fences_wrapper' => 'div_div_div',
-    'field_name' => 'field_procurement_footer',
-    'label' => 'Procurement Footer',
-    'required' => 1,
-    'settings' => array(
-      'behaviors' => array(
-        'taxonomy-index' => array(
-          'status' => TRUE,
-        ),
-      ),
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(
-        'apply_chosen' => '',
-      ),
-      'type' => 'options_select',
-      'weight' => 5,
-    ),
-  );
-
-  // Exported field_instance:
   // 'node-procurement_advertisement-field_program_initiative'.
   $field_instances['node-procurement_advertisement-field_program_initiative'] = array(
     'bundle' => 'procurement_advertisement',
@@ -2115,7 +2065,6 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
   t('Not Awarded');
   t('Offering');
   t('Other related content');
-  t('Procurement Footer');
   t('Procurement Type');
   t('Related Links');
   t('Related Neighborhoods');
@@ -2129,7 +2078,6 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
   t('Supplier Portal Link');
   t('The project number serves as the URL for the project. For example, if the project number is ABC123, the URL for the ad will be boston.gov/bid-listings/ABC123. If multiple ads have the same project number, a counter will be appended. For example, if there are multiple projects with ABC123 as the project number, the first will be boston.gov/bid-listings/ABC123, and the second will be boston.gov/bid-listings/ABC123-0. If needed, you can edit the original in this example and republish as new.');
   t('This reflects the date that will be displayed to users when an ad is open and when it closes. This is for display purposes only. To control when the ad goes live on the site, use the scheduled publishing functionality for this content type. See the Digital Team if you have any questions.');
-  t('This will add a pre-defined footer to the bottom of the ad. To get a new pre-defined value added, contact <a href="mailto:feedback@boston.gov">feedback@boston.gov</a>.');
   t('UNSPSC');
 
   return $field_instances;
