@@ -63,7 +63,6 @@ features[field_instance][] = node-procurement_advertisement-field_contract_lengt
 features[field_instance][] = node-procurement_advertisement-field_date_range
 features[field_instance][] = node-procurement_advertisement-field_delivery_address
 features[field_instance][] = node-procurement_advertisement-field_department
-features[field_instance][] = node-procurement_advertisement-field_details_link
 features[field_instance][] = node-procurement_advertisement-field_document
 features[field_instance][] = node-procurement_advertisement-field_email
 features[field_instance][] = node-procurement_advertisement-field_event_project_number

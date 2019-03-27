@@ -783,75 +783,6 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
     ),
   );
 
-  // Exported field_instance:
-  // 'node-procurement_advertisement-field_details_link'.
-  $field_instances['node-procurement_advertisement-field_details_link'] = array(
-    'bundle' => 'procurement_advertisement',
-    'default_value' => array(
-      0 => array(
-        'title' => 'Replaced by bos_content_type_procurement_advertisement feature',
-        'url' => '<front>',
-      ),
-    ),
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'hidden',
-        'module' => 'link',
-        'settings' => array(),
-        'type' => 'link_default',
-        'weight' => 20,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'fences_wrapper' => 'div_div_div',
-    'field_name' => 'field_details_link',
-    'label' => 'Related Links',
-    'required' => 0,
-    'settings' => array(
-      'absolute_url' => 1,
-      'attributes' => array(
-        'class' => '',
-        'configurable_class' => 0,
-        'configurable_title' => 0,
-        'rel' => '',
-        'target' => 'default',
-        'title' => '',
-      ),
-      'display' => array(
-        'url_cutoff' => 80,
-      ),
-      'enable_tokens' => 1,
-      'linkit' => array(
-        'button_text' => 'Search',
-        'enable' => 0,
-        'profile' => '',
-      ),
-      'rel_remove' => 'default',
-      'title' => 'optional',
-      'title_label_use_field_label' => 0,
-      'title_maxlength' => 128,
-      'title_value' => '',
-      'url' => 0,
-      'user_register_form' => FALSE,
-      'validate_url' => 1,
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'link',
-      'settings' => array(),
-      'type' => 'link_field',
-      'weight' => 16,
-    ),
-  );
-
   // Exported field_instance: 'node-procurement_advertisement-field_document'.
   $field_instances['node-procurement_advertisement-field_document'] = array(
     'bundle' => 'procurement_advertisement',
@@ -1367,7 +1298,20 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
   // 'node-procurement_advertisement-field_related_links'.
   $field_instances['node-procurement_advertisement-field_related_links'] = array(
     'bundle' => 'procurement_advertisement',
-    'default_value' => NULL,
+    'default_value' => array(
+      0 => array(
+        'title' => 'Procurement Department',
+        'url' => 'https://boston.gov/procurement',
+      ),
+      1 => array(
+        'title' => 'Govdeals',
+        'url' => 'https://www.govdeals.com/',
+      ),
+      2 => array(
+        'title' => 'Commbuys',
+        'url' => 'https://www.commbuys.com/bso',
+      ),
+    ),
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -1411,6 +1355,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
       ),
       'rel_remove' => 'default',
       'title' => 'optional',
+      'title_allowed_values' => '',
       'title_label_use_field_label' => 0,
       'title_maxlength' => 128,
       'title_value' => '',
