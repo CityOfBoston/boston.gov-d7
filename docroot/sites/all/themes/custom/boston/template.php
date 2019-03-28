@@ -992,7 +992,7 @@ function boston_preprocess_node_procurement_advertisement(&$variables) {
     $end_date = strtotime($dates[0]['value2'] . " +0000");
     $now = time();
 
-    $variables['is_closed'] = $end_date < $now;
+    $variables['bidding_has_ended'] = $end_date < $now;
 
     $variables['start_date'] = date('n/j/Y - g:ia', $start_date);
     $variables['end_date'] = date('n/j/Y - g:ia', $end_date);
