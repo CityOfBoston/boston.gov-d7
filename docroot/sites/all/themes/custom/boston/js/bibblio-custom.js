@@ -59,7 +59,7 @@ var getHTML = function(bibContent){
         listItem += '<a class= "cd g--4 g--4--sl m-t500 bibblio" bibblio-title="'+bibName+'" bibblio-img-desc="'+imgInfo.desc+'" href="'+bibUrl+'"><div class="cd-ic" style="background-image:url('+ imgInfo.path +')" ><\/div><div class="cd-c"><div class="cd-t">'+bibName+'<\/div><div class="cd-d"\>'+bibDesc+'<\/div><\/div><\/a>';
         listLength++;
       }
-      console.log(checkBadDesc(bibDesc) + ':' + bibName + ':' + bibDesc);      
+      //console.log(checkBadDesc(bibDesc) + ':' + bibName + ':' + bibDesc);      
   });
 
   if(listLength > 0){
