@@ -125,7 +125,7 @@ foreach($content['field_how_to_tabs'] as $key => $array){
               </div>
               <div class="paragraphs-items paragraphs-items-field-text-blocks paragraphs-items-field-text-blocks-full paragraphs-items-full">
                       <div id="bibblio-custom">
-                          <div class="g"></div>
+                          <div class="g b--w"></div>
                       </div>
               </div>
           </div>
