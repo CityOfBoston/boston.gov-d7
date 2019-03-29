@@ -22,7 +22,7 @@ function bos_rest_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'hsfghbsfgh';
+  $handler->display->display_options['title'] = 'Cityscore Data';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'none';
   $handler->display->display_options['cache']['type'] = 'none';
@@ -65,7 +65,7 @@ function bos_rest_views_default_views() {
   /* Display: Cityscore */
   $handler = $view->new_display('page', 'Cityscore', 'html_cs_table');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'HTML Output';
+  $handler->display->display_options['title'] = 'Full Cityscore Table';
   $handler->display->display_options['defaults']['use_ajax'] = FALSE;
   $handler->display->display_options['defaults']['access'] = FALSE;
   $handler->display->display_options['access']['type'] = 'menu';
@@ -267,6 +267,8 @@ print \'</tr>\';
 
   /* Display: JSON Output */
   $handler = $view->new_display('page', 'JSON Output', 'json_cs_output');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Current Cityscore Totals (json)';
   $handler->display->display_options['defaults']['group_by'] = FALSE;
   $handler->display->display_options['group_by'] = TRUE;
   $handler->display->display_options['defaults']['cache'] = FALSE;
