@@ -17,6 +17,8 @@ function bos_api_public_notice_strongarm() {
   $strongarm->value = array(
     'api/v1/*' => '<mirror>',
     'api/v2/*' => '<mirror>',
+    'cityscore/*' => '*',
+    'rest/*' => '*'
   );
   $export['cors_domains'] = $strongarm;
 
