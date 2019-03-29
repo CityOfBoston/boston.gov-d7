@@ -84,7 +84,7 @@ projects:
   context:
     version: 3.10
   cors:
-    version: 1.3
+    version: 1.x-dev
   crumbs :
     version : 2.3
   ctools:
