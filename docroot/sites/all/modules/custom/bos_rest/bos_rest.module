@@ -136,11 +136,11 @@ function bos_rest_cityscore_html() {
 /**
  * Implements hook_views_post_execute().
  *
- * updates google analytics with api call.
+ * Updates google analytics with api call.
  */
 function bos_rest_views_post_execute(&$view) {
   if ($view->name == "cityscore") {
-     bos_rest_ga($view->get_path(), $view->get_title());
+    bos_rest_ga($view->get_path(), $view->get_title());
   }
 }
 /**
