@@ -197,8 +197,7 @@
     .cs__table-footer td {
       font-size: 100%;
       text-align: left;
-      border-top: 3px solid #fff;
-      /*display: none;*/
+      border-top: 2px solid #d5d5d5;
     }
   }
 </style>
