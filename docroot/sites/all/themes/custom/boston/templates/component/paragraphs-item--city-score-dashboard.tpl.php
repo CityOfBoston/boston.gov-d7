@@ -61,7 +61,6 @@
     </ul>
   </div>
   <div id="scoreTable" class="cs--block">
-    <?php // print views_embed_view('cityscore', 'html_cs_table'); ?>
   </div>
 </div>
 
@@ -72,6 +71,7 @@
     var dateContainer = document.querySelector('.brc-lu');
     var dateDisplay = document.querySelector('.date-display-single');
     var todaysScore = false;
+    var totals = null;
 
     // Hide the date container
     dateContainer.style.display = 'none';
@@ -82,19 +82,28 @@
 
     function loadScores() {
       jQuery.ajax({
-        //url: "//cob-cityscore.herokuapp.com/scores/latest",
         url: "/rest/cityscore/html",
         type:'GET',
         contentType: 'text/plain',
         dataType: "html",
         success: function( html ){
           jQuery('#scoreTable').html(html);
+          jQuery('.view-display-id-html_cs_table tbody tr').last().after(totals);
         }
       });
     }
 
+    function loadTotals(json) {
+      totals = "<tr><td> \n</td></tr>";
+      totals += "<tr class='cs__table-footer'><td>Total</td>";
+      totals += "<td class='cs__table--centered" + (json.day<1?" cs__low":"") + "'>" + json.day + "</td>";
+      totals += "<td class='cs__table--centered" + (json.week<1?" cs__low":"") + "'>" + json.week + "</td>";
+      totals += "<td class='cs__table--centered" + (json.month<1?" cs__low":"") + "'>" + json.month + "</td>";
+      totals += "<td class='cs__table--centered" + (json.quarter<1?" cs__low":"") + "'>" + json.quarter + "</td></tr>";
+    }
+
     function loadTodaysScore() {
-      //jQuery.getJSON( "//cob-cityscore.herokuapp.com/totals/latest" )
+      totals = null;
       jQuery.getJSON( "/cityscore/totals/latest.json")
         .done(function(json) {
           var jsonArrayObject = new Array(json);
@@ -103,6 +112,7 @@
             todaysScore = csVals.day;
             renderDateUpdated(csVals.date_posted);
             renderTodaysScore(csVals.day);
+            loadTotals(csVals);
             // Then start to load other scores
             loadScores();
           } else {
@@ -173,3 +183,22 @@
   jQuery(document).ready(CityScore.init);
   jQuery(window).resize(CityScore.handleResize);
 </script>
+<style>
+  @media (min-width: 840px) {
+    .cs__table-footer td {
+      display: table-cell;
+    }
+  }
+  @media (min-width: 840px) {
+    .cs__table-footer td {
+      padding-top: .5em;
+      font-size: 120%;
+    }
+    .cs__table-footer td {
+      font-size: 100%;
+      text-align: left;
+      border-top: 3px solid #fff;
+      /*display: none;*/
+    }
+  }
+</style>
