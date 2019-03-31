@@ -130,17 +130,29 @@ function bos_rest_cityscore($action) {
  *   Returns an HTML string with a formatted table of cityscore parameters.
  */
 function bos_rest_cityscore_html() {
-  bos_rest_ga("/api/cityscore/list/html");
   return views_embed_view('cityscore', 'html_cs_table');
 }
 
 /**
+ * Implements hook_views_post_execute().
+ *
+ * Updates google analytics with api call.
+ */
+function bos_rest_views_post_execute(&$view) {
+  if ($view->name == "cityscore") {
+    bos_rest_ga($view->get_path(), $view->get_title());
+  }
+}
+/**
  * Process the rest/cityscore/json endpoint (cityscore totals in json).
+ *
+ * MAR 29, 2019.
+ * DECOMISSIONED.  NOW USING VIEW ENDPOINT AT cityscore/totals/latest.json.
  *
  * @return false|string
  *   JSON String with current sityscore totals.
  */
-function bos_rest_cityscore_json() {
+function xbos_rest_cityscore_json() {
   bos_rest_ga("/api/cityscore/summary/json");
   $curl_handle = curl_init();
   if (stripos($_SERVER["HTTP_HOST"], "edit-") !== FALSE) {
