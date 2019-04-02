@@ -39,7 +39,7 @@ function bos_content_type_public_notice_field_group_info() {
       ),
     ),
   );
-  $field_groups[''] = $field_group;
+  $field_groups['group_basic|node|public_notice|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -52,7 +52,7 @@ function bos_content_type_public_notice_field_group_info() {
   $field_group->parent_name = 'group_details';
   $field_group->data = array(
     'label' => 'Cancel Public Notice',
-    'weight' => '36',
+    'weight' => '38',
     'children' => array(
       0 => 'field_cancelled',
       1 => 'field_extra_info',
@@ -68,7 +68,7 @@ function bos_content_type_public_notice_field_group_info() {
       ),
     ),
   );
-  $field_groups[''] = $field_group;
+  $field_groups['group_cancelled|node|public_notice|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -95,7 +95,7 @@ function bos_content_type_public_notice_field_group_info() {
       ),
     ),
   );
-  $field_groups[''] = $field_group;
+  $field_groups['group_components|node|public_notice|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -124,7 +124,7 @@ function bos_content_type_public_notice_field_group_info() {
       ),
     ),
   );
-  $field_groups[''] = $field_group;
+  $field_groups['group_contact_info|node|public_notice|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -139,12 +139,11 @@ function bos_content_type_public_notice_field_group_info() {
     'label' => 'Details',
     'weight' => '2',
     'children' => array(
-      0 => 'field_multiple_neighborhoods',
-      1 => 'field_public_notice_date',
-      2 => 'group_cancelled',
-      3 => 'group_downloads',
-      4 => 'group_meeting_location',
-      5 => 'group_public_testimony',
+      0 => 'field_public_notice_date',
+      1 => 'group_cancelled',
+      2 => 'group_downloads',
+      3 => 'group_meeting_location',
+      4 => 'group_public_testimony',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -156,7 +155,7 @@ function bos_content_type_public_notice_field_group_info() {
       ),
     ),
   );
-  $field_groups[''] = $field_group;
+  $field_groups['group_details|node|public_notice|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -169,7 +168,7 @@ function bos_content_type_public_notice_field_group_info() {
   $field_group->parent_name = 'group_details';
   $field_group->data = array(
     'label' => 'Downloads',
-    'weight' => '37',
+    'weight' => '39',
     'children' => array(
       0 => 'field_links',
     ),
@@ -184,7 +183,7 @@ function bos_content_type_public_notice_field_group_info() {
       ),
     ),
   );
-  $field_groups[''] = $field_group;
+  $field_groups['group_downloads|node|public_notice|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -213,7 +212,7 @@ function bos_content_type_public_notice_field_group_info() {
       ),
     ),
   );
-  $field_groups[''] = $field_group;
+  $field_groups['group_meeting_location|node|public_notice|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -240,7 +239,7 @@ function bos_content_type_public_notice_field_group_info() {
       ),
     ),
   );
-  $field_groups[''] = $field_group;
+  $field_groups['group_meta_data|node|public_notice|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -253,7 +252,7 @@ function bos_content_type_public_notice_field_group_info() {
   $field_group->parent_name = 'group_details';
   $field_group->data = array(
     'label' => 'Public Testimony',
-    'weight' => '35',
+    'weight' => '37',
     'children' => array(
       0 => 'field_is_there_public_testimony',
       1 => 'field_time',
@@ -269,7 +268,7 @@ function bos_content_type_public_notice_field_group_info() {
       ),
     ),
   );
-  $field_groups[''] = $field_group;
+  $field_groups['group_public_testimony|node|public_notice|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -284,14 +283,15 @@ function bos_content_type_public_notice_field_group_info() {
     'label' => 'Related Content - ORIGINAL',
     'weight' => '5',
     'children' => array(
-      0 => 'field_related_content',
-      1 => 'field_people',
-      2 => 'field_place',
-      3 => 'field_program_initiative',
-      4 => 'field_related_events_notices',
-      5 => 'field_related_guides',
-      6 => 'field_related_posts',
-      7 => 'field_related_departments',
+      0 => 'field_multiple_neighborhoods',
+      1 => 'field_related_content',
+      2 => 'field_people',
+      3 => 'field_place',
+      4 => 'field_program_initiative',
+      5 => 'field_related_events_notices',
+      6 => 'field_related_guides',
+      7 => 'field_related_posts',
+      8 => 'field_related_departments',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -303,7 +303,7 @@ function bos_content_type_public_notice_field_group_info() {
       ),
     ),
   );
-  $field_groups[''] = $field_group;
+  $field_groups['group_related_content|node|public_notice|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -331,7 +331,7 @@ function bos_content_type_public_notice_field_group_info() {
       'formatter' => 'closed',
     ),
   );
-  $field_groups[''] = $field_group;
+  $field_groups['group_related|node|public_notice|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -358,7 +358,7 @@ function bos_content_type_public_notice_field_group_info() {
       ),
     ),
   );
-  $field_groups[''] = $field_group;
+  $field_groups['group_topics|node|public_notice|form'] = $field_group;
 
   // Translatables
   // Included for use with string extractors like potx.
