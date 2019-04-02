@@ -1,3 +1,4 @@
+ /*logo responsive*/
  @media screen and (max-width: 480px) {
   .tr--visible {
     display: block;
@@ -19,6 +20,18 @@
     width:0px;
     height:0px;
   }
+}
+
+/*bibblio*/
+.bib--rcm-init,.bibblio-container{
+  display:none;
+}
+#bibblio-custom{
+  margin-top:-35px; 
+}
+#bibblio-custom a{
+  margin-top:0;
+  padding-top:0;
 }
 
 
