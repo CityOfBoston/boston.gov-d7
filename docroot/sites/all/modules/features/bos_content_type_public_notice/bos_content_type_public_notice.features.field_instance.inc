@@ -1115,7 +1115,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'options_buttons',
-      'weight' => 15,
+      'weight' => 21,
     ),
   );
 
@@ -1438,7 +1438,7 @@ function bos_content_type_public_notice_field_default_field_instances() {
         'year_range' => '-0:+3',
       ),
       'type' => 'date_popup',
-      'weight' => 33,
+      'weight' => 16,
     ),
   );
 
