@@ -21,6 +21,10 @@ projects:
       # https://www.drupal.org/node/2211429#comment-10033677
       - https://www.drupal.org/files/issues/drupal-image-style-not-found-2211429-4.patch
 
+      # Allow multiple default values in fields with cardinality > 1
+      # https://www.drupal.org/project/drupal/issues/1482386#comment-11573711
+      - https://www.drupal.org/files/issues/drupal-multiple-default-values-1482386-78.patch
+
   acquia_connector:
     version: 3.4
   acquia_purge:
@@ -80,7 +84,7 @@ projects:
   context:
     version: 3.10
   cors:
-    version: 1.3
+    version: 1.x-dev
   crumbs :
     version : 2.3
   ctools:
@@ -125,7 +129,7 @@ projects:
   field_collection:
     version: 1.0-beta9
   field_group:
-    version: 1.5
+    version: 1.6
   file_entity:
     version: 2.2
   honeypot:
@@ -269,6 +273,8 @@ projects:
     version: 3.3
   views_exclude_previous:
     version: 1.x-dev
+  views_php:
+    version: 1.0-alpha3
   viewfield:
     version: 2.0
     patch:

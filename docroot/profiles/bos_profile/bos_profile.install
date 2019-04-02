@@ -63,6 +63,8 @@ function bos_profile_install() {
   bos_profile_update_7045();
   bos_profile_update_7046();
   bos_profile_update_7047();
+  bos_profile_update_7048();
+  bos_profile_update_7049();
 }
 
 /**
@@ -1273,9 +1275,31 @@ function bos_profile_update_7044() {
 }
 
 /**
- * Migrate field data from multiple related fields to single related field.
+ * Adds Entity Reference Filters view.
+ * Update for 12/2018. Adds views_datasource fpr JSON API views.
  */
 function bos_profile_update_7045() {
+  $enabled_modules = array(
+    'views_json',
+    'bos_rest',
+  );
+  module_enable($enabled_modules);
+}
+
+/**
+ * Update for 12/7/2018. Adds views_php.
+ */
+function bos_profile_update_7046() {
+  $enabled_modules = array(
+    'views_php',
+  );
+  module_enable($enabled_modules);
+}
+
+/**
+ * Migrate field data from multiple related fields to single related field.
+ */
+function bos_profile_update_7047() {
   // Load all nodes with related content fields.
   echo "Loading all event nodes \r\n";
   $event_nodes = node_load_multiple(array(), array('type' => 'event'));
@@ -1366,7 +1390,7 @@ function bos_profile_update_7045() {
  *
  * Par upcoming_events = events_and_notices.
  */
-function bos_profile_update_7046() {
+function bos_profile_update_7048() {
   // Get a list of all paragraphs of type news_announcements (old bundle).
   echo "Querying to get all news_announcements components \r\n";
   $query = new EntityFieldQuery();
@@ -1557,7 +1581,7 @@ function bos_migrate_paragraphs(array $paragraph_list, string $paragraph_bundle)
 /**
  * Disable the old related content modules.
  */
-function bos_profile_update_7047() {
+function bos_profile_update_7049() {
   // Disable old modules.
   $disabled_modules = array(
     'bos_form_related_content',

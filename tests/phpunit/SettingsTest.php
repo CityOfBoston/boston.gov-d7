@@ -8,6 +8,8 @@
 namespace Drupal;
 
 use PHPUnit_Framework_TestCase;
+use Drupal\phpunit\COBDrupalBootstrap;
+
 /**
  * Tests settings.php tests.
  */
@@ -19,18 +21,16 @@ class SettingsTest extends PHPUnit_Framework_TestCase {
    *   The acquia environment being simulated. E.g., prod, test, dev, etc.
    */
   public function setupParams($env) {
+    require_once __DIR__ . "/DrupalBootstrap.php";
+    $drupal = new COBDrupalBootstrap();
+    $drupal->bootstrapDrupal("/boston.gov/docroot");
 
-    $this->projectRoot = dirname(dirname(__DIR__));
-    $this->drupalRoot = $this->projectRoot . '/docroot';
-    if (!defined('DRUPAL_ROOT')) {
-      define('DRUPAL_ROOT', $this->drupalRoot);
-    }
   }
 
   /**
    * Test configuration for production environment on ACE.
    */
-  public function testProd() {
+  public function txestProd() {
 
     $this->setupParams('prod');
     require $this->drupalRoot . '/sites/default/settings.php';
@@ -71,7 +71,7 @@ class SettingsTest extends PHPUnit_Framework_TestCase {
   /**
    * Test configuration for test/stg environment on ACE.
    */
-  public function testTest() {
+  public function txestTest() {
 
     $this->setupParams('test');
     require $this->drupalRoot . '/sites/default/settings.php';
@@ -104,7 +104,7 @@ class SettingsTest extends PHPUnit_Framework_TestCase {
   /**
    * Test configuration for dev environment on ACE.
    */
-  public function testDev() {
+  public function txestDev() {
 
     $this->setupParams('dev');
     require $this->drupalRoot . '/sites/default/settings.php';

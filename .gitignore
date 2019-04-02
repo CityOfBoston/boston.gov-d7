@@ -139,3 +139,4 @@ solr/*
 
 #Ignore database dumps
 *.sql
+*.sql.gz

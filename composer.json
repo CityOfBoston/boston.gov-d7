@@ -17,6 +17,7 @@
     "drupal/drupal-extension":      "*",
     "drupal/coder":                 "8.2.6",
     "drush/drush":                  "~8",
+    "guzzlehttp/guzzle":            "~6.0",
     "phpunit/phpunit":              "4.6.*",
     "squizlabs/php_codesniffer":    "2.*",
     "phing/phing":                  "~2.15",
