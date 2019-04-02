@@ -65,6 +65,7 @@ function bos_profile_install() {
   bos_profile_update_7047();
   bos_profile_update_7048();
   bos_profile_update_7049();
+  bos_profile_update_7050();
 }
 
 /**
@@ -1272,6 +1273,7 @@ function bos_profile_update_7044() {
     'bos_component_news_and_announcements',
   );
   module_enable($enabled_modules);
+  // This was reverted.
 }
 
 /**
@@ -1297,9 +1299,24 @@ function bos_profile_update_7046() {
 }
 
 /**
- * Migrate field data from multiple related fields to single related field.
+ * Adds new related content functionality / features.
  */
 function bos_profile_update_7047() {
+  // Reapplying after revert.
+  $enabled_modules = array(
+    'bos_view_entity_reference_filters',
+    'bos_view_events_and_notices',
+    'bos_component_events_and_notices',
+    'bos_view_news_and_announcements',
+    'bos_component_news_and_announcements',
+  );
+  module_enable($enabled_modules);
+}
+
+/**
+ * Migrate field data from multiple related fields to single related field.
+ */
+function bos_profile_update_7048() {
   // Load all nodes with related content fields.
   echo "Loading all event nodes \r\n";
   $event_nodes = node_load_multiple(array(), array('type' => 'event'));
@@ -1388,7 +1405,7 @@ function bos_profile_update_7047() {
  *
  * Par upcoming_events = events_and_notices.
  */
-function bos_profile_update_7048() {
+function bos_profile_update_7049() {
   // Get a list of all paragraphs of type news_announcements (old bundle).
   echo "Querying to get all news_announcements components \r\n";
   $query = new EntityFieldQuery();
@@ -1579,7 +1596,7 @@ function bos_migrate_paragraphs(array $paragraph_list, string $paragraph_bundle)
 /**
  * Disable the old related content modules.
  */
-function bos_profile_update_7049() {
+function bos_profile_update_7050() {
   // Disable old modules.
   $disabled_modules = array(
     'bos_form_related_content',
