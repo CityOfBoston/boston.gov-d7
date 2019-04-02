@@ -1314,7 +1314,6 @@ function bos_profile_update_7047() {
     // Check if fields have values.
     echo "Migrating field data for /node/" . $node->nid . "\r\n";
     echo $key . " of " . count($nodes) . "\r\n\r\n";
-    $related_neighborhoods = is_array($node->field_multiple_neighborhoods['und']) ? $node->field_multiple_neighborhoods['und'] : [];
     $related_departments = is_array($node->field_related_departments['und']) ? $node->field_related_departments['und'] : [];
     $related_events_notices = is_array($node->field_related_events_notices['und']) ? $node->field_related_events_notices['und'] : [];
     $related_guides = is_array($node->field_related_guides['und']) ? $node->field_related_guides['und'] : [];
@@ -1325,7 +1324,6 @@ function bos_profile_update_7047() {
     $related_content = is_array($node->field_related_content['und']) ? $node->field_related_content['und'] : [];
     // Transfer values to new related content field.
     $node->field_related['und'] = array_merge(
-      $related_neighborhoods,
       $related_departments,
       $related_events_notices,
       $related_guides,
