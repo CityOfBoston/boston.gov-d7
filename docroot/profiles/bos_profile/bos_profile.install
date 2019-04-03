@@ -1382,10 +1382,12 @@ function bos_profile_update_7048() {
  */
 function bos_migrate_related_field_data($nodes) {
   // Loop through nodes with related content fields.
+  $index = 0;
   foreach ($nodes as $key => $node) {
     // Check if fields have values.
     echo "Migrating field data for /node/" . $node->nid . "\r\n";
-    echo $key . " of " . count($nodes) . "\r\n\r\n";
+    echo $index . " of " . count($nodes) . "\r\n";
+    $index++;
     $related_departments = is_array($node->field_related_departments['und']) ? $node->field_related_departments['und'] : [];
     $related_events_notices = is_array($node->field_related_events_notices['und']) ? $node->field_related_events_notices['und'] : [];
     $related_guides = is_array($node->field_related_guides['und']) ? $node->field_related_guides['und'] : [];
