@@ -90,5 +90,3 @@
       <!-- End topic-departments-container -->
     </section><!-- End departments-container -->
   <?php endif; ?>
-
-</article>

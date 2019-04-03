@@ -34,3 +34,17 @@ function bos_content_type_procurement_advertisement_update_7001() {
     node_types_rebuild();
   }
 }
+
+/**
+ * Implements hook_install().
+ *
+ * Remove old procurement fields.
+ */
+function bos_content_type_procurement_advertisement_update_7002() {
+  if ($instance = field_info_instance('node', 'field_awarding_authority', 'procurement_advertisement')) {
+    field_delete_instance($instance);
+  }
+  if ($instance = field_info_instance('node', 'field_details_link', 'procurement_advertisement')) {
+    field_delete_instance($instance);
+  }
+}

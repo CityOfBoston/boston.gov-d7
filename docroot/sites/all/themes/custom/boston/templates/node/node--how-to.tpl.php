@@ -113,4 +113,22 @@ foreach($content['field_how_to_tabs'] as $key => $array){
         <?php print render($content['field_components']); ?>
       </div>
     <?php endif; ?>
+
+  <!-- begin Bibblio custom markup-->
+       <div class="bibblio-container">
+          <div class="content entity entity-paragraphs-item paragraphs-item-text component-section">
+              <div class="sh">
+                <h2 class="sh-title">Suggested Content</h2>
+              </div>
+              <div class="supporting-text">
+                <p>We're testing out suggested content on Boston.gov below. If you see anything out of place, let us know at <a href="mailto:feedback@boston.gov" title="If you see anything out of place, let us know.">feedback@boston.gov</a></p>
+              </div>
+              <div class="paragraphs-items paragraphs-items-field-text-blocks paragraphs-items-field-text-blocks-full paragraphs-items-full">
+                      <div id="bibblio-custom">
+                          <div class="g b--w"></div>
+                      </div>
+              </div>
+          </div>
+        </div>
+  <!-- end Bibblio custom markup -->
 </article>

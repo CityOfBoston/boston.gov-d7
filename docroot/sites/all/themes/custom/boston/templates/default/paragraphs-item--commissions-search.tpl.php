@@ -30,7 +30,7 @@
   <div class="content"<?php print $content_attributes; ?>>
     <?php print render($content); ?>
     <div id="root">&nbsp;
-      <script type="text/javascript" src="https://apps.boston.gov/commissions-search/static/js/main.js"></script>
+      <script type="text/javascript" src="https://apps.boston.gov/commissions-search/static/js/main.js"></script> 
     </div> 
   </div>
 </div>
