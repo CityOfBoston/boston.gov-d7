@@ -1346,15 +1346,15 @@ function bos_profile_update_7048() {
     // Remove old fields.
     echo "Preparing $field for removal \r\n";
     if ($instance = field_info_instance('node', $field, 'event')) {
-      echo "Removing $field \r\n";
+      echo "Removing $field from event \r\n";
       field_delete_instance($instance);
     }
     if ($instance = field_info_instance('node', $field, 'public_notice')) {
-      echo "Removing $field \r\n";
+      echo "Removing $field from public_notice \r\n";
       field_delete_instance($instance);
     }
     if ($instance = field_info_instance('node', $field, 'post')) {
-      echo "Removing $field \r\n";
+      echo "Removing $field from post \r\n";
       field_delete_instance($instance);
     }
     field_purge_batch(1);
