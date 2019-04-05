@@ -1,3 +1,23 @@
+ /*polyfill for IE11*/
+ Array.prototype.findIndex = Array.prototype.findIndex || function(callback) {
+  if (this === null) {
+    throw new TypeError('Array.prototype.findIndex called on null or undefined');
+  } else if (typeof callback !== 'function') {
+    throw new TypeError('callback must be a function');
+  }
+  var list = Object(this);
+  // Makes sures is always has an positive integer as length.
+  var length = list.length >>> 0;
+  var thisArg = arguments[1];
+  for (var i = 0; i < length; i++) {
+    if ( callback.call(thisArg, list[i], i, list) ) {
+      return i;
+    }
+  }
+  return -1;
+};
+
+/*get Bibblio recs and check for image*/
  var imgBase = 'https://boston.gov/';
  var randImgObj = [
     {   'desc' : 'skyline',
@@ -21,7 +41,10 @@
 ]
 var getImgRand = function () {
     num = Math.floor(Math.random() * (randImgObj.length - 1));
-    findItem = randImgObj.findIndex(i => i.desc === randImgObj[num].desc); 
+    //findItem = randImgObj.findIndex(i => i.desc === randImgObj[num].desc); 
+    findItem = randImgObj.findIndex(function (x) {
+          return x.desc === randImgObj[num].desc
+        })
     pathVal = randImgObj[findItem];
     randImgObj.splice(findItem,1);
     return  pathVal;
@@ -71,6 +94,8 @@ const pageURL = window.location.pathname;
 const siteLocation = 'https://www.boston.gov';
 jQuery.ajax({
   method: "GET",
+  crossDomain: true,
+  cache : false,
   url: "https://api.bibblio.org/v1/recommendations",
   contentType: "application/json",
   headers: {
@@ -80,7 +105,7 @@ jQuery.ajax({
   data:{ 
     "customUniqueIdentifier": siteLocation + pageURL,
     "fields":"name,image,image,url,datePublished,description,keywords", 
-    "limit":"6",
+    "limit":"5",
   },
   success: function (res){
     let bibContent = res.results;
