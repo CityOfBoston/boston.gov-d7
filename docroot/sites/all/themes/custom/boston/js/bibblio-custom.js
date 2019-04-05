@@ -44,7 +44,7 @@ var getImgRand = function () {
     //findItem = randImgObj.findIndex(i => i.desc === randImgObj[num].desc); 
     findItem = randImgObj.findIndex(function (x) {
           return x.desc === randImgObj[num].desc
-        })
+    });
     pathVal = randImgObj[findItem];
     randImgObj.splice(findItem,1);
     return  pathVal;
@@ -105,7 +105,7 @@ jQuery.ajax({
   data:{ 
     "customUniqueIdentifier": siteLocation + pageURL,
     "fields":"name,image,image,url,datePublished,description,keywords", 
-    "limit":"5",
+    "limit":"6",
   },
   success: function (res){
     let bibContent = res.results;

@@ -27,7 +27,7 @@
 
   <!-- This is run when a project is cloned to a new environment. -->
   <target name="setup:build:all" description="Generates all required files for a full build. E.g., removes docroot, builds via `drush make`, restores symlinks, etc."
-          depends="setup:behat, setup:build:make, frontend:build">
+          depends="setup:behat, setup:build:make">
   </target>
 
   <!-- Drush make the build using a recursive strategy -->

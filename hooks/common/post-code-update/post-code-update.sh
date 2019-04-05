@@ -43,12 +43,13 @@ if [ "$target_env" = 'uat' ] || [ "$target_env" = 'ci' ]; then
             echo "== CI Environment Specific =="
 #            echo "Copy database from stage (aka test) to $target_env."
 #            drush @${site}.test ac-database-copy ${site} ${target_env} --email=${ac_api_email} --key=${ac_api_key} --endpoint=https://cloudapi.acquia.com/v1
+             drush @${site}.${target_env} vset "asset_url" "https://cob-patterns-staging.herokuapp.com"
         elif [ "$target_env" = 'uat' ]; then
             # Place UAT-specific commands/configurations here
             echo "== UAT Environment Specific =="
             if [ "${deployed_tag}" = "bibblio-build" ]; then
                 # redirect to a different patterns CDN.
-                drush @${site}.${target_env} vset "asset_url" "https://cob-patterns-staging-pr-436.herokuapp.com/"
+                drush @${site}.${target_env} vset "asset_url" "https://cob-patterns-staging.herokuapp.com"
             fi
         fi
         echo "== End Environment Specific commands =="
@@ -66,9 +67,13 @@ if [ "$target_env" = 'uat' ] || [ "$target_env" = 'ci' ]; then
         if [ "$target_env" = 'ci' ]; then
             echo "== CI Environment Specific =="
             # Place CI-specific commands/configurations here
+            drush @${site}.${target_env} vset "asset_url" "https://cob-patterns-staging.herokuapp.com"
+
         elif [ "$target_env" = 'uat' ]; then
             echo "== UAT Environment Specific =="
             # Place UAT-specific commands/configurations here
+            drush @${site}.${target_env} vset "asset_url" "https://cob-patterns-staging.herokuapp.com"
+
         fi
         echo "== End Environment Specific commands =="
 

@@ -49,9 +49,10 @@ if [ "${RES}" != "done" ]; then
     exit 1
 fi
 
-drush @${site}.${target_env} en stage_file_proxy -y
-drush @${site}.${target_env} vset "stage_file_proxy_origin" "https://www.boston.gov"
-
 # Sync the copied database with the recently updated/deployed code.
 echo "- Update database ($site) on $target_env with configuration from updated code in $source_branch."
 sync_db @${site}.${target_env}
+
+drush @${site}.${target_env} en stage_file_proxy -y
+drush @${site}.${target_env} vset "stage_file_proxy_origin" "https://www.boston.gov"
+drush @${site}.${target_env} vset "asset_url" "https://cob-patterns-staging.herokuapp.com"

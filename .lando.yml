@@ -9,12 +9,6 @@ config:
 
 services:
 
-  appserver:
-    run_as_root:
-      - apt-get update -y
-      - apt-get install -y curl gnupg2
-      - curl -sL https://deb.nodesource.com/setup_8.x | bash -
-      - apt-get install -y nodejs
   database:
     type: mysql
     portforward: 3307
@@ -36,7 +30,7 @@ services:
       database: lando/my-custom.cnf
 
   node:
-    type: node:8
+    type: node
     globals:
       gulp-cli: "latest"
       npm: "latest"
