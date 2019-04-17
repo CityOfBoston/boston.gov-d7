@@ -216,7 +216,7 @@ projects:
   slack:
     version: 1.6
   stage_file_proxy:
-    version: 1.7
+    version: 1.9
   strongarm:
     version: 2.0
   title:
