@@ -1288,6 +1288,15 @@ function bos_profile_update_7046() {
   module_enable($enabled_modules);
 }
 
+function bos_profile_update_7047() {
+    // Delete old field groups.
+    echo "Removing Related field group for posts \r\n";
+    if ($group = field_group_load_field_group('group_related_content', 'node', 'procurement_advertisement', 'form')) {
+        ctools_include('export');
+        field_group_group_export_delete($group, FALSE);
+    }
+}
+
 /*******************************************************************
 Any new migrations need to also be added to bos_profile_install so that
 they can run on fresh Docker installs.

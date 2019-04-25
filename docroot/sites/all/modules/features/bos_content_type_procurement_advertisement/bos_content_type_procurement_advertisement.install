@@ -47,4 +47,38 @@ function bos_content_type_procurement_advertisement_update_7002() {
   if ($instance = field_info_instance('node', 'field_details_link', 'procurement_advertisement')) {
     field_delete_instance($instance);
   }
+  if ($instance = field_info_instance('node', 'field_related_items', 'procurement_advertisement')) {
+    field_delete_instance($instance);
+  }
+}
+
+function bos_content_type_procurement_advertisement_update_7003()
+{
+    if ($instance = field_info_instance('node', 'field_related_departments', 'procurement_advertisement')) {
+        field_delete_instance($instance);
+    }
+    if ($instance = field_info_instance('node', 'field_multiple_neighborhoods', 'procurement_advertisement')) {
+        field_delete_instance($instance);
+    }
+    if ($instance = field_info_instance('node', 'field_related_events_notices', 'procurement_advertisement')) {
+        field_delete_instance($instance);
+    }
+    if ($instance = field_info_instance('node', 'field_related_guides', 'procurement_advertisement')) {
+        field_delete_instance($instance);
+    }
+    if ($instance = field_info_instance('node', 'field_people', 'procurement_advertisement')) {
+        field_delete_instance($instance);
+    }
+    if ($instance = field_info_instance('node', 'field_place', 'procurement_advertisement')) {
+        field_delete_instance($instance);
+    }
+    if ($instance = field_info_instance('node', 'field_related_posts', 'procurement_advertisement')) {
+        field_delete_instance($instance);
+    }
+    if ($instance = field_info_instance('node', 'field_program_initiative', 'procurement_advertisement')) {
+        field_delete_instance($instance);
+    }
+    if ($instance = field_info_instance('node', 'field_related_content', 'procurement_advertisement')) {
+        field_delete_instance($instance);
+    }
 }
