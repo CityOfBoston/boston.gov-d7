@@ -50,6 +50,7 @@ tooling:
     service: database
     description: "Open mycli prompt in db container: lando mycli"
     cmd: "mycli -udrupal -pdrupal"
+    user: root
 
   npm:
     service: node
