@@ -104,7 +104,7 @@ hide($content['links']);
       <div class="g--10">
         <ul class="dl">
           <li class="dl-i">
-            <span class="dl-t">Due</span>
+            <span class="dl-t">Bid Close</span>
             <span class="dl-d"><?php print $end_date ?></span>
           </li>
           <?php if (isset($content['field_address'])): ?>
@@ -115,7 +115,7 @@ hide($content['links']);
           <?php endif; ?>
           <?php if (isset($start_date)): ?>
             <li class="dl-i">
-              <span class="dl-t">Posted</span>
+              <span class="dl-t">Bid Open</span>
               <span class="dl-d"><?php print $start_date ?></span>
             </li>
           <?php endif; ?>

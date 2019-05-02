@@ -157,11 +157,11 @@ function bos_content_type_procurement_advertisement_views_default_views() {
   $handler->display->display_options['empty']['area']['table'] = 'views';
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
-  $handler->display->display_options['empty']['area']['content'] = '<h2>No Public Notices Found</h2>
+  $handler->display->display_options['empty']['area']['content'] = '<h2>No Bids or RFPs Found</h2>
 <div class="intro-text supporting-text">Thomas Paine noted "These are the times that try men\'s souls." Well this is a time to try another search.</div>
 <form accept-charset="UTF-8" action="/search" method="get" class="sf sf--md">
     <input name="utf8" type="hidden" value="✓">
-    <input name="facet[]" type="hidden" value="public_notice">
+    <input name="facet[]" type="hidden" value="procurement_advertisement">
     <div class="sf-i">
         <input type="text" name="query" id="q" placeholder="Search…" class="sf-i-f" autocomplete="off">
         <button class="sf-i-b">Search</button>
@@ -175,10 +175,10 @@ function bos_content_type_procurement_advertisement_views_default_views() {
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Sort criterion: Content: Date -  start date (field_public_notice_date) */
-  $handler->display->display_options['sorts']['field_public_notice_date_value']['id'] = 'field_public_notice_date_value';
-  $handler->display->display_options['sorts']['field_public_notice_date_value']['table'] = 'field_data_field_public_notice_date';
-  $handler->display->display_options['sorts']['field_public_notice_date_value']['field'] = 'field_public_notice_date_value';
+  /* Sort criterion: Content: Date -  start date (field_procurement_advertisement_date) */
+  $handler->display->display_options['sorts']['field_procurement_advertisement_date_value']['id'] = 'field_procurement_advertisement_date_value';
+  $handler->display->display_options['sorts']['field_procurement_advertisement_date_value']['table'] = 'field_data_field_procurement_advertisement_date';
+  $handler->display->display_options['sorts']['field_procurement_advertisement_date_value']['field'] = 'field_procurement_advertisement_date_value';
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
@@ -218,15 +218,16 @@ function bos_content_type_procurement_advertisement_views_default_views() {
     56 => 0,
   );
   /* Filter criterion: Broken/missing handler */
-  $handler->display->display_options['filters']['field_awarding_authority_target_id']['id'] = 'field_awarding_authority_target_id';
-  $handler->display->display_options['filters']['field_awarding_authority_target_id']['table'] = 'field_data_field_awarding_authority';
-  $handler->display->display_options['filters']['field_awarding_authority_target_id']['field'] = 'field_awarding_authority_target_id';
-  $handler->display->display_options['filters']['field_awarding_authority_target_id']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_awarding_authority_target_id']['expose']['operator_id'] = 'field_awarding_authority_target_id_op';
-  $handler->display->display_options['filters']['field_awarding_authority_target_id']['expose']['label'] = 'Awarding Authority';
-  $handler->display->display_options['filters']['field_awarding_authority_target_id']['expose']['operator'] = 'field_awarding_authority_target_id_op';
-  $handler->display->display_options['filters']['field_awarding_authority_target_id']['expose']['identifier'] = 'field_awarding_authority_target_id';
-  $handler->display->display_options['filters']['field_awarding_authority_target_id']['expose']['remember_roles'] = array(
+  $handler->display->display_options['filters']['field_contact_target_id']['id'] = 'field_contact_target_id';
+  $handler->display->display_options['filters']['field_contact_target_id']['table'] = 'field_data_field_contact';
+  $handler->display->display_options['filters']['field_contact_target_id']['field'] = 'field_contact_target_id';
+  $handler->display->display_options['filters']['field_contact_target_id']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_contact_target_id']['expose']['operator_id'] = 'field_contact_target_id_op';
+  $handler->display->display_options['filters']['field_contact_target_id']['expose']['label'] = 'Contact (field_contact)';
+  $handler->display->display_options['filters']['field_contact_target_id']['expose']['operator'] = 'field_contact_target_id_op';
+  $handler->display->display_options['filters']['field_contact_target_id']['expose']['identifier'] = 'field_contact_target_id';
+  $handler->display->display_options['filters']['field_contact_target_id']['expose']['multiple'] = TRUE;
+  $handler->display->display_options['filters']['field_contact_target_id']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
     11 => 0,
@@ -255,11 +256,11 @@ function bos_content_type_procurement_advertisement_views_default_views() {
   $handler->display->display_options['empty']['area']['table'] = 'views';
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
-  $handler->display->display_options['empty']['area']['content'] = '<h2>No Public Notices Found</h2>
+  $handler->display->display_options['empty']['area']['content'] = '<h2>No Bids or RFPs Found</h2>
 <div class="intro-text supporting-text">Thomas Paine noted "These are the times that try men\'s souls." Well this is a time to try another search.</div>
 <form accept-charset="UTF-8" action="/search" method="get" class="sf sf--md">
     <input name="utf8" type="hidden" value="✓">
-    <input name="facet[]" type="hidden" value="public_notice">
+    <input name="facet[]" type="hidden" value="procurement_advertisement">
     <div class="sf-i">
         <input type="text" name="query" id="q" placeholder="Search…" class="sf-i-f" autocomplete="off">
         <button class="sf-i-b">Search</button>
@@ -307,15 +308,16 @@ function bos_content_type_procurement_advertisement_views_default_views() {
     56 => 0,
   );
   /* Filter criterion: Broken/missing handler */
-  $handler->display->display_options['filters']['field_awarding_authority_target_id']['id'] = 'field_awarding_authority_target_id';
-  $handler->display->display_options['filters']['field_awarding_authority_target_id']['table'] = 'field_data_field_awarding_authority';
-  $handler->display->display_options['filters']['field_awarding_authority_target_id']['field'] = 'field_awarding_authority_target_id';
-  $handler->display->display_options['filters']['field_awarding_authority_target_id']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_awarding_authority_target_id']['expose']['operator_id'] = 'field_awarding_authority_target_id_op';
-  $handler->display->display_options['filters']['field_awarding_authority_target_id']['expose']['label'] = 'Awarding Authority';
-  $handler->display->display_options['filters']['field_awarding_authority_target_id']['expose']['operator'] = 'field_awarding_authority_target_id_op';
-  $handler->display->display_options['filters']['field_awarding_authority_target_id']['expose']['identifier'] = 'field_awarding_authority_target_id';
-  $handler->display->display_options['filters']['field_awarding_authority_target_id']['expose']['remember_roles'] = array(
+  $handler->display->display_options['filters']['field_contact_target_id']['id'] = 'field_contact_target_id';
+  $handler->display->display_options['filters']['field_contact_target_id']['table'] = 'field_data_field_contact';
+  $handler->display->display_options['filters']['field_contact_target_id']['field'] = 'field_contact_target_id';
+  $handler->display->display_options['filters']['field_contact_target_id']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_contact_target_id']['expose']['operator_id'] = 'field_contact_target_id_op';
+  $handler->display->display_options['filters']['field_contact_target_id']['expose']['label'] = 'Contact (field_contact)';
+  $handler->display->display_options['filters']['field_contact_target_id']['expose']['operator'] = 'field_contact_target_id_op';
+  $handler->display->display_options['filters']['field_contact_target_id']['expose']['identifier'] = 'field_contact_target_id';
+  $handler->display->display_options['filters']['field_contact_target_id']['expose']['multiple'] = TRUE;
+  $handler->display->display_options['filters']['field_contact_target_id']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
     11 => 0,
@@ -327,8 +329,8 @@ function bos_content_type_procurement_advertisement_views_default_views() {
     41 => 0,
     46 => 0,
     51 => 0,
-    56 => 0,
   );
+
   /* Filter criterion: Content: Bid Date - end date (field_date_range:value2) */
   $handler->display->display_options['filters']['field_date_range_value2']['id'] = 'field_date_range_value2';
   $handler->display->display_options['filters']['field_date_range_value2']['table'] = 'field_data_field_date_range';
@@ -340,11 +342,11 @@ function bos_content_type_procurement_advertisement_views_default_views() {
   /* Display: Archive */
   $handler = $view->new_display('page', 'Archive', 'archive');
   $handler->display->display_options['defaults']['sorts'] = FALSE;
-  /* Sort criterion: Content: Date -  start date (field_public_notice_date) */
-  $handler->display->display_options['sorts']['field_public_notice_date_value']['id'] = 'field_public_notice_date_value';
-  $handler->display->display_options['sorts']['field_public_notice_date_value']['table'] = 'field_data_field_public_notice_date';
-  $handler->display->display_options['sorts']['field_public_notice_date_value']['field'] = 'field_public_notice_date_value';
-  $handler->display->display_options['sorts']['field_public_notice_date_value']['order'] = 'DESC';
+  /* Sort criterion: Content: Date -  start date (field_advertisement_date) */
+  $handler->display->display_options['sorts']['field_advertisement_date_value']['id'] = 'field_advertisement_date_value';
+  $handler->display->display_options['sorts']['field_advertisement_date_value']['table'] = 'field_data_field_advertisement_date';
+  $handler->display->display_options['sorts']['field_advertisement_date_value']['field'] = 'field_advertisement_date_value';
+  $handler->display->display_options['sorts']['field_advertisement_date_value']['order'] = 'DESC';
   $handler->display->display_options['path'] = 'views/bid-listings/archive';
   $export['bids_rfps'] = $view;
 

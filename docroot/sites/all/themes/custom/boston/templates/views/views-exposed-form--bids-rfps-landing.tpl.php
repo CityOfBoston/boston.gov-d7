@@ -30,7 +30,7 @@
   print $q;
   ?>
 <?php endif; ?>
-<div class="drawer-trigger mobile-only ">
+<div class="drawer-trigger mobile-only">
   <div class="drawer-trigger-chevron"></div>
   Filter
 </div>
