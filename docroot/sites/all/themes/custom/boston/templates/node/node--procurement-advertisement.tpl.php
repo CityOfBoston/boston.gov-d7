@@ -129,11 +129,11 @@ hide($content['links']);
             <span class="dl-d"><?php print render($advert_date) ?></span>
           </li>
           <li class="dl-i">
-            <span class="dl-t">Posted</span>
+            <span class="dl-t">Bid Open</span>
             <span class="dl-d"><?php print $start_date ?></span>
           </li>
           <li class="dl-i">
-            <span class="dl-t">Close<?php if (!empty($is_closed)) { ?>d<?php } else { ?>s<?php } ?></span>
+            <span class="dl-t">Bid Close<?php //if (!empty($is_closed)) { print 'd'; } else { print 's'; } ?></span>
             <span class="dl-d"><?php print $end_date ?></span>
           </li>
           <li class="dl-i">
