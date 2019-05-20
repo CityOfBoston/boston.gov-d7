@@ -204,6 +204,7 @@ function bos_metrolist_affordable_housing_views_default_views() {
     'title' => 'title',
     'field_mah_address' => 'field_mah_address',
     'field_mah_zipcode' => 'field_mah_zipcode',
+    'field_mah_outer_location' => 'field_mah_outer_location',
     'field_mah_neighborhood' => 'field_mah_neighborhood',
     'field_mah_phone' => 'field_mah_phone',
     'field_mah_email' => 'field_mah_email',
@@ -231,8 +232,15 @@ function bos_metrolist_affordable_housing_views_default_views() {
       'separator' => '',
       'empty_column' => 0,
     ),
-    'field_mah_neighborhood' => array(
+    'field_mah_outer_location' => array(
       'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_mah_neighborhood' => array(
+      'sortable' => 1,
       'default_sort_order' => 'asc',
       'align' => '',
       'separator' => '',
