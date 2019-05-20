@@ -340,7 +340,8 @@ function bos_metrolist_affordable_housing_views_default_views() {
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
   $handler->display->display_options['filter_groups']['groups'] = array(
     1 => 'AND',
-    2 => 'OR',
+    2 => 'AND',
+    3 => 'OR',
   );
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
@@ -426,6 +427,14 @@ function bos_metrolist_affordable_housing_views_default_views() {
   $handler->display->display_options['filters']['field_mah_zipcode_value']['field'] = 'field_mah_zipcode_value';
   $handler->display->display_options['filters']['field_mah_zipcode_value']['operator'] = '!=';
   $handler->display->display_options['filters']['field_mah_zipcode_value']['group'] = 1;
+  /* Filter criterion: Content: Publish to Metrolist (field_mah_publish_to_metrolist) */
+  $handler->display->display_options['filters']['field_mah_publish_to_metrolist_value']['id'] = 'field_mah_publish_to_metrolist_value';
+  $handler->display->display_options['filters']['field_mah_publish_to_metrolist_value']['table'] = 'field_data_field_mah_publish_to_metrolist';
+  $handler->display->display_options['filters']['field_mah_publish_to_metrolist_value']['field'] = 'field_mah_publish_to_metrolist_value';
+  $handler->display->display_options['filters']['field_mah_publish_to_metrolist_value']['value'] = array(
+    1 => '1',
+  );
+  $handler->display->display_options['filters']['field_mah_publish_to_metrolist_value']['group'] = 1;
   /* Filter criterion: Content: Phone (field_mah_phone) */
   $handler->display->display_options['filters']['field_mah_phone_value']['id'] = 'field_mah_phone_value';
   $handler->display->display_options['filters']['field_mah_phone_value']['table'] = 'field_data_field_mah_phone';
@@ -438,13 +447,17 @@ function bos_metrolist_affordable_housing_views_default_views() {
   $handler->display->display_options['filters']['field_mah_email_value']['field'] = 'field_mah_email_value';
   $handler->display->display_options['filters']['field_mah_email_value']['operator'] = '!=';
   $handler->display->display_options['filters']['field_mah_email_value']['group'] = 2;
-  /* Filter criterion: Content: Publish to Metrolist (field_mah_publish_to_metrolist) */
-  $handler->display->display_options['filters']['field_mah_publish_to_metrolist_value']['id'] = 'field_mah_publish_to_metrolist_value';
-  $handler->display->display_options['filters']['field_mah_publish_to_metrolist_value']['table'] = 'field_data_field_mah_publish_to_metrolist';
-  $handler->display->display_options['filters']['field_mah_publish_to_metrolist_value']['field'] = 'field_mah_publish_to_metrolist_value';
-  $handler->display->display_options['filters']['field_mah_publish_to_metrolist_value']['value'] = array(
-    1 => '1',
-  );
+  /* Filter criterion: Content: Lottery Type (field_mah_lottery_type) */
+  $handler->display->display_options['filters']['field_mah_lottery_type_value_1']['id'] = 'field_mah_lottery_type_value_1';
+  $handler->display->display_options['filters']['field_mah_lottery_type_value_1']['table'] = 'field_data_field_mah_lottery_type';
+  $handler->display->display_options['filters']['field_mah_lottery_type_value_1']['field'] = 'field_mah_lottery_type_value';
+  $handler->display->display_options['filters']['field_mah_lottery_type_value_1']['group'] = 3;
+  /* Filter criterion: Content: Lottery Type (field_mah_lottery_type) */
+  $handler->display->display_options['filters']['field_mah_lottery_type_value']['id'] = 'field_mah_lottery_type_value';
+  $handler->display->display_options['filters']['field_mah_lottery_type_value']['table'] = 'field_data_field_mah_lottery_type';
+  $handler->display->display_options['filters']['field_mah_lottery_type_value']['field'] = 'field_mah_lottery_type_value';
+  $handler->display->display_options['filters']['field_mah_lottery_type_value']['value'] = 'Rental';
+  $handler->display->display_options['filters']['field_mah_lottery_type_value']['group'] = 3;
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');

@@ -68,6 +68,7 @@ features[variable][] = rh_node_override_metrolist_affordable_housing
 features[variable][] = rh_node_redirect_metrolist_affordable_housing
 features[variable][] = rh_node_redirect_response_metrolist_affordable_housing
 features[variable][] = xmlsitemap_settings_node_metrolist_affordable_housing
+features[views_view][] = metrolist_affordable_housing
 features_exclude[dependencies][ctools] = ctools
 features_exclude[dependencies][entity] = entity
 features_exclude[dependencies][entityreference] = entityreference
