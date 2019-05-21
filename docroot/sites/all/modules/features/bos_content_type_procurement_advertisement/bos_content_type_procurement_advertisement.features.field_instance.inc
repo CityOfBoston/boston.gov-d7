@@ -516,7 +516,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
     'bundle' => 'procurement_advertisement',
     'default_value' => array(
       0 => array(
-        'target_id' => 771,
+        'target_id' => 0,
       ),
     ),
     'deleted' => 0,

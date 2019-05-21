@@ -49,6 +49,7 @@ function acquia_permissions_map() {
       'bypass rh_file',
       'bypass rh_node',
       'bypass rh_taxonomy',
+      'change saml authentication setting',
       'create advpoll content',
       'create article content',
       'create department_profile content',

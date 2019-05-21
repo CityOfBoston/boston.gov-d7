@@ -11,7 +11,7 @@ services:
 
   database:
     type: mysql
-    portforward: 3307
+    portforward: 3308
     host: localhost
     run_as_root:
       - apt-get update
