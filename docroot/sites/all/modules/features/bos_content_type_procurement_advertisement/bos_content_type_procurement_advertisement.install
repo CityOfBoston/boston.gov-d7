@@ -5,7 +5,6 @@
  * Install file for Procurement Advertisement content type feature.
  */
 
-
 function bos_content_type_procurement_advertisement_update_7001() {
   // Check that the default taxonomy term exists.
   if (taxonomy_get_term_by_name('default', 'procurement_footer') == FALSE) {
