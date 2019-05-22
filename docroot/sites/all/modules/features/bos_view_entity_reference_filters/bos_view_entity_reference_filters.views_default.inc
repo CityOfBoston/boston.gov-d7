@@ -73,15 +73,13 @@ function bos_view_entity_reference_filters_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'article' => 'article',
     'department_profile' => 'department_profile',
-    'event' => 'event',
     'topic_page' => 'topic_page',
     'how_to' => 'how_to',
     'landing_page' => 'landing_page',
+    'listing_page' => 'listing_page',
     'person_profile' => 'person_profile',
     'place_profile' => 'place_profile',
-    'post' => 'post',
     'program_initiative_profile' => 'program_initiative_profile',
-    'public_notice' => 'public_notice',
     'script_page' => 'script_page',
     'tabbed_content' => 'tabbed_content',
   );
