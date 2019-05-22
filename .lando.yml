@@ -26,8 +26,6 @@ services:
       user: drupal
       password: drupal
       database: drupal
-    config:
-      database: lando/my.cnf
 
   node:
     type: node
