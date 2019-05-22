@@ -1276,23 +1276,6 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
       ),
       'user_register_form' => FALSE,
     ),
-    /*'widget' => array(
-      'active' => 1,
-      'module' => 'entityreference',
-      'settings' => array(
-        'entityreference_autocreate' => array(
-          'active' => 0,
-          'author' => '',
-          'author_current_user' => 1,
-          'status' => -1,
-        ),
-        'match_operator' => 'CONTAINS',
-        'path' => '',
-        'size' => 60,
-      ),
-      'type' => 'entityreference_autocomplete',
-      'weight' => 8,
-    ),*/
     'widget' => array(
       'active' => 1,
       'module' => 'options',
@@ -1303,7 +1286,6 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
       'weight' => 7,
     ),
   );
-
   // Exported field_instance:
   // 'node-procurement_advertisement-field_related_links'.
   $field_instances['node-procurement_advertisement-field_related_links'] = array(
