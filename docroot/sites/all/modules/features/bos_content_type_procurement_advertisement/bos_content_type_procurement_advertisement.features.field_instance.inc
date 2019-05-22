@@ -543,7 +543,8 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
     'entity_type' => 'node',
     'fences_wrapper' => 'div_div_div',
     'field_name' => 'field_contact',
-    'label' => 'Awarding Authority',
+    'label' => 'Awarding Department',
+    'description' => 'This is required so users can filter by department when searching for bids / ads.',
     'required' => 1,
     'settings' => array(
       'behaviors' => array(
@@ -1275,7 +1276,7 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
       ),
       'user_register_form' => FALSE,
     ),
-    'widget' => array(
+    /*'widget' => array(
       'active' => 1,
       'module' => 'entityreference',
       'settings' => array(
@@ -1291,6 +1292,15 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
       ),
       'type' => 'entityreference_autocomplete',
       'weight' => 8,
+    ),*/
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
+      'type' => 'options_select',
+      'weight' => 7,
     ),
   );
 
