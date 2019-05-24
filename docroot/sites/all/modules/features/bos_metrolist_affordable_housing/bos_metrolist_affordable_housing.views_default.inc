@@ -349,6 +349,12 @@ function bos_metrolist_affordable_housing_views_default_views() {
   $handler->display->display_options['filters']['field_mah_lottery_type_value']['field'] = 'field_mah_lottery_type_value';
   $handler->display->display_options['filters']['field_mah_lottery_type_value']['value'] = 'Rental';
   $handler->display->display_options['filters']['field_mah_lottery_type_value']['group'] = 3;
+  /* Filter criterion: Content: Lottery Type (field_mah_lottery_type) */
+  $handler->display->display_options['filters']['field_mah_lottery_type_value_2']['id'] = 'field_mah_lottery_type_value_2';
+  $handler->display->display_options['filters']['field_mah_lottery_type_value_2']['table'] = 'field_data_field_mah_lottery_type';
+  $handler->display->display_options['filters']['field_mah_lottery_type_value_2']['field'] = 'field_mah_lottery_type_value';
+  $handler->display->display_options['filters']['field_mah_lottery_type_value_2']['value'] = 'Rental Post Lottery';
+  $handler->display->display_options['filters']['field_mah_lottery_type_value_2']['group'] = 3;
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
