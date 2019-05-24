@@ -12,6 +12,10 @@ DOCROOT=$GIT_ROOT/docroot
 # Fail on error
 set -e
 
+# Lets us know who we have authenticated as, since it doesn’t seem to be
+# cob-deployer. || true because the command exits with 1
+ssh -T git@github.com || true
+
 echo "--------------------------------"
 if [[ "${TRAVIS_BRANCH}" = "settings" ]]; then
   echo "Cloning settings (From settings-develop branch)"

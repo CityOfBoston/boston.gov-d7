@@ -5,9 +5,6 @@
  * Install file for Procurement Advertisement content type feature.
  */
 
-/**
- * Implements hook_install().
- */
 function bos_content_type_procurement_advertisement_update_7001() {
   // Check that the default taxonomy term exists.
   if (taxonomy_get_term_by_name('default', 'procurement_footer') == FALSE) {
@@ -34,6 +31,7 @@ function bos_content_type_procurement_advertisement_update_7001() {
     node_types_rebuild();
   }
 }
+
 
 /**
  * Implements hook_install().
@@ -83,4 +81,65 @@ function bos_content_type_procurement_advertisement_update_7003()
         ctools_include('export');
         field_group_group_export_delete($group, FALSE);
     }
+}
+function bos_content_type_procurement_advertisement_update_7004() {
+  // Check that the default taxonomy term exists.
+  if (taxonomy_get_term_by_name('disclaimer', 'procurement_footer') == FALSE) {
+
+    // Check that the procurement_footer vocabulary exists.
+    if (taxonomy_vocabulary_machine_name_load('procurement_footer') == FALSE) {
+      // Create the procurement_footer vocabulary that didn't exist.
+      $vocabulary = new stdClass();
+      $vocabulary->name = 'Procurement Footer';
+      $vocabulary->machine_name = 'procurement_footer';
+      taxonomy_vocabulary_save($vocabulary);
+    }
+
+    // Load the vocabulary ID for procurement_footer.
+    $vocab = taxonomy_vocabulary_machine_name_load('procurement_footer');
+    $vid = $vocab->vid;
+
+    // Create the 'default' term in the procurement_footer vocabulary.
+    $term = new stdClass();
+    $term->name = 'disclaimer';
+    $term->description = 'The City of Boston is committed to and affirmatively ensures that Disadvantaged Business Enterprises (DBE), Small Local Business Enterprise (SLBE), Minority Business Enterprise (MBE), Women Business Enterprise (WBE), and Veteran Owned Small Business Enterprise (VOSBE) firms shall be afforded full opportunity to submit qualifications in response to this and will not be discriminated against on the basis of race, color, national origin, ancestry, disability, gender, transgender status, political affiliation, age, sexual orientation, or religion in any consideration leading to the award of contract. No qualified disabled person shall, on the basis of disability, be excluded from participating in, be denied the benefits of, or otherwise subjected to discrimination in any consideration leading to the award of contract. The award of any contract shall be subject to the approval of the Mayor of Boston. The maximum time for IFB acceptance by the City after the opening of the bids shall be ninety (90) days unless noted otherwise. The maximum time for RFP acceptance by the City after the opening of the bids shall be one hundred-eighty (180) days unless noted otherwise. The City/County and the Official reserve the right to reject any or all bids, or any item or items thereof, and to award a contract as the Official deems to be in the best interest of the City. All contracts shall be subject to the availability of an appropriation therefore, if sufficient funds are not appropriated for the contract in any fiscal year, the Official shall cancel the contract. The City reserves the right to reject any and all bids, or any part or parts thereof, and to award a contract as the Official deems to be in the best interest of the City. This contract shall be subject to the availability of an appropriation. If sufficient funds are not appropriated for the contract in any fiscal year, the Official shall cancel the contract. Late bids will not be accepted.';
+    $term->vid = $vid;
+    taxonomy_term_save($term);
+    node_types_rebuild();
+  }
+}
+
+function bos_content_type_procurement_advertisement_update_7005() {
+  if (taxonomy_get_term_by_name('default', 'procurement_footer') == true) { 
+      $termOrig = taxonomy_get_term_by_name('default', 'procurement_footer') ;
+      $termOrigTid = key($termOrig);
+
+      $term = taxonomy_term_load($termOrigTid);
+      $term->name = 'default';
+      $term->tid = $termOrigTid;
+      $term->description = null;
+      
+      taxonomy_term_save($term);
+      node_types_rebuild();
+  } else{
+      // Check that the procurement_footer vocabulary exists.
+      if (taxonomy_vocabulary_machine_name_load('procurement_footer') == FALSE) {
+        // Create the procurement_footer vocabulary that didn't exist.
+        $vocabulary = new stdClass();
+        $vocabulary->name = 'Procurement Footer';
+        $vocabulary->machine_name = 'procurement_footer';
+        taxonomy_vocabulary_save($vocabulary);
+      }
+      // Load the vocabulary ID for procurement_footer.
+      $vocab = taxonomy_vocabulary_machine_name_load('procurement_footer');
+      $vid = $vocab->vid;
+
+      // Create the 'default' term in the procurement_footer vocabulary.
+      $term = new stdClass();
+      $term->name = 'default';
+      $term->description = null;
+      $term->vid = $vid;
+      taxonomy_term_save($term);
+      node_types_rebuild();
+  }
 }
