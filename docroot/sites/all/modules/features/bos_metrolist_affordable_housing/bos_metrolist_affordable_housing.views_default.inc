@@ -605,13 +605,73 @@ function bos_metrolist_affordable_housing_views_default_views() {
   $handler->display->display_options['fields']['field_mah_lottery_url']['id'] = 'field_mah_lottery_url';
   $handler->display->display_options['fields']['field_mah_lottery_url']['table'] = 'field_data_field_mah_lottery_url';
   $handler->display->display_options['fields']['field_mah_lottery_url']['field'] = 'field_mah_lottery_url';
-  $handler->display->display_options['fields']['field_mah_lottery_url']['label'] = 'Listing Information';
+  $handler->display->display_options['fields']['field_mah_lottery_url']['label'] = '';
+  $handler->display->display_options['fields']['field_mah_lottery_url']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_mah_lottery_url']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['field_mah_lottery_url']['alter']['path'] = '[field_mah_lottery_url-url]';
+  $handler->display->display_options['fields']['field_mah_lottery_url']['alter']['alt'] = 'Lottery Info';
   $handler->display->display_options['fields']['field_mah_lottery_url']['element_type'] = '0';
+  $handler->display->display_options['fields']['field_mah_lottery_url']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_mah_lottery_url']['element_wrapper_type'] = '0';
   $handler->display->display_options['fields']['field_mah_lottery_url']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['field_mah_lottery_url']['empty'] = 'Reach out to Contact';
   $handler->display->display_options['fields']['field_mah_lottery_url']['click_sort_column'] = 'url';
+  $handler->display->display_options['fields']['field_mah_lottery_url']['settings'] = array(
+    'data_element_key' => '',
+    'skip_safe' => 0,
+    'skip_empty_values' => 0,
+  );
   $handler->display->display_options['fields']['field_mah_lottery_url']['field_api_classes'] = TRUE;
+  /* Field: Content: Lottery URL */
+  $handler->display->display_options['fields']['field_mah_lottery_url_1']['id'] = 'field_mah_lottery_url_1';
+  $handler->display->display_options['fields']['field_mah_lottery_url_1']['table'] = 'field_data_field_mah_lottery_url';
+  $handler->display->display_options['fields']['field_mah_lottery_url_1']['field'] = 'field_mah_lottery_url';
+  $handler->display->display_options['fields']['field_mah_lottery_url_1']['label'] = '';
+  $handler->display->display_options['fields']['field_mah_lottery_url_1']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_mah_lottery_url_1']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_mah_lottery_url_1']['click_sort_column'] = 'url';
+  $handler->display->display_options['fields']['field_mah_lottery_url_1']['type'] = 'link_plain';
+  /* Field: Content: Resale */
+  $handler->display->display_options['fields']['field_mah_resale_indicator']['id'] = 'field_mah_resale_indicator';
+  $handler->display->display_options['fields']['field_mah_resale_indicator']['table'] = 'field_data_field_mah_resale_indicator';
+  $handler->display->display_options['fields']['field_mah_resale_indicator']['field'] = 'field_mah_resale_indicator';
+  $handler->display->display_options['fields']['field_mah_resale_indicator']['label'] = 'Listing Information';
+  $handler->display->display_options['fields']['field_mah_resale_indicator']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['field_mah_resale_indicator']['alter']['path'] = '[field_mah_lottery_url_1]';
+  $handler->display->display_options['fields']['field_mah_resale_indicator']['alter']['absolute'] = TRUE;
+  $handler->display->display_options['fields']['field_mah_resale_indicator']['alter']['alt'] = 'Resale Info';
+  $handler->display->display_options['fields']['field_mah_resale_indicator']['element_type'] = '0';
+  $handler->display->display_options['fields']['field_mah_resale_indicator']['element_wrapper_type'] = '0';
+  $handler->display->display_options['fields']['field_mah_resale_indicator']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_mah_resale_indicator']['empty'] = '[field_mah_lottery_url]';
+  $handler->display->display_options['fields']['field_mah_resale_indicator']['type'] = 'advanced_text';
+  $handler->display->display_options['fields']['field_mah_resale_indicator']['settings'] = array(
+    'trim_length' => '600',
+    'ellipsis' => 1,
+    'word_boundary' => 1,
+    'use_summary' => 0,
+    'token_replace' => 0,
+    'filter' => 'input',
+    'format' => 'plain_text',
+    'allowed_html' => array(
+      0 => 'a',
+      1 => 'b',
+      2 => 'br',
+      3 => 'dd',
+      4 => 'dl',
+      5 => 'dt',
+      6 => 'em',
+      7 => 'i',
+      8 => 'li',
+      9 => 'ol',
+      10 => 'p',
+      11 => 'strong',
+      12 => 'u',
+      13 => 'ul',
+    ),
+    'autop' => 0,
+  );
+  $handler->display->display_options['fields']['field_mah_resale_indicator']['field_api_classes'] = TRUE;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
