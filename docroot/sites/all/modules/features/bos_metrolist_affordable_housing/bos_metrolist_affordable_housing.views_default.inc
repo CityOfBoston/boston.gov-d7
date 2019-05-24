@@ -686,10 +686,7 @@ function bos_metrolist_affordable_housing_views_default_views() {
   $handler->display->display_options['filters']['combine']['fields'] = array(
     'title' => 'title',
     'field_mah_address' => 'field_mah_address',
-    'field_mah_zipcode' => 'field_mah_zipcode',
     'field_mah_outer_location' => 'field_mah_outer_location',
-    'nothing' => 'nothing',
-    'field_mah_household_income_limit' => 'field_mah_household_income_limit',
     'field_mah_contact' => 'field_mah_contact',
   );
   /* Filter criterion: Content: Has taxonomy term */
