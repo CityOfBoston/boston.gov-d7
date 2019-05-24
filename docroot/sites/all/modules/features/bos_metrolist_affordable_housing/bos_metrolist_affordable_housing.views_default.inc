@@ -673,6 +673,10 @@ function bos_metrolist_affordable_housing_views_default_views() {
   );
   $handler->display->display_options['fields']['field_mah_resale_indicator']['field_api_classes'] = TRUE;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['filter_groups']['groups'] = array(
+    1 => 'AND',
+    2 => 'OR',
+  );
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
@@ -688,21 +692,25 @@ function bos_metrolist_affordable_housing_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'metrolist_affordable_housing' => 'metrolist_affordable_housing',
   );
+  $handler->display->display_options['filters']['type']['group'] = 1;
   /* Filter criterion: Content: Property Address (field_mah_address) */
   $handler->display->display_options['filters']['field_mah_address_value']['id'] = 'field_mah_address_value';
   $handler->display->display_options['filters']['field_mah_address_value']['table'] = 'field_data_field_mah_address';
   $handler->display->display_options['filters']['field_mah_address_value']['field'] = 'field_mah_address_value';
   $handler->display->display_options['filters']['field_mah_address_value']['operator'] = '!=';
+  $handler->display->display_options['filters']['field_mah_address_value']['group'] = 1;
   /* Filter criterion: Content: Zipcode (field_mah_zipcode) */
   $handler->display->display_options['filters']['field_mah_zipcode_value']['id'] = 'field_mah_zipcode_value';
   $handler->display->display_options['filters']['field_mah_zipcode_value']['table'] = 'field_data_field_mah_zipcode';
   $handler->display->display_options['filters']['field_mah_zipcode_value']['field'] = 'field_mah_zipcode_value';
   $handler->display->display_options['filters']['field_mah_zipcode_value']['operator'] = '!=';
+  $handler->display->display_options['filters']['field_mah_zipcode_value']['group'] = 1;
   /* Filter criterion: Content: Lottery (field_mah_lottery_indicator) */
   $handler->display->display_options['filters']['field_mah_lottery_indicator_value']['id'] = 'field_mah_lottery_indicator_value';
   $handler->display->display_options['filters']['field_mah_lottery_indicator_value']['table'] = 'field_data_field_mah_lottery_indicator';
   $handler->display->display_options['filters']['field_mah_lottery_indicator_value']['field'] = 'field_mah_lottery_indicator_value';
   $handler->display->display_options['filters']['field_mah_lottery_indicator_value']['value'] = 'Yes';
+  $handler->display->display_options['filters']['field_mah_lottery_indicator_value']['group'] = 2;
   /* Filter criterion: Content: Not Active (field_mah_not_active) */
   $handler->display->display_options['filters']['field_mah_not_active_value']['id'] = 'field_mah_not_active_value';
   $handler->display->display_options['filters']['field_mah_not_active_value']['table'] = 'field_data_field_mah_not_active';
@@ -711,6 +719,7 @@ function bos_metrolist_affordable_housing_views_default_views() {
   $handler->display->display_options['filters']['field_mah_not_active_value']['value'] = array(
     1 => '1',
   );
+  $handler->display->display_options['filters']['field_mah_not_active_value']['group'] = 1;
   /* Filter criterion: Content: Publish to Metrolist (field_mah_publish_to_metrolist) */
   $handler->display->display_options['filters']['field_mah_publish_to_metrolist_value']['id'] = 'field_mah_publish_to_metrolist_value';
   $handler->display->display_options['filters']['field_mah_publish_to_metrolist_value']['table'] = 'field_data_field_mah_publish_to_metrolist';
@@ -718,11 +727,13 @@ function bos_metrolist_affordable_housing_views_default_views() {
   $handler->display->display_options['filters']['field_mah_publish_to_metrolist_value']['value'] = array(
     1 => '1',
   );
+  $handler->display->display_options['filters']['field_mah_publish_to_metrolist_value']['group'] = 1;
   /* Filter criterion: Global: Combine fields filter */
   $handler->display->display_options['filters']['combine']['id'] = 'combine';
   $handler->display->display_options['filters']['combine']['table'] = 'views';
   $handler->display->display_options['filters']['combine']['field'] = 'combine';
   $handler->display->display_options['filters']['combine']['operator'] = 'contains';
+  $handler->display->display_options['filters']['combine']['group'] = 1;
   $handler->display->display_options['filters']['combine']['exposed'] = TRUE;
   $handler->display->display_options['filters']['combine']['expose']['operator_id'] = 'combine_op';
   $handler->display->display_options['filters']['combine']['expose']['label'] = 'Search';
@@ -753,6 +764,7 @@ function bos_metrolist_affordable_housing_views_default_views() {
   $handler->display->display_options['filters']['tid']['id'] = 'tid';
   $handler->display->display_options['filters']['tid']['table'] = 'taxonomy_index';
   $handler->display->display_options['filters']['tid']['field'] = 'tid';
+  $handler->display->display_options['filters']['tid']['group'] = 1;
   $handler->display->display_options['filters']['tid']['exposed'] = TRUE;
   $handler->display->display_options['filters']['tid']['expose']['operator_id'] = 'tid_op';
   $handler->display->display_options['filters']['tid']['expose']['label'] = 'Neighborhood';
@@ -776,6 +788,12 @@ function bos_metrolist_affordable_housing_views_default_views() {
   );
   $handler->display->display_options['filters']['tid']['type'] = 'select';
   $handler->display->display_options['filters']['tid']['vocabulary'] = 'neighborhoods';
+  /* Filter criterion: Content: Resale (field_mah_resale_indicator) */
+  $handler->display->display_options['filters']['field_mah_resale_indicator_value']['id'] = 'field_mah_resale_indicator_value';
+  $handler->display->display_options['filters']['field_mah_resale_indicator_value']['table'] = 'field_data_field_mah_resale_indicator';
+  $handler->display->display_options['filters']['field_mah_resale_indicator_value']['field'] = 'field_mah_resale_indicator_value';
+  $handler->display->display_options['filters']['field_mah_resale_indicator_value']['value'] = 'Yes';
+  $handler->display->display_options['filters']['field_mah_resale_indicator_value']['group'] = 2;
   $handler->display->display_options['path'] = 'metrolist-affordable-housing-lottery';
   $export['metrolist_affordable_housing'] = $view;
 
