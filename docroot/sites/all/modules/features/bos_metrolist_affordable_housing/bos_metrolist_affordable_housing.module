@@ -10,7 +10,7 @@ include_once 'bos_metrolist_affordable_housing.features.inc';
  * Implements hook_preprocess_views_exposed_form().
  */
 function bos_metrolist_affordable_housing_preprocess_views_exposed_form(&$vars) {
-  if ($vars['form']['#id'] == 'views-exposed-form-metrolist-affordable-housing-page') {
+  if ($vars['form']['#id'] == 'views-exposed-form-metrolist-affordable-housing-page' || $vars['form']['#id'] == 'views-exposed-form-metrolist-affordable-housing-page-1') {
     $vars['widget_groups'] = array(
       'key words' => array(),
       'neighborhood' => array(),
