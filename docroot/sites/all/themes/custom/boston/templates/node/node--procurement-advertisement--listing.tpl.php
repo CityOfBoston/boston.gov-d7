@@ -115,7 +115,7 @@ hide($content['links']);
           <?php endif; ?>
           <?php if (isset($start_date)): ?>
             <li class="dl-i">
-              <span class="dl-t">Bid Begins</span>
+              <span class="dl-t">Bid Begin</span>
               <span class="dl-d"><?php print $start_date ?></span>
             </li>
           <?php endif; ?>
