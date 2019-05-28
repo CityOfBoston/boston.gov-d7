@@ -136,20 +136,15 @@ hide($content['links']);
             <span class="dl-t">Bid Close<?php //if (!empty($is_closed)) { print 'd'; } else { print 's'; } ?></span>
             <span class="dl-d"><?php print $end_date ?></span>
           </li>
+          <?php               
+           $multi_year = $variables['field_multi_year_contract'][0]['value'];
+           $multi_year_length = $variables['field_contract_length'][0]['value'];
+           if ($multi_year == 1): ?>     
           <li class="dl-i">
             <span class="dl-t">Multi-year Contract</span>
-            <span class="dl-d">
-              <?php               
-                $multi_year = $variables['field_multi_year_contract'][0]['value'];
-                $multi_year_length = $variables['field_contract_length'][0]['value'];
-                if ($multi_year == 1) { 
-                  print $multi_year_length." years"; 
-                } else { 
-                  print "no";
-                } 
-              ?>  
-            </span>
+            <span class="dl-d"><?php print $multi_year_length;?> years</span>
           </li>
+          <?php endif; ?>   
           <li class="dl-i">
             <span class="dl-t">Type</span>
             <span class="dl-d"><?php print render($content['field_bid_type']) ?></span>
