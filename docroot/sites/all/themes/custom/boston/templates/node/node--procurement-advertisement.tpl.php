@@ -129,7 +129,7 @@ hide($content['links']);
             <span class="dl-d"><?php print render($advert_date) ?></span>
           </li>
           <li class="dl-i">
-            <span class="dl-t">Bid Open</span>
+            <span class="dl-t">Bid Begin</span>
             <span class="dl-d"><?php print $start_date ?></span>
           </li>
           <li class="dl-i">
