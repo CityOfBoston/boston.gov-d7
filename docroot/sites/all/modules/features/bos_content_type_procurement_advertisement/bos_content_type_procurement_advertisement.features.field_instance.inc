@@ -543,7 +543,8 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
     'entity_type' => 'node',
     'fences_wrapper' => 'div_div_div',
     'field_name' => 'field_contact',
-    'label' => 'Awarding Authority',
+    'label' => 'Awarding Department',
+    'description' => 'This is required so users can filter by department when searching for bids / ads.',
     'required' => 1,
     'settings' => array(
       'behaviors' => array(
@@ -1277,23 +1278,14 @@ function bos_content_type_procurement_advertisement_field_default_field_instance
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'entityreference',
+      'module' => 'options',
       'settings' => array(
-        'entityreference_autocreate' => array(
-          'active' => 0,
-          'author' => '',
-          'author_current_user' => 1,
-          'status' => -1,
-        ),
-        'match_operator' => 'CONTAINS',
-        'path' => '',
-        'size' => 60,
+        'apply_chosen' => '',
       ),
-      'type' => 'entityreference_autocomplete',
-      'weight' => 8,
+      'type' => 'options_select',
+      'weight' => 7,
     ),
   );
-
   // Exported field_instance:
   // 'node-procurement_advertisement-field_related_links'.
   $field_instances['node-procurement_advertisement-field_related_links'] = array(
