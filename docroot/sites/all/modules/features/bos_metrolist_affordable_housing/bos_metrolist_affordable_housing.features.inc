@@ -2081,6 +2081,13 @@ function bos_metrolist_affordable_housing_default_salesforce_mapping() {
             {
               "active" : true,
               "defaultValue" : false,
+              "label" : "40%",
+              "validFor" : null,
+              "value" : "40%"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
               "label" : "50%",
               "validFor" : null,
               "value" : "50%"
@@ -2091,6 +2098,13 @@ function bos_metrolist_affordable_housing_default_salesforce_mapping() {
               "label" : "60%",
               "validFor" : null,
               "value" : "60%"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "65%",
+              "validFor" : null,
+              "value" : "65%"
             },
             {
               "active" : true,
@@ -2166,6 +2180,88 @@ function bos_metrolist_affordable_housing_default_salesforce_mapping() {
           "soapType" : "xsd:string",
           "sortable" : false,
           "type" : "multipicklist",
+          "unique" : false,
+          "updateable" : true,
+          "writeRequiresMasterRead" : false
+        },
+        "key" : false,
+        "direction" : "sf_drupal"
+      },
+      {
+        "drupal_field" : {
+          "fieldmap_type" : "property",
+          "fieldmap_value" : "field_mah_resale_indicator"
+        },
+        "salesforce_field" : {
+          "autoNumber" : false,
+          "byteLength" : 765,
+          "calculated" : false,
+          "calculatedFormula" : null,
+          "cascadeDelete" : false,
+          "caseSensitive" : false,
+          "controllerName" : null,
+          "createable" : true,
+          "custom" : true,
+          "defaultValue" : null,
+          "defaultValueFormula" : null,
+          "defaultedOnCreate" : false,
+          "dependentPicklist" : false,
+          "deprecatedAndHidden" : false,
+          "digits" : 0,
+          "displayLocationInDecimal" : false,
+          "externalId" : false,
+          "filterable" : true,
+          "groupable" : true,
+          "htmlFormatted" : false,
+          "idLookup" : false,
+          "inlineHelpText" : null,
+          "label" : "Resale",
+          "length" : 255,
+          "name" : "Resale__c",
+          "nameField" : false,
+          "namePointing" : false,
+          "nillable" : true,
+          "permissionable" : true,
+          "picklistValues" : [
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Yes",
+              "validFor" : null,
+              "value" : "Yes"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "No",
+              "validFor" : null,
+              "value" : "No"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "No answer",
+              "validFor" : null,
+              "value" : "No answer"
+            },
+            {
+              "active" : true,
+              "defaultValue" : false,
+              "label" : "Unknown",
+              "validFor" : null,
+              "value" : "Unknown"
+            }
+          ],
+          "precision" : 0,
+          "referenceTo" : [],
+          "relationshipName" : null,
+          "relationshipOrder" : null,
+          "restrictedDelete" : false,
+          "restrictedPicklist" : true,
+          "scale" : 0,
+          "soapType" : "xsd:string",
+          "sortable" : true,
+          "type" : "picklist",
           "unique" : false,
           "updateable" : true,
           "writeRequiresMasterRead" : false
