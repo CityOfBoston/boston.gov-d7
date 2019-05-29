@@ -642,6 +642,8 @@ function bos_metrolist_affordable_housing_views_default_views() {
   $handler->display->display_options['fields']['field_mah_resale_indicator']['table'] = 'field_data_field_mah_resale_indicator';
   $handler->display->display_options['fields']['field_mah_resale_indicator']['field'] = 'field_mah_resale_indicator';
   $handler->display->display_options['fields']['field_mah_resale_indicator']['label'] = 'Listing Information';
+  $handler->display->display_options['fields']['field_mah_resale_indicator']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_mah_resale_indicator']['alter']['text'] = 'Resale Info';
   $handler->display->display_options['fields']['field_mah_resale_indicator']['alter']['make_link'] = TRUE;
   $handler->display->display_options['fields']['field_mah_resale_indicator']['alter']['path'] = '[field_mah_lottery_url_1]';
   $handler->display->display_options['fields']['field_mah_resale_indicator']['alter']['absolute'] = TRUE;
@@ -650,32 +652,12 @@ function bos_metrolist_affordable_housing_views_default_views() {
   $handler->display->display_options['fields']['field_mah_resale_indicator']['element_wrapper_type'] = '0';
   $handler->display->display_options['fields']['field_mah_resale_indicator']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['field_mah_resale_indicator']['empty'] = '[field_mah_lottery_url]';
-  $handler->display->display_options['fields']['field_mah_resale_indicator']['type'] = 'advanced_text';
+  $handler->display->display_options['fields']['field_mah_resale_indicator']['type'] = 'text_plain';
   $handler->display->display_options['fields']['field_mah_resale_indicator']['settings'] = array(
-    'trim_length' => '600',
-    'ellipsis' => 1,
-    'word_boundary' => 1,
-    'use_summary' => 0,
-    'token_replace' => 0,
-    'filter' => 'input',
-    'format' => 'plain_text',
-    'allowed_html' => array(
-      0 => 'a',
-      1 => 'b',
-      2 => 'br',
-      3 => 'dd',
-      4 => 'dl',
-      5 => 'dt',
-      6 => 'em',
-      7 => 'i',
-      8 => 'li',
-      9 => 'ol',
-      10 => 'p',
-      11 => 'strong',
-      12 => 'u',
-      13 => 'ul',
-    ),
-    'autop' => 0,
+    'data_element_key' => 'Resale',
+    'skip_safe' => 0,
+    'skip_empty_values' => 0,
+    'skip_text_format' => 1,
   );
   $handler->display->display_options['fields']['field_mah_resale_indicator']['field_api_classes'] = TRUE;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
