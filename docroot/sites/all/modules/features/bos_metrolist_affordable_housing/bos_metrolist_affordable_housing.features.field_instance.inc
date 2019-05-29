@@ -700,6 +700,54 @@ function bos_metrolist_affordable_housing_field_default_field_instances() {
   );
 
   // Exported field_instance:
+  // 'node-metrolist_affordable_housing-field_mah_resale_indicator'.
+  $field_instances['node-metrolist_affordable_housing-field_mah_resale_indicator'] = array(
+    'bundle' => 'metrolist_affordable_housing',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 22,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div_div_div',
+    'field_name' => 'field_mah_resale_indicator',
+    'label' => 'Resale',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'show_token_tree' => 0,
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 21,
+    ),
+  );
+
+  // Exported field_instance:
   // 'node-metrolist_affordable_housing-field_mah_zipcode'.
   $field_instances['node-metrolist_affordable_housing-field_mah_zipcode'] = array(
     'bundle' => 'metrolist_affordable_housing',
@@ -763,6 +811,7 @@ function bos_metrolist_affordable_housing_field_default_field_instances() {
   t('Property Address');
   t('Property Manager Contact');
   t('Publish to Metrolist');
+  t('Resale');
   t('Zipcode');
 
   return $field_instances;
