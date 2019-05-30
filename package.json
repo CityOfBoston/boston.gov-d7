@@ -5,7 +5,6 @@
   "version": "1.0.0",
   "repository": {},
   "devDependencies": {
-    "browser-sync": "^2.26.5",
     "compass-mixins": "^0.12.10",
     "compass-options": "^0.1.1",
     "del": "^2.2.0",
