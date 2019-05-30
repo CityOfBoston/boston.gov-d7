@@ -1426,12 +1426,14 @@ function bos_profile_update_7049() {
     ->entityCondition('entity_type', 'paragraphs_item', '=')
     ->propertyCondition('bundle', 'news_announcements', '=');
   $result = $query->execute();
-  // Get an array of the ID's for each of these news_announcements paragraphs.
-  $ids = array_keys($result['paragraphs_item']);
-  // Get an array of paragraph objects.
-  $news_announcements_paragraphs = entity_load('paragraphs_item', $ids);
-  echo "Starting migration to news_and_announcements paragraph \r\n";
-  bos_migrate_paragraphs($news_announcements_paragraphs, "news_and_announcements");
+  if (!empty($result['paragraphs_item'])) {
+    // Get an array of the ID's for each of these news_announcements paragraphs.
+    $ids = array_keys($result['paragraphs_item']);
+    // Get an array of paragraph objects.
+    $news_announcements_paragraphs = entity_load('paragraphs_item', $ids);
+    echo "Starting migration to news_and_announcements paragraph \r\n";
+    bos_migrate_paragraphs($news_announcements_paragraphs, "news_and_announcements");
+  }
 
   // Get a list of all paragraphs of type upcoming_events (old bundle).
   echo "Querying to get all upcoming_events components \r\n";
@@ -1440,12 +1442,14 @@ function bos_profile_update_7049() {
     ->entityCondition('entity_type', 'paragraphs_item', '=')
     ->propertyCondition('bundle', 'upcoming_events', '=');
   $result = $query->execute();
-  // Get an array of the ID's for each of these news_announcements paragraphs.
-  $ids = array_keys($result['paragraphs_item']);
-  // Get an array of paragraph objects.
-  $upcoming_events_paragraphs = entity_load('paragraphs_item', $ids);
-  echo "Starting migration to events_and_notices paragraph \r\n";
-  bos_migrate_paragraphs($upcoming_events_paragraphs, "events_and_notices");
+  if (!empty($result['paragraphs_item'])) {
+    // Get an array of the ID's for each of these news_announcements paragraphs.
+    $ids = array_keys($result['paragraphs_item']);
+    // Get an array of paragraph objects.
+    $upcoming_events_paragraphs = entity_load('paragraphs_item', $ids);
+    echo "Starting migration to events_and_notices paragraph \r\n";
+    bos_migrate_paragraphs($upcoming_events_paragraphs, "events_and_notices");
+  }
 }
 
 /**
@@ -1478,7 +1482,7 @@ function bos_migrate_paragraphs(array $paragraph_list, string $paragraph_bundle)
       if (($old_paragraph->archived == "0" && $parent_node->workbench_moderation["current"]->from_state == 'published') ||
           // If the paragraph is archived (forward revision),
           // ensure revision ID is in field_component.
-          ($old_paragraph->archived == "1" && in_array($old_paragraph->revision_id, $current_revisions))) {
+          (!empty($current_revisions) && ($old_paragraph->archived == "1" && in_array($old_paragraph->revision_id, $current_revisions)))) {
 
         echo "Paragraph is in the most recent revision \r\n";
         // Create new paragraph.
