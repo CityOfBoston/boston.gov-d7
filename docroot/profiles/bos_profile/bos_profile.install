@@ -1419,21 +1419,6 @@ function bos_migrate_related_field_data($nodes) {
  * Par upcoming_events = events_and_notices.
  */
 function bos_profile_update_7049() {
-  // Get a list of all paragraphs of type news_announcements (old bundle).
-  echo "Querying to get all news_announcements components \r\n";
-  $query = new EntityFieldQuery();
-  $query
-    ->entityCondition('entity_type', 'paragraphs_item', '=')
-    ->propertyCondition('bundle', 'news_announcements', '=');
-  $result = $query->execute();
-  if (!empty($result['paragraphs_item'])) {
-    // Get an array of the ID's for each of these news_announcements paragraphs.
-    $ids = array_keys($result['paragraphs_item']);
-    // Get an array of paragraph objects.
-    $news_announcements_paragraphs = entity_load('paragraphs_item', $ids);
-    echo "Starting migration to news_and_announcements paragraph \r\n";
-    bos_migrate_paragraphs($news_announcements_paragraphs, "news_and_announcements");
-  }
 
   // Get a list of all paragraphs of type upcoming_events (old bundle).
   echo "Querying to get all upcoming_events components \r\n";
@@ -1449,6 +1434,21 @@ function bos_profile_update_7049() {
     $upcoming_events_paragraphs = entity_load('paragraphs_item', $ids);
     echo "Starting migration to events_and_notices paragraph \r\n";
     bos_migrate_paragraphs($upcoming_events_paragraphs, "events_and_notices");
+  }
+  // Get a list of all paragraphs of type news_announcements (old bundle).
+  echo "Querying to get all news_announcements components \r\n";
+  $query = new EntityFieldQuery();
+  $query
+    ->entityCondition('entity_type', 'paragraphs_item', '=')
+    ->propertyCondition('bundle', 'news_announcements', '=');
+  $result = $query->execute();
+  if (!empty($result['paragraphs_item'])) {
+    // Get an array of the ID's for each of these news_announcements paragraphs.
+    $ids = array_keys($result['paragraphs_item']);
+    // Get an array of paragraph objects.
+    $news_announcements_paragraphs = entity_load('paragraphs_item', $ids);
+    echo "Starting migration to news_and_announcements paragraph \r\n";
+    bos_migrate_paragraphs($news_announcements_paragraphs, "news_and_announcements");
   }
 }
 
@@ -1584,23 +1584,23 @@ function bos_migrate_paragraphs(array $paragraph_list, string $paragraph_bundle)
               break;
           }
         }
-        else if ($old_paragraph->getType() == 'upcoming_events') {
-          $new_paragraph->field_list = [
-            'und' => [
-              0 => [
-                // "Upcoming" display has most_recent machine name.
-                'vname' => 'events_and_notices|most_recent',
-                'vargs' => '',
-              ],
-            ],
-          ];
-        }
-        else if ($old_paragraph->getType() == 'news_announcements') {
+        else if ($old_paragraph->bundle == 'news_announcements') {
           $new_paragraph->field_list = [
             'und' => [
               0 => [
                 // "Upcoming" display has most_recent machine name.
                 'vname' => 'news_and_announcements|most_recent',
+                'vargs' => '',
+              ],
+            ],
+          ];
+        }
+        else if ($old_paragraph->bundle == 'upcoming_events') {
+          $new_paragraph->field_list = [
+            'und' => [
+              0 => [
+                // "Upcoming" display has most_recent machine name.
+                'vname' => 'events_and_notices|most_recent',
                 'vargs' => '',
               ],
             ],
