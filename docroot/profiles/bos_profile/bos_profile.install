@@ -1435,6 +1435,7 @@ function bos_profile_update_7049() {
     echo "Starting migration to events_and_notices paragraph \r\n";
     bos_migrate_paragraphs($upcoming_events_paragraphs, "events_and_notices");
   }
+
   // Get a list of all paragraphs of type news_announcements (old bundle).
   echo "Querying to get all news_announcements components \r\n";
   $query = new EntityFieldQuery();
@@ -1583,28 +1584,6 @@ function bos_migrate_paragraphs(array $paragraph_list, string $paragraph_bundle)
               echo "No field_list match for " . $old_paragraph->field_list['und'][0]['vname'] . " found in $paragraph_bundle";
               break;
           }
-        }
-        else if ($old_paragraph->bundle == 'news_announcements') {
-          $new_paragraph->field_list = [
-            'und' => [
-              0 => [
-                // "Upcoming" display has most_recent machine name.
-                'vname' => 'news_and_announcements|most_recent',
-                'vargs' => '',
-              ],
-            ],
-          ];
-        }
-        else if ($old_paragraph->bundle == 'upcoming_events') {
-          $new_paragraph->field_list = [
-            'und' => [
-              0 => [
-                // "Upcoming" display has most_recent machine name.
-                'vname' => 'events_and_notices|most_recent',
-                'vargs' => '',
-              ],
-            ],
-          ];
         }
 
         // Attach new paragraph to the host node that the old paragraph is on.
