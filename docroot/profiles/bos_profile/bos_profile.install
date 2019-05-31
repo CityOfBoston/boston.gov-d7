@@ -1584,6 +1584,28 @@ function bos_migrate_paragraphs(array $paragraph_list, string $paragraph_bundle)
               break;
           }
         }
+        else if ($old_paragraph->getType() == 'upcoming_events') {
+          $new_paragraph->field_list = [
+            'und' => [
+              0 => [
+                // "Upcoming" display has most_recent machine name.
+                'vname' => 'events_and_notices|most_recent',
+                'vargs' => '',
+              ],
+            ],
+          ];
+        }
+        else if ($old_paragraph->getType() == 'news_announcements') {
+          $new_paragraph->field_list = [
+            'und' => [
+              0 => [
+                // "Upcoming" display has most_recent machine name.
+                'vname' => 'news_and_announcements|most_recent',
+                'vargs' => '',
+              ],
+            ],
+          ];
+        }
 
         // Attach new paragraph to the host node that the old paragraph is on.
         echo "Attaching new paragraph to the parent node and saving \r\n";
@@ -1613,6 +1635,7 @@ function bos_migrate_paragraphs(array $paragraph_list, string $paragraph_bundle)
 /**
  * Disable the old related content modules.
  */
+/*
 function bos_profile_update_7050() {
   // Disable old modules.
   $disabled_modules = array(
@@ -1625,6 +1648,7 @@ function bos_profile_update_7050() {
   );
   module_disable($disabled_modules);
 }
+ */
 
 /*******************************************************************
 Any new migrations need to also be added to bos_profile_install so that
