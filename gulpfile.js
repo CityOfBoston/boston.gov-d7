@@ -62,9 +62,6 @@ gulp.task('watch', ['build','watch:ie','watch:js']);
 gulp.task('watch:ie', getTask('watch_ie'));
 gulp.task('watch:js', getTask('watch_scripts'));
 
-// Serve
-gulp.task('serve', getTask('serve'));
-
 // Build
 gulp.task('build', ['images', 'scripts', 'scripts:iframe'], function (cb) {
   // Run linting last, otherwise its output gets lost.
