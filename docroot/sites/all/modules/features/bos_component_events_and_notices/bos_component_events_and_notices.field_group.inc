@@ -24,20 +24,21 @@ function bos_component_events_and_notices_field_group_info() {
     'weight' => '0',
     'children' => array(
       0 => 'field_component_title',
-      1 => 'field_short_title',
-      2 => 'field_featured_item',
+      1 => 'field_featured_item',
+      2 => 'field_link',
       3 => 'field_list',
-      4 => 'field_link',
+      4 => 'field_short_title',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'label' => 'Events & Notices',
       'instance_settings' => array(
-        'description' => '',
-        'classes' => 'group-events-and-notices field-group-fieldset',
         'required_fields' => 1,
         'id' => '',
+        'classes' => 'group-events-and-notices field-group-fieldset',
+        'description' => '',
       ),
+      'formatter' => 'collapsed',
     ),
   );
   $field_groups['group_events_and_notices|paragraphs_item|events_and_notices|form'] = $field_group;
