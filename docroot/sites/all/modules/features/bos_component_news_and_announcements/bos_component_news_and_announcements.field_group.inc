@@ -24,20 +24,21 @@ function bos_component_news_and_announcements_field_group_info() {
     'weight' => '0',
     'children' => array(
       0 => 'field_component_title',
-      1 => 'field_short_title',
-      2 => 'field_featured_post',
+      1 => 'field_featured_post',
+      2 => 'field_link',
       3 => 'field_list',
-      4 => 'field_link',
+      4 => 'field_short_title',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'label' => 'News & Announcements',
       'instance_settings' => array(
-        'description' => '',
-        'classes' => 'group-news-and-announcements field-group-fieldset',
         'required_fields' => 1,
         'id' => '',
+        'classes' => 'group-news-and-announcements field-group-fieldset',
+        'description' => '',
       ),
+      'formatter' => 'collapsed',
     ),
   );
   $field_groups['group_news_and_announcements|paragraphs_item|news_and_announcements|form'] = $field_group;
