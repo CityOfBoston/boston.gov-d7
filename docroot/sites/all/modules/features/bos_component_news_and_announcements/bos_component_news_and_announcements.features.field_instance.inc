@@ -36,7 +36,7 @@ function bos_component_news_and_announcements_field_default_field_instances() {
     'fences_wrapper' => 'div_div_div',
     'field_name' => 'field_component_title',
     'label' => 'Title',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'linkit' => array(
         'button_text' => 'Search',
