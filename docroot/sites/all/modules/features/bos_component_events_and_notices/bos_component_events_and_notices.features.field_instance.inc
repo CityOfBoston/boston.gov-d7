@@ -103,6 +103,7 @@ function bos_component_events_and_notices_field_default_field_instances() {
           'status' => -1,
         ),
         'match_operator' => 'CONTAINS',
+        'max_results' => 10,
         'path' => '',
         'size' => 60,
       ),
