@@ -290,8 +290,8 @@ function bos_component_news_and_announcements_field_default_field_instances() {
         'video' => 72,
       ),
       'default_edit_mode' => 'open',
-      'title' => 'Paragraph',
-      'title_multiple' => 'Paragraphs',
+      'title' => 'Link',
+      'title_multiple' => 'Links',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
