@@ -52,7 +52,7 @@ function bos_content_type_public_notice_field_group_info() {
   $field_group->parent_name = 'group_details';
   $field_group->data = array(
     'label' => 'Cancel Public Notice',
-    'weight' => '38',
+    'weight' => '19',
     'children' => array(
       0 => 'field_cancelled',
       1 => 'field_extra_info',
@@ -139,11 +139,12 @@ function bos_content_type_public_notice_field_group_info() {
     'label' => 'Details',
     'weight' => '2',
     'children' => array(
-      0 => 'field_public_notice_date',
-      1 => 'group_cancelled',
-      2 => 'group_downloads',
-      3 => 'group_meeting_location',
-      4 => 'group_public_testimony',
+      0 => 'field_multiple_neighborhoods',
+      1 => 'field_public_notice_date',
+      2 => 'group_cancelled',
+      3 => 'group_downloads',
+      4 => 'group_meeting_location',
+      5 => 'group_public_testimony',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -168,7 +169,7 @@ function bos_content_type_public_notice_field_group_info() {
   $field_group->parent_name = 'group_details';
   $field_group->data = array(
     'label' => 'Downloads',
-    'weight' => '39',
+    'weight' => '20',
     'children' => array(
       0 => 'field_links',
     ),
@@ -196,7 +197,7 @@ function bos_content_type_public_notice_field_group_info() {
   $field_group->parent_name = 'group_details';
   $field_group->data = array(
     'label' => 'Meeting Location',
-    'weight' => '34',
+    'weight' => '17',
     'children' => array(
       0 => 'field_address',
       1 => 'field_city_hall',
@@ -225,7 +226,7 @@ function bos_content_type_public_notice_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Page Meta Data',
-    'weight' => '6',
+    'weight' => '7',
     'children' => array(
       0 => 'field_updated_date',
     ),
@@ -252,7 +253,7 @@ function bos_content_type_public_notice_field_group_info() {
   $field_group->parent_name = 'group_details';
   $field_group->data = array(
     'label' => 'Public Testimony',
-    'weight' => '37',
+    'weight' => '18',
     'children' => array(
       0 => 'field_is_there_public_testimony',
       1 => 'field_time',
@@ -273,6 +274,40 @@ function bos_content_type_public_notice_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_related_content|node|public_notice|form';
+  $field_group->group_name = 'group_related_content';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'public_notice';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Related Content - ORIGINAL',
+    'weight' => '5',
+    'children' => array(
+      0 => 'field_related_content',
+      1 => 'field_people',
+      2 => 'field_place',
+      3 => 'field_program_initiative',
+      4 => 'field_related_events_notices',
+      5 => 'field_related_guides',
+      6 => 'field_related_posts',
+      7 => 'field_related_departments',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-related-content field-group-tab',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $field_groups['group_related_content|node|public_notice|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_related|node|public_notice|form';
   $field_group->group_name = 'group_related';
   $field_group->entity_type = 'node';
@@ -280,27 +315,20 @@ function bos_content_type_public_notice_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => 'Related Items',
-    'weight' => '5',
+    'label' => 'Related Content',
+    'weight' => '6',
     'children' => array(
-      0 => 'field_multiple_neighborhoods',
-      1 => 'field_related_content',
-      2 => 'field_people',
-      3 => 'field_place',
-      4 => 'field_program_initiative',
-      5 => 'field_related_events_notices',
-      6 => 'field_related_guides',
-      7 => 'field_related_posts',
-      8 => 'field_related_departments',
+      0 => 'field_related',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
-      'formatter' => 'closed',
+      'label' => 'Related Content',
       'instance_settings' => array(
-        'description' => '',
-        'classes' => 'group-related field-group-tab',
         'required_fields' => 1,
+        'classes' => 'group-related field-group-tab',
+        'description' => '',
       ),
+      'formatter' => 'closed',
     ),
   );
   $field_groups['group_related|node|public_notice|form'] = $field_group;
@@ -344,7 +372,8 @@ function bos_content_type_public_notice_field_group_info() {
   t('Meeting Location');
   t('Page Meta Data');
   t('Public Testimony');
-  t('Related Items');
+  t('Related Content');
+  t('Related Content - ORIGINAL');
 
   return $field_groups;
 }
