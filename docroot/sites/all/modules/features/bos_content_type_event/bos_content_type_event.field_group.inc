@@ -19,24 +19,24 @@ function bos_content_type_event_field_group_info() {
   $field_group->bundle = 'event';
   $field_group->mode = 'form';
   $field_group->parent_name = 'group_event_details';
-  $field_group->data = [
+  $field_group->data = array(
     'label' => 'Cancel Event',
     'weight' => '44',
-    'children' => [
+    'children' => array(
       0 => 'field_cancel_event',
       1 => 'field_extra_info_event',
-    ],
+    ),
     'format_type' => 'fieldset',
-    'format_settings' => [
+    'format_settings' => array(
       'formatter' => 'collapsible',
-      'instance_settings' => [
+      'instance_settings' => array(
         'description' => '',
         'classes' => 'group-cancelled field-group-fieldset',
         'required_fields' => 1,
         'id' => '',
-      ],
-    ],
-  ];
+      ),
+    ),
+  );
   $field_groups['group_cancelled|node|event|form'] = $field_group;
 
   $field_group = new stdClass();
@@ -255,28 +255,21 @@ function bos_content_type_event_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_related_content|node|event|form';
-  $field_group->group_name = 'group_related_content';
+  $field_group->identifier = 'group_related|node|event|form';
+  $field_group->group_name = 'group_related';
   $field_group->entity_type = 'node';
   $field_group->bundle = 'event';
   $field_group->mode = 'form';
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Related Content',
-    'weight' => '9',
+    'weight' => '10',
     'children' => array(
-      0 => 'field_place',
-      1 => 'field_program_initiative',
-      2 => 'field_people',
-      3 => 'field_related_content',
-      4 => 'field_related_events_notices',
-      5 => 'field_related_guides',
-      6 => 'field_related_posts',
-      7 => 'field_related_departments',
+      0 => 'field_related',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
-      'formatter' => 'closed',
+      'label' => 'Related Content',
       'instance_settings' => array(
         'description' => '',
         'classes' => 'group-related-content field-group-tab',
@@ -284,7 +277,7 @@ function bos_content_type_event_field_group_info() {
       ),
     ),
   );
-  $field_groups['group_related_content|node|event|form'] = $field_group;
+  $field_groups['group_related|node|event|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */

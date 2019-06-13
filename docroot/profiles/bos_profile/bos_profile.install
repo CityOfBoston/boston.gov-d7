@@ -1,9 +1,9 @@
 <?php
+
 /**
  * @file
  * Install file for Boston.gov.
  */
-
 
 /**
  * Implements hook_install().
@@ -61,6 +61,11 @@ function bos_profile_install() {
   bos_profile_update_7043();
   bos_profile_update_7044();
   bos_profile_update_7045();
+  bos_profile_update_7046();
+  bos_profile_update_7047();
+  bos_profile_update_7048();
+  bos_profile_update_7049();
+  //bos_profile_update_7050();
 }
 
 /**
@@ -390,7 +395,7 @@ function bos_profile_update_7006() {
     'linkit',
     'bos_settings_linkit_editor',
     'bos_core',
-    'entityreference_autocreate'
+    'entityreference_autocreate',
   );
   module_disable($disabled_modules);
   module_enable($enabled_modules);
@@ -421,7 +426,8 @@ function bos_profile_update_7007() {
 
 /**
  * Enable the event's view for the workbench for the public site only.
- * Work for: Sprint 11
+ *
+ * Work for: Sprint 11.
  */
 function bos_profile_update_7008() {
   $disabled_modules = array();
@@ -538,7 +544,7 @@ function bos_profile_update_7012() {
 }
 
 /**
- * Updates for 10/05/2016
+ * Updates for 10/05/2016.
  */
 function bos_profile_update_7013() {
   $enabled_modules = array(
@@ -634,7 +640,7 @@ function bos_profile_update_7020() {
 }
 
 /**
- * Update for 4/21/17
+ * Update for 4/21/17.
  */
 function bos_profile_update_7021() {
   $enabled_modules = array(
@@ -644,7 +650,7 @@ function bos_profile_update_7021() {
 }
 
 /**
- * Update for 4/27/17
+ * Update for 4/27/17.
  */
 function bos_profile_update_7022() {
   $enabled_modules = array(
@@ -656,7 +662,7 @@ function bos_profile_update_7022() {
 }
 
 /**
- * Update for 5/5/17
+ * Update for 5/5/17.
  */
 function bos_profile_update_7023() {
   $enabled_modules = array(
@@ -667,7 +673,7 @@ function bos_profile_update_7023() {
 }
 
 /**
- * Update for 5/16/17
+ * Update for 5/16/17.
  */
 function bos_profile_update_7024() {
   $enabled_modules = array(
@@ -677,7 +683,7 @@ function bos_profile_update_7024() {
 }
 
 /**
- * Update for 5/24/17
+ * Update for 5/24/17.
  */
 function bos_profile_update_7025() {
   $enabled_modules = array(
@@ -688,7 +694,7 @@ function bos_profile_update_7025() {
 }
 
 /**
- * Update for 6/5/17
+ * Update for 6/5/17.
  */
 function bos_profile_update_7026() {
   $enabled_modules = array(
@@ -698,7 +704,7 @@ function bos_profile_update_7026() {
 }
 
 /**
- * Update for 6/12/17
+ * Update for 6/12/17.
  */
 function bos_profile_update_7027() {
   $enabled_modules = array(
@@ -714,7 +720,7 @@ function bos_profile_update_7027() {
 }
 
 /**
- * Update for 6/28/17
+ * Update for 6/28/17.
  */
 function bos_profile_update_7028() {
   $enabled_modules = array(
@@ -724,7 +730,7 @@ function bos_profile_update_7028() {
 }
 
 /**
- * Update for 10/12/17
+ * Update for 10/12/17.
  */
 function bos_profile_update_7029() {
   $enabled_modules = array(
@@ -737,7 +743,7 @@ function bos_profile_update_7029() {
 }
 
 /**
- * Update for 10/20/17
+ * Update for 10/20/17.
  */
 function bos_profile_update_7030() {
   $enabled_modules = array(
@@ -748,7 +754,7 @@ function bos_profile_update_7030() {
 }
 
 /**
- * Update for 10/20/17
+ * Update for 10/20/17.
  */
 function bos_profile_update_7031() {
   $disabled_modules = array(
@@ -761,7 +767,7 @@ function bos_profile_update_7031() {
 }
 
 /**
- * Update for 10/26/17
+ * Update for 10/26/17.
  */
 function bos_profile_update_7032() {
   $enabled_modules = array(
@@ -771,7 +777,7 @@ function bos_profile_update_7032() {
 }
 
 /**
- * Update for 12/19/17
+ * Update for 12/19/17.
  */
 function bos_profile_update_7033() {
   $enabled_modules = array(
@@ -864,14 +870,16 @@ function bos_profile_update_7035() {
   module_enable($enabled_modules);
 }
 
+/**
+ * Update for commissions component.
+ */
 function bos_profile_update_7036() {
   $enabled_modules = array(
     'bos_components_commissions',
   );
   module_enable($enabled_modules);
 
-  # Initializing the taxonomy with Boards and Commissions as of 5/14
-
+  // Initializing the taxonomy with Boards and Commissions as of 5/14.
   $vocabulary = taxonomy_vocabulary_machine_name_load('commissions');
   if (!$vocabulary) {
     return;
@@ -1254,7 +1262,7 @@ function bos_profile_update_7043() {
 }
 
 /**
- * Adds Entity Reference Filters view.
+ * Adds new related content functionality / features.
  */
 function bos_profile_update_7044() {
   $enabled_modules = array(
@@ -1265,9 +1273,11 @@ function bos_profile_update_7044() {
     'bos_component_news_and_announcements',
   );
   module_enable($enabled_modules);
+  // This was reverted.
 }
 
 /**
+ * Adds Entity Reference Filters view.
  * Update for 12/2018. Adds views_datasource fpr JSON API views.
  */
 function bos_profile_update_7045() {
@@ -1287,6 +1297,337 @@ function bos_profile_update_7046() {
   );
   module_enable($enabled_modules);
 }
+
+/**
+ * Adds new related content functionality / features.
+ */
+function bos_profile_update_7047() {
+  // Reapplying after revert.
+  $enabled_modules = array(
+    'bos_view_entity_reference_filters',
+    'bos_view_events_and_notices',
+    'bos_component_events_and_notices',
+    'bos_view_news_and_announcements',
+    'bos_component_news_and_announcements',
+  );
+  module_enable($enabled_modules);
+}
+
+/**
+ * Migrate field data from multiple related fields to single related field.
+ */
+function bos_profile_update_7048() {
+  // Load all nodes with related content fields.
+  echo "Loading all event nodes \r\n";
+  $event_nodes = node_load_multiple(array(), array('type' => 'event'));
+  echo "Start migrating field data for event nodes \r\n";
+  bos_migrate_related_field_data($event_nodes);
+  echo "Loading all public notice nodes \r\n";
+  $notice_nodes = node_load_multiple(array(), array('type' => 'public_notice'));
+  echo "Start migrating field data for public notice nodes \r\n";
+  bos_migrate_related_field_data($notice_nodes);
+  echo "Loading all post nodes \r\n";
+  $post_nodes = node_load_multiple(array(), array('type' => 'post'));
+  echo "Start migrating field data for post nodes \r\n";
+  bos_migrate_related_field_data($post_nodes);
+
+  // Create an array of fields that should be removed.
+  $old_related_field_list = [
+    'field_related_departments',
+    'field_related_events_notices',
+    'field_related_guides',
+    'field_people',
+    'field_place',
+    'field_related_posts',
+    'field_program_initiative',
+    'field_related_content',
+  ];
+  foreach ($old_related_field_list as $field) {
+    // Remove old fields.
+    echo "Preparing $field for removal \r\n";
+    if ($instance = field_info_instance('node', $field, 'event')) {
+      echo "Removing $field from event \r\n";
+      field_delete_instance($instance);
+    }
+    if ($instance = field_info_instance('node', $field, 'public_notice')) {
+      echo "Removing $field from public_notice \r\n";
+      field_delete_instance($instance);
+    }
+    if ($instance = field_info_instance('node', $field, 'post')) {
+      echo "Removing $field from post \r\n";
+      field_delete_instance($instance);
+    }
+    field_purge_batch(1);
+  }
+  // Delete old field groups.
+  echo "Removing Related field group for events \r\n";
+  if ($group = field_group_load_field_group('group_related_content', 'node', 'events', 'form')) {
+    ctools_include('export');
+    field_group_group_export_delete($group, FALSE);
+  }
+  echo "Removing Related field group for public notices \r\n";
+  if ($group = field_group_load_field_group('group_related_content', 'node', 'public_notice', 'form')) {
+    ctools_include('export');
+    field_group_group_export_delete($group, FALSE);
+  }
+  echo "Removing Related field group for posts \r\n";
+  if ($group = field_group_load_field_group('group_related_content', 'node', 'post', 'form')) {
+    ctools_include('export');
+    field_group_group_export_delete($group, FALSE);
+  }
+}
+
+/**
+ * Custom function to migrate field data.
+ */
+function bos_migrate_related_field_data($nodes) {
+  // Loop through nodes with related content fields.
+  $index = 0;
+  foreach ($nodes as $key => $node) {
+    // Check if fields have values.
+    echo "Migrating field data for /node/" . $node->nid . "\r\n";
+    echo $index . " of " . count($nodes) . "\r\n";
+    $index++;
+    $related_departments = is_array($node->field_related_departments['und']) ? $node->field_related_departments['und'] : [];
+    $related_events_notices = is_array($node->field_related_events_notices['und']) ? $node->field_related_events_notices['und'] : [];
+    $related_guides = is_array($node->field_related_guides['und']) ? $node->field_related_guides['und'] : [];
+    $related_people = is_array($node->field_people['und']) ? $node->field_people['und'] : [];
+    $related_place = is_array($node->field_place['und']) ? $node->field_place['und'] : [];
+    $related_posts = is_array($node->field_related_posts['und']) ? $node->field_related_posts['und'] : [];
+    $related_program_initiative = is_array($node->field_program_initiative['und']) ? $node->field_program_initiative['und'] : [];
+    $related_content = is_array($node->field_related_content['und']) ? $node->field_related_content['und'] : [];
+    // Transfer values to new related content field.
+    $node->field_related['und'] = array_merge(
+      $related_departments,
+      $related_events_notices,
+      $related_guides,
+      $related_people,
+      $related_place,
+      $related_posts,
+      $related_program_initiative,
+      $related_content
+    );
+    field_attach_update('node', $node);
+  }
+}
+
+/**
+ * Migrate paragraph data.
+ *
+ * Par new_announcements = news_and_announcements.
+ *
+ * Par upcoming_events = events_and_notices.
+ */
+function bos_profile_update_7049() {
+
+  // Get a list of all paragraphs of type upcoming_events (old bundle).
+  echo "Querying to get all upcoming_events components \r\n";
+  $query = new EntityFieldQuery();
+  $query
+    ->entityCondition('entity_type', 'paragraphs_item', '=')
+    ->propertyCondition('bundle', 'upcoming_events', '=');
+  $result = $query->execute();
+  if (!empty($result['paragraphs_item'])) {
+    // Get an array of the ID's for each of these news_announcements paragraphs.
+    $ids = array_keys($result['paragraphs_item']);
+    // Get an array of paragraph objects.
+    $upcoming_events_paragraphs = entity_load('paragraphs_item', $ids);
+    echo "Starting migration to events_and_notices paragraph \r\n";
+    bos_migrate_paragraphs($upcoming_events_paragraphs, "events_and_notices");
+  }
+
+  // Get a list of all paragraphs of type news_announcements (old bundle).
+  echo "Querying to get all news_announcements components \r\n";
+  $query = new EntityFieldQuery();
+  $query
+    ->entityCondition('entity_type', 'paragraphs_item', '=')
+    ->propertyCondition('bundle', 'news_announcements', '=');
+  $result = $query->execute();
+  if (!empty($result['paragraphs_item'])) {
+    // Get an array of the ID's for each of these news_announcements paragraphs.
+    $ids = array_keys($result['paragraphs_item']);
+    // Get an array of paragraph objects.
+    $news_announcements_paragraphs = entity_load('paragraphs_item', $ids);
+    echo "Starting migration to news_and_announcements paragraph \r\n";
+    bos_migrate_paragraphs($news_announcements_paragraphs, "news_and_announcements");
+  }
+}
+
+/**
+ * Custom function to migrate paragraphs.
+ */
+function bos_migrate_paragraphs(array $paragraph_list, string $paragraph_bundle) {
+  // Loop through the list of paragraph objects.
+  $index = 0;
+  foreach ($paragraph_list as $par_num => $old_paragraph) {
+    echo "\r\nMigrating field data for paragraph=" . $old_paragraph->item_id . "\r\n";
+    echo $index . " of " . count($paragraph_list) . "\r\n";
+    $index++;
+    // Load the node that the paragraph is attached to.
+    echo "Loading parent node for paragraph \r\n";
+    $parent_node = $old_paragraph->hostEntity();
+    $parent_node = workbench_moderation_node_current_load($parent_node);
+    // Double check you have a valid host node.
+    if ($parent_node) {
+      // Get list of paragraphs currently in the field_components.
+      echo "Creating list of all current paragraph revision IDs in field_component of parent node \r\n";
+      $current_revisions = [];
+      if (isset($parent_node->field_components["und"])) {
+        foreach ($parent_node->field_components["und"] as $component) {
+          // Add the revision ID to an array.
+          $current_revisions[] = $component["revision_id"];
+        }
+      }
+      // Check that the paragraph is not archived if the node is published.
+      echo "Checking if paragraph is included in the most recent revision \r\n";
+      if (($old_paragraph->archived == "0" && $parent_node->workbench_moderation["current"]->from_state == 'published') ||
+          // If the paragraph is archived (forward revision),
+          // ensure revision ID is in field_component.
+          (!empty($current_revisions) && ($old_paragraph->archived == "1" && in_array($old_paragraph->revision_id, $current_revisions)))) {
+
+        echo "Paragraph is in the most recent revision \r\n";
+        // Create new paragraph.
+        echo "Creating new paragraph of type $paragraph_bundle \r\n";
+        $new_paragraph = new ParagraphsItemEntity(array('field_name' => 'field_components', 'bundle' => $paragraph_bundle));
+        $new_paragraph->is_new = TRUE;
+
+        echo "Migrating field data from the old paragraph to the new paragraph \r\n";
+        // Copy field values from original paragraph to new paragraph.
+        $new_paragraph->field_component_title = $old_paragraph->field_component_title;
+        $new_paragraph->field_short_title = $old_paragraph->field_short_title;
+        // Account different "featured" entity_reference field.
+        if ($paragraph_bundle == "news_and_announcements") {
+          $new_paragraph->field_featured_post = $old_paragraph->field_featured_post;
+        }
+        elseif ($paragraph_bundle == "events_and_notices") {
+          $new_paragraph->field_featured_item = $old_paragraph->field_featured_item;
+        }
+        $new_paragraph->field_link = $old_paragraph->field_link;
+
+        // Transform old viewfield value to new value for field_list.
+        if (!empty($old_paragraph->field_list['und'][0]['vname'])) {
+          switch ($old_paragraph->field_list['und'][0]['vname']) {
+            // "Other" display has "news_events" machine name.
+            case "news_announcements|departments":
+            case "news_announcements|news_events":
+            case "news_announcements|places":
+            case "news_announcements|people":
+            case "news_announcements|programs":
+            case "news_announcements|neighborhoods":
+            case "news_announcements|guides":
+            case "news_announcements|events":
+            case "news_announcements|posts":
+              $new_paragraph->field_list = [
+                'und' => [
+                  0 => [
+                    // "Related" display has news_events machine name.
+                    'vname' => 'news_and_announcements|news_events',
+                    'vargs' => '',
+                  ],
+                ],
+              ];
+              break;
+
+            // "Post" display has "most_recent" machine name.
+            // "Event/Notice" display has "block_1" machine name.
+            // "Guide" display has "block_2" machine name.
+            // "Person" display has "block_3" machine name.
+            // "Place" display has "block_4" machine name.
+            // "Program/Initiative" display has "block_5" machine name.
+            // "Other" display has "block_5" machine name.
+            // "Department" display has "block_5" machine name.
+            case "related_events|most_recent":
+            case "related_events|block_1":
+            case "related_events|block_2":
+            case "related_events|block_3":
+            case "related_events|block_4":
+            case "related_events|block_5":
+            case "related_events|block_6":
+            case "related_events|block_7":
+              $new_paragraph->field_list = [
+                'und' => [
+                  0 => [
+                    // "Related" display has block_1 machine name.
+                    'vname' => 'events_and_notices|block_1',
+                    'vargs' => '',
+                  ],
+                ],
+              ];
+              break;
+
+            case "news_announcements|most_recent":
+              $new_paragraph->field_list = [
+                'und' => [
+                  0 => [
+                    // "Upcoming" display has most_recent machine name.
+                    'vname' => 'news_and_announcements|most_recent',
+                    'vargs' => '',
+                  ],
+                ],
+              ];
+              break;
+
+            case "upcoming_events|most_recent":
+            case "upcoming_events|block_1":
+              $new_paragraph->field_list = [
+                'und' => [
+                  0 => [
+                    // "Upcoming" display has most_recent machine name.
+                    'vname' => 'events_and_notices|most_recent',
+                    'vargs' => '',
+                  ],
+                ],
+              ];
+              break;
+
+            default:
+              echo "No field_list match for " . $old_paragraph->field_list['und'][0]['vname'] . " found in $paragraph_bundle";
+              break;
+          }
+        }
+
+        // Attach new paragraph to the host node that the old paragraph is on.
+        echo "Attaching new paragraph to the parent node and saving \r\n";
+        $new_paragraph->setHostEntity('node', $parent_node);
+        $new_paragraph->revision = TRUE;
+        $new_paragraph->save(FALSE);
+
+        // Replace the old paragraph with the new one.
+        echo "Removing old paragraph from node and copying new paragraph to its position in list \r\n";
+        $components = $parent_node->field_components['und'];
+        foreach ($components as $key => $component) {
+          if ($component['value'] == $old_paragraph->item_id) {
+            // Copy over the old paragraph with the new one.
+            $parent_node->field_components['und'][$key] = end($parent_node->field_components['und']);
+          }
+        }
+        // Remove duplicate new paragraph from bottom of list.
+        echo "Removing duplicate new paragraph and saving node \r\n";
+        array_pop($parent_node->field_components['und']);
+        // Save the host node so the new paragraph order takes effect.
+        node_save($parent_node);
+      }
+    }
+  }
+}
+
+/**
+ * Disable the old related content modules.
+ */
+/*
+function bos_profile_update_7050() {
+  // Disable old modules.
+  $disabled_modules = array(
+    'bos_form_related_content',
+    'bos_view_news_announcements',
+    'bos_view_upcoming_events',
+    'bos_view_related_events',
+    'bos_component_news_announcements',
+    'bos_component_upcoming_events',
+  );
+  module_disable($disabled_modules);
+}
+ */
 
 /*******************************************************************
 Any new migrations need to also be added to bos_profile_install so that

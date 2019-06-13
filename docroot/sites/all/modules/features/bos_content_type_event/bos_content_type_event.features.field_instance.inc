@@ -288,65 +288,65 @@ function bos_content_type_event_field_default_field_instances() {
   );
 
   // Exported field_instance: 'node-event-field_cancel_event'.
-  $field_instances['node-event-field_cancel_event'] = [
+  $field_instances['node-event-field_cancel_event'] = array(
     'bundle' => 'event',
-    'default_value' => [
-      0 => [
+    'default_value' => array(
+      0 => array(
         'value' => 0,
-      ],
-    ],
+      ),
+    ),
     'deleted' => 0,
     'description' => 'If this event is cancelled, check this box and give a reason below.',
-    'display' => [
-      'calendar_listing' => [
+    'display' => array(
+      'calendar_listing' => array(
         'label' => 'above',
-        'settings' => [],
+        'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
-      ],
-      'default' => [
+      ),
+      'default' => array(
         'label' => 'above',
-        'settings' => [],
+        'settings' => array(),
         'type' => 'hidden',
         'weight' => 30,
-      ],
-      'featured_item' => [
+      ),
+      'featured_item' => array(
         'label' => 'above',
-        'settings' => [],
+        'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
-      ],
-      'listing' => [
+      ),
+      'listing' => array(
         'label' => 'above',
-        'settings' => [],
+        'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
-      ],
-      'listing_short' => [
+      ),
+      'listing_short' => array(
         'label' => 'above',
-        'settings' => [],
+        'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
-      ],
-    ],
+      ),
+    ),
     'entity_type' => 'node',
     'fences_wrapper' => 'div_div_div',
     'field_name' => 'field_cancel_event',
     'label' => 'Cancel Event',
     'required' => 0,
-    'settings' => [
+    'settings' => array(
       'user_register_form' => FALSE,
-    ],
-    'widget' => [
+    ),
+    'widget' => array(
       'active' => 1,
       'module' => 'options',
-      'settings' => [
+      'settings' => array(
         'display_label' => 1,
-      ],
+      ),
       'type' => 'options_onoff',
       'weight' => 48,
-    ],
-  ];
+    ),
+  );
 
   // Exported field_instance: 'node-event-field_city_hall'.
   $field_instances['node-event-field_city_hall'] = array(
@@ -538,6 +538,7 @@ function bos_content_type_event_field_default_field_instances() {
           'status' => -1,
         ),
         'match_operator' => 'CONTAINS',
+        'max_results' => 10,
         'path' => '',
         'size' => 60,
       ),
@@ -1307,68 +1308,68 @@ function bos_content_type_event_field_default_field_instances() {
   );
 
   // Exported field_instance: 'node-event-field_extra_info_event'.
-  $field_instances['node-event-field_extra_info_event'] = [
+  $field_instances['node-event-field_extra_info_event'] = array(
     'bundle' => 'event',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => 'If this event is cancelled, enter a reason.',
-    'display' => [
-      'calendar_listing' => [
+    'display' => array(
+      'calendar_listing' => array(
         'label' => 'above',
-        'settings' => [],
+        'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
-      ],
-      'default' => [
+      ),
+      'default' => array(
         'label' => 'above',
-        'settings' => [],
+        'settings' => array(),
         'type' => 'hidden',
         'weight' => 29,
-      ],
-      'featured_item' => [
+      ),
+      'featured_item' => array(
         'label' => 'above',
-        'settings' => [],
+        'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
-      ],
-      'listing' => [
+      ),
+      'listing' => array(
         'label' => 'above',
-        'settings' => [],
+        'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
-      ],
-      'listing_short' => [
+      ),
+      'listing_short' => array(
         'label' => 'above',
-        'settings' => [],
+        'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
-      ],
-    ],
+      ),
+    ),
     'entity_type' => 'node',
     'fences_wrapper' => 'div_div_div',
     'field_name' => 'field_extra_info_event',
     'label' => 'Cancellation Reason',
     'required' => 0,
-    'settings' => [
-      'linkit' => [
+    'settings' => array(
+      'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
         'profile' => '',
-      ],
+      ),
       'text_processing' => 0,
       'user_register_form' => FALSE,
-    ],
-    'widget' => [
+    ),
+    'widget' => array(
       'active' => 1,
       'module' => 'text',
-      'settings' => [
+      'settings' => array(
         'show_token_tree' => 0,
         'size' => 60,
-      ],
+      ),
       'type' => 'text_textfield',
       'weight' => 49,
-    ],
-  ];
+    ),
+  );
 
   // Exported field_instance: 'node-event-field_featured'.
   $field_instances['node-event-field_featured'] = array(
@@ -2024,79 +2025,6 @@ function bos_content_type_event_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-event-field_people'.
-  $field_instances['node-event-field_people'] = array(
-    'bundle' => 'event',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'Which people are relevant for this event?',
-    'display' => array(
-      'calendar_listing' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 11,
-      ),
-      'default' => array(
-        'label' => 'hidden',
-        'module' => 'entityreference',
-        'settings' => array(
-          'bypass_access' => FALSE,
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 19,
-      ),
-      'featured_item' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'listing' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'listing_short' => array(
-        'label' => 'hidden',
-        'module' => 'entityreference',
-        'settings' => array(
-          'bypass_access' => FALSE,
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 26,
-      ),
-    ),
-    'entity_type' => 'node',
-    'fences_wrapper' => 'no_wrapper',
-    'field_name' => 'field_people',
-    'label' => 'Related people',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'entityreference',
-      'settings' => array(
-        'entityreference_autocreate' => array(
-          'active' => 0,
-          'author' => '',
-          'author_current_user' => 1,
-          'status' => -1,
-        ),
-        'match_operator' => 'CONTAINS',
-        'path' => '',
-        'size' => 60,
-      ),
-      'type' => 'entityreference_autocomplete',
-      'weight' => 13,
-    ),
-  );
-
   // Exported field_instance: 'node-event-field_phone_number'.
   $field_instances['node-event-field_phone_number'] = array(
     'bundle' => 'event',
@@ -2221,152 +2149,6 @@ function bos_content_type_event_field_default_field_instances() {
       ),
       'type' => 'text_textfield',
       'weight' => 42,
-    ),
-  );
-
-  // Exported field_instance: 'node-event-field_place'.
-  $field_instances['node-event-field_place'] = array(
-    'bundle' => 'event',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'Are any cemeteries, parks, historic districts, or community centers relevant for this event?',
-    'display' => array(
-      'calendar_listing' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 9,
-      ),
-      'default' => array(
-        'label' => 'hidden',
-        'module' => 'entityreference',
-        'settings' => array(
-          'bypass_access' => FALSE,
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 17,
-      ),
-      'featured_item' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'listing' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'listing_short' => array(
-        'label' => 'hidden',
-        'module' => 'entityreference',
-        'settings' => array(
-          'bypass_access' => FALSE,
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 24,
-      ),
-    ),
-    'entity_type' => 'node',
-    'fences_wrapper' => 'no_wrapper',
-    'field_name' => 'field_place',
-    'label' => 'Related places',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'entityreference',
-      'settings' => array(
-        'entityreference_autocreate' => array(
-          'active' => 0,
-          'author' => '',
-          'author_current_user' => 1,
-          'status' => -1,
-        ),
-        'match_operator' => 'CONTAINS',
-        'path' => '',
-        'size' => 60,
-      ),
-      'type' => 'entityreference_autocomplete',
-      'weight' => 14,
-    ),
-  );
-
-  // Exported field_instance: 'node-event-field_program_initiative'.
-  $field_instances['node-event-field_program_initiative'] = array(
-    'bundle' => 'event',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'Which programs or initiatives are relevant for this event?',
-    'display' => array(
-      'calendar_listing' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 8,
-      ),
-      'default' => array(
-        'label' => 'hidden',
-        'module' => 'entityreference',
-        'settings' => array(
-          'bypass_access' => FALSE,
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 18,
-      ),
-      'featured_item' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'listing' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'listing_short' => array(
-        'label' => 'hidden',
-        'module' => 'entityreference',
-        'settings' => array(
-          'bypass_access' => FALSE,
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 25,
-      ),
-    ),
-    'entity_type' => 'node',
-    'fences_wrapper' => 'no_wrapper',
-    'field_name' => 'field_program_initiative',
-    'label' => 'Related programs / initiatives',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'entityreference',
-      'settings' => array(
-        'entityreference_autocreate' => array(
-          'active' => 0,
-          'author' => '',
-          'author_current_user' => 1,
-          'status' => -1,
-        ),
-        'match_operator' => 'CONTAINS',
-        'path' => '',
-        'size' => 60,
-      ),
-      'type' => 'entityreference_autocomplete',
-      'weight' => 16,
     ),
   );
 
@@ -2515,81 +2297,8 @@ function bos_content_type_event_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-event-field_related_content'.
-  $field_instances['node-event-field_related_content'] = array(
-    'bundle' => 'event',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'Which articles, how tos, and / or other content are relevant for this event?',
-    'display' => array(
-      'calendar_listing' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 14,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'bypass_access' => FALSE,
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 21,
-      ),
-      'featured_item' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'listing' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'listing_short' => array(
-        'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'bypass_access' => FALSE,
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 29,
-      ),
-    ),
-    'entity_type' => 'node',
-    'fences_wrapper' => 'no_wrapper',
-    'field_name' => 'field_related_content',
-    'label' => 'Other related content',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'entityreference',
-      'settings' => array(
-        'entityreference_autocreate' => array(
-          'active' => 0,
-          'author' => '',
-          'author_current_user' => 1,
-          'status' => -1,
-        ),
-        'match_operator' => 'CONTAINS',
-        'path' => '',
-        'size' => 60,
-      ),
-      'type' => 'entityreference_autocomplete',
-      'weight' => 17,
-    ),
-  );
-
-  // Exported field_instance: 'node-event-field_related_departments'.
-  $field_instances['node-event-field_related_departments'] = array(
+  // Exported field_instance: 'node-event-field_related'.
+  $field_instances['node-event-field_related'] = array(
     'bundle' => 'event',
     'default_value' => NULL,
     'deleted' => 0,
@@ -2609,7 +2318,7 @@ function bos_content_type_event_field_default_field_instances() {
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
-        'weight' => 31,
+        'weight' => 32,
       ),
       'featured_item' => array(
         'label' => 'above',
@@ -2632,77 +2341,8 @@ function bos_content_type_event_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'fences_wrapper' => 'div_div_div',
-    'field_name' => 'field_related_departments',
-    'label' => 'Related departments',
-    'required' => 1,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'entityreference',
-      'settings' => array(
-        'entityreference_autocreate' => array(
-          'active' => 0,
-          'author' => '',
-          'author_current_user' => 1,
-          'status' => -1,
-        ),
-        'match_operator' => 'CONTAINS',
-        'path' => '',
-        'size' => 60,
-      ),
-      'type' => 'entityreference_autocomplete',
-      'weight' => 10,
-    ),
-  );
-
-  // Exported field_instance: 'node-event-field_related_events_notices'.
-  $field_instances['node-event-field_related_events_notices'] = array(
-    'bundle' => 'event',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'Which other events or public notices are relevant for this event?',
-    'display' => array(
-      'calendar_listing' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'bypass_access' => FALSE,
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 25,
-      ),
-      'featured_item' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'listing' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'listing_short' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'fences_wrapper' => 'no_wrapper',
-    'field_name' => 'field_related_events_notices',
-    'label' => 'Related events/notices',
+    'field_name' => 'field_related',
+    'label' => 'Related',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -2718,149 +2358,12 @@ function bos_content_type_event_field_default_field_instances() {
           'status' => -1,
         ),
         'match_operator' => 'CONTAINS',
+        'max_results' => 50,
         'path' => '',
-        'size' => 60,
+        'size' => 120,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 11,
-    ),
-  );
-
-  // Exported field_instance: 'node-event-field_related_guides'.
-  $field_instances['node-event-field_related_guides'] = array(
-    'bundle' => 'event',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'What guides are relevant for this event?',
-    'display' => array(
-      'calendar_listing' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'bypass_access' => FALSE,
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 26,
-      ),
-      'featured_item' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'listing' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'listing_short' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'fences_wrapper' => 'no_wrapper',
-    'field_name' => 'field_related_guides',
-    'label' => 'Related guides',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'entityreference',
-      'settings' => array(
-        'entityreference_autocreate' => array(
-          'active' => 0,
-          'author' => '',
-          'author_current_user' => 1,
-          'status' => -1,
-        ),
-        'match_operator' => 'CONTAINS',
-        'path' => '',
-        'size' => 60,
-      ),
-      'type' => 'entityreference_autocomplete',
-      'weight' => 12,
-    ),
-  );
-
-  // Exported field_instance: 'node-event-field_related_posts'.
-  $field_instances['node-event-field_related_posts'] = array(
-    'bundle' => 'event',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'Which press releases or blog posts are relevant for this event?',
-    'display' => array(
-      'calendar_listing' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'bypass_access' => FALSE,
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 24,
-      ),
-      'featured_item' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'listing' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'listing_short' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'fences_wrapper' => 'no_wrapper',
-    'field_name' => 'field_related_posts',
-    'label' => 'Related posts',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'entityreference',
-      'settings' => array(
-        'entityreference_autocreate' => array(
-          'active' => 0,
-          'author' => '',
-          'author_current_user' => 1,
-          'status' => -1,
-        ),
-        'match_operator' => 'CONTAINS',
-        'path' => '',
-        'size' => 60,
-      ),
-      'type' => 'entityreference_autocomplete',
-      'weight' => 15,
+      'weight' => 51,
     ),
   );
 
@@ -3216,7 +2719,6 @@ function bos_content_type_event_field_default_field_instances() {
   t('Add an intro image to the page. It will display at the very top of the page, slightly above the content. It will also be used as the thumbnail if no thumbnail is entered.');
   t('Add download resources here.');
   t('An email address for constituents to reach out about the event.');
-  t('Are any cemeteries, parks, historic districts, or community centers relevant for this event?');
   t('Body');
   t('Cancel Event');
   t('Cancellation Reason');
@@ -3240,7 +2742,6 @@ function bos_content_type_event_field_default_field_instances() {
   t('Is this event happening at City Hall?');
   t('Location');
   t('Neighborhood');
-  t('Other related content');
   t('Phone Number');
   t('Please select one or more Neighborhoods for this event.');
   t('Please select the Event Type for this event.');
@@ -3248,13 +2749,7 @@ function bos_content_type_event_field_default_field_instances() {
   t('Point of Contact');
   t('Provides a description for the event.');
   t('Published Date');
-  t('Related departments');
-  t('Related events/notices');
-  t('Related guides');
-  t('Related people');
-  t('Related places');
-  t('Related posts');
-  t('Related programs / initiatives');
+  t('Related');
   t('The Department primarily responsible for this event.');
   t('The name of the contact for this event.');
   t('This will be displayed with the event in the upcoming events component.');
@@ -3264,12 +2759,6 @@ function bos_content_type_event_field_default_field_instances() {
   t('Use this field to display a date to the user audience indicating when this event was last updated.');
   t('Use this field to display a date to the user audience indicating when this event was published.');
   t('Use this field to provide a longer description about the event.');
-  t('What guides are relevant for this event?');
-  t('Which articles, how tos, and / or other content are relevant for this event?');
-  t('Which other events or public notices are relevant for this event?');
-  t('Which people are relevant for this event?');
-  t('Which press releases or blog posts are relevant for this event?');
-  t('Which programs or initiatives are relevant for this event?');
 
   return $field_instances;
 }

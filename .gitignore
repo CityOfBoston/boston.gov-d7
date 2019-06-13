@@ -137,6 +137,6 @@ solr/*
 #Editor utility files
 .editorconfig
 
-#local MySQL dumps
+#Ignore database dumps
 *.sql
 *.sql.gz

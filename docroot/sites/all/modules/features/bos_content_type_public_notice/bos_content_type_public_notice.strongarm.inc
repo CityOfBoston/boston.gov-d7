@@ -126,22 +126,22 @@ function bos_content_type_public_notice_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '9',
+          'weight' => '10',
         ),
         'title' => array(
           'weight' => '2',
         ),
         'path' => array(
-          'weight' => '8',
+          'weight' => '9',
         ),
         'rabbit_hole' => array(
-          'weight' => '10',
+          'weight' => '11',
         ),
         'redirect' => array(
-          'weight' => '7',
+          'weight' => '8',
         ),
         'xmlsitemap' => array(
-          'weight' => '30',
+          'weight' => '12',
         ),
       ),
       'display' => array(),

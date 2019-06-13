@@ -659,7 +659,17 @@ function boston_preprocess_paragraphs_item_news_announcements(&$variables) {
   $variables['call_to_action'] = bos_core_field_get_call_to_action('paragraphs_item', $variables['paragraphs_item'], 'field_link');
 }
 
+function boston_preprocess_paragraphs_item_news_and_announcements(&$variables) {
+  // Get the call to action.
+  $variables['call_to_action'] = bos_core_field_get_call_to_action('paragraphs_item', $variables['paragraphs_item'], 'field_link');
+}
+
 function boston_preprocess_paragraphs_item_upcoming_events(&$variables) {
+  // Get the call to action.
+  $variables['call_to_action'] = bos_core_field_get_call_to_action('paragraphs_item', $variables['paragraphs_item'], 'field_link');
+}
+
+function boston_preprocess_paragraphs_item_events_and_notices(&$variables) {
   // Get the call to action.
   $variables['call_to_action'] = bos_core_field_get_call_to_action('paragraphs_item', $variables['paragraphs_item'], 'field_link');
 }

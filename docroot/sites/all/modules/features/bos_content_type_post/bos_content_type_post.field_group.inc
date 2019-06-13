@@ -102,8 +102,8 @@ function bos_content_type_post_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_related_content|node|post|form';
-  $field_group->group_name = 'group_related_content';
+  $field_group->identifier = 'group_related|node|post|form';
+  $field_group->group_name = 'group_related';
   $field_group->entity_type = 'node';
   $field_group->bundle = 'post';
   $field_group->mode = 'form';
@@ -112,26 +112,20 @@ function bos_content_type_post_field_group_info() {
     'label' => 'Related Content',
     'weight' => '8',
     'children' => array(
-      0 => 'field_place',
-      1 => 'field_program_initiative',
-      2 => 'field_people',
-      3 => 'field_related_content',
-      4 => 'field_related_events_notices',
-      5 => 'field_related_guides',
-      6 => 'field_related_posts',
-      7 => 'field_related_departments',
+      0 => 'field_related',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
-      'formatter' => 'closed',
+      'label' => 'Related Content',
       'instance_settings' => array(
-        'description' => '',
-        'classes' => 'group-related-content field-group-tab',
         'required_fields' => 1,
+        'classes' => 'group-related field-group-tab',
+        'description' => '',
       ),
+      'formatter' => 'closed',
     ),
   );
-  $field_groups['group_related_content|node|post|form'] = $field_group;
+  $field_groups['group_related|node|post|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */

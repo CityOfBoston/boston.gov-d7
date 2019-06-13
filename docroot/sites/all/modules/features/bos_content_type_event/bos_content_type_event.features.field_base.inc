@@ -11,29 +11,29 @@ function bos_content_type_event_field_default_field_bases() {
   $field_bases = array();
 
   // Exported field_base: 'field_cancel_event'.
-  $field_bases['field_cancel_event'] = [
+  $field_bases['field_cancel_event'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
-    'entity_types' => [],
+    'entity_types' => array(),
     'field_name' => 'field_cancel_event',
-    'indexes' => [
-      'value' => [
+    'indexes' => array(
+      'value' => array(
         0 => 'value',
-      ],
-    ],
+      ),
+    ),
     'locked' => 0,
     'module' => 'list',
-    'settings' => [
-      'allowed_values' => [
+    'settings' => array(
+      'allowed_values' => array(
         0 => '',
         1 => '',
-      ],
+      ),
       'allowed_values_function' => '',
-    ],
+    ),
     'translatable' => 0,
     'type' => 'list_boolean',
-  ];
+  );
 
   // Exported field_base: 'field_city_hall'.
   $field_bases['field_city_hall'] = array(
@@ -116,25 +116,25 @@ function bos_content_type_event_field_default_field_bases() {
   );
 
   // Exported field_base: 'field_extra_info_event'.
-  $field_bases['field_extra_info_event'] = [
+  $field_bases['field_extra_info_event'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
-    'entity_types' => [],
+    'entity_types' => array(),
     'field_name' => 'field_extra_info_event',
-    'indexes' => [
-      'format' => [
+    'indexes' => array(
+      'format' => array(
         0 => 'format',
-      ],
-    ],
+      ),
+    ),
     'locked' => 0,
     'module' => 'text',
-    'settings' => [
+    'settings' => array(
       'max_length' => 255,
-    ],
+    ),
     'translatable' => 0,
     'type' => 'text',
-  ];
+  );
 
   // Exported field_base: 'field_fake_date'.
   $field_bases['field_fake_date'] = array(
