@@ -168,9 +168,12 @@ hide($content['links']);
           </li>
           <li class="dl-i dl-i--b">
             <div class="dl-t">Questions about this page? Contact:</div>
+            <?php $bid_type = strtolower(trim($node->field_bid_type['und'][0]['entity']->name));?>
             <div class="dl-d">
               <div><?php print render($content['field_department']) ?></div>
+              <?php if($bid_type == 'paper'): ?>
               <div><?php print render($content['field_address']) ?></div>
+              <?php endif;?>
               <div><?php print render($content['field_email']) ?></div>
               <div><?php print render($content['field_phone_number']) ?></div>
             </div>
