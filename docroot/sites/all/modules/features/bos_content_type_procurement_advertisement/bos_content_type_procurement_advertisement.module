@@ -87,6 +87,12 @@ function bos_content_type_procurement_advertisement_form_procurement_advertiseme
       ':input[name="field_bid_type[und]"]' => array('value' => $paper_tid),
     ),
   );
+  // Only show Adress / Location section if the Bid Type is set to paper.
+  $form['field_address']['#states'] = array(
+    'visible' => array(
+      ':input[name="field_bid_type[und]"]' => array('value' => $paper_tid),
+    ),
+  );
   // Only show Delivery Address field if the Bid Type is set to Paper.
   $form['field_delivery_address']['#states'] = array(
     'visible' => array(
