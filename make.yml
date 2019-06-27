@@ -318,6 +318,8 @@ projects:
     version : 1.2
   metatag:
     version : 1.21
+  schema_metatag:
+    version : 1.2
   xautoload:
     version: 5.7
   # Currently unused modules.
