@@ -87,12 +87,6 @@ function bos_content_type_procurement_advertisement_form_procurement_advertiseme
       ':input[name="field_bid_type[und]"]' => array('value' => $paper_tid),
     ),
   );
-  // Only show Adress / Location section if the Bid Type is set to paper.
-  /*$form['field_address']['#states'] = array(
-    'visible' => array(
-      ':input[name="field_bid_type[und]"]' => array('value' => $paper_tid),
-    )
-  );*/
   // Only show Delivery Address field if the Bid Type is set to Paper.
   $form['field_delivery_address']['#states'] = array(
     'visible' => array(
@@ -138,7 +132,7 @@ function bos_content_type_procurement_advertisement_form_procurement_advertiseme
   // State.
   // Remove default required validation so form saves if Paper is not selected.
   $form['field_delivery_address']['und'][0]['locality_block']['administrative_area']['#required'] = FALSE;
-  $form['field_address']['und'][0]['locality_block']['administrative_area']['#required'] = FALSE;  
+  $form['field_address']['und'][0]['locality_block']['administrative_area']['#required'] = FALSE;
   // Add asterisk to visually show user what is required before form submission.
   $form['field_delivery_address']['und'][0]['locality_block']['administrative_area']['#states'] = array(
     'required' => array(
