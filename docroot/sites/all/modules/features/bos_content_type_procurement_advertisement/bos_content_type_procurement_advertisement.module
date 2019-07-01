@@ -87,12 +87,6 @@ function bos_content_type_procurement_advertisement_form_procurement_advertiseme
       ':input[name="field_bid_type[und]"]' => array('value' => $paper_tid),
     ),
   );
-  // Only show Adress / Location section if the Bid Type is set to paper.
-  $form['field_address']['#states'] = array(
-    'visible' => array(
-      ':input[name="field_bid_type[und]"]' => array('value' => $paper_tid),
-    ),
-  );
   // Only show Delivery Address field if the Bid Type is set to Paper.
   $form['field_delivery_address']['#states'] = array(
     'visible' => array(
@@ -105,6 +99,7 @@ function bos_content_type_procurement_advertisement_form_procurement_advertiseme
   // Address 1.
   // Remove default required validation so form saves if Paper is not selected.
   $form['field_delivery_address']['und'][0]['street_block']['thoroughfare']['#required'] = FALSE;
+  $form['field_address']['und'][0]['street_block']['thoroughfare']['#required'] = FALSE;
   // Add asterisk to visually show user what is required before form submission.
   $form['field_delivery_address']['und'][0]['street_block']['thoroughfare']['#states'] = array(
     'required' => array(
@@ -115,6 +110,7 @@ function bos_content_type_procurement_advertisement_form_procurement_advertiseme
   // City.
   // Remove default required validation so form saves if Paper is not selected.
   $form['field_delivery_address']['und'][0]['locality_block']['locality']['#required'] = FALSE;
+  $form['field_address']['und'][0]['locality_block']['locality']['#required'] = FALSE;
   // Add asterisk to visually show user what is required before form submission.
   $form['field_delivery_address']['und'][0]['locality_block']['locality']['#states'] = array(
     'required' => array(
@@ -125,6 +121,7 @@ function bos_content_type_procurement_advertisement_form_procurement_advertiseme
   // ZIP code.
   // Remove default required validation so form saves if Paper is not selected.
   $form['field_delivery_address']['und'][0]['locality_block']['postal_code']['#required'] = FALSE;
+  $form['field_address']['und'][0]['locality_block']['postal_code']['#required'] = FALSE;
   // Add asterisk to visually show user what is required before form submission.
   $form['field_delivery_address']['und'][0]['locality_block']['postal_code']['#states'] = array(
     'required' => array(
@@ -135,6 +132,7 @@ function bos_content_type_procurement_advertisement_form_procurement_advertiseme
   // State.
   // Remove default required validation so form saves if Paper is not selected.
   $form['field_delivery_address']['und'][0]['locality_block']['administrative_area']['#required'] = FALSE;
+  $form['field_address']['und'][0]['locality_block']['administrative_area']['#required'] = FALSE;
   // Add asterisk to visually show user what is required before form submission.
   $form['field_delivery_address']['und'][0]['locality_block']['administrative_area']['#states'] = array(
     'required' => array(
@@ -145,6 +143,7 @@ function bos_content_type_procurement_advertisement_form_procurement_advertiseme
   // Country.
   // Remove default required validation so form saves if Paper is not selected.
   $form['field_delivery_address']['und'][0]['country']['#required'] = FALSE;
+  $form['field_address']['und'][0]['country']['#required'] = FALSE;
   // Add asterisk to visually show user what is required before form submission.
   $form['field_delivery_address']['und'][0]['country']['#states'] = array(
     'required' => array(
@@ -189,7 +188,7 @@ function bos_content_type_procurement_advertisement_form_validate($form, $form_s
     foreach ($required_fields as $field_name => $field_value) {
       if (!$field_value) {
         // Compose error message for required fields that are missing values.
-        $empty_required_fields[] = "Please fill out the '$field_name' field when selecting 'Paper' as Bid Type";
+        $empty_required_fields[] = "Please fill out the Delivery '$field_name' field when selecting 'Paper' as Bid Type";
       }
     }
     // Make sure there are required fields missing input.
