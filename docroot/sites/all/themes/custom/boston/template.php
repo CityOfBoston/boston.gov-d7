@@ -326,7 +326,7 @@ function boston_process_html_tag(array &$variables) {
     unset($tag['#value_prefix'], $tag['#value_suffix']);
 
     // Remove redundant type attribute.
-    if (isset($tag['#attributes']['type']) && $tag['#attributes']['type'] !== 'text/ng-template') {
+    if (isset($tag['#attributes']['type']) && $tag['#attributes']['type'] !== 'text/ng-template' && $tag['#attributes']['type'] !== 'application/ld+json') {
       unset($tag['#attributes']['type']);
     }
 
