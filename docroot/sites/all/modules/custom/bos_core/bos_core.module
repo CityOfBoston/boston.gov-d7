@@ -530,7 +530,7 @@ function bos_core_token_info() {
 }
 function bos_core_tokens($type, $tokens, array $data = array(), array $options = array()) {
   $custom_tokens = array();
-  //get field data
+  // get field data
   $intro_image = $data['node']->field_intro_image;
   $dates = $data['node']->field_event_dates;
   $start_date = $dates[und][0][value];
@@ -541,7 +541,7 @@ function bos_core_tokens($type, $tokens, array $data = array(), array $options =
   $zip_code = $data['node']->field_address[und][0][postal_code];
 
   if($intro_image == null || $intro_image == ''){
-    //set default image
+    // set default image
     $schema_img_val = "https://patterns.boston.gov/images/global/icons/b-logo-large.png";
   }else{
     $schema_img_val = $intro_image[und][0][uri];
