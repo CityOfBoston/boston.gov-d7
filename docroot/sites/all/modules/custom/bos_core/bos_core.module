@@ -534,59 +534,61 @@ function bos_core_token_info() {
 function bos_core_tokens($type, $tokens, array $data = array(), array $options = array()) {
   $custom_tokens = array();
   // Get field data.
-  $intro_image = $data['node']->field_intro_image;
-  $dates = $data['node']->field_event_dates;
-  $start_date = $dates[und][0][value];
-  $end_date = ($dates[und][0][value2] !== $start_date ? $dates[und][0][value2] : NULL);
-  $street_address = $data['node']->field_address[und][0][thoroughfare];
-  $city = $data['node']->field_address[und][0][locality];
-  $state = $data['node']->field_address[und][0][administrative_area];
-  $zip_code = $data['node']->field_address[und][0][postal_code];
+  if (isset($data['node'])) :
+    $intro_image = $data['node']->field_intro_image;
+    $dates = $data['node']->field_event_dates;
+    $start_date = $dates[und][0][value];
+    $end_date = ($dates[und][0][value2] !== $start_date ? $dates[und][0][value2] : NULL);
+    $street_address = $data['node']->field_address[und][0][thoroughfare];
+    $city = $data['node']->field_address[und][0][locality];
+    $state = $data['node']->field_address[und][0][administrative_area];
+    $zip_code = $data['node']->field_address[und][0][postal_code];
 
-  if ($intro_image == NULL || $intro_image == '') :
-    // Set default image.
-    $schema_img_val = "https://patterns.boston.gov/images/global/icons/b-logo-large.png";
-  else :
-    $schema_img_val = $intro_image[und][0][uri];
+    if ($intro_image == NULL || $intro_image == '') :
+      // Set default image.
+      $schema_img_val = "https://patterns.boston.gov/images/global/icons/b-logo-large.png";
+    else :
+      $schema_img_val = $intro_image[und][0][uri];
+    endif;
+    if ($type == 'custom') {
+      foreach ($tokens as $name => $original) {
+        switch ($name) {
+          case 'schema_image':
+              $custom_tokens[$original] = $schema_img_val;
+            break;
+
+          case 'schema_start_date':
+              $custom_tokens[$original] = $start_date;
+            break;
+
+          case 'schema_end_date':
+              $custom_tokens[$original] = $end_date;
+            break;
+        }
+      }
+    }
+    if ($type == 'node') {
+      foreach ($tokens as $name => $original) {
+        switch ($name) {
+          case 'field_address:thoroughfare':
+              $custom_tokens[$original] = $street_address;
+            break;
+
+          case 'field_address:locality':
+              $custom_tokens[$original] = $city;
+            break;
+
+          case 'field_address:administrative-area':
+              $custom_tokens[$original] = $state;
+            break;
+
+          case 'field_address:postal-code':
+              $custom_tokens[$original] = $zip_code;
+            break;
+        }
+      }
+    }
   endif;
-  if ($type == 'custom') {
-    foreach ($tokens as $name => $original) {
-      switch ($name) {
-        case 'schema_image':
-            $custom_tokens[$original] = $schema_img_val;
-          break;
-
-        case 'schema_start_date':
-            $custom_tokens[$original] = $start_date;
-          break;
-
-        case 'schema_end_date':
-            $custom_tokens[$original] = $end_date;
-          break;
-      }
-    }
-  }
-  if ($type == 'node') {
-    foreach ($tokens as $name => $original) {
-      switch ($name) {
-        case 'field_address:thoroughfare':
-            $custom_tokens[$original] = $street_address;
-          break;
-
-        case 'field_address:locality':
-            $custom_tokens[$original] = $city;
-          break;
-
-        case 'field_address:administrative-area':
-            $custom_tokens[$original] = $state;
-          break;
-
-        case 'field_address:postal-code':
-            $custom_tokens[$original] = $zip_code;
-          break;
-      }
-    }
-  }
   // Return the custom and updated tokens.
   return $custom_tokens;
 }
