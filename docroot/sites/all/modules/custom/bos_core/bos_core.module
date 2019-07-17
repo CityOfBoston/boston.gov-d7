@@ -528,6 +528,9 @@ function bos_core_token_info() {
   );
   return $info;
 }
+/**
+ * Populate token data.
+ */
 function bos_core_tokens($type, $tokens, array $data = array(), array $options = array()) {
   $custom_tokens = array();
   // Get field data.
@@ -540,12 +543,12 @@ function bos_core_tokens($type, $tokens, array $data = array(), array $options =
   $state = $data['node']->field_address[und][0][administrative_area];
   $zip_code = $data['node']->field_address[und][0][postal_code];
 
-  if ($intro_image == NULL || $intro_image == ''): 
+  if ($intro_image == NULL || $intro_image == '') : 
     // Set default image.
     $schema_img_val = "https://patterns.boston.gov/images/global/icons/b-logo-large.png";
-  else: 
+  else :
     $schema_img_val = $intro_image[und][0][uri];
-  endif; 
+  endif ;
   if ($type == 'custom') {
     foreach ($tokens as $name => $original) {
       switch ($name) {
