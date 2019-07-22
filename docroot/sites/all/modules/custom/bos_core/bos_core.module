@@ -574,6 +574,7 @@ function bos_core_tokens($type, $tokens, array $data = array(), array $options =
           case 'field_address:name-line':
               $custom_tokens[$original] = $location_name;
             break;
+            
           case 'field_address:thoroughfare':
               $custom_tokens[$original] = $street_address;
             break;
