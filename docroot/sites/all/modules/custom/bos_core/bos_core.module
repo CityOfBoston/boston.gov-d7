@@ -535,7 +535,6 @@ function bos_core_tokens($type, $tokens, array $data = array(), array $options =
   $custom_tokens = array();
   // Get field data.
   if (isset($data['node'])) :
-    //print_r($data['node']);
     $intro_image = $data['node']->field_intro_image;
     $dates = $data['node']->field_event_dates;
     $start_date = $dates[und][0][value];
@@ -545,7 +544,6 @@ function bos_core_tokens($type, $tokens, array $data = array(), array $options =
     $state = $data['node']->field_address[und][0][administrative_area];
     $zip_code = $data['node']->field_address[und][0][postal_code];
     $location_name = $data['node']->field_address[und][0][name_line];
-    //print "MATT: ".$location_name;
 
     if ($intro_image == NULL || $intro_image == '') :
       // Set default image.
