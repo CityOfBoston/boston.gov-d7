@@ -536,10 +536,14 @@ function bos_core_tokens($type, $tokens, array $data = array(), array $options =
   // Get field data.
   if (isset($data['node'])) :    
     $test = $data['node']->field_how_to_tabs[und][0][value];
-    $entities = entity_load('paragraphs_item', array($test));
+    $entity = /Drupal::entityTypeManager()->getStorage('paragraphs_item')->load($test); //entity_load('paragraphs_item', array($test));
+    if ($entity->hasField('field_contact')) {
+      print "Hello";
+    }
     // $paragraphs_render = entity_view('paragraphs_item', $entities, 'full');
     // print drupal_render($paragraphs_render)
-    $field_items = field_get_items('paragraphs_item', $entities, 'how_to_steps', $langcode = NULL);
+    $field_items = field_get_items('paragraphs_item', $entities, 'field_contact', $langcode = NULL);
+    print_r($entities);
  
     $intro_image = $data['node']->field_intro_image;
     $dates = $data['node']->field_event_dates;
