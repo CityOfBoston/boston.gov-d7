@@ -40,6 +40,7 @@
         if (!scriptLoaded) {
           $.ajax({
             url: "https://www.microsoftTranslator.com/ajax/v3/WidgetV3.ashx?siteData=ueOIGRSKkd965FeEGM5JtQ**",
+            //url: "https://www.bing.com/translator",
             dataType: "script",
             timeout: 2 * 1000
           }).done(function() {

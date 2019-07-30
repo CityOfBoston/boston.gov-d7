@@ -534,7 +534,13 @@ function bos_core_token_info() {
 function bos_core_tokens($type, $tokens, array $data = array(), array $options = array()) {
   $custom_tokens = array();
   // Get field data.
-  if (isset($data['node'])) :
+  if (isset($data['node'])) :    
+    $test = $data['node']->field_how_to_tabs[und][0][value];
+    $entities = entity_load('paragraphs_item', array($test));
+    //$paragraphs_render = entity_view('paragraphs_item', $entities, 'full');
+    //print drupal_render($paragraphs_render)
+    $field_items = field_get_items('paragraphs_item', $entities, 'how_to_steps', $langcode = NULL);
+ 
     $intro_image = $data['node']->field_intro_image;
     $dates = $data['node']->field_event_dates;
     $start_date = $dates[und][0][value];

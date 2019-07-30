@@ -59,7 +59,9 @@ var getImgBibblio = function (infoData) {
 var checkBadDesc = function (word){
   return new RegExp('back to top', 'i').test(word);
 }
-var getHTML = function(bibContent){
+
+//populate HTML container element with recommendation
+var populateHTML = function(bibContent){
   var listItem = '';
   var listLength = 0
   jQuery(bibContent).each(function(index,value){
@@ -90,6 +92,8 @@ var getHTML = function(bibContent){
     jQuery(".bibblio-container").show();
   }
 }
+
+//check if page has existing recommendations
 const pageURL = window.location.pathname;
 const siteLocation = 'https://www.boston.gov';
 jQuery.ajax({
@@ -106,9 +110,89 @@ jQuery.ajax({
     "customUniqueIdentifier": siteLocation + pageURL,
     "fields":"name,image,image,url,datePublished,description,keywords", 
     "limit":"6",
+    //"catalogueIds":"ea9dbde3-dac4-4c1a-b887-55843fd8ed2f"
   },
   success: function (res){
-    let bibContent = res.results;
-    getHTML(bibContent);
+    if(jQuery('body').hasClass('node-type-how-to')){
+        let bibContent = res.results;
+        populateHTML(bibContent);
+    }
+    let itemId = res._links.sourceContentItem.id;
+    getItemData(itemId);
+    //alert('success recommendation');
+    //console.log(bibContent);
+  },
+  error: function (res){
+    if(res.status == 404){
+      ingestItem
+    }
+    //alert('error recommendation');
   }
-});       
+});
+
+
+//get content item data to prep for insertion
+var getItemData = function(item_id){
+      jQuery.ajax({
+        method: "GET",
+        crossDomain: true,
+        cache : false,
+        url: "https://api.bibblio.org/v1/content-items/" + item_id,
+        contentType: "application/json",
+        headers: {
+          //live boston.gov key
+          "Authorization": "Bearer 852cf94f-5b38-4805-8b7b-a50c5a78609b"
+        },
+        success: function (res){
+          //alert('success get data');
+          reIngestItem(res);
+        },
+        error: function (res){
+          //alert('error get data');
+        }
+      });
+}
+
+//ingest and associate with new catalogue ID 
+var ingestItem = function(){
+      Bibblio.initRelatedContent({
+          recommendationKey: '852cf94f-5b38-4805-8b7b-a50c5a78609b',
+          customUniqueIdentifier: siteLocation + pageURL,
+          catalogueId: 'ea9dbde3-dac4-4c1a-b887-55843fd8ed2f',
+          autoIngestion: true, 
+      });
+}
+
+//re-ingest and associate with new catalogue ID 
+var reIngestItem = function(res){
+      jQuery.ajax({
+        method: "PUT",
+        crossDomain: true,
+        cache : false,
+        url: "https://api.bibblio.org/v1/content-items/" + res.contentItemId,
+        contentType: "application/json",
+        headers: {
+          //live boston.gov key
+          "Authorization": "Bearer 852cf94f-5b38-4805-8b7b-a50c5a78609b"
+        },
+        data:{
+          "name": res.name,
+          "text": res.text,
+          "customUniqueIdentifier": res.customUniqueIdentifier,
+          "image": {
+                  "contentUrl": res.image.contentUrl
+              },
+          "moduleImage": {
+                  "contentUrl": res.moduleImage.contentUrl
+              },
+          "catalogueId" : "ea9dbde3-dac4-4c1a-b887-55843fd8ed2f"
+        },
+        success: function (res){
+          alert('success ingest');
+        },
+        error: function (res){
+          alert('error ingest');
+        }
+      });
+}
+   
