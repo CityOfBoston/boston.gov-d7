@@ -489,11 +489,25 @@ function boston_preprocess_page(array &$variables) {
       $page_class_alert = 'page';
     }
 
+
+    $bibblioIngestContent = ['program_initiative_profile','how_to','landing_page','place_profile','article'];
+    foreach ($bibblioIngestContent as $key => $value) {
+      if ($variables['node']->type == $value) {
+          drupal_add_js('https://cdn.bibblio.org/rcm/3.10/bib-related-content.min.js', array(
+            'scope' => 'header',
+            'type'  =>  'file'
+          ));
+          drupal_add_js(drupal_get_path('theme', 'boston') . '/js/bibblio-custom.js', array(
+            'scope' => 'footer',
+            'type'  =>  'file'
+          ));
+      }      
+    }
     if ($variables['node']->type == 'how_to') {
-        drupal_add_js(drupal_get_path('theme', 'boston') . '/js/bibblio-custom.js', array(
+        /*drupal_add_js(drupal_get_path('theme', 'boston') . '/js/bibblio-custom.js', array(
           'scope' => 'footer',
           'type'  =>  'file'
-        ));
+        ));*/
     }
 
     if (drupal_is_front_page()) {
