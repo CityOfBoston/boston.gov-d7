@@ -1,3 +1,4 @@
+sudo: false
 language: php
 env:
 - COB_ARTIFACT="boston" TASK="./task.sh -Dbehat.run-server=true -Dproject.build_db_from=initialize validate:all build:local tests:all"
@@ -12,7 +13,6 @@ branches:
   - enable_related
 php:
 - 7.1
-dist: trusty
 addons:
   apt:
     packages:
