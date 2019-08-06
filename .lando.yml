@@ -62,3 +62,8 @@ tooling:
     service: node
     description: "Run node:gulp commands in node container: lando gulp <command>"
 
+  phing:
+    service: appserver
+    description: "Run Phing tasks in app container: lando phing <task>"
+    cmd:
+      - /app/vendor/bin/phing
