@@ -1,3 +1,4 @@
+
  /*polyfill for IE11*/
  Array.prototype.findIndex = Array.prototype.findIndex || function(callback) {
   if (this === null) {
@@ -83,8 +84,7 @@ var populateHTML = function(bibContent){
       if(checkBadDesc(bibDesc) === false && bibDesc !== ""){
         listItem += '<a class= "cd g--4 g--4--sl m-t500 bibblio" bibblio-title="'+bibName+'" bibblio-img-desc="'+imgInfo.desc+'" href="'+bibUrl+'"><div class="cd-ic" style="background-image:url('+ imgInfo.path +')" ><\/div><div class="cd-c"><div class="cd-t">'+bibName+'<\/div><div class="cd-d"\>'+bibDesc+'<\/div><\/div><\/a>';
         listLength++;
-      }
-      //console.log(checkBadDesc(bibDesc) + ':' + bibName + ':' + bibDesc);      
+      }    
   });
 
   if(listLength > 0){
@@ -94,7 +94,7 @@ var populateHTML = function(bibContent){
 }
 
 // Check if page has existing recommendations.
-const pageURL = window.location.pathname;
+const pageURL = '/departments/assessing/how-file-personal-property-tax-abatement';
 const siteLocation = 'https://www.boston.gov';
 jQuery.ajax({
   method: "GET",
@@ -107,8 +107,9 @@ jQuery.ajax({
   },
   data:{ 
     "customUniqueIdentifier": siteLocation + pageURL,
-    "fields":"name,image,image,url,datePublished,description,keywords", 
+    "fields":"name,image,url,datePublished,description,keywords", 
     "limit":"6",
+    //"catalogueIds":"ea9dbde3-dac4-4c1a-b887-55843fd8ed2f"
   },
   success: function (res){
     if(jQuery('body').hasClass('node-type-how-to')){
@@ -116,9 +117,7 @@ jQuery.ajax({
         populateHTML(bibContent);
     }
     let itemId = res._links.sourceContentItem.id;
-    getItemData(itemId);
-    //alert('success recommendation');
-    //console.log(bibContent);
+    //getItemData(itemId);
   },
   error: function (res){
     if(res.status == 404){
@@ -136,7 +135,7 @@ var getItemData = function(item_id){
         url: "https://api.bibblio.org/v1/content-items/" + item_id,
         contentType: "application/json",
         headers: {
-          "Authorization": "Bearer 852cf94f-5b38-4805-8b7b-a50c5a78609b"
+          "Authorization": "852cf94f-5b38-4805-8b7b-a50c5a78609b"
         },
         success: function (res){
           reIngestItem(res);
@@ -152,6 +151,14 @@ var ingestItem = function(){
       let getJSON_LD = jQuery('script[type="application/ld+json"]')[0].innerHTML;
       getJSON_LD = JSON.parse(getJSON_LD);
       getJSON_LD = jsonldN["@graph"][0];
+      const bibData2JSON = {
+          "url": siteLocation + pageURL,
+          "name": getJSON_LD.name,
+          "text": getJSON_LD.description,
+          "description": getJSON_LD.description,
+          "customUniqueIdentifier": siteLocation + pageURL,
+          "catalogueId" : "ea9dbde3-dac4-4c1a-b887-55843fd8ed2f"
+        };
       jQuery.ajax({
         method: "POST",
         crossDomain: true,
@@ -162,24 +169,12 @@ var ingestItem = function(){
           //live boston.gov key
           "Authorization": "Bearer 852cf94f-5b38-4805-8b7b-a50c5a78609b"
         },
-        data:{
-          "url": siteLocation + pageURL,
-          "name": getJSON_LD.name,
-          "text": getJSON_LD.description,
-          "customUniqueIdentifier": res.customUniqueIdentifier,
-          "image": {
-                  "contentUrl": getJSON_LD.image.url
-              },
-          "moduleImage": {
-                  "contentUrl": getJSON_LD.image.url
-              },
-          "catalogueId" : "ea9dbde3-dac4-4c1a-b887-55843fd8ed2f"
-        },
+        data: JSON.stringify(bibData2JSON),
         success: function (res){
-          alert('success ingest');
+          console.log('success initial ingest');
         },
         error: function (res){
-          alert('error ingest');
+          console.log('error initial ingest');
         }
       });
      
@@ -187,6 +182,17 @@ var ingestItem = function(){
 
 // Re-ingest and associate with new catalogue ID.
 var reIngestItem = function(res){
+  const bName = res.name;
+  const bURL = res.url;
+  const bText = res.text;
+  const bibDataJSON = {
+          "url": String(bURL),
+          "name": bName,
+          "text": String(bText),
+          "description": String(bText),
+          "customUniqueIdentifier": res.customUniqueIdentifier,
+          "catalogueId" : "ea9dbde3-dac4-4c1a-b887-55843fd8ed2f"
+        };
       jQuery.ajax({
         method: "PUT",
         crossDomain: true,
@@ -197,24 +203,12 @@ var reIngestItem = function(res){
           //live boston.gov key
           "Authorization": "Bearer 852cf94f-5b38-4805-8b7b-a50c5a78609b"
         },
-        data:{
-          "url": res.url,
-          "name": res.name,
-          "text": res.text,
-          "customUniqueIdentifier": res.customUniqueIdentifier,
-          "image": {
-                  "contentUrl": res.image.contentUrl
-              },
-          "moduleImage": {
-                  "contentUrl": res.moduleImage.contentUrl
-              },
-          "catalogueId" : "ea9dbde3-dac4-4c1a-b887-55843fd8ed2f"
-        },
+        data: JSON.stringify(bibDataJSON),
         success: function (res){
-          alert('success ingest');
+          console.log('success re-ingest');
         },
         error: function (res){
-          alert('error ingest');
+          console.log('error re-ingest');
         }
       });
 }
