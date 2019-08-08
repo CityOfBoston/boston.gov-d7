@@ -1,7 +1,7 @@
 <project name="project" default="build" phingVersion="2.8.2">
 
   <!-- Override core Phing targets. -->
-  <import file="${project.basedir}/tasks/frontend.xml"/>
+  <!--<import file="${project.basedir}/tasks/frontend.xml"/>-->
   <import file="${project.basedir}/tasks/local-setup.xml"/>
   <import file="${project.basedir}/tasks/migrate.xml"/>
   <import file="${project.basedir}/tasks/search.xml"/>

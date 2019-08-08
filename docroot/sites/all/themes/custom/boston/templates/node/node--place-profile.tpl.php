@@ -166,3 +166,28 @@ hide($content['links']);
   </div>
   <?php endif; ?>
 </article>
+
+<?php
+$intro_image = $node->field_intro_image['und'][0]['uri'];
+$intro_image = explode("//",$intro_image);
+$description = strip_tags($node->field_intro_text['und'][0]['value'])." ".strip_tags($node->body['und'][0]['value']);
+$description = str_replace('"', '&quot;', $description);
+?>
+<script type="application/ld+json">{
+   "@context": "http://schema.org",
+   "@graph": [
+           {
+           "@type": "Place",
+           "@id": "http://www.boston.gov/<?php echo $node->path['alias'];?>",
+           "name": "<?php echo $node->title ?>",
+           "image": "<?php echo "https://www.boston.gov/sites/default/files/". $intro_image[1]?>",
+           "description": "<?php echo $description ?>",
+           "address" : {
+             "streetAddress": "<?php echo $node->field_address['und'][0]['thoroughfare'] ?>",
+             "addressLocality": "Boston",
+             "addressRegion": "MA",
+             "postalCode":"<?php echo $node->field_address['und'][0]['postal_code'] ?>"
+           }
+       }
+   ]
+}</script>
