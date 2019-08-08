@@ -82,51 +82,107 @@ var populateHTML = function(bibContent){
       let bibUrl = bibFields.url;
       let bibDesc = bibFields.description;
       if(checkBadDesc(bibDesc) === false && bibDesc !== ""){
-        listItem += '<a class= "cd g--4 g--4--sl m-t500 bibblio" bibblio-title="'+bibName+'" bibblio-img-desc="'+imgInfo.desc+'" href="'+bibUrl+'"><div class="cd-ic" style="background-image:url('+ imgInfo.path +')" ><\/div><div class="cd-c"><div class="cd-t">'+bibName+'<\/div><div class="cd-d"\>'+bibDesc+'<\/div><\/div><\/a>';
+        /*listItem += '<a class= "cd g--4 g--4--sl m-t500 bibblio" bibblio-title="'+bibName+'" bibblio-img-desc="'+imgInfo.desc+'" href="'+bibUrl+'"><div class="cd-ic" style="background-image:url('+ imgInfo.path +')" ><\/div><div class="cd-c"><div class="cd-t">'+bibName+'<\/div><div class="cd-d"\>'+bibDesc+'<\/div><\/div><\/a>';*/
+        listItem += '<a class= "cd g--4 g--4--sl m-t500 bibblio" bibblio-title="'+bibName+'" bibblio-img-desc="'+imgInfo.desc+'" href="'+bibUrl+'"><div class="cd-c"><div class="cd-t">'+bibName+'<\/div><div class="cd-d"\>'+bibDesc+'<\/div><\/div><\/a>';
         listLength++;
       }    
   });
 
   if(listLength > 0){
     jQuery("#bibblio-custom div.g").append(listItem);
+    jQuery(".cd-c").css("borderTop","none");
     jQuery(".bibblio-container").show();
   }
 }
 
-// Check if page has existing recommendations.
-const pageURL = '/departments/assessing/how-file-personal-property-tax-abatement';
+// Get token
+let bib_token = "";
+const pageURL = window.location.pathname;
 const siteLocation = 'https://www.boston.gov';
+
 jQuery.ajax({
-  method: "GET",
-  crossDomain: true,
-  cache : false,
-  url: "https://api.bibblio.org/v1/recommendations",
-  contentType: "application/json",
-  headers: {
-    "Authorization": "Bearer 852cf94f-5b38-4805-8b7b-a50c5a78609b"
-  },
-  data:{ 
-    "customUniqueIdentifier": siteLocation + pageURL,
-    "fields":"name,image,url,datePublished,description,keywords", 
-    "limit":"6",
-    //"catalogueIds":"ea9dbde3-dac4-4c1a-b887-55843fd8ed2f"
-  },
-  success: function (res){
-    if(jQuery('body').hasClass('node-type-how-to')){
-        let bibContent = res.results;
-        populateHTML(bibContent);
+    method: "GET",
+    crossDomain: false,
+    url: 'https://' + location.host + "/sites/all/themes/custom/boston/scripts/bibblio_token.php",
+    contentType: "application/json",
+    success: function (res){
+        const resToken = JSON.parse(res);
+        //console.log(resToken)
+        if(resToken.status == "ok"){
+          bib_token = resToken;
+          bib_token = bib_token.index.access_token;
+          console.log('success:' + bib_token);
+          firstCheck();
+        }else{
+          console.log(resToken.status);
+        }
+    },
+    error: function (res){
+        console.log('error: ' + res);
     }
-    let itemId = res._links.sourceContentItem.id;
-    //getItemData(itemId);
-  },
-  error: function (res){
-    if(res.status == 404){
-      ingestItem();
-    }
-  }
 });
 
-// Get content item data to prep for insertion.
+// Check if page has existing recommendations.
+var firstCheck = function(){
+    jQuery.ajax({
+      method: "GET",
+      crossDomain: true,
+      cache : false,
+      url: "https://api.bibblio.org/v1/recommendations",
+      contentType: "application/json",
+      headers: {
+        "Authorization": "Bearer 852cf94f-5b38-4805-8b7b-a50c5a78609b"
+      },
+      data:{ 
+        "customUniqueIdentifier": siteLocation + pageURL,
+        "fields":"name,image,url,datePublished,description,keywords", 
+        "limit":"6",
+        "catalogueIds":"ea9dbde3-dac4-4c1a-b887-55843fd8ed2f"
+      },
+      success: function (res){
+        if(jQuery('body').hasClass('node-type-how-to')){
+            let bibContent = res.results;
+            populateHTML(bibContent);
+        }
+      },
+      error: function (res){
+        if(res.status == 404){
+           ingestItem();
+        }
+        if(res.status == 412){
+          getItemExisting();
+        }
+      }
+    });
+}
+
+// Get content item data from other group / catalogue
+var getItemExisting = function(){
+      jQuery.ajax({
+        method: "GET",
+        crossDomain: true,
+        cache : false,
+        url: "https://api.bibblio.org/v1/recommendations",
+        data:{ 
+          "customUniqueIdentifier": siteLocation + pageURL,
+          "fields":"name", 
+          "limit":"1",
+        },
+        contentType: "application/json",
+        headers: {
+          "Authorization": "Bearer 852cf94f-5b38-4805-8b7b-a50c5a78609b"
+        },
+        success: function (res){
+          const itemId = res._links.sourceContentItem.id;
+          getItemData(itemId);
+        },
+        error: function (res){
+          console.log('Error getting existing recommendations.');
+        }
+      });
+}
+
+// Get item content specific value contentItemId of existing item to prep for update.
 var getItemData = function(item_id){
       jQuery.ajax({
         method: "GET",
@@ -135,7 +191,7 @@ var getItemData = function(item_id){
         url: "https://api.bibblio.org/v1/content-items/" + item_id,
         contentType: "application/json",
         headers: {
-          "Authorization": "852cf94f-5b38-4805-8b7b-a50c5a78609b"
+          "Authorization": "Bearer " + bib_token,
         },
         success: function (res){
           reIngestItem(res);
@@ -146,11 +202,11 @@ var getItemData = function(item_id){
       });
 }
 
-// Ingest and associate with new catalogue ID. 
+// Ingest for first time and associate with catalogue ID. 
 var ingestItem = function(){
       let getJSON_LD = jQuery('script[type="application/ld+json"]')[0].innerHTML;
       getJSON_LD = JSON.parse(getJSON_LD);
-      getJSON_LD = jsonldN["@graph"][0];
+      getJSON_LD = getJSON_LD["@graph"][0];
       const bibData2JSON = {
           "url": siteLocation + pageURL,
           "name": getJSON_LD.name,
@@ -163,11 +219,11 @@ var ingestItem = function(){
         method: "POST",
         crossDomain: true,
         cache : false,
-        url: "https://api.bibblio.org/v1/content-items/" + res.contentItemId,
+        url: "https://api.bibblio.org/v1/content-item-url-ingestions",
         contentType: "application/json",
         headers: {
           //live boston.gov key
-          "Authorization": "Bearer 852cf94f-5b38-4805-8b7b-a50c5a78609b"
+          "Authorization": "Bearer " + bib_token,
         },
         data: JSON.stringify(bibData2JSON),
         success: function (res){
@@ -180,18 +236,18 @@ var ingestItem = function(){
      
 }
 
-// Re-ingest and associate with new catalogue ID.
+// Re-ingest and associate with catalogue ID.
 // 
 var reIngestItem = function(res){
-  const bName = res.name;
-  const bURL = res.url;
-  const bText = res.text;
-  const bibDataJSON = {
-          "url": String(bURL),
-          "name": bName,
-          "text": String(bText),
-          "description": String(bText),
-          "customUniqueIdentifier": res.customUniqueIdentifier,
+  let getJSON_LD = jQuery('script[type="application/ld+json"]')[0].innerHTML;
+      getJSON_LD = JSON.parse(getJSON_LD);
+      getJSON_LD = getJSON_LD["@graph"][0];
+      const bibData2JSON = {
+          "url": siteLocation + pageURL,
+          "name": getJSON_LD.name,
+          "text": getJSON_LD.description,
+          "description": getJSON_LD.description,
+          "customUniqueIdentifier": siteLocation + pageURL,
           "catalogueId" : "ea9dbde3-dac4-4c1a-b887-55843fd8ed2f"
         };
       jQuery.ajax({
@@ -202,9 +258,9 @@ var reIngestItem = function(res){
         contentType: "application/json",
         headers: {
           //live boston.gov key
-          "Authorization": "Bearer 852cf94f-5b38-4805-8b7b-a50c5a78609b"
+          "Authorization": "Bearer " + bib_token,
         },
-        data: JSON.stringify(bibDataJSON),
+        data: JSON.stringify(bibData2JSON),
         success: function (res){
           console.log('success re-ingest');
         },
