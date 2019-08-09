@@ -86,9 +86,9 @@
       <option name="no-patch-txt"/>
     </drush>
 
-    <phingcall target="frontend:build">
+    <!--<phingcall target="frontend:build">
       <property name="project.themes" value="boston,boston_public,boston_hub"/>
-    </phingcall>
+    </phingcall>-->
   </target>
 
   <target name="deploy:artifact:prepare-dir" description="Delete the existing deploy directory and re-initialize as an empty git repository.">

@@ -1,12 +1,13 @@
 <?php
 /**
  * @file
- * Drupal needs this blank file.
+ * Code for the bos_meta_tags feature.
  */
 
- /**
-  * Implements metatag_metatags_view_alter().
-  */
+include_once 'bos_meta_tags.features.inc';
+/**
+ * Implements metatag_metatags_view_alter().
+ */
 function bos_meta_tags_metatag_metatags_view_alter(&$output, $instance) {
   if (!empty($output["article:published_time"]) && $output["article:published_time"]["#attached"]["drupal_add_html_head"][0][0]) {
     $tag = $output["article:published_time"]["#attached"]["drupal_add_html_head"][0][0];
@@ -24,7 +25,6 @@ function bos_meta_tags_metatag_metatags_view_alter(&$output, $instance) {
     );
     drupal_add_html_head($published_at_element, 'swiftype_published_at');
   }
-
   if (!empty($output["article:modified_time"]) && $output["article:modified_time"]["#attached"]["drupal_add_html_head"][0][0]) {
     $tag = $output["article:modified_time"]["#attached"]["drupal_add_html_head"][0][0];
 

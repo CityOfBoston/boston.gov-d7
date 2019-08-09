@@ -133,6 +133,32 @@ $has_sidebar = isset($content['field_sidebar_components']) || isset($content['fi
   </div>
   <?php endif; ?>
   <?php print theme('page_contacts', array('title' => "Who's Involved", 'contacts' => $content['field_contacts'])); ?>
-
-
 </article>
+<?php
+$intro_image = $node->field_intro_image['und'][0]['uri'];
+if($node->field_intro_image){
+ $intro_image = explode("//",$intro_image);
+ $intro_image = "https://www.boston.gov/sites/default/files/". $intro_image[1];
+}else{
+ $intro_image = "https://patterns.boston.gov/images/global/icons/b-logo-large.png";
+}
+$description = strip_tags($node->field_intro_text['und'][0]['value'])." ".strip_tags($node->body['und'][0]['value']);
+$description = str_replace('"', '&quot;', $description);
+?>
+<script type="application/ld+json">{
+   "@context": "http://schema.org",
+   "@graph": [
+           {
+           "@type": "Organization",
+           "@id": "http://www.boston.gov/<?php echo $node->path['alias'];?>",
+           "name": "<?php echo $node->title ?>",
+           "department":"<?php echo $node->field_contacts['und'][0]['entity']->name; ?>",
+           "image": "<?php echo $intro_image; ?>",
+           "description": "<?php echo $description ?>",
+           "address" : {
+             "addressLocality": "Boston",
+             "addressRegion": "MA"
+           }
+       }
+   ]
+}</script>

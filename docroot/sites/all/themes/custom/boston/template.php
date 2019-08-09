@@ -326,7 +326,7 @@ function boston_process_html_tag(array &$variables) {
     unset($tag['#value_prefix'], $tag['#value_suffix']);
 
     // Remove redundant type attribute.
-    if (isset($tag['#attributes']['type']) && $tag['#attributes']['type'] !== 'text/ng-template') {
+    if (isset($tag['#attributes']['type']) && $tag['#attributes']['type'] !== 'text/ng-template' && $tag['#attributes']['type'] !== 'application/ld+json') {
       unset($tag['#attributes']['type']);
     }
 
@@ -489,11 +489,15 @@ function boston_preprocess_page(array &$variables) {
       $page_class_alert = 'page';
     }
 
-    if ($variables['node']->type == 'how_to') {
-        drupal_add_js(drupal_get_path('theme', 'boston') . '/js/bibblio-custom.js', array(
-          'scope' => 'footer',
-          'type'  =>  'file'
-        ));
+
+    $bibblioIngestContent = ['program_initiative_profile','how_to','landing_page','place_profile','article'];
+    foreach ($bibblioIngestContent as $key => $value) {
+      if ($variables['node']->type == $value) {
+          drupal_add_js(drupal_get_path('theme', 'boston') . '/js/bibblio-custom.js', array(
+            'scope' => 'footer',
+            'type'  =>  'file'
+          ));
+      }      
     }
 
     if (drupal_is_front_page()) {

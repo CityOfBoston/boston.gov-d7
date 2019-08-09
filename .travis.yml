@@ -1,4 +1,3 @@
-sudo: false
 language: php
 env:
 - COB_ARTIFACT="boston" TASK="./task.sh -Dbehat.run-server=true -Dproject.build_db_from=initialize validate:all build:local tests:all"
@@ -8,11 +7,12 @@ branches:
   - develop
   - master
   - settings
-  - bibblio-test
+  - bibblio-updates_8_06
   - cityscore_rest
   - enable_related
 php:
 - 7.1
+dist: trusty
 addons:
   apt:
     packages:
@@ -80,7 +80,7 @@ deploy:
   skip_cleanup: true
   script: bash scripts/deploy/travis-deploy.sh $TRAVIS_BRANCH bibblio-build $COB_ARTIFACT
   on:
-    branch: bibblio-test
+    branch: bibblio-updates_8_06
     condition: $COB_ARTIFACT = boston
 - provider: script
   skip_cleanup: true

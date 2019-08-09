@@ -20,11 +20,6 @@
     })(window,document,'script','dataLayer','<?php echo $google_tag_manager_id ?>');</script>
   <?php } ?>
 
-  <!-- Start of Bibblio RCM includes -->
-  <link rel="stylesheet" type="text/css" href="https://cdn.bibblio.org/rcm/3.10/bib-related-content.min.css">
-  <script src="https://cdn.bibblio.org/rcm/3.10/bib-related-content.min.js"></script>
-  <!-- End of Bibblio RCM includes -->
-
   <!--[if !IE]><!-->
 	<link href='<?php print $asset_url ?>/css/<?php print $asset_name ?>.css?<?php print $cache_buster ?>' rel='stylesheet' type='text/css'>
   <link href='<?php print $asset_url ?>/legacy/<?php print $asset_name ?>.css?<?php print $cache_buster ?>' rel='stylesheet' type='text/css'>
@@ -110,6 +105,5 @@
       </div>
     </script>
   <?php endif; ?>
-  <div class="bib--rcm-init visually-hidden" data-auto-ingestion="true" data-recommendation-key="852cf94f-5b38-4805-8b7b-a50c5a78609b">&nbsp;</div>
 </body>
 </html>
