@@ -495,7 +495,8 @@ function boston_preprocess_page(array &$variables) {
       if ($variables['node']->type == $value) {
           drupal_add_js(drupal_get_path('theme', 'boston') . '/js/bibblio-custom.js', array(
             'scope' => 'footer',
-            'type'  =>  'file'
+            'type'  =>  'file',
+            'preprocess' => FALSE,
           ));
       }      
     }
