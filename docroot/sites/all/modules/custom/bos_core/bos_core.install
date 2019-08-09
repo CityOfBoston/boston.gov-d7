@@ -646,3 +646,18 @@ function bos_core_update_7035() {
   );
   module_disable($disabled_modules, TRUE);
 }
+
+/**
+ * Enable Sub Modules for Schema / Metatag module.
+ */
+function bos_core_update_7036() {
+  $disabled_modules = array();
+  $enabled_modules = array(
+    'schema_how_to',
+    'schema_article',
+    'schema_event',
+    'schema_person',
+  );
+  module_disable($disabled_modules);
+  module_enable($enabled_modules);
+}
