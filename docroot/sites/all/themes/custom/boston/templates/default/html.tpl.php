@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html <?php print $html_attributes ?>>
 <head>
+  <meta name="google-site-verification" content="Do93qJZE2c5ibJnBWowjyjeIzVD6he_ZSCJU2J6eHn8" />
   <?php print $head; ?>
   <title><?php print $head_title; ?></title>
   <?php if ($google_tag_manager_id) { ?>
