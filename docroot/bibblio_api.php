@@ -10,7 +10,6 @@ $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
 function checkIP(){
 	$valid = FALSE;
 	$acceptedIPs = array(
-		'172.21.0.1',
 		'54.227.255.2',
 	);
 	foreach($acceptedIPs as $value){
