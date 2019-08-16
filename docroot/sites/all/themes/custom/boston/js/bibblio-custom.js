@@ -248,4 +248,3 @@ var reIngestItem = function(res){
         }
       });
 }
-getItemExisting();
