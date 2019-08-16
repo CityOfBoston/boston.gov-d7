@@ -95,32 +95,26 @@ var populateHTML = function(bibContent){
   }
 }
 
-// Get token
-let bib_token = "";
+// Set customUniqueIdentifier vars
 const pageURL = window.location.pathname;
 const siteLocation = 'https://www.boston.gov';
 
-jQuery.ajax({
-    method: "GET",
-    crossDomain: false,
-    url: 'https://' + location.host + "/sites/all/themes/custom/boston/scripts/bibblio_token.php",
-    contentType: "application/json",
-    success: function (res){
-        const resToken = JSON.parse(res);
-        //console.log(resToken)
-        if(resToken.status == "ok"){
-          bib_token = resToken;
-          bib_token = bib_token.index.access_token;
-          console.log('success:' + bib_token);
-          firstCheck();
-        }else{
-          console.log(resToken.status);
-        }
-    },
-    error: function (res){
-        console.log('error: ' + res);
-    }
-});
+// Set JSON LD data vars
+let getJSON_LD = jQuery('script[type="application/ld+json"]')[0].innerHTML;
+    getJSON_LD = JSON.parse(getJSON_LD);
+    getJSON_LD = getJSON_LD["@graph"][0];
+
+// Convert JSON LD data into object
+let bibData2JSON = { "fields" : 
+      {
+      "url": siteLocation + pageURL,
+      "name": getJSON_LD.name,
+      "text": getJSON_LD.description,
+      "description": getJSON_LD.description,
+      "customUniqueIdentifier": siteLocation + pageURL,
+      "catalogueId" : "ea9dbde3-dac4-4c1a-b887-55843fd8ed2f"
+      }
+    };
 
 // Check if page has existing recommendations.
 var firstCheck = function(){
@@ -155,7 +149,7 @@ var firstCheck = function(){
       }
     });
 }
-
+firstCheck();
 // Get content item data from other group / catalogue
 var getItemExisting = function(){
       jQuery.ajax({
@@ -184,88 +178,73 @@ var getItemExisting = function(){
 
 // Get item content specific value contentItemId of existing item to prep for update.
 var getItemData = function(item_id){
+      let bibData = {};
+      bibData["operation"] = "get";
+      bibData["contentItemId"] = item_id;
       jQuery.ajax({
-        method: "GET",
-        crossDomain: true,
-        cache : false,
-        url: "https://api.bibblio.org/v1/content-items/" + item_id,
+        method: "POST",
+        url: "/bibblio_api.php",
         contentType: "application/json",
-        headers: {
-          "Authorization": "Bearer " + bib_token,
-        },
+        data: JSON.stringify(bibData),
         success: function (res){
-          reIngestItem(res);
+          resJSON = JSON.parse(res);
+          if(resJSON.status == 200){
+            reIngestItem(resJSON.response);
+          }else{
+            console.log('Error ingesting item to Bibblio. ' + resJSON.response);
+          }
         },
         error: function (res){
-          console.log('Error ingesting item to Bibblio.');
+          resJSON = JSON.parse(res);
+          console.log('Error ingesting item to Bibblio. ' + resJSON.response);
         }
       });
 }
 
 // Ingest for first time and associate with catalogue ID. 
 var ingestItem = function(){
-      let getJSON_LD = jQuery('script[type="application/ld+json"]')[0].innerHTML;
-      getJSON_LD = JSON.parse(getJSON_LD);
-      getJSON_LD = getJSON_LD["@graph"][0];
-      const bibData2JSON = {
-          "url": siteLocation + pageURL,
-          "name": getJSON_LD.name,
-          "text": getJSON_LD.description,
-          "description": getJSON_LD.description,
-          "customUniqueIdentifier": siteLocation + pageURL,
-          "catalogueId" : "ea9dbde3-dac4-4c1a-b887-55843fd8ed2f"
-        };
+      bibData2JSON["operation"] = "create";
       jQuery.ajax({
         method: "POST",
-        crossDomain: true,
-        cache : false,
-        url: "https://api.bibblio.org/v1/content-item-url-ingestions",
+        url: "/bibblio_api.php",
         contentType: "application/json",
-        headers: {
-          //live boston.gov key
-          "Authorization": "Bearer " + bib_token,
-        },
         data: JSON.stringify(bibData2JSON),
         success: function (res){
-          console.log('success initial ingest');
+          resJSON = JSON.parse(res);
+          if(resJSON.status == 200 || resJSON.status == 201){
+            console.log('success initial ingest');
+          }else{
+            console.log('error initial ingest: '+ resJSON.response.errors);
+          }
         },
         error: function (res){
-          console.log('error initial ingest');
+          resJSON = JSON.parse(res);
+          console.log('error initial ingest: ' + resJSON.response);
         }
       });
      
 }
 
 // Re-ingest and associate with catalogue ID.
-// 
 var reIngestItem = function(res){
-  let getJSON_LD = jQuery('script[type="application/ld+json"]')[0].innerHTML;
-      getJSON_LD = JSON.parse(getJSON_LD);
-      getJSON_LD = getJSON_LD["@graph"][0];
-      const bibData2JSON = {
-          "url": siteLocation + pageURL,
-          "name": getJSON_LD.name,
-          "text": getJSON_LD.description,
-          "description": getJSON_LD.description,
-          "customUniqueIdentifier": siteLocation + pageURL,
-          "catalogueId" : "ea9dbde3-dac4-4c1a-b887-55843fd8ed2f"
-        };
+      bibData2JSON["operation"] = "update";
+      bibData2JSON["contentItemId"] = res.contentItemId;
       jQuery.ajax({
-        method: "PUT",
-        crossDomain: true,
-        cache : false,
-        url: "https://api.bibblio.org/v1/content-items/" + res.contentItemId,
+        method: "POST",
         contentType: "application/json",
-        headers: {
-          //live boston.gov key
-          "Authorization": "Bearer " + bib_token,
-        },
+        url: "/bibblio_api.php",
         data: JSON.stringify(bibData2JSON),
         success: function (res){
-          console.log('success re-ingest');
+          resJSON = JSON.parse(res);
+          if(resJSON.status == 200){
+            console.log('success re-ingest');
+          }else{
+            console.log('error re-ingest : ' + resJSON.response.message);
+          }
         },
         error: function (res){
-          console.log('error re-ingest');
+          resJSON = JSON.parse(res);
+          console.log('error re-ingest : ' + resJSON.response.message);
         }
       });
 }
