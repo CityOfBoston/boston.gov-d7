@@ -1,13 +1,21 @@
-
 <?php
-print '{"status" : "php works"}';
 
-define('DRUPAL_ROOT', $_SERVER["DOCUMENT_ROOT"]);
-require_once DRUPAL_ROOT . '/includes/bootstrap.inc';
-drupal_bootstrap(DRUPAL_BOOTSTRAP_VARIABLES);
-
-$testing = FALSE;
-$ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+// Check for server environment
+if(isset($_SERVER["DOCUMENT_ROOT"])){
+	// Local env
+	$getIP = NULL;
+	define('DRUPAL_ROOT', $_SERVER["DOCUMENT_ROOT"]);
+	require_once DRUPAL_ROOT.'/includes/bootstrap.inc';
+	drupal_bootstrap(DRUPAL_BOOTSTRAP_VARIABLES);
+	$testing = TRUE;
+}else{
+	// Acquia env
+	define('DRUPAL_ROOT', '/var/www/html/'.$_ENV["AH_SITE_NAME"].'/docroot');
+	require_once DRUPAL_ROOT.'/includes/bootstrap.inc';
+	drupal_bootstrap(DRUPAL_BOOTSTRAP_VARIABLES);
+	$getIP = ip_address();
+	$testing = FALSE;
+}
 
 function checkIP(){
 	$valid = FALSE;
@@ -15,7 +23,7 @@ function checkIP(){
 		'54.227.255.2',
 	);
 	foreach($acceptedIPs as $value){
-		if($_SERVER['HTTP_X_FORWARDED_FOR'] == $value) {
+		if($getIP == $value) {
 			$valid = TRUE;
 		}	
 	}
