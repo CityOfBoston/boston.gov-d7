@@ -1,16 +1,17 @@
 <?php
 
 // Check for server environment
-if(isset($_SERVER["DOCUMENT_ROOT"]) && $_SERVER["DOCUMENT_ROOT"] !== ""){
+if (!isset($_SERVER["AH_SITE_NAME"])){
 	// Local env
 	$getIP = NULL;
 	define('DRUPAL_ROOT', $_SERVER["DOCUMENT_ROOT"]);
 	require_once DRUPAL_ROOT.'/includes/bootstrap.inc';
 	drupal_bootstrap(DRUPAL_BOOTSTRAP_VARIABLES);
 	$testing = TRUE;
-}else{
+} else {
 	// Acquia env
-	require_once '/var/www/html/'.$_ENV["AH_SITE_NAME"].'/docroot/includes/bootstrap.inc';
+	define('DRUPAL_ROOT', '/var/www/html/'.$_ENV["AH_SITE_NAME"].'/docroot');
+	require_once DRUPAL_ROOT.'/includes/bootstrap.inc';
 	drupal_bootstrap(DRUPAL_BOOTSTRAP_VARIABLES);
 	$getIP = ip_address();
 	$testing = FALSE;
