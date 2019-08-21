@@ -10,8 +10,7 @@ if(isset($_SERVER["DOCUMENT_ROOT"])){
 	$testing = TRUE;
 }else{
 	// Acquia env
-	define('DRUPAL_ROOT', '/var/www/html/'.$_ENV["AH_SITE_NAME"].'/docroot');
-	require_once DRUPAL_ROOT.'/includes/bootstrap.inc';
+	require_once '/var/www/html/'.$_ENV["AH_SITE_NAME"].'/docroot/includes/bootstrap.inc';
 	drupal_bootstrap(DRUPAL_BOOTSTRAP_VARIABLES);
 	$getIP = ip_address();
 	$testing = FALSE;
