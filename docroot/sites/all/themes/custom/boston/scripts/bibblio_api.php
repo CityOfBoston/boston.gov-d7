@@ -1,7 +1,7 @@
 <?php
 
 // Check for server environment
-if(isset($_SERVER["DOCUMENT_ROOT"])){
+if(isset($_SERVER["DOCUMENT_ROOT"]) && $_SERVER["DOCUMENT_ROOT"] !== ""){
 	// Local env
 	$getIP = NULL;
 	define('DRUPAL_ROOT', $_SERVER["DOCUMENT_ROOT"]);
