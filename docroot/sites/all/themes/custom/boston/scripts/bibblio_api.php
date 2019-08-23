@@ -41,6 +41,8 @@ if (checkDomain() == TRUE || $testing == TRUE):
 		}
 
 		function getToken(){
+			global $bibblio_id;
+			global $bibblio_secret;
 			$ch = curl_init();
 			$data = array(
 				'client_id' => $bibblio_id,
