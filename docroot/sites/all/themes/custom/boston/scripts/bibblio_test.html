@@ -8,18 +8,18 @@ const postData = {
           "operation" : "create",
           "fields" : 
           	{
-          	"url": "https://www.boston.gov/test/testing-url-here-3",
+          	"url": "https://www.boston.gov/test/testing-url-here-4",
 	          "name": "Test Insert",
 	          "text": "ipsum lorem jkjfner ipsum lorem wjnewjdn",
 	          "description": "ipsum lorem jkjfner ipsum lorem wjnewjdn",
-	          "customUniqueIdentifier": "https://www.boston.gov/test/testing-url-here-3",
+	          "customUniqueIdentifier": "https://www.boston.gov/test/testing-url-here-4",
 	          "catalogueId" : "ea9dbde3-dac4-4c1a-b887-55843fd8ed2f"
           	} 
         };
 jQuery.ajax({
         method: "POST",
         contentType: "application/json",
-        url: "sites/all/themes/custom/boston/scripts/bibblio_api.php",
+        url: "bibblio_api.php",
         data: JSON.stringify(postData),
         success: function (res){
           resJSON = JSON.parse(res);

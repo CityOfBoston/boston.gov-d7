@@ -1,35 +1,34 @@
 <?php
-
 // Check for server environment
 if (!isset($_SERVER["AH_SITE_NAME"])){
 	// Local env
-	$getIP = NULL;
 	define('DRUPAL_ROOT', $_SERVER["DOCUMENT_ROOT"]);
 	require_once DRUPAL_ROOT.'/includes/bootstrap.inc';
 	drupal_bootstrap(DRUPAL_BOOTSTRAP_VARIABLES);
+	$bibblio_id = variable_get('bibblio_id');
+	$bibblio_secret = variable_get('bibblio_secret');
 	$testing = TRUE;
 } else {
 	// Acquia env
-	define('DRUPAL_ROOT', '/var/www/html/'.$_ENV["AH_SITE_NAME"].'/docroot');
-	require_once DRUPAL_ROOT.'/includes/bootstrap.inc';
-	drupal_bootstrap(DRUPAL_BOOTSTRAP_VARIABLES);
-	$getIP = ip_address();
+	$bibblio_id = $_ENV['bibblio_id'];
+	$bibblio_secret = $_ENV['bibblio_secret'];
 	$testing = FALSE;
 }
 
-function checkIP(){
-	$valid = FALSE;
-	$acceptedIPs = array(
-		'54.227.255.2',
-	);
-	foreach($acceptedIPs as $value){
-		if($getIP == $value) {
-			$valid = TRUE;
-		}	
+function checkDomain(){
+	$allowed = array(
+	'https://bostonuat.prod.acquia-sites.com',
+	'https://bostonci.prod.acquia-sites.com',
+	'boston.gov',
+	); 
+
+	if (isset($_SERVER['HTTP_ORIGIN']) && in_array($_SERVER['HTTP_ORIGIN'], $allowed)){
+		return TRUE;
+	} else {
+		return FALSE;
 	}
-	return $valid;
 }
-if (checkIP() == TRUE || $testing == TRUE): 
+if (checkDomain() == TRUE || $testing == TRUE): 
 
 	class Bibblio {
 		
@@ -44,8 +43,8 @@ if (checkIP() == TRUE || $testing == TRUE):
 		function getToken(){
 			$ch = curl_init();
 			$data = array(
-				'client_id' => variable_get('bibblio_id'),
-				'client_secret' => variable_get('bibblio_secret'),
+				'client_id' => $bibblio_id,
+				'client_secret' => $bibblio_secret,
 			);
 			curl_setopt($ch, CURLOPT_URL, "https://api.bibblio.org/v1/token"); 
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
@@ -145,7 +144,6 @@ if (checkIP() == TRUE || $testing == TRUE):
 	}
 	
 else:
-	print '{"status" : "error","response":"not authroized"}';
+	print '{"status":"error", "response":"not authroized"}';
 endif;
-
 ?>
