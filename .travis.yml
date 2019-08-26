@@ -7,7 +7,7 @@ branches:
   - develop
   - master
   - settings
-  - bibblio-updates_8_06
+  - bibblio_api_pathing
   - cityscore_rest
   - enable_related
 php:
@@ -80,7 +80,7 @@ deploy:
   skip_cleanup: true
   script: bash scripts/deploy/travis-deploy.sh $TRAVIS_BRANCH bibblio-build $COB_ARTIFACT
   on:
-    branch: bibblio-updates_8_06
+    branch: bibblio_api_pathing
     condition: $COB_ARTIFACT = boston
 - provider: script
   skip_cleanup: true
