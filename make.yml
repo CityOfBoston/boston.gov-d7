@@ -251,7 +251,7 @@ projects:
   rabbit_hole:
     version: 2.25
   rules:
-    version: 2.9
+    version: 2.11
   special_menu_items:
     version: 2.0
   simplesamlphp_auth:

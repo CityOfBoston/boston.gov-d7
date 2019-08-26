@@ -183,7 +183,7 @@ var getItemData = function(item_id){
       bibData["contentItemId"] = item_id;
       jQuery.ajax({
         method: "POST",
-        url: "/bibblio_api.php",
+        url: "sites/all/themes/custom/boston/scripts/bibblio_api.php",
         contentType: "application/json",
         data: JSON.stringify(bibData),
         success: function (res){
@@ -206,7 +206,7 @@ var ingestItem = function(){
       bibData2JSON["operation"] = "create";
       jQuery.ajax({
         method: "POST",
-        url: "/bibblio_api.php",
+        url: "sites/all/themes/custom/boston/scripts/bibblio_api.php",
         contentType: "application/json",
         data: JSON.stringify(bibData2JSON),
         success: function (res){
@@ -232,7 +232,7 @@ var reIngestItem = function(res){
       jQuery.ajax({
         method: "POST",
         contentType: "application/json",
-        url: "/bibblio_api.php",
+        url: "sites/all/themes/custom/boston/scripts/bibblio_api.php",
         data: JSON.stringify(bibData2JSON),
         success: function (res){
           resJSON = JSON.parse(res);
