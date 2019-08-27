@@ -19,7 +19,7 @@ function checkDomain(){
 	$allowed = array(
 	'https://bostonuat.prod.acquia-sites.com',
 	'https://bostonci.prod.acquia-sites.com',
-	'boston.gov',
+	'https://www.boston.gov',
 	); 
 
 	if (isset($_SERVER['HTTP_ORIGIN']) && in_array($_SERVER['HTTP_ORIGIN'], $allowed)){
