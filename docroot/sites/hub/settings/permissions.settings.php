@@ -53,6 +53,7 @@ function acquia_permissions_map() {
       'administer profiles',
       'administer taxonomy',
       'administer users',
+      'change saml authentication setting',
       'create application content',
       'create article content',
       'create department_profile content',
