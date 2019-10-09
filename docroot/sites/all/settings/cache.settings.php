@@ -28,9 +28,9 @@ if (!empty($_ENV['AH_SITE_ENVIRONMENT'])) {
       // Allows Block to be cached on sites with hook_node_grant() implementations
       // $conf['block_cache_bypass_node_grants'] = TRUE;
       // Enforce aggregation and compression.
-      $conf['page_compression'] = TRUE;
-      $conf['preprocess_css'] = TRUE;
-      $conf['preprocess_js'] = TRUE;
+      //$conf['page_compression'] = TRUE;
+      //$conf['preprocess_css'] = TRUE;
+      //$conf['preprocess_js'] = TRUE;
 
       // Production will always be 100% HTTPS, so, we should never need to purge
       // HTTP URLs so we disable it here to optimize.
