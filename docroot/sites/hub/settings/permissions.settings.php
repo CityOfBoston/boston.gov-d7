@@ -20,10 +20,6 @@ function acquia_permissions_map() {
   return array(
     // Anonymous user role permissions.
     'anonymous user' => array(
-      'access content',
-      'access user profiles',
-      'view any main profile',
-      'view files',
     ),
     // Authenticated user role permissions.
     'authenticated user' => array(
