@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Returns the HTML for a single Drupal page.
@@ -9,6 +10,7 @@
  */
 ?>
 <div class="main err err--403">
+  <?php include drupal_get_path('theme', 'boston') . '/templates/snippets/header.tpl.php'; ?>
   <div class="container">
     <section class="main-content err-content" id="content" role="main">
       <div class="denied-text error-text column desktop-66-left">
