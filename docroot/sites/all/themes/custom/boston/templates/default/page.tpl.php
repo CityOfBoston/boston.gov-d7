@@ -27,7 +27,13 @@
 
 <div class="<?php if (isset($page_class)): ?><?php print $page_class; ?> <?php endif; ?>mn" id="page">
   <input type="checkbox" id="s-tr" class="s-tr" aria-hidden="true">
-  <?php include drupal_get_path('theme', 'boston') . '/templates/snippets/header.tpl.php'; ?>
+  <header id="main-menu" class="h" role="banner" data-swiftype-index="false">
+    <?php print theme('burger'); ?>
+    <?php print theme('logo', $site_info); ?>
+    <?php print theme('seal', $site_info); ?>
+    <?php print theme('secondary_nav', array('secondary_menu' => $secondary_menu)); ?>
+    <?php print theme('search', array('search_form_url' => '/search')); ?>
+  </header>
 
   <div id="sa" data-target="<?php print $target_id; ?>" data-classes="<?php print $page_class_alert ?>  mn" class="d--n"></div>
   <?php print theme('alert_js'); ?>
