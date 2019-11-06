@@ -12,6 +12,14 @@
 <?php 
 	$sso_link = variable_get('sso_login_url', FALSE);
 ?>
+<style>
+@media (max-width: 980px){
+  .error-text h1{
+    padding: 3rem 0 0;
+  }
+}
+
+</style>
 <div class="main err err--403">
   <?php include drupal_get_path('theme', 'boston') . '/templates/snippets/header.tpl.php'; ?>
   <div class="container">
